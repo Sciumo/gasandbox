@@ -1,0 +1,16 @@
+glut_util.o glut_util.o: glut_util.cpp /usr/include/GL/gl.h \
+  /usr/include/GL/glext.h \
+  /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/stddef.h \
+  /usr/include/GL/glut.h /usr/include/GL/glu.h glut_util.h
+
+/usr/include/GL/gl.h:
+
+/usr/include/GL/glext.h:
+
+/usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/stddef.h:
+
+/usr/include/GL/glut.h:
+
+/usr/include/GL/glu.h:
+
+glut_util.h:

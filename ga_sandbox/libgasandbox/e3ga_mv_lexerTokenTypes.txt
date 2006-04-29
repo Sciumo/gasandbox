@@ -1,0 +1,10 @@
+// $ANTLR 2.7.5rc2 (20050108): e3ga_lexer.g -> e3ga_mv_lexerTokenTypes.txt$
+e3ga_mv_lexer    // output token vocab name
+WS_=4
+MINUS=5
+PLUS=6
+GP=7
+OP=8
+BASIS_VECTOR("a basis vector")=9
+INT=10
+NUMBER("a scalar")=11
