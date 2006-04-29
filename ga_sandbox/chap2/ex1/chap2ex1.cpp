@@ -14,6 +14,10 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
+#ifdef WIN32
+#include <windows.h>
+#endif WIN32
+
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <stdio.h>
@@ -51,8 +55,6 @@ void display() {
 	
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	
-//	renderBitmapString(0.0f, 0.0f, GLUT_BITMAP_HELVETICA_18,"3D Tech");
 	
 	// we store the label positions & text here:
 	std::vector<std::string> labelString;
