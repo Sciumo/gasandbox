@@ -251,7 +251,7 @@ void getGLUTmodel(const std::string &modelName) {
 	std::vector<GLfloat> buffer(100000); // more than enough for the GLUT primitives
 	
 	// switch into feedback mode:
-	glFeedbackBuffer(buffer.size(), GL_2D, &(buffer[0]));
+	glFeedbackBuffer((GLsizei)buffer.size(), GL_2D, &(buffer[0]));
 	glRenderMode(GL_FEEDBACK);
 	
 	// render model
@@ -297,7 +297,7 @@ void getGLUTmodel(const std::string &modelName) {
 		// get vertices:
 		// Maybe todo later: don't duplicate identical vertices  . . .
 		for (int i = 0; i < n; i++) {
-			vtxIdx[i] = g_vertices2D.size();
+			vtxIdx[i] = (int)g_vertices2D.size();
 			g_vertices2D.push_back(_vector(buffer[idx] * e1 + buffer[idx+1] * e2));
 			idx += 2;
 		}
