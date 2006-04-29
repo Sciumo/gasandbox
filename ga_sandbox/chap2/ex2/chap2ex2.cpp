@@ -49,8 +49,12 @@ bool g_rotateModelOutOfPlane = false;
 // model info:
 bool g_initModelRequired = true;
 const char *g_modelName = "sphere";
-std::vector<std::vector<int> > g_polygons2D;
+
+// vertex positions: 2d vectors
 std::vector<vector> g_vertices2D;
+// indices into the g_vertices2D vector:
+std::vector<std::vector<int> > g_polygons2D;
+
 e3ga::rotor g_modelRotor(1.0f);
 std::string g_prevStatisticsModelName = "";
 
@@ -92,23 +96,31 @@ void display() {
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 
-	// render model
 	bivector B;
+
+	// render model
 	for (unsigned int i = 0; i < g_polygons2D.size(); i++) {
-		// visibility test 
+		// get 2D vertices of the polygon:
 		const vector &v1 = g_vertices2D[g_polygons2D[i][0]];
 		const vector &v2 = g_vertices2D[g_polygons2D[i][1]];
 		const vector &v3 = g_vertices2D[g_polygons2D[i][2]];
 		
-		// exercise: remove back-facing polygons here
+		// Exercise: 
+		// Insert code to remove back-facing polygons here.
+		// You can extract the e1^e2 coordinate of a bivector 'B' using:
+		// float c = B.e1e2();
+		// ...
+
 // 		solution:		
-//		B = (v2 - v1) ^ (v3 - v1);
-//		if (B.e1e2() <= 0.0) continue;
+		//B = (v2 - v1) ^ (v3 - v1);
+		//if (B.e1e2() <= 0.0) continue;
 		
 		// draw polygon
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons2D[i].size(); j++)
-			glVertex2f(g_vertices2D[g_polygons2D[i][j]].e1(), g_vertices2D[g_polygons2D[i][j]].e2());
+			glVertex2f(
+				g_vertices2D[g_polygons2D[i][j]].e1(), 
+				g_vertices2D[g_polygons2D[i][j]].e2());
 		glEnd();
 	}
 
@@ -130,6 +142,12 @@ void reshape(GLint width, GLint height) {
 	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
+	// refresh model on next redraw
+	g_initModelRequired = true;
+	
+	// redraw viewport
+	glutPostRedisplay();	
 }
 
 e3ga::vector mousePosToVector(int x, int y) {
@@ -248,7 +266,7 @@ void getGLUTmodel(const std::string &modelName) {
 	// vertex 1 x, vertex 1 y
 	// vertex 2 x, vertex 2 y
 	// GL_POLYGON_TOKEN etc etc
-	std::vector<GLfloat> buffer(100000); // more than enough for the GLUT primitives
+	std::vector<GLfloat> buffer(300000); // more than enough for the GLUT primitives
 	
 	// switch into feedback mode:
 	glFeedbackBuffer((GLsizei)buffer.size(), GL_2D, &(buffer[0]));
