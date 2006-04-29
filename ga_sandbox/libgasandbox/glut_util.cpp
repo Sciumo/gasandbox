@@ -14,6 +14,9 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
+#ifdef WIN32
+#include <windows.h>
+#endif WIN32
 
 #include <GL/gl.h>
 #include <GL/glut.h>

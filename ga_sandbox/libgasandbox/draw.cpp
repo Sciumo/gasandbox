@@ -160,7 +160,7 @@ void DrawState::drawSphere(e3ga::mv::Float normal) {
 
 void drawVector(const vector &tail, const vector &dir, mv::Float scale) {
 	GLboolean l;
-	const mv::Float rotStep = 2.0f * M_PI / 32.0f;
+	const mv::Float rotStep = 2.0f * (mv::Float)M_PI / 32.0f;
 	mv::Float z;
 	rotor rt, rti;
 	vector n;
@@ -241,7 +241,7 @@ void drawVector(const vector &tail, const vector &dir, mv::Float scale) {
 void drawBivector(const e3ga::vector &base, const e3ga::vector &normal, 
 				 const e3ga::vector &ortho1, const e3ga::vector &ortho2, 
 				 e3ga::mv::Float scale, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*/) {
-	const mv::Float rotStep = 2 * M_PI / 64;
+	const mv::Float rotStep = 2.0f * (mv::Float)M_PI / 64.0f;
 	mv::Float x, y;
 	rotor rt;
 	vector null;
@@ -385,7 +385,7 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 	case DRAW_BV_CURLYTAIL:
 		glDisable(GL_LIGHTING);
 		glBegin(GL_LINE_STRIP);
-		for (y = 0; y <= M_PI *2 + 0.001; y += M_PI * 2 / 64)
+		for (y = 0; y <= (mv::Float)M_PI *2.0f + 0.001f; y += (mv::Float)M_PI * 2.0f / 64.0f)
 			glVertex2d(-sqrt(y / (2 * M_PI)) * sin(y), sqrt(y / (2 * M_PI)) * cos(y));
 		glEnd();
 		break;
@@ -393,7 +393,7 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 		glDisable(GL_LIGHTING);
 		for (x = 0; x < 4; x++) {
 			glBegin(GL_LINE_STRIP);
-			for (y = 0; y <= M_PI / 2 + 0.001; y += M_PI / (2 * 16)) {
+			for (y = 0; y <= (mv::Float)M_PI / 2.0f + 0.001f; y += (mv::Float)M_PI / (2.0f * 16.0f)) {
 				glVertex2d((1.0 - sin(y)), cos(y));
 			}
 			glEnd();

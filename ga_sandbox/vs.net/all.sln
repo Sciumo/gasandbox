@@ -1,13 +1,20 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex1", "chap2ex1.vcproj", "{3383ACF7-F226-452C-8457-47D1443A56A6}"
 	ProjectSection(ProjectDependencies) = postProject
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex2", "chap2ex2.vcproj", "{0B05A64E-EFCF-47D1-8E40-5BAAEF066A03}"
 	ProjectSection(ProjectDependencies) = postProject
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex3", "chap2ex3.vcproj", "{46365576-7049-4B5E-AFF8-A27CE4613AE6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandbox", "libgasandbox.vcproj", "{FA5DC3A9-AA89-4F04-9F78-38727225F84C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -29,6 +36,10 @@ Global
 		{46365576-7049-4B5E-AFF8-A27CE4613AE6}.Debug.Build.0 = Debug|Win32
 		{46365576-7049-4B5E-AFF8-A27CE4613AE6}.Release.ActiveCfg = Release|Win32
 		{46365576-7049-4B5E-AFF8-A27CE4613AE6}.Release.Build.0 = Release|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C}.Debug.ActiveCfg = Debug|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C}.Debug.Build.0 = Debug|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C}.Release.ActiveCfg = Release|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

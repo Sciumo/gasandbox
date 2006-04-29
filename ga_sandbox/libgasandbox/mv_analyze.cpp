@@ -19,6 +19,9 @@
 
 namespace mv_analyze {
 
+// This is some weird inconsistency between gcc and MS compiler:
+// With GCC, you have to define static const int members here, too!
+#ifndef WIN32
 const int mvAnalysis::NB_POINTS;
 const int mvAnalysis::NB_VECTORS;
 const int mvAnalysis::NB_SCALARS ;
@@ -50,9 +53,9 @@ const int mvAnalysis::VECTOR;
 const int mvAnalysis::BIVECTOR;
 const int mvAnalysis::TRIVECTOR;
 const int mvAnalysis::NOT_USED ;
-const int mvAnalysis::EVEN_VERSOR ;
+const int mvAnalysis::EVEN_VERSOR;
 const int mvAnalysis::ODD_VERSOR;
-
+#endif
 
 mvAnalysis::mvAnalysis() : m_flags(0), m_epsilon(0.0) {
 	for (int i = 0; i < NB_SCALARS; i++)

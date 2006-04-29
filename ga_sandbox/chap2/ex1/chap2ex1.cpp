@@ -171,6 +171,9 @@ void Keyboard(unsigned char key, int x, int y) {
 
 void menuCallback(int value) {
 	g_drawParallelogram = value != 0;
+
+	// redraw viewport
+	glutPostRedisplay();	
 }
 
 

@@ -17,6 +17,12 @@
 #ifndef _GL_UTIL_H_
 #define _GL_UTIL_H_
 
+#ifdef WIN32
+#include <windows.h>
+#endif WIN32
+
+#include <GL/gl.h>
+
 #include "e3ga.h"
 
 /**

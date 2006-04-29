@@ -15,10 +15,9 @@
 // Daniel Fontijne -- fontijne@science.uva.nl
 
 
-#include <GL/gl.h>
+#include "gl_util.h"
 #include <GL/glut.h>
 
-#include "gl_util.h"
 
 
 void viewportCoordinates(const GLdouble ptWorld[3], GLdouble ptViewport[2], 

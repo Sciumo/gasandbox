@@ -70,10 +70,10 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 				vector v = A.m_vc[0]; // vector in rotation plane
 				
 				bivector b = _bivector(-dual(A.m_vc[2])); // rotation plane 
-				v = _vector(unit_e(v) * (mv::Float)(0.8 * scale));
+				v = _vector(unit_e(v) * (mv::Float)(0.8f * scale));
 				
 				int nbSteps, i;
-				const mv::Float ainc = 0.05f * M_PI;
+				const mv::Float ainc = 0.05f * (mv::Float)M_PI;
 
 				glBegin(GL_LINE_STRIP);
 				glVertex3fv(v.getC(vector_e1_e2_e3));

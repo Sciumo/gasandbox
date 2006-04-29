@@ -73,7 +73,7 @@ void draw(const e2ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 				v = _vector(unit_e(v) * (mv::Float)(0.8 * scale));
 				
 				int nbSteps, i;
-				const mv::Float ainc = 0.05f * M_PI;
+				const mv::Float ainc = 0.05f * (mv::Float)M_PI;
 
 				glBegin(GL_LINE_STRIP);
 				glVertex3fv(v.getC(e3ga::vector_e1_e2_e3));
