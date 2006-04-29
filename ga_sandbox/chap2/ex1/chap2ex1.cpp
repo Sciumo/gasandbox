@@ -75,10 +75,10 @@ void display() {
 	int posX = 0;
 	
 	vector v1, v2, v1_plus_v2;
-	
 	bivector B;
-	
-	for (double a = 0; a < 2 * M_PI - 10e-7; a += 2 * M_PI / (nbBivectorX * nbBivectorY)) {
+
+	double step = 2 * M_PI / (nbBivectorX * nbBivectorY);
+	for (double a = 0; a < 2 * M_PI; a += step) {
 		// vector 1 is fixed to e1 	
 		v1 = e1;
 		
@@ -88,7 +88,7 @@ void display() {
 		// compute the bivector:
 		B = v1 ^ v2;
 
-		// draw vector 1, vector 2		
+		// draw vector 1 (red), vector 2 (green)
 		glColor3f(1.0f, 0.0f, 0.0f);
 		draw(v1);
 		glColor3f(0.0f, 1.0f, 0.0f);
