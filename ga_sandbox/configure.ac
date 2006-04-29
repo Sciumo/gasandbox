@@ -7,8 +7,11 @@ AC_PROG_RANLIB
 MDL_HAVE_OPENGL
 dnl TODO HERE: check for presence of GLUT
 AQSIS_CHECK_FLTK
-AC_OUTPUT(Makefile libgasandbox/Makefile \
-	chap2/Makefile 
+AC_OUTPUT(
+	Makefile \
+	vs.net/Makefile \
+	libgasandbox/Makefile \
+	chap2/Makefile \
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\
 	chap2/ex3/Makefile\

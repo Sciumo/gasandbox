@@ -153,7 +153,7 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-SUBDIRS = libgasandbox chap2
+SUBDIRS = vs.net libgasandbox chap2
 all: all-recursive
 
 .SUFFIXES:

@@ -49,4 +49,3 @@ void GLmatrixVectorMul(const GLfloat m[16], const GLfloat v[4], GLfloat r[4]);
 void rotorGLMult(const e3ga::rotor &v);
 
 #endif /* _GL_UTIL_H_ */
- 
