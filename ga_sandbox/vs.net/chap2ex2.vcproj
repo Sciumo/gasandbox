@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
+			IntermediateDirectory="chap2ex2_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -62,7 +62,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			IntermediateDirectory="chap2ex2_Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool

@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
+			IntermediateDirectory="libgasandbox_Debug"
 			ConfigurationType="4"
 			CharacterSet="2">
 			<Tool
@@ -54,7 +54,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			IntermediateDirectory="libgasandbox_Release"
 			ConfigurationType="4"
 			CharacterSet="2">
 			<Tool

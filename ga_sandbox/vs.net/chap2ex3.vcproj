@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
+			IntermediateDirectory="chap2ex3_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -61,7 +61,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			IntermediateDirectory="chap2ex3_Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -76,6 +76,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="opengl32.lib wsock32.lib fltk.lib fltkgl.lib comctl32.lib"
 				OutputFile="$(OutDir)/chap2ex3.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -112,11 +113,53 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath="..\chap2\ex3\e3ga.cpp">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\e3ga_optc.c">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\fields.cpp">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\glwindow.cpp">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\hpindex.cpp">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\main.cpp">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\timing.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\chap2\ex3\e3ga.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\fields.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\gaigenhl.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\glwindow.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\hpindex.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\main.h">
+			</File>
+			<File
+				RelativePath="..\chap2\ex3\timing.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
