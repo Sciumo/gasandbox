@@ -252,8 +252,8 @@ int glwindow::handle(int event) {
 	case FL_PUSH:
 		firstx = Fl::event_x();
 		firsty = Fl::event_y();
-		if ( sqrt((wW/2-firstx)*(wW/2-firstx)+
-		     (wH/2-firsty)*(wH/2-firsty)) < 0.375*wH ) {
+		if ( sqrt((float)((wW/2-firstx)*(wW/2-firstx)+
+		     (wH/2-firsty)*(wH/2-firsty))) < 0.375*wH ) {
 		  inside = 1;
 		} else {
 		  inside = 0;
