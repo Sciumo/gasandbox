@@ -139,7 +139,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = ex1 ex2 ex3
+SUBDIRS = ex1 ex2 ex3 ex3g2
 all: all-recursive
 
 .SUFFIXES:
