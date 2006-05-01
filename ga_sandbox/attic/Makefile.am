@@ -1,0 +1,3 @@
+SUBDIRS = gaigen2hp
+
+
