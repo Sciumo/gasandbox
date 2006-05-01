@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="chap2ex3"
-	ProjectGUID="{46365576-7049-4B5E-AFF8-A27CE4613AE6}"
+	Name="gaigen2hp"
+	ProjectGUID="{8BFA75D3-DF19-4792-89B6-3A7CAE60B90B}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -13,12 +13,13 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="chap2ex3_Debug"
+			IntermediateDirectory="gaigen2hp_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -32,10 +33,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="opengl32.lib wsock32.lib fltkd.lib fltkgld.lib comctl32.lib"
-				OutputFile="$(OutDir)/chap2ex3.exe"
+				OutputFile="$(OutDir)/gaigen2hp.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/chap2ex3.pdb"
+				ProgramDatabaseFile="$(OutDir)/chap2ex3g2.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -62,11 +63,12 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="chap2ex3_Release"
+			IntermediateDirectory="gaigen2hp_Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="..\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="4"
 				UsePrecompiledHeader="0"
@@ -78,7 +80,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="opengl32.lib wsock32.lib fltk.lib fltkgl.lib comctl32.lib"
-				OutputFile="$(OutDir)/chap2ex3.exe"
+				OutputFile="$(OutDir)/gaigen2hp.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
@@ -115,25 +117,16 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\chap2\ex3\e3ga.cpp">
+				RelativePath="..\attic\gaigen2hp\fields.cpp">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\e3ga_optc.c">
+				RelativePath="..\attic\gaigen2hp\glwindow.cpp">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\fields.cpp">
+				RelativePath="..\attic\gaigen2hp\hpindex.cpp">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\glwindow.cpp">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\hpindex.cpp">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\main.cpp">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\timing.cpp">
+				RelativePath="..\attic\gaigen2hp\main.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -141,25 +134,16 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\chap2\ex3\e3ga.h">
+				RelativePath="..\attic\gaigen2hp\fields.h">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\fields.h">
+				RelativePath="..\attic\gaigen2hp\glwindow.h">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\gaigenhl.h">
+				RelativePath="..\attic\gaigen2hp\hpindex.h">
 			</File>
 			<File
-				RelativePath="..\chap2\ex3\glwindow.h">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\hpindex.h">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\main.h">
-			</File>
-			<File
-				RelativePath="..\chap2\ex3\timing.h">
+				RelativePath="..\attic\gaigen2hp\main.h">
 			</File>
 		</Filter>
 		<Filter
