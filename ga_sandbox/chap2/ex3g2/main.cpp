@@ -2,19 +2,15 @@
 Gaigen HP Index
 
 Detects singularities in vector fields.
-(C) 2001 Daniel Fontijne - University of Amsterdam & Stephen Mann - University of Waterloo
+(C) 2006 Daniel Fontijne - University of Amsterdam & Stephen Mann - University of Waterloo
 Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 
-To compile for Unix use something like:
-g++ -o gaigenhp -I/fltkincludefiles -L/fltklibfiles -lfltk -lGL \\
-e3ga.cpp  fields.cpp    hpindex.cpp   timing.cpp e3ga_optc.c  main.cpp glwindow.cpp
-
-Do NOT compile gaigenhl.cpp directly! It is included from e3ga.cpp
-and will generate a lot of errors when compiled on it's own.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#pragma warning(disable : 4312 4311 4244)
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
@@ -39,7 +35,6 @@ and will generate a lot of errors when compiled on it's own.
 #include "timing.h"
 
 #include "glwindow.h" // simple OpenGL window using fltk
-#include "e3ga.h"
 #include "hpindex.h"
 #include "fields.h"
 
@@ -166,11 +161,11 @@ float g_dz=1.;
 int ui_setGo(int state);
 
 // what function are we using currently 
-e3ga & (*g_evalFunc)(const e3ga &p, e3ga &v) = (e3ga & (*)(const e3ga &p, e3ga &v))uif_fieldMenuItem[0].user_data_;
+vector & (*g_evalFunc)(const vector &p, vector &v) = (vector & (*)(const vector &p, vector &v))uif_fieldMenuItem[0].user_data_;
 
 void uif_callBack(Fl_Widget *W, void *Data) {
 	int i;
-	g_evalFunc = (e3ga & (*)(const e3ga &p, e3ga &v))Data;
+	g_evalFunc = (vector & (*)(const vector &p, vector &v))Data;
 	i = 0;
 	while (uif_fieldMenuItem[i].text) {
 		if (uif_fieldMenuItem[i].user_data_ == Data) break;
@@ -359,9 +354,9 @@ int ui_setGo(int state) {
 }
 
 int main(int argc, char *argv[]) {
-	printf("Gaigen HP version 1.0 -- Copyright 2001 University of Amsterdam\n");
+	printf("Gaigen HP version 2.0 -- Copyright 2006 University of Amsterdam\n");
 
-	e3ga::resetProfile();
+	//e3ga::resetProfile();
 	Fl_Output *label;
 	Fl_Output *vlabel;
 	Fl_Output *labelBoxes;
@@ -707,7 +702,7 @@ int main(int argc, char *argv[]) {
 //	Fl::add_timeout(1.0f, timerCallback);
 	Fl::run();
 
-	e3ga::printProfile();
+//	e3ga::printProfile();
 
 	//Sleep(10000);
 

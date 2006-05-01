@@ -4,9 +4,8 @@
 #include <libgasandbox/e3ga.h>
 using namespace e3ga;
 
-extern float g_fieldsCurrentTime; // should be set to current time before calling the eval functions
+extern double g_fieldsCurrentTime; // should be set to current time before calling the eval functions
 
-float g_fieldsCurrentTime = 0;
 
 extern float g_dx;
 extern float g_dy;

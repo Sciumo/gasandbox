@@ -15,6 +15,9 @@ extern float g_dz;
 extern float g_omega;
 extern float g_gamma;
 extern float g_Rcore;
+
+double g_fieldsCurrentTime = 0;
+
   
 vector &vortex(const vector& p, vector& v) {
   
