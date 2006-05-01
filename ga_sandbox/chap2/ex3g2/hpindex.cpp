@@ -556,7 +556,7 @@ int sumCube(const vector &p, const vector dir[3],
 	if ( g_Dcube == ncube ) {
 	  g_hpvalue = sum3d.e1e2e3();
 	}
-	pointSing = (_Float(norm_e2(sum3d % sum3d)) > g_psing*g_psing);
+	pointSing = (_Float(norm_e2(sum3d)) > g_psing*g_psing);
 
 	return 0;
 }

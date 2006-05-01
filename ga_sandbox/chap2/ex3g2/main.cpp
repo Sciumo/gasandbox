@@ -1,5 +1,5 @@
 /*
-Gaigen HP Index
+Gaigen 2 HP Index
 
 Detects singularities in vector fields.
 (C) 2006 Daniel Fontijne - University of Amsterdam & Stephen Mann - University of Waterloo
@@ -363,7 +363,7 @@ int main(int argc, char *argv[]) {
 	Fl_Output *vlabel;
 	Fl_Output *labelBoxes;
 
-	g_window = new Fl_Window(1024,612, "HP Index / Gaigen");
+	g_window = new Fl_Window(1024,612, "HP Index / Gaigen 2");
 	g_window->size_range(1024,612);
 
 	g_GLWindow = new glwindow(0, 0, 512, 512, "g_GLWindow");
