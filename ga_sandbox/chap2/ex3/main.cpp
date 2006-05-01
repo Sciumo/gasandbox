@@ -40,14 +40,14 @@ Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 #include <string>
 
 #include <libgasandbox/common.h>
-#include <libgasandbox/e2ga.h>
-#include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/e3ga_util.h>
 
-using namespace e2ga;
+#include "fields.h"
+#include "render.h"
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 2, Example 2: Hidden Surface Removal";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 2, Example 3: Vector Field Singularity Detection";
 
 // GLUT state information 
 int g_viewportWidth = 800;
@@ -55,93 +55,111 @@ int g_viewportHeight = 600;
 int g_GLUTmenu;
 // mouse position on last call to MouseButton() / MouseMotion()
 e3ga::vector g_prevMousePos;
+e3ga::rotor g_modelRotor(1.0f);
+float g_modelDistance = 11.0f;
 // when true, MouseMotion() will rotate the model
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
+bool g_translateModel = false;
 
-// model info:
-bool g_initModelRequired = true;
-const char *g_modelName = "sphere";
+// (FORMERLY-ui) controlled globals:
+float g_cx=0.05f, g_cy=0.05f, g_cz=0.05f;
+int g_showField = 0, g_showOctree = 0,  g_showResult = 1, g_unitField=0,
+  g_bottom=0;
+int g_gs = 8, g_maxDepth = 7;
+int g_adap=0;
+int g_vgs = 10;
+float g_vectorSize = 1.0f;
+float g_cubeSize = 5.0f;
+float g_lratio = 10.0f;
+float g_sratio = 10.0f;
+float g_lsing = 0.10f;
+float g_psing = 0.10f;
+float g_refine = 0.10f;
+float g_lrefine = 0.10f;
+double g_lastTiming = 0.0f;
+int g_boxes=0;
+int g_refines=0;
+int g_lineSing = 1;
+int g_surfSing = 1;
+int g_lighting = 1;
+int g_falseLineSing = 1; 
+int g_falseSurfSing=1;
+int g_pushGo = 0;
 
-// vertex positions: 2d vectors
-std::vector<vector> g_vertices2D;
-// indices into the g_vertices2D vector:
-std::vector<std::vector<int> > g_polygons2D;
+int g_Dcube = 0;
+int g_showSphere=1;
+int g_showPSphere=1;
+int g_showNSphere=1;
+int g_showCirc=0;
+int g_USphere=1;
+int g_ISphere=0;
+float g_hpvalue=0.0;
 
-e3ga::rotor g_modelRotor(1.0f);
-std::string g_prevStatisticsModelName = "";
+/* Constants used in vortex field */
+float g_omega=1.0;
+float g_gamma=1.0;
+float g_Rcore=1.0;
 
-// model names:
-const char *g_modelNames[] = {
-"teapot",
-"cube",
-"sphere",
-"cone",
-"torus",
-"dodecahedron",
-"octahedron",
-"tetrahedron",
-"icosahedron",
-NULL
+float g_dx=0.;
+float g_dy=0.;
+float g_dz=1.;
+
+// what function are we using currently 
+vector & (*g_evalFunc)(const vector &p, vector &v) = (vector & (*)(const vector &p, vector &v))eight2;
+
+// the fields (names + evaluation functions)
+// The dull ones are commented out
+struct {
+		const char *fieldName;
+		vector & (*func)(const vector &p, vector &v);
+} g_fieldFunctions[] = {
+//{"constant", const3},
+//{"vortex", vortex},
+{"point", point3},
+{"line", line3},
+{"line (helix field)", helix3},
+{"circle", circ3},
+{"eight", eight2},
+{"sphere", sphere3},
+//{"testFunc3", testFunc3},
+{"x^3*y^3*z^2", testFunc4},
+//{"x^3+y^3+z^2", testFunc5},
+//{"x^3+y^3+x^2", testFunc6},
+{"x^3*y^3", testFunc7},
+//{"Z^2/(Z+2)/(Z-4/5)", testFunc8},
+//{"1/Z", testFunc9},
+//{"x^3+y^3+z^3", testFunc10},
+//{"x^4+y^4+z^4", testFunc11},
+{"(x^2+y^2-z)^2 (cup)", testFunc12},
+{"sphere union cyl", testFunc13},
+{"sphere int cyl", testFunc14},
+{"helix", testFunc15},
+//{"double line", testFunc16},
+//{"double point", testFunc16a},
+//{"x^3/3 - xy^2 + z^2", testFunc17},
+//{"x^3/3 - xy^2", testFunc18},
+{NULL, NULL},
 };
 
 
-
-void getGLUTmodel(const std::string &modelName);
-
-
-
 void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	// get model, if required:
-	if (g_initModelRequired) {
-		g_initModelRequired = false;
-		getGLUTmodel(g_modelName);
-	}
-	
 	glEnable(GL_DEPTH_TEST);
-	
-	// DONT cull faces (we will do this ourselves!)
-	glDisable(GL_CULL_FACE);
-	// fill all polygons (otherwise they get turned into LINES
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 
-	bivector B;
+	glTranslatef(0, 0, -g_modelDistance);
+	rotorGLMult(g_modelRotor);
 
-	// render model
-	for (unsigned int i = 0; i < g_polygons2D.size(); i++) {
-		// get 2D vertices of the polygon:
-		const vector &v1 = g_vertices2D[g_polygons2D[i][0]];
-		const vector &v2 = g_vertices2D[g_polygons2D[i][1]];
-		const vector &v3 = g_vertices2D[g_polygons2D[i][2]];
-		
-		// Exercise: 
-		// Insert code to remove back-facing polygons here.
-		// You can extract the e1^e2 coordinate of a bivector 'B' using:
-		// float c = B.e1e2();
-		// ...
+	// all drawing code is inside render.cpp
+	drawAll();
 
-// 		solution:		
-		//B = (v2 - v1) ^ (v3 - v1);
-		//if (B.e1e2() <= 0.0) continue;
-		
-		// draw polygon
-		glBegin(GL_POLYGON);
-		for (unsigned int j = 0; j < g_polygons2D[i].size(); j++)
-			glVertex2f(
-				g_vertices2D[g_polygons2D[i][j]].e1(), 
-				g_vertices2D[g_polygons2D[i][j]].e2());
-		glEnd();
-	}
+	glPopMatrix();
 
-	
-	
-	
-	
-	
 	glutSwapBuffers();	
 }
 
@@ -149,16 +167,20 @@ void reshape(GLint width, GLint height) {
 	g_viewportWidth = width;
 	g_viewportHeight = height;
 
-	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+	// setup projection & transform for the model:
 	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+	const float screenWidth = 1600.0f;
+	glFrustum(
+		-(float)g_viewportWidth / screenWidth, (float)g_viewportWidth / screenWidth, 
+		-(float)g_viewportHeight / screenWidth, (float)g_viewportHeight / screenWidth, 
+		1.0, 100.0);
+	
 	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 	glLoadIdentity();
 
-	// refresh model on next redraw
-	g_initModelRequired = true;
-	
 	// redraw viewport
 	glutPostRedisplay();	
 }
@@ -171,6 +193,8 @@ e3ga::vector mousePosToVector(int x, int y) {
 
 
 void MouseButton(int button, int state, int x, int y) {
+	g_rotateModel = false;
+	g_translateModel = false;
 	if (button == GLUT_LEFT_BUTTON) {
 		e3ga::vector mousePos = mousePosToVector(x, y);
 		g_prevMousePos = mousePosToVector(x, y);
@@ -179,14 +203,18 @@ void MouseButton(int button, int state, int x, int y) {
 			g_rotateModelOutOfPlane = true;
 		else g_rotateModelOutOfPlane = false;
 	}
-	else g_rotateModel = false;
+	else if (button == GLUT_RIGHT_BUTTON) {
+		g_translateModel = true;
+		g_prevMousePos = mousePosToVector(x, y);
+	}
 }
 
 void MouseMotion(int x, int y) {
+	// get mouse position, motion 
+	e3ga::vector mousePos = mousePosToVector(x, y);
+	e3ga::vector motion = _vector(mousePos - g_prevMousePos);
+
 	if (g_rotateModel) {
-		// get mouse position, motion 
-		e3ga::vector mousePos = mousePosToVector(x, y);
-		e3ga::vector motion = _vector(mousePos - g_prevMousePos);
 		
 		// update rotor
 		if (g_rotateModelOutOfPlane)
@@ -194,15 +222,18 @@ void MouseMotion(int x, int y) {
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 		
 		
-		// remember mouse pos for next motion:
-		g_prevMousePos = mousePos;
-		
-		// refresh model on next redraw
-		g_initModelRequired = true;
-		
-		// redraw viewport
-		glutPostRedisplay();	
 	}
+	else if (g_translateModel) {
+		g_modelDistance -= motion.e2() / 10.0f;
+		if (g_modelDistance < 1.0f) g_modelDistance = 1.0f;
+		if (g_modelDistance > 100.0f) g_modelDistance = 100.0f;
+	}
+
+	// remember mouse pos for next motion:
+	g_prevMousePos = mousePos;
+	
+	// redraw viewport
+	glutPostRedisplay();	
 }
 
 void Keyboard(unsigned char key, int x, int y) {
@@ -211,15 +242,32 @@ void Keyboard(unsigned char key, int x, int y) {
 
 
 void menuCallback(int value) {
-	g_modelName = g_modelNames[value];
-	g_initModelRequired = true;
+
+	// first check for fields:
+	int i = 0;
+	while (g_fieldFunctions[i].fieldName) {
+		if (i == value) {
+			printf("New field: %s\n", g_fieldFunctions[i].fieldName);
+			g_evalFunc = g_fieldFunctions[i].func;
+		}
+		i++;
+	}
+
+	value -= i;
+
+	// now check for extra options:
+	if (value == 0) {
+		// show / hide field:
+		g_showField = !g_showField;
+	}
+	
+	g_makeNewList = true;
 	glutPostRedisplay();
 }
 
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
-	e2ga::g2Profiling::init();
 	e3ga::g2Profiling::init();
 
 	// GLUT Window Initialization:
@@ -237,125 +285,19 @@ int main(int argc, char*argv[]) {
 	
 	
 	g_GLUTmenu = glutCreateMenu(menuCallback);
-	for (int i = 0; g_modelNames[i]; i++)
-		glutAddMenuEntry(g_modelNames[i], i);
+	int i = 0;
+	for (; g_fieldFunctions[i].fieldName; i++)
+		glutAddMenuEntry(g_fieldFunctions[i].fieldName, i);
+	glutAddMenuEntry("show/hide vector field", i);
 //	glutAttachMenu(GLUT_LEFT_BUTTON);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
-	glutAttachMenu(GLUT_RIGHT_BUTTON);
+//	glutAttachMenu(GLUT_RIGHT_BUTTON);
 	
 
 	glutMainLoop();
 	
 	return 0;	
 }
-
-void getGLUTmodel(const std::string &modelName) {
-	// DONT cull faces (we will do this ourselves!)
-	glDisable(GL_CULL_FACE);
-	// fill all polygons (otherwise they get turned into LINES
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
-	// setup projection & transform for the model:
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	const float screenWidth = 1600.0f;
-	glFrustum(
-		-(float)g_viewportWidth / screenWidth, (float)g_viewportWidth / screenWidth, 
-		-(float)g_viewportHeight / screenWidth, (float)g_viewportHeight / screenWidth, 
-		1.0, 100.0);
-	
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef(0.0, 0.0, -10.0f);
-	
-	rotorGLMult(g_modelRotor);
-	
-	
-	glColor3f(1.0f, 1.0f, 1.0f);
-
-	// buffer for OpenGL feedback.
-	// Format will be:
-	// GL_POLYGON_TOKEN
-	// n (= 3)
-	// vertex 0 x, vertex 0 y
-	// vertex 1 x, vertex 1 y
-	// vertex 2 x, vertex 2 y
-	// GL_POLYGON_TOKEN etc etc
-	std::vector<GLfloat> buffer(300000); // more than enough for the GLUT primitives
-	
-	// switch into feedback mode:
-	glFeedbackBuffer((GLsizei)buffer.size(), GL_2D, &(buffer[0]));
-	glRenderMode(GL_FEEDBACK);
-	
-	// render model
-	if (modelName == "teapot")
-		glutSolidTeapot(1.0);
-	else if (modelName == "cube")
-		glutSolidCube(1.0);
-	else if (modelName == "sphere")
-		glutSolidSphere(1.0, 16, 8);
-	else if (modelName == "cone")
-		glutSolidCone(1.0, 2.0, 16, 8);
-	else if (modelName == "torus")
-		glutSolidTorus(0.5, 1.0, 8, 16);
-	else if (modelName == "dodecahedron")
-		glutSolidDodecahedron();
-	else if (modelName == "octahedron")
-		glutSolidOctahedron();
-	else if (modelName == "tetrahedron")
-		glutSolidTetrahedron();
-	else if (modelName == "icosahedron")
-		glutSolidIcosahedron();
-	
-	int nbFeedback = glRenderMode(GL_RENDER);
-	
-	// parse the buffer:		
-	g_polygons2D.clear();
-	g_vertices2D.clear();
-	
-	int idx = 0;
-	while (idx < nbFeedback) {
-		// check for polygon:
-		if (buffer[idx] != GL_POLYGON_TOKEN) {
-			fprintf(stderr, "Error parsing the feedback buffer!");
-			break;
-		}
-		idx++;
-		
-		// number of vertices (3)
-		int n = (int)buffer[idx];
-		idx++;
-		std::vector<int> vtxIdx(n);
-		
-		// get vertices:
-		// Maybe todo later: don't duplicate identical vertices  . . .
-		for (int i = 0; i < n; i++) {
-			vtxIdx[i] = (int)g_vertices2D.size();
-			g_vertices2D.push_back(_vector(buffer[idx] * e1 + buffer[idx+1] * e2));
-			idx += 2;
-		}
-		
-		g_polygons2D.push_back(vtxIdx);
-	}
-
-	if (g_prevStatisticsModelName != modelName) {
-		printf("Model: %s, #polygons: %d, #vertices: %d\n", modelName.c_str(), g_polygons2D.size(), g_vertices2D.size());
-		g_prevStatisticsModelName = modelName;
-	}
-	
-	// restore transform & projection:
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-
-}
-
-
-
 
 
 

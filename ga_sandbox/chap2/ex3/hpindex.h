@@ -19,19 +19,19 @@
 
 #include <libgasandbox/e3ga.h>
 
-int sumFace(const vector &p, const vector &v1, const vector &v2, 
-	    const int gsi, vector &sum3d, int &lineSing, int &surfSing,
-	    vector & (*evalFunc)(const vector &p, vector &v), int depth, 
+int sumFace(const e3ga::vector &p, const e3ga::vector &v1, const e3ga::vector &v2, 
+	    const int gsi, e3ga::vector &sum3d, int &lineSing, int &surfSing,
+	    e3ga::vector & (*evalFunc)(const e3ga::vector &p, e3ga::vector &v), int depth, 
 	    int maxDepth, int face);
 
-int sumCube(const vector &p, const vector dir[3],
+int sumCube(const e3ga::vector &p, const e3ga::vector dir[3],
 		 const int gsi, int &pointSing, int &lineSing, int &surfSing,
-		 vector & (*evalFunc)(const vector &p, vector &v), int depth, int maxDepth);
+		 e3ga::vector & (*evalFunc)(const e3ga::vector &p, e3ga::vector &v), int depth, int maxDepth);
 
-int	findSingularities(const vector &p, const vector dir[3],
-		 const int gsi, vector & (*evalFunc)(const vector &p, vector &v), int depth, int maxDepth);
+int	findSingularities(const e3ga::vector &p, const e3ga::vector dir[3],
+		 const int gsi, e3ga::vector & (*evalFunc)(const e3ga::vector &p, e3ga::vector &v), int depth, int maxDepth);
 
-	// simple function to draw sphere of vectors around one cube
+	// simple function to draw sphere of e3ga::vectors around one cube
 	void drawSphere(int gs, int type);
 	void drawCirc(int gs, int type);
 

@@ -17,7 +17,10 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-extern vector & (*g_evalFunc)(const vector &p, vector &v);
+#include <libgasandbox/e3ga.h>
+
+
+extern e3ga::vector & (*g_evalFunc)(const e3ga::vector &p, e3ga::vector &v);
 extern int g_gs, g_vgs, g_maxDepth,g_adap;
 extern double g_lastTiming;
 extern int g_boxes;
@@ -32,7 +35,6 @@ extern float g_cx, g_cy, g_cz;
 extern float g_refine;
 extern float l_refine;
 extern int g_lighting;
-//extern glwindow *g_GLWindow;
 
 extern int g_Dcube;
 extern int g_showSphere;
@@ -43,5 +45,9 @@ extern int g_showCirc;
 extern int g_USphere;
 extern int g_ISphere;
 extern float g_hpvalue;
+
+extern e3ga::rotor g_modelRotor;
+extern float g_modelDistance;
+
 
 #endif /* _MAIN_H_ */

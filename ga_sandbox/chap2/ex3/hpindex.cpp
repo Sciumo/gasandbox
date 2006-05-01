@@ -28,6 +28,7 @@
 
 #include "fields.h"
 #include "main.h"
+#include "render.h"
 
 static int ncube=0;
 
@@ -127,7 +128,7 @@ int refineFace(const vector &p, const vector &v1, const vector &v2,
 			      fabs(b.e1e2e3()) > g_refine )) {
 			  trivector tmpsum3d;
 
-			  printf("refineFace: refining %d (%d)\n",ncube,adap);
+//			  printf("refineFace: refining %d (%d)\n",ncube,adap);
 			  float igs = 1.0f / gs;
 			  cp = _vector(p + v1 * (float)i1 * igs + v2 * (float)i2 * igs);
 			  refineFace(cp, _vector(v1 * igs), _vector(v2 * igs), gsi,  tmpsum3d, evalFunc, adap-1);
@@ -136,9 +137,7 @@ int refineFace(const vector &p, const vector &v1, const vector &v2,
 			  sum3d += a+b;
 			}
 			if (0 && ncube == g_Dcube) {
-			  printf("%d: vol %g %g\n", ncube,
-				 a.e1e2e3(),
-				 b.e1e2e3()); 
+//			  printf("%d: vol %g %g\n", ncube, a.e1e2e3(), b.e1e2e3()); 
 			}
 		}
 	}
@@ -334,7 +333,7 @@ bivector sumEdge(const vector& p, const vector& v, const int gsi,
   }
 
   if ( 0 && tmpMin < 0.01 ) {
-    printf("sumEdge %d: tmpMin = %g\n",ncube,tmpMin);
+//    printf("sumEdge %d: tmpMin = %g\n",ncube,tmpMin);
   }
 
   if ( g_Dcube == ncube && adap != g_adap ) {
@@ -546,8 +545,7 @@ int sumCube(const vector &p, const vector dir[3],
 		  //		  fprintf(stderr,"%d: %g<?%g, %g/%g=%g >? %g\n",
 		  //  lsing,minL,leps,maxL,minL,maxL/minL,g_lratio);
 		  if ( minL < leps  ||  maxL/minL > g_lratio  ||  !g_falseLineSing ) {
-		    printf("lineSing %d %d/%d %g\n",ncube, depth,maxDepth,
-			   gLineSing);
+//		    printf("lineSing %d %d/%d %g\n",ncube, depth,maxDepth, gLineSing);
 		    lineSing = 1;
 		  } 
 		}
@@ -563,7 +561,7 @@ int sumCube(const vector &p, const vector dir[3],
 		vector _tmp = _vector(dir[0]+dir[1]+dir[2]);
 	  const float* c = p.getC(vector_e1_e2_e3);
 	  const float* cc = _tmp.getC(vector_e1_e2_e3);
-	printf("%d: %g %d/%d (%g %g %g) (%g %g %g)\n",ncube, _Float(norm_e(sum3d)),depth,maxDepth,c[0],c[1],c[2],c[0]+cc[0],c[1]+cc[1],c[2]+cc[2]);
+//	printf("%d: %g %d/%d (%g %g %g) (%g %g %g)\n",ncube, _Float(norm_e(sum3d)),depth,maxDepth,c[0],c[1],c[2],c[0]+cc[0],c[1]+cc[1],c[2]+cc[2]);
 	}
 	if ( _Float(norm_e2(sum3d % sum3d)) > 1.0f ) {
 			  printf("Point Sing > 1 (%g) %d\n",
@@ -620,7 +618,7 @@ int	findSingularities(const vector &p, const vector dir[3],
 		glPolygonMode(GL_FRONT_AND_BACK, 
 			      (sing  &&  depth == maxDepth) ? GL_FILL : GL_LINE);
 		if (sing||g_bottom) {
-			g_GLWindow->drawCube(p, g_cubeSize / (float)(1 << depth));
+			drawCube(p, g_cubeSize / (float)(1 << depth));
 		}
 	}
 

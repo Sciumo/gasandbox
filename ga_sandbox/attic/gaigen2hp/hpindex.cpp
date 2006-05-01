@@ -530,8 +530,7 @@ int sumCube(const vector &p, const vector dir[3],
 		  //		  fprintf(stderr,"%d: %g<?%g, %g/%g=%g >? %g\n",
 		  //  lsing,minL,leps,maxL,minL,maxL/minL,g_lratio);
 		  if ( minL < leps  ||  maxL/minL > g_lratio  ||  !g_falseLineSing ) {
-		    printf("lineSing %d %d/%d %g\n",ncube, depth,maxDepth,
-			   gLineSing);
+//		    printf("lineSing %d %d/%d %g\n",ncube, depth,maxDepth, gLineSing);
 		    lineSing = 1;
 		  } 
 		}
