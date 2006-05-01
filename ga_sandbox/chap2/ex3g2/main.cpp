@@ -356,7 +356,9 @@ int ui_setGo(int state) {
 int main(int argc, char *argv[]) {
 	printf("Gaigen HP version 2.0 -- Copyright 2006 University of Amsterdam\n");
 
-	//e3ga::resetProfile();
+	// profiling for Gaigen 2:
+	e3ga::g2Profiling::init();
+
 	Fl_Output *label;
 	Fl_Output *vlabel;
 	Fl_Output *labelBoxes;

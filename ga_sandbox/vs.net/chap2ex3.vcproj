@@ -31,6 +31,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="opengl32.lib wsock32.lib fltkd.lib fltkgld.lib comctl32.lib"
 				OutputFile="$(OutDir)/chap2ex3.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"

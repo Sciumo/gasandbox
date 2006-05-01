@@ -56,7 +56,7 @@ vector &vortexO(const vector &p, vector &v) {
 	float r;
 	float z;
 	r = sqrtf(p.e1()*p.e1() + p.e2()*p.e2());
-	z = g_omega*(1.-g_Rcore/r);
+	z = (float)(g_omega*(1.-g_Rcore/r));
 	v.set(vector_e1_e2_e3, 
 	      -g_gamma*p.e2()/r - g_omega*p.e3()*p.e1()/(r*r),
 	      g_gamma*p.e1()/r - g_omega*p.e3()*p.e2()/(r*r),
@@ -178,24 +178,24 @@ vector &testFunc12(const vector &p, vector &v) {
 // ((p.e1()-0.5)*(p.e1()-0.5)+p.e2()*p.e2()-1)^2*(p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1)^2
 vector &testFunc13(const vector &p, vector &v) {
 	
-	float A =((p.e1()-0.5)*(p.e1()-0.5)+p.e2()*p.e2()-1);
-	float B = (p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1);
+	float A =(float)((p.e1()-0.5)*(p.e1()-0.5)+p.e2()*p.e2()-1.0f);
+	float B = (float)(p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1.0f);
 	v.set(vector_e1_e2_e3, 
-	      4*(p.e1()-0.5)*A*B*B + 4*p.e1()*A*A*B,
-	      4*p.e2()*A*B*B + 4*p.e2()*A*A*B,
-	      4*p.e3()*A*A*B);
+	      4.0f*(p.e1()-0.5f)*A*B*B + 4*p.e1()*A*A*B,
+	      4.0f*p.e2()*A*B*B + 4*p.e2()*A*A*B,
+	      4.0f*p.e3()*A*A*B);
 	return v;
 }
 
 // ((p.e1()-0.5)*(p.e1()-0.5)+p.e2()*p.e2()-1)^2 + (p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1)^2
 vector &testFunc14(const vector &p, vector &v) {
 	
-	float A =((p.e1()-0.5)*(p.e1()-0.5)+p.e2()*p.e2()-1);
-	float B = (p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1);
+	float A =((p.e1()-0.5f)*(p.e1()-0.5f)+p.e2()*p.e2()-1.0f);
+	float B = (p.e1()*p.e1()+p.e2()*p.e2()+p.e3()*p.e3()-1.0f);
 	v.set(vector_e1_e2_e3, 
-	      4*(p.e1()-0.5)*A + 4*p.e1()*B,
-	      4*p.e2()*A + 4*p.e2()*B,
-	      4*p.e3()*B);
+	      4.0f*(p.e1()-0.5f)*A + 4.0f*p.e1()*B,
+	      4.0f*p.e2()*A + 4.0f*p.e2()*B,
+	      4.0f*p.e3()*B);
 	return v;
 }
 

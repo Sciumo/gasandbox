@@ -178,6 +178,10 @@ void menuCallback(int value) {
 
 
 int main(int argc, char*argv[]) {
+	// profiling for Gaigen 2:
+	e2ga::g2Profiling::init();
+	e3ga::g2Profiling::init();
+
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);

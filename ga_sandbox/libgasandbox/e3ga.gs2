@@ -5,11 +5,12 @@ ga {
 	pass: reference; // or value
 	return: value; // or reference
 	namespace: e3ga; // what namespace to put the ga in (if any)
-	inline: ;// what to inline: constructors set assign operators functions; 
+	inline: constructors set assign operators functions;// what to inline:
 	exception: throw ; // how to handle exceptions: [callback | ignore | throw] 
 	
 	debug_coordinate_string: disable; //enable or disable
 	profile: ; // profiling = disable
+//	profile: enable net; 
 	
 	cpp_operator_default_bindings; // this sets the cpp default operator bindings
 	

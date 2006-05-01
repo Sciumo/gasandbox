@@ -13,12 +13,13 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
+			IntermediateDirectory="chap2ex3g2_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -31,6 +32,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="opengl32.lib wsock32.lib fltkd.lib fltkgld.lib comctl32.lib"
 				OutputFile="$(OutDir)/chap2ex3g2.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
@@ -66,6 +68,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="..\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="4"
 				UsePrecompiledHeader="0"
