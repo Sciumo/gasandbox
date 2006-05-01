@@ -72,6 +72,8 @@ AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
 AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
+AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
+AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
 AQSIS_FLTK_LIBS = @AQSIS_FLTK_LIBS@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
@@ -153,7 +155,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = vs.net libgasandbox chap2
+SUBDIRS = vs.net libgasandbox chap2 attic
 all: all-recursive
 
 .SUFFIXES:

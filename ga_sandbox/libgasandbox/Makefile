@@ -63,7 +63,7 @@ libgasandbox_a_LIBADD =
 am_libgasandbox_a_OBJECTS = draw.$(OBJEXT) mv_analyze.$(OBJEXT) \
 	e2ga.$(OBJEXT) e3ga.$(OBJEXT) e3ga_util.$(OBJEXT) \
 	e2ga_draw.$(OBJEXT) e3ga_draw.$(OBJEXT) geosphere.$(OBJEXT) \
-	glut_util.$(OBJEXT) gl_util.$(OBJEXT)
+	glut_util.$(OBJEXT) gl_util.$(OBJEXT) timing.$(OBJEXT)
 libgasandbox_a_OBJECTS = $(am_libgasandbox_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -85,6 +85,8 @@ AMDEP_FALSE = #
 AMDEP_TRUE = 
 AMTAR = ${SHELL} /root/ga/ga_sandbox/missing --run tar
 AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
 AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
 AUTOCONF = ${SHELL} /root/ga/ga_sandbox/missing --run autoconf
 AUTOHEADER = ${SHELL} /root/ga/ga_sandbox/missing --run autoheader
@@ -170,7 +172,8 @@ lib_LIBRARIES = libgasandbox.a
 libgasandbox_a_includedir = $(includedir)/libgasandbox
 libgasandbox_a_include_HEADERS = \
 	draw.h  e2ga_draw.h  e3ga.h       e3ga_util.h  mv_analyze.h \
-	common.h     e2ga.h  e2ga_util.h  e3ga_draw.h  geosphere.h  mvtypebase.h
+	common.h     e2ga.h  e2ga_util.h  e3ga_draw.h  geosphere.h  mvtypebase.h \
+	timing.h
 
 EXTRA_DIST = e2ga.gs2 e3ga.gs2 e2ga_lexer.g e2ga_parser.g e3ga_lexer.g e3ga_parser.g \
 	c3ga_draw.cpp main.cpp e2ga_mv_lexer.cpp e3ga_mv_lexer.cpp e2ga_mv_parser.cpp \
@@ -180,7 +183,7 @@ libgasandbox_a_SOURCES = \
 	draw.cpp       mv_analyze.cpp \
 	e2ga.cpp       e3ga.cpp            e3ga_util.cpp \
 	e2ga_draw.cpp  e3ga_draw.cpp       geosphere.cpp \
-	glut_util.cpp gl_util.cpp
+	glut_util.cpp gl_util.cpp timing.cpp
 
 libgasandbox_a_CFLAGS = 
 all: all-am
@@ -266,6 +269,7 @@ include ./$(DEPDIR)/geosphere.Po
 include ./$(DEPDIR)/gl_util.Po
 include ./$(DEPDIR)/glut_util.Po
 include ./$(DEPDIR)/mv_analyze.Po
+include ./$(DEPDIR)/timing.Po
 
 .cpp.o:
 	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

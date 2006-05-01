@@ -1,5 +1,6 @@
-main.o main.o: main.cpp /usr/include/stdio.h /usr/include/features.h \
-  /usr/include/sys/cdefs.h /usr/include/gnu/stubs.h \
+hpindex.o hpindex.o: hpindex.cpp /usr/include/stdio.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/gnu/stubs.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/stddef.h \
   /usr/include/bits/types.h /usr/include/bits/wordsize.h \
   /usr/include/bits/typesizes.h /usr/include/libio.h \
@@ -14,55 +15,13 @@ main.o main.o: main.cpp /usr/include/stdio.h /usr/include/features.h \
   /usr/include/bits/select.h /usr/include/bits/sigset.h \
   /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
   /usr/include/bits/pthreadtypes.h /usr/include/bits/sched.h \
-  /usr/include/alloca.h /usr/include/fltk-1.1/FL/Fl.H \
-  /usr/include/fltk-1.1/FL/Enumerations.H \
-  /usr/include/fltk-1.1/FL/Fl_Export.H \
-  /usr/include/fltk-1.1/FL/Fl_Window.H \
-  /usr/include/fltk-1.1/FL/Fl_Group.H \
-  /usr/include/fltk-1.1/FL/Fl_Widget.H /usr/include/fltk-1.1/FL/Fl_Tabs.H \
-  /usr/include/fltk-1.1/FL/Fl_Menu_Bar.H \
-  /usr/include/fltk-1.1/FL/Fl_Menu_.H \
-  /usr/include/fltk-1.1/FL/Fl_Menu_Item.H \
-  /usr/include/fltk-1.1/FL/Fl_Image.H \
-  /usr/include/fltk-1.1/FL/Fl_Menu_Button.H \
-  /usr/include/fltk-1.1/FL/Fl_Output.H \
-  /usr/include/fltk-1.1/FL/Fl_Input.H \
-  /usr/include/fltk-1.1/FL/Fl_Input_.H \
-  /usr/include/fltk-1.1/FL/Fl_Multiline_Output.H \
-  /usr/include/fltk-1.1/FL/Fl_Button.H \
-  /usr/include/fltk-1.1/FL/Fl_Float_Input.H \
-  /usr/include/fltk-1.1/FL/Fl_Check_Button.H \
-  /usr/include/fltk-1.1/FL/Fl_Light_Button.H \
-  /usr/include/fltk-1.1/FL/Fl_Round_Button.H \
-  /usr/include/fltk-1.1/FL/Fl_Scroll.H \
-  /usr/include/fltk-1.1/FL/Fl_Scrollbar.H \
-  /usr/include/fltk-1.1/FL/Fl_Slider.H \
-  /usr/include/fltk-1.1/FL/Fl_Valuator.H \
-  /usr/include/fltk-1.1/FL/fl_file_chooser.H \
-  /usr/include/fltk-1.1/FL/Fl_Double_Window.H /usr/include/string.h \
-  /usr/include/fltk-1.1/FL/Fl_Choice.H \
-  /usr/include/fltk-1.1/FL/Fl_Preferences.H \
-  /usr/include/fltk-1.1/FL/Fl_Tile.H \
-  /usr/include/fltk-1.1/FL/Fl_File_Browser.H \
-  /usr/include/fltk-1.1/FL/Fl_Browser.H \
-  /usr/include/fltk-1.1/FL/Fl_Browser_.H \
-  /usr/include/fltk-1.1/FL/Fl_File_Icon.H \
-  /usr/include/fltk-1.1/FL/filename.H /usr/include/dirent.h \
-  /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
-  /usr/include/fltk-1.1/FL/Fl_Box.H \
-  /usr/include/fltk-1.1/FL/Fl_File_Input.H \
-  /usr/include/fltk-1.1/FL/Fl_Return_Button.H \
-  /usr/include/fltk-1.1/FL/fl_ask.H \
-  /usr/include/fltk-1.1/FL/Fl_Value_Input.H \
-  /usr/include/fltk-1.1/FL/Fl_Value_Slider.H ../../libgasandbox/timing.h \
-  glwindow.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
-  /usr/include/fltk-1.1/FL/Fl_Gl_Window.H ../../libgasandbox/e3ga.h \
-  /usr/include/math.h /usr/include/bits/huge_val.h \
+  /usr/include/alloca.h /usr/include/math.h /usr/include/bits/huge_val.h \
   /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
   /usr/include/bits/inf.h /usr/include/bits/nan.h \
   /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
-  /usr/include/bits/mathinline.h \
+  /usr/include/bits/mathinline.h /usr/include/GL/gl.h \
+  /usr/include/GL/glext.h fields.h ../../libgasandbox/e3ga.h \
+  /usr/include/string.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/string \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/i686-pc-linux-gnu/bits/c++config.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/i686-pc-linux-gnu/bits/os_defines.h \
@@ -87,8 +46,9 @@ main.o main.o: main.cpp /usr/include/stdio.h /usr/include/features.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/climits \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/limits.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/syslimits.h \
-  /usr/include/limits.h /usr/include/bits/posix2_lim.h \
-  /usr/include/bits/xopen_lim.h \
+  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/cstdlib \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/new \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/exception \
@@ -121,7 +81,7 @@ main.o main.o: main.cpp /usr/include/stdio.h /usr/include/features.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/bits/stl_heap.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/bits/stl_tempbuf.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/bits/basic_string.tcc \
-  ../../libgasandbox/mvtypebase.h hpindex.h fields.h
+  ../../libgasandbox/mvtypebase.h main.h render.h
 
 /usr/include/stdio.h:
 
@@ -189,112 +149,6 @@ main.o main.o: main.cpp /usr/include/stdio.h /usr/include/features.h \
 
 /usr/include/alloca.h:
 
-/usr/include/fltk-1.1/FL/Fl.H:
-
-/usr/include/fltk-1.1/FL/Enumerations.H:
-
-/usr/include/fltk-1.1/FL/Fl_Export.H:
-
-/usr/include/fltk-1.1/FL/Fl_Window.H:
-
-/usr/include/fltk-1.1/FL/Fl_Group.H:
-
-/usr/include/fltk-1.1/FL/Fl_Widget.H:
-
-/usr/include/fltk-1.1/FL/Fl_Tabs.H:
-
-/usr/include/fltk-1.1/FL/Fl_Menu_Bar.H:
-
-/usr/include/fltk-1.1/FL/Fl_Menu_.H:
-
-/usr/include/fltk-1.1/FL/Fl_Menu_Item.H:
-
-/usr/include/fltk-1.1/FL/Fl_Image.H:
-
-/usr/include/fltk-1.1/FL/Fl_Menu_Button.H:
-
-/usr/include/fltk-1.1/FL/Fl_Output.H:
-
-/usr/include/fltk-1.1/FL/Fl_Input.H:
-
-/usr/include/fltk-1.1/FL/Fl_Input_.H:
-
-/usr/include/fltk-1.1/FL/Fl_Multiline_Output.H:
-
-/usr/include/fltk-1.1/FL/Fl_Button.H:
-
-/usr/include/fltk-1.1/FL/Fl_Float_Input.H:
-
-/usr/include/fltk-1.1/FL/Fl_Check_Button.H:
-
-/usr/include/fltk-1.1/FL/Fl_Light_Button.H:
-
-/usr/include/fltk-1.1/FL/Fl_Round_Button.H:
-
-/usr/include/fltk-1.1/FL/Fl_Scroll.H:
-
-/usr/include/fltk-1.1/FL/Fl_Scrollbar.H:
-
-/usr/include/fltk-1.1/FL/Fl_Slider.H:
-
-/usr/include/fltk-1.1/FL/Fl_Valuator.H:
-
-/usr/include/fltk-1.1/FL/fl_file_chooser.H:
-
-/usr/include/fltk-1.1/FL/Fl_Double_Window.H:
-
-/usr/include/string.h:
-
-/usr/include/fltk-1.1/FL/Fl_Choice.H:
-
-/usr/include/fltk-1.1/FL/Fl_Preferences.H:
-
-/usr/include/fltk-1.1/FL/Fl_Tile.H:
-
-/usr/include/fltk-1.1/FL/Fl_File_Browser.H:
-
-/usr/include/fltk-1.1/FL/Fl_Browser.H:
-
-/usr/include/fltk-1.1/FL/Fl_Browser_.H:
-
-/usr/include/fltk-1.1/FL/Fl_File_Icon.H:
-
-/usr/include/fltk-1.1/FL/filename.H:
-
-/usr/include/dirent.h:
-
-/usr/include/bits/dirent.h:
-
-/usr/include/bits/posix1_lim.h:
-
-/usr/include/bits/local_lim.h:
-
-/usr/include/linux/limits.h:
-
-/usr/include/fltk-1.1/FL/Fl_Box.H:
-
-/usr/include/fltk-1.1/FL/Fl_File_Input.H:
-
-/usr/include/fltk-1.1/FL/Fl_Return_Button.H:
-
-/usr/include/fltk-1.1/FL/fl_ask.H:
-
-/usr/include/fltk-1.1/FL/Fl_Value_Input.H:
-
-/usr/include/fltk-1.1/FL/Fl_Value_Slider.H:
-
-../../libgasandbox/timing.h:
-
-glwindow.h:
-
-/usr/include/GL/gl.h:
-
-/usr/include/GL/glext.h:
-
-/usr/include/fltk-1.1/FL/Fl_Gl_Window.H:
-
-../../libgasandbox/e3ga.h:
-
 /usr/include/math.h:
 
 /usr/include/bits/huge_val.h:
@@ -312,6 +166,16 @@ glwindow.h:
 /usr/include/bits/mathcalls.h:
 
 /usr/include/bits/mathinline.h:
+
+/usr/include/GL/gl.h:
+
+/usr/include/GL/glext.h:
+
+fields.h:
+
+../../libgasandbox/e3ga.h:
+
+/usr/include/string.h:
 
 /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/g++-v3/string:
 
@@ -372,6 +236,12 @@ glwindow.h:
 /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/syslimits.h:
 
 /usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
 
 /usr/include/bits/posix2_lim.h:
 
@@ -449,6 +319,6 @@ glwindow.h:
 
 ../../libgasandbox/mvtypebase.h:
 
-hpindex.h:
+main.h:
 
-fields.h:
+render.h:

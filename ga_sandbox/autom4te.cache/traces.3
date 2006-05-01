@@ -180,14 +180,18 @@ m4trace:/usr/share/aclocal-1.9/depout.m4:67: -1- AC_DEFUN([AM_OUTPUT_DEPENDENCY_
      [test x"$AMDEP_TRUE" != x"" || _AM_OUTPUT_DEPENDENCY_COMMANDS],
      [AMDEP_TRUE="$AMDEP_TRUE" ac_aux_dir="$ac_aux_dir"])
 ])
-m4trace:/usr/share/aclocal-1.9/fltk.m4:16: -1- AC_DEFUN([AQSIS_CHECK_FLTK], [
+m4trace:/usr/share/aclocal-1.9/fltk.m4:20: -1- AC_DEFUN([AQSIS_CHECK_FLTK], [
 AC_SUBST(AQSIS_FLTK_CFLAGS)
 AC_SUBST(AQSIS_FLTK_LIBS)
+AC_SUBST(AQSIS_FLTK_GL_CFLAGS)
+AC_SUBST(AQSIS_FLTK_GL_LIBS)
 AC_MSG_CHECKING([for the fltk UI library])
 if fltk-config --version >/dev/null 2>/dev/null; then
 	AQSIS_FLTK_VERSION=`fltk-config --version`
 	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
 	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
+	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
+	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
 	AC_MSG_RESULT([found version $AQSIS_FLTK_VERSION])
 else
 	AC_MSG_RESULT([Warning: couldn't find fltk library])
@@ -821,17 +825,20 @@ configure.ac:7: the top level])
 m4trace:configure.ac:8: -1- AQSIS_CHECK_FLTK
 m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_CFLAGS])
 m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_LIBS])
-m4trace:configure.ac:18: -1- AC_CONFIG_FILES([Makefile \
+m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_GL_CFLAGS])
+m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_GL_LIBS])
+m4trace:configure.ac:19: -1- AC_CONFIG_FILES([Makefile \
 	vs.net/Makefile \
 	libgasandbox/Makefile \
 	chap2/Makefile \
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\
 	chap2/ex3/Makefile\
-	chap2/ex3g2/Makefile\
+	attic/Makefile\
+	attic/gaigen2hp/Makefile
 	])
-m4trace:configure.ac:18: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
+m4trace:configure.ac:19: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
-m4trace:configure.ac:18: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
-m4trace:configure.ac:18: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
-m4trace:configure.ac:18: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:19: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
+m4trace:configure.ac:19: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
+m4trace:configure.ac:19: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

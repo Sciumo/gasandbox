@@ -15,7 +15,7 @@
 @SET_MAKE@
 
 
-SOURCES = $(chap2ex3_SOURCES)
+SOURCES = $(gaigen2hp_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -37,8 +37,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = chap2ex3$(EXEEXT)
-subdir = chap2/ex3g2
+bin_PROGRAMS = gaigen2hp$(EXEEXT)
+subdir = attic/gaigen2hp
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -50,11 +50,11 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_chap2ex3_OBJECTS = hpindex.$(OBJEXT) timing.$(OBJEXT) \
-	fields.$(OBJEXT) glwindow.$(OBJEXT) main.$(OBJEXT)
-chap2ex3_OBJECTS = $(am_chap2ex3_OBJECTS)
+am_gaigen2hp_OBJECTS = hpindex.$(OBJEXT) fields.$(OBJEXT) \
+	glwindow.$(OBJEXT) main.$(OBJEXT)
+gaigen2hp_OBJECTS = $(am_gaigen2hp_OBJECTS)
 am__DEPENDENCIES_1 =
-chap2ex3_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -64,8 +64,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(chap2ex3_SOURCES)
-DIST_SOURCES = $(chap2ex3_SOURCES)
+SOURCES = $(gaigen2hp_SOURCES)
+DIST_SOURCES = $(gaigen2hp_SOURCES)
 HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -75,6 +75,8 @@ AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
 AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
+AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
+AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
 AQSIS_FLTK_LIBS = @AQSIS_FLTK_LIBS@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
@@ -156,17 +158,10 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-
-#FLTK = TEMP!
-AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_CFLAGS)
-
-#FLTK = TEMP! (2x)
-chap2ex3_LDADD = $(GL_LIBS) $(AQSIS_FLTK_LIBS) -lfltk_gl ../../libgasandbox/libgasandbox.a
-chap2ex3_SOURCES = hpindex.cpp  timing.cpp \
-	fields.cpp  glwindow.cpp  main.cpp
-
-noinst_HEADERS = fields.h  gaigenhl.h  glwindow.h  hpindex.h  main.h  timing.h
-EXTRA_DIST = gaigenhl.cpp  
+AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
+gaigen2hp_LDADD = $(GL_LIBS) $(AQSIS_FLTK_GL_LIBS) ../../libgasandbox/libgasandbox.a
+gaigen2hp_SOURCES = hpindex.cpp fields.cpp  glwindow.cpp  main.cpp
+noinst_HEADERS = fields.h  glwindow.h  hpindex.h  main.h
 all: all-am
 
 .SUFFIXES:
@@ -180,9 +175,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap2/ex3g2/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  attic/gaigen2hp/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  chap2/ex3g2/Makefile
+	  $(AUTOMAKE) --gnu  attic/gaigen2hp/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -223,9 +218,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-chap2ex3$(EXEEXT): $(chap2ex3_OBJECTS) $(chap2ex3_DEPENDENCIES) 
-	@rm -f chap2ex3$(EXEEXT)
-	$(CXXLINK) $(chap2ex3_LDFLAGS) $(chap2ex3_OBJECTS) $(chap2ex3_LDADD) $(LIBS)
+gaigen2hp$(EXEEXT): $(gaigen2hp_OBJECTS) $(gaigen2hp_DEPENDENCIES) 
+	@rm -f gaigen2hp$(EXEEXT)
+	$(CXXLINK) $(gaigen2hp_LDFLAGS) $(gaigen2hp_OBJECTS) $(gaigen2hp_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -237,7 +232,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glwindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hpindex.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/timing.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

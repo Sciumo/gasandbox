@@ -72,6 +72,8 @@ AMDEP_FALSE = #
 AMDEP_TRUE = 
 AMTAR = ${SHELL} /root/ga/ga_sandbox/missing --run tar
 AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
 AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
 AUTOCONF = ${SHELL} /root/ga/ga_sandbox/missing --run autoconf
 AUTOHEADER = ${SHELL} /root/ga/ga_sandbox/missing --run autoheader
@@ -153,7 +155,7 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-SUBDIRS = vs.net libgasandbox chap2
+SUBDIRS = vs.net libgasandbox chap2 attic
 all: all-recursive
 
 .SUFFIXES:

@@ -271,7 +271,7 @@ PACKAGE_VERSION=
 PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE RANLIB ac_ct_RANLIB CPP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS GL_CFLAGS GL_LIBS AQSIS_FLTK_CFLAGS AQSIS_FLTK_LIBS LIB@&t@OBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE RANLIB ac_ct_RANLIB CPP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS GL_CFLAGS GL_LIBS AQSIS_FLTK_CFLAGS AQSIS_FLTK_LIBS AQSIS_FLTK_GL_CFLAGS AQSIS_FLTK_GL_LIBS LIB@&t@OBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -5609,12 +5609,16 @@ echo "${ECHO_T}$mdl_cv_have_OpenGL" >&6
 
 
 
+
+
 echo "$as_me:$LINENO: checking for the fltk UI library" >&5
 echo $ECHO_N "checking for the fltk UI library... $ECHO_C" >&6
 if fltk-config --version >/dev/null 2>/dev/null; then
 	AQSIS_FLTK_VERSION=`fltk-config --version`
 	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
 	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
+	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
+	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
 	echo "$as_me:$LINENO: result: found version $AQSIS_FLTK_VERSION" >&5
 echo "${ECHO_T}found version $AQSIS_FLTK_VERSION" >&6
 else
@@ -5622,7 +5626,7 @@ else
 echo "${ECHO_T}Warning: couldn't find fltk library" >&6
 fi
 
-                                                                                ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile chap2/ex3g2/Makefile"
+                                                                                          ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile attic/Makefile attic/gaigen2hp/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6212,7 +6216,8 @@ do
   "chap2/ex1/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex1/Makefile" ;;
   "chap2/ex2/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex2/Makefile" ;;
   "chap2/ex3/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex3/Makefile" ;;
-  "chap2/ex3g2/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex3g2/Makefile" ;;
+  "attic/Makefile" ) CONFIG_FILES="$CONFIG_FILES attic/Makefile" ;;
+  "attic/gaigen2hp/Makefile" ) CONFIG_FILES="$CONFIG_FILES attic/gaigen2hp/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
@@ -6353,6 +6358,8 @@ s,@GL_CFLAGS@,$GL_CFLAGS,;t t
 s,@GL_LIBS@,$GL_LIBS,;t t
 s,@AQSIS_FLTK_CFLAGS@,$AQSIS_FLTK_CFLAGS,;t t
 s,@AQSIS_FLTK_LIBS@,$AQSIS_FLTK_LIBS,;t t
+s,@AQSIS_FLTK_GL_CFLAGS@,$AQSIS_FLTK_GL_CFLAGS,;t t
+s,@AQSIS_FLTK_GL_LIBS@,$AQSIS_FLTK_GL_LIBS,;t t
 s,@LIB@&t@OBJS@,$LIB@&t@OBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF

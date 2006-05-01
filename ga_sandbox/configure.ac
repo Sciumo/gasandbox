@@ -14,5 +14,6 @@ AC_OUTPUT(
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\
 	chap2/ex3/Makefile\
-	attic/gaigen2hp/Makefile\
+	attic/Makefile\
+	attic/gaigen2hp/Makefile
 	)
