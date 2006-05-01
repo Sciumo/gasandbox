@@ -28,8 +28,8 @@
 
 using namespace e3ga;
 
-static GLfloat clearColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-static GLfloat lineColor[] = {0.0f, 0.0f, 0.0f, 1.0f};
+GLfloat clearColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+GLfloat lineColor[] = {0.0f, 0.0f, 0.0f, 1.0f};
 
 
 namespace {

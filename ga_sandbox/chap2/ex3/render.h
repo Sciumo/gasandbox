@@ -20,6 +20,7 @@
 #include <libgasandbox/e3ga.h>
 
 extern bool g_makeNewList;
+extern GLfloat lineColor[];
 
 void drawCube(const e3ga::vector &p, float size);
 void drawAll();

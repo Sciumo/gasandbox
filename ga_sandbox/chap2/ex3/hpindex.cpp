@@ -23,7 +23,6 @@
 #ifdef WIN32
 #include <windows.h>
 #endif
-#include "glwindow.h"
 #include <GL/gl.h>
 
 #include "fields.h"
