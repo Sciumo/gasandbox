@@ -21,6 +21,13 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 
+// todo: check out coin3d for the m4 functions SIM_AC_CHECK_OPENGL and such
+//#include <OpenGL/gl.h>
+//#include <OpenGL/glu.h>
+//#include <GLUT/glut.h>
+
+
+
 #include "glut_util.h"
 
 // based on LightHouse 3D tutorial code 

@@ -35,17 +35,17 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 
 	if (A.isBlade()) {
 		switch (A.bladeSubclass()) {
-			case A.VECTOR:
+			case mvAnalysis::VECTOR:
 				{
 					drawVector(vector(), A.m_vc[0], A.m_sc[0]);
 				}
 				break;
-			case A.BIVECTOR:
+			case mvAnalysis::BIVECTOR:
 				{
 					drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], method, o);
 				}
 				break;
-			case A.TRIVECTOR:
+			case mvAnalysis::TRIVECTOR:
 				{
 					drawTriVector(vector(), A.m_sc[0],  A.m_vc, method, o);
 				}
@@ -53,7 +53,7 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 		}
 	}
 	else if (A.isVersor()) {
-		if (A.versorSubclass() == A.EVEN_VERSOR) {
+		if (A.versorSubclass() == mvAnalysis::EVEN_VERSOR) {
 			if (A.m_sc[0] > 0.0001) {
 				mv::Float scale = (g_drawState.getDrawMode() & OD_MAGNITUDE)
 					? (mv::Float)sqrt(fabs(A.m_sc[0]) / M_PI) : 1.0f;

@@ -1,4 +1,4 @@
-# generated automatically by aclocal 1.9.5 -*- Autoconf -*-
+# generated automatically by aclocal 1.9.6 -*- Autoconf -*-
 
 # Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
 # 2005  Free Software Foundation, Inc.
@@ -28,7 +28,7 @@ AC_DEFUN([AM_AUTOMAKE_VERSION], [am__api_version="1.9"])
 # Call AM_AUTOMAKE_VERSION so it can be traced.
 # This function is AC_REQUIREd by AC_INIT_AUTOMAKE.
 AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION],
-	 [AM_AUTOMAKE_VERSION([1.9.5])])
+	 [AM_AUTOMAKE_VERSION([1.9.6])])
 
 # AM_AUX_DIR_EXPAND                                         -*- Autoconf -*-
 
@@ -352,8 +352,8 @@ if fltk-config --version >/dev/null 2>/dev/null; then
 	AQSIS_FLTK_VERSION=`fltk-config --version`
 	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
 	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
-	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
-	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
+        AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
+        AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
 	AC_MSG_RESULT([found version $AQSIS_FLTK_VERSION])
 else
 	AC_MSG_RESULT([Warning: couldn't find fltk library])
@@ -690,7 +690,8 @@ dnl If we are running under X11 then add in the appropriate libraries.
 if test x"$no_x" != xyes; then
 dnl Add everything we need to compile and link X programs to GL_X_CFLAGS
 dnl and GL_X_LIBS.
-  GL_CFLAGS="$X_CFLAGS"
+dnl A quick hack by Daniel to get it to work on OSX
+  GL_CFLAGS="$X_CFLAGS -I/opt/local/include"
   GL_X_LIBS="$X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
 fi
     GL_save_CPPFLAGS="$CPPFLAGS"

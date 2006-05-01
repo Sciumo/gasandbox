@@ -37,12 +37,12 @@ void draw(const e2ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 
 	if (A.isBlade()) {
 		switch (A.bladeSubclass()) {
-			case A.VECTOR:
+			case mvAnalysis::VECTOR:
 				{
 					drawVector(e3ga::vector(), A.m_vc[0], A.m_sc[0]);
 				}
 				break;
-			case A.BIVECTOR:
+			case mvAnalysis::BIVECTOR:
 				{
 
 					mv::Float scale = (g_drawState.getDrawMode() & OD_MAGNITUDE)
