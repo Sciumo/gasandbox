@@ -348,8 +348,8 @@ AC_SUBST(AQSIS_FLTK_LIBS)
 AC_MSG_CHECKING([for the fltk UI library])
 if fltk-config --version >/dev/null 2>/dev/null; then
 	AQSIS_FLTK_VERSION=`fltk-config --version`
-	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
-	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
+	AQSIS_FLTK_CFLAGS=`fltk-config --cflags --use_gl`
+	AQSIS_FLTK_LIBS=`fltk-config --ldflags --use_gl`
 	AC_MSG_RESULT([found version $AQSIS_FLTK_VERSION])
 else
 	AC_MSG_RESULT([Warning: couldn't find fltk library])

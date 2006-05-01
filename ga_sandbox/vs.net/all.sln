@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandbox", "libgasandbo
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex3g2", "chap2ex3g2.vcproj", "{8BFA75D3-DF19-4792-89B6-3A7CAE60B90B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gaigen2hp", "gaigen2hp.vcproj", "{8BFA75D3-DF19-4792-89B6-3A7CAE60B90B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
 	EndProjectSection

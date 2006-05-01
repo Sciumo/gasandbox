@@ -142,6 +142,9 @@
 			<File
 				RelativePath="..\libgasandbox\mv_analyze.cpp">
 			</File>
+			<File
+				RelativePath="..\libgasandbox\timing.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -212,6 +215,9 @@
 			</File>
 			<File
 				RelativePath="..\libgasandbox\mvtypebase.h">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\timing.h">
 			</File>
 		</Filter>
 		<Filter
