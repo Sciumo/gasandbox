@@ -24,7 +24,7 @@ Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 */
 
 /*
-This code is a port of a port of a port of a port, so 
+This sample code is a port of a port of a port of a port of a quick hack, so 
 it's not functional or elegant.
 What do Code Monkey think?
 */
