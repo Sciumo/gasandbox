@@ -9,13 +9,18 @@ AQSIS_CHECK_FLTK
 AC_OUTPUT(
 	Makefile \
 	vs.net/Makefile \
+	\
 	libgasandbox/Makefile \
+	\
 	chap2/Makefile \
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\
 	chap2/ex3/Makefile\
+	\
+	chap3/Makefile \
 	chap3/ex1/Makefile\
 	chap3/ex2/Makefile\
+	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile
 	)

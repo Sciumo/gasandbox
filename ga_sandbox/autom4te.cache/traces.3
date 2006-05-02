@@ -1,5 +1,5 @@
 m4trace:/usr/share/aclocal-1.9/amversion.m4:13: -1- AC_DEFUN([AM_AUTOMAKE_VERSION], [am__api_version="1.9"])
-m4trace:/usr/share/aclocal-1.9/amversion.m4:20: -1- AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION], [AM_AUTOMAKE_VERSION([1.9.5])])
+m4trace:/usr/share/aclocal-1.9/amversion.m4:20: -1- AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION], [AM_AUTOMAKE_VERSION([1.9.6])])
 m4trace:/usr/share/aclocal-1.9/auxdir.m4:52: -1- AC_DEFUN([AM_AUX_DIR_EXPAND], [dnl Rely on autoconf to set up CDPATH properly.
 AC_PREREQ([2.50])dnl
 # expand $ac_aux_dir to an absolute path
@@ -644,7 +644,7 @@ m4trace:configure.ac:2: -1- AC_SUBST([LIBS])
 m4trace:configure.ac:3: -1- AM_INIT_AUTOMAKE([ga_sandbox], [1.0])
 m4trace:configure.ac:3: -1- m4_pattern_allow([^AM_[A-Z]+FLAGS$])
 m4trace:configure.ac:3: -1- AM_SET_CURRENT_AUTOMAKE_VERSION
-m4trace:configure.ac:3: -1- AM_AUTOMAKE_VERSION([1.9.5])
+m4trace:configure.ac:3: -1- AM_AUTOMAKE_VERSION([1.9.6])
 m4trace:configure.ac:3: -1- AC_PROG_INSTALL
 m4trace:configure.ac:3: -1- AC_SUBST([INSTALL_PROGRAM])
 m4trace:configure.ac:3: -1- AC_SUBST([INSTALL_SCRIPT])
@@ -827,18 +827,25 @@ m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_CFLAGS])
 m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_LIBS])
 m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_GL_CFLAGS])
 m4trace:configure.ac:8: -1- AC_SUBST([AQSIS_FLTK_GL_LIBS])
-m4trace:configure.ac:19: -1- AC_CONFIG_FILES([Makefile \
+m4trace:configure.ac:26: -1- AC_CONFIG_FILES([Makefile \
 	vs.net/Makefile \
+	\
 	libgasandbox/Makefile \
+	\
 	chap2/Makefile \
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\
 	chap2/ex3/Makefile\
+	\
+	chap3/Makefile \
+	chap3/ex1/Makefile\
+	chap3/ex2/Makefile\
+	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile
 	])
-m4trace:configure.ac:19: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
+m4trace:configure.ac:26: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
-m4trace:configure.ac:19: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
-m4trace:configure.ac:19: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
-m4trace:configure.ac:19: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:26: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
+m4trace:configure.ac:26: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
+m4trace:configure.ac:26: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

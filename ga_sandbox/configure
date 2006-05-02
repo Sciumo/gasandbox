@@ -5032,7 +5032,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 if test x"$no_x" != xyes; then
-  GL_CFLAGS="$X_CFLAGS -I/opt/local/include"
+  GL_CFLAGS="$X_CFLAGS"
   GL_X_LIBS="$X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
 fi
     GL_save_CPPFLAGS="$CPPFLAGS"
@@ -5617,8 +5617,8 @@ if fltk-config --version >/dev/null 2>/dev/null; then
 	AQSIS_FLTK_VERSION=`fltk-config --version`
 	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
 	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
-        AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
-        AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
+	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
+	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
 	echo "$as_me:$LINENO: result: found version $AQSIS_FLTK_VERSION" >&5
 echo "${ECHO_T}found version $AQSIS_FLTK_VERSION" >&6
 else
@@ -5626,7 +5626,7 @@ else
 echo "${ECHO_T}Warning: couldn't find fltk library" >&6
 fi
 
-                                                                                          ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile attic/Makefile attic/gaigen2hp/Makefile"
+                                                                                                                        ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile chap3/Makefile chap3/ex1/Makefile chap3/ex2/Makefile attic/Makefile attic/gaigen2hp/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6216,6 +6216,9 @@ do
   "chap2/ex1/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex1/Makefile" ;;
   "chap2/ex2/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex2/Makefile" ;;
   "chap2/ex3/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap2/ex3/Makefile" ;;
+  "chap3/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap3/Makefile" ;;
+  "chap3/ex1/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap3/ex1/Makefile" ;;
+  "chap3/ex2/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap3/ex2/Makefile" ;;
   "attic/Makefile" ) CONFIG_FILES="$CONFIG_FILES attic/Makefile" ;;
   "attic/gaigen2hp/Makefile" ) CONFIG_FILES="$CONFIG_FILES attic/gaigen2hp/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;

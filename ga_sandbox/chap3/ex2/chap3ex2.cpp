@@ -95,7 +95,9 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
@@ -104,6 +106,8 @@ void display() {
 
 	glPushMatrix();
 	rotorGLMult(g_modelRotor);
+
+	glLineWidth(2.0);
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
@@ -114,6 +118,12 @@ void display() {
 	if (GLpick::g_pickActive) glLoadName(2);
 	glColor3fm(0.0f, 1.0f, 0.0f);
 	draw(g_vectors[1]);
+
+	// draw (vector 1) ^ (vector 2) 
+	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
+	glColor3fm(1.0f, 1.0f, 1.0f);
+	draw(g_vectors[0] ^ g_vectors[1]);
+
 
 	// draw vector 3
 	if (GLpick::g_pickActive) glLoadName(3);
@@ -133,8 +143,7 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(10, 60, font, "-use left mouse button to drag red/green vectors");
-		renderBitmapString(10, 40, font, "-use other mouse buttons to orbit");
+		renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
 		renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");
 	}
 
@@ -171,15 +180,11 @@ e3ga::vector mousePosToVector(int x, int y) {
 
 void MouseButton(int button, int state, int x, int y) {
 	g_rotateModel = false;
-	g_dragObject = -1;
 
 	g_prevMousePos = mousePosToVector(x, y);
 
-	if (button == GLUT_LEFT_BUTTON) {
-		g_dragObject = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-//		printf("Picked %d at %f\n", g_dragObject, g_dragDistance);
-	}
-	else {
+	g_dragObject = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+	if (g_dragObject < 0) {
 		e3ga::vector mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;
 		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)

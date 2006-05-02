@@ -218,6 +218,7 @@ int pick(int x, int y,
 	int closestObject = -1;
 	float minD = (float)GLpick::g_frustumFar;
 	for (int i = 0; i < nbHits; i++) {
+		if ((int)sb[i * 4 + 3] < 0) continue;
 		float d1 = viewportDepthToWorldCoordinates(sb[i * 4 + 1], GLpick::g_frustumNear, GLpick::g_frustumFar);
 		float d2 = viewportDepthToWorldCoordinates(sb[i * 4 + 2], GLpick::g_frustumNear, GLpick::g_frustumFar);
 		float d = 0.5 * (d1 + d2);
