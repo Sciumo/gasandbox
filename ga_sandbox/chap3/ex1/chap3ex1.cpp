@@ -34,7 +34,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 1: Orthogonalization";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 1: Orthonormalization";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -56,30 +56,33 @@ float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
 
-// the three non-orthogonal vectors:
-vector g_vector1 = _vector(e1 - e2);
-vector g_vector2 = _vector(e1 + 0.3 * e2);
-vector g_vector3 = _vector(e1 + e3);
+// the three non-orthonormal vectors:
+vector g_vectors[3] = {
+	_vector(e1 - e2 - 0.3 * e3),
+	_vector(e1 + 0.3 * e2 - 0.1 * e3),
+	_vector(e1 + e3)
+};
 
-// the three orthogonal vectors:
-vector g_orthoVector1;
-vector g_orthoVector2;
-vector g_orthoVector3;
+// the three orthonormal vectors:
+vector g_orthoVectors[3];
 
-void computeOrthoVectors() {
+void computeOrthoVectors(const vector nonOrtho[3], vector ortho[3]) {
+	// compute ortho vector 1:
 	// unit_e() returns a unit multivector (Euclidean metric)
-	g_orthoVector1 = unit_e(g_vector1);
+	ortho[0] = unit_e(nonOrtho[0]);
 
-	g_orthoVector2 = unit_e(g_orthoVector1 << (g_orthoVector1 ^ g_vector2));
-
+	// compute ortho vector 2:
 	// << is the operator used for the left contraction
-	g_orthoVector3 = unit_e((g_orthoVector1 ^ g_orthoVector2) << 
-		(g_orthoVector1 ^ g_orthoVector2 ^ g_vector3));
+	ortho[1] = unit_e(ortho[0] << (ortho[0] ^ nonOrtho[1]));
+
+	// compute ortho vector 3:
+	ortho[2] = unit_e((ortho[0] ^ ortho[1]) << 
+		(ortho[0] ^ ortho[1] ^ nonOrtho[2]));
 }
 
 void display() {
-	// update the orthogonal vectors
-	computeOrthoVectors();
+	// update the orthonormal vectors
+	computeOrthoVectors(g_vectors, g_orthoVectors);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -99,7 +102,7 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -10.0f);
 
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -121,17 +124,17 @@ void display() {
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
 	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_vector1);
+	draw(g_vectors[0]);
 
 	// draw vector 2
 	if (GLpick::g_pickActive) glLoadName(2);
 	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_vector2);
+	draw(g_vectors[1]);
 
 	// draw vector 3
 	if (GLpick::g_pickActive) glLoadName(3);
 	glColor3fm(0.0f, 0.0f, 1.0f);
-	draw(g_vector3);
+	draw(g_vectors[2]);
 
 	glPopMatrix();
 
@@ -144,15 +147,15 @@ void display() {
 
 		// draw ortho vector 1
 		glColor3fm(1.0f, 0.0f, 0.0f);
-		draw(g_orthoVector1);
+		draw(g_orthoVectors[0]);
 
 		// draw ortho vector 2
 		glColor3fm(0.0f, 1.0f, 0.0f);
-		draw(g_orthoVector2);
+		draw(g_orthoVectors[1]);
 
 		// draw ortho vector 3
 		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(g_orthoVector3);
+		draw(g_orthoVectors[2]);
 
 		glPopMatrix();
 	}
@@ -171,10 +174,10 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHOGONAL");
+		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHONORMAL");
 		renderBitmapString(g_viewportWidth / 4 - 110, 40, font, "-use left mouse button to drag vectors");
 		renderBitmapString(g_viewportWidth / 4 - 100, 20, font, "-use other mouse buttons to orbit");
-		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHOGONAL");
+		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHONORMAL");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -215,7 +218,7 @@ void MouseButton(int button, int state, int x, int y) {
 
 	if (button == GLUT_LEFT_BUTTON) {
 		g_dragObject = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-		printf("Picked %d at %f\n", g_dragObject, g_dragDistance);
+//		printf("Picked %d at %f\n", g_dragObject, g_dragDistance);
 	}
 	else {
 		e3ga::vector mousePos = mousePosToVector(x, y);
@@ -240,9 +243,7 @@ void MouseMotion(int x, int y) {
 		// add motion to vector:
 		vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-		if (g_dragObject == 1) g_vector1 += T;
-		else if (g_dragObject == 2) g_vector2 += T;
-		else if (g_dragObject == 3) g_vector3 += T;
+		g_vectors[g_dragObject-1] += T;
 	}
 
 	// remember mouse pos for next motion:
