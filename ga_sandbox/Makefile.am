@@ -1,1 +1,1 @@
-SUBDIRS = vs.net libgasandbox chap2 attic
+SUBDIRS = libgasandbox chap2 chap3 vs.net attic
