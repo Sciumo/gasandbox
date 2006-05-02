@@ -50,14 +50,14 @@
 			MVT___I2_CT__ = 18,
 			MVT___I2I_CT__ = 19,
 			MVT_MV = 8,
-			MVT_LAST = 20 
+			MVT_LAST = 20
 	};
 
 	// outermorphism types:
 	enum omType {
 		OMT_NONE = -2,
 			OMT_OM = 9,
-			OMT_LAST = 20 
+			OMT_LAST = 20
 	};
 
 	// grade definitions that can be joined using the '|' operator:
@@ -126,17 +126,17 @@
 	// 'format' = NULL will give you back the default.
 	void mv_setStringFormat(const char *what, const char *format = NULL);
 
-	extern const char *mv_string_fp; /* = \"%2.2f\" */;
-	extern const char *mv_string_start; /* = \"\" */;
-	extern const char *mv_string_end; /* = \"\" */;
-	extern const char *mv_string_mul; /* = \"*\" */;
-	extern const char *mv_string_wedge; /* = \"^\" */;
-	extern const char *mv_string_plus; /* = \" + \" */;
-	extern const char *mv_string_minus; /* = \" - \" */;
+	extern const char *mv_string_fp; /* = \"%2.2f\" */
+	extern const char *mv_string_start; /* = \"\" */
+	extern const char *mv_string_end; /* = \"\" */
+	extern const char *mv_string_mul; /* = \"*\" */
+	extern const char *mv_string_wedge; /* = \"^\" */
+	extern const char *mv_string_plus; /* = \" + \" */
+	extern const char *mv_string_minus; /* = \" - \" */
 
 	// declaration of profiling functions
 	namespace g2Profiling {
-		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
+		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg,
 			unsigned short argType[], int nbReturnType, unsigned short returnType[]);
 		void reset();
 		void save(const char *filename = "E:\\ga\\ga_sandbox\\libgasandbox\\e2ga.gp2", bool append = true);
@@ -177,7 +177,7 @@
 
 
 	class mv {
-		// the friend classes of mv 
+		// the friend classes of mv
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -190,7 +190,7 @@
 		friend class e2_t;
 		friend class scalar;
 
-		// friend functions of mv 
+		// friend functions of mv
 		friend char *string(const mv &obj, char *str, int maxLength, const char *fp /*= NULL*/);
 		friend void compress(const float *c, float *cc, int &cgu, float epsilon = 0.0, int gu = 7);
 		friend mv compress(const mv & arg, float epsilon);
@@ -306,39 +306,39 @@
 		void set(unsigned int gradeUsage, const Float *coordinates);
 
 
-		/// set to 'coordinates specified' 
+		/// set to 'coordinates specified'
 		void set (unsigned int gradeUsage
 			, Float c0);
-		/// set to 'coordinates specified' 
+		/// set to 'coordinates specified'
 		void set (unsigned int gradeUsage
 			, Float c0, Float c1);
-		/// set to 'coordinates specified' 
+		/// set to 'coordinates specified'
 		void set (unsigned int gradeUsage
 			, Float c0, Float c1, Float c2);
-		/// set to 'coordinates specified' 
+		/// set to 'coordinates specified'
 		void set (unsigned int gradeUsage
 			, Float c0, Float c1, Float c2, Float c3);
 
 
-		/// set to e1_t 
+		/// set to e1_t
 		void set(const e1_t &arg1);
-		/// set to e2_t 
+		/// set to e2_t
 		void set(const e2_t &arg1);
-		/// set to scalar 
+		/// set to scalar
 		void set(const scalar &arg1);
-		/// set to vector 
+		/// set to vector
 		void set(const vector &arg1);
-		/// set to bivector 
+		/// set to bivector
 		void set(const bivector &arg1);
-		/// set to rotor 
+		/// set to rotor
 		void set(const rotor &arg1);
-		/// set to __e1_ct__ 
+		/// set to __e1_ct__
 		void set(const __e1_ct__ &arg1);
-		/// set to __e2_ct__ 
+		/// set to __e2_ct__
 		void set(const __e2_ct__ &arg1);
-		/// set to __I2_ct__ 
+		/// set to __I2_ct__
 		void set(const __I2_ct__ &arg1);
-		/// set to __I2i_ct__ 
+		/// set to __I2i_ct__
 		void set(const __I2i_ct__ &arg1);
 
 
@@ -348,25 +348,25 @@
 		/// assign scalar
 		mv &operator=(Float scalar);
 
-		/// assign e1_t 
+		/// assign e1_t
 		mv&operator=(const e1_t& arg1);
-		/// assign e2_t 
+		/// assign e2_t
 		mv&operator=(const e2_t& arg1);
-		/// assign scalar 
+		/// assign scalar
 		mv&operator=(const scalar& arg1);
-		/// assign vector 
+		/// assign vector
 		mv&operator=(const vector& arg1);
-		/// assign bivector 
+		/// assign bivector
 		mv&operator=(const bivector& arg1);
-		/// assign rotor 
+		/// assign rotor
 		mv&operator=(const rotor& arg1);
-		/// assign __e1_ct__ 
+		/// assign __e1_ct__
 		mv&operator=(const __e1_ct__& arg1);
-		/// assign __e2_ct__ 
+		/// assign __e2_ct__
 		mv&operator=(const __e2_ct__& arg1);
-		/// assign __I2_ct__ 
+		/// assign __I2_ct__
 		mv&operator=(const __I2_ct__& arg1);
-		/// assign __I2i_ct__ 
+		/// assign __I2i_ct__
 		mv&operator=(const __I2i_ct__& arg1);
 
 
@@ -379,7 +379,7 @@
 		void expand(const Float *ptrs[], bool nulls = true) const;
 		/// returns the absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 
@@ -424,7 +424,7 @@
 
 
 
-	}; // end of class mv 
+	}; // end of class mv
 
 	char *string(const mv & obj, char *str, int maxLength, const char *fp = NULL);
 	// this function should be deprecated (conflicts with C++ stdlib)
@@ -455,11 +455,11 @@
 	inline mv like(mv &what, const mv &example) {return what;}
 
 
-	/// enum for the coordinates of e1_t 
+	/// enum for the coordinates of e1_t
 	enum __e1_t_coordinates__ {e1_t_e1};
 
 	class e1_t {
-		// the friend classes of e1_t 
+		// the friend classes of e1_t
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -481,7 +481,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline e1_t(Float s) {
 
 			set(s);
@@ -494,7 +494,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline e1_t(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> e1_t	 
+		inline e1_t(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> e1_t
 			set(arg1);
 		}
 
@@ -539,7 +539,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -581,7 +581,7 @@
 
 
 
-	}; // end of class e1_t 
+	}; // end of class e1_t
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -628,11 +628,11 @@
 	}
 
 
-	/// enum for the coordinates of e2_t 
+	/// enum for the coordinates of e2_t
 	enum __e2_t_coordinates__ {e2_t_e2};
 
 	class e2_t {
-		// the friend classes of e2_t 
+		// the friend classes of e2_t
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -654,7 +654,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline e2_t(Float s) {
 
 			set(s);
@@ -667,7 +667,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline e2_t(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> e2_t	 
+		inline e2_t(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> e2_t
 			set(arg1);
 		}
 
@@ -712,7 +712,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -754,7 +754,7 @@
 
 
 
-	}; // end of class e2_t 
+	}; // end of class e2_t
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -801,11 +801,11 @@
 	}
 
 
-	/// enum for the coordinates of scalar 
+	/// enum for the coordinates of scalar
 	enum __scalar_coordinates__ {scalar_scalar};
 
 	class scalar {
-		// the friend classes of scalar 
+		// the friend classes of scalar
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -827,7 +827,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline scalar(Float s) {
 
 			set(s);
@@ -840,7 +840,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline scalar(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> scalar	 
+		inline scalar(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> scalar
 			set(arg1);
 		}
 
@@ -885,7 +885,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -924,7 +924,7 @@
 
 
 
-	}; // end of class scalar 
+	}; // end of class scalar
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -971,11 +971,11 @@
 	}
 
 
-	/// enum for the coordinates of vector 
+	/// enum for the coordinates of vector
 	enum __vector_coordinates__ {vector_e1_e2};
 
 	class vector {
-		// the friend classes of vector 
+		// the friend classes of vector
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -997,7 +997,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline vector(Float s) {
 
 			set(s);
@@ -1010,7 +1010,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline vector(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> vector	 
+		inline vector(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> vector
 			set(arg1);
 		}
 
@@ -1055,7 +1055,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1100,7 +1100,7 @@
 
 
 
-	}; // end of class vector 
+	}; // end of class vector
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -1147,11 +1147,11 @@
 	}
 
 
-	/// enum for the coordinates of bivector 
+	/// enum for the coordinates of bivector
 	enum __bivector_coordinates__ {bivector_e1e2};
 
 	class bivector {
-		// the friend classes of bivector 
+		// the friend classes of bivector
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class mv;
@@ -1173,7 +1173,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline bivector(Float s) {
 
 			set(s);
@@ -1186,7 +1186,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline bivector(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> bivector	 
+		inline bivector(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> bivector
 			set(arg1);
 		}
 
@@ -1231,7 +1231,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1273,7 +1273,7 @@
 
 
 
-	}; // end of class bivector 
+	}; // end of class bivector
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -1320,11 +1320,11 @@
 	}
 
 
-	/// enum for the coordinates of rotor 
+	/// enum for the coordinates of rotor
 	enum __rotor_coordinates__ {rotor_scalar_e1e2};
 
 	class rotor {
-		// the friend classes of rotor 
+		// the friend classes of rotor
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -1346,7 +1346,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline rotor(Float s) {
 
 			set(s);
@@ -1359,7 +1359,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline rotor(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> rotor	 
+		inline rotor(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> rotor
 			set(arg1);
 		}
 
@@ -1404,7 +1404,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1446,7 +1446,7 @@
 
 
 
-	}; // end of class rotor 
+	}; // end of class rotor
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -1493,11 +1493,11 @@
 	}
 
 
-	/// enum for the coordinates of __e1_ct__ 
+	/// enum for the coordinates of __e1_ct__
 	enum ____e1_ct___coordinates__ {__e1_ct___e1f1_0};
 
 	class __e1_ct__ {
-		// the friend classes of __e1_ct__ 
+		// the friend classes of __e1_ct__
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -1519,7 +1519,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline __e1_ct__(Float s) {
 
 			set(s);
@@ -1532,7 +1532,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline __e1_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __e1_ct__	 
+		inline __e1_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __e1_ct__
 			set(arg1);
 		}
 
@@ -1577,7 +1577,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1618,7 +1618,7 @@
 
 
 
-	}; // end of class __e1_ct__ 
+	}; // end of class __e1_ct__
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -1665,11 +1665,11 @@
 	}
 
 
-	/// enum for the coordinates of __e2_ct__ 
+	/// enum for the coordinates of __e2_ct__
 	enum ____e2_ct___coordinates__ {__e2_ct___e2f1_0};
 
 	class __e2_ct__ {
-		// the friend classes of __e2_ct__ 
+		// the friend classes of __e2_ct__
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -1691,7 +1691,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline __e2_ct__(Float s) {
 
 			set(s);
@@ -1704,7 +1704,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline __e2_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __e2_ct__	 
+		inline __e2_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __e2_ct__
 			set(arg1);
 		}
 
@@ -1749,7 +1749,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1790,7 +1790,7 @@
 
 
 
-	}; // end of class __e2_ct__ 
+	}; // end of class __e2_ct__
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -1837,11 +1837,11 @@
 	}
 
 
-	/// enum for the coordinates of __I2_ct__ 
+	/// enum for the coordinates of __I2_ct__
 	enum ____I2_ct___coordinates__ {__I2_ct___e1e2f1_0};
 
 	class __I2_ct__ {
-		// the friend classes of __I2_ct__ 
+		// the friend classes of __I2_ct__
 		friend class __I2i_ct__;
 		friend class bivector;
 		friend class mv;
@@ -1863,7 +1863,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline __I2_ct__(Float s) {
 
 			set(s);
@@ -1876,7 +1876,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline __I2_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __I2_ct__	 
+		inline __I2_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __I2_ct__
 			set(arg1);
 		}
 
@@ -1921,7 +1921,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -1962,7 +1962,7 @@
 
 
 
-	}; // end of class __I2_ct__ 
+	}; // end of class __I2_ct__
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -2009,11 +2009,11 @@
 	}
 
 
-	/// enum for the coordinates of __I2i_ct__ 
+	/// enum for the coordinates of __I2i_ct__
 	enum ____I2i_ct___coordinates__ {__I2i_ct___e1e2f_1_0};
 
 	class __I2i_ct__ {
-		// the friend classes of __I2i_ct__ 
+		// the friend classes of __I2i_ct__
 		friend class __I2_ct__;
 		friend class bivector;
 		friend class mv;
@@ -2035,7 +2035,7 @@
 			set();
 		}
 
-		/// scalar constructor 
+		/// scalar constructor
 		inline __I2i_ct__(Float s) {
 
 			set(s);
@@ -2048,7 +2048,7 @@
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline __I2i_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __I2i_ct__	 
+		inline __I2i_ct__(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __I2i_ct__
 			set(arg1);
 		}
 
@@ -2093,7 +2093,7 @@
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
-		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap
 		Float largestBasisBlade(unsigned int &bm) const;
 
 		/// coordinate extraction by name
@@ -2134,7 +2134,7 @@
 
 
 
-	}; // end of class __I2i_ct__ 
+	}; // end of class __I2i_ct__
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
@@ -2182,7 +2182,7 @@
 
 
 	class om {
-		// the friend classes of om 
+		// the friend classes of om
 		friend class __I2i_ct__;
 		friend class __I2_ct__;
 		friend class bivector;
@@ -2228,7 +2228,7 @@
 			set(vectors);
 		}
 
-		/// constructor from basis vectors 
+		/// constructor from basis vectors
 		inline om(const vector & image_of_e1, const vector & image_of_e2) {
 			set(image_of_e1, image_of_e2);
 		}
@@ -2243,16 +2243,16 @@
 		/// set to scalar (creates scalar * 'I' outermorphism)
 		void set(Float scalarVal);
 
-		/// set to coordinates 
+		/// set to coordinates
 		void set(const Float *coordinates);
 
-		/// set to coordinates/transpose 
+		/// set to coordinates/transpose
 		void set(const Float *coordinates, bool transpose);
 
 		/// set from basis vectors array
 		void set(const vector *vectors);
 
-		/// set from basis vectors 
+		/// set from basis vectors
 		void set(
 			const vector & image_of_e1, const vector & image_of_e2);
 
@@ -2462,7 +2462,7 @@
 
 	}
 
-	// set to copy 
+	// set to copy
 	inline void mv::set(const mv &arg1) {
 		// copy grade usage
 		gu(arg1.gu());
@@ -2482,7 +2482,7 @@
 	}
 
 
-	// set to coordinates 
+	// set to coordinates
 	inline void mv::set(unsigned int gradeUsage, const Float *coordinates) {
 		// set grade usage
 		gu(gradeUsage);
@@ -2492,7 +2492,7 @@
 	}
 
 
-	// set to 1 coordinates 
+	// set to 1 coordinates
 	inline void mv::set(unsigned int gradeUsage, Float c0	) {
 		// set grade usage
 		gu(gradeUsage);
@@ -2504,7 +2504,7 @@
 
 	}
 
-	// set to 2 coordinates 
+	// set to 2 coordinates
 	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1	) {
 		// set grade usage
 		gu(gradeUsage);
@@ -2517,7 +2517,7 @@
 
 	}
 
-	// set to 3 coordinates 
+	// set to 3 coordinates
 	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2	) {
 		// set grade usage
 		gu(gradeUsage);
@@ -2531,7 +2531,7 @@
 
 	}
 
-	// set to 4 coordinates 
+	// set to 4 coordinates
 	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3	) {
 		// set grade usage
 		gu(gradeUsage);
@@ -2548,10 +2548,10 @@
 
 
 
-	// set to e1_t 
+	// set to e1_t
 	inline void mv::set(const e1_t & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(2);
 
 
@@ -2560,10 +2560,10 @@
 
 
 	}
-	// set to e2_t 
+	// set to e2_t
 	inline void mv::set(const e2_t & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(2);
 
 
@@ -2572,10 +2572,10 @@
 
 
 	}
-	// set to scalar 
+	// set to scalar
 	inline void mv::set(const scalar & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(1);
 
 
@@ -2583,10 +2583,10 @@
 
 
 	}
-	// set to vector 
+	// set to vector
 	inline void mv::set(const vector & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(2);
 
 
@@ -2595,10 +2595,10 @@
 
 
 	}
-	// set to bivector 
+	// set to bivector
 	inline void mv::set(const bivector & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(4);
 
 
@@ -2606,10 +2606,10 @@
 
 
 	}
-	// set to rotor 
+	// set to rotor
 	inline void mv::set(const rotor & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(5);
 
 
@@ -2618,49 +2618,49 @@
 
 
 	}
-	// set to __e1_ct__ 
+	// set to __e1_ct__
 	inline void mv::set(const __e1_ct__ & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(2);
 
 
-		m_c[0] = (Float)1.0f; 
+		m_c[0] = (Float)1.0f;
 		m_c[1] = (Float)0;
 
 
 	}
-	// set to __e2_ct__ 
+	// set to __e2_ct__
 	inline void mv::set(const __e2_ct__ & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(2);
 
 
 		m_c[0] = (Float)0;
-		m_c[1] = (Float)1.0f; 
+		m_c[1] = (Float)1.0f;
 
 
 	}
-	// set to __I2_ct__ 
+	// set to __I2_ct__
 	inline void mv::set(const __I2_ct__ & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(4);
 
 
-		m_c[0] = (Float)1.0f; 
+		m_c[0] = (Float)1.0f;
 
 
 	}
-	// set to __I2i_ct__ 
+	// set to __I2i_ct__
 	inline void mv::set(const __I2i_ct__ & arg1) {
 
-		// set grade usage 
+		// set grade usage
 		gu(4);
 
 
-		m_c[0] = (Float)-1.0f; 
+		m_c[0] = (Float)-1.0f;
 
 
 	}
@@ -2683,52 +2683,52 @@
 		return *this;
 	}
 
-	// assign e1_t 
+	// assign e1_t
 	inline mv& mv::operator=(const e1_t& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign e2_t 
+	// assign e2_t
 	inline mv& mv::operator=(const e2_t& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign scalar 
+	// assign scalar
 	inline mv& mv::operator=(const scalar& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign vector 
+	// assign vector
 	inline mv& mv::operator=(const vector& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign bivector 
+	// assign bivector
 	inline mv& mv::operator=(const bivector& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign rotor 
+	// assign rotor
 	inline mv& mv::operator=(const rotor& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign __e1_ct__ 
+	// assign __e1_ct__
 	inline mv& mv::operator=(const __e1_ct__& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign __e2_ct__ 
+	// assign __e2_ct__
 	inline mv& mv::operator=(const __e2_ct__& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign __I2_ct__ 
+	// assign __I2_ct__
 	inline mv& mv::operator=(const __I2_ct__& arg1) {
 		set(arg1);
 		return *this;
 	}
-	// assign __I2i_ct__ 
+	// assign __I2i_ct__
 	inline mv& mv::operator=(const __I2i_ct__& arg1) {
 		set(arg1);
 		return *this;
@@ -2750,7 +2750,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void e1_t::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
@@ -2774,14 +2774,14 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void e1_t::set(__e1_t_coordinates__, Float c_e1) {
 		// set coordinates
 		m_c[0] = c_e1;
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void e1_t::set(const mv & arg1) {
 
 		int gidx = 0;
@@ -2835,7 +2835,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void e2_t::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
@@ -2859,14 +2859,14 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void e2_t::set(__e2_t_coordinates__, Float c_e2) {
 		// set coordinates
 		m_c[0] = c_e2;
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void e2_t::set(const mv & arg1) {
 
 		int gidx = 0;
@@ -2920,7 +2920,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void scalar::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = s ;
@@ -2944,14 +2944,14 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void scalar::set(__scalar_coordinates__, Float c_scalar) {
 		// set coordinates
 		m_c[0] = c_scalar;
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void scalar::set(const mv & arg1) {
 
 
@@ -2999,7 +2999,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void vector::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
@@ -3026,7 +3026,7 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void vector::set(__vector_coordinates__, Float c_e1, Float c_e2) {
 		// set coordinates
 		m_c[0] = c_e1;
@@ -3034,7 +3034,7 @@
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void vector::set(const mv & arg1) {
 
 		int gidx = 0;
@@ -3090,7 +3090,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void bivector::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
@@ -3114,14 +3114,14 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void bivector::set(__bivector_coordinates__, Float c_e1e2) {
 		// set coordinates
 		m_c[0] = c_e1e2;
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void bivector::set(const mv & arg1) {
 
 		int gidx = 0;
@@ -3180,7 +3180,7 @@
 
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void rotor::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = s ;
@@ -3207,7 +3207,7 @@
 
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void rotor::set(__rotor_coordinates__, Float c_scalar, Float c_e1e2) {
 		// set coordinates
 		m_c[0] = c_scalar;
@@ -3215,7 +3215,7 @@
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void rotor::set(const mv & arg1) {
 
 		int gidx = 0;
@@ -3274,7 +3274,7 @@
 		// set coordinates to 0
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void __e1_ct__::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 
@@ -3290,13 +3290,13 @@
 		// copy coordinates
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void __e1_ct__::set(____e1_ct___coordinates__) {
 		// set coordinates
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void __e1_ct__::set(const mv & arg1) {
 
 
@@ -3335,7 +3335,7 @@
 		// set coordinates to 0
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void __e2_ct__::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 
@@ -3351,13 +3351,13 @@
 		// copy coordinates
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void __e2_ct__::set(____e2_ct___coordinates__) {
 		// set coordinates
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void __e2_ct__::set(const mv & arg1) {
 
 
@@ -3396,7 +3396,7 @@
 		// set coordinates to 0
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void __I2_ct__::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 
@@ -3412,13 +3412,13 @@
 		// copy coordinates
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void __I2_ct__::set(____I2_ct___coordinates__) {
 		// set coordinates
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void __I2_ct__::set(const mv & arg1) {
 
 
@@ -3457,7 +3457,7 @@
 		// set coordinates to 0
 	}
 
-	// set to scalar 
+	// set to scalar
 	inline void __I2i_ct__::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 
@@ -3473,13 +3473,13 @@
 		// copy coordinates
 	}
 
-	// set to 'coordinates specified' 
+	// set to 'coordinates specified'
 	inline void __I2i_ct__::set(____I2i_ct___coordinates__) {
 		// set coordinates
 
 	}
 
-	// set to mv 
+	// set to mv
 	inline void __I2i_ct__::set(const mv & arg1) {
 
 
@@ -3530,7 +3530,7 @@
 		e2ga::__G2_GENERATED__::set(*this, vector(vector_e1_e2, scalarVal, (Float)0), vector(vector_e1_e2, (Float)0, scalarVal));
 	}
 
-	// set to coordinates 
+	// set to coordinates
 	inline void om::set(const Float *coordinates) {
 		mv_memcpy(m_c, coordinates, 5);
 	}
@@ -3541,7 +3541,7 @@
 	}
 
 
-	// set from basis vectors 
+	// set from basis vectors
 	inline void om::set(const vector & image_of_e1, const vector & image_of_e2) {
 		e2ga::__G2_GENERATED__::set(*this, image_of_e1, image_of_e2);
 	}
