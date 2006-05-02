@@ -17,7 +17,7 @@
 
 #include "gl_util.h"
 #include <GL/glut.h>
-
+#include <vector>
 
 
 void viewportCoordinates(const GLdouble ptWorld[3], GLdouble ptViewport[2], 
@@ -136,4 +136,98 @@ void rotorGLMult(const e3ga::rotor &v) {
 
 	// multiply current OpenGL matrix:
 	glMultMatrixf(GLmatrix);
+}
+
+/// Loads color (also into GL 'material' colors, for lighting)
+void glColor3fm(float r, float g, float b) {
+	const float af = 0.3f;
+	float amb[4] = {af * r, af*g, af*b, 1};
+	const float df = 0.7f;
+	float dif[4] = {df * r, df*g, df*b, 1};
+
+	glColor3f(r, g, b);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);
+}
+
+namespace GLpick {
+bool g_pickActive = false;
+int g_OpenGL_pick[4] = {0, 0, 0, 0};
+double g_frustumNear = 1.0;
+double g_frustumFar = 100.0;
+double g_frustumWidth = -1.0;
+double g_frustumHeight = -1.0;
+}
+
+void pickLoadMatrix() {
+	if (!GLpick::g_pickActive) return;
+
+	GLint viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	gluPickMatrix(
+		GLpick::g_OpenGL_pick[0], GLpick::g_OpenGL_pick[1], 
+		GLpick::g_OpenGL_pick[2] * 2 + 1, GLpick::g_OpenGL_pick[3] * 2 + 1, 
+		viewport);
+}
+
+
+/** returns the 'name' of the objects closest to the mouse at [x, y]
+Coordinates are OpenGL viewport coordinates (so FLIP the y!)
+Calls 'drawFunc()' to get the scene rendered.
+(if 'distance' is not NULL, then the distance is returned, too) */
+int pick(int x, int y, 
+		 void (*drawFunc)(void),
+		 float *distance /*= NULL*/) {
+	GLpick::g_pickActive = true;
+	// set pick location
+	GLpick::g_OpenGL_pick[0] = x;
+	GLpick::g_OpenGL_pick[1] = y;
+	// set pick window size
+	GLpick::g_OpenGL_pick[2] = 4; // 4 * 2 + 1 pixels
+	GLpick::g_OpenGL_pick[3] = 4;
+
+	const int nb_of_objects = 10; 
+	// allocate select buffer
+	std::vector<GLuint> sb;
+	sb.resize(nb_of_objects * 4);
+
+	// set select buffer, set render mode to select
+	glSelectBuffer(nb_of_objects * 4, &(sb[0]));
+	glRenderMode(GL_SELECT);
+
+	// initialize OpenGL picking names 
+	glInitNames();
+	glPushName(-1);
+
+	drawFunc();
+
+	// get the number of hit records by returning to normal 'render mode'
+	int nbHits = glRenderMode(GL_RENDER);
+
+	/*
+	OpenGL hits records are:
+	-number of names on the name stack (we make sure that we have only one name on the stack)
+	-minimum z of hit
+	-maximum z of hit
+	-name of object 
+	*/
+
+	GLpick::g_pickActive = false;
+	if (nbHits <= 0) return -1;
+
+	int closestObject = -1;
+	float minD = (float)GLpick::g_frustumFar;
+	for (int i = 0; i < nbHits; i++) {
+		float d1 = viewportDepthToWorldCoordinates(sb[i * 4 + 1], GLpick::g_frustumNear, GLpick::g_frustumFar);
+		float d2 = viewportDepthToWorldCoordinates(sb[i * 4 + 2], GLpick::g_frustumNear, GLpick::g_frustumFar);
+		float d = 0.5 * (d1 + d2);
+		if (d < minD) {
+			minD = d;
+			closestObject = (int)sb[i * 4 + 3];
+		}
+	}
+
+	if (distance) *distance = minD;
+
+	return closestObject;
 }

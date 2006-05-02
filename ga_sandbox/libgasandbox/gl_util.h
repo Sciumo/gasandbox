@@ -26,6 +26,9 @@
 #include "e3ga.h"
 
 /**
+Todo: use GLUproject() instead!
+(didn't know it existed...)
+
 Simulates OpenGL 3D -> 2D viewport transform
 'ptWorld' is transformed to 'ptViewport'.
 
@@ -47,5 +50,44 @@ void GLmatrixVectorMul(const GLfloat m[16], const GLfloat v[4], GLfloat r[4]);
 
 /// Multiplies the current OpenGL matrix with rotor 'v'
 void rotorGLMult(const e3ga::rotor &v);
+
+/// Loads color (also into GL 'material' colors, for lighting)
+void glColor3fm(float r, float g, float b);
+
+/// Translates a viewport z-value to a world z-value, given _near and _far frustum values.
+inline double viewportDepthToWorldCoordinates(double d, double _near, double _far) {
+	return -_far*_near / (_far-_near) / (d - 0.5 * (_far+_near)/(_far-_near) - 0.5);
+}
+
+/// Translates a viewport z-value to a world z-value, given _near and _far frustum values.
+inline double viewportDepthToWorldCoordinates(unsigned int d, double _near, double _far) {
+	return viewportDepthToWorldCoordinates((double)d / (unsigned int)0xFFFFFFFF, _near, _far);
+}
+
+namespace GLpick {
+/// set to 'true' during picking'
+extern bool g_pickActive;
+/// set to picking window (x, y, w, h) during picking
+extern int g_OpenGL_pick[4];
+/// must be set correctly by caller of pick() in order to get correct distances returned
+extern double g_frustumNear;
+/// must be set correctly by caller of pick() in order to get correct distances returned
+extern double g_frustumFar;
+/// not required for pick(), provided for completenes
+extern double g_frustumWidth;
+/// not required for pick(), provided for completenes
+extern double g_frustumHeight;
+}
+
+/// must be called by the 'drawFunc()' before setting up the projection matrix
+void pickLoadMatrix();
+
+/** returns the 'name' of the objects closest to the mouse at [x, y]
+Coordinates are OpenGL viewport coordinates (so FLIP the y!)
+Calls 'drawFunc()' to get the scene rendered.
+(if 'distance' is not NULL, then the distance is returned, too) */
+int pick(int x, int y, 
+		 void (*drawFunc)(void),
+		 float *distance = NULL);
 
 #endif /* _GL_UTIL_H_ */

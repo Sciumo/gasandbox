@@ -174,6 +174,7 @@ void reshape(GLint width, GLint height) {
 	g_viewportHeight = height;
 
 	// setup projection & transform for the model:
+	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
