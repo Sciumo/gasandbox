@@ -1,6 +1,9 @@
 lib_LIBRARIES = libgasandbox.a
 
-libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) -I/opt/local/include
+libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) 
+
+
+#-I/opt/local/include
 
 
 libgasandbox_a_includedir       = $(includedir)/libgasandbox

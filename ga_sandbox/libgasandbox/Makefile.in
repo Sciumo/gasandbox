@@ -173,7 +173,9 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 lib_LIBRARIES = libgasandbox.a
-libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) -I/opt/local/include
+libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) 
+
+#-I/opt/local/include
 libgasandbox_a_includedir = $(includedir)/libgasandbox
 libgasandbox_a_include_HEADERS = \
 	draw.h  e2ga_draw.h  e3ga.h       e3ga_util.h  mv_analyze.h \
