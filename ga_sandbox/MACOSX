@@ -1,0 +1,13 @@
+Install xcode (for the GCC compiler)
+Install X11
+Install darwin ports
+Install automake, autoconf, glut, fltk
+
+Copy /etc/xinitrc to ~/.xinitrc
+Add lines to .xinitrc:
+
+#This extra for building ga_sandbox
+PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+export LDFLAGS="-L/opt/local/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/local/include -I/usr/X11R6/include $CPPFLAGS"
+export CFLAGS="-I/opt/local/include -I/usr/X11R6/include $CFLAGS"
