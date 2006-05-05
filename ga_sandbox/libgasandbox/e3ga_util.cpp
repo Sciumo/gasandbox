@@ -15,6 +15,7 @@
 // Daniel Fontijne -- fontijne@science.uva.nl
 
 #include "e3ga_util.h"
+#include <vector>
 
 namespace e3ga {
 
@@ -96,6 +97,48 @@ mv exp(const mv &x, int order /*= 9*/) {
     }
 	return result;
 }
+
+/**
+Computes reciprocal frame 'RF' of input frame 'IF'
+Throws std::string when vectors in 'IF' are not independent, 
+or if one of the IF[i] is null.
+*/
+void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vector> &RF) {
+	RF.resize(IF.size());
+
+	if (IF.size() == 0) return; // nothing to do
+	else if (IF.size() == 1) {
+		// trivial case
+		if (_Float(norm_r2(IF[0])) == 0.0)
+			throw std::string("reciprocalFrame(): null vector");
+		RF[0] = inverse(IF[0]);
+		return;
+	}
+	else {
+		// compute pseudoscalar 'I' of space spanned by input frame:
+		mv I = IF[0];
+		for (unsigned int i = 1; i < IF.size(); i++) I ^= IF[i];
+		if (_Float(norm_r2(I)) == 0.0) 
+			throw std::string("reciprocalFrame(): vectors are not independent");
+
+		// compute inverse of 'I':
+		mv Ii = inverse(I);
+
+		// compute the vectors of the reciprocal framevector
+		for (unsigned int i = 0; i < IF.size(); i++) {
+			// compute outer product of all vectors except IF[i]
+			mv P = (i & 1) ? -1.0f : 1.0f; // = pow(-1, i)
+			for (unsigned int j = 0; j < IF.size(); j++)
+				if (j != i) P ^= IF[j];
+
+			// compute reciprocal vector 'i':
+			RF[i] = _vector(P << Ii);
+		}
+		return;
+	}
+
+}
+
 
 /// factors blade into vectors (euclidean unit length), returns  scale (or throws exception when non-blade is passed)
 mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) {

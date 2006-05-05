@@ -1,0 +1,9 @@
+bin_PROGRAMS = chap3ex4
+
+AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
+
+chap3ex4_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+
+chap3ex4_SOURCES = chap3ex4.cpp
+
+noinst_HEADERS = 

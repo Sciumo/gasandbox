@@ -20,6 +20,8 @@ AC_OUTPUT(
 	chap3/Makefile \
 	chap3/ex1/Makefile\
 	chap3/ex2/Makefile\
+	chap3/ex3/Makefile\
+	chap3/ex4/Makefile\
 	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile

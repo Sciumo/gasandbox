@@ -19,12 +19,21 @@
 
 #include "e3ga.h"
 #include "common.h"
+#include <vector>
 
 namespace e3ga {
 
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
 mv exp(const mv &x, int order = 9);
 mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
+
+
+/**
+Computes reciprocal frame 'RF' of input frame 'IF'
+Throws std::string when vectors in 'IF' are not independent, 
+or if one of the IF[i] is null.
+*/
+void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vector> &RF);
 
 } /* end of namespace e3ga */
 
