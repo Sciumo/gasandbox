@@ -98,16 +98,9 @@ mv exp(const mv &x, int order /*= 9*/) {
 	return result;
 }
 
-/**
-Computes reciprocal frame 'RF' of input frame 'IF'
-Throws std::string when vectors in 'IF' are not independent, 
-or if one of the IF[i] is null.
-*/
-void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vector> &RF) {
-	RF.resize(IF.size());
-
-	if (IF.size() == 0) return; // nothing to do
-	else if (IF.size() == 1) {
+void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
+	if (nbVectors == 0) return; // nothing to do
+	else if (nbVectors == 1) {
 		// trivial case
 		if (_Float(norm_r2(IF[0])) == 0.0)
 			throw std::string("reciprocalFrame(): null vector");
@@ -117,7 +110,7 @@ void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vect
 	else {
 		// compute pseudoscalar 'I' of space spanned by input frame:
 		mv I = IF[0];
-		for (unsigned int i = 1; i < IF.size(); i++) I ^= IF[i];
+		for (int i = 1; i < nbVectors; i++) I ^= IF[i];
 		if (_Float(norm_r2(I)) == 0.0) 
 			throw std::string("reciprocalFrame(): vectors are not independent");
 
@@ -125,10 +118,10 @@ void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vect
 		mv Ii = inverse(I);
 
 		// compute the vectors of the reciprocal framevector
-		for (unsigned int i = 0; i < IF.size(); i++) {
+		for (int i = 0; i < nbVectors; i++) {
 			// compute outer product of all vectors except IF[i]
 			mv P = (i & 1) ? -1.0f : 1.0f; // = pow(-1, i)
-			for (unsigned int j = 0; j < IF.size(); j++)
+			for (int j = 0; j < nbVectors; j++)
 				if (j != i) P ^= IF[j];
 
 			// compute reciprocal vector 'i':

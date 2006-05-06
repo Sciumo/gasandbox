@@ -29,11 +29,11 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
 
 
 /**
-Computes reciprocal frame 'RF' of input frame 'IF'
+Computes the reciprocal frame 'RF' of input frame 'IF'
 Throws std::string when vectors in 'IF' are not independent, 
 or if one of the IF[i] is null.
 */
-void reciprocalFrame(const std::vector<e3ga::vector> &IF, std::vector<e3ga::vector> &RF);
+void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors);
 
 } /* end of namespace e3ga */
 

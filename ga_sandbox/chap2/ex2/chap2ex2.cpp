@@ -226,7 +226,6 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
-//	glutAttachMenu(GLUT_LEFT_BUTTON);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 	

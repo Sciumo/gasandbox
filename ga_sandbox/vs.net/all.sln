@@ -40,6 +40,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex3", "chap3ex3.vcproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex4", "chap3ex4.vcproj", "{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}"
 	ProjectSection(ProjectDependencies) = postProject
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
 	EndProjectSection
 EndProject
 Global
