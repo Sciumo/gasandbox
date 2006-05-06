@@ -34,7 +34,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 1: Orthonormalization";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 3: Reciprocal Frame";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -55,23 +55,23 @@ e3ga::rotor g_modelRotor(1.0f);
 float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
+
+const int g_nbVectors = 3;
+
 // the three vectors:
-vector g_vectors[3] = {
+vector g_vectors[g_nbVectors] = {
 	_vector(e1 - e2 - 0.3 * e3),
 	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	vector()
+	_vector(e1 + e3)
 };
 
-/// returns a X b
-vector crossProduct(const vector &a, const vector &b) {
-	// exercise: compute the cross product, return it:
-	return _vector(0);	
-//	return _vector(dual(a ^ b));
-}
+// the three reciprocal vectors:
+vector g_recipVectors[g_nbVectors];
 
 void display() {
-	// compute the 3rd vector as g_vectors[0] X g_vectors[1]
-	g_vectors[2] = crossProduct(g_vectors[0], g_vectors[1]);
+	// Update the reciprocal vectors
+	// The reciprocalFrame() function is in libgasandbox/e3ga_util.cpp
+	reciprocalFrame(g_vectors, g_recipVectors, g_nbVectors);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -95,19 +95,20 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
 
 	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	const float horDistance = 2.5f;
+
+	glTranslatef(-horDistance, 0.0f, 0.0f);
 
 	glPushMatrix();
 	rotorGLMult(g_modelRotor);
-
-	glLineWidth(2.0);
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
@@ -119,16 +120,35 @@ void display() {
 	glColor3fm(0.0f, 1.0f, 0.0f);
 	draw(g_vectors[1]);
 
-	// draw (vector 1) ^ (vector 2) 
-	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
-	glColor3fm(1.0f, 1.0f, 1.0f);
-	draw(g_vectors[0] ^ g_vectors[1]);
-
-
 	// draw vector 3
 	if (GLpick::g_pickActive) glLoadName(3);
 	glColor3fm(0.0f, 0.0f, 1.0f);
 	draw(g_vectors[2]);
+
+	glPopMatrix();
+
+
+	if (!GLpick::g_pickActive) {
+		glTranslatef(2.0f * horDistance, 0.0f, 0.0f);
+
+		glPushMatrix();
+		rotorGLMult(g_modelRotor);
+
+		// draw reciprocal vector 1
+		glColor3fm(1.0f, 0.0f, 0.0f);
+		draw(g_recipVectors[0]);
+
+		// draw reciprocal vector 2
+		glColor3fm(0.0f, 1.0f, 0.0f);
+		draw(g_recipVectors[1]);
+
+		// draw reciprocal vector 3
+		glColor3fm(0.0f, 0.0f, 1.0f);
+		draw(g_recipVectors[2]);
+
+		glPopMatrix();
+	}
+
 
 	glPopMatrix();
 
@@ -143,8 +163,9 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
-		renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");
+		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "Input Frame:");
+		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
+		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "Reciprocal Frame");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -203,7 +224,7 @@ void MouseMotion(int x, int y) {
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);		
 	}
-	else if ((g_dragObject >= 1) && (g_dragObject <= 2)) {
+	else if ((g_dragObject >= 1) && (g_dragObject <= 3)) {
 		// add motion to vector:
 		vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
@@ -223,31 +244,8 @@ void Keyboard(unsigned char key, int x, int y) {
 }
 
 int main(int argc, char*argv[]) {
-	// NO profiling for Gaigen 2:
-	// e3ga::g2Profiling::init();
-
-	std::vector<e3ga::vector> IF(3);
-	IF[0] = _vector(e1 + e2);
-	IF[1] = _vector(e1 - e3);
-	IF[2] = _vector(0.1 * e1 - 0.1 * e3 + 0.1 * e2);
-	std::vector<e3ga::vector> RF;
-
-	try {
-		reciprocalFrame(IF, RF);
-	} catch(const std::string &str) {
-		printf("Wha: %s\n", str.c_str());
-	}
-
-	for (int i = 0; i < IF.size(); i++) {
-		printf("1: %s\n", (IF[i] << RF[i]).c_str());
-		for (int j = 0; j < IF.size(); j++) {
-			if (i == j) continue;
-			printf("0: %s\n", (IF[i] << RF[j]).c_str());
-
-		}
-	}
-	return 0;
-
+	// profiling for Gaigen 2:
+	e3ga::g2Profiling::init();
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -266,3 +264,9 @@ int main(int argc, char*argv[]) {
 
 	return 0;
 }
+
+/*	std::vector<e3ga::vector> IF(3);
+	IF[0] = _vector(e1 + e2);
+	IF[1] = _vector(e1 - e3);
+	IF[2] = _vector(0.1 * e1 - 0.1 * e3 + 0.1 * e2);
+	std::vector<e3ga::vector> RF;*/

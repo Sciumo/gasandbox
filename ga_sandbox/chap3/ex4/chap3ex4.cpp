@@ -34,122 +34,33 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 1: Orthonormalization";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 4: Color Space Conversion";
+std::vector<unsigned char>g_sourceImage;
+std::vector<unsigned char>g_destImage;
 
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
 
-// mouse position on last call to MouseButton() / MouseMotion()
-e3ga::vector g_prevMousePos;
-
-// when true, MouseMotion() will rotate the model
-bool g_rotateModel = false;
-bool g_rotateModelOutOfPlane = false;
-
-// rotation of the model
-e3ga::rotor g_modelRotor(1.0f);
-
-// when dragging vectors: which one, and at what depth:
-float g_dragDistance = -1.0f;
-int g_dragObject = -1;
-
-// the three vectors:
-vector g_vectors[3] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	vector()
-};
-
-/// returns a X b
-vector crossProduct(const vector &a, const vector &b) {
-	// exercise: compute the cross product, return it:
-	return _vector(0);	
-//	return _vector(dual(a ^ b));
-}
-
 void display() {
-	// compute the 3rd vector as g_vectors[0] X g_vectors[1]
-	g_vectors[2] = crossProduct(g_vectors[0], g_vectors[1]);
-
-	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 	glMatrixMode(GL_PROJECTION);
-	const float screenWidth = 1600.0f;
 	glLoadIdentity();
-	pickLoadMatrix();
-	GLpick::g_frustumWidth = 2.0 *  (double)g_viewportWidth / screenWidth;
-	GLpick::g_frustumHeight = 2.0 *  (double)g_viewportHeight / screenWidth;
-	glFrustum(
-		-GLpick::g_frustumWidth / 2.0, GLpick::g_frustumWidth / 2.0,
-		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
-		GLpick::g_frustumNear, GLpick::g_frustumFar);
+	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	glLoadIdentity();
+
+	glDisable(GL_LIGHTING);
+/*	glColor3f(1,1,1);
+	void *font = GLUT_BITMAP_HELVETICA_12;
+	renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
+	renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");*/
 
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	glutSwapBuffers();
 
-
-	glMatrixMode(GL_MODELVIEW);
-
-	glPushMatrix();
-	rotorGLMult(g_modelRotor);
-
-	glLineWidth(2.0);
-
-	// draw vector 1
-	if (GLpick::g_pickActive) glLoadName(1);
-	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_vectors[0]);
-
-	// draw vector 2
-	if (GLpick::g_pickActive) glLoadName(2);
-	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_vectors[1]);
-
-	// draw (vector 1) ^ (vector 2) 
-	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
-	glColor3fm(1.0f, 1.0f, 1.0f);
-	draw(g_vectors[0] ^ g_vectors[1]);
-
-
-	// draw vector 3
-	if (GLpick::g_pickActive) glLoadName(3);
-	glColor3fm(0.0f, 0.0f, 1.0f);
-	draw(g_vectors[2]);
-
-	glPopMatrix();
-
-	if (!GLpick::g_pickActive) {
-		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-
-		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
-		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
-		renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");
-	}
-
-	if (!GLpick::g_pickActive) {
-		glutSwapBuffers();
-	}
 }
 
 void reshape(GLint width, GLint height) {
