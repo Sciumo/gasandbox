@@ -23,6 +23,14 @@ AC_OUTPUT(
 	chap3/ex3/Makefile\
 	chap3/ex4/Makefile\
 	\
+	chap4/Makefile \
+	\
+	chap5/Makefile \
+	\
+	chap6/Makefile \
+	\
+	chap7/Makefile \
+	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile
 	)
