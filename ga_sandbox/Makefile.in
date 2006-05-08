@@ -155,7 +155,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = libgasandbox chap2 chap3 vs.net attic
+SUBDIRS = libgasandbox chap2 chap3 chap4 chap5 chap6 chap7 vs.net attic
 all: all-recursive
 
 .SUFFIXES:
