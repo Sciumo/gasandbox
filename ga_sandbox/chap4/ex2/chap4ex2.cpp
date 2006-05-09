@@ -30,6 +30,7 @@
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/timing.h>
 
 using namespace e3ga;
 using namespace mv_draw;
@@ -49,7 +50,7 @@ bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // rotation of the model
-e3ga::rotor g_modelRotor(1.0f);
+e3ga::rotor g_modelRotor(_rotor(1.0f));
 
 // when dragging vectors: which one, and at what depth:
 float g_dragDistance = -1.0f;
@@ -248,9 +249,58 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
+void benchmarkProjection() {
+	// compute bivector (*4 to make it a bit larger):
+	bivector B = _bivector(4.0f * g_vectors[0] ^ g_vectors[1]);
+
+	// we need the images of the 3 basis vectors under the projection:
+	vector imageOfE1 = _vector((e1 << inverse(B)) << B);
+	vector imageOfE2 = _vector((e2 << inverse(B)) << B);
+	vector imageOfE3 = _vector((e3 << inverse(B)) << B);
+	// initialize the matrix representation
+	om M(imageOfE1, imageOfE2, imageOfE3);
+
+
+	const int nbLoops = 10000000;
+
+	// benchmark 
+	double tMatrix = 10e10, tRegularGA = 10e10;
+	for (int j = 0; j < 5; j++) { // best of 5
+		double tM, tG;
+		// matrix:
+		tM = u_timeGet();
+		vector P = g_vectors[2];
+		for (int i = 0; i < nbLoops; i++) {
+			P = _vector(apply_om(M, P));
+		}
+		tM = u_timeGet() - tM;
+
+		// regular GA:
+		tG = u_timeGet();
+		P = g_vectors[2];
+		for (int i = 0; i < nbLoops; i++) {
+			P = _vector((P << inverse(B)) << B);
+		}
+		tG = u_timeGet() - tG;
+
+		if (tM < tMatrix) tMatrix = tM;
+		if (tG < tRegularGA) tRegularGA = tG;
+	}
+
+	printf("%d projections using matrix representation: %f secs\n", nbLoops, tMatrix);
+	printf("%d projections using regular GA: %f secs\n", nbLoops, tRegularGA);
+
+
+}
+
+
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
+
+	// first do the timing test:
+	benchmarkProjection();
+
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);

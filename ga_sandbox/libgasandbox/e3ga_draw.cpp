@@ -43,7 +43,9 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 			case mvAnalysis::BIVECTOR:
 				{
 					e3ga::mv::Float scale = 
-						(g_drawState.getDrawMode() & OD_MAGNITUDE) ? sqrt(fabs(A.m_sc[0]) / M_PI) : 1.0;
+						(g_drawState.getDrawMode() & OD_MAGNITUDE) 
+						? (e3ga::mv::Float)sqrt(fabs(A.m_sc[0]) / M_PI) 
+						: 1.0f;
 
 					drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
 				}

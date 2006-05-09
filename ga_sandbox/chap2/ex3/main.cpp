@@ -61,7 +61,7 @@ int g_viewportHeight = 600;
 int g_GLUTmenu;
 // mouse position on last call to MouseButton() / MouseMotion()
 e3ga::vector g_prevMousePos;
-e3ga::rotor g_modelRotor(1.0f);
+e3ga::rotor g_modelRotor(_rotor(1.0f));;
 float g_modelDistance = 11.0f;
 // when true, MouseMotion() will rotate the model
 bool g_rotateModel = false;

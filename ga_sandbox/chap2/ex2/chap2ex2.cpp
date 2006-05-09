@@ -55,7 +55,7 @@ std::vector<vector> g_vertices2D;
 // indices into the g_vertices2D vector:
 std::vector<std::vector<int> > g_polygons2D;
 
-e3ga::rotor g_modelRotor(1.0f);
+e3ga::rotor g_modelRotor(e3ga::_rotor(1.0f));
 std::string g_prevStatisticsModelName = "";
 
 // model names:
