@@ -54,6 +54,10 @@ const char *g_modelName = "sphere";
 std::vector<vector> g_vertices3D;
 // indices into the g_vertices3D vector:
 std::vector<std::vector<int> > g_polygons3D;
+// normal of each polygon:
+std::vector<vector> g_normals3D;
+// bivector attitude of each polygon:
+std::vector<bivector> g_attitude3D;
 
 e3ga::rotor g_modelRotor(e3ga::_rotor(1.0f));
 std::string g_prevStatisticsModelName = "";
@@ -73,10 +77,22 @@ NULL
 };
 
 
+/*
+Maybe animate scene?
+Or have 'scretch' bar? Only stretch 'x'
+
+Create OM from strectched vectors
+
+Transform model using OM
+Draw normals of polygon
+
+--switch between normal vector and bivector rep.
+
+*/
+
+
 
 void getGLUTmodel3D(const std::string &modelName);
-
-
 
 void display() {
 	// get model, if required:
@@ -115,19 +131,49 @@ void display() {
 //	glEnable(GL_LIGHT0);
 
 	glColor3f(1.0, 1.0, 1.0);
+	
+	om M(_vector(3 * e1), _vector(e2), _vector(e3));
+	
 
 	// render model
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
-		// get 2D vertices of the polygon:
-		const vector &v1 = g_vertices3D[g_polygons3D[i][0]];
-		const vector &v2 = g_vertices3D[g_polygons3D[i][1]];
-		const vector &v3 = g_vertices3D[g_polygons3D[i][2]];
+		// get 3D vertices of the polygon:
+		vector v1 = g_vertices3D[g_polygons3D[i][0]];
+		vector v2 = g_vertices3D[g_polygons3D[i][1]];
+		vector v3 = g_vertices3D[g_polygons3D[i][2]];
+
+		v1 = _vector(apply_om(M, v1));
+		v2 = _vector(apply_om(M, v2));
+		v3 = _vector(apply_om(M, v3));
 
 		// draw polygon
 		glBegin(GL_POLYGON);
-		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++)
-			glVertex3fv(g_vertices3D[g_polygons3D[i][j]].getC(vector_e1_e2_e3));
+		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
+			vector v = g_vertices3D[g_polygons3D[i][j]];
+			v = _vector(apply_om(M, v));
+
+			glVertex3fv(v.getC(vector_e1_e2_e3));
+		}
 		glEnd();
+
+		// draw normal vector only if 'visible'
+		// (this test for visibility is not 100% correct, but good enough for this example)
+		if (_vector(g_modelRotor * g_normals3D[i] * inverse(g_modelRotor)).e3() > 0) {
+			// get center of polygon
+			vector center = _vector(0.3333f * (v1 + v2 + v3));
+			// add the normal to it
+			//vector centerPlusNormal = _vector(center + 0.2f * apply_om(M, g_normals3D[i]));
+
+			vector centerPlusNormal = _vector(center + 0.2f * dual(apply_om(M, g_attitude3D[i])));
+
+			// draw a little 'spike' that signifies the normal
+			glBegin(GL_LINES);
+			glVertex3fv(center.getC(vector_e1_e2_e3));
+			glVertex3fv(centerPlusNormal.getC(vector_e1_e2_e3));
+			glEnd();
+		}
+
+
 	}
 
 	glutSwapBuffers();
@@ -341,6 +387,24 @@ void getGLUTmodel3D(const std::string &modelName) {
 		}
 
 		g_polygons3D.push_back(vtxIdx);
+	}
+
+	// compute normals & attitudes of all polygons
+	g_attitude3D.resize(g_polygons3D.size());
+	g_normals3D.resize(g_polygons3D.size());
+	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
+		// get 3D vertices of the polygon:
+		const vector &v1 = g_vertices3D[g_polygons3D[i][0]];
+		const vector &v2 = g_vertices3D[g_polygons3D[i][1]];
+		const vector &v3 = g_vertices3D[g_polygons3D[i][2]];
+
+		// compute bivector attitude & normalize if non-null
+		g_attitude3D[i] = (v2 - v1) ^ (v3 - v1);
+		if (_Float(norm_e2(g_attitude3D[i]))  != 0.0)
+			g_attitude3D[i] = unit_e(g_attitude3D[i]);
+
+		// compute normal vector:
+		 g_normals3D[i] = dual(g_attitude3D[i]);
 	}
 
 	if (g_prevStatisticsModelName != modelName) {
