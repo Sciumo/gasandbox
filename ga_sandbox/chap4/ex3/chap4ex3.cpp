@@ -34,7 +34,7 @@
 
 using namespace e3ga;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 4, Example 3: Transforming Normals";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 4, Example 3: Transforming Normals Vectors";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -48,7 +48,7 @@ bool g_rotateModelOutOfPlane = false;
 
 // model info:
 bool g_initModelRequired = true;
-const char *g_modelName = "sphere";
+const char *g_modelName = "dodecahedron";
 
 // vertex positions: 3d vectors
 std::vector<vector> g_vertices3D;
@@ -58,6 +58,11 @@ std::vector<std::vector<int> > g_polygons3D;
 std::vector<vector> g_normals3D;
 // bivector attitude of each polygon:
 std::vector<bivector> g_attitude3D;
+
+// draw the 'bad' normals? (red)
+bool g_drawBadNormal = true;
+// draw the 'good' normals? (green)
+bool g_drawGoodNormal = true;
 
 e3ga::rotor g_modelRotor(e3ga::_rotor(1.0f));
 std::string g_prevStatisticsModelName = "";
@@ -116,7 +121,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	glTranslatef(0.0f, 0.0f, -12.0f);
 	rotorGLMult(g_modelRotor);
 
 
@@ -124,19 +129,22 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-//	glEnable(GL_LIGHTING);
-//	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glLineWidth(2.0f);
 
-	glColor3f(1.0, 1.0, 1.0);
 	
 	om M(_vector(3 * e1), _vector(e2), _vector(e3));
 	
 
 	// render model
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
+		vector normal = _vector(unit_e(dual(apply_om(M, g_attitude3D[i]))));
+		glNormal3fv(normal.getC(vector_e1_e2_e3));
+
 		// get 3D vertices of the polygon:
 		vector v1 = g_vertices3D[g_polygons3D[i][0]];
 		vector v2 = g_vertices3D[g_polygons3D[i][1]];
@@ -147,6 +155,8 @@ void display() {
 		v3 = _vector(apply_om(M, v3));
 
 		// draw polygon
+		glColor3fm(1.0, 1.0, 1.0);
+		glEnable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
 			vector v = g_vertices3D[g_polygons3D[i][j]];
@@ -158,23 +168,43 @@ void display() {
 
 		// draw normal vector only if 'visible'
 		// (this test for visibility is not 100% correct, but good enough for this example)
-		if (_vector(g_modelRotor * g_normals3D[i] * inverse(g_modelRotor)).e3() > 0) {
+//		if (_vector(g_modelRotor * g_normals3D[i] * inverse(g_modelRotor)).e3() > 0) {
+		glDisable(GL_LIGHTING);
+
+			// compute the normals
+			vector badNormal, goodNormal;
+			
+			badNormal = unit_e(apply_om(M, g_normals3D[i]));
+			goodNormal = unit_e(dual(apply_om(M, g_attitude3D[i])));
+
 			// get center of polygon
 			vector center = _vector(0.3333f * (v1 + v2 + v3));
-			// add the normal to it
-			//vector centerPlusNormal = _vector(center + 0.2f * apply_om(M, g_normals3D[i]));
 
-			vector centerPlusNormal = _vector(center + 0.2f * dual(apply_om(M, g_attitude3D[i])));
+			// get center of polygon + bad / good normal
+			vector centerPlusBadNormal = _vector(center + 0.4f * badNormal);
+			vector centerPlusGoodNormal = _vector(center + 0.4f * goodNormal);
 
 			// draw a little 'spike' that signifies the normal
-			glBegin(GL_LINES);
-			glVertex3fv(center.getC(vector_e1_e2_e3));
-			glVertex3fv(centerPlusNormal.getC(vector_e1_e2_e3));
-			glEnd();
-		}
+			if (g_drawGoodNormal) {
+				glColor3f(0.0f, 1.0f, 0.0f);
+				glBegin(GL_LINES);
+				glVertex3fv(center.getC(vector_e1_e2_e3));
+				glVertex3fv(centerPlusGoodNormal.getC(vector_e1_e2_e3));
+				glEnd();
+			}
+			if (g_drawBadNormal) {
+				glColor3f(1.0f, 0.0f, 0.0f);
+				glBegin(GL_LINES);
+				glVertex3fv(center.getC(vector_e1_e2_e3));
+				glVertex3fv(centerPlusBadNormal.getC(vector_e1_e2_e3));
+				glEnd();
+			}
+//		}
 
 
 	}
+
+	glLineWidth(1.0f);
 
 	glutSwapBuffers();
 }
@@ -290,11 +320,11 @@ void renderModel(const std::string &modelName) {
 	else if (modelName == "cube")
 		glutSolidCube(1.0);
 	else if (modelName == "sphere")
-		glutSolidSphere(1.0, 16, 8);
+		glutSolidSphere(1.0, 12, 6);
 	else if (modelName == "cone")
-		glutSolidCone(1.0, 2.0, 16, 8);
+		glutSolidCone(1.0, 2.0, 12, 4);
 	else if (modelName == "torus")
-		glutSolidTorus(0.5, 1.0, 8, 16);
+		glutSolidTorus(0.5, 1.0, 6, 12);
 	else if (modelName == "dodecahedron")
 		glutSolidDodecahedron();
 	else if (modelName == "octahedron")
