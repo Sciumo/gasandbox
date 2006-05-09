@@ -27,16 +27,16 @@
 #include <string>
 
 #include <libgasandbox/common.h>
-#include <libgasandbox/e2ga.h>
+#include <libgasandbox/e3ga.h>
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
 
-using namespace e2ga;
+using namespace e3ga;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 2, Example 2: Hidden Surface Removal";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 4, Example 3: Transforming Normals";
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
@@ -50,10 +50,10 @@ bool g_rotateModelOutOfPlane = false;
 bool g_initModelRequired = true;
 const char *g_modelName = "sphere";
 
-// vertex positions: 2d vectors
-std::vector<vector> g_vertices2D;
-// indices into the g_vertices2D vector:
-std::vector<std::vector<int> > g_polygons2D;
+// vertex positions: 3d vectors
+std::vector<vector> g_vertices3D;
+// indices into the g_vertices3D vector:
+std::vector<std::vector<int> > g_polygons3D;
 
 e3ga::rotor g_modelRotor(e3ga::_rotor(1.0f));
 std::string g_prevStatisticsModelName = "";
@@ -74,62 +74,63 @@ NULL
 
 
 
-void getGLUTmodel2D(const std::string &modelName);
+void getGLUTmodel3D(const std::string &modelName);
 
 
 
 void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
 	// get model, if required:
 	if (g_initModelRequired) {
 		g_initModelRequired = false;
-		getGLUTmodel2D(g_modelName);
+		getGLUTmodel3D(g_modelName);
 	}
-	
+
+	// setup projection & transform for the vectors:
+	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+	const float screenWidth = 1600.0f;
+	glLoadIdentity();
+	pickLoadMatrix();
+	GLpick::g_frustumWidth = 2.0 *  (double)g_viewportWidth / screenWidth;
+	GLpick::g_frustumHeight = 2.0 *  (double)g_viewportHeight / screenWidth;
+	glFrustum(
+		-GLpick::g_frustumWidth / 2.0, GLpick::g_frustumWidth / 2.0,
+		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
+		GLpick::g_frustumNear, GLpick::g_frustumFar);
+	glMatrixMode(GL_MODELVIEW);
+	glTranslatef(0.0f, 0.0f, -10.0f);
+	rotorGLMult(g_modelRotor);
+
+
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	glEnable(GL_DEPTH_TEST);
-	
-	// DONT cull faces (we will do this ourselves!)
-	glDisable(GL_CULL_FACE);
-	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+//	glEnable(GL_LIGHTING);
+//	glEnable(GL_LIGHT0);
 
-
-	bivector B;
+	glColor3f(1.0, 1.0, 1.0);
 
 	// render model
-	for (unsigned int i = 0; i < g_polygons2D.size(); i++) {
+	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 		// get 2D vertices of the polygon:
-		const vector &v1 = g_vertices2D[g_polygons2D[i][0]];
-		const vector &v2 = g_vertices2D[g_polygons2D[i][1]];
-		const vector &v3 = g_vertices2D[g_polygons2D[i][2]];
-		
-		// Exercise: 
-		// Insert code to remove back-facing polygons here.
-		// You can extract the e1^e2 coordinate of a bivector 'B' using:
-		// float c = B.e1e2();
-		// ...
+		const vector &v1 = g_vertices3D[g_polygons3D[i][0]];
+		const vector &v2 = g_vertices3D[g_polygons3D[i][1]];
+		const vector &v3 = g_vertices3D[g_polygons3D[i][2]];
 
-// 		solution:		
-		//B = (v2 - v1) ^ (v3 - v1);
-		//if (B.e1e2() <= 0.0) continue;
-		
 		// draw polygon
 		glBegin(GL_POLYGON);
-		for (unsigned int j = 0; j < g_polygons2D[i].size(); j++)
-			glVertex2f(
-				g_vertices2D[g_polygons2D[i][j]].e1(), 
-				g_vertices2D[g_polygons2D[i][j]].e2());
+		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++)
+			glVertex3fv(g_vertices3D[g_polygons3D[i][j]].getC(vector_e1_e2_e3));
 		glEnd();
 	}
 
-	
-	
-	
-	
-	
-	glutSwapBuffers();	
+	glutSwapBuffers();
 }
 
 void reshape(GLint width, GLint height) {
@@ -139,15 +140,17 @@ void reshape(GLint width, GLint height) {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	// refresh model on next redraw
-	g_initModelRequired = true;
-	
+//	g_initModelRequired = true;
+
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 e3ga::vector mousePosToVector(int x, int y) {
@@ -171,24 +174,24 @@ void MouseButton(int button, int state, int x, int y) {
 
 void MouseMotion(int x, int y) {
 	if (g_rotateModel) {
-		// get mouse position, motion 
+		// get mouse position, motion
 		e3ga::vector mousePos = mousePosToVector(x, y);
 		e3ga::vector motion = _vector(mousePos - g_prevMousePos);
-		
+
 		// update rotor
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
-		
-		
+
+
 		// remember mouse pos for next motion:
 		g_prevMousePos = mousePos;
-		
+
 		// refresh model on next redraw
-		g_initModelRequired = true;
-		
+//		g_initModelRequired = true;
+
 		// redraw viewport
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 }
 
@@ -206,7 +209,6 @@ void menuCallback(int value) {
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
-	e2ga::g2Profiling::init();
 	e3ga::g2Profiling::init();
 
 	// GLUT Window Initialization:
@@ -214,67 +216,28 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	
-	
+
+
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
-	
+
 
 	glutMainLoop();
-	
-	return 0;	
+
+	return 0;
 }
 
-void getGLUTmodel2D(const std::string &modelName) {
-	// DONT cull faces (we will do this ourselves!)
-	glDisable(GL_CULL_FACE);
-	// fill all polygons (otherwise they get turned into LINES
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
-	// setup projection & transform for the model:
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	const float screenWidth = 1600.0f;
-	glFrustum(
-		-(float)g_viewportWidth / screenWidth, (float)g_viewportWidth / screenWidth, 
-		-(float)g_viewportHeight / screenWidth, (float)g_viewportHeight / screenWidth, 
-		1.0, 100.0);
-	
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef(0.0, 0.0, -10.0f);
-	
-	rotorGLMult(g_modelRotor);
-	
-	
-	glColor3f(1.0f, 1.0f, 1.0f);
-
-	// buffer for OpenGL feedback.
-	// Format will be:
-	// GL_POLYGON_TOKEN
-	// n (= 3)
-	// vertex 0 x, vertex 0 y
-	// vertex 1 x, vertex 1 y
-	// vertex 2 x, vertex 2 y
-	// GL_POLYGON_TOKEN etc etc
-	std::vector<GLfloat> buffer(300000); // more than enough for the GLUT primitives
-	
-	// switch into feedback mode:
-	glFeedbackBuffer((GLsizei)buffer.size(), GL_2D, &(buffer[0]));
-	glRenderMode(GL_FEEDBACK);
-	
+void renderModel(const std::string &modelName) {
 	// render model
 	if (modelName == "teapot")
 		glutSolidTeapot(1.0);
@@ -294,43 +257,97 @@ void getGLUTmodel2D(const std::string &modelName) {
 		glutSolidTetrahedron();
 	else if (modelName == "icosahedron")
 		glutSolidIcosahedron();
-	
-	int nbFeedback = glRenderMode(GL_RENDER);
-	
-	// parse the buffer:		
-	g_polygons2D.clear();
-	g_vertices2D.clear();
-	
+}
+
+void getGLUTmodel3D(const std::string &modelName) {
+	// DONT cull faces 
+	glDisable(GL_CULL_FACE);
+	// fill all polygons (otherwise they get turned into LINES
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+	// setup projection & transform for the model:
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+		-100.0, 100.0);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+
+	// buffer for OpenGL feedback.
+	// Format will be:
+	// GL_POLYGON_TOKEN
+	// n (= 3)
+	// vertex 0 x, vertex 0 y
+	// vertex 1 x, vertex 1 y
+	// vertex 2 x, vertex 2 y
+	// GL_POLYGON_TOKEN etc etc
+	std::vector<GLfloat> bufferXY(300000); // more than enough for the GLUT primitives
+	std::vector<GLfloat> bufferZY(bufferXY.size()); // more than enough for the GLUT primitives
+
+	// switch into feedback mode:
+	glFeedbackBuffer((GLsizei)bufferXY.size(), GL_2D, &(bufferXY[0]));
+	glRenderMode(GL_FEEDBACK);
+	renderModel(modelName);
+	int nbFeedbackXY = glRenderMode(GL_RENDER);
+
+	glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // rotate 90 degrees to get a different viewport
+	glFeedbackBuffer((GLsizei)bufferZY.size(), GL_2D, &(bufferZY[0]));
+	glRenderMode(GL_FEEDBACK);
+	renderModel(modelName);
+	int nbFeedbackZY = glRenderMode(GL_RENDER);
+
+	// parse the buffer:
+	g_polygons3D.clear();
+	g_vertices3D.clear();
+
+	if (nbFeedbackZY != nbFeedbackXY) {
+		printf("Error extracting model from GLUT!\n");
+		return;
+	}
+
+
 	int idx = 0;
-	while (idx < nbFeedback) {
+	while (idx < nbFeedbackXY) {
 		// check for polygon:
-		if (buffer[idx] != GL_POLYGON_TOKEN) {
+		if (bufferXY[idx] != GL_POLYGON_TOKEN) {
 			fprintf(stderr, "Error parsing the feedback buffer!");
 			break;
 		}
 		idx++;
-		
+
 		// number of vertices (3)
-		int n = (int)buffer[idx];
+		int n = (int)bufferXY[idx];
 		idx++;
 		std::vector<int> vtxIdx(n);
-		
+
 		// get vertices:
 		// Maybe todo later: don't duplicate identical vertices  . . .
 		for (int i = 0; i < n; i++) {
-			vtxIdx[i] = (int)g_vertices2D.size();
-			g_vertices2D.push_back(_vector(buffer[idx] * e1 + buffer[idx+1] * e2));
+			vtxIdx[i] = (int)g_vertices3D.size();
+			float x = bufferXY[idx];
+			float y = bufferXY[idx+1];
+			float z = bufferZY[idx+0]; 
+			x -= g_viewportWidth / 2;
+			y -= g_viewportHeight / 2;
+			z -= g_viewportWidth / 2;
+//			printf("%f %f %f\n", x, y, z);
+			g_vertices3D.push_back(vector(vector_e1_e2_e3, x, y, z));
 			idx += 2;
 		}
-		
-		g_polygons2D.push_back(vtxIdx);
+
+		g_polygons3D.push_back(vtxIdx);
 	}
 
 	if (g_prevStatisticsModelName != modelName) {
-		printf("Model: %s, #polygons: %d, #vertices: %d\n", modelName.c_str(), g_polygons2D.size(), g_vertices2D.size());
+		printf("Model: %s, #polygons: %d, #vertices: %d\n", modelName.c_str(), g_polygons3D.size(), g_vertices3D.size());
 		g_prevStatisticsModelName = modelName;
 	}
-	
+
 	// restore transform & projection:
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
