@@ -19,7 +19,6 @@
 
 #include "e3ga.h"
 #include "common.h"
-#include <vector>
 
 namespace e3ga {
 

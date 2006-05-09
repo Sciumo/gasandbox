@@ -77,6 +77,13 @@ extern double g_frustumFar;
 extern double g_frustumWidth;
 /// not required for pick(), provided for completenes
 extern double g_frustumHeight;
+
+/** window size used for the picking (the area searched for a hit)
+Actual window size is 1 + 2 * g_pickWinSize.
+Default is 4.
+*/
+extern int g_pickWinSize;
+
 }
 
 /// must be called by the 'drawFunc()' before setting up the projection matrix

@@ -84,13 +84,16 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -10.0f);
 
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glLineWidth(2.0f);
 
 
 	glMatrixMode(GL_MODELVIEW);
@@ -98,16 +101,19 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// compute bivector:
-	bivector B = g_vectors[0] ^ g_vectors[1];
+	// compute bivector (*4 to make it a bit larger):
+	bivector B = _bivector(4.0f * g_vectors[0] ^ g_vectors[1]);
 
-	// projection g_vectors[2] onto the bivector
+	// project g_vectors[2] onto the bivector
+	// The symbol '<<' is the left contraction
 	vector P = _vector((g_vectors[2] << inverse(B)) << B);
 
 	// draw vector 1 ^ vector 2
 	if (GLpick::g_pickActive) glLoadName(-1);
 	glColor3fm(0.5f, 0.5f, 0.5f);
-	draw(g_vectors[0] ^ g_vectors[1]);
+	g_drawState.pushDrawModeOff(OD_ORIENTATION);
+	draw(B);
+	g_drawState.popDrawMode();
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
@@ -129,6 +135,7 @@ void display() {
 	glColor3fm(0.5f, 0.5f, 0.5f);
 	draw(P);
 
+	glDisable(GL_LIGHTING);
 	glEnable(GL_LINE_STIPPLE);
 	glLineStipple(1, 0x0F0F);
 	glBegin(GL_LINES);
@@ -190,6 +197,7 @@ void MouseButton(int button, int state, int x, int y) {
 
 	g_prevMousePos = mousePosToVector(x, y);
 
+	GLpick::g_pickWinSize = 1;
 	g_dragObject = pick(x, g_viewportHeight - y, display, &g_dragDistance);
 	if (g_dragObject < 0) {
 		e3ga::vector mousePos = mousePosToVector(x, y);

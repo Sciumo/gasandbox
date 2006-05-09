@@ -17,7 +17,6 @@
 
 #include "gl_util.h"
 #include <GL/glut.h>
-#include <vector>
 
 
 void viewportCoordinates(const GLdouble ptWorld[3], GLdouble ptViewport[2], 
@@ -157,6 +156,8 @@ double g_frustumNear = 1.0;
 double g_frustumFar = 100.0;
 double g_frustumWidth = -1.0;
 double g_frustumHeight = -1.0;
+
+int g_pickWinSize = 4;
 }
 
 void pickLoadMatrix() {
@@ -183,13 +184,13 @@ int pick(int x, int y,
 	GLpick::g_OpenGL_pick[0] = x;
 	GLpick::g_OpenGL_pick[1] = y;
 	// set pick window size
-	GLpick::g_OpenGL_pick[2] = 4; // 4 * 2 + 1 pixels
-	GLpick::g_OpenGL_pick[3] = 4;
+	GLpick::g_OpenGL_pick[2] = GLpick::g_pickWinSize; // g_pickWinSize * 2 + 1 pixels
+	GLpick::g_OpenGL_pick[3] = GLpick::g_pickWinSize;
 
 	const int nb_of_objects = 10; 
 	// allocate select buffer
-	std::vector<GLuint> sb;
-	sb.resize(nb_of_objects * 4);
+	GLuint *sb = new GLuint[nb_of_objects * 4];
+	//sb.resize(nb_of_objects * 4);
 
 	// set select buffer, set render mode to select
 	glSelectBuffer(nb_of_objects * 4, &(sb[0]));
@@ -213,7 +214,10 @@ int pick(int x, int y,
 	*/
 
 	GLpick::g_pickActive = false;
-	if (nbHits <= 0) return -1;
+	if (nbHits <= 0) {
+		delete[] sb;
+		return -1;
+	}
 
 	int closestObject = -1;
 	float minD = (float)GLpick::g_frustumFar;
@@ -229,6 +233,8 @@ int pick(int x, int y,
 	}
 
 	if (distance) *distance = minD;
+
+	delete[] sb;
 
 	return closestObject;
 }

@@ -15,7 +15,6 @@
 // Daniel Fontijne -- fontijne@science.uva.nl
 
 #include "e3ga_util.h"
-#include <vector>
 
 namespace e3ga {
 

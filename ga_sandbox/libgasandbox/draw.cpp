@@ -241,6 +241,7 @@ void drawVector(const vector &tail, const vector &dir, mv::Float scale) {
 void drawBivector(const e3ga::vector &base, const e3ga::vector &normal, 
 				 const e3ga::vector &ortho1, const e3ga::vector &ortho2, 
 				 e3ga::mv::Float scale, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*/) {
+	GLboolean l;
 	const mv::Float rotStep = 2.0f * (mv::Float)M_PI / 64.0f;
 	mv::Float x, y;
 	rotor rt;
@@ -294,6 +295,7 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 		}
 
 		// draw the outline
+		glGetBooleanv(GL_LIGHTING, &l);
 		glDisable(GL_LIGHTING);
 		if (o) o->setOlColor();
 		glBegin(GL_LINE_LOOP);
@@ -317,6 +319,8 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 			glVertex3d(0.0, 0.0, 1.0);
 			glEnd();*/
 		}
+
+		if (l) glEnable(GL_LIGHTING);
 
 		break;
 	case DRAW_BV_PARALLELOGRAM:
