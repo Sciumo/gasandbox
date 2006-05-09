@@ -5626,7 +5626,7 @@ else
 echo "${ECHO_T}Warning: couldn't find fltk library" >&6
 fi
 
-                                                                                                                                                                                              ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile chap3/Makefile chap3/ex1/Makefile chap3/ex2/Makefile chap3/ex3/Makefile chap3/ex4/Makefile chap4/Makefile chap4/ex1/Makefile chap5/Makefile chap6/Makefile chap7/Makefile attic/Makefile attic/gaigen2hp/Makefile"
+                                                                                                                                                                                                                  ac_config_files="$ac_config_files Makefile vs.net/Makefile libgasandbox/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile chap3/Makefile chap3/ex1/Makefile chap3/ex2/Makefile chap3/ex3/Makefile chap3/ex4/Makefile chap4/Makefile chap4/ex1/Makefile chap4/ex2/Makefile chap4/ex3/Makefile chap5/Makefile chap6/Makefile chap7/Makefile attic/Makefile attic/gaigen2hp/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6223,6 +6223,8 @@ do
   "chap3/ex4/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap3/ex4/Makefile" ;;
   "chap4/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap4/Makefile" ;;
   "chap4/ex1/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap4/ex1/Makefile" ;;
+  "chap4/ex2/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap4/ex2/Makefile" ;;
+  "chap4/ex3/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap4/ex3/Makefile" ;;
   "chap5/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap5/Makefile" ;;
   "chap6/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap6/Makefile" ;;
   "chap7/Makefile" ) CONFIG_FILES="$CONFIG_FILES chap7/Makefile" ;;
