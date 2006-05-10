@@ -81,20 +81,16 @@ const char *g_modelNames[] = {
 NULL
 };
 
+// the scaling in the e1-, e2-, e3-directions
+mv::Float g_scale[3] = {2.0f, 1.0f, 1.0f};
+const mv::Float g_maxScale = 2.5f;
 
-/*
-Maybe animate scene?
-Or have 'scretch' bar? Only stretch 'x'
-
-Create OM from strectched vectors
-
-Transform model using OM
-Draw normals of polygon
-
---switch between normal vector and bivector rep.
-
-*/
-
+// locations of the ad hoc slider widgets:
+int g_scaleSliderLeft[3];
+int g_scaleSliderRight[3];
+int g_scaleSliderTop[3];
+int g_scaleSliderBottom[3];
+bool g_scaleSlide[3] = {false, false, false};
 
 
 void getGLUTmodel3D(const std::string &modelName);
@@ -125,9 +121,11 @@ void display() {
 	rotorGLMult(g_modelRotor);
 
 
+	// clear viewport
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	// setup other GL stuff
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
@@ -136,75 +134,123 @@ void display() {
 	glEnable(GL_LIGHT0);
 	glLineWidth(2.0f);
 
-	
-	om M(_vector(3 * e1), _vector(e2), _vector(e3));
-	
+	// initialize the outermorphism
+	om M(
+		_vector(g_scale[0] * e1), 
+		_vector(g_scale[1] * e2), 
+		_vector(g_scale[2] * e3));
 
 	// render model
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
+		// set the normal of the polygon (required for correct lighting)
 		vector normal = _vector(unit_e(dual(apply_om(M, g_attitude3D[i]))));
 		glNormal3fv(normal.getC(vector_e1_e2_e3));
 
-		// get 3D vertices of the polygon:
-		vector v1 = g_vertices3D[g_polygons3D[i][0]];
-		vector v2 = g_vertices3D[g_polygons3D[i][1]];
-		vector v3 = g_vertices3D[g_polygons3D[i][2]];
+		// the approx. center of the polygon
+		vector center;
 
-		v1 = _vector(apply_om(M, v1));
-		v2 = _vector(apply_om(M, v2));
-		v3 = _vector(apply_om(M, v3));
-
-		// draw polygon
+		// draw polygon & compute center of polygon
 		glColor3fm(1.0, 1.0, 1.0);
 		glEnable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
+			// get vertex, apply transform:
 			vector v = g_vertices3D[g_polygons3D[i][j]];
 			v = _vector(apply_om(M, v));
+
+			center += v; // also compute center
 
 			glVertex3fv(v.getC(vector_e1_e2_e3));
 		}
 		glEnd();
+
+		center *= 1.0f / (mv::Float)g_polygons3D[i].size();
 
 		// draw normal vector only if 'visible'
 		// (this test for visibility is not 100% correct, but good enough for this example)
 //		if (_vector(g_modelRotor * g_normals3D[i] * inverse(g_modelRotor)).e3() > 0) {
 		glDisable(GL_LIGHTING);
 
-			// compute the normals
-			vector badNormal, goodNormal;
-			
-			badNormal = unit_e(apply_om(M, g_normals3D[i]));
-			goodNormal = unit_e(dual(apply_om(M, g_attitude3D[i])));
-
-			// get center of polygon
-			vector center = _vector(0.3333f * (v1 + v2 + v3));
-
-			// get center of polygon + bad / good normal
-			vector centerPlusBadNormal = _vector(center + 0.4f * badNormal);
-			vector centerPlusGoodNormal = _vector(center + 0.4f * goodNormal);
-
-			// draw a little 'spike' that signifies the normal
-			if (g_drawGoodNormal) {
-				glColor3f(0.0f, 1.0f, 0.0f);
-				glBegin(GL_LINES);
-				glVertex3fv(center.getC(vector_e1_e2_e3));
-				glVertex3fv(centerPlusGoodNormal.getC(vector_e1_e2_e3));
-				glEnd();
-			}
-			if (g_drawBadNormal) {
-				glColor3f(1.0f, 0.0f, 0.0f);
-				glBegin(GL_LINES);
-				glVertex3fv(center.getC(vector_e1_e2_e3));
-				glVertex3fv(centerPlusBadNormal.getC(vector_e1_e2_e3));
-				glEnd();
-			}
-//		}
+		// compute the normals
+		vector badNormal, goodNormal;
+		
+		badNormal = unit_e(apply_om(M, g_normals3D[i]));
+		goodNormal = unit_e(dual(apply_om(M, g_attitude3D[i])));
 
 
+		// get center of polygon + bad / good normal
+		vector centerPlusBadNormal = _vector(center + 0.4f * badNormal);
+		vector centerPlusGoodNormal = _vector(center + 0.4f * goodNormal);
+
+		// draw a little 'spike' that signifies the normal
+		if (g_drawGoodNormal) {
+			glColor3f(0.0f, 1.0f, 0.0f); // green = good normal
+			glBegin(GL_LINES);
+			glVertex3fv(center.getC(vector_e1_e2_e3));
+			glVertex3fv(centerPlusGoodNormal.getC(vector_e1_e2_e3));
+			glEnd();
+		}
+		if (g_drawBadNormal && 
+			(_Float(norm_e(centerPlusBadNormal - centerPlusGoodNormal)) > 0.01f)) {
+			glColor3f(1.0f, 0.0f, 0.0f); // red = bad normal
+			glBegin(GL_LINES);
+			glVertex3fv(center.getC(vector_e1_e2_e3));
+			glVertex3fv(centerPlusBadNormal.getC(vector_e1_e2_e3));
+			glEnd();
+		}
 	}
 
 	glLineWidth(1.0f);
+
+
+	// draw the instructions and the sliders:
+	{
+		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glDisable(GL_DEPTH_TEST);
+
+		glDisable(GL_LIGHTING);
+		glColor3f(1,1,1);
+		void *font = GLUT_BITMAP_HELVETICA_12;
+		renderBitmapString(20, 100, font, "-use left mouse button to orbit scene");
+		renderBitmapString(20, 80, font, "-use other mouse buttons to select model and normal visibility");
+		renderBitmapString(5, 45, font, "Scale e1:");
+		renderBitmapString(5, 25, font, "Scale e2:");
+		renderBitmapString(5, 5, font, "Scale e3:");
+
+		
+		const int height = 20;
+		const int baseY = 40;
+		glBegin(GL_QUADS);
+		for (int i = 0; i < 3; i++) {
+			int left = 65;
+			glColor3f(0.8f, 0.8f, 0.8f);
+			g_scaleSliderLeft[i] = left;
+			g_scaleSliderRight[i] = g_viewportWidth-1;
+			g_scaleSliderTop[i] = baseY - i * height + 1 + height - 2;
+			g_scaleSliderBottom[i] = baseY - i * height + 1;
+
+			glVertex2i(g_scaleSliderLeft[i], g_scaleSliderBottom[i]);
+			glVertex2i(g_scaleSliderRight[i], g_scaleSliderBottom[i]);
+			glVertex2i(g_scaleSliderRight[i], g_scaleSliderTop[i]);
+			glVertex2i(g_scaleSliderLeft[i], g_scaleSliderTop[i]);
+
+			left++;
+			glColor3f(0.2f, 0.2f, 0.8f);
+			glVertex2i(left, baseY - i * height + 2);
+			glVertex2i(left + g_scale[i] * (g_viewportWidth-1-left) / g_maxScale, baseY - i * height + 2);
+			glVertex2i(left + g_scale[i] * (g_viewportWidth-1-left) / g_maxScale, baseY - i * height + 2 + height - 4);
+			glVertex2i(left, baseY - i * height + 2 + height - 4);
+		}
+		glEnd();
+
+	}
+
+
 
 	glutSwapBuffers();
 }
@@ -232,20 +278,7 @@ void reshape(GLint width, GLint height) {
 e3ga::vector mousePosToVector(int x, int y) {
 	x -= g_viewportWidth / 2;
 	y -= g_viewportHeight / 2;
-	return e3ga::_vector((float)x * e3ga::e1 - (float)y * e3ga::e2);
-}
-
-
-void MouseButton(int button, int state, int x, int y) {
-	if (button == GLUT_LEFT_BUTTON) {
-		e3ga::vector mousePos = mousePosToVector(x, y);
-		g_prevMousePos = mousePosToVector(x, y);
-		g_rotateModel = true;
-		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
-			g_rotateModelOutOfPlane = true;
-		else g_rotateModelOutOfPlane = false;
-	}
-	else g_rotateModel = false;
+	return e3ga::_vector((mv::Float)x * e3ga::e1 - (mv::Float)y * e3ga::e2);
 }
 
 void MouseMotion(int x, int y) {
@@ -263,13 +296,50 @@ void MouseMotion(int x, int y) {
 		// remember mouse pos for next motion:
 		g_prevMousePos = mousePos;
 
-		// refresh model on next redraw
-//		g_initModelRequired = true;
-
 		// redraw viewport
 		glutPostRedisplay();
 	}
+	else {
+		for (int i = 0; i < 3; i++) {
+			if (g_scaleSlide[i]) {
+				g_scale[i] = g_maxScale * (mv::Float)(x - g_scaleSliderLeft[i]) / (mv::Float)(g_scaleSliderRight[i] - g_scaleSliderLeft[i]);
+
+				if (g_scale[i] < 0.01f) g_scale[i] = 0.01f;
+				if (g_scale[i] > g_maxScale) g_scale[i] = g_maxScale;
+
+				// redraw viewport
+				glutPostRedisplay();
+			}
+		}
+	}
 }
+
+void MouseButton(int button, int state, int x, int y) {
+	g_scaleSlide[0] = g_scaleSlide[1] = g_scaleSlide[2] = false;
+	g_rotateModel = false;
+
+	// first check sliders:
+	for (int i = 0; i < 3; i++) {
+		int _y  = g_viewportHeight - y;
+		if ((x >= g_scaleSliderLeft[i]) && (x <= g_scaleSliderRight[i]) && 
+			(_y >= g_scaleSliderBottom[i]) && (_y <= g_scaleSliderTop[i])) {
+				g_scaleSlide[i] = true;
+				MouseMotion(x, y); // to immediately set the slider position
+				return;
+			}
+	}
+
+	if (button == GLUT_LEFT_BUTTON) {
+		e3ga::vector mousePos = mousePosToVector(x, y);
+		g_prevMousePos = mousePosToVector(x, y);
+		g_rotateModel = true;
+		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
+			g_rotateModelOutOfPlane = true;
+		else g_rotateModelOutOfPlane = false;
+	}
+	else g_rotateModel = false;
+}
+
 
 void Keyboard(unsigned char key, int x, int y) {
 
@@ -277,8 +347,16 @@ void Keyboard(unsigned char key, int x, int y) {
 
 
 void menuCallback(int value) {
-	g_modelName = g_modelNames[value];
-	g_initModelRequired = true;
+	if (value == -1) {
+		g_drawBadNormal = !g_drawBadNormal;
+	}
+	else if (value == -2) {
+		g_drawGoodNormal = !g_drawGoodNormal;
+	}
+	else {
+		g_modelName = g_modelNames[value];
+		g_initModelRequired = true;
+	}
 	glutPostRedisplay();
 }
 
@@ -304,6 +382,8 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
+	glutAddMenuEntry("Draw bad normals (red)", -1);
+	glutAddMenuEntry("Draw good normals (green)", -2);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
@@ -405,13 +485,12 @@ void getGLUTmodel3D(const std::string &modelName) {
 		// Maybe todo later: don't duplicate identical vertices  . . .
 		for (int i = 0; i < n; i++) {
 			vtxIdx[i] = (int)g_vertices3D.size();
-			float x = bufferXY[idx];
-			float y = bufferXY[idx+1];
-			float z = bufferZY[idx+0]; 
-			x -= g_viewportWidth / 2;
-			y -= g_viewportHeight / 2;
-			z -= g_viewportWidth / 2;
-//			printf("%f %f %f\n", x, y, z);
+			mv::Float x = bufferXY[idx];
+			mv::Float y = bufferXY[idx+1];
+			mv::Float z = bufferZY[idx+0]; 
+			x -= (mv::Float)g_viewportWidth / 2;
+			y -= (mv::Float)g_viewportHeight / 2;
+			z -= (mv::Float)g_viewportWidth / 2;
 			g_vertices3D.push_back(vector(vector_e1_e2_e3, x, y, z));
 			idx += 2;
 		}
