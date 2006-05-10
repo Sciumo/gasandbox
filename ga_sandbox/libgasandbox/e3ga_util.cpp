@@ -15,6 +15,7 @@
 // Daniel Fontijne -- fontijne@science.uva.nl
 
 #include "e3ga_util.h"
+#include "gabits.h"
 
 namespace e3ga {
 
@@ -185,5 +186,226 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	
 	return scale;
 }
+
+// todo: integrate into G2
+mv largestGradePart(const mv &X, int *gradeIdx = NULL) {
+	int nbBits = bitCount16(X.gu());
+	if (nbBits == 1) {
+		return X;
+	}
+	else if (nbBits == 0) return mv(0.0f);
+	else {
+		// loop over all grade
+		// if grade is present: sum + square coordinates
+		//								 if larger than current -> keep pointer
+		mv::Float largestG = 0.0f;
+		int largestGidx = -1;
+		const mv::Float *largestC = NULL;
+		const mv::Float *C = X.m_c;
+
+		for (int i = 0; i <= 3; i++) {
+			if ((X.gu() & (1 << i)) == 0) continue;
+			else {
+				// square, sum 
+				mv::Float l = C[0] * C[0];
+				int s = mv_gradeSize[i];
+				for (int j = 1; j < s; j++) l = C[j] * C[j];
+
+				// check if larger
+				if (l > largestG) {
+					largestC = C;
+					largestG = l;
+					largestGidx = i;
+					if (gradeIdx) *gradeIdx = i;
+				}
+
+				C += mv_gradeSize[i];
+			}
+		}
+		if (largestC)
+			return mv((unsigned int)(1 << largestGidx), largestC);
+		else return mv(0.0f);
+	}
+}
+
+// todo: integrate into G2
+mv highestGradePart(const mv &X, double epsilon /* = 1e-14 */, int *gradeIdx = NULL) {
+	// todo:
+	/*
+	int g = 3, gu = a.gradeUsage(), ia = e3gai_mvSize[gu], size, i;
+	const double *cptr;
+	do {
+		if (gu & (1 << g)) {
+			size = e3gai_gradeSize[g];
+			ia -= size;
+			cptr = a.c + ia;
+			for (i = 0; i < size; i++) 
+				if (fabs(cptr[i]) > epsilon) {
+					set(1 << g, a.c + ia);
+					return g;
+				}
+		}
+	} while ((--g)>= 0); // bug fix on 2003 11 16, used to be while ((--g) _>_ 0)
+//return -1; // modification on 20020828
+
+	setUsage(0);
+	return 0;
+*/
+}
+
+/*
+Todo: 
+-largest grade
+-delta product
+*/
+
+
+
+void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, mv::Float largeEpsilon) {
+	mv::Float la = a.largestCoordinate();
+	mv::Float lb = b.largestCoordinate();
+
+	// step one: check for near-zero input
+	if ((la < smallEpsilon) || (lb < smallEpsilon)) {
+		// set both meet and join to 0;
+		m.set();
+		j.set();
+		return; // done
+	}
+
+	// determine grade of input
+	int ga = a.grade();
+	int gb = b.grade();
+	c3gai _ca, _cb;
+	if (ga < 0) { // if we are not handed homogeneous multivectors, take the grade parts with the largest norm
+		ga = a.largestGrade();
+		_ca.takeGrade(a, 1 << ga);
+	}
+	else _ca.copy(a);
+	if (gb < 0) {
+		gb = b.largestGrade();
+		_cb.takeGrade(b, 1 << gb);
+	}
+	else _cb.copy(b);
+
+	// normalize (approximatelly) and swap (optionally)
+	c3gai ca, cb;
+	if (ga <= gb) {
+		ca.op(_ca, 1.0 / la);
+		cb.op(_cb, 1.0 / lb);
+	}
+	else {
+		ca.op(_cb, 1.0 / lb);
+		cb.op(_ca, 1.0 / la);
+		int tempg = ga;
+		ga = gb;
+		gb = tempg;
+	}
+
+	// compute delta product & 'normalize'
+	c3gai d,_d;
+	int gd = _d.deltaProduct(a, b); // internally uses epsilon of 10e-14  (can not be influenced right now)
+	mv::Float ld = _d.largestCoordinate();
+	d.op(_d, 1.0 / ld);
+
+	// if delta product is scalar, we're done:
+	if (gd == 0) {
+		// a == b (up to scalar)
+		m.copy(ca);
+		j.copy(ca);
+		// todo: largest coordinate positive?
+		return;
+	}
+
+	// if grade of delta product is equal to ga + gb, we're done, too
+	if (gd == ga + gb) {
+		// a and b entirely disjoint
+		m.setScalar(1.0);
+		j.op(ca, cb);
+		// todo: largest coordinate positive?
+		return;
+	}
+
+	// init join
+	j.copy(c3gai::I);
+	int Ej = 5 - ((ga + gb + gd) >> 1);
+
+	// check join excessity
+	if (Ej == 0) {
+		m.lcem(d, j);
+		// todo: largest coordinate positive?
+		return;
+	}
+
+	// init meet 
+	m.setScalar(1.0);
+	int Em = ((ga + gb - gd) >> 1);
+
+	// init s, the dual of the delta product:
+	c3gai s;
+	s.lcem(d, c3gai::Ii);
+
+	// precompute inverse of ca
+	c3gai cai;
+	cai.versorInverseEM(ca);
+
+	for (unsigned int i = 0; i < 5; i++) {
+		// compute next factor 'c'
+		c3gai c;
+		// since we don't 'whittle down' s, this is (usually) useless:
+//		if (s.grade() == 1) {
+//			c.copy(s);
+//		}
+//		else 
+		{
+			c3gai tmpc;
+			tmpc.lcem(*c3gai::bv[i], s);
+			c.lcem(tmpc, s);
+		}
+
+		// check if 'c' is OK to use:
+		if (c.largestCoordinate() < largeEpsilon)
+			continue;
+
+		// compute projection, rejection of 'c' wrt to 'ca'
+		c3gai cp, cr; // c projected, c rejected
+		c3gai tmpc;
+		tmpc.lcem(c, ca);
+		cp.lcem(tmpc, cai); // use correct inverse because otherwise cr != c - cp
+		cr.sub(c, cp);
+
+		// if 'c' has enough of it in 'ca', then add to meet
+		if (cp.largestCoordinate() > largeEpsilon) {
+			c3gai tmpm;
+			tmpm.op(m, cp);
+			m.copy(tmpm);
+			Em--;	
+			if (Em == 0) {
+				j.op(d, m);
+				// todo: largest coordinate positive?
+				return;
+			}
+		}
+
+		if (cr.largestCoordinate() > largeEpsilon) {
+			c3gai tmpj;
+			tmpj.lcem(cr, j);
+			j.copy(tmpj);
+			Ej--;	
+			if (Ej == 0) {
+				m.lcem(d, j);
+				// todo: largest coordinate positive?
+				return;
+			}
+		}
+
+		// optionally remove 'c' from 's' (do that?)
+	}
+
+	throw "Error!";
+
+}
+
+
 
 } /* end of namespace e3ga */

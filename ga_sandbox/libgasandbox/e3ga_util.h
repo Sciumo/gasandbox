@@ -34,6 +34,40 @@ or if one of the IF[i] is null.
 */
 void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors);
 
+
+/**
+Computes meet and join of 'a' 'b'.
+The meet is returned in 'm' .
+The join is returned in 'j'.
+Implementation of an algorithm by Ian Bell.
+
+Todo / warning: not fully compatible with meet & join described in book.
+-> in the way the meet is computed from the join, and vice versa.
+Todo!
+*/
+void meetJoin(const e3ga::mv  &a, const e3ga::mv &b, e3ga::mv &m, mv &j, 
+			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4);
+
+/**
+Returns the meet of 'a' and 'b'
+*/
+inline e3ga::mv meet(const e3ga::mv &a, const e3ga::mv &b, 
+			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4) {
+	mv m, j;
+	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
+	return m;
+}
+
+/**
+Returns the join of 'a' and 'b'
+*/
+inline e3ga::mv join(const e3ga::mv &a, const e3ga::mv &b, 
+			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4) {
+	mv m, j;
+	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
+	return j;
+}
+
 } /* end of namespace e3ga */
 
 #endif /* _E3GA_UTIL_H_ */
