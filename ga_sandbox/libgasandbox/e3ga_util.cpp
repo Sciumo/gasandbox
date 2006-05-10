@@ -187,6 +187,7 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	return scale;
 }
 
+#ifdef RIEN
 // todo: integrate into G2
 mv largestGradePart(const mv &X, int *gradeIdx = NULL) {
 	int nbBits = bitCount16(X.gu());
@@ -406,6 +407,6 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 }
 
-
+#endif
 
 } /* end of namespace e3ga */
