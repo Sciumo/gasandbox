@@ -187,14 +187,17 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	return scale;
 }
 
-#ifdef RIEN
 // todo: integrate into G2
-mv largestGradePart(const mv &X, int *gradeIdx = NULL) {
-	int nbBits = bitCount16(X.gu());
+mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
+	int nbBits = bitCount16(X.gu()); // bitCount16 also goes into Gaigen 2
 	if (nbBits == 1) {
+		if (gradeIdx) *gradeIdx = highestOneBit16(X.gu());
 		return X;
 	}
-	else if (nbBits == 0) return mv(0.0f);
+	else if (nbBits == 0) {
+		if (gradeIdx) *gradeIdx = 0;
+		return mv(0.0f);
+	}
 	else {
 		// loop over all grade
 		// if grade is present: sum + square coordinates
@@ -225,39 +228,83 @@ mv largestGradePart(const mv &X, int *gradeIdx = NULL) {
 		}
 		if (largestC)
 			return mv((unsigned int)(1 << largestGidx), largestC);
-		else return mv(0.0f);
+		else {
+			if (gradeIdx) *gradeIdx = 0;
+			return mv(0.0f);
+		}
 	}
 }
 
 // todo: integrate into G2
-mv highestGradePart(const mv &X, double epsilon /* = 1e-14 */, int *gradeIdx = NULL) {
-	// todo:
-	/*
-	int g = 3, gu = a.gradeUsage(), ia = e3gai_mvSize[gu], size, i;
-	const double *cptr;
+mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
+	int g = 3, gu = X.gu(), iX = mv_size[gu], size, i;
+	const float *cptr = NULL;
 	do {
 		if (gu & (1 << g)) {
-			size = e3gai_gradeSize[g];
-			ia -= size;
-			cptr = a.c + ia;
+			size = mv_gradeSize[g];
+			iX -= size;
+			cptr = X.m_c + iX;
 			for (i = 0; i < size; i++) 
-				if (fabs(cptr[i]) > epsilon) {
-					set(1 << g, a.c + ia);
-					return g;
+				if ((cptr[i] > epsilon) || (-cptr[i] > epsilon)) {
+					if (gradeIdx) *gradeIdx = g;
+					return mv((unsigned int)(1 << g), cptr);
 				}
 		}
-	} while ((--g)>= 0); // bug fix on 2003 11 16, used to be while ((--g) _>_ 0)
-//return -1; // modification on 20020828
+	} while ((--g)>= 0);
 
-	setUsage(0);
-	return 0;
+	if (gradeIdx) *gradeIdx = 0;
+	return mv(0.0f);
+}
+
+// todo: integrate into G2
+mv deltaProduct(const mv &X, const mv &Y, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
+	return highestGradePart(gp(X, Y), epsilon, gradeIdx);
+}
+
+inline mv randomVector() {
+	float c[3] =
+	{
+		(float)(rand() - RAND_MAX / 2),
+		(float)(rand() - RAND_MAX / 2),
+		(float)(rand() - RAND_MAX / 2)
+	};
+	return mv(GRADE_1, c);
+}
+
+/** 
+Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
+If grade < 0, then a random grade is picked
+
+Currently, rand() is used to generate the blade
+Todo: use Mersenne twister or something (license issues?)
 */
+mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
+	if (grade < 0) {
+		grade = rand() % 4;
+	}
+	if (grade == 0) {
+		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
+	}
+	else if (grade == 3) {
+		return mv(GRADE_3, size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
+	}
+	else {
+		mv result = randomVector();
+		for (int g = 1; g < grade; g++) {
+			result ^= randomVector();
+		}
+		result = size * norm_e(result);
+		return result;
+	}
 }
 
 /*
 Todo: 
--largest grade
--delta product
+V -largest grade
+V -delta product
+V -random blade
+-meet / join
+-test (see original testing code)
 */
 
 
@@ -275,45 +322,36 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	}
 
 	// determine grade of input
-	int ga = a.grade();
-	int gb = b.grade();
-	c3gai _ca, _cb;
-	if (ga < 0) { // if we are not handed homogeneous multivectors, take the grade parts with the largest norm
-		ga = a.largestGrade();
-		_ca.takeGrade(a, 1 << ga);
-	}
-	else _ca.copy(a);
-	if (gb < 0) {
-		gb = b.largestGrade();
-		_cb.takeGrade(b, 1 << gb);
-	}
-	else _cb.copy(b);
+	int ga, gb;
+	mv _ca = largestGradePart(a, &ga);
+	mv _cb = largestGradePart(b, &gb);
 
 	// normalize (approximatelly) and swap (optionally)
-	c3gai ca, cb;
+	mv ca, cb;
 	if (ga <= gb) {
-		ca.op(_ca, 1.0 / la);
-		cb.op(_cb, 1.0 / lb);
+		ca = op(_ca, 1.0f / la);
+		cb = op(_cb, 1.0f / lb);
 	}
 	else {
-		ca.op(_cb, 1.0 / lb);
-		cb.op(_ca, 1.0 / la);
+		ca = op(_cb, 1.0f / lb);
+		cb = op(_ca, 1.0f / la);
 		int tempg = ga;
 		ga = gb;
 		gb = tempg;
 	}
 
 	// compute delta product & 'normalize'
-	c3gai d,_d;
-	int gd = _d.deltaProduct(a, b); // internally uses epsilon of 10e-14  (can not be influenced right now)
+	mv d,_d;
+	int gd;
+	_d = deltaProduct(a, b, smallEpsilon, &gd);
 	mv::Float ld = _d.largestCoordinate();
-	d.op(_d, 1.0 / ld);
+	d = op(_d, 1.0f / ld);
 
 	// if delta product is scalar, we're done:
 	if (gd == 0) {
 		// a == b (up to scalar)
-		m.copy(ca);
-		j.copy(ca);
+		m = ca;
+		j  = ca;
 		// todo: largest coordinate positive?
 		return;
 	}
@@ -321,47 +359,50 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	// if grade of delta product is equal to ga + gb, we're done, too
 	if (gd == ga + gb) {
 		// a and b entirely disjoint
-		m.setScalar(1.0);
-		j.op(ca, cb);
+		m.set(1.0f);
+		j = op(ca, cb);
 		// todo: largest coordinate positive?
 		return;
 	}
 
 	// init join
-	j.copy(c3gai::I);
+	j = I3;
 	int Ej = 5 - ((ga + gb + gd) >> 1);
 
 	// check join excessity
 	if (Ej == 0) {
-		m.lcem(d, j);
+		m = lcont(d, j);
 		// todo: largest coordinate positive?
 		return;
 	}
 
 	// init meet 
-	m.setScalar(1.0);
+	m = 1.0f;
 	int Em = ((ga + gb - gd) >> 1);
 
 	// init s, the dual of the delta product:
-	c3gai s;
-	s.lcem(d, c3gai::Ii);
+	mv s = lcont(d, I3i);
 
 	// precompute inverse of ca
-	c3gai cai;
-	cai.versorInverseEM(ca);
+	mv cai = inverse(ca);
 
-	for (unsigned int i = 0; i < 5; i++) {
+	mv e[3] = {
+		mv(GRADE_1, 1.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 1.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 1.0f, 0.0f)
+	};
+
+	for (unsigned int i = 0; i < 3; i++) {
 		// compute next factor 'c'
-		c3gai c;
+		mv c;
 		// since we don't 'whittle down' s, this is (usually) useless:
 //		if (s.grade() == 1) {
 //			c.copy(s);
 //		}
 //		else 
 		{
-			c3gai tmpc;
-			tmpc.lcem(*c3gai::bv[i], s);
-			c.lcem(tmpc, s);
+			mv tmpc;
+			lcont(lcont(e[i], s), s);
 		}
 
 		// check if 'c' is OK to use:
@@ -369,32 +410,27 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 			continue;
 
 		// compute projection, rejection of 'c' wrt to 'ca'
-		c3gai cp, cr; // c projected, c rejected
-		c3gai tmpc;
-		tmpc.lcem(c, ca);
-		cp.lcem(tmpc, cai); // use correct inverse because otherwise cr != c - cp
-		cr.sub(c, cp);
+		mv cp, cr; // c projected, c rejected
+		mv tmpc = lcont(c, ca);
+		cp = lcont(tmpc, cai); // use correct inverse because otherwise cr != c - cp
+		cr = subtract(c, cp);
 
 		// if 'c' has enough of it in 'ca', then add to meet
 		if (cp.largestCoordinate() > largeEpsilon) {
-			c3gai tmpm;
-			tmpm.op(m, cp);
-			m.copy(tmpm);
+			m = op(m, cp);
 			Em--;	
 			if (Em == 0) {
-				j.op(d, m);
+				j = op(d, m);
 				// todo: largest coordinate positive?
 				return;
 			}
 		}
 
 		if (cr.largestCoordinate() > largeEpsilon) {
-			c3gai tmpj;
-			tmpj.lcem(cr, j);
-			j.copy(tmpj);
+			j = lcont(cr, j);
 			Ej--;	
 			if (Ej == 0) {
-				m.lcem(d, j);
+				m = lcont(d, j);
 				// todo: largest coordinate positive?
 				return;
 			}
@@ -403,10 +439,8 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		// optionally remove 'c' from 's' (do that?)
 	}
 
-	throw "Error!";
-
+	throw "Error while computing meet & join!";
 }
 
-#endif
 
 } /* end of namespace e3ga */

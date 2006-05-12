@@ -46,13 +46,13 @@ Todo / warning: not fully compatible with meet & join described in book.
 Todo!
 */
 void meetJoin(const e3ga::mv  &a, const e3ga::mv &b, e3ga::mv &m, mv &j, 
-			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4);
+			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4);
 
 /**
 Returns the meet of 'a' and 'b'
 */
 inline e3ga::mv meet(const e3ga::mv &a, const e3ga::mv &b, 
-			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4) {
+			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return m;
@@ -62,11 +62,16 @@ inline e3ga::mv meet(const e3ga::mv &a, const e3ga::mv &b,
 Returns the join of 'a' and 'b'
 */
 inline e3ga::mv join(const e3ga::mv &a, const e3ga::mv &b, 
-			  e3ga::mv::Float smallEpsilon = 1e-5, e3ga::mv::Float largeEpsilon = 1e-4) {
+			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return j;
 }
+
+mv largestGradePart(const mv &X, int *gradeIdx = NULL);
+mv highestGradePart(const mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
+mv deltaProduct(const mv &X, const mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
+
 
 } /* end of namespace e3ga */
 
