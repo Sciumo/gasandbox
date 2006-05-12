@@ -35,8 +35,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = chap3ex4$(EXEEXT)
-subdir = chap3/ex4
+bin_PROGRAMS = chap5ex2$(EXEEXT)
+subdir = chap5/ex2
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -48,10 +48,10 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_chap3ex4_OBJECTS = chap3ex4.$(OBJEXT)
-chap3ex4_OBJECTS = $(am_chap3ex4_OBJECTS)
+am_chap5ex2_OBJECTS = chap5ex2.$(OBJEXT)
+chap5ex2_OBJECTS = $(am_chap5ex2_OBJECTS)
 am__DEPENDENCIES_1 =
-chap3ex4_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+chap5ex2_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -61,8 +61,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(chap3ex4_SOURCES)
-DIST_SOURCES = $(chap3ex4_SOURCES)
+SOURCES = $(chap5ex2_SOURCES)
+DIST_SOURCES = $(chap5ex2_SOURCES)
 HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -156,10 +156,9 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap3ex4_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
-chap3ex4_SOURCES = chap3ex4.cpp
+chap5ex2_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+chap5ex2_SOURCES = chap5ex2.cpp
 noinst_HEADERS = 
-EXTRA_DIST = image.raw
 all: all-am
 
 .SUFFIXES:
@@ -173,9 +172,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap3/ex4/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap5/ex2/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  chap3/ex4/Makefile
+	  $(AUTOMAKE) --gnu  chap5/ex2/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -216,9 +215,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-chap3ex4$(EXEEXT): $(chap3ex4_OBJECTS) $(chap3ex4_DEPENDENCIES) 
-	@rm -f chap3ex4$(EXEEXT)
-	$(CXXLINK) $(chap3ex4_LDFLAGS) $(chap3ex4_OBJECTS) $(chap3ex4_LDADD) $(LIBS)
+chap5ex2$(EXEEXT): $(chap5ex2_OBJECTS) $(chap5ex2_DEPENDENCIES) 
+	@rm -f chap5ex2$(EXEEXT)
+	$(CXXLINK) $(chap5ex2_LDFLAGS) $(chap5ex2_OBJECTS) $(chap5ex2_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -226,7 +225,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap3ex4.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap5ex2.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

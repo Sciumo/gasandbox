@@ -159,6 +159,7 @@ AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
 chap3ex4_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
 chap3ex4_SOURCES = chap3ex4.cpp
 noinst_HEADERS = 
+EXTRA_DIST = image.raw
 all: all-am
 
 .SUFFIXES:
