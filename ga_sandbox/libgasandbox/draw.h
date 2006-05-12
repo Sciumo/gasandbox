@@ -10,7 +10,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
@@ -166,4 +167,5 @@ void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector
 
 } /* end of namespace mv_draw */
 
-#endif /* _DRAW_FUNCTIONS_H_ */
+#endif
+/* _DRAW_FUNCTIONS_H_ */

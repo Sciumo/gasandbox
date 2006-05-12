@@ -97,4 +97,5 @@ int pick(int x, int y,
 		 void (*drawFunc)(void),
 		 float *distance = NULL);
 
-#endif /* _GL_UTIL_H_ */
+#endif 
+/* _GL_UTIL_H_ */

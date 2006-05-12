@@ -10,7 +10,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
@@ -83,4 +84,5 @@ mv randomBlade(int grade = -1, float size = 1.0f);
 
 } /* end of namespace e3ga */
 
-#endif /* _E3GA_UTIL_H_ */
+#endif 
+/* _E3GA_UTIL_H_ */

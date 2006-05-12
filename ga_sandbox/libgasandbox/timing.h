@@ -23,5 +23,6 @@ double u_timeElapsed();
 }
 #endif
 
-#endif /* _U_TIME_H_ */
+#endif
+/* _U_TIME_H_ */
 

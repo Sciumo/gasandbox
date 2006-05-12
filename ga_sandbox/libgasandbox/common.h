@@ -26,4 +26,5 @@
 #define U_DEG2RAD( x ) ( (x) * (float)M_PI / (float)180.0)
 
 
-#endif /* _COMMON_H_ */
+#endif
+/* _COMMON_H_ */

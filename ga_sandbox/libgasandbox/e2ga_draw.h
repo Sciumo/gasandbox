@@ -10,7 +10,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
@@ -39,4 +40,5 @@ void draw(const e2ga::mv &X, int method = 0,Palet *o = NULL);
 
 } /* end of namespace mv_draw */
 
-#endif /* _E2GA_DRAW_H_ */
+#endif 
+/* _E2GA_DRAW_H_ */
