@@ -51,13 +51,13 @@ bool g_initModelRequired = true;
 const char *g_modelName = "dodecahedron";
 
 // vertex positions: 3d vectors
-std::vector<vector> g_vertices3D;
+std::vector<e3ga::vector> g_vertices3D;
 // indices into the g_vertices3D vector:
 std::vector<std::vector<int> > g_polygons3D;
 // normal of each polygon:
-std::vector<vector> g_normals3D;
+std::vector<e3ga::vector> g_normals3D;
 // bivector attitude of each polygon:
-std::vector<bivector> g_attitude3D;
+std::vector<e3ga::bivector> g_attitude3D;
 
 // draw the 'bad' normals? (red)
 bool g_drawBadNormal = true;

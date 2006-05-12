@@ -23,8 +23,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <vector>
-
 #include <libgasandbox/e3ga.h>
 #include <libgasandbox/e3ga_draw.h>
 #include <libgasandbox/e3ga_util.h>

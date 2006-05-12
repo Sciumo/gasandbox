@@ -51,7 +51,7 @@ bool g_initModelRequired = true;
 const char *g_modelName = "sphere";
 
 // vertex positions: 2d vectors
-std::vector<vector> g_vertices2D;
+std::vector<e2ga::vector> g_vertices2D;
 // indices into the g_vertices2D vector:
 std::vector<std::vector<int> > g_polygons2D;
 

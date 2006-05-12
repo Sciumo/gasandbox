@@ -40,6 +40,7 @@ usage : mv gp(mv x, mv y) : __e2_ct__ , scalar : 1;
 usage : mv negate(mv x) : vector : 1;
 usage : mv negate(mv x) : __e3_ct__ : 1;
 usage : mv op(mv x, mv y) : bivector , vector : 1;
+usage : mv op(mv x, mv y) : vector , bivector : 1;
 usage : mv gradeInvolution(mv x) : bivector : 1;
 usage : mv apply_om(om x, mv y) : om , vector : 1;
 usage : mv gp(mv x, mv y) : __syn_smv___e1e2 , __syn_smv___e1e2 : 1;

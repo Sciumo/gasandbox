@@ -1,0 +1,9 @@
+bin_PROGRAMS = chap5ex2
+
+AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
+
+chap5ex2_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+
+chap5ex2_SOURCES = chap5ex2.cpp
+
+noinst_HEADERS = 
