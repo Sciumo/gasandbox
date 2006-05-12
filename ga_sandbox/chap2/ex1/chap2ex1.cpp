@@ -58,7 +58,7 @@ void display() {
 	
 	// we store the label positions & text here:
 	std::vector<std::string> labelString;
-	std::vector<vector> labelPos;
+	std::vector<e2ga::vector> labelPos;
 	
 	
 	// how many bivectors? what spacing between them?:

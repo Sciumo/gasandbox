@@ -102,7 +102,7 @@ inline int numberOfTrailingZeroBits16(int i) {
 
 /** returns in the index [-1 15] of the highest bit that is on in 'i' (-1 is returned if no bit is on at all (i == 0)) */
 inline int highestOneBit16(int i) {
-	return 31 - numberOfLeadingZeroBits16(i);
+	return 15 - numberOfLeadingZeroBits16(i);
 }
 
 /** returns in the index [0 16] of the lowest bit that is on in 'i' (16 is returned if no bit is on at all (i == 0))*/

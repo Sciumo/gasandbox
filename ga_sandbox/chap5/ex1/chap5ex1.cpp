@@ -34,7 +34,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 4, Example 1: Projection";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 5, Example 1: Meet & Join";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -58,12 +58,32 @@ int g_dragObject = -1;
 
 const int g_nbVectors = 3;
 
-// the three vectors:
-vector g_vectors[g_nbVectors] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	_vector(e1 + e3)
-};
+// the multivectors (initially set to bivectors)
+mv g_M1 = e1 ^ e2;
+mv g_M2 = unit_e((e1 + e3) ^ e2);
+
+// what to draw:
+#define DRAW_JOIN 1
+#define DRAW_MEET 2
+int g_draw = DRAW_MEET;
+
+// returns 'c', rounded to multiples of 'M'
+inline float round(float c, float M) {
+	c = c / M;
+	return (float)((c < 0) ? (int)(c - 0.5f) : (int)(c + 0.5f)) * M;
+}
+
+// rounds coordinates of 'X' to multiples of 'M'
+mv round(const mv &X, float M) {
+	// ugly hack, making use of internals of Gaigen 2:
+	float R[8];
+	int s = mv_size[X.gu()];
+	for (int i = 0; i < s; i++) {
+		R[i] = round(X.m_c[i], M);
+	}
+	return mv(X.gu(), R);
+}
+
 
 void display() {
 	// setup projection & transform for the vectors:
@@ -81,7 +101,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	glTranslatef(0.0f, 0.0f, -6.0f);
 
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -101,48 +121,46 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// compute bivector (*4 to make it a bit larger):
-	bivector B = _bivector(4.0f * g_vectors[0] ^ g_vectors[1]);
+	mv M1 = g_M1;
+	mv M2 = g_M2;
 
-	// project g_vectors[2] onto the bivector
-	// The symbol '<<' is the left contraction
-	vector P = _vector((g_vectors[2] << inverse(B)) << B);
+	// 'Round' the coordinates, to get a step-wise motion of the bivectors:
+	// This simplifies manipulating the bivectors such that they are equal.
+	M1 = unit_e(round(M1, 0.2f));
+	M2 = unit_e(round(M2, 0.2f));
 
-	// draw vector 1 ^ vector 2
-	if (GLpick::g_pickActive) glLoadName(-1);
-	glColor3fm(0.5f, 0.5f, 0.5f);
 	g_drawState.pushDrawModeOff(OD_ORIENTATION);
-	draw(B);
-	g_drawState.popDrawMode();
 
-	// draw vector 1
-	if (GLpick::g_pickActive) glLoadName(1);
+	// red: multivector 1
 	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_vectors[0]);
+	if (GLpick::g_pickActive) glLoadName(1);
+	draw(M1);
 
-	// draw vector 2
-	if (GLpick::g_pickActive) glLoadName(2);
+	// green: multivector 2
 	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_vectors[1]);
+	if (GLpick::g_pickActive) glLoadName(2);
+	draw(M2);
 
-	// draw vector 3
-	if (GLpick::g_pickActive) glLoadName(3);
-	glColor3fm(0.0f, 0.0f, 1.0f);
-	draw(g_vectors[2]);
+	// translate a bit (to prevent depth buffer artifacts)
+	glTranslatef(0.0f, 0.0f, 0.01f);
 
-	// draw projection of vector 3 onto v
-	if (GLpick::g_pickActive) glLoadName(-1);
-	glColor3fm(0.5f, 0.5f, 0.5f);
-	draw(P);
+	// draw the meet / join, in blue
+	try {
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	if (!GLpick::g_pickActive) {
+		glColor3fm(0.0f, 0.0f, 1.0f);
+		if (g_draw == DRAW_MEET)
+			draw(1.2f * unit_e(meet(M1, M2)));
+		else if (g_draw == DRAW_JOIN)
+			draw(1.2f * unit_e(join(M1, M2)));
+		g_drawState.popDrawMode();
+	}
+	} catch(std::string &str) {
+		printf("%s!\n", str.c_str());
+		meet(M1, M2);
+	}
 
-	glDisable(GL_LIGHTING);
-	glEnable(GL_LINE_STIPPLE);
-	glLineStipple(1, 0x0F0F);
-	glBegin(GL_LINES);
-	glVertex3fv(g_vectors[2].getC(vector_e1_e2_e3));
-	glVertex3fv(P.getC(vector_e1_e2_e3));
-	glEnd();
-	glDisable(GL_LINE_STIPPLE);
 
 
 	glPopMatrix();
@@ -158,7 +176,8 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
+		renderBitmapString(20, 40, font, "-use left mouse button to rotate the red and green multivectors and to orbit scene");
+		renderBitmapString(20, 20, font, "-use other mouse buttons to access popup menu");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -218,24 +237,104 @@ void MouseMotion(int x, int y) {
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);		
 	}
-	else if ((g_dragObject >= 1) && (g_dragObject <= 3)) {
-		// add motion to vector:
-		vector T = vectorAtDepth(g_dragDistance, motion);
-		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-		g_vectors[g_dragObject-1] += T;
+	else if ((g_dragObject >= 1) && (g_dragObject <= 2)) {
+		//rotor R = _rotor(inverse(g_modelRotor) * e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
+		rotor R = _rotor(inverse(g_modelRotor) * e3ga::exp(0.00005f * (motion ^ mousePos)) * g_modelRotor);
+		if (g_dragObject == 1) {
+			g_M1 = largestGradePart(R * g_M1 * inverse(R));
+		}
+		else if (g_dragObject == 2) {
+			g_M2 = largestGradePart(R * g_M2 * inverse(R));
+		}
 	}
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
 		
-		// redraw viewport
-		glutPostRedisplay();	
+	// redraw viewport
+	glutPostRedisplay();	
 
 }
 
 void Keyboard(unsigned char key, int x, int y) {
 
 }
+
+
+void menuCallback(int value) {
+	if ((value >= 1) && (value <= 3)) {
+		g_M1 = unit_e(randomBlade(value));
+	}
+	else if ((value >= 1 + 4) && (value <= 3 + 4)) {
+		g_M2 = unit_e(randomBlade(value-4));
+	}
+	else if (value == 10) {
+		g_draw = DRAW_MEET;
+	}
+	else if (value == 11) {
+		g_draw = DRAW_JOIN;
+	}
+
+	glutPostRedisplay();
+}
+
+void testMeetJoin() {
+	/*
+	for (int i = 0; i < 100000; i++) {
+		mv X = randomBlade();
+
+		int gradeIdxY, gradeIdxZ;
+		mv Y = largestGradePart(X, &gradeIdxY);
+		mv Z = highestGradePart(X, 1e-7, &gradeIdxZ);
+
+//		printf("\n%s\n", X.c_str());
+		printf("%d %d\n", gradeIdxY, gradeIdxZ);
+		printf("%s\n", (X - Y).c_str_e());
+		printf("%s\n", (X - Z).c_str_e());
+
+	}*/
+
+/*
+	for (int i = 0; i < 100000; i++) {
+		mv X = randomBlade();
+		mv Y = randomBlade();
+		int gradeIdxX, gradeIdxY, gradeIdxZ;
+		largestGradePart(X, &gradeIdxX);
+		largestGradePart(Y, &gradeIdxY);
+		mv Z = deltaProduct(X, Y, 1e-7f, &gradeIdxZ);
+		printf("%d %d %d\n", gradeIdxX, gradeIdxY, gradeIdxZ);
+	}*/
+/*
+	for (int i = 0; i < 1000000; i++) {
+		mv X = randomBlade();
+		mv Y = randomBlade();
+		X = unit_e(X);
+		Y = unit_e(Y);
+		mv M, J;
+		try {
+			meetJoin(X, Y, M, J);
+		} catch(std::string &str) {
+			printf("Error with the following:\n");
+			printf("%s\n", X.c_str_e());
+			printf("%s\n", Y.c_str_e());
+			//meetJoin(X, Y, M, J);
+		}
+		M = unit_e(M);
+		J = unit_e(J);
+		if (_Float(norm_e2(X << J)) < 0.5f)
+			printf("Ah 1!\n");
+		if (_Float(norm_e2(Y << J)) < 0.5f)
+			printf("Ah 2!\n");
+		
+		if (_Float(norm_e2(M << X)) < 0.5f)
+			printf("Ah 3!\n");
+		if (_Float(norm_e2(M << Y)) < 0.5f)
+			printf("Ah 4!\n");
+	}
+*/
+
+}
+
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
@@ -253,6 +352,19 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+
+	g_GLUTmenu = glutCreateMenu(menuCallback);
+	glutAddMenuEntry("Red = Vector", 0 + 1);
+	glutAddMenuEntry("Red = Bivector", 0 + 2);
+//	glutAddMenuEntry("Red = Trivector", 0 + 3);
+	glutAddMenuEntry("Green = Vector", 4 + 1);
+	glutAddMenuEntry("Green = Bivector", 4 + 2);
+//	glutAddMenuEntry("Green = Trivector", 4 + 3);
+	glutAddMenuEntry("Draw Meet", 10);
+	glutAddMenuEntry("Draw Join", 11);
+	glutAttachMenu(GLUT_MIDDLE_BUTTON);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
+
 
 	glutMainLoop();
 

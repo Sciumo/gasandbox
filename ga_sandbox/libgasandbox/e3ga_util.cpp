@@ -279,9 +279,10 @@ Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something (license issues?)
 */
 mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
-	if (grade < 0) {
+	if (grade < 0) 
 		grade = rand() % 4;
-	}
+	
+
 	if (grade == 0) {
 		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
 	}
@@ -293,7 +294,7 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 		for (int g = 1; g < grade; g++) {
 			result ^= randomVector();
 		}
-		result = size * norm_e(result);
+		result = (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX) * size * unit_e(result); // todo: random factor
 		return result;
 	}
 }
@@ -367,7 +368,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 	// init join
 	j = I3;
-	int Ej = 5 - ((ga + gb + gd) >> 1);
+	int Ej = 3 - ((ga + gb + gd) >> 1);
 
 	// check join excessity
 	if (Ej == 0) {
@@ -389,21 +390,12 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	mv e[3] = {
 		mv(GRADE_1, 1.0f, 0.0f, 0.0f),
 		mv(GRADE_1, 0.0f, 1.0f, 0.0f),
-		mv(GRADE_1, 0.0f, 1.0f, 0.0f)
+		mv(GRADE_1, 0.0f, 0.0f, 1.0f)
 	};
 
 	for (unsigned int i = 0; i < 3; i++) {
 		// compute next factor 'c'
-		mv c;
-		// since we don't 'whittle down' s, this is (usually) useless:
-//		if (s.grade() == 1) {
-//			c.copy(s);
-//		}
-//		else 
-		{
-			mv tmpc;
-			lcont(lcont(e[i], s), s);
-		}
+		mv c = lcont(lcont(e[i], s), s);		
 
 		// check if 'c' is OK to use:
 		if (c.largestCoordinate() < largeEpsilon)
@@ -439,7 +431,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		// optionally remove 'c' from 's' (do that?)
 	}
 
-	throw "Error while computing meet & join!";
+	throw std::string("Error while computing meet & join!");
 }
 
 

@@ -220,8 +220,6 @@ void drawVector(const vector &tail, const vector &dir, mv::Float scale) {
 	}
 	glEnd();
 
-	glDisable(GL_CULL_FACE);
-
 	glPopMatrix();
 
 

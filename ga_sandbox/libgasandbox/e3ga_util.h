@@ -72,6 +72,14 @@ mv largestGradePart(const mv &X, int *gradeIdx = NULL);
 mv highestGradePart(const mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
 mv deltaProduct(const mv &X, const mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
 
+/** 
+Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
+If grade < 0, then a random grade is picked
+
+Currently, rand() is used to generate the blade
+Todo: use Mersenne twister or something similar (license issues?)
+*/
+mv randomBlade(int grade = -1, float size = 1.0f);
 
 } /* end of namespace e3ga */
 
