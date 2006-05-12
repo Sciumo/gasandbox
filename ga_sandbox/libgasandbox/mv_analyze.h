@@ -190,5 +190,4 @@ protected:
 
 } // end of namespace c3ga
 
-#endif 
-/* _C3GA_ANALYZE_H_ */
+#endif /* _C3GA_ANALYZE_H_ */

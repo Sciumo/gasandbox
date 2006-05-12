@@ -159,12 +159,12 @@ void DrawState::drawSphere(e3ga::mv::Float normal) {
 	gsDraw(m_sphere, normal);
 }
 
-void drawVector(const vector &tail, const vector &dir, mv::Float scale) {
+void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float scale) {
 	GLboolean l;
 	const mv::Float rotStep = 2.0f * (mv::Float)M_PI / 32.0f;
 	mv::Float z;
 	rotor rt, rti;
-	vector n;
+	e3ga::vector n;
 
 	if (scale == 0.0f) return;
 
@@ -244,7 +244,7 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 	const mv::Float rotStep = 2.0f * (mv::Float)M_PI / 64.0f;
 	mv::Float x, y;
 	rotor rt;
-	vector null;
+	e3ga::vector null;
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -264,8 +264,8 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 		rotorGLMult(rt);
 	}
 	else {
-		const vector &o1(ortho1);
-		const vector &o2(ortho2);
+		const e3ga::vector &o1(ortho1);
+		const e3ga::vector &o2(ortho2);
 		// scale is based on _circle_, re-scale for square:
 		double size = scale * scale * M_PI / _Float(norm_e(o1 ^ o2));
 		double _scale = sqrt(size);

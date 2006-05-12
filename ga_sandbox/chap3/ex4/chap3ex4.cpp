@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -52,14 +52,14 @@ int g_viewportHeight = 600;
 int g_GLUTmenu;
 
 // the color 'frame'
-vector g_IFcolors[3] = {
+e3ga::vector g_IFcolors[3] = {
 	_vector(e3), // 'red'
 	_vector(e1), // 'green'
 	_vector(e2) // 'blue'
 };
 
 // the reciprocal color 'frame'
-vector g_RFcolors[3] = {
+e3ga::vector g_RFcolors[3] = {
 	_vector(e2), // reciprocal of 'red'
 	_vector(e3), // reciprocal of 'green'
 	_vector(e1) // reciprocal of 'blue'
@@ -76,8 +76,8 @@ void colorSpaceConvert(
 					   const unsigned char *source, 
 					   unsigned char *dest,
 					   unsigned int width, unsigned int height,
-					   const vector *IFcolors,
-					   vector *RFcolors) {
+					   const e3ga::vector *IFcolors,
+					   e3ga::vector *RFcolors) {
 	// compute reciprocal frame
 	try {
 		reciprocalFrame(IFcolors, RFcolors, 3);
@@ -90,7 +90,7 @@ void colorSpaceConvert(
 
 	for (unsigned int i = 0; i < (width * height) * 3; i += 3) {
 		// convert RGB pixel to vector:
-		vector c(vector_e1_e2_e3, (float)source[i + 0], (float)source[i + 1], (float)source[i + 2]);
+		e3ga::vector c(vector_e1_e2_e3, (float)source[i + 0], (float)source[i + 1], (float)source[i + 2]);
 
 		// compute colors in in destination image:
 		float red = _Float(c << g_RFcolors[0]);
@@ -228,7 +228,7 @@ void sampleColorAt(int x, int y) {
 	unsigned char rgb[3];
 	glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, rgb);
 //	printf("Color: %d %d %d\n", rgb[0], rgb[1], rgb[2]);
-	vector newColor = vector(vector_e1_e2_e3, (float)rgb[0] / 255.0f, (float)rgb[1] / 255.0f, (float)rgb[2] / 255.0f);
+	e3ga::vector newColor = e3ga::vector(vector_e1_e2_e3, (float)rgb[0] / 255.0f, (float)rgb[1] / 255.0f, (float)rgb[2] / 255.0f);
 
 	// set new value
 	if (_Float(norm_e2(g_IFcolors[g_sampleColorIdx] - newColor))) {

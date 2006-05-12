@@ -84,5 +84,4 @@ mv randomBlade(int grade = -1, float size = 1.0f);
 
 } /* end of namespace e3ga */
 
-#endif 
-/* _E3GA_UTIL_H_ */
+#endif /* _E3GA_UTIL_H_ */

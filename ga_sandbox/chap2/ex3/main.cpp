@@ -35,7 +35,7 @@ What do Code Monkey think?
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -112,13 +112,13 @@ float g_dy=0.;
 float g_dz=1.;
 
 // what function are we using currently 
-vector & (*g_evalFunc)(const vector &p, vector &v) = (vector & (*)(const vector &p, vector &v))eight2;
+e3ga::vector & (*g_evalFunc)(const e3ga::vector &p, e3ga::vector &v) = (e3ga::vector & (*)(const e3ga::vector &p, e3ga::vector &v))eight2;
 
 // the fields (names + evaluation functions)
 // The dull ones are commented out
 struct {
 		const char *fieldName;
-		vector & (*func)(const vector &p, vector &v);
+		e3ga::vector & (*func)(const e3ga::vector &p, e3ga::vector &v);
 } g_fieldFunctions[] = {
 //{"constant", const3},
 //{"vortex", vortex},

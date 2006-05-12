@@ -167,5 +167,4 @@ void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector
 
 } /* end of namespace mv_draw */
 
-#endif
-/* _DRAW_FUNCTIONS_H_ */
+#endif /* _DRAW_FUNCTIONS_H_ */

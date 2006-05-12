@@ -52,5 +52,4 @@ int gsCompute(geosphere **sPtr, int depth);
 int gsFree(geosphere **sPtr);
 void gsDraw(geosphere * sphere, e3ga::mv::Float normal = 0.0);
 
-#endif
-// _GEOSPHERE_H_
+#endif // _GEOSPHERE_H_

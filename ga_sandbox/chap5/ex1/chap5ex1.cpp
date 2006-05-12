@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -192,10 +192,10 @@ void reshape(GLint width, GLint height) {
 }
 
 
-vector vectorAtDepth(double depth, const vector &v2d) {
+e3ga::vector vectorAtDepth(double depth, const e3ga::vector &v2d) {
 	if ((GLpick::g_frustumWidth <= 0) || (GLpick::g_frustumHeight <= 0) ||
 		(GLpick::g_frustumNear <= 0) || (GLpick::g_frustumFar <= 0)) {
-		return vector();
+		return e3ga::vector();
 	}
 
 	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 + 

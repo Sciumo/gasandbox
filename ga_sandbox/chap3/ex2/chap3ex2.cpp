@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -56,14 +56,14 @@ float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
 // the three vectors:
-vector g_vectors[3] = {
+e3ga::vector g_vectors[3] = {
 	_vector(e1 - e2 - 0.3 * e3),
 	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	vector()
+	e3ga::vector()
 };
 
 /// returns a X b
-vector crossProduct(const vector &a, const vector &b) {
+e3ga::vector crossProduct(const e3ga::vector &a, const e3ga::vector &b) {
 	// exercise: compute the cross product, return it:
 	return _vector(0);	
 //	return _vector(dual(a ^ b));
@@ -161,10 +161,10 @@ void reshape(GLint width, GLint height) {
 }
 
 
-vector vectorAtDepth(double depth, const vector &v2d) {
+e3ga::vector vectorAtDepth(double depth, const e3ga::vector &v2d) {
 	if ((GLpick::g_frustumWidth <= 0) || (GLpick::g_frustumHeight <= 0) ||
 		(GLpick::g_frustumNear <= 0) || (GLpick::g_frustumFar <= 0)) {
-		return vector();
+		return e3ga::vector();
 	}
 
 	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 + 
@@ -205,7 +205,7 @@ void MouseMotion(int x, int y) {
 	}
 	else if ((g_dragObject >= 1) && (g_dragObject <= 2)) {
 		// add motion to vector:
-		vector T = vectorAtDepth(g_dragDistance, motion);
+		e3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
 		g_vectors[g_dragObject-1] += T;
 	}

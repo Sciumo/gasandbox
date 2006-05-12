@@ -26,5 +26,4 @@ namespace e2ga {
 
 } /* end of namespace e2ga */
 
-#endif 
-/* _E2GA_UTIL_H_ */
+#endif /* _E2GA_UTIL_H_ */

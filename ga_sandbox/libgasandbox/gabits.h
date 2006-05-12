@@ -113,5 +113,4 @@ inline int lowestOneBit16(int i) {
 
 
 
-#endif 
-/* _GA_BITS_H_ */
+#endif /* _GA_BITS_H_ */

@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -101,9 +101,9 @@ void display() {
 	// render model
 	for (unsigned int i = 0; i < g_polygons2D.size(); i++) {
 		// get 2D vertices of the polygon:
-		const vector &v1 = g_vertices2D[g_polygons2D[i][0]];
-		const vector &v2 = g_vertices2D[g_polygons2D[i][1]];
-		const vector &v3 = g_vertices2D[g_polygons2D[i][2]];
+		const e2ga::vector &v1 = g_vertices2D[g_polygons2D[i][0]];
+		const e2ga::vector &v2 = g_vertices2D[g_polygons2D[i][1]];
+		const e2ga::vector &v3 = g_vertices2D[g_polygons2D[i][2]];
 		
 		// Exercise: 
 		// Insert code to remove back-facing polygons here.

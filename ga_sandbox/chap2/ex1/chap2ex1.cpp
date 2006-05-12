@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -74,7 +74,7 @@ void display() {
 	
 	int posX = 0;
 	
-	vector v1, v2, v1_plus_v2;
+	e2ga::vector v1, v2, v1_plus_v2;
 	bivector B;
 
 	double step = 2 * M_PI / (nbBivectorX * nbBivectorY);
@@ -117,7 +117,7 @@ void display() {
 			labelString.push_back(B.toString());
 			GLfloat pos[2];
 			viewportCoordinates(e3ga::_vector(0.35f * entryHeight * e3ga::e2).getC(e3ga::vector_e1_e2_e3), pos);
-			labelPos.push_back(vector(vector_e1_e2, pos));
+			labelPos.push_back(e2ga::vector(vector_e1_e2, pos));
 		}
 		
 		// translate to next entry:

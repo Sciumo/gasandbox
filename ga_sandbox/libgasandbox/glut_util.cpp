@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif 
 
 #include <GL/gl.h>
 #include <GL/glut.h>

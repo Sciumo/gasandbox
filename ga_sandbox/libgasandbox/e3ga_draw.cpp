@@ -38,7 +38,7 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 		switch (A.bladeSubclass()) {
 			case mvAnalysis::VECTOR:
 				{
-					drawVector(vector(), A.m_vc[0], A.m_sc[0]);
+					drawVector(e3ga::vector(), A.m_vc[0], A.m_sc[0]);
 				}
 				break;
 			case mvAnalysis::BIVECTOR:
@@ -48,12 +48,12 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 						? (e3ga::mv::Float)sqrt(fabs(A.m_sc[0]) / M_PI) 
 						: 1.0f;
 
-					drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
+					drawBivector(e3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
 				}
 				break;
 			case mvAnalysis::TRIVECTOR:
 				{
-					drawTriVector(vector(), A.m_sc[0],  A.m_vc, method, o);
+					drawTriVector(e3ga::vector(), A.m_sc[0],  A.m_vc, method, o);
 				}
 				break;
 		}
@@ -67,13 +67,13 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 				// draw plane of rotation
 				glPolygonMode(GL_FRONT_AND_BACK, (g_drawState.getDrawMode() & OD_WIREFRAME) ? GL_LINE : GL_FILL);
 				g_drawState.pushDrawModeOff(OD_ORIENTATION);
-				drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], DRAW_BV_CIRCLE, o);
+				drawBivector(e3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], DRAW_BV_CIRCLE, o);
 				g_drawState.popDrawMode();
 
 				// draw 'angle of rotation'
 				if (o) o->setOlColor();
 				else glColor3f(0.0, 0.0, 0.0);
-				vector v = A.m_vc[0]; // vector in rotation plane
+				e3ga::vector v = A.m_vc[0]; // vector in rotation plane
 				
 				bivector b = _bivector(-dual(A.m_vc[2])); // rotation plane 
 				v = _vector(unit_e(v) * (mv::Float)(0.8f * scale));

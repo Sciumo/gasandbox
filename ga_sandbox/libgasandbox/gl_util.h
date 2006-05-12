@@ -19,7 +19,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif 
 
 #include <GL/gl.h>
 
@@ -97,5 +97,4 @@ int pick(int x, int y,
 		 void (*drawFunc)(void),
 		 float *distance = NULL);
 
-#endif 
-/* _GL_UTIL_H_ */
+#endif /* _GL_UTIL_H_ */

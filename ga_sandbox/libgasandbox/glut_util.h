@@ -49,6 +49,5 @@ inline float getBitmapStringWidth(void *font, const char *string) {
 	return getSpacedBitmapStringWidth(0.0f, font, string);
 }
 
-#endif
-/* _GLUT_UTIL_H_ */
+#endif /* _GLUT_UTIL_H_ */
  

@@ -16,7 +16,7 @@
 
 #ifdef WIN32
 #include <windows.h>
-#endif WIN32
+#endif
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -143,11 +143,11 @@ void display() {
 	// render model
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 		// set the normal of the polygon (required for correct lighting)
-		vector normal = _vector(unit_e(dual(apply_om(M, g_attitude3D[i]))));
+		e3ga::vector normal = _vector(unit_e(dual(apply_om(M, g_attitude3D[i]))));
 		glNormal3fv(normal.getC(vector_e1_e2_e3));
 
 		// the approx. center of the polygon
-		vector center;
+		e3ga::vector center;
 
 		// draw polygon & compute center of polygon
 		glColor3fm(1.0, 1.0, 1.0);
@@ -155,7 +155,7 @@ void display() {
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
 			// get vertex, apply transform:
-			vector v = g_vertices3D[g_polygons3D[i][j]];
+			e3ga::vector v = g_vertices3D[g_polygons3D[i][j]];
 			v = _vector(apply_om(M, v));
 
 			center += v; // also compute center
@@ -172,15 +172,15 @@ void display() {
 		glDisable(GL_LIGHTING);
 
 		// compute the normals
-		vector badNormal, goodNormal;
+		e3ga::vector badNormal, goodNormal;
 		
 		badNormal = unit_e(apply_om(M, g_normals3D[i]));
 		goodNormal = unit_e(dual(apply_om(M, g_attitude3D[i])));
 
 
 		// get center of polygon + bad / good normal
-		vector centerPlusBadNormal = _vector(center + 0.4f * badNormal);
-		vector centerPlusGoodNormal = _vector(center + 0.4f * goodNormal);
+		e3ga::vector centerPlusBadNormal = _vector(center + 0.4f * badNormal);
+		e3ga::vector centerPlusGoodNormal = _vector(center + 0.4f * goodNormal);
 
 		// draw a little 'spike' that signifies the normal
 		if (g_drawGoodNormal) {
@@ -242,8 +242,8 @@ void display() {
 			left++;
 			glColor3f(0.2f, 0.2f, 0.8f);
 			glVertex2i(left, baseY - i * height + 2);
-			glVertex2i(left + g_scale[i] * (g_viewportWidth-1-left) / g_maxScale, baseY - i * height + 2);
-			glVertex2i(left + g_scale[i] * (g_viewportWidth-1-left) / g_maxScale, baseY - i * height + 2 + height - 4);
+			glVertex2i(left + (int)(g_scale[i] * (g_viewportWidth-1-left) / g_maxScale), baseY - i * height + 2);
+			glVertex2i(left + (int)(g_scale[i] * (g_viewportWidth-1-left) / g_maxScale), baseY - i * height + 2 + height - 4);
 			glVertex2i(left, baseY - i * height + 2 + height - 4);
 		}
 		glEnd();
@@ -491,7 +491,7 @@ void getGLUTmodel3D(const std::string &modelName) {
 			x -= (mv::Float)g_viewportWidth / 2;
 			y -= (mv::Float)g_viewportHeight / 2;
 			z -= (mv::Float)g_viewportWidth / 2;
-			g_vertices3D.push_back(vector(vector_e1_e2_e3, x, y, z));
+			g_vertices3D.push_back(e3ga::vector(vector_e1_e2_e3, x, y, z));
 			idx += 2;
 		}
 
@@ -503,9 +503,9 @@ void getGLUTmodel3D(const std::string &modelName) {
 	g_normals3D.resize(g_polygons3D.size());
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 		// get 3D vertices of the polygon:
-		const vector &v1 = g_vertices3D[g_polygons3D[i][0]];
-		const vector &v2 = g_vertices3D[g_polygons3D[i][1]];
-		const vector &v3 = g_vertices3D[g_polygons3D[i][2]];
+		const e3ga::vector &v1 = g_vertices3D[g_polygons3D[i][0]];
+		const e3ga::vector &v2 = g_vertices3D[g_polygons3D[i][1]];
+		const e3ga::vector &v3 = g_vertices3D[g_polygons3D[i][2]];
 
 		// compute bivector attitude & normalize if non-null
 		g_attitude3D[i] = (v2 - v1) ^ (v3 - v1);

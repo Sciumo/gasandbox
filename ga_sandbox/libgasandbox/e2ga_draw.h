@@ -40,5 +40,4 @@ void draw(const e2ga::mv &X, int method = 0,Palet *o = NULL);
 
 } /* end of namespace mv_draw */
 
-#endif 
-/* _E2GA_DRAW_H_ */
+#endif /* _E2GA_DRAW_H_ */

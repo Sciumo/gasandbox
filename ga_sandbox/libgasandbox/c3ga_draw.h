@@ -41,8 +41,7 @@ normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator = 0);
 }
 
 
-#endif 
-/* _C3GA_DRAW_H_ */
+#endif /* _C3GA_DRAW_H_ */
 
 
 
