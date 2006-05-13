@@ -34,7 +34,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 2: Implementing the Cross Product";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 6, Example 3: Fractals";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -55,23 +55,34 @@ e3ga::rotor g_modelRotor(_rotor(1.0f));
 float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
-// the three vectors:
+
+// the three non-orthonormal vectors:
 e3ga::vector g_vectors[3] = {
 	_vector(e1 - e2 - 0.3 * e3),
 	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	e3ga::vector()
+	_vector(e1 + e3)
 };
 
-/// returns a x b
-e3ga::vector crossProduct(const e3ga::vector &a, const e3ga::vector &b) {
-	// exercise: compute the cross product, return it:
-//	return _vector(0);	
-	return _vector(dual(a ^ b));
+// the three orthonormal vectors:
+e3ga::vector g_orthoVectors[3];
+
+void computeOrthoVectors(const e3ga::vector nonOrtho[3], e3ga::vector ortho[3]) {
+	// compute ortho vector 1:
+	// unit_e() returns a unit multivector (Euclidean metric)
+	ortho[0] = unit_e(nonOrtho[0]);
+
+	// compute ortho vector 2:
+	// << is the operator used for the left contraction
+	ortho[1] = unit_e(ortho[0] << (ortho[0] ^ nonOrtho[1]));
+
+	// compute ortho vector 3:
+	ortho[2] = unit_e((ortho[0] ^ ortho[1]) <<
+		(ortho[0] ^ ortho[1] ^ nonOrtho[2]));
 }
 
 void display() {
-	// compute the 3rd vector as g_vectors[0] X g_vectors[1]
-	g_vectors[2] = crossProduct(g_vectors[0], g_vectors[1]);
+	// update the orthonormal vectors
+	computeOrthoVectors(g_vectors, g_orthoVectors);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -95,19 +106,20 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
 
 	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	const float horDistance = 2.5f;
+
+	glTranslatef(-horDistance, 0.0f, 0.0f);
 
 	glPushMatrix();
 	rotorGLMult(g_modelRotor);
-
-	glLineWidth(2.0);
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
@@ -119,16 +131,35 @@ void display() {
 	glColor3fm(0.0f, 1.0f, 0.0f);
 	draw(g_vectors[1]);
 
-	// draw (vector 1) ^ (vector 2) 
-	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
-	glColor3fm(1.0f, 1.0f, 1.0f);
-	draw(g_vectors[0] ^ g_vectors[1]);
-
-
 	// draw vector 3
 	if (GLpick::g_pickActive) glLoadName(3);
 	glColor3fm(0.0f, 0.0f, 1.0f);
 	draw(g_vectors[2]);
+
+	glPopMatrix();
+
+
+	if (!GLpick::g_pickActive) {
+		glTranslatef(2.0f * horDistance, 0.0f, 0.0f);
+
+		glPushMatrix();
+		rotorGLMult(g_modelRotor);
+
+		// draw ortho vector 1
+		glColor3fm(1.0f, 0.0f, 0.0f);
+		draw(g_orthoVectors[0]);
+
+		// draw ortho vector 2
+		glColor3fm(0.0f, 1.0f, 0.0f);
+		draw(g_orthoVectors[1]);
+
+		// draw ortho vector 3
+		glColor3fm(0.0f, 0.0f, 1.0f);
+		draw(g_orthoVectors[2]);
+
+		glPopMatrix();
+	}
+
 
 	glPopMatrix();
 
@@ -143,8 +174,9 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
-		renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");
+		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHONORMAL");
+		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
+		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHONORMAL");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -157,7 +189,7 @@ void reshape(GLint width, GLint height) {
 	g_viewportHeight = height;
 
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 
@@ -167,7 +199,7 @@ e3ga::vector vectorAtDepth(double depth, const e3ga::vector &v2d) {
 		return e3ga::vector();
 	}
 
-	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 + 
+	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 +
 		(depth * (double)v2d.e2() * GLpick::g_frustumHeight) / (g_viewportHeight * GLpick::g_frustumNear) * e2);
 }
 
@@ -194,16 +226,16 @@ void MouseButton(int button, int state, int x, int y) {
 }
 
 void MouseMotion(int x, int y) {
-	// get mouse position, motion 
+	// get mouse position, motion
 	e3ga::vector mousePos = mousePosToVector(x, y);
 	e3ga::vector motion = _vector(mousePos - g_prevMousePos);
 	if (g_rotateModel) {
 		// update rotor
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
-		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);		
+		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
-	else if ((g_dragObject >= 1) && (g_dragObject <= 2)) {
+	else if ((g_dragObject >= 1) && (g_dragObject <= 3)) {
 		// add motion to vector:
 		e3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
@@ -212,9 +244,9 @@ void MouseMotion(int x, int y) {
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
-		
+
 		// redraw viewport
-		glutPostRedisplay();	
+		glutPostRedisplay();
 
 }
 
@@ -243,3 +275,4 @@ int main(int argc, char*argv[]) {
 
 	return 0;
 }
+

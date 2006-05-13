@@ -18,14 +18,12 @@
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/timing.h>
 
-#include <vector>
-
 using namespace e3ga;
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-	const int NB = 1000000;
+/*	const int NB = 1000000;
 	std::vector<e3ga::vector> A(NB);
 	std::vector<e3ga::bivector> B(NB);
 	std::vector<e3ga::trivector> Co(NB);
@@ -52,7 +50,7 @@ int main(int argc, char*argv[]) {
 
 	printf("%d outer products: %f seconds\n", NB, tOuter);
 	printf("%d joins: %f seconds\n", NB, tJoin);
-
+*/
 
 	return 0;
 }
