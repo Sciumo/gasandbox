@@ -300,16 +300,6 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	}
 }
 
-/*
-Todo: 
-V -largest grade
-V -delta product
-V -random blade
--meet / join
--test (see original testing code)
-*/
-
-
 
 void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, mv::Float largeEpsilon) {
 	mv::Float la = a.largestCoordinate();
@@ -362,7 +352,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	if (gd == ga + gb) {
 		// a and b entirely disjoint
 		m.set(1.0f);
-		j = op(ca, cb);
+		j = unit_e(op(ca, cb));
 		// todo: largest coordinate positive?
 		return;
 	}
@@ -414,6 +404,9 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 			Em--;	
 			if (Em == 0) {
 				j = op(d, m);
+				m = unit_e(m);
+				j = unit_e(j);
+
 				// todo: largest coordinate positive?
 				return;
 			}
@@ -424,6 +417,9 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 			Ej--;	
 			if (Ej == 0) {
 				m = lcont(d, j);
+				m = unit_e(m);
+				j = unit_e(j);
+
 				// todo: largest coordinate positive?
 				return;
 			}

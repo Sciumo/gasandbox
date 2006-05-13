@@ -16,45 +16,51 @@
 
 #include <libgasandbox/e3ga.h>
 #include <libgasandbox/e3ga_util.h>
-#include <libgasandbox/timing.h>
+#include <libgasandbox/mv_analyze.h>
 
 #include <vector>
 
 using namespace e3ga;
+using namespace mv_analyze;
+
+
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-	printf("Generating random multivectors\n");
+	// get two vectors, initialize them to 'e1'
+	vector a, b;
+	a = e1;
+	b = e1;
 
-	const int NB = 1000000;
-	std::vector<e3ga::vector> A(NB);
-	std::vector<e3ga::bivector> B(NB);
-	std::vector<e3ga::trivector> Co(NB);
-	std::vector<e3ga::mv> Cj(NB);
+	float epsilon = 1e-9f;
+	
+	while (true) {// the loop will be broken when the join is a bivector;
+		// add a tiny bit of 'e2' to b:
+		b = _vector(b + epsilon * e2);
 
-	// generate 'NB' random vectors, and 'NB' random bivectors
-	for (int i = 0; i < NB; i++) {
-		A[i] = _vector(randomBlade(1));
-		B[i] = _bivector(randomBlade(2));
-	}
+		// compute the join
+		mv X = join(a, b);
 
-	// time the outer product
-	double tOuter = u_timeGet();
-	for (int i = 0; i < NB; i++) {
-		Co[i] = _trivector(B[i] ^ A[i]);
-	}
-	tOuter = u_timeGet() - tOuter;
+		// get analysis of 'X'
+		mvAnalysis AX(X);
 
-	double tJoin = u_timeGet();
-	for (int i = 0; i < NB; i++) {
-		Cj[i] = join(A[i], B[i]);
-	}
-	tJoin = u_timeGet() - tJoin;
-
-	printf("%d outer products: %f seconds\n", NB, tOuter);
-	printf("%d joins: %f seconds\n", NB, tJoin);
-
+		// check if blade, and if a blade, then is it a bivector or a vector?
+		if (!AX.isBlade()) {
+			// this should never happen
+			printf("Error: the join of a and b is not a blade!\n");
+			return -1;
+		}
+		else if (AX.bladeSubclass() == mvAnalysis::BIVECTOR) {
+			printf("join(%s, %s) is a bivector\n", a.toString_e().c_str(), b.toString_e().c_str());
+			return 0; // terminate
+		}
+		else printf("join(%s, %s) is a vector\n", a.toString_e().c_str(), b.toString_e().c_str());
+		
+		// Grow 'epsilon' a little such that it won't take forever to reach 
+		// the point where join(a, b) is a bivector:
+		epsilon *= 1.01f;
+	};
 
 	return 0;
 }
