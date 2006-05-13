@@ -96,7 +96,6 @@ usage : mv subtract(mv x, mv y) : vector , vector : 1;
 usage : scalar norm_e2(mv x) : scalar : 1;
 usage : mv add(mv x, mv y) : e1_t , e2_t : 1;
 usage : mv gp(mv x, mv y) : scalar , __syn_smv___e1e3f_1_0 : 1;
-usage : mv lcont(mv x, mv y) : null , bivector : 1;
 usage : mv add(mv x, mv y) : scalar , __syn_smv___e1e2 : 1;
 usage : mv lcont(mv x, mv y) : __e1_ct__ , bivector : 1;
 usage : scalar norm_e2(mv x) : vector : 1;

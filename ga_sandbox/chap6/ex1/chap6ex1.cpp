@@ -19,38 +19,118 @@
 #include <libgasandbox/timing.h>
 
 using namespace e3ga;
+
+// exercise 1a: complete in this function
+mv outerProduct_1a(const e3ga::vector &a, const mv &B) {
+	return 0.5f * (gp(a, B) + gp(gradeInvolution(B), a));
+//	return 0.0f;
+}
+
+// exercise 1a: complete in this function
+mv leftContraction_1a(const e3ga::vector &a, const mv &B) {
+	return 0.5f * (gp(a, B) - gp(gradeInvolution(B), a));
+//	return 0.0f;
+}
+
+// exercise 1b: complete in this function
+mv outerProduct_1b(const mv &A, const mv &B) {
+	mv result;
+	for (int i = 0; i <= 3; i++) {
+	      for (int j = 0; j <= 3-i; j++) {
+			  if (i + j <= 3) {
+				result += takeGrade(gp(takeGrade(A, 1 << i), takeGrade(B, 1 << j)), 1 << (i + j));
+			  }
+		}
+	}
+	return result;
+	//return 0.0f;
+}
+
+// exercise 1b: complete in this function
+mv leftContraction_1b(const mv &A, const mv &B) {
+	mv result;
+	for (int i = 0; i <= 3; i++) {
+	      for (int j = i; j <= 3; j++) { // not j starts at i'
+				result += takeGrade(gp(takeGrade(A, 1 << i), takeGrade(B, 1 << j)), 1 << (j - i));
+		}
+	}
+	return result;
+//	return 0.0f;
+}
+
+using namespace e3ga;
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-/*	const int NB = 1000000;
-	std::vector<e3ga::vector> A(NB);
-	std::vector<e3ga::bivector> B(NB);
-	std::vector<e3ga::trivector> Co(NB);
-	std::vector<e3ga::mv> Cj(NB);
+	const int NB_TESTS = 100000;
 
-	// generate 'NB' random vectors, and 'NB' random bivectors
-	for (int i = 0; i < NB; i++) {
-		A[i] = _vector(randomBlade(1));
-		B[i] = _bivector(randomBlade(2));
+	// A test for Exercise 1a
+	// We generate random vectors and random multivectors, and use
+	// the regular outer product/left contraction functions to verify the results:
+	for (int i = 0; i < NB_TESTS; i++) {
+		e3ga::vector a = _vector(randomBlade(1));
+		mv B = randomMultivector(GRADE_1 | GRADE_2 | GRADE_3);
+
+		// test outer product
+		{
+			mv X = op(a, B);
+			mv Y = outerProduct_1a(a, B);
+
+			if (_Float(norm_e2(X - Y)) > 1e-7f) {
+				// Not equal: complain
+				printf("\n\nouterProduct_1a() failed for\n%s\nand\n%s\n", a.toString_f().c_str(), B.toString_f().c_str());
+			}
+		}
+
+		// test left contraction
+		{
+			mv X = lcont(a, B);
+			mv Y = leftContraction_1a(a, B);
+			/*intf("a  = %s\n", a.toString_e().c_str());
+			printf("B  = %s\n", B.toString_e().c_str());
+			printf("X  = %s\n", X.toString_e().c_str());
+			printf("Y  = %s\n", Y.toString_e().c_str());*/
+
+			if (_Float(norm_e2(X - Y)) > 1e-7f) {
+				// Not equal: complain
+				printf("\n\nleftContraction_1a() failed for\n%s\nand\n%s\n", a.toString_f().c_str(), B.toString_f().c_str());
+			}
+		}
+	}
+	printf("outerProduct_1a() and leftContraction_1a() seem to be OK.\n");
+
+	
+	// A test for Exercise 1b
+	// We generate pairs of random multivector, and use
+	// the regular outer product/left contraction functions to verify the results:
+	for (int i = 0; i < NB_TESTS; i++) {
+		mv A = randomMultivector();
+		mv B = randomMultivector();
+
+		// test outer product
+		{
+			mv X = op(A, B);
+			mv Y = outerProduct_1b(A, B);
+			if (_Float(norm_e2(X - Y)) > 1e-7f) {
+				// Not equal: complain
+				printf("\n\nouterProduct_1b() failed for\n%s\nand\n%s\n", A.toString().c_str(), B.toString().c_str());
+			}
+		}
+
+		// test left contraction
+	{
+			mv X = lcont(A, B);
+			mv Y = leftContraction_1b(A, B);
+			if (_Float(norm_e2(X - Y)) > 1e-7f) {
+				// Not equal: complain
+				printf("\n\nleftContraction_1b() failed for\n%s\nand\n%s\n", A.toString().c_str(), B.toString().c_str());
+			}
+		}
 	}
 
-	// time the outer product
-	double tOuter = u_timeGet();
-	for (int i = 0; i < NB; i++) {
-		Co[i] = _trivector(B[i] ^ A[i]);
-	}
-	tOuter = u_timeGet() - tOuter;
+	printf("outerProduct_1b() and leftContraction_1b() seem to be OK.\n");
 
-	double tJoin = u_timeGet();
-	for (int i = 0; i < NB; i++) {
-		Cj[i] = join(A[i], B[i]);
-	}
-	tJoin = u_timeGet() - tJoin;
-
-	printf("%d outer products: %f seconds\n", NB, tOuter);
-	printf("%d joins: %f seconds\n", NB, tJoin);
-*/
 
 	return 0;
 }

@@ -146,3 +146,4 @@ mv apply_om(om x, mv y) {
 mv gradeInvolution(mv x) {
 	return ::g2bi::grade_involution(x);
 }
+

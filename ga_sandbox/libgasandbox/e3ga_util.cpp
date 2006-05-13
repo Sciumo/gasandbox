@@ -237,6 +237,17 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 }
 
 // todo: integrate into G2
+/**
+Returns grade usage of multivector.
+The returned integer is a bitwise or of 
+GRADE_0 = 1, 
+GRADE_1 = 2, 
+GRADE_N = 1 << (N) 
+constants.
+*/
+mv grade(const mv &X, float epsilon /* = 1e-7 */);
+
+// todo: integrate into G2
 mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
 	int g = 3, gu = X.gu(), iX = mv_size[gu], size, i;
 	const float *cptr = NULL;
@@ -256,6 +267,34 @@ mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = 
 	if (gradeIdx) *gradeIdx = 0;
 	return mv(0.0f);
 }
+
+// todo: integrate into G2
+mv takeGrade(const mv &X, int gradeUsageBitmap) {
+	int gua;
+
+	// determine what the grage usage 'gu' of the result should be:
+	if (gradeUsageBitmap = ((gua = X.gu()) & gradeUsageBitmap)) { // only execute if any grade will be present in the result
+		mv::Float C[8]; 
+		mv::Float *bc; 
+		const mv::Float *ac; 
+
+		bc = C; ac = X.m_c; // pointers to the coordinates of source (ac) and result (bc)
+		for (int i = 1; i <= gradeUsageBitmap; i = i << 1) { // for each grade that is possibly in the result
+			if (gua & i) { // determine if grade is present in source
+				int s = mv_size[i]; // get the size of grade
+				if (gradeUsageBitmap & i) { // determine if grade is present in result
+					// copy coordinates
+					for (int j = 0; j < s; j++) bc[j] = ac[j];
+					bc += s; // increment pointer to result
+				}
+				ac += s; // increment pointer to source
+			}
+		}
+		return mv(gradeUsageBitmap, C);
+	}
+	else return mv(0.0f);
+}
+
 
 // todo: integrate into G2
 mv deltaProduct(const mv &X, const mv &Y, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
@@ -298,6 +337,16 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 		result = (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX) * size * unit_e(result); // todo: random factor
 		return result;
 	}
+}
+
+mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 */, float size /*= 1.0f*/) {
+	mv::Float C[8];
+	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3; // to prevent weird input
+	int s = mv_size[gradeParts];
+	for (int i = 0; i < s; i++) {
+		C[i] = -1.0f + 2.0f * (float)rand() * size / (float)RAND_MAX;
+	}
+	return mv(gradeParts, C);
 }
 
 
