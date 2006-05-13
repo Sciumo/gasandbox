@@ -36,10 +36,12 @@ mv leftContraction_1a(const e3ga::vector &a, const mv &B) {
 mv outerProduct_1b(const mv &A, const mv &B) {
 	mv result;
 	for (int i = 0; i <= 3; i++) {
-	      for (int j = 0; j <= 3-i; j++) {
-			  if (i + j <= 3) {
+		if ((A.gu() & (1 << i)) == 0) continue; // skip if not in use
+		for (int j = 0; j <= 3-i; j++) {
+			if ((B.gu() & (1 << j)) == 0) continue; // skip if not in use
+			if (i + j <= 3) {
 				result += takeGrade(gp(takeGrade(A, 1 << i), takeGrade(B, 1 << j)), 1 << (i + j));
-			  }
+			}
 		}
 	}
 	return result;
@@ -50,8 +52,10 @@ mv outerProduct_1b(const mv &A, const mv &B) {
 mv leftContraction_1b(const mv &A, const mv &B) {
 	mv result;
 	for (int i = 0; i <= 3; i++) {
-	      for (int j = i; j <= 3; j++) { // not j starts at i'
-				result += takeGrade(gp(takeGrade(A, 1 << i), takeGrade(B, 1 << j)), 1 << (j - i));
+		if ((A.gu() & (1 << i)) == 0) continue; // skip if not in use
+		for (int j = i; j <= 3; j++) { // not j starts at i'
+			if ((B.gu() & (1 << j)) == 0) continue; // skip if not in use
+			result += takeGrade(gp(takeGrade(A, 1 << i), takeGrade(B, 1 << j)), 1 << (j - i));
 		}
 	}
 	return result;
