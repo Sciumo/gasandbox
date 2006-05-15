@@ -39,7 +39,7 @@ int g_GLUTmenu;
 
 int g_mouseButton = -1;
 e2ga::vector g_position;
-mv::Float g_zoom = 0.004f;
+mv::Float g_zoom = 0.007f;
 int g_maxIter = 10;
 e2ga::vector g_c(vector_e1_e2, -0.55f, 0.1f);
 
@@ -60,15 +60,17 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 
 			for (int i = 0; i < maxIter; i++) {
 				r = _vector(r * e1 * r * e1 * r + c);
+				//r = _vector(r * e1 * r * e1 * r * e1 * r   * e1 * r  + c);
 				if (_Float(norm_e2(r)) > 10e3f) break;
 			}
 
-			float valF = _Float(norm_e(r)) / 2.0f;
+			float valF = _Float(norm_e(r)) / 10.0f;
 			unsigned char val = (valF > 255) ? 255 : (unsigned char)(valF + 0.5f);
 
 			rgbBuffer[idx + 0] = val;
 			rgbBuffer[idx + 1] = val;
 			rgbBuffer[idx + 2] = val;
+
 			idx += 3;
 		}
 	}
@@ -99,10 +101,10 @@ void display() {
 	glDrawPixels(width, height, GL_RGB, GL_UNSIGNED_BYTE, &buf[0]);
 
 
-	glColor3f(0.5f, 0.5f, 0.5f);
-	void *font = GLUT_BITMAP_HELVETICA_12;
+	glColor3f(0.5f, 0.5f, 1.0f);
+	void *font = GLUT_BITMAP_HELVETICA_18;
 	renderBitmapString(20, 20, font, "Press 1 .. 9 to set number of iterations.");
-	renderBitmapString(20, 40, font, "Use mouse buttons to translate, zoom, modify.");
+	renderBitmapString(20, 40, font, "Use mouse buttons to translate, modify and zoom.");
 
 	glutSwapBuffers();
 }
