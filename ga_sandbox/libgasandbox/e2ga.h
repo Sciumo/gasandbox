@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-13 21:24:36 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2006-05-15 14:58:15 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -2388,9 +2388,12 @@
 	inline vector gradeInvolution(const vector& x);
 	inline e1_t gp(const scalar& x, const __e1_ct__& y);
 	inline rotor subtract(const rotor& x, const rotor& y);
+	inline vector subtract(const vector& x, const vector& y);
 	inline rotor gp(const vector& x, const vector& y);
 	inline vector add(const e1_t& x, const e2_t& y);
 	inline vector reverse(const vector& x);
+	inline vector gp(const scalar& x, const vector& y);
+	inline scalar norm_e2(const vector& x);
 	inline vector gp(const rotor& x, const vector& y);
 	inline e2_t gp(const scalar& x, const __e2_ct__& y);
 	inline scalar scp(const vector& x, const vector& y);
@@ -2411,10 +2414,10 @@
 	inline vector operator+(const e1_t& arg1, const e2_t& arg2);
 	inline mv operator-=(mv& arg1, const mv& arg2);
 	inline rotor operator-=(rotor& arg1, const rotor& arg2);
+	inline vector operator-=(vector& arg1, const vector& arg2);
 	inline e1_t operator-=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator-=(e2_t& arg1, const mv& arg2);
 	inline scalar operator-=(scalar& arg1, const mv& arg2);
-	inline vector operator-=(vector& arg1, const mv& arg2);
 	inline bivector operator-=(bivector& arg1, const mv& arg2);
 	inline __e1_ct__ operator-=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator-=(__e2_ct__& arg1, const mv& arg2);
@@ -2422,6 +2425,7 @@
 	inline __I2i_ct__ operator-=(__I2i_ct__& arg1, const mv& arg2);
 	inline mv operator-(const mv& arg1, const mv& arg2);
 	inline rotor operator-(const rotor& arg1, const rotor& arg2);
+	inline vector operator-(const vector& arg1, const vector& arg2);
 	inline mv operator-(const mv& arg1);
 	inline mv operator%=(mv& arg1, const mv& arg2);
 	inline vector operator%=(vector& arg1, const vector& arg2);
@@ -2453,6 +2457,7 @@
 	inline vector operator*=(vector& arg1, const __e1_ct__& arg2);
 	inline scalar operator*=(scalar& arg1, const __e1_ct__& arg2);
 	inline vector operator*=(vector& arg1, const vector& arg2);
+	inline scalar operator*=(scalar& arg1, const vector& arg2);
 	inline rotor operator*=(rotor& arg1, const vector& arg2);
 	inline scalar operator*=(scalar& arg1, const __e2_ct__& arg2);
 	inline vector operator*=(vector& arg1, const __e2_ct__& arg2);
@@ -2468,6 +2473,8 @@
 	inline e1_t operator*(const scalar& arg1, const __e1_ct__& arg2);
 	inline e1_t operator*(float arg1, const __e1_ct__& arg2);
 	inline rotor operator*(const vector& arg1, const vector& arg2);
+	inline vector operator*(const scalar& arg1, const vector& arg2);
+	inline vector operator*(float arg1, const vector& arg2);
 	inline vector operator*(const rotor& arg1, const vector& arg2);
 	inline e2_t operator*(const scalar& arg1, const __e2_ct__& arg2);
 	inline e2_t operator*(float arg1, const __e2_ct__& arg2);
@@ -3682,6 +3689,10 @@
 		arg1.set(::e2ga::subtract(arg1, arg2));
 		return arg1;
 	}
+	inline vector operator-=(vector& arg1, const vector& arg2) {
+		arg1.set(::e2ga::subtract(arg1, arg2));
+		return arg1;
+	}
 	inline e1_t operator-=(e1_t& arg1, const mv& arg2) {
 		arg1.set(::e2ga::subtract(arg1, arg2));
 		return arg1;
@@ -3691,10 +3702,6 @@
 		return arg1;
 	}
 	inline scalar operator-=(scalar& arg1, const mv& arg2) {
-		arg1.set(::e2ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline vector operator-=(vector& arg1, const mv& arg2) {
 		arg1.set(::e2ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -3722,6 +3729,9 @@
 		return ::e2ga::subtract(arg1, arg2);
 	}
 	inline rotor operator-(const rotor& arg1, const rotor& arg2) {
+		return ::e2ga::subtract(arg1, arg2);
+	}
+	inline vector operator-(const vector& arg1, const vector& arg2) {
 		return ::e2ga::subtract(arg1, arg2);
 	}
 	inline mv operator-(const mv& arg1) {
@@ -3843,6 +3853,10 @@
 		arg1.set(::e2ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline scalar operator*=(scalar& arg1, const vector& arg2) {
+		arg1.set(::e2ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline rotor operator*=(rotor& arg1, const vector& arg2) {
 		arg1.set(::e2ga::gp(arg1, arg2));
 		return arg1;
@@ -3897,6 +3911,12 @@
 	}
 	inline rotor operator*(const vector& arg1, const vector& arg2) {
 		return ::e2ga::gp(arg1, arg2);
+	}
+	inline vector operator*(const scalar& arg1, const vector& arg2) {
+		return ::e2ga::gp(arg1, arg2);
+	}
+	inline vector operator*(float arg1, const vector& arg2) {
+		return ::e2ga::gp(::e2ga::scalar(arg1), arg2);
 	}
 	inline vector operator*(const rotor& arg1, const vector& arg2) {
 		return ::e2ga::gp(arg1, arg2);
@@ -3997,7 +4017,7 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_1__[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][0] * __y_xpd__[1][0]));
 
 			}
 
@@ -4083,55 +4103,55 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_2__[4] ;
 		mv_zero(__tmp_coord_array_2__, 4);
-		const float* __y_xpd__[3] ;
-		y.expand(__y_xpd__, true);
 		const float* __x_xpd__[3] ;
 		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+		const float* __y_xpd__[3] ;
+		y.expand(__y_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
 				__tmp_coord_array_2__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
 				__tmp_coord_array_2__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[2][0] * __y_xpd__[1][1]);
-				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]);
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
 
 			}
 
 		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
+		if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][0] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[1][0] * __y_xpd__[2][0]);
 
 			}
-			if (((x.m_gu & 4) != 0)) {
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[2][0] * __y_xpd__[1][1]);
+				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]);
+
+			}
+			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[0] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]);
 
 			}
@@ -4144,41 +4164,41 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_3__[4] ;
 		mv_zero(__tmp_coord_array_3__, 4);
-		const float* __x_xpd__[3] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[3] ;
 		y.expand(__y_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			if (((y.m_gu & 1) != 0)) {
+		const float* __x_xpd__[3] ;
+		x.expand(__x_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
 				__tmp_coord_array_3__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
-			if (((y.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
-				__tmp_coord_array_3__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
-
-			}
-			if (((y.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
-
-			}
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 2) != 0)) {
 				__tmp_coord_array_3__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
 				__tmp_coord_array_3__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
 
 			}
-			if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_3__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+
+			}
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
+				__tmp_coord_array_3__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
 				__tmp_coord_array_3__[3] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
 
 			}
 
 		}
-		if (((x.m_gu & 4) != 0)) {
-			if (((y.m_gu & 1) != 0)) {
-				__tmp_coord_array_3__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+		if (((y.m_gu & 4) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
 
 			}
 
@@ -4190,23 +4210,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_4__[4] ;
 		mv_zero(__tmp_coord_array_4__, 4);
-		const float* __x_xpd__[3] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[3] ;
 		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
-			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_4__[3] += __y_xpd__[2][0];
-
-		}
+		const float* __x_xpd__[3] ;
+		x.expand(__x_xpd__, true);
 		if (((x.m_gu & 1) != 0)) {
 			__tmp_coord_array_4__[0] += __x_xpd__[0][0];
 
@@ -4220,6 +4227,19 @@
 			__tmp_coord_array_4__[3] += __x_xpd__[2][0];
 
 		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
+			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_4__[3] += __y_xpd__[2][0];
+
+		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_4__);
 		return __temp_var_1__;
 	}
@@ -4227,23 +4247,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_5__[4] ;
 		mv_zero(__tmp_coord_array_5__, 4);
-		const float* __x_xpd__[3] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[3] ;
 		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
-			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[2][0]);
-
-		}
+		const float* __x_xpd__[3] ;
+		x.expand(__x_xpd__, true);
 		if (((x.m_gu & 1) != 0)) {
 			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
 
@@ -4255,6 +4262,19 @@
 		}
 		if (((x.m_gu & 4) != 0)) {
 			__tmp_coord_array_5__[3] += __x_xpd__[2][0];
+
+		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
+			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[2][0]);
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
@@ -4269,7 +4289,7 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
@@ -4287,7 +4307,7 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			e2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
@@ -4305,7 +4325,7 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			e2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
@@ -4378,7 +4398,7 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
+			r2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
@@ -4503,7 +4523,7 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			n.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			n.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
@@ -4539,7 +4559,7 @@
 		y.expand(__y_xpd__, true);
 		if (((y.m_gu & 2) != 0)) {
 			__tmp_coord_array_13__[1] += ((x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[1] * __y_xpd__[1][1]));
-			__tmp_coord_array_13__[2] += ((x.m_c[2] * __y_xpd__[1][0]) + (x.m_c[3] * __y_xpd__[1][1]));
+			__tmp_coord_array_13__[2] += ((x.m_c[3] * __y_xpd__[1][1]) + (x.m_c[2] * __y_xpd__[1][0]));
 
 		}
 		if (((y.m_gu & 4) != 0)) {
@@ -4585,20 +4605,20 @@
 	}
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
 	}
 	inline vector inverse(const vector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return vector(vector_e1_e2, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]));
 	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]));
+		return vector(vector_e1_e2, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]));
 	}
 	inline rotor gp(const vector& x, const __e1_ct__& y) {
 		return rotor(rotor_scalar_e1e2, x.m_c[0], (-1.0f * x.m_c[1]));
@@ -4615,16 +4635,25 @@
 		return e1_t(e1_t_e1, x.m_c[0]);
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])));
+	}
+	inline vector subtract(const vector& x, const vector& y) {
+		return vector(vector_e1_e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline rotor gp(const vector& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline vector add(const e1_t& x, const e2_t& y) {
 		return vector(vector_e1_e2, x.m_c[0], y.m_c[0]);
 	}
 	inline vector reverse(const vector& x) {
 		return vector(vector_e1_e2, x.m_c[0], x.m_c[1]);
+	}
+	inline vector gp(const scalar& x, const vector& y) {
+		return vector(vector_e1_e2, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]));
+	}
+	inline scalar norm_e2(const vector& x) {
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline vector gp(const rotor& x, const vector& y) {
 		return vector(vector_e1_e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
@@ -4633,7 +4662,7 @@
 		return e2_t(e2_t_e2, x.m_c[0]);
 	}
 	inline scalar scp(const vector& x, const vector& y) {
-		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
 	}
 	inline rotor gp(const vector& x, const __e2_ct__& y) {
 		return rotor(rotor_scalar_e1e2, x.m_c[1], x.m_c[0]);

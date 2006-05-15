@@ -22,22 +22,26 @@ using namespace e3ga;
 
 // exercise 1a: complete in this function
 mv outerProduct_1a(const e3ga::vector &a, const mv &B) {
-//	return 0.0f;
+	printf("Warning: outerProduct_1a() not implemented yet!\n");
+	return 0.0f;
 }
 
 // exercise 1a: complete in this function
 mv leftContraction_1a(const e3ga::vector &a, const mv &B) {
-//	return 0.0f;
+	printf("Warning: leftContraction_1a() not implemented yet!\n");
+	return 0.0f;
 }
 
 // exercise 1b: complete in this function
 mv outerProduct_1b(const mv &A, const mv &B) {
-	//return 0.0f;
+	printf("Warning: outerProduct_1b() not implemented yet!\n");
+	return 0.0f;
 }
 
 // exercise 1b: complete in this function
 mv leftContraction_1b(const mv &A, const mv &B) {
-//	return 0.0f;
+	printf("Warning: leftContraction_1b() not implemented yet!\n");
+	return 0.0f;
 }
 
 int main(int argc, char*argv[]) {

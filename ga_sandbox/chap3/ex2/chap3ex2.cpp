@@ -65,6 +65,7 @@ e3ga::vector g_vectors[3] = {
 /// returns a x b
 e3ga::vector crossProduct(const e3ga::vector &a, const e3ga::vector &b) {
 	// exercise: compute the cross product, return it:
+	printf("Warning: crossProduct() not implemented yet!\n");
 	return _vector(0);	
 }
 

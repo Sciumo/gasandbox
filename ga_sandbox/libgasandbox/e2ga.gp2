@@ -14,3 +14,6 @@ usage : mv gp(mv x, mv y) : rotor , vector : 1;
 usage : mv gp(mv x, mv y) : scalar , __e2_ct__ : 1;
 usage : mv scp(mv x, mv y) : vector , vector : 1;
 usage : mv gp(mv x, mv y) : vector , __e2_ct__ : 1;
+usage : mv gp(mv x, mv y) :  scalar , vector: 1;
+usage : scalar norm_e2(mv x) :  vector: 1;
+usage : mv subtract(mv x, mv y) :  vector, vector: 1;
