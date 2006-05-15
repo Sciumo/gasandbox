@@ -26,6 +26,7 @@
 #include <vector>
 
 #include <libgasandbox/e2ga.h>
+#include <libgasandbox/glut_util.h>
 
 using namespace e2ga;
 
@@ -38,32 +39,32 @@ int g_GLUTmenu;
 
 int g_mouseButton = -1;
 e2ga::vector g_position;
-mv::Float g_zoom = 0.03f;
+mv::Float g_zoom = 0.004f;
+int g_maxIter = 10;
 e2ga::vector g_c(vector_e1_e2, -0.55f, 0.1f);
 
 // mouse position on last call to MouseButton() / MouseMotion()
 e2ga::vector g_prevMousePos;
 
-void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::Float zoom, 
+void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::Float zoom, int maxIter, 
 					std::vector<unsigned char> &rgbBuffer, int width, int height) {
 	int idx = 0;
-	int nbIter = 0;
 
+	// for each pixel in the image, evaluate distance (?):
 	for (int y = 0; y < height; y++) {
-//			printf("%d\n", y);
 		for (int x = 0; x < width; x++) {
-			mv::Float xf = (mv::Float)(x-width/2);
-			mv::Float yf = (mv::Float)(y-height/2);
-			//mv r = zoom * (vec(vec_e1_e2, xf, yf) - translation);
-			e2ga::vector r = _vector(zoom * (e2ga::vector(vector_e1_e2, xf, yf)) - translation);
-			for (int i = 0; i < 10; i++) {
-				r = _vector((r * e1 * r * e1) * r + c);
+			float xf = (float)(x-width/2);
+			float yf = (float)(y-height/2);
+			e2ga::vector p(vector_e1_e2, xf, yf);
+			e2ga::vector r = _vector(zoom * p - translation);
+
+			for (int i = 0; i < maxIter; i++) {
+				r = _vector(r * e1 * r * e1 * r + c);
 				if (_Float(norm_e2(r)) > 10e3f) break;
 			}
 
 			float valF = _Float(norm_e(r)) / 2.0f;
 			unsigned char val = (valF > 255) ? 255 : (unsigned char)(valF + 0.5f);
-
 
 			rgbBuffer[idx + 0] = val;
 			rgbBuffer[idx + 1] = val;
@@ -71,8 +72,6 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 			idx += 3;
 		}
 	}
-//	printf("avg iter: %f\n", (double)nbIter / (width * height));
-
 }
 
 void display() {
@@ -94,9 +93,16 @@ void display() {
 	int width = g_viewportWidth ^ (g_viewportWidth & 3);
 	int height = g_viewportHeight;
 	std::vector<unsigned char>buf(width * height * 3);
-	computeFractal(g_position, g_c, g_zoom, buf, width, height);
+	computeFractal(g_position, g_c, g_zoom, g_maxIter, buf, width, height);
 
+	glRasterPos2f(0.0f, 0.0f);
 	glDrawPixels(width, height, GL_RGB, GL_UNSIGNED_BYTE, &buf[0]);
+
+
+	glColor3f(0.5f, 0.5f, 0.5f);
+	void *font = GLUT_BITMAP_HELVETICA_12;
+	renderBitmapString(20, 20, font, "Press 1 .. 9 to set number of iterations.");
+	renderBitmapString(20, 40, font, "Use mouse buttons to translate, zoom, modify.");
 
 	glutSwapBuffers();
 }
@@ -132,7 +138,6 @@ void MouseMotion(int x, int y) {
 	}
 	else if (g_mouseButton == GLUT_MIDDLE_BUTTON) {
 		g_c = _vector(g_c + 1.0f * motion);
-		printf("g_c = %s\n", g_c.c_str_e());
 	}
 	else if (g_mouseButton == GLUT_RIGHT_BUTTON) {
 		g_zoom = g_zoom * (1.0 + 0.5 * motion.e2());
@@ -140,11 +145,15 @@ void MouseMotion(int x, int y) {
 
 	// redraw viewport
 	glutPostRedisplay();
-
 }
 
 void Keyboard(unsigned char key, int x, int y) {
+	// set 
+	if ((key >= '1') && (key <= '9'))
+		g_maxIter = 10 * (key - '0');
 
+	// redraw viewport
+	glutPostRedisplay();
 }
 
 int main(int argc, char*argv[]) {
