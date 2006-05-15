@@ -40,6 +40,16 @@ AC_OUTPUT(
 	\
 	chap7/Makefile \
 	\
+	solutions/Makefile \
+	\
+	solutions/chap2/Makefile \
+	solutions/chap2/ex2/Makefile \
+	\
+	solutions/chap6/Makefile \
+	solutions/chap6/ex1/Makefile \
+	\
+	solutions/vs.net/Makefile \
+	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile
 	)
