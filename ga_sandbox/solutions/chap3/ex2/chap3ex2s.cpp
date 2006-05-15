@@ -34,7 +34,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 2: Implementing the Cross Product";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 2: Implementing the Cross Product (SOLUTION)";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -65,7 +65,7 @@ e3ga::vector g_vectors[3] = {
 /// returns a x b
 e3ga::vector crossProduct(const e3ga::vector &a, const e3ga::vector &b) {
 	// exercise: compute the cross product, return it:
-	return _vector(0);	
+	return _vector(dual(a ^ b));
 }
 
 void display() {
