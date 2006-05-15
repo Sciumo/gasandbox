@@ -1,4 +1,6 @@
-bin_PROGRAMS = gaigen2hp
+sandbindir = $(bindir)/ga_sandbox
+
+sandbin_PROGRAMS = gaigen2hp
 
 AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
 

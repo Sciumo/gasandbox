@@ -1,6 +1,7 @@
 EXTRA_DIST = \
-	all.sln all.ncb all.suo \
-	chap6ex2s.vcproj \
+	solutions.sln solutions.ncb solutions.suo \
+	chap2ex2s.vcproj \
+	chap3ex2s.vcproj \
 	chap6ex1s.vcproj
 
 

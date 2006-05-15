@@ -1,4 +1,6 @@
-bin_PROGRAMS = chap3ex4
+sandbindir = $(bindir)/ga_sandbox
+
+sandbin_PROGRAMS = chap3ex4
 
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
 
@@ -8,4 +10,5 @@ chap3ex4_SOURCES = chap3ex4.cpp
 
 noinst_HEADERS = 
 
-EXTRA_DIST = image.raw
+sandbin_DATA = image.raw
+#EXTRA_DIST = image.raw

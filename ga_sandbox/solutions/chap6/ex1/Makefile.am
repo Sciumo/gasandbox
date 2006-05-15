@@ -1,4 +1,6 @@
-bin_PROGRAMS = chap6ex1s
+sandbindir = $(bindir)/ga_sandbox
+
+sandbin_PROGRAMS = chap6ex1s
 
 AM_CPPFLAGS = -I../../.. $(GL_CFLAGS)
 
