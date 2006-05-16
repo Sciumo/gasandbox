@@ -145,8 +145,8 @@ void glColor3fm(float r, float g, float b) {
 	float dif[4] = {df * r, df*g, df*b, 1};
 
 	glColor3f(r, g, b);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif);
 }
 
 namespace GLpick {

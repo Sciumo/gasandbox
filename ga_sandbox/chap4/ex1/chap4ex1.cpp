@@ -28,6 +28,7 @@
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/timing.h>
 
 using namespace e3ga;
 using namespace mv_draw;
@@ -135,10 +136,11 @@ void display() {
 
 	glDisable(GL_LIGHTING);
 	glEnable(GL_LINE_STIPPLE);
-	glLineStipple(1, 0x0F0F);
+	int ST = 0xFF00FF >> ((int)(u_timeGet() * 25) % 16);
+	glLineStipple(1, ( GLushort)(ST & 0xFFFF));
 	glBegin(GL_LINES);
-	glVertex3fv(g_vectors[2].getC(vector_e1_e2_e3));
 	glVertex3fv(P.getC(vector_e1_e2_e3));
+	glVertex3fv(g_vectors[2].getC(vector_e1_e2_e3));
 	glEnd();
 	glDisable(GL_LINE_STIPPLE);
 
@@ -156,7 +158,7 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
+		renderBitmapString(20, 20, font, "-use mouse buttons to drag (red, green, blue) vectors and to orbit the scene");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -235,6 +237,11 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
+void Idle() {
+	// redraw viewport
+	glutPostRedisplay();
+}
+
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
@@ -251,6 +258,7 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+	glutIdleFunc(Idle);
 
 	glutMainLoop();
 

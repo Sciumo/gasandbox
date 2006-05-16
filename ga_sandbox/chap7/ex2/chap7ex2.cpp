@@ -30,6 +30,7 @@
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/timing.h>
 
 using namespace e3ga;
 using namespace mv_draw;
@@ -56,45 +57,34 @@ float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
 
-// the three non-orthogonal vectors:
-e3ga::vector g_vectors[3] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
-	_vector(e1 + e3)
-};
+// the vector in which we reflect (red)
+e3ga::vector g_reflectionVector1 = _vector(unit_e(e2 + 0.2f * e1 + 0.01f * e3));
+e3ga::vector g_reflectionVector2 = _vector(e2);
 
-// the three orthogonal vectors:
-e3ga::vector g_orthoVectors[3];
+// the vectors which we rotate (green)
+e3ga::vector g_inputVector = _vector(-e1 - 0.2f *  e2);
 
-/**
-Uses GA to perform Gram-Schmidt orthogonalization.
-Throws std::string when input vectors (vIn) are dependent.
-Results are returned in 'vOut'.
-*/
-void GramSchmidtGA(const e3ga::vector vIn[], e3ga::vector vOut[], int nbVectors) {
-	mv B = 1;
+// the reflected vector (blue)
+e3ga::vector g_reflectedVector;
+// the rotated vector (blue)
+e3ga::vector g_rotatedVector;
 
-	for (int i = 0; i < nbVectors; i++) {
-		mv newB = vIn[i] ^ B;
 
-		// check for dependence of input vectors:
-		if (_Float(norm_r2(newB)) == 0.0f)
-			throw std::string("input vectors are dependent");
-
-		// compute orthogonal vector 'i':
-		vOut[i] = _vector(newB * inverse(B));
-
-		B = newB;
-	}
+e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
+	return _vector(a * x * inverse(a));
 }
 
+/*
+Text at bottom
+Screenshot
+
+Then onto the next example
+*/
+
 void display() {
-	// update the orthogonal vectors
-	try {
-		GramSchmidtGA(g_vectors, g_orthoVectors, 3);
-	} catch (const std::string &str) {
-		printf("Error: %s\n", str.c_str());
-	}
+	// update the reflected vectors
+	g_reflectedVector = reflectVector(g_reflectionVector1, g_inputVector);
+	g_rotatedVector = reflectVector(g_reflectionVector2, g_reflectedVector);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -111,65 +101,74 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -12.0f);
+	glTranslatef(0.0f, 0.0f, -8.0f);
 
 
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_NORMALIZE);
+	glLineWidth(2.0f);
 
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 
-	const float horDistance = 2.5f;
-
-	glTranslatef(-horDistance, 0.0f, 0.0f);
-
-	glPushMatrix();
 	rotorGLMult(g_modelRotor);
 
-	// draw vector 1
-	if (GLpick::g_pickActive) glLoadName(1);
+	// draw reflection vectors
 	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_vectors[0]);
-
-	// draw vector 2
+	if (GLpick::g_pickActive) glLoadName(1);
+	draw(g_reflectionVector1);
 	if (GLpick::g_pickActive) glLoadName(2);
-	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_vectors[1]);
+	draw(g_reflectionVector2);
 
-	// draw vector 3
+	// draw input vector
 	if (GLpick::g_pickActive) glLoadName(3);
-	glColor3fm(0.0f, 0.0f, 1.0f);
-	draw(g_vectors[2]);
-
-	glPopMatrix();
-
+	glColor3fm(0.0f, 1.0f, 0.0f);
+	draw(g_inputVector);
 
 	if (!GLpick::g_pickActive) {
-		glTranslatef(2.0f * horDistance, 0.0f, 0.0f);
+		// draw rotor
+//		glColor3fm(1.0f, 0.0f, 0.0f);
+//		draw(g_reflectionVector2 * g_reflectionVector1);
 
-		glPushMatrix();
-		rotorGLMult(g_modelRotor);
-
-		// draw ortho vector 1
-		glColor3fm(1.0f, 0.0f, 0.0f);
-		draw(g_orthoVectors[0]);
-
-		// draw ortho vector 2
-		glColor3fm(0.0f, 1.0f, 0.0f);
-		draw(g_orthoVectors[1]);
-
-		// draw ortho vector 3
+		// draw reflected & rotated vectors
 		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(g_orthoVectors[2]);
+		draw(g_reflectedVector);
+		draw(g_rotatedVector);
 
-		glPopMatrix();
+		// draw stippled line from input to reflection to rotation:
+		glDisable(GL_LIGHTING);
+		glEnable(GL_LINE_STIPPLE);
+		int ST = 0xFF00FF >> ((int)(u_timeGet() * 25) % 16);
+		glLineStipple(1, ( GLushort)(ST & 0xFFFF));
+		glColor3fm(0.5f, 0.5f, 0.5f);
+
+		glBegin(GL_LINE_STRIP);
+		glVertex3fv(g_rotatedVector.getC(vector_e1_e2_e3));
+		glVertex3fv(g_reflectedVector.getC(vector_e1_e2_e3));
+		glVertex3fv(g_inputVector.getC(vector_e1_e2_e3));
+		glEnd();
+
+		// draw stippled curve from input to rotation:
+		{
+			bivector Rlog = log(_rotor(g_reflectionVector2 * g_reflectionVector1));
+			glBegin(GL_LINE_STRIP);
+			for (double alpha = 1.0; alpha >= 0.0; alpha -= 0.05) {
+				rotor R = _rotor(exp(alpha * Rlog));
+				glVertex3fv(_vector(R * g_inputVector * inverse(R)).getC(vector_e1_e2_e3));
+			}
+			glEnd();
+		}
+
+		glDisable(GL_LINE_STIPPLE);
 	}
 
 
@@ -186,9 +185,9 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHOGONAL");
-		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
-		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHOGONAL");
+		renderBitmapString(20, 60, font, "The green vector(s) are reflected in the red vector.");
+		renderBitmapString(20, 40, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");
+		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -251,19 +250,36 @@ void MouseMotion(int x, int y) {
 		// add motion to vector:
 		e3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-		g_vectors[g_dragObject-1] += T;
+		if (g_dragObject == 1) {
+			g_reflectionVector1 += T;
+		}
+		else if (g_dragObject == 2) {
+			g_reflectionVector2	+= T;
+		}
+		else if (g_dragObject == 3) {
+			g_inputVector	+= T;
+		}
 	}
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
 
-		// redraw viewport
-		glutPostRedisplay();
-
+	// redraw viewport
+	glutPostRedisplay();
 }
 
 void Keyboard(unsigned char key, int x, int y) {
 
+}
+
+void menuCallback(int value) {
+	// redraw viewport
+	glutPostRedisplay();
+}
+
+void Idle() {
+	// redraw viewport
+	glutPostRedisplay();
 }
 
 int main(int argc, char*argv[]) {
@@ -282,6 +298,14 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+	glutIdleFunc(Idle);
+
+/*	g_GLUTmenu = glutCreateMenu(menuCallback);
+	glutAddMenuEntry("vector mode", 1);
+	glutAddMenuEntry("bivector mode", 3);
+	glutAttachMenu(GLUT_MIDDLE_BUTTON);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);*/
+
 
 	glutMainLoop();
 

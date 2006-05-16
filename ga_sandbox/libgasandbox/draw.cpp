@@ -74,16 +74,16 @@ void Palet::setFgColor() {
 	GLfloat ambientColor[4] = {m_fgColor[0] * g_drawState.m_ambient, m_fgColor[1] * g_drawState.m_ambient, m_fgColor[2] * g_drawState.m_ambient, m_fgColor[3]};
 	GLfloat diffuseColor[4] = {m_fgColor[0] * g_drawState.m_diffuse, m_fgColor[1] * g_drawState.m_diffuse, m_fgColor[2] * g_drawState.m_diffuse, m_fgColor[3]};
 	glColor4f(m_fgColor[0], m_fgColor[1], m_fgColor[2], m_fgColor[3]);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambientColor);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambientColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuseColor);
 }
 
 void Palet::setBgColor() {
 	GLfloat ambientColor[4] = {m_bgColor[0] * g_drawState.m_ambient, m_bgColor[1] * g_drawState.m_ambient, m_bgColor[2] * g_drawState.m_ambient, m_bgColor[3]};
 	GLfloat diffuseColor[4] = {m_bgColor[0] * g_drawState.m_diffuse, m_bgColor[1] * g_drawState.m_diffuse, m_bgColor[2] * g_drawState.m_diffuse, m_bgColor[3]};
 	glColor4f(m_bgColor[0], m_bgColor[1], m_bgColor[2], m_bgColor[3]);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambientColor);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambientColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuseColor);
 }
 
 void Palet::setOlColor() {
@@ -91,8 +91,8 @@ void Palet::setOlColor() {
 	GLfloat ambientColor[4] = {m_olColor[0] * g_drawState.m_ambient, m_olColor[1] * g_drawState.m_ambient, m_olColor[2] * g_drawState.m_ambient, m_olColor[3]};
 	GLfloat diffuseColor[4] = {m_olColor[0] * g_drawState.m_diffuse, m_olColor[1] * g_drawState.m_diffuse, m_olColor[2] * g_drawState.m_diffuse, m_olColor[3]};
 	glColor4f(m_olColor[0], m_olColor[1], m_olColor[2], m_olColor[3]);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambientColor);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambientColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuseColor);
 }
 
 void Palet::copyColors(const Palet *o) {
@@ -195,6 +195,8 @@ void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float sca
 	rotorGLMult(rt);
 
 	glEnable(GL_CULL_FACE);
+	GLint cl;
+	glGetIntegerv(GL_CULL_FACE_MODE, &cl);	
 	glCullFace(GL_FRONT);
 
 	rt = _rotor(exp(-0.5f * rotStep * (e1 ^ e2)));
@@ -220,6 +222,8 @@ void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float sca
 		glVertex3f(0.1f * (float)cos(z), 0.1f * (float)sin(z), -0.25f);
 	}
 	glEnd();
+
+	glCullFace(cl);
 
 	glPopMatrix();
 

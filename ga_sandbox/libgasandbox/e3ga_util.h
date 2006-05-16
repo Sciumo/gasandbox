@@ -25,6 +25,8 @@ namespace e3ga {
 
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
 mv exp(const mv &x, int order = 9);
+e3ga::bivector log(const e3ga::rotor &R);
+
 mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
 
 
@@ -69,10 +71,10 @@ inline e3ga::mv join(const e3ga::mv &a, const e3ga::mv &b,
 	return j;
 }
 
-mv largestGradePart(const mv &X, int *gradeIdx = NULL);
-mv highestGradePart(const mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
-mv deltaProduct(const mv &X, const mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
-mv takeGrade(const mv &X, int gradeUsageBitmap);
+e3ga::mv largestGradePart(const e3ga::mv &X, int *gradeIdx = NULL);
+e3ga::mv highestGradePart(const e3ga::mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
+e3ga::mv deltaProduct(const e3ga::mv &X, const e3ga::mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
+e3ga::mv takeGrade(const e3ga::mv &X, int gradeUsageBitmap);
 
 /** 
 Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
@@ -81,13 +83,14 @@ If grade < 0, then a random grade is picked
 Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something similar (license issues?)
 */
-mv randomBlade(int grade = -1, float size = 1.0f);
+e3ga::mv randomBlade(int grade = -1, float size = 1.0f);
 
 /**
 Returns a random multivector (so not necessarily a blade or versor)
 Which grade parts to fill with random coordinates is determined by 'gradeParts
 */
 e3ga::mv randomMultivector(int gradeParts = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3, float size = 1.0f);
+
 
 
 } /* end of namespace e3ga */

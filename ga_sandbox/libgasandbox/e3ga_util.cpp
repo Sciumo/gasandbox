@@ -99,6 +99,12 @@ mv exp(const mv &x, int order /*= 9*/) {
 	return result;
 }
 
+e3ga::bivector log(const e3ga::rotor &R) {
+	mv::Float R2 = _Float(norm_r(_bivector(R)));
+	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
+}
+
+
 void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
 	if (nbVectors == 0) return; // nothing to do
 	else if (nbVectors == 1) {

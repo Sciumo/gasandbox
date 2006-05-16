@@ -149,10 +149,11 @@ void display() {
 
 	glDisable(GL_LIGHTING);
 	glEnable(GL_LINE_STIPPLE);
-	glLineStipple(1, 0x0F0F);
+	int ST = 0xFF00FF >> ((int)(u_timeGet() * 25) % 16);
+	glLineStipple(1, ( GLushort)(ST & 0xFFFF));
 	glBegin(GL_LINES);
-	glVertex3fv(g_vectors[2].getC(vector_e1_e2_e3));
 	glVertex3fv(P.getC(vector_e1_e2_e3));
+	glVertex3fv(g_vectors[2].getC(vector_e1_e2_e3));
 	glEnd();
 	glDisable(GL_LINE_STIPPLE);
 
@@ -170,7 +171,7 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
+		renderBitmapString(20, 20, font, "-use mouse buttons to drag (red, green, blue) vectors and to orbit the scene");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -249,6 +250,11 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
+void Idle() {
+	// redraw viewport
+	glutPostRedisplay();
+}
+
 void benchmarkProjection() {
 	// compute bivector (*4 to make it a bit larger):
 	bivector B = _bivector(4.0f * g_vectors[0] ^ g_vectors[1]);
@@ -314,6 +320,7 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+	glutIdleFunc(Idle);
 
 	glutMainLoop();
 
