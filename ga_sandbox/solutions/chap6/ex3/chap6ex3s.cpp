@@ -41,7 +41,8 @@ int g_mouseButton = -1;
 e2ga::vector g_position;
 mv::Float g_zoom = 0.007f;
 int g_maxIter = 30;
-e2ga::vector g_c(vector_e1_e2, -0.835f, -0.2321f);
+e2ga::vector g_c(vector_e1_e2, -0.55f, 0.1f);
+//e2ga::vector g_c(vector_e1_e2, -0.835f, -0.2321f);
 
 // mouse position on last call to MouseButton() / MouseMotion()
 e2ga::vector g_prevMousePos;
@@ -59,7 +60,11 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 			e2ga::vector r = _vector(zoom * p - translation);
 
 			for (int i = 0; i < maxIter; i++) {
-				r = _vector(r * e1 * r + c); // n = 2
+				// r = _vector(r * e1 * r + c); // n = 2
+				r = _vector(r * e1 * r * e1 * r + c); // n = 3
+				// r = _vector(r * e1 * r * e1 * r * e1 * r  + c); // n = 4
+				// r = _vector(r * e1 * r * e1 * r * e1 * r  * e1 * r  + c); // n = 5
+				// etc
 		        if (_Float(norm_e2(r)) > 1e4f) break; // 1e4 = 'infinity'
 			}
 

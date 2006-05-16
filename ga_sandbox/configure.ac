@@ -50,6 +50,7 @@ AC_OUTPUT(
 	\
 	solutions/chap6/Makefile \
 	solutions/chap6/ex1/Makefile \
+	solutions/chap6/ex3/Makefile \
 	\
 	solutions/vs.net/Makefile \
 	\
