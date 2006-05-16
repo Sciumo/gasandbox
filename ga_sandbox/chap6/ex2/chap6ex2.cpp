@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <vector>
+#include <string>
 
 #include <libgasandbox/e3ga.h>
 #include <libgasandbox/e3ga_draw.h>
@@ -56,33 +56,45 @@ float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
 
-// the three non-orthonormal vectors:
+// the three non-orthogonal vectors:
 e3ga::vector g_vectors[3] = {
 	_vector(e1 - e2 - 0.3 * e3),
 	_vector(e1 + 0.3 * e2 - 0.1 * e3),
 	_vector(e1 + e3)
 };
 
-// the three orthonormal vectors:
+// the three orthogonal vectors:
 e3ga::vector g_orthoVectors[3];
 
-void computeOrthoVectors(const e3ga::vector nonOrtho[3], e3ga::vector ortho[3]) {
-	// compute ortho vector 1:
-	// unit_e() returns a unit multivector (Euclidean metric)
-	ortho[0] = unit_e(nonOrtho[0]);
+/**
+Uses GA to perform Gram-Schmidt orthogonalization.
+Throws std::string when input vectors (vIn) are dependent.
+Results are returned in 'vOut'.
+*/
+void GramSchmidtGA(const e3ga::vector vIn[], e3ga::vector vOut[], int nbVectors) {
+	mv B = 1;
 
-	// compute ortho vector 2:
-	// << is the operator used for the left contraction
-	ortho[1] = unit_e(ortho[0] << (ortho[0] ^ nonOrtho[1]));
+	for (int i = 0; i < nbVectors; i++) {
+		mv newB = vIn[i] ^ B;
 
-	// compute ortho vector 3:
-	ortho[2] = unit_e((ortho[0] ^ ortho[1]) <<
-		(ortho[0] ^ ortho[1] ^ nonOrtho[2]));
+		// check for dependence of input vectors:
+		if (_Float(norm_r2(newB)) == 0.0f)
+			throw std::string("input vectors are dependent");
+
+		// compute orthogonal vector 'i':
+		vOut[i] = _vector(newB * inverse(B));
+
+		B = newB;
+	}
 }
 
 void display() {
-	// update the orthonormal vectors
-	computeOrthoVectors(g_vectors, g_orthoVectors);
+	// update the orthogonal vectors
+	try {
+		GramSchmidtGA(g_vectors, g_orthoVectors, 3);
+	} catch (const std::string &str) {
+		printf("Error: %s\n", str.c_str());
+	}
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -99,7 +111,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	glTranslatef(0.0f, 0.0f, -12.0f);
 
 
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -174,9 +186,9 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHONORMAL");
+		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHOGONAL");
 		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
-		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHONORMAL");
+		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "ORTHOGONAL");
 	}
 
 	if (!GLpick::g_pickActive) {
