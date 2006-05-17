@@ -1,4 +1,5 @@
 setenv CFLAGS -I/home/fontijne/include
 setenv CPPFLAGS -I/home/fontijne/include
 setenv LDFLAGS -L/home/fontijne/lib
+./configure --prefix=/home/fontijne
 
