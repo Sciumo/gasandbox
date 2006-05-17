@@ -23,7 +23,7 @@ pkglibdir = $(libdir)/ga_sandbox
 pkgincludedir = $(includedir)/ga_sandbox
 top_builddir = ../..
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
-INSTALL = /usr/local/bin/install -c
+INSTALL = /usr/bin/install -c
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
 install_sh_SCRIPT = $(install_sh) -c
@@ -67,26 +67,26 @@ HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /root/ga/ga_sandbox/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run tar
-AQSIS_FLTK_CFLAGS = -I/home/fontijne/include -I/home/fontijne/include/FL/images -I/usr/openwin/include
-AQSIS_FLTK_GL_CFLAGS = -I/home/fontijne/include -I/home/fontijne/include/FL/images -I/usr/openwin/include
-AQSIS_FLTK_GL_LIBS = -L/home/fontijne/lib -L/usr/openwin/lib -R/usr/openwin/lib -lfltk_gl -lGLU -lGL -lfltk -ldl -lm -lXext -lX11 -lsocket -lnsl
-AQSIS_FLTK_LIBS = -L/home/fontijne/lib -L/usr/openwin/lib -R/usr/openwin/lib -lfltk -ldl -lm -lXext -lX11 -lsocket -lnsl
-AUTOCONF = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run automake-1.9
+AMTAR = ${SHELL} /root/ga/ga_sandbox/missing --run tar
+AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
+AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
+AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
+AUTOCONF = ${SHELL} /root/ga/ga_sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /root/ga/ga_sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /root/ga/ga_sandbox/missing --run automake-1.9
 AWK = gawk
-CC = cc
-CCDEPMODE = depmode=none
-CFLAGS = -I/home/fontijne/include
-CPP = cc -E
-CPPFLAGS = -I/home/fontijne/include
-CXX = CC
-CXXDEPMODE = depmode=none
-CXXFLAGS = -g
+CC = gcc
+CCDEPMODE = depmode=gcc3
+CFLAGS = -g -O2
+CPP = gcc -E
+CPPFLAGS = 
+CXX = g++
+CXXDEPMODE = depmode=gcc3
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0\" 
 DEPDIR = .deps
@@ -94,17 +94,17 @@ ECHO_C =
 ECHO_N = -n
 ECHO_T = 
 EXEEXT = 
-GL_CFLAGS =  -I/usr/openwin/include
-GL_LIBS = -lglut -lGLU -lGL  -lSM -lICE  -L/usr/openwin/lib -R/usr/openwin/lib -lX11 -lXext -lXmu -lXt -lXi -lsocket  -lnsl
+GL_CFLAGS = 
+GL_LIBS = -lglut -lGLU -lGL  -lSM -lICE  -lX11 -lXext -lXmu -lXt -lXi 
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-LDFLAGS = -L/home/fontijne/lib
+LDFLAGS = 
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/fontijne/ga/ga_sandbox/missing --run makeinfo
+MAKEINFO = ${SHELL} /root/ga/ga_sandbox/missing --run makeinfo
 OBJEXT = o
 PACKAGE = ga_sandbox
 PACKAGE_BUGREPORT = 
@@ -115,21 +115,21 @@ PACKAGE_VERSION =
 PATH_SEPARATOR = :
 RANLIB = ranlib
 SET_MAKE = 
-SHELL = /bin/bash
+SHELL = /bin/sh
 STRIP = 
 VERSION = 1.0
-X_CFLAGS =  -I/usr/openwin/include
-X_EXTRA_LIBS = -lsocket  -lnsl
-X_LIBS =  -L/usr/openwin/lib -R/usr/openwin/lib
+X_CFLAGS = 
+X_EXTRA_LIBS = 
+X_LIBS = 
 X_PRE_LIBS =  -lSM -lICE
-ac_ct_CC = cc
-ac_ct_CXX = CC
+ac_ct_CC = gcc
+ac_ct_CXX = g++
 ac_ct_RANLIB = ranlib
 ac_ct_STRIP = 
-am__fastdepCC_FALSE = 
-am__fastdepCC_TRUE = #
-am__fastdepCXX_FALSE = 
-am__fastdepCXX_TRUE = #
+am__fastdepCC_FALSE = #
+am__fastdepCC_TRUE = 
+am__fastdepCXX_FALSE = #
+am__fastdepCXX_TRUE = 
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -142,14 +142,14 @@ exec_prefix = ${prefix}
 host_alias = 
 includedir = ${prefix}/include
 infodir = ${prefix}/info
-install_sh = /home/fontijne/ga/ga_sandbox/install-sh
+install_sh = /root/ga/ga_sandbox/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localstatedir = ${prefix}/var
 mandir = ${prefix}/man
-mkdir_p = $(install_sh) -d
+mkdir_p = mkdir -p --
 oldincludedir = /usr/include
-prefix = /home/fontijne
+prefix = /usr/local
 program_transform_name = s,x,x,
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
@@ -229,18 +229,18 @@ distclean-compile:
 include ./$(DEPDIR)/chap2ex1.Po
 
 .cpp.o:
-#	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
-#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-	source='$<' object='$@' libtool=no \
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-	$(CXXCOMPILE) -c -o $@ $<
+	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+#	source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-#	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
-#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-	source='$<' object='$@' libtool=no \
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+#	source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 uninstall-info-am:
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
