@@ -149,6 +149,18 @@ void glColor3fm(float r, float g, float b) {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif);
 }
 
+/// Loads color (also into GL 'material' colors, for lighting)
+void glColor4fm(float r, float g, float b, float a) {
+	const float af = 0.3f;
+	float amb[4] = {af * r, af*g, af*b, a};
+	const float df = 0.7f;
+	float dif[4] = {df * r, df*g, df*b, a};
+
+	glColor4f(r, g, b, a);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif);
+}
+
 namespace GLpick {
 bool g_pickActive = false;
 int g_OpenGL_pick[4] = {0, 0, 0, 0};

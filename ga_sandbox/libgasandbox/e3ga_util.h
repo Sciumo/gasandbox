@@ -24,6 +24,7 @@
 namespace e3ga {
 
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
+rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &altPlane);
 mv exp(const mv &x, int order = 9);
 e3ga::bivector log(const e3ga::rotor &R);
 

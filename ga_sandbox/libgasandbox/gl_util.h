@@ -53,6 +53,7 @@ void rotorGLMult(const e3ga::rotor &v);
 
 /// Loads color (also into GL 'material' colors, for lighting)
 void glColor3fm(float r, float g, float b);
+void glColor4fm(float r, float g, float b, float a);
 
 /// Translates a viewport z-value to a world z-value, given _near and _far frustum values.
 inline double viewportDepthToWorldCoordinates(double d, double _near, double _far) {

@@ -58,11 +58,11 @@ int g_dragObject = -1;
 
 
 // the vector in which we reflect (red)
-e3ga::vector g_reflectionVector1 = _vector(unit_e(e2 + 0.2f * e1 + 0.01f * e3));
+e3ga::vector g_reflectionVector1 = _vector(unit_e(0.4f * e2 + 0.4f * e1 + 0.01f * e3));
 e3ga::vector g_reflectionVector2 = _vector(e2);
 
 // the vectors which we rotate (green)
-e3ga::vector g_inputVector = _vector(-e1 - 0.2f *  e2);
+e3ga::vector g_inputVector = _vector(-e1 - 0.2f *  e2 + e3);
 
 // the reflected vector (blue)
 e3ga::vector g_reflectedVector;
@@ -74,15 +74,8 @@ e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 	return _vector(a * x * inverse(a));
 }
 
-/*
-Text at bottom
-Screenshot
-
-Then onto the next example
-*/
-
 void display() {
-	// update the reflected vectors
+	// update the reflected/rotated vectors
 	g_reflectedVector = reflectVector(g_reflectionVector1, g_inputVector);
 	g_rotatedVector = reflectVector(g_reflectionVector2, g_reflectedVector);
 
@@ -101,7 +94,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -8.0f);
+	glTranslatef(0.0f, 0.0f, -6.0f);
 
 
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -135,9 +128,6 @@ void display() {
 	draw(g_inputVector);
 
 	if (!GLpick::g_pickActive) {
-		// draw rotor
-//		glColor3fm(1.0f, 0.0f, 0.0f);
-//		draw(g_reflectionVector2 * g_reflectionVector1);
 
 		// draw reflected & rotated vectors
 		glColor3fm(0.0f, 0.0f, 1.0f);
@@ -161,7 +151,7 @@ void display() {
 		{
 			bivector Rlog = log(_rotor(g_reflectionVector2 * g_reflectionVector1));
 			glBegin(GL_LINE_STRIP);
-			for (double alpha = 1.0; alpha >= 0.0; alpha -= 0.05) {
+			for (double alpha = 1.0; alpha >= -0.01; alpha -= 0.05) {
 				rotor R = _rotor(exp(alpha * Rlog));
 				glVertex3fv(_vector(R * g_inputVector * inverse(R)).getC(vector_e1_e2_e3));
 			}
@@ -169,6 +159,13 @@ void display() {
 		}
 
 		glDisable(GL_LINE_STIPPLE);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		// draw rotor
+		glColor4fm(1.0f, 0.0f, 0.0f, 0.5f);
+		draw(g_reflectionVector2 * g_reflectionVector1);
+		glDisable(GL_BLEND);
 	}
 
 
@@ -185,9 +182,8 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "The green vector(s) are reflected in the red vector.");
-		renderBitmapString(20, 40, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");
-		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
+		renderBitmapString(20, 40, font, "The green vector is reflected, first in one red vector, then in the other.");
+		renderBitmapString(20, 20, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");
 	}
 
 	if (!GLpick::g_pickActive) {

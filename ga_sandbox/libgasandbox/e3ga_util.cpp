@@ -36,6 +36,17 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
 	}
 }
 
+rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &rotPlane) {
+	if (_Float(scp(v1, v2)) < -0.99999f) {
+		return _rotor(unit_e(rotPlane));
+	}
+	else {
+		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
+		return _rotor((1.0 + v2 * v1) * (1.0f / s));
+	}
+}
+
+
 mv exp(const mv &x, int order /*= 9*/) {
 	// todo:
 	// first try special cases:
