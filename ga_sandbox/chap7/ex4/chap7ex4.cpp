@@ -22,68 +22,16 @@
 
 using namespace e3ga;
 
+// exercise: fill in this function
 void rotorToMatrixClassic(const rotor &R, float M[9]) {
-	float qw = _Float(R);
-	float qx = -R.e2e3(); 
-	float qy = -R.e3e1(); 
-	float qz = -R.e1e2(); 
-
-	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
-	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
-	M[2 * 3 + 0] = 2.0f * (qx * qz - qy * qw);
-
-	M[0 * 3 + 1] = 2.0f * (qx * qy - qz * qw);
-	M[1 * 3 + 1] = 1.0f - 2.0f * qx * qx - 2.0f * qz * qz;
-	M[2 * 3 + 1] = 2.0f * (qy * qz + qx * qw);
-
-	M[0 * 3 + 2] = 2.0f * (qx * qz + qy * qw);
-	M[1 * 3 + 2] = 2.0f * (qy * qz - qx * qw);
-	M[2 * 3 + 2] = 1.0f - 2.0f * qx * qx - 2.0f * qy * qy;
+	printf("Warning: rotorToMatrixClassic() not implemented.\n");
 }
 
 
+// exercise: fill in this function
 rotor matrixToRotorClassic(const float M[9]) {
-	float trace = M[0 * 3 + 0] + M[1 * 3 + 1] + M[2 * 3 + 2] + 1.0f;
-	float qw; // scalar coordinate
-	float qx; // coordinate for -e2^e3
-	float qy; // coordinate for -e3^e1
-	float qz; // coordinate for -e1^e2
-	if (trace > 0.00001f) {
-	    float s = 0.5f / (float)sqrt(trace);
-	    qw = 0.25f / s;
-	    qw = sqrt(trace) * (0.5f);
-	    qx = (M[2 * 3 + 1] - M[1 * 3 + 2]) * s;
-	    qy = (M[0 * 3 + 2] - M[2 * 3 + 0]) * s;
-	    qz = (M[1 * 3 + 0] - M[0 * 3 + 1]) * s;
-	}
-	else {
-	    if (M[0 * 3 + 0] > M[1 * 3 + 1] && M[0 * 3 + 0] > M[2 * 3 + 2]) {
-			float s = 2.0f * (float)sqrt( 1.0f + M[0 * 3 + 0] - M[1 * 3 + 1] - M[2 * 3 + 2]);
-			qx = 0.25f * s;
-			qy = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qz = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qw = (M[1 * 3 + 2] - M[2 * 3 + 1]) / s;
-	    }
-	    else if (M[1 * 3 + 1] > M[2 * 3 + 2]) {
-			float s = 2.0f * (float)sqrt( 1.0f + M[1 * 3 + 1] - M[0 * 3 + 0] - M[2 * 3 + 2]);
-			qx = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qy = 0.25f * s;
-			qz = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qw = (M[0 * 3 + 2] - M[2 * 3 + 0]) / s;
-	    }
-	    else {
-			float s = 2.0f * (float)sqrt( 1.0f + M[2 * 3 + 2] - M[0 * 3 + 0] - M[1 * 3 + 1] );
-			qx = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qy = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qz = 0.25f * s;
-			qw = (M[0 * 3 + 1] - M[1 * 3 + 0]) / s;
-	    }
-	}
-
-	float s = sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-	
-	
-	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
+	printf("Warning: matrixToRotorClassic() not implemented.\n");
+	return _rotor(1.0f);
 }
 
 
