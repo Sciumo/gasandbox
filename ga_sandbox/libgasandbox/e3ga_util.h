@@ -26,6 +26,10 @@ namespace e3ga {
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &altPlane);
 mv exp(const mv &x, int order = 9);
+
+/** special exp() for 3D bivectors */
+e3ga::rotor exp(const e3ga::bivector &x);
+/** special log() for 3D rotors */
 e3ga::bivector log(const e3ga::rotor &R);
 
 mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
@@ -79,7 +83,8 @@ e3ga::mv takeGrade(const e3ga::mv &X, int gradeUsageBitmap);
 
 /** 
 Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
-If grade < 0, then a random grade is picked
+'grade' counts from 0, 1, 2, 3, 4, etc (so it is not a bitwise or GRADE_0 | GRADE_1).
+If 'grade' < 0, then a random grade is picked
 
 Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something similar (license issues?)

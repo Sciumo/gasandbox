@@ -75,13 +75,6 @@ e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 	return _vector(a * x * inverse(a));
 }
 
-/*
-Text at bottom
-Screenshot
-
-Then onto the next example
-*/
-
 void display() {
 	// update the reflected vectors
 	g_reflectedVector1 = reflectVector(g_reflectionVector, g_inputVector1);

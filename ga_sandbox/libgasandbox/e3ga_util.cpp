@@ -46,13 +46,12 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector
 	}
 }
 
-
 mv exp(const mv &x, int order /*= 9*/) {
-	// todo:
-	// first try special cases:
+	// First try special cases:
+	// Check if (x * x == scalar) is scalar
 	mv x2 = x * x;
 	mv::Float s_x2 = _Float(x2);
-	if (_Float(norm_e2(x2 - s_x2)) == 0.0f) {
+	if ((_Float(norm_e2(x2) - s_x2 * s_x2)) < 1e-7) {
 		// OK (x * x == scalar), so use special cases:
 		if (s_x2 < 0.0) {
 			mv::Float a = sqrt(-s_x2);
@@ -65,7 +64,6 @@ mv exp(const mv &x, int order /*= 9*/) {
 		else {
 			return 1 + x;
 		}
-
 	}
 
 
@@ -115,6 +113,15 @@ e3ga::bivector log(const e3ga::rotor &R) {
 	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
 	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
 }
+
+// special exp for 3D Euclidean bivectors:
+rotor exp(const bivector &x) {
+	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	mv::Float x2 = _Float(x << x);
+	mv::Float ha = sqrt(-x2);
+	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
+}
+
 
 
 void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
