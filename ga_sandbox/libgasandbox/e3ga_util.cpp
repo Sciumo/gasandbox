@@ -112,6 +112,7 @@ mv exp(const mv &x, int order /*= 9*/) {
 
 e3ga::bivector log(const e3ga::rotor &R) {
 	mv::Float R2 = _Float(norm_r(_bivector(R)));
+	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
 	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
 }
 
