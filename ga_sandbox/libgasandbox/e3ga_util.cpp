@@ -46,6 +46,71 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector
 	}
 }
 
+void rotorToMatrix(const rotor &R, mv::Float M[9]) {
+	mv::Float qw = _Float(R);
+	mv::Float qx = -R.e2e3(); 
+	mv::Float qy = -R.e3e1(); 
+	mv::Float qz = -R.e1e2(); 
+
+	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
+	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
+	M[2 * 3 + 0] = 2.0f * (qx * qz - qy * qw);
+
+	M[0 * 3 + 1] = 2.0f * (qx * qy - qz * qw);
+	M[1 * 3 + 1] = 1.0f - 2.0f * qx * qx - 2.0f * qz * qz;
+	M[2 * 3 + 1] = 2.0f * (qy * qz + qx * qw);
+
+	M[0 * 3 + 2] = 2.0f * (qx * qz + qy * qw);
+	M[1 * 3 + 2] = 2.0f * (qy * qz - qx * qw);
+	M[2 * 3 + 2] = 1.0f - 2.0f * qx * qx - 2.0f * qy * qy;
+}
+
+
+rotor matrixToRotor(const mv::Float M[9]) {
+	mv::Float trace = M[0 * 3 + 0] + M[1 * 3 + 1] + M[2 * 3 + 2] + 1.0f;
+	mv::Float qw; // scalar coordinate
+	mv::Float qx; // coordinate for -e2^e3
+	mv::Float qy; // coordinate for -e3^e1
+	mv::Float qz; // coordinate for -e1^e2
+	if (trace > 0.00001f) {
+	    mv::Float s = 0.5f / (mv::Float)sqrt(trace);
+	    qw = 0.25f / s;
+	    qw = sqrt(trace) * (0.5f);
+	    qx = (M[2 * 3 + 1] - M[1 * 3 + 2]) * s;
+	    qy = (M[0 * 3 + 2] - M[2 * 3 + 0]) * s;
+	    qz = (M[1 * 3 + 0] - M[0 * 3 + 1]) * s;
+	}
+	else {
+	    if (M[0 * 3 + 0] > M[1 * 3 + 1] && M[0 * 3 + 0] > M[2 * 3 + 2]) {
+			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[0 * 3 + 0] - M[1 * 3 + 1] - M[2 * 3 + 2]);
+			qx = 0.25f * s;
+			qy = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
+			qz = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
+			qw = (M[1 * 3 + 2] - M[2 * 3 + 1]) / s;
+	    }
+	    else if (M[1 * 3 + 1] > M[2 * 3 + 2]) {
+			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[1 * 3 + 1] - M[0 * 3 + 0] - M[2 * 3 + 2]);
+			qx = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
+			qy = 0.25f * s;
+			qz = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
+			qw = (M[0 * 3 + 2] - M[2 * 3 + 0]) / s;
+	    }
+	    else {
+			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[2 * 3 + 2] - M[0 * 3 + 0] - M[1 * 3 + 1] );
+			qx = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
+			qy = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
+			qz = 0.25f * s;
+			qw = (M[0 * 3 + 1] - M[1 * 3 + 0]) / s;
+	    }
+	}
+
+	mv::Float s = (mv::Float) sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
+	
+	
+	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
+}
+
+
 mv exp(const mv &x, int order /*= 9*/) {
 	// First try special cases:
 	// Check if (x * x == scalar) is scalar

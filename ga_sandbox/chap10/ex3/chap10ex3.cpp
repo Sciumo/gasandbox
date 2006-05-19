@@ -52,41 +52,8 @@ bool g_rotateModelOutOfPlane = false;
 // rotation of the model
 e3ga::rotor g_modelRotor(_rotor(1.0f));
 
-// when dragging vectors: which one, and at what depth:
-float g_dragDistance = -1.0f;
-int g_dragObject = -1;
-
-
-// the vector in which we reflect (red)
-e3ga::vector g_reflectionVector = _vector(e2);
-
-// the vectors which we reflect (green)
-e3ga::vector g_inputVector1 = _vector(e1 + e2);
-e3ga::vector g_inputVector2 = _vector(e3);
-
-// the reflected vectors (blue)
-e3ga::vector g_reflectedVector1;
-e3ga::vector g_reflectedVector2;
-
-// what vectors to draw (bitmap):
-int g_drawVectors = 1;
-
-e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
-	return _vector(a * x * inverse(a));
-}
-
-/*
-Text at bottom
-Screenshot
-
-Then onto the next example
-*/
 
 void display() {
-	// update the reflected vectors
-	g_reflectedVector1 = reflectVector(g_reflectionVector, g_inputVector1);
-	g_reflectedVector2 = reflectVector(g_reflectionVector, g_inputVector2);
-
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -94,7 +61,6 @@ void display() {
 	glMatrixMode(GL_PROJECTION);
 	const float screenWidth = 1600.0f;
 	glLoadIdentity();
-	pickLoadMatrix();
 	GLpick::g_frustumWidth = 2.0 *  (double)g_viewportWidth / screenWidth;
 	GLpick::g_frustumHeight = 2.0 *  (double)g_viewportHeight / screenWidth;
 	glFrustum(
@@ -103,7 +69,6 @@ void display() {
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
 	glTranslatef(0.0f, 0.0f, -8.0f);
-
 
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -123,95 +88,22 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// draw reflection vector
-	if (GLpick::g_pickActive) glLoadName(1);
-	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_reflectionVector);
-
-	if (g_drawVectors & 1) {
-		// draw input vector 1
-		if (GLpick::g_pickActive) glLoadName(2);
-		glColor3fm(0.0f, 1.0f, 0.0f);
-		draw(g_inputVector1);
-	}
-
-	if (g_drawVectors & 2) {
-		// draw input vector 2
-		if (GLpick::g_pickActive) glLoadName(3);
-		glColor3fm(0.0f, 1.0f, 0.0f);
-		draw(g_inputVector2);
-	}
-
-	if (!GLpick::g_pickActive) {
-		if ((g_drawVectors & 3) == 3) {
-			g_drawState.pushDrawModeOff(OD_ORIENTATION);
-
-			glColor3fm(0.0f, 1.0f, 0.0f);
-			draw(g_inputVector1 ^ g_inputVector2);
-			glColor3fm(0.0f, 0.0f, 1.0f);
-			draw(g_reflectedVector1 ^ g_reflectedVector2);
-			g_drawState.popDrawMode();
-		}
-
-
-		if (g_drawVectors & 1) {
-			// draw reflected vector 1
-			glColor3fm(0.0f, 0.0f, 1.0f);
-			draw(g_reflectedVector1);
-		}
-
-		if (g_drawVectors & 2) {
-			// draw reflected vector 2
-			glColor3fm(0.0f, 0.0f, 1.0f);
-			draw(g_reflectedVector2);
-		}
-
-		// draw stippled line between input and reflection:
-		glDisable(GL_LIGHTING);
-		glEnable(GL_LINE_STIPPLE);
-		int ST = 0xFF00FF >> ((int)(u_timeGet() * 25) % 16);
-		glLineStipple(1, ( GLushort)(ST & 0xFFFF));
-		glColor3fm(0.5f, 0.5f, 0.5f);
-
-		if (g_drawVectors & 1) {
-			glBegin(GL_LINES);
-			glVertex3fv(g_reflectedVector1.getC(vector_e1_e2_e3));
-			glVertex3fv(g_inputVector1.getC(vector_e1_e2_e3));
-			glEnd();
-		}
-
-		if (g_drawVectors & 2) {
-			glBegin(GL_LINES);
-			glVertex3fv(g_reflectedVector2.getC(vector_e1_e2_e3));
-			glVertex3fv(g_inputVector2.getC(vector_e1_e2_e3));
-			glEnd();
-		}
-
-		glDisable(GL_LINE_STIPPLE);
-	}
+	draw(e1);
 
 
 	glPopMatrix();
 
-	if (!GLpick::g_pickActive) {
-		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
+	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
-		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "The green vector(s) are reflected in the red vector.");
-		renderBitmapString(20, 40, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");
-		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
-	}
-
-	if (!GLpick::g_pickActive) {
-		glutSwapBuffers();
-	}
+	glDisable(GL_LIGHTING);
+	glColor3f(1,1,1);
+	void *font = GLUT_BITMAP_HELVETICA_12;
+	renderBitmapString(20, 20, font, "Yada.");
 }
 
 void reshape(GLint width, GLint height) {
@@ -245,14 +137,11 @@ void MouseButton(int button, int state, int x, int y) {
 
 	g_prevMousePos = mousePosToVector(x, y);
 
-	g_dragObject = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-	if (g_dragObject < 0) {
-		e3ga::vector mousePos = mousePosToVector(x, y);
-		g_rotateModel = true;
-		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
-			g_rotateModelOutOfPlane = true;
-		else g_rotateModelOutOfPlane = false;
-	}
+	e3ga::vector mousePos = mousePosToVector(x, y);
+	g_rotateModel = true;
+	if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
+		g_rotateModelOutOfPlane = true;
+	else g_rotateModelOutOfPlane = false;
 }
 
 void MouseMotion(int x, int y) {
@@ -264,20 +153,6 @@ void MouseMotion(int x, int y) {
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
-	}
-	else if ((g_dragObject >= 1) && (g_dragObject <= 3)) {
-		// add motion to vector:
-		e3ga::vector T = vectorAtDepth(g_dragDistance, motion);
-		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-		if (g_dragObject == 1) {
-			g_reflectionVector += T;
-		}
-		else if (g_dragObject == 2) {
-			g_inputVector1	+= T;
-		}
-		else if (g_dragObject == 3) {
-			g_inputVector2	+= T;
-		}
 	}
 
 	// remember mouse pos for next motion:
@@ -292,8 +167,6 @@ void Keyboard(unsigned char key, int x, int y) {
 }
 
 void menuCallback(int value) {
-	g_drawVectors = value;
-
 	// redraw viewport
 	glutPostRedisplay();
 }
@@ -322,8 +195,7 @@ int main(int argc, char*argv[]) {
 	glutIdleFunc(Idle);
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
-	glutAddMenuEntry("vector mode", 1);
-	glutAddMenuEntry("bivector mode", 3);
+	glutAddMenuEntry("menu entry 1", 1);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

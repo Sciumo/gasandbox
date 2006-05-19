@@ -19,7 +19,7 @@
 
 using namespace e3ga;
 
-void rotorToMatrix(const rotor &R, float M[9]) {
+void rotorToMatrixGeo(const rotor &R, float M[9]) {
 	// compute images of the basis vectors:
 	rotor Ri = _rotor(inverse(R));
 	e3ga::vector image[3] = {
@@ -35,7 +35,7 @@ void rotorToMatrix(const rotor &R, float M[9]) {
 }
 
 // note: very inprecise in some situtations; do NOT use this function
-rotor matrixToRotor(const float M[9]) {
+rotor matrixToRotorGeoInprecise(const float M[9]) {
 	e3ga::vector imageOfE1(vector_e1_e2_e3, M[0 * 3 + 0], M[1 * 3 + 0], M[2 * 3 + 0]);
 	e3ga::vector imageOfE2(vector_e1_e2_e3, M[0 * 3 + 1], M[1 * 3 + 1], M[2 * 3 + 1]);
 
@@ -45,7 +45,7 @@ rotor matrixToRotor(const float M[9]) {
 	return _rotor(R2 * R1);
 }
 
-rotor matrixToRotorStable(const float M[9]) {
+rotor matrixToRotorGeo(const float M[9]) {
 	e3ga::vector imageOfE1(vector_e1_e2_e3, M[0 * 3 + 0], M[1 * 3 + 0], M[2 * 3 + 0]);
 	e3ga::vector imageOfE2(vector_e1_e2_e3, M[0 * 3 + 1], M[1 * 3 + 1], M[2 * 3 + 1]);
 	e3ga::vector imageOfE3(vector_e1_e2_e3, M[0 * 3 + 2], M[1 * 3 + 2], M[2 * 3 + 2]);
@@ -80,8 +80,8 @@ int main(int argc, char*argv[]) {
 		rotor R = _rotor(unit_r(v1 * v2));
 
 		float M[9];
-		rotorToMatrix(R, M);
-		rotor R2 = matrixToRotorStable(M);
+		rotorToMatrixGeo(R, M);
+		rotor R2 = matrixToRotorGeo(M);
 
 		float check1 = _Float(norm_e(R * inverse(R2)));
 		float check2 = fabs(_Float(R * inverse(R2)));

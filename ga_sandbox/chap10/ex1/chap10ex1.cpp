@@ -53,7 +53,6 @@ bool g_rotateModelOutOfPlane = false;
 // rotation of the model
 e3ga::rotor g_modelRotor(_rotor(1.0f));
 
-
 // when did the current interpolation start?
 double g_startTime = -1.0;
 

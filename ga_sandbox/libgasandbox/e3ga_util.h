@@ -32,6 +32,10 @@ e3ga::rotor exp(const e3ga::bivector &x);
 /** special log() for 3D rotors */
 e3ga::bivector log(const e3ga::rotor &R);
 
+void rotorToMatrix(const rotor &R, mv::Float M[9]);
+rotor matrixToRotor(const mv::Float M[9]);
+
+
 mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
 
 

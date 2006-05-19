@@ -79,7 +79,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
+				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib"
 				OutputFile="$(OutDir)/chap10ex3.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -119,11 +119,17 @@
 			<File
 				RelativePath="..\chap10\ex3\chap10ex3.cpp">
 			</File>
+			<File
+				RelativePath="..\chap10\ex3\extcalibrefine.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\chap10\ex3\extcalibrefine.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
