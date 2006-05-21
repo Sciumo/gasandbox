@@ -14,6 +14,28 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
+/*
+Create algebra
+Basis:
+e0, e1, e2, e3
+Types:
+point
+normalizedPoint (e1 = 1)
+vector (e1 = 0)
+line
+plane
+rotor
+
+
+
+
+
+
+
+
+
+*/
+
 #ifdef WIN32
 #include <windows.h>
 #endif
@@ -36,7 +58,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 1: Interpolation Rotations";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 1: Summing Lines";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -279,11 +301,6 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
-void Idle() {
-	// redraw viewport
-	glutPostRedisplay();
-}
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
@@ -300,7 +317,6 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	glutIdleFunc(Idle);
 
 	// initialize the interpolation data:
 	srand(time(NULL));
