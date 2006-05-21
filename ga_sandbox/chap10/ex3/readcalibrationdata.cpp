@@ -105,18 +105,15 @@ State readCalibrationData(const std::string &filename) {
 		if (!strcmpnc(entryname, "nbCams")) {		// nbCams
 			if ((sscanf(line, "%s %d", entryname, &nbCams) != 2)) {err = -1;break;	}
 			cameras.resize(nbCams);
-			printf("%d cameras\n", nbCams);
 		}
 		else if (!strcmpnc(entryname, "cam")) {		// cam
 			if ((sscanf(line, "%s %d", entryname, &camIdx) != 2)) {err = -1;break;	}
 			if (camIdx >= (int)cameras.size()) {err = -1;break;	}
-			printf("camera %d\n", camIdx);
 		}
 		else if (!strcmpnc(entryname, "orientation")) {		// orientation
 			size_t skipNb = strlen("orientation") + 1;
 			if (strlen(line) <= skipNb) {err = -1;break;	}
-			char *rotorStr = line + strlen("orientation") + 1;
-			printf("rotor: %s\n", rotorStr);
+			char *rotorStr = line + skipNb;
 
 			try {
 				rotor R = _rotor(parseMVString(rotorStr));
@@ -125,7 +122,57 @@ State readCalibrationData(const std::string &filename) {
 				printf("%s\n", str.c_str());
 				err = -1;break;
 			}
+		}
+		else if (!strcmpnc(entryname, "translation")) {		// translation
+			size_t skipNb = strlen("translation") + 1;
+			if (strlen(line) <= skipNb) {err = -1;break;	}
+			char *vectorStr = line + skipNb;
 
+			try {
+				vector t = _vector(parseMVString(vectorStr));
+				cameras[camIdx].m_t = t;
+			} catch (const std::string &str) {
+				printf("%s\n", str.c_str());
+				err = -1;break;
+			}
+		}
+		else if (!strcmpnc(entryname, "frame")) {		// frame
+			// frame idx visible X3 vector
+			// frame 0 1 1.489079 0.3517250121*e1 - 0.2088123262*e2 - 1.0000000000*e3
+			unsigned int frameIdx, frameVisible;
+			double X3;
+			e3ga::vector t;
+
+			// get frameidx, frameVisible, X3
+			if ((sscanf(line, "%s %d %d %f", entryname, &frameIdx, &frameVisible, &X3) != 4)) {
+				err = -1;break;
+			}
+
+			// find start of 't':
+			const char *tStr = NULL;
+			{
+				int idx = 0;
+				for (int i = 0; i < 4; i++) {
+					while (line[idx] > ' ') idx++;
+					while (line[idx] <= ' ') idx++;
+				}
+				tStr = line + idx;
+				try {
+					t = _vector(parseMVString(tStr));
+				} catch (const std::string &str) {
+					printf("%s\n", str.c_str());
+					err = -1;break;
+				}
+			}
+
+			// resize nb frames, if required:
+			if (frameIdx >= cameras[camIdx].getNbFrames()) {
+				cameras[camIdx].setNbFrames(frameIdx + 1);
+			}
+
+			cameras[camIdx].m_visible[frameIdx] = (frameVisible != 0);
+			cameras[camIdx].m_X3[frameIdx] = (mv::Float)X3;
+			cameras[camIdx].m_pt[frameIdx] = t;
 
 		}
 		else {
@@ -143,5 +190,5 @@ State readCalibrationData(const std::string &filename) {
 	}
 
 
-	return State();
+	return State(cameras);
 }

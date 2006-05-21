@@ -50,6 +50,16 @@ public:
 		initRom();
 	}
 
+	unsigned int getNbFrames() const {
+		return (unsigned int)m_visible.size();
+	}
+
+	void setNbFrames(unsigned int nb) {
+		m_visible.resize(nb);
+		m_pt.resize(nb);
+		m_X3.resize(nb);
+	}
+
 	/// rotation
 	e3ga::rotor m_R;
 	/// rotation matrix 
@@ -58,7 +68,7 @@ public:
 	e3ga::vector m_t;
 	/// for each frame, is a marker visible?
 	std::vector<bool> m_visible;
-	/// for each frame, the '2D' point in the image plane
+	/// for each frame, the '2D' point in the image plane (normalized image coordinates, e3 = -1)
 	std::vector<e3ga::vector> m_pt;
 	/// for each frame the estimated multiplication factor of m_pt 
 	std::vector<e3ga::mv::Float> m_X3;

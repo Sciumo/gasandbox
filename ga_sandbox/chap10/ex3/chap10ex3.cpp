@@ -35,9 +35,10 @@
 #include "readcalibrationdata.h"
 
 using namespace e3ga;
+using namespace extCalibRefine;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 2: External Camera Calibration";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 3: External Camera Calibration";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -53,6 +54,23 @@ bool g_rotateModelOutOfPlane = false;
 
 // rotation of the model
 e3ga::rotor g_modelRotor(_rotor(1.0f));
+
+#define REFINE_1X -1
+#define REFINE_1_SEC - 2
+
+#define DRAW_MARKERS 1
+#define DRAW_ERRORS 2
+#define DRAW_RAYS 4
+#define DRAW_CAMERAS 8
+#define DRAW_PATH 16
+
+int g_draw = DRAW_MARKERS | DRAW_CAMERAS;
+
+
+// the calibration state:
+extCalibRefine::State g_extCalibState;
+
+void drawCamera();
 
 
 void display() {
@@ -70,19 +88,16 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -8.0f);
+	glTranslatef(0.0f, 0.0f, -4.0f);
 
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	glDisable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
-	glLineWidth(2.0f);
+	glLineWidth(1.0f);
 
 
 	glMatrixMode(GL_MODELVIEW);
@@ -90,7 +105,112 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	draw(e1);
+	if (g_draw & DRAW_CAMERAS) {
+		// draw all cameras
+		for (unsigned int c = 0; c < g_extCalibState.m_cam.size(); c++) {
+			const Camera &C = g_extCalibState.m_cam[c];
+			glPushMatrix();
+			// translate / rotate to camera pos/ori
+			glTranslatef(C.m_t.e1(), C.m_t.e2(), C.m_t.e3());
+			rotorGLMult(C.m_R);
+
+			// draw the camera:
+			glColor3f(1.0, 0.0, 0.0);
+			drawCamera();
+
+			glPopMatrix();
+		}
+	}
+
+	if (g_draw & DRAW_MARKERS) {
+		// draw all markers
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glPointSize(2.0f);
+		glBegin(GL_POINTS);
+		for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
+			if (g_extCalibState.m_ptValid[f]) {
+				glVertex3fv(g_extCalibState.m_pt[f].getC(vector_e1_e2_e3));
+			}
+		}
+		glEnd();
+	}
+
+	if (g_draw & DRAW_ERRORS) {
+		// draw errors for all markers
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glBegin(GL_LINES);
+		for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
+			if (g_extCalibState.m_ptValid[f]) {
+				for (unsigned int c = 0; c < g_extCalibState.m_cam.size(); c++) {
+					const Camera &C = g_extCalibState.m_cam[c];
+					if (!C.m_visible[f]) continue;
+
+					// compute point as reconstructed by single camera:
+					vector camPt = _vector(C.m_t + apply_om(C.m_Rom, _vector(C.m_X3[f] * C.m_pt[f])));
+
+					// draw line from fully reconstructed point to point as reconstructed by single camera:
+					glVertex3fv(g_extCalibState.m_pt[f].getC(vector_e1_e2_e3));
+					glVertex3fv(camPt.getC(vector_e1_e2_e3));
+				}
+			}
+		}
+		glEnd();
+	}
+
+	if (g_draw & DRAW_RAYS) {
+		// draw rays from camera to marker, for all markers
+		glColor3f(0.0f, 1.0f, 0.0f);
+
+		glBegin(GL_LINES);
+		for (unsigned int c = 0; c < g_extCalibState.m_cam.size(); c++) {
+			const Camera &C = g_extCalibState.m_cam[c];
+			for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
+				if (!C.m_visible[f]) continue;
+
+				// draw line from camera center, out into the scene:
+				glVertex3fv(C.m_t.getC(vector_e1_e2_e3));
+				glVertex3fv(_vector(C.m_t + 4.0f * C.m_pt[f]).getC(vector_e1_e2_e3));
+			}
+		}
+		glEnd();	
+	}
+
+	if (g_draw & DRAW_PATH) {
+		// draw path that connects all markers (but stipple it when frames are missing)
+		glLineStipple(1, 0x0F0F);
+
+		glColor3f(0.5f, 0.5f, 0.5f);
+		const e3ga::vector *lastValidPt = NULL;
+		bool contMode = true; // continuous mode
+		glBegin(GL_LINE_STRIP);
+		for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
+			if (g_extCalibState.m_ptValid[f]) {
+				glVertex3fv(g_extCalibState.m_pt[f].getC(vector_e1_e2_e3));
+				lastValidPt = &(g_extCalibState.m_pt[f]);
+				if (!contMode) {
+					glEnd(); // end GL_LINES
+					glDisable(GL_LINE_STIPPLE);
+					contMode = true;
+					glBegin(GL_LINE_STRIP); // start new GL_LINE_STRIP
+					glVertex3fv(g_extCalibState.m_pt[f].getC(vector_e1_e2_e3));
+				}
+			}
+			else {
+				if (contMode) {
+					contMode = false;
+					glEnd();
+					glEnable(GL_LINE_STIPPLE);
+					glBegin(GL_LINES); // start new GL_LINES
+					if (lastValidPt)
+						glVertex3fv(lastValidPt->getC(vector_e1_e2_e3));
+				}
+			}
+		}
+		glEnd();
+		glDisable(GL_LINE_STIPPLE);
+	}
+
+
 
 
 	glPopMatrix();
@@ -105,8 +225,43 @@ void display() {
 	glDisable(GL_LIGHTING);
 	glColor3f(1,1,1);
 	void *font = GLUT_BITMAP_HELVETICA_12;
-	renderBitmapString(20, 20, font, "Yada.");
+	renderBitmapString(20, 60, font, "Use left mouse button to orbit scene.");
+	renderBitmapString(20, 40, font, "Use other mouse buttons to access popup-menu.");
+	renderBitmapString(20, 20, font, "In popup-menu, use \"Refine ...\" to refine the calibration.");
+
+	glutSwapBuffers();
 }
+
+
+void drawCamera() {
+	float rect[4][2] = 
+	{
+		-1.0f, 0.75f,
+		1.0f, 0.75f,
+		1.0f, -0.75f,
+		-1.0f, -0.75f,
+	};
+	float f = 0.5;
+	int i;
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPushMatrix();
+	glScalef(0.1f, 0.1f, 0.1f);
+	glBegin(GL_TRIANGLES);
+	for (i = 0; i < 4; i++) {
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(f * rect[i][0], f * rect[i][1], -1.0f);
+		glVertex3f(f * rect[(i+1)%4][0], f * rect[(i+1)%4][1], -1.0f);
+	}
+	glEnd();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glBegin(GL_LINES);
+	glVertex3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(0.0f, 0.0f, -4.0f);
+	glEnd();
+	glPopMatrix();
+}
+
 
 void reshape(GLint width, GLint height) {
 	g_viewportWidth = width;
@@ -169,6 +324,17 @@ void Keyboard(unsigned char key, int x, int y) {
 }
 
 void menuCallback(int value) {
+	if (value < 0) {
+		if (value == REFINE_1X)
+			g_extCalibState.refineLoops(1);
+		if (value == REFINE_1_SEC)
+			g_extCalibState.refineSeconds(1.0);
+	}
+	else {
+		// toggle the DRAW_XXX constant
+		g_draw ^= value;
+	}
+
 	// redraw viewport
 	glutPostRedisplay();
 }
@@ -183,12 +349,12 @@ int main(int argc, char*argv[]) {
 	e3ga::g2Profiling::init();
 
 	try {
-		extCalibRefine::State S = readCalibrationData("calibration_data.txt");
+		g_extCalibState = readCalibrationData("calibration_data.txt");
 	} catch (const std::string &str) {
 		printf("Error: %s\n", str.c_str());
+		return -1;
 	}
 
-	return 0;
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -205,10 +371,16 @@ int main(int argc, char*argv[]) {
 	glutIdleFunc(Idle);
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
-	glutAddMenuEntry("menu entry 1", 1);
+	glutAddMenuEntry("Refine 1x", REFINE_1X);
+	glutAddMenuEntry("Refine for One Second", REFINE_1_SEC);
+	glutAddMenuEntry("-------------------", 0);
+	glutAddMenuEntry("Draw Markers", DRAW_MARKERS);
+	glutAddMenuEntry("Draw Errors", DRAW_ERRORS);
+	glutAddMenuEntry("Draw Rays", DRAW_RAYS);
+	glutAddMenuEntry("Draw Cameras", DRAW_CAMERAS);
+	glutAddMenuEntry("Draw Marker Path", DRAW_PATH);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
-
 
 	glutMainLoop();
 

@@ -75,9 +75,7 @@ State::State(const std::vector<Camera> &cam) : m_cam(cam), m_nbRefinements(0) {
 
 	// make sure all cams have same number of frames:
 	for (unsigned int c = 0; c < m_cam.size(); c++) {
-		m_cam[c].m_visible.resize(maxNbF);
-		m_cam[c].m_pt.resize(maxNbF);
-		m_cam[c].m_X3.resize(maxNbF);
+		m_cam[c].setNbFrames(maxNbF);
 	}
 
 	// make room for points:
@@ -88,7 +86,7 @@ State::State(const std::vector<Camera> &cam) : m_cam(cam), m_nbRefinements(0) {
 }
 
 State::State(const State &S) : m_cam(S.m_cam), m_pt(S.m_pt),
-	m_nbRefinements(S.m_nbRefinements) {
+	m_ptValid(S.m_ptValid), m_nbRefinements(S.m_nbRefinements) {
 	
 }
 
@@ -97,6 +95,7 @@ State &State::operator=(const State &S) {
 		m_cam = S.m_cam;
 		m_pt = S.m_pt;
 		m_nbRefinements = S.m_nbRefinements;
+		m_ptValid = S.m_ptValid;
 	}
 	return *this;
 }
