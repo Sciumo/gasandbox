@@ -17,8 +17,15 @@
 #include <libgasandbox/e3ga_util.h>
 #include <libgasandbox/timing.h>
 
+#define USE_OPENCV
+
+#ifdef USE_OPENCV
+#include <cv.h>
+#else 
 #include <mkl_lapack.h>
 #include <mkl_blas.h>
+
+#endif USE_OPENCV
 
 #include "extcalibrefine.h"
 
@@ -198,8 +205,25 @@ void State::normalizeTranslation(bool updatePoints) {
 	}
 }
 
-// for OpenCV, use void cvSVD( CvArr* A, CvArr* W, CvArr* U=NULL, CvArr* V=NULL, int flags=0 );
-int computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) {
+void printMatrix(double *M) {
+	printf("%f %f %f\n", M[0 * 3 + 0], M[0 * 3 + 1], M[0 * 3 + 2]);
+	printf("%f %f %f\n", M[1 * 3 + 0], M[1 * 3 + 1], M[1 * 3 + 2]);
+	printf("%f %f %f\n", M[2 * 3 + 0], M[2 * 3 + 1], M[2 * 3 + 2]);
+}
+
+void computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) {
+#ifdef USE_OPENCV
+
+	CvMat A = cvMat(3, 3, CV_64F, (void*)_a);
+	CvMat W = cvMat(3, 3, CV_64F, svd_s);
+	CvMat U = cvMat(3, 3, CV_64F, svd_vt);
+	CvMat V = cvMat(3, 3, CV_64F, svd_u);
+
+	int flags=CV_SVD_V_T;
+	cvSVD(&A, &W, &U, &V, flags);
+
+#else 
+	// MKL / LAPACK:
 	const int size = 3;
 	double a[9];
 	memcpy(a,_a, 9*sizeof(double));
@@ -239,8 +263,8 @@ int computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) {
 	svd_s[0 * 3 + 0] = lap_d[0];
 	svd_s[1 * 3 + 1] = lap_d[1];
 	svd_s[2 * 3 + 2] = lap_d[2];
-
-	return 0;
+	}
+#endif
 }
 
 /**
@@ -272,6 +296,17 @@ e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 	computeSVD(a, svd_u, svd_s, svd_vt);
 
 	// multiply the matrices svd_u and svd_vt to give the matrix representation of the rotation
+	mv::Float resultMatrix[9];
+#ifdef USE_OPENCV
+	double _resultMatrix[9];
+	CvMat VT = cvMat(3, 3, CV_64F, svd_vt);
+	CvMat U = cvMat(3, 3, CV_64F, svd_u);
+	CvMat R = cvMat(3, 3, CV_64F, _resultMatrix);
+	cvMatMul(&VT, &U, &R);
+	for (int i = 0; i < 3; i++) 
+		for (int j = 0; j < 3; j++) 
+			resultMatrix[i * 3 + j] = (mv::Float)_resultMatrix[i * 3 + j];
+#else
 	int lap_m = 3, lap_n = 3, lap_lda = 3;
 	char transa = 'T', transb = 'T';
 	double lap_tmp1[9];
@@ -279,14 +314,14 @@ e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 	double alpha = 1.0f, beta = 0.0f;
 	DGEMM(&transa, &transb, &lap_n, &lap_n, &lap_n, &alpha, svd_vt, &lap_n, svd_u, &lap_n, &beta, lap_tmp1, &lap_n);
 
-	// convert to rotor
-	mv::Float resultMatrix[9];
 	for (int i = 0; i < 3; i++) 
 		for (int j = 0; j < 3; j++) 
 			resultMatrix[i * 3 + j] = (mv::Float)lap_tmp1[j * 3 + i]; // transpose for LAPACK output
+#endif
 
 
 
+	// convert to rotor
 	return matrixToRotor(resultMatrix);
 }
 
@@ -372,10 +407,6 @@ namespace {
 		return rhs / nb;
 	}
 
-// static function
-// todo: should use SVD / least squares to solve . . .
-// supply: direction (world frame)+ camera point
-// NOTE: this function is also in libmarkers3d!!! reconstruct.h
 e3ga::vector reconstructSingleMarkerFrom2D(
 	const e3ga::vector *camPt[], 
 	const e3ga::vector *dir[], int nb) {
@@ -407,23 +438,29 @@ e3ga::vector reconstructSingleMarkerFrom2D(
 	eqMatrix[2 * 3 + 2] = lhs.e3();
 	b[2] = rhs;
 
-	// here is example of OpenCV use:
-	// BUT FIRST GET IT WORKING FOR MKL!!!!
-/*	// NO difference in speed!
 	// compute LU factorization (IPP)
-	Ipp32u dstIndex[3];
+/*	Ipp32u dstIndex[3];
 	Ipp64f LU[9], R[3];
 	ippmLUDecomp_m_64f_3x3(eqMatrix, 3 * sizeof(double), dstIndex, LU, 3 * sizeof(double));
 	ippmLUBackSubst_mv_64f_3x3(LU, 3 * sizeof(double), dstIndex, b, R);
-	normalizedPoint pt = c3gaPoint(R[0], R[1], R[2]);*/
+	normalizedPoint pt = c3gaPoint(R[0], R[1], R[2]);
+	return e3ga::vector(vector_e1_e2_e3, (mv::Float)R[0], (mv::Float)R[1], (mv::Float)R[2]);*/
 
+#ifdef USE_OPENCV
+	double tmp[3] = {b[0], b[1], b[2]};
+	CvMat A= cvMat(3, 3, CV_64F, eqMatrix);
+	CvMat X = cvMat(3, 1, CV_64F, b);
+	CvMat B = cvMat(3, 1, CV_64F, tmp);
 
+	cvSolve(&A, &B, &X, CV_SVD);
+#else 
 	// compute LU factorization (MKL)
 	char trans = 'n';
 	int lap_m = 3, lap_n = 3, ipiv[3], lda = 3, ldb = 3, info = 0, nrhs = 1;
 	DGETRF(&lap_m, &lap_n, eqMatrix, &lda, ipiv, &info);
 	//  DGETRS solves A * X = B given A in LU factorization
 	DGETRS(&trans, &lap_n, &nrhs, eqMatrix, &lda, ipiv, b, &ldb, &info);
+#endif
 
 	return e3ga::vector(vector_e1_e2_e3, (mv::Float)b[0], (mv::Float)b[1], (mv::Float)b[2]);
 }

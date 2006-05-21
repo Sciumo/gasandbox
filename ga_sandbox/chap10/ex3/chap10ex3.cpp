@@ -225,6 +225,11 @@ void display() {
 	glDisable(GL_LIGHTING);
 	glColor3f(1,1,1);
 	void *font = GLUT_BITMAP_HELVETICA_12;
+	{
+		char buf[1024];
+		sprintf(buf, "Current cost function: %e", g_extCalibState.costFunction());
+		renderBitmapString(20, 80, font, buf);
+	}
 	renderBitmapString(20, 60, font, "Use left mouse button to orbit scene.");
 	renderBitmapString(20, 40, font, "Use other mouse buttons to access popup-menu.");
 	renderBitmapString(20, 20, font, "In popup-menu, use \"Refine ...\" to refine the calibration.");

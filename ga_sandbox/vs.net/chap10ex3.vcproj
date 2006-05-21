@@ -32,7 +32,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib antlrd.lib"
+				AdditionalDependencies="wsock32.lib antlrd.lib cxcore.lib"
 				OutputFile="$(OutDir)/chap10ex3.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
@@ -79,7 +79,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib antlr.lib"
+				AdditionalDependencies="wsock32.lib antlr.lib cxcore.lib"
 				OutputFile="$(OutDir)/chap10ex3.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
