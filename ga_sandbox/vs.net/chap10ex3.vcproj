@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="chap10ex3"
-	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}"
+	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1C3}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -32,7 +32,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
+				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib antlrd.lib"
 				OutputFile="$(OutDir)/chap10ex3.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
@@ -79,7 +79,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib"
+				AdditionalDependencies="wsock32.lib mkl_c.lib mkl_lapack.lib antlr.lib"
 				OutputFile="$(OutDir)/chap10ex3.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -122,6 +122,9 @@
 			<File
 				RelativePath="..\chap10\ex3\extcalibrefine.cpp">
 			</File>
+			<File
+				RelativePath="..\chap10\ex3\readcalibrationdata.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -129,6 +132,9 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
 				RelativePath="..\chap10\ex3\extcalibrefine.h">
+			</File>
+			<File
+				RelativePath="..\chap10\ex3\readcalibrationdata.h">
 			</File>
 		</Filter>
 		<Filter

@@ -15,6 +15,11 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
+#include "e3ga.h"
 #include "e3ga_util.h"
 #include "gabits.h"
 

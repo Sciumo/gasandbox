@@ -32,6 +32,8 @@
 #include <libgasandbox/glut_util.h>
 #include <libgasandbox/timing.h>
 
+#include "readcalibrationdata.h"
+
 using namespace e3ga;
 using namespace mv_draw;
 
@@ -179,6 +181,14 @@ void Idle() {
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
+
+	try {
+		extCalibRefine::State S = readCalibrationData("calibration_data.txt");
+	} catch (const std::string &str) {
+		printf("Error: %s\n", str.c_str());
+	}
+
+	return 0;
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);

@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="chap6ex2"
-	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1BB}"
+	Name="libgasandboxparse"
+	ProjectGUID="{FA5DC3A9-AA89-4F04-9F78-38727225F84D}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -13,14 +13,13 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="chap6ex2_Debug"
-			ConfigurationType="1"
+			IntermediateDirectory="libgasandboxparse_Debug"
+			ConfigurationType="4"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="5"
@@ -31,14 +30,8 @@
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
-				OutputFile="$(OutDir)/chap6ex2.exe"
-				LinkIncremental="2"
-				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/chap6ex2.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/libgasandboxparse.lib"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -53,8 +46,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -63,13 +54,12 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="chap6ex2_Release"
-			ConfigurationType="1"
+			IntermediateDirectory="libgasandboxparse_Release"
+			ConfigurationType="4"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="4"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -78,15 +68,8 @@
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
-				OutputFile="$(OutDir)/chap6ex2.exe"
-				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"/>
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/libgasandboxparse.lib"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -101,8 +84,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -117,19 +98,67 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\chap6\ex2\chap6ex2.cpp">
+				RelativePath="..\libgasandbox\e2ga_mv_lexer.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_mv_parser.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_parse.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_lexer.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_parser.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_parse.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\libgasandbox\e2ga_mv_lexer.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_mv_lexerTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_mv_parser.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_mv_parserTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e2ga_parse.h">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_lexer.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_lexerTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_parser.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_mv_parserTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\e3ga_parse.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
 		</Filter>
+		<File
+			RelativePath=".\ReadMe.txt">
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

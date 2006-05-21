@@ -121,6 +121,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap10ex3", "chap10ex3.vcproj", "{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84D} = {FA5DC3A9-AA89-4F04-9F78-38727225F84D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandboxparse", "libgasandboxparse.vcproj", "{FA5DC3A9-AA89-4F04-9F78-38727225F84D}"
+	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
 Global
@@ -229,6 +234,10 @@ Global
 		{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}.Debug.Build.0 = Debug|Win32
 		{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}.Release.ActiveCfg = Release|Win32
 		{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}.Release.Build.0 = Release|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84D}.Debug.ActiveCfg = Debug|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84D}.Debug.Build.0 = Debug|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84D}.Release.ActiveCfg = Release|Win32
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84D}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

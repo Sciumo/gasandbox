@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="chap5ex3"
-	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}"
+	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B9}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
