@@ -150,8 +150,6 @@ void State::updateTranslation() {
 			}
 		}
 		C.m_t = sum * (1.0f / (mv::Float)nbVisible);
-
-//		printf("new_t = %s,\n", e3ga::string(C.m_t));
 	}
 }
 
