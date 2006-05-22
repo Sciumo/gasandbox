@@ -33,9 +33,9 @@ libgasandboxparse_a_include_HEADERS = \
 	h3ga_mv_lexer.hpp h3ga_mv_parser.hpp h3ga_mv_parserTokenTypes.hpp 
 
 libgasandboxparse_a_SOURCES =  \
-	e2ga_mv_lexer.cpp e2ga_mv_parser.cpp \
-	e3ga_mv_lexer.cpp e3ga_mv_parser.cpp \
-	h3ga_mv_lexer.cpp h3ga_mv_parser.cpp 
+	e2ga_parse.cpp e2ga_mv_lexer.cpp e2ga_mv_parser.cpp \
+	e3ga_parse.cpp e3ga_mv_lexer.cpp e3ga_mv_parser.cpp \
+	h3ga_parse.cpp h3ga_mv_lexer.cpp h3ga_mv_parser.cpp 
 
 
 
