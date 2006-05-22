@@ -137,6 +137,9 @@
 				RelativePath="..\libgasandbox\glut_util.cpp">
 			</File>
 			<File
+				RelativePath="..\libgasandbox\h3ga.cpp">
+			</File>
+			<File
 				RelativePath="..\libgasandbox\main.cpp">
 			</File>
 			<File
@@ -212,6 +215,9 @@
 			</File>
 			<File
 				RelativePath="..\libgasandbox\glut_util.h">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga.h">
 			</File>
 			<File
 				RelativePath="..\libgasandbox\mv_analyze.h">

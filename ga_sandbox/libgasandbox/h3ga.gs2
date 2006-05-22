@@ -1,0 +1,152 @@
+ga {
+
+	license: GPL; // BSD, GPL, LGPL or filename of your own license
+	language: cpp; //java; // what language to output (cpp, java)
+	pass: reference; // or value
+	return: value; // or reference
+	namespace: h3ga; // what namespace to put the ga in (if any)
+	inline: constructors set assign operators functions;// what to inline:
+	exception: throw ; // how to handle exceptions: [callback | ignore | throw] 
+	
+	debug_coordinate_string: disable; //enable or disable
+	profile: ; // profiling = disable
+//	profile: enable net; 
+	
+	cpp_operator_default_bindings; // this sets the cpp default operator bindings
+	
+	//todo: is it always require to register both assign and regular?? 	
+	
+	multivector_mem_alloc: full; // or parity_pure; memory allocation for general multivector: full or parity pure
+	storage: float '%s'; 
+	
+	basis: e1, e2, e3, e0;
+	metric: e1 . e1 = e2 . e2 = e3 . e3 = e0 . e0 = 1;
+	
+	multivector: mv(
+			1.0, // grade 0
+			e1, e2, e3, e0, // grade 1
+			e1^e2,    e2^e3,    e3^e1, e1^e0, e2^e0, e3^e0,   // grade 2
+			e1^e2^e3, e1^e2^e0,    e2^e3^e0,    e3^e1^e0, // grade 3
+			e1^e2^e3^e0 // grade 4
+		);
+	
+	specialization: blade e1_t(e1);
+	specialization: blade e2_t(e2);
+	specialization: blade e3_t(e3);
+	specialization: blade e0_t(e0);
+	specialization: blade scalar(1.0);
+	
+	specialization: blade vector(e1, e2, e3);
+	specialization: blade point(e1, e2, e3, e0);
+	specialization: blade normalizedPoint(e1, e2, e3, e0=1);
+	specialization: blade line(e1^e2, e2^e3, e3^e1, e1^e0, e2^e0, e3^e0);
+	specialization: blade improperLine(e1^e2, e2^e3, e3^e1);
+	specialization: blade plane(e1^e2^e3, e1^e2^e0, e2^e3^e0, e3^e1^e0);
+	specialization: blade improperPlane(e1^e2^e3);
+	
+	
+	specialization: versor rotor(1.0, e1^e2, e2^e3, e3^e1);
+	
+	constant: e0i = "::g2bi::inverse(e0)"; 
+	constant: I4 = "e1 ^ e2 ^ e3 ^ e0"; 
+	constant: I4i = "::g2bi::inverse(e1 ^ e2 ^ e3 ^ e0)"; 
+	
+
+	outermorphism: om(
+			e1, e2, e3, e0, // grade 1
+			e1^e2,    e2^e3,    e3^e1, e1^e0, e2^e0, e3^e0,   // grade 2
+			e1^e2^e3, e1^e2^e0,    e2^e3^e0,    e3^e1^e0, // grade 3
+			e1^e2^e3^e0 // grade 4
+		);
+	
+}
+
+mv lcont(mv x, mv y) {
+	return ::g2bi::lcont(x, y);
+}
+
+mv scp(mv x, mv y) {
+	return ::g2bi::scp(x, y);
+}
+
+mv extract_coord(mv x, mv y) {
+	return ::g2bi::scp_em(x, ::g2bi::reverse(y));
+}
+
+mv gp(mv x, mv y) {
+	return x y;
+}
+
+mv op(mv x, mv y) {
+	return x ^ y;
+}
+
+mv add(mv x, mv y) {
+	return x + y;
+}
+
+mv subtract(mv x, mv y) {
+	return x - y;
+}
+
+scalar norm_e2(mv x) {
+	return ::g2bi::scp_em(x, ::g2bi::reverse(x));
+}
+
+scalar norm_e(mv x) {
+	scalar e2 = ::g2bi::scp_em(x, ::g2bi::reverse(x));
+	return ::g2bi::scalar_sqrt(e2);
+}
+
+mv unit_e(mv x) {
+	scalar e2 = ::g2bi::scp_em(x, ::g2bi::reverse(x));
+	scalar ie = ::g2bi::inverse(::g2bi::scalar_sqrt(e2));
+	return x ie;
+}
+
+scalar norm_r2(mv x) {
+	return ::g2bi::scp(x, ::g2bi::reverse(x));
+}
+
+scalar norm_r(mv x) {
+	scalar r2 = ::g2bi::scp(x, ::g2bi::reverse(x));
+	return ::g2bi::scalar_sign(r2) * ::g2bi::scalar_sqrt(::g2bi::scalar_abs(r2));
+}
+
+mv unit_r(mv x) {
+	scalar r2 = ::g2bi::scp(x, ::g2bi::reverse(x));
+	scalar ir = ::g2bi::inverse(::g2bi::scalar_sqrt(::g2bi::scalar_abs(r2)));
+	return x ir;
+}
+
+
+mv reverse(mv x) {
+	return ::g2bi::reverse(x);
+}
+
+mv negate(mv x) {
+	return ::g2bi::negate(x);
+}
+
+mv dual(mv x) {
+	return ::g2bi::dual(x);
+}
+
+mv undual(mv x) {
+	return ::g2bi::undual(x);
+}
+
+mv inverse(mv x) {
+	scalar n = ::g2bi::scp(x, ::g2bi::reverse(x));
+	scalar in = ::g2bi::inverse(n);
+	return ::g2bi::gp(::g2bi::reverse(x), in);
+}
+
+mv apply_om(om x, mv y) {
+	return x * y;
+}
+
+mv gradeInvolution(mv x) {
+	return ::g2bi::grade_involution(x);
+}
+

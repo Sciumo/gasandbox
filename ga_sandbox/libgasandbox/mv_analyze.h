@@ -15,11 +15,12 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
-#ifndef _C3GA_ANALYZE_H_
-#define _C3GA_ANALYZE_H_
+#ifndef _MV_ANALYZE_H_
+#define _MV_ANALYZE_H_
 
 #include "e2ga.h"
 #include "e3ga.h"
+#include "h3ga.h"
 
 namespace mv_analyze {
 
@@ -38,9 +39,9 @@ public:
 	static const int FLAG_DUAL = 2;
 
 	// models:
-	static const int VECTOR_SPACE = 1;
-	static const int HOMOGENEOUS = 2;
-	static const int CONFORMAL = 3;
+	static const int VECTOR_SPACE_MODEL = 1;
+	static const int HOMOGENEOUS_MODEL = 2;
+	static const int CONFORMAL_MODEL = 3;
 
 	// conformal model types:
 	// types:
@@ -89,6 +90,7 @@ public:
 		const normalizedPoint &probe = _normalizedPoint(no));*/
 	mvAnalysis(const e2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const e3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	mvAnalysis(const h3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const mvAnalysis &I);
 	virtual ~mvAnalysis();
 
@@ -98,6 +100,7 @@ public:
 	/** intFlags can be FLAG_DUAL for dual intepretation */
 	void analyze(e2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(e3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	void analyze(h3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 //	void analyze(mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const normalizedPoint &probe = _normalizedPoint(no));
 
 	std::string toString() const;
@@ -136,8 +139,6 @@ public:
 	Each analyzed multivector is decomposed into
 	(analysis dependent) points, vectors and scalars.
 	*/
-
-	// todo: just e3ga::vector?
 
 	/// points
 	e3ga::vector m_pt[NB_POINTS];
@@ -188,6 +189,6 @@ protected:
 };
 
 
-} // end of namespace c3ga
+} // end of namespace mv_analyze
 
-#endif /* _C3GA_ANALYZE_H_ */
+#endif /* _MV_ANALYZE_H_ */

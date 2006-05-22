@@ -115,6 +115,15 @@
 			<File
 				RelativePath="..\libgasandbox\e3ga_parse.cpp">
 			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_lexer.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_parser.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_parse.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -149,6 +158,21 @@
 			</File>
 			<File
 				RelativePath="..\libgasandbox\e3ga_parse.h">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_lexer.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_lexerTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_parser.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_mv_parserTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_parse.h">
 			</File>
 		</Filter>
 		<Filter

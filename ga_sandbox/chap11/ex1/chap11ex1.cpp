@@ -14,21 +14,6 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
-/*
-Create algebra
-Basis:
-e0, e1, e2, e3
-Types:
-point
-normalizedPoint (e1 = 1)
-vector (e1 = 0)
-line
-plane
-rotor
-
-
-*/
-
 #ifdef WIN32
 #include <windows.h>
 #endif
