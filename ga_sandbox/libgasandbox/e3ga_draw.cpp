@@ -59,7 +59,7 @@ void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 		}
 	}
 	else if (A.isVersor()) {
-		if (A.versorSubclass() == mvAnalysis::EVEN_VERSOR) {
+		if (A.versorSubclass() == mvAnalysis::ROTOR) {
 			if (A.m_sc[0] > 0.0001) {
 				mv::Float scale = (g_drawState.getDrawMode() & OD_MAGNITUDE)
 					? (mv::Float)sqrt(fabs(A.m_sc[0]) / M_PI) : 1.0f;

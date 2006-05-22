@@ -342,19 +342,25 @@ void mvAnalysis::analyze(e3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 	// versor?
 	else if (m_mvType.m_type == VERSOR) {
-		m_type[3] = (m_mvType.m_parity) ? ODD_VERSOR : EVEN_VERSOR;		
+		m_type[3] = (m_mvType.m_parity) ? ODD_VERSOR : ROTOR;		
 
-		// format for versor:
-		// m_sc[0] = magnitude
-		// m_sc[1] = angle
-		// m_vc[0], m_vc[1] is basis for rotation plane
-		// m_vc[2] is normal to rotation plane
-		e3ga::factorizeBlade(_bivector(X), m_vc);
-		m_vc[2] = _vector(e3ga::dual(m_vc[0] ^ m_vc[1]));
+		if (m_type[3] == ROTOR) {
+			// format for rotor:
+			// m_sc[0] = magnitude
+			// m_sc[1] = angle
+			// m_vc[0], m_vc[1] is basis for rotation plane
+			// m_vc[2] is normal to rotation plane
+			e3ga::factorizeBlade(_bivector(X), m_vc);
+			m_vc[2] = _vector(e3ga::dual(m_vc[0] ^ m_vc[1]));
 
-		m_sc[0] = e3ga::_Float(norm_e(X));
-//		printf("%f %f\n", e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X));
-		m_sc[1] = (e3ga::mv::Float)(2.0 * atan2(e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X)));
+			m_sc[0] = e3ga::_Float(norm_e(X));
+	//		printf("%f %f\n", e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X));
+			m_sc[1] = (e3ga::mv::Float)(2.0 * atan2(e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X)));
+		}
+		else {
+			// no info for odd versor, since we do not draw it?
+		}
+
 		return;
 	}
 
@@ -400,16 +406,16 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 	// type is vector space
 	m_type[0] = HOMOGENEOUS_MODEL;
-	m_type[2] = NOT_USED; // no blade/versor classes
-/*
+	m_type[2] = NOT_USED; // later on, when it is a blade, the m_type[2] will be set to either LOCALIZED or INFINITE
+
 	// forced dual interpretation?
 	if (intFlags & FLAG_DUAL) {
 		m_flags ^= FLAG_DUAL;
-		X = e3ga::dual(X); // should 'dual' be 'undual?'
+		X = h3ga::dual(X); // should 'dual' be 'undual?'
 	}
 
 	// get basic mv type (BLADE, VERSOR, etc)
-	e3ga::mvType tmp(X, (e3ga::mv::Float)epsilon);
+	h3ga::mvType tmp(X, (h3ga::mv::Float)epsilon);
 	m_mvType = tmp;
 	m_type[1] = m_mvType.m_type;
 
@@ -422,24 +428,42 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 	// versor?
 	else if (m_mvType.m_type == VERSOR) {
-		m_type[3] = (m_mvType.m_parity) ? ODD_VERSOR : EVEN_VERSOR;		
+		if (m_mvType.m_parity) {
+			// no info for odd versor, since we don't draw it
+			m_type[3] = ODD_VERSOR;
+		}
+		else {
+			if (_Float(norm_e(X - _rotor(X))) < epsilon) {
+				// rotor
+				m_type[3] = ROTOR;
 
-		// format for versor:
-		// m_sc[0] = magnitude
-		// m_sc[1] = angle
-		// m_vc[0], m_vc[1] is basis for rotation plane
-		// m_vc[2] is normal to rotation plane
-		e3ga::factorizeBlade(_bivector(X), m_vc);
-		m_vc[2] = _vector(e3ga::dual(m_vc[0] ^ m_vc[1]));
+				// test by applying it to e0?
+				// or simply cast to rotor, subtract, get norm, must be (near-)zero
 
-		m_sc[0] = e3ga::_Float(norm_e(X));
-//		printf("%f %f\n", e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X));
-		m_sc[1] = (e3ga::mv::Float)(2.0 * atan2(e3ga::_Float(e3ga::norm_e(e3ga::_bivector(X))), e3ga::_Float(X)));
+				// format for versor:
+				// m_sc[0] = magnitude
+				// m_sc[1] = angle
+				// m_vc[0], m_vc[1] is basis for rotation plane
+				// m_vc[2] is normal to rotation plane
+				h3ga::factorizeBlade(_lineAtInfinity(X), m_vc);
+				m_vc[2] = _vector(h3ga::dual(m_vc[0] ^ m_vc[1]));
+
+				m_sc[0] = h3ga::_Float(norm_e(X));
+				m_sc[1] = (h3ga::mv::Float)(2.0 * atan2(h3ga::_Float(h3ga::norm_e(h3ga::_lineAtInfinity(X))), h3ga::_Float(X)));
+			}
+			else {
+				// no info for even versor, since we don't draw it
+				m_type[3] = EVEN_VERSOR;
+			}
+		}
 		return;
 	}
 
 	// blade
 	else if (m_mvType.m_type == BLADE) {
+		// have LOCALIZED and INFINITE blade classes?
+		// POINT, LINE, PLANE,
+
 		m_type[3] = m_mvType.m_grade;
 
 		// format for blade:

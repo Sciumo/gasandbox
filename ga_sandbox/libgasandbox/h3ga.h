@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-22 12:56:24 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2006-05-22 13:47:30 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -48,25 +48,26 @@
 			MVT_POINT = 16,
 			MVT_NORMALIZEDPOINT = 17,
 			MVT_LINE = 18,
-			MVT_IMPROPERLINE = 19,
-			MVT_PLANE = 20,
-			MVT_IMPROPERPLANE = 21,
-			MVT_ROTOR = 22,
-			MVT___E1_CT__ = 23,
-			MVT___E2_CT__ = 24,
-			MVT___E3_CT__ = 25,
-			MVT___E0_CT__ = 26,
-			MVT___E0I_CT__ = 27,
-			MVT___I4I_CT__ = 28,
+			MVT_LINEATINFINITY = 19,
+			MVT_BIVECTOR = 20,
+			MVT_PLANE = 21,
+			MVT_PLANEATINFINITY = 22,
+			MVT_ROTOR = 23,
+			MVT___E1_CT__ = 24,
+			MVT___E2_CT__ = 25,
+			MVT___E3_CT__ = 26,
+			MVT___E0_CT__ = 27,
+			MVT___E0I_CT__ = 28,
+			MVT___I4I_CT__ = 29,
 			MVT_MV = 8,
-			MVT_LAST = 29 
+			MVT_LAST = 30 
 	};
 
 	// outermorphism types:
 	enum omType {
 		OMT_NONE = -2,
 			OMT_OM = 9,
-			OMT_LAST = 29 
+			OMT_LAST = 30 
 	};
 
 	// grade definitions that can be joined using the '|' operator:
@@ -120,9 +121,10 @@
 	class point;
 	class normalizedPoint;
 	class line;
-	class improperLine;
+	class lineAtInfinity;
+	class bivector;
 	class plane;
-	class improperPlane;
+	class planeAtInfinity;
 	class rotor;
 	class __e1_ct__;
 	class __e2_ct__;
@@ -200,7 +202,7 @@
 		// the friend classes of mv 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
-		friend class improperPlane;
+		friend class lineAtInfinity;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -209,13 +211,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -400,16 +403,20 @@
 		inline mv(const line &arg1) {
 			set(arg1);
 		}
-		/// init from improperLine constructor
-		inline mv(const improperLine &arg1) {
+		/// init from lineAtInfinity constructor
+		inline mv(const lineAtInfinity &arg1) {
+			set(arg1);
+		}
+		/// init from bivector constructor
+		inline mv(const bivector &arg1) {
 			set(arg1);
 		}
 		/// init from plane constructor
 		inline mv(const plane &arg1) {
 			set(arg1);
 		}
-		/// init from improperPlane constructor
-		inline mv(const improperPlane &arg1) {
+		/// init from planeAtInfinity constructor
+		inline mv(const planeAtInfinity &arg1) {
 			set(arg1);
 		}
 		/// init from rotor constructor
@@ -523,12 +530,14 @@
 		void set(const normalizedPoint &arg1);
 		/// set to line 
 		void set(const line &arg1);
-		/// set to improperLine 
-		void set(const improperLine &arg1);
+		/// set to lineAtInfinity 
+		void set(const lineAtInfinity &arg1);
+		/// set to bivector 
+		void set(const bivector &arg1);
 		/// set to plane 
 		void set(const plane &arg1);
-		/// set to improperPlane 
-		void set(const improperPlane &arg1);
+		/// set to planeAtInfinity 
+		void set(const planeAtInfinity &arg1);
 		/// set to rotor 
 		void set(const rotor &arg1);
 		/// set to __e1_ct__ 
@@ -569,12 +578,14 @@
 		mv&operator=(const normalizedPoint& arg1);
 		/// assign line 
 		mv&operator=(const line& arg1);
-		/// assign improperLine 
-		mv&operator=(const improperLine& arg1);
+		/// assign lineAtInfinity 
+		mv&operator=(const lineAtInfinity& arg1);
+		/// assign bivector 
+		mv&operator=(const bivector& arg1);
 		/// assign plane 
 		mv&operator=(const plane& arg1);
-		/// assign improperPlane 
-		mv&operator=(const improperPlane& arg1);
+		/// assign planeAtInfinity 
+		mv&operator=(const planeAtInfinity& arg1);
 		/// assign rotor 
 		mv&operator=(const rotor& arg1);
 		/// assign __e1_ct__ 
@@ -743,8 +754,8 @@
 		// the friend classes of e1_t 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -753,12 +764,13 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -929,8 +941,8 @@
 		// the friend classes of e2_t 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -939,13 +951,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 
 		public:
@@ -1115,8 +1128,8 @@
 		// the friend classes of e3_t 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -1124,13 +1137,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -1301,8 +1315,8 @@
 		// the friend classes of e0_t 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -1310,13 +1324,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -1487,8 +1502,8 @@
 		// the friend classes of scalar 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -1496,13 +1511,14 @@
 		friend class e3_t;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -1671,8 +1687,8 @@
 		// the friend classes of vector 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -1681,12 +1697,13 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -1863,8 +1880,8 @@
 		// the friend classes of point 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -1873,13 +1890,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class e2_t;
 
 		public:
@@ -2058,8 +2076,8 @@
 		// the friend classes of normalizedPoint 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class e0_t;
@@ -2067,13 +2085,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -2253,8 +2272,8 @@
 		// the friend classes of line 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -2263,12 +2282,13 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -2447,15 +2467,14 @@
 	}
 
 
-	/// enum for the coordinates of improperLine 
-	enum __improperLine_coordinates__ {improperLine_e1e2_e2e3_e3e1};
+	/// enum for the coordinates of lineAtInfinity 
+	enum __lineAtInfinity_coordinates__ {lineAtInfinity_e1e2_e2e3_e3e1};
 
-	class improperLine {
-		// the friend classes of improperLine 
+	class lineAtInfinity {
+		// the friend classes of lineAtInfinity 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -2464,12 +2483,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -2477,13 +2498,13 @@
 			typedef float Float;
 
 		/// zero constructor
-		inline improperLine() {
+		inline lineAtInfinity() {
 
 			set();
 		}
 
 		/// scalar constructor 
-		inline improperLine(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> improperLine	 
+		inline lineAtInfinity(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> lineAtInfinity	 
 			set(s);
 		}
 
@@ -2491,26 +2512,26 @@
 
 
 		/// copy constructor (MUST PASS BY REFERENCE)
-		inline improperLine(const improperLine &arg1) {
+		inline lineAtInfinity(const lineAtInfinity &arg1) {
 
 			set(arg1);
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline improperLine(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> improperLine	 
+		inline lineAtInfinity(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> lineAtInfinity	 
 			set(arg1);
 		}
 
 		/// pointer to coordinates constructor
-		inline improperLine(__improperLine_coordinates__, const Float *coordinates) {
+		inline lineAtInfinity(__lineAtInfinity_coordinates__, const Float *coordinates) {
 
-			set(improperLine_e1e2_e2e3_e3e1, coordinates);
+			set(lineAtInfinity_e1e2_e2e3_e3e1, coordinates);
 		}
 
 		/// coordinates constructor
-		inline improperLine(__improperLine_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
+		inline lineAtInfinity(__lineAtInfinity_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
 
-			set(improperLine_e1e2_e2e3_e3e1, c_e1e2, c_e2e3, c_e3e1);
+			set(lineAtInfinity_e1e2_e2e3_e3e1, c_e1e2, c_e2e3, c_e3e1);
 		}
 
 		/// set to null
@@ -2520,25 +2541,25 @@
 		void set(Float s);
 
 		/// set to copy
-		void set(const improperLine &arg1);
+		void set(const lineAtInfinity &arg1);
 
 		/// set to copy of general multivector
 		void set(const mv &arg1);
 
 		/// pointer to coordinates constructor
-		void set(__improperLine_coordinates__, const Float *coordinates);
+		void set(__lineAtInfinity_coordinates__, const Float *coordinates);
 
 		/// set to coordinates
-		void set(__improperLine_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1);
+		void set(__lineAtInfinity_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1);
 
 		/// assign copy
-		improperLine &operator=(const improperLine &arg1);
+		lineAtInfinity &operator=(const lineAtInfinity &arg1);
 
 		/// assign general multivector
-		improperLine &operator=(const mv &arg1);
+		lineAtInfinity &operator=(const mv &arg1);
 
 		/// assign scalar
-		improperLine &operator=(Float scalarVal);
+		lineAtInfinity &operator=(Float scalarVal);
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
@@ -2559,7 +2580,7 @@
 		/// const coordinate extraction by name
 
 		/// get all coordinates (returns NULL for fully constant specialization
-		const Float *getC(__improperLine_coordinates__ sanityCheckValue) const {
+		const Float *getC(__lineAtInfinity_coordinates__ sanityCheckValue) const {
 			return m_c;
 		}
 
@@ -2590,35 +2611,35 @@
 
 
 
-	}; // end of class improperLine 
+	}; // end of class lineAtInfinity 
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
-	inline improperLine _improperLine(const mv &arg1) {
-		return improperLine(arg1, 0);
+	inline lineAtInfinity _lineAtInfinity(const mv &arg1) {
+		return lineAtInfinity(arg1, 0);
 	}
 	/// from const specialization class:
-	inline const improperLine &_improperLine(const improperLine &arg1) {
+	inline const lineAtInfinity &_lineAtInfinity(const lineAtInfinity &arg1) {
 		return arg1;
 	}
 	/// from non-const specialization class:
-	inline improperLine &_improperLine(improperLine &arg1) {
+	inline lineAtInfinity &_lineAtInfinity(lineAtInfinity &arg1) {
 		return arg1;
 	}
 	/// from Float:
-	inline improperLine _improperLine(improperLine::Float arg1) {
-		return improperLine(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	inline lineAtInfinity _lineAtInfinity(lineAtInfinity::Float arg1) {
+		return lineAtInfinity(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
 	}
 
 
 
 	// like example constructors, for use with templates
 	/// underscore constructor from general multivector:
-	inline improperLine like(const mv &what, const improperLine &example) {return _improperLine(what);}
+	inline lineAtInfinity like(const mv &what, const lineAtInfinity &example) {return _lineAtInfinity(what);}
 	/// from const specialization class:
-	inline const improperLine like(const improperLine &what, const improperLine &example) {return _improperLine(what);}
+	inline const lineAtInfinity like(const lineAtInfinity &what, const lineAtInfinity &example) {return _lineAtInfinity(what);}
 	/// from non-const specialization class:
-	inline improperLine like(improperLine &what, const improperLine &example) {return _improperLine(what);}
+	inline lineAtInfinity like(lineAtInfinity &what, const lineAtInfinity &example) {return _lineAtInfinity(what);}
 
 
 
@@ -2626,28 +2647,28 @@
 	// underscore 'constructors' for float types:
 
 	/// returns scalar part of v as float
-	inline float _float(const improperLine & v) {
+	inline float _float(const lineAtInfinity & v) {
 		return (float)0;
 	}
 	/// returns scalar part of v as double
-	inline double _double(const improperLine & v) {
+	inline double _double(const lineAtInfinity & v) {
 		return (double)0;
 	}
 	/// returns scalar part of v as Float
-	inline float _Float(const improperLine & v) {
+	inline float _Float(const lineAtInfinity & v) {
 		return (float)0;
 	}
 
 
-	/// enum for the coordinates of plane 
-	enum __plane_coordinates__ {plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0};
+	/// enum for the coordinates of bivector 
+	enum __bivector_coordinates__ {bivector_e1e2_e2e3_e3e1};
 
-	class plane {
-		// the friend classes of plane 
+	class bivector {
+		// the friend classes of bivector 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -2661,7 +2682,201 @@
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
+		friend class plane;
+		friend class planeAtInfinity;
+		friend class point;
+		friend class e2_t;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline bivector() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline bivector(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> bivector	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline bivector(const bivector &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline bivector(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> bivector	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline bivector(__bivector_coordinates__, const Float *coordinates) {
+
+			set(bivector_e1e2_e2e3_e3e1, coordinates);
+		}
+
+		/// coordinates constructor
+		inline bivector(__bivector_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
+
+			set(bivector_e1e2_e2e3_e3e1, c_e1e2, c_e2e3, c_e3e1);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const bivector &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(__bivector_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(__bivector_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1);
+
+		/// assign copy
+		bivector &operator=(const bivector &arg1);
+
+		/// assign general multivector
+		bivector &operator=(const mv &arg1);
+
+		/// assign scalar
+		bivector &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1e2() const {
+			return m_c[0];
+		}
+		inline Float e2e3() const {
+			return m_c[1];
+		}
+		inline Float e3e1() const {
+			return m_c[2];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(__bivector_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[3];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::h3ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::h3ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class bivector 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline bivector _bivector(const mv &arg1) {
+		return bivector(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const bivector &_bivector(const bivector &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline bivector &_bivector(bivector &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline bivector _bivector(bivector::Float arg1) {
+		return bivector(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline bivector like(const mv &what, const bivector &example) {return _bivector(what);}
+	/// from const specialization class:
+	inline const bivector like(const bivector &what, const bivector &example) {return _bivector(what);}
+	/// from non-const specialization class:
+	inline bivector like(bivector &what, const bivector &example) {return _bivector(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const bivector & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const bivector & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const bivector & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of plane 
+	enum __plane_coordinates__ {plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0};
+
+	class plane {
+		// the friend classes of plane 
+		friend class __e0i_ct__;
+		friend class __e0_ct__;
+		friend class lineAtInfinity;
+		friend class mv;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class normalizedPoint;
+		friend class e0_t;
+		friend class e3_t;
+		friend class scalar;
+		friend class __e3_ct__;
+		friend class __I4i_ct__;
+		friend class bivector;
+		friend class vector;
+		friend class om;
+		friend class e1_t;
+		friend class rotor;
+		friend class line;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -2834,13 +3049,14 @@
 	}
 
 
-	/// enum for the coordinates of improperPlane 
-	enum __improperPlane_coordinates__ {improperPlane_e1e2e3};
+	/// enum for the coordinates of planeAtInfinity 
+	enum __planeAtInfinity_coordinates__ {planeAtInfinity_e1e2e3};
 
-	class improperPlane {
-		// the friend classes of improperPlane 
+	class planeAtInfinity {
+		// the friend classes of planeAtInfinity 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
@@ -2850,12 +3066,12 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
 		friend class point;
 		friend class e2_t;
@@ -2864,13 +3080,13 @@
 			typedef float Float;
 
 		/// zero constructor
-		inline improperPlane() {
+		inline planeAtInfinity() {
 
 			set();
 		}
 
 		/// scalar constructor 
-		inline improperPlane(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> improperPlane	 
+		inline planeAtInfinity(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> planeAtInfinity	 
 			set(s);
 		}
 
@@ -2878,26 +3094,26 @@
 
 
 		/// copy constructor (MUST PASS BY REFERENCE)
-		inline improperPlane(const improperPlane &arg1) {
+		inline planeAtInfinity(const planeAtInfinity &arg1) {
 
 			set(arg1);
 		}
 
 		/// general multivector constructor (that can not be selected for implicit conversion by C++)
-		inline improperPlane(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> improperPlane	 
+		inline planeAtInfinity(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> planeAtInfinity	 
 			set(arg1);
 		}
 
 		/// pointer to coordinates constructor
-		inline improperPlane(__improperPlane_coordinates__, const Float *coordinates) {
+		inline planeAtInfinity(__planeAtInfinity_coordinates__, const Float *coordinates) {
 
-			set(improperPlane_e1e2e3, coordinates);
+			set(planeAtInfinity_e1e2e3, coordinates);
 		}
 
 		/// coordinates constructor
-		inline improperPlane(__improperPlane_coordinates__, Float c_e1e2e3) {
+		inline planeAtInfinity(__planeAtInfinity_coordinates__, Float c_e1e2e3) {
 
-			set(improperPlane_e1e2e3, c_e1e2e3);
+			set(planeAtInfinity_e1e2e3, c_e1e2e3);
 		}
 
 		/// set to null
@@ -2907,25 +3123,25 @@
 		void set(Float s);
 
 		/// set to copy
-		void set(const improperPlane &arg1);
+		void set(const planeAtInfinity &arg1);
 
 		/// set to copy of general multivector
 		void set(const mv &arg1);
 
 		/// pointer to coordinates constructor
-		void set(__improperPlane_coordinates__, const Float *coordinates);
+		void set(__planeAtInfinity_coordinates__, const Float *coordinates);
 
 		/// set to coordinates
-		void set(__improperPlane_coordinates__, Float c_e1e2e3);
+		void set(__planeAtInfinity_coordinates__, Float c_e1e2e3);
 
 		/// assign copy
-		improperPlane &operator=(const improperPlane &arg1);
+		planeAtInfinity &operator=(const planeAtInfinity &arg1);
 
 		/// assign general multivector
-		improperPlane &operator=(const mv &arg1);
+		planeAtInfinity &operator=(const mv &arg1);
 
 		/// assign scalar
-		improperPlane &operator=(Float scalarVal);
+		planeAtInfinity &operator=(Float scalarVal);
 
 		/// returns absolute largest coordinate
 		Float largestCoordinate() const;
@@ -2940,7 +3156,7 @@
 		/// const coordinate extraction by name
 
 		/// get all coordinates (returns NULL for fully constant specialization
-		const Float *getC(__improperPlane_coordinates__ sanityCheckValue) const {
+		const Float *getC(__planeAtInfinity_coordinates__ sanityCheckValue) const {
 			return m_c;
 		}
 
@@ -2971,35 +3187,35 @@
 
 
 
-	}; // end of class improperPlane 
+	}; // end of class planeAtInfinity 
 
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
-	inline improperPlane _improperPlane(const mv &arg1) {
-		return improperPlane(arg1, 0);
+	inline planeAtInfinity _planeAtInfinity(const mv &arg1) {
+		return planeAtInfinity(arg1, 0);
 	}
 	/// from const specialization class:
-	inline const improperPlane &_improperPlane(const improperPlane &arg1) {
+	inline const planeAtInfinity &_planeAtInfinity(const planeAtInfinity &arg1) {
 		return arg1;
 	}
 	/// from non-const specialization class:
-	inline improperPlane &_improperPlane(improperPlane &arg1) {
+	inline planeAtInfinity &_planeAtInfinity(planeAtInfinity &arg1) {
 		return arg1;
 	}
 	/// from Float:
-	inline improperPlane _improperPlane(improperPlane::Float arg1) {
-		return improperPlane(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	inline planeAtInfinity _planeAtInfinity(planeAtInfinity::Float arg1) {
+		return planeAtInfinity(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
 	}
 
 
 
 	// like example constructors, for use with templates
 	/// underscore constructor from general multivector:
-	inline improperPlane like(const mv &what, const improperPlane &example) {return _improperPlane(what);}
+	inline planeAtInfinity like(const mv &what, const planeAtInfinity &example) {return _planeAtInfinity(what);}
 	/// from const specialization class:
-	inline const improperPlane like(const improperPlane &what, const improperPlane &example) {return _improperPlane(what);}
+	inline const planeAtInfinity like(const planeAtInfinity &what, const planeAtInfinity &example) {return _planeAtInfinity(what);}
 	/// from non-const specialization class:
-	inline improperPlane like(improperPlane &what, const improperPlane &example) {return _improperPlane(what);}
+	inline planeAtInfinity like(planeAtInfinity &what, const planeAtInfinity &example) {return _planeAtInfinity(what);}
 
 
 
@@ -3007,15 +3223,15 @@
 	// underscore 'constructors' for float types:
 
 	/// returns scalar part of v as float
-	inline float _float(const improperPlane & v) {
+	inline float _float(const planeAtInfinity & v) {
 		return (float)0;
 	}
 	/// returns scalar part of v as double
-	inline double _double(const improperPlane & v) {
+	inline double _double(const planeAtInfinity & v) {
 		return (double)0;
 	}
 	/// returns scalar part of v as Float
-	inline float _Float(const improperPlane & v) {
+	inline float _Float(const planeAtInfinity & v) {
 		return (float)0;
 	}
 
@@ -3027,8 +3243,8 @@
 		// the friend classes of rotor 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -3037,12 +3253,13 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -3219,8 +3436,8 @@
 		// the friend classes of __e1_ct__ 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
 		friend class e0_t;
@@ -3228,13 +3445,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -3404,8 +3622,8 @@
 		// the friend classes of __e2_ct__ 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class normalizedPoint;
 		friend class e0_t;
@@ -3413,13 +3631,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -3589,8 +3808,8 @@
 		// the friend classes of __e3_ct__ 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -3598,13 +3817,14 @@
 		friend class e3_t;
 		friend class scalar;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -3773,8 +3993,8 @@
 	class __e0_ct__ {
 		// the friend classes of __e0_ct__ 
 		friend class __e0i_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -3783,13 +4003,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -3958,8 +4179,8 @@
 	class __e0i_ct__ {
 		// the friend classes of __e0i_ct__ 
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -3968,13 +4189,14 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -4144,8 +4366,8 @@
 		// the friend classes of __I4i_ct__ 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -4153,13 +4375,14 @@
 		friend class e3_t;
 		friend class scalar;
 		friend class __e3_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class om;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -4326,8 +4549,8 @@
 		// the friend classes of om 
 		friend class __e0i_ct__;
 		friend class __e0_ct__;
+		friend class lineAtInfinity;
 		friend class mv;
-		friend class improperPlane;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class normalizedPoint;
@@ -4336,12 +4559,13 @@
 		friend class scalar;
 		friend class __e3_ct__;
 		friend class __I4i_ct__;
+		friend class bivector;
 		friend class vector;
 		friend class e1_t;
 		friend class rotor;
 		friend class line;
-		friend class improperLine;
 		friend class plane;
+		friend class planeAtInfinity;
 		friend class point;
 		friend class e2_t;
 
@@ -4501,9 +4725,10 @@
 	inline point operator+=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator+=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator+=(line& arg1, const mv& arg2);
-	inline improperLine operator+=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator+=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator+=(bivector& arg1, const mv& arg2);
 	inline plane operator+=(plane& arg1, const mv& arg2);
-	inline improperPlane operator+=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator+=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator+=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator+=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator+=(__e2_ct__& arg1, const mv& arg2);
@@ -4522,9 +4747,10 @@
 	inline point operator-=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator-=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator-=(line& arg1, const mv& arg2);
-	inline improperLine operator-=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator-=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator-=(bivector& arg1, const mv& arg2);
 	inline plane operator-=(plane& arg1, const mv& arg2);
-	inline improperPlane operator-=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator-=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator-=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator-=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator-=(__e2_ct__& arg1, const mv& arg2);
@@ -4544,9 +4770,10 @@
 	inline point operator%=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator%=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator%=(line& arg1, const mv& arg2);
-	inline improperLine operator%=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator%=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator%=(bivector& arg1, const mv& arg2);
 	inline plane operator%=(plane& arg1, const mv& arg2);
-	inline improperPlane operator%=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator%=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator%=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator%=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator%=(__e2_ct__& arg1, const mv& arg2);
@@ -4565,9 +4792,10 @@
 	inline point operator^=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator^=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator^=(line& arg1, const mv& arg2);
-	inline improperLine operator^=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator^=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator^=(bivector& arg1, const mv& arg2);
 	inline plane operator^=(plane& arg1, const mv& arg2);
-	inline improperPlane operator^=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator^=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator^=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator^=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator^=(__e2_ct__& arg1, const mv& arg2);
@@ -4586,9 +4814,10 @@
 	inline point operator*=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator*=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator*=(line& arg1, const mv& arg2);
-	inline improperLine operator*=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator*=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator*=(bivector& arg1, const mv& arg2);
 	inline plane operator*=(plane& arg1, const mv& arg2);
-	inline improperPlane operator*=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator*=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator*=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator*=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator*=(__e2_ct__& arg1, const mv& arg2);
@@ -4607,9 +4836,10 @@
 	inline point operator<<=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator<<=(normalizedPoint& arg1, const mv& arg2);
 	inline line operator<<=(line& arg1, const mv& arg2);
-	inline improperLine operator<<=(improperLine& arg1, const mv& arg2);
+	inline lineAtInfinity operator<<=(lineAtInfinity& arg1, const mv& arg2);
+	inline bivector operator<<=(bivector& arg1, const mv& arg2);
 	inline plane operator<<=(plane& arg1, const mv& arg2);
-	inline improperPlane operator<<=(improperPlane& arg1, const mv& arg2);
+	inline planeAtInfinity operator<<=(planeAtInfinity& arg1, const mv& arg2);
 	inline rotor operator<<=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator<<=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator<<=(__e2_ct__& arg1, const mv& arg2);
@@ -5104,8 +5334,24 @@
 
 
 	}
-	// set to improperLine 
-	inline void mv::set(const improperLine & arg1) {
+	// set to lineAtInfinity 
+	inline void mv::set(const lineAtInfinity & arg1) {
+
+		// set grade usage 
+		gu(4);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)0;
+		m_c[4] = (Float)0;
+		m_c[5] = (Float)0;
+
+
+	}
+	// set to bivector 
+	inline void mv::set(const bivector & arg1) {
 
 		// set grade usage 
 		gu(4);
@@ -5134,8 +5380,8 @@
 
 
 	}
-	// set to improperPlane 
-	inline void mv::set(const improperPlane & arg1) {
+	// set to planeAtInfinity 
+	inline void mv::set(const planeAtInfinity & arg1) {
 
 		// set grade usage 
 		gu(8);
@@ -5310,8 +5556,13 @@
 		set(arg1);
 		return *this;
 	}
-	// assign improperLine 
-	inline mv& mv::operator=(const improperLine& arg1) {
+	// assign lineAtInfinity 
+	inline mv& mv::operator=(const lineAtInfinity& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign bivector 
+	inline mv& mv::operator=(const bivector& arg1) {
 		set(arg1);
 		return *this;
 	}
@@ -5320,8 +5571,8 @@
 		set(arg1);
 		return *this;
 	}
-	// assign improperPlane 
-	inline mv& mv::operator=(const improperPlane& arg1) {
+	// assign planeAtInfinity 
+	inline mv& mv::operator=(const planeAtInfinity& arg1) {
 		set(arg1);
 		return *this;
 	}
@@ -6207,14 +6458,14 @@
 
 
 	// set to zero
-	inline void improperLine::set() {
+	inline void lineAtInfinity::set() {
 		// set coordinates to 0
 		mv_zero(m_c, 3);
 
 	}
 
 	// set to scalar 
-	inline void improperLine::set(Float s) {
+	inline void lineAtInfinity::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
 		m_c[1] = (Float)0.0;
@@ -6224,7 +6475,7 @@
 
 
 	// set to copy
-	inline void improperLine::set(const improperLine &arg1) {
+	inline void lineAtInfinity::set(const lineAtInfinity &arg1) {
 		// copy coordinates
 		//mv_memcpy(m_c, arg1.m_c, 3);
 		m_c[0] = arg1.m_c[0];
@@ -6234,7 +6485,7 @@
 	}
 
 	// set to pointer to coordinates
-	inline void improperLine::set(__improperLine_coordinates__, const Float *coordinates) {
+	inline void lineAtInfinity::set(__lineAtInfinity_coordinates__, const Float *coordinates) {
 		// copy coordinates
 		//mv_memcpy(m_c, coordinates, 3);
 		m_c[0] = coordinates[0];
@@ -6244,7 +6495,7 @@
 	}
 
 	// set to 'coordinates specified' 
-	inline void improperLine::set(__improperLine_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
+	inline void lineAtInfinity::set(__lineAtInfinity_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
 		// set coordinates
 		m_c[0] = c_e1e2;
 		m_c[1] = c_e2e3;
@@ -6253,7 +6504,7 @@
 	}
 
 	// set to mv 
-	inline void improperLine::set(const mv & arg1) {
+	inline void lineAtInfinity::set(const mv & arg1) {
 
 		int gidx = 0;
 
@@ -6286,19 +6537,121 @@
 
 
 	// assign copy
-	inline improperLine &improperLine::operator=(const improperLine &arg1) {
+	inline lineAtInfinity &lineAtInfinity::operator=(const lineAtInfinity &arg1) {
 		set(arg1);
 		return *this;
 	}
 
 	// assign general multivector
-	inline improperLine &improperLine::operator=(const mv &arg1) {
+	inline lineAtInfinity &lineAtInfinity::operator=(const mv &arg1) {
 		set(arg1);
 		return *this;
 	}
 
 	// assign scalar
-	inline improperLine &improperLine::operator=(Float scalarVal) {
+	inline lineAtInfinity &lineAtInfinity::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void bivector::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 3);
+
+	}
+
+	// set to scalar 
+	inline void bivector::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void bivector::set(const bivector &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 3);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+
+	}
+
+	// set to pointer to coordinates
+	inline void bivector::set(__bivector_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 3);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void bivector::set(__bivector_coordinates__, Float c_e1e2, Float c_e2e3, Float c_e3e1) {
+		// set coordinates
+		m_c[0] = c_e1e2;
+		m_c[1] = c_e2e3;
+		m_c[2] = c_e3e1;
+
+	}
+
+	// set to mv 
+	inline void bivector::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
+
+
+
+
+
+	// assign copy
+	inline bivector &bivector::operator=(const bivector &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline bivector &bivector::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline bivector &bivector::operator=(Float scalarVal) {
 		set(scalarVal);
 		return *this;
 	}
@@ -6422,14 +6775,14 @@
 
 
 	// set to zero
-	inline void improperPlane::set() {
+	inline void planeAtInfinity::set() {
 		// set coordinates to 0
 		mv_zero(m_c, 1);
 
 	}
 
 	// set to scalar 
-	inline void improperPlane::set(Float s) {
+	inline void planeAtInfinity::set(Float s) {
 		// set coordinates 0, except for scalar (if any)
 		m_c[0] = (Float)0.0;
 
@@ -6437,7 +6790,7 @@
 
 
 	// set to copy
-	inline void improperPlane::set(const improperPlane &arg1) {
+	inline void planeAtInfinity::set(const planeAtInfinity &arg1) {
 		// copy coordinates
 		//mv_memcpy(m_c, arg1.m_c, 1);
 		m_c[0] = arg1.m_c[0];
@@ -6445,7 +6798,7 @@
 	}
 
 	// set to pointer to coordinates
-	inline void improperPlane::set(__improperPlane_coordinates__, const Float *coordinates) {
+	inline void planeAtInfinity::set(__planeAtInfinity_coordinates__, const Float *coordinates) {
 		// copy coordinates
 		//mv_memcpy(m_c, coordinates, 1);
 		m_c[0] = coordinates[0];
@@ -6453,14 +6806,14 @@
 	}
 
 	// set to 'coordinates specified' 
-	inline void improperPlane::set(__improperPlane_coordinates__, Float c_e1e2e3) {
+	inline void planeAtInfinity::set(__planeAtInfinity_coordinates__, Float c_e1e2e3) {
 		// set coordinates
 		m_c[0] = c_e1e2e3;
 
 	}
 
 	// set to mv 
-	inline void improperPlane::set(const mv & arg1) {
+	inline void planeAtInfinity::set(const mv & arg1) {
 
 		int gidx = 0;
 
@@ -6494,19 +6847,19 @@
 
 
 	// assign copy
-	inline improperPlane &improperPlane::operator=(const improperPlane &arg1) {
+	inline planeAtInfinity &planeAtInfinity::operator=(const planeAtInfinity &arg1) {
 		set(arg1);
 		return *this;
 	}
 
 	// assign general multivector
-	inline improperPlane &improperPlane::operator=(const mv &arg1) {
+	inline planeAtInfinity &planeAtInfinity::operator=(const mv &arg1) {
 		set(arg1);
 		return *this;
 	}
 
 	// assign scalar
-	inline improperPlane &improperPlane::operator=(Float scalarVal) {
+	inline planeAtInfinity &planeAtInfinity::operator=(Float scalarVal) {
 		set(scalarVal);
 		return *this;
 	}
@@ -7161,7 +7514,11 @@
 		arg1.set(::h3ga::add(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator+=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator+=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator+=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -7169,7 +7526,7 @@
 		arg1.set(::h3ga::add(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator+=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator+=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -7244,7 +7601,11 @@
 		arg1.set(::h3ga::subtract(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator-=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator-=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator-=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -7252,7 +7613,7 @@
 		arg1.set(::h3ga::subtract(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator-=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator-=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -7330,7 +7691,11 @@
 		arg1.set(::h3ga::scp(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator%=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator%=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator%=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::scp(arg1, arg2));
 		return arg1;
 	}
@@ -7338,7 +7703,7 @@
 		arg1.set(::h3ga::scp(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator%=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator%=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::scp(arg1, arg2));
 		return arg1;
 	}
@@ -7413,7 +7778,11 @@
 		arg1.set(::h3ga::op(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator^=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator^=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator^=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -7421,7 +7790,7 @@
 		arg1.set(::h3ga::op(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator^=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator^=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -7496,7 +7865,11 @@
 		arg1.set(::h3ga::gp(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator*=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator*=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator*=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -7504,7 +7877,7 @@
 		arg1.set(::h3ga::gp(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator*=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator*=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -7579,7 +7952,11 @@
 		arg1.set(::h3ga::lcont(arg1, arg2));
 		return arg1;
 	}
-	inline improperLine operator<<=(improperLine& arg1, const mv& arg2) {
+	inline lineAtInfinity operator<<=(lineAtInfinity& arg1, const mv& arg2) {
+		arg1.set(::h3ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline bivector operator<<=(bivector& arg1, const mv& arg2) {
 		arg1.set(::h3ga::lcont(arg1, arg2));
 		return arg1;
 	}
@@ -7587,7 +7964,7 @@
 		arg1.set(::h3ga::lcont(arg1, arg2));
 		return arg1;
 	}
-	inline improperPlane operator<<=(improperPlane& arg1, const mv& arg2) {
+	inline planeAtInfinity operator<<=(planeAtInfinity& arg1, const mv& arg2) {
 		arg1.set(::h3ga::lcont(arg1, arg2));
 		return arg1;
 	}
@@ -7638,10 +8015,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_1__[16] ;
 		mv_zero(__tmp_coord_array_1__, 16);
-		const float* __x_xpd__[5] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
 		if (((y.m_gu & 1) != 0)) {
 			if (((x.m_gu & 1) != 0)) {
 				__tmp_coord_array_1__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
@@ -7674,10 +8051,10 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]) + (__x_xpd__[1][2] * __y_xpd__[2][2]));
-				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]));
-				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]));
-				__tmp_coord_array_1__[4] += ((__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][1] * __y_xpd__[2][4]));
+				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]));
+				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]) + (__x_xpd__[1][1] * __y_xpd__[2][1]));
+				__tmp_coord_array_1__[4] += ((__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][2] * __y_xpd__[2][5]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
@@ -7695,19 +8072,19 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[5] += ((__x_xpd__[1][2] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][1]));
-				__tmp_coord_array_1__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
-				__tmp_coord_array_1__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[5] += ((__x_xpd__[1][3] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][0]));
+				__tmp_coord_array_1__[6] += ((__x_xpd__[1][0] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[7] += ((__x_xpd__[1][3] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][0]));
 				__tmp_coord_array_1__[8] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][3]));
-				__tmp_coord_array_1__[9] += ((__x_xpd__[1][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]));
-				__tmp_coord_array_1__[10] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[9] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[10] += ((__x_xpd__[1][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_1__[1] += ((__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]));
-				__tmp_coord_array_1__[2] += ((__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]) + (__x_xpd__[2][4] * __y_xpd__[3][2]));
-				__tmp_coord_array_1__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (__x_xpd__[2][5] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[2] += ((__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[3] += ((__x_xpd__[2][4] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]));
+				__tmp_coord_array_1__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]));
 
 			}
 			if (((x.m_gu & 8) != 0)) {
@@ -7755,40 +8132,40 @@
 	}
 	inline scalar scp(const mv& x, const mv& y) {
 		scalar __temp_var_1__;
-		const float* __x_xpd__[5] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			if (((y.m_gu & 1) != 0)) {
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
 				__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
 
 		}
-		if (((x.m_gu & 2) != 0)) {
-			if (((y.m_gu & 2) != 0)) {
+		if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 2) != 0)) {
 				__temp_var_1__.m_c[0] += ((__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][3] * __y_xpd__[1][3]));
 
 			}
 
 		}
-		if (((x.m_gu & 4) != 0)) {
-			if (((y.m_gu & 4) != 0)) {
+		if (((y.m_gu & 4) != 0)) {
+			if (((x.m_gu & 4) != 0)) {
 				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]));
 
 			}
 
 		}
-		if (((x.m_gu & 8) != 0)) {
-			if (((y.m_gu & 8) != 0)) {
+		if (((y.m_gu & 8) != 0)) {
+			if (((x.m_gu & 8) != 0)) {
 				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]));
 
 			}
 
 		}
-		if (((x.m_gu & 16) != 0)) {
-			if (((y.m_gu & 16) != 0)) {
+		if (((y.m_gu & 16) != 0)) {
+			if (((x.m_gu & 16) != 0)) {
 				__temp_var_1__.m_c[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
 
 			}
@@ -7843,94 +8220,23 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_2__[16] ;
 		mv_zero(__tmp_coord_array_2__, 16);
-		const float* __y_xpd__[5] ;
-		y.expand(__y_xpd__, true);
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
 				__tmp_coord_array_2__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[4] += (__x_xpd__[1][3] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[5] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[6] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[7] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[8] += (__x_xpd__[2][3] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[9] += (__x_xpd__[2][4] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[10] += (__x_xpd__[2][5] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[11] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[12] += (__x_xpd__[3][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[13] += (__x_xpd__[3][2] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[14] += (__x_xpd__[3][3] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 16) != 0)) {
-				__tmp_coord_array_2__[15] += (__x_xpd__[4][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
 				__tmp_coord_array_2__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
 				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[1][2]);
 				__tmp_coord_array_2__[4] += (__x_xpd__[0][0] * __y_xpd__[1][3]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[0] += ((__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[5] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[1][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[8] += ((__x_xpd__[1][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[1][1] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[1][2]) + (__x_xpd__[2][3] * __y_xpd__[1][3]) + (__x_xpd__[2][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[2] += ((__x_xpd__[2][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][4] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]) + (__x_xpd__[2][5] * __y_xpd__[1][3]) + (__x_xpd__[2][2] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[11] += ((__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][0] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[13] += ((__x_xpd__[2][1] * __y_xpd__[1][3]) + (__x_xpd__[2][5] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]));
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[5] += ((__x_xpd__[3][1] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[3][0] * __y_xpd__[1][0]) + (__x_xpd__[3][2] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[3][0] * __y_xpd__[1][1]) + (__x_xpd__[3][3] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[8] += ((__x_xpd__[3][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[3][1] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][0]) + (__x_xpd__[3][2] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[15] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (__x_xpd__[3][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]));
-
-			}
-			if (((x.m_gu & 16) != 0)) {
-				__tmp_coord_array_2__[11] += (__x_xpd__[4][0] * __y_xpd__[1][3]);
-				__tmp_coord_array_2__[12] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][2]);
-				__tmp_coord_array_2__[13] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][0]);
-				__tmp_coord_array_2__[14] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][1]);
-
-			}
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[5] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
 				__tmp_coord_array_2__[6] += (__x_xpd__[0][0] * __y_xpd__[2][1]);
 				__tmp_coord_array_2__[7] += (__x_xpd__[0][0] * __y_xpd__[2][2]);
@@ -7939,111 +8245,111 @@
 				__tmp_coord_array_2__[10] += (__x_xpd__[0][0] * __y_xpd__[2][5]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]));
-				__tmp_coord_array_2__[4] += ((__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][1] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[11] += ((__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]) + (__x_xpd__[1][0] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[13] += ((__x_xpd__[1][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][3] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[14] += ((__x_xpd__[1][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][2] * __y_xpd__[2][3]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[5] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]) + (__x_xpd__[2][4] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][4]) + (__x_xpd__[2][2] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]) + (__x_xpd__[2][0] * __y_xpd__[2][2]) + (__x_xpd__[2][5] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[2][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]) + (__x_xpd__[2][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][3]));
-				__tmp_coord_array_2__[8] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][0]) + (__x_xpd__[2][5] * __y_xpd__[2][2]) + (__x_xpd__[2][0] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[2][3] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][3]) + (__x_xpd__[2][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][4]) + (__x_xpd__[2][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][2]) + (__x_xpd__[2][4] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[15] += ((__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][2] * __y_xpd__[2][4]));
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]) + (__x_xpd__[3][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][5]) + (__x_xpd__[3][1] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[3][2] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[11] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][2]) + (__x_xpd__[3][0] * __y_xpd__[2][5]) + (__x_xpd__[3][3] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][0]) + (__x_xpd__[3][1] * __y_xpd__[2][2]) + (__x_xpd__[3][0] * __y_xpd__[2][3]));
-				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][1]) + (__x_xpd__[3][0] * __y_xpd__[2][4]) + (__x_xpd__[3][2] * __y_xpd__[2][0]));
-
-			}
-			if (((x.m_gu & 16) != 0)) {
-				__tmp_coord_array_2__[5] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][5]);
-				__tmp_coord_array_2__[6] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][3]);
-				__tmp_coord_array_2__[7] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][4]);
-				__tmp_coord_array_2__[8] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][1]);
-				__tmp_coord_array_2__[9] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][2]);
-				__tmp_coord_array_2__[10] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 8) != 0)) {
 				__tmp_coord_array_2__[11] += (__x_xpd__[0][0] * __y_xpd__[3][0]);
 				__tmp_coord_array_2__[12] += (__x_xpd__[0][0] * __y_xpd__[3][1]);
 				__tmp_coord_array_2__[13] += (__x_xpd__[0][0] * __y_xpd__[3][2]);
 				__tmp_coord_array_2__[14] += (__x_xpd__[0][0] * __y_xpd__[3][3]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[5] += ((__x_xpd__[1][3] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[8] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[1][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[15] += ((__x_xpd__[1][0] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (__x_xpd__[1][1] * __y_xpd__[3][3]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[2] += ((__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (__x_xpd__[2][4] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[11] += ((__x_xpd__[2][3] * __y_xpd__[3][2]) + (__x_xpd__[2][5] * __y_xpd__[3][1]) + (__x_xpd__[2][4] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][0]) + (__x_xpd__[2][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[3][0]) + (__x_xpd__[2][0] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[14] += ((__x_xpd__[2][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][2]));
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[5] += ((__x_xpd__[3][3] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[3][1] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[7] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[3][2]) + (__x_xpd__[3][2] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[8] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[3][2]) + (__x_xpd__[3][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[3][3] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][3]));
-				__tmp_coord_array_2__[10] += ((__x_xpd__[3][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][1]));
-
-			}
-			if (((x.m_gu & 16) != 0)) {
-				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][2]);
-				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][3]);
-				__tmp_coord_array_2__[3] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][1]);
-				__tmp_coord_array_2__[4] += (__x_xpd__[4][0] * __y_xpd__[3][0]);
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[15] += (__x_xpd__[0][0] * __y_xpd__[4][0]);
 
 			}
 
 		}
-		if (((y.m_gu & 16) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[15] += (__x_xpd__[0][0] * __y_xpd__[4][0]);
+		if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[4] += (__x_xpd__[1][3] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[0] += ((__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[7] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[1][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[1][1] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (__x_xpd__[1][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[4] += ((__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][2] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][1] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[13] += ((__x_xpd__[1][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][3] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][3] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][3]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[5] += ((__x_xpd__[1][3] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[1][0] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[1][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[15] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][1] * __y_xpd__[3][3]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
 				__tmp_coord_array_2__[11] += (-1.0f * __x_xpd__[1][3] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[12] += (__x_xpd__[1][2] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[13] += (__x_xpd__[1][0] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[14] += (__x_xpd__[1][1] * __y_xpd__[4][0]);
 
 			}
-			if (((x.m_gu & 4) != 0)) {
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[5] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[6] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[7] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[8] += (__x_xpd__[2][3] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[9] += (__x_xpd__[2][4] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[10] += (__x_xpd__[2][5] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[1] += ((__x_xpd__[2][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[1][2]) + (__x_xpd__[2][3] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][4] * __y_xpd__[1][3]) + (__x_xpd__[2][1] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[2][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]) + (__x_xpd__[2][5] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][4] * __y_xpd__[1][0]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[13] += ((__x_xpd__[2][5] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[2][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][4]) + (__x_xpd__[2][4] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[2][5] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][5]) + (__x_xpd__[2][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[2][1] * __y_xpd__[2][0]) + (__x_xpd__[2][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[2][5] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][0]) + (__x_xpd__[2][0] * __y_xpd__[2][4]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[2][3] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][1]) + (__x_xpd__[2][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[2][2] * __y_xpd__[2][3]) + (__x_xpd__[2][4] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][3] * __y_xpd__[2][1]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[2][4] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][3] * __y_xpd__[3][2]) + (__x_xpd__[2][5] * __y_xpd__[3][1]) + (__x_xpd__[2][4] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][0]) + (__x_xpd__[2][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][1]) + (__x_xpd__[2][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][2]) + (__x_xpd__[2][1] * __y_xpd__[3][1]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
 				__tmp_coord_array_2__[5] += (-1.0f * __x_xpd__[2][5] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[6] += (-1.0f * __x_xpd__[2][3] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[7] += (-1.0f * __x_xpd__[2][4] * __y_xpd__[4][0]);
@@ -8052,14 +8358,85 @@
 				__tmp_coord_array_2__[10] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[4][0]);
 
 			}
-			if (((x.m_gu & 8) != 0)) {
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[11] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[12] += (__x_xpd__[3][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[13] += (__x_xpd__[3][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[14] += (__x_xpd__[3][3] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[5] += ((__x_xpd__[3][1] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[3][2] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[3][3] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[3][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[3][1] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][0]) + (__x_xpd__[3][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[15] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (__x_xpd__[3][0] * __y_xpd__[1][3]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][4]) + (__x_xpd__[3][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[2] += ((__x_xpd__[3][1] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][3]) + (__x_xpd__[3][2] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[11] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][2]) + (__x_xpd__[3][3] * __y_xpd__[2][1]) + (__x_xpd__[3][0] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][0]) + (__x_xpd__[3][0] * __y_xpd__[2][3]) + (__x_xpd__[3][1] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][1]) + (__x_xpd__[3][0] * __y_xpd__[2][4]) + (__x_xpd__[3][2] * __y_xpd__[2][0]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[3][3] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][1]) + (__x_xpd__[3][1] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[3][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[3][2] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[3][3] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[3][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][1]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
 				__tmp_coord_array_2__[1] += (__x_xpd__[3][2] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[3][3] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[3] += (__x_xpd__[3][1] * __y_xpd__[4][0]);
 				__tmp_coord_array_2__[4] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[4][0]);
 
 			}
-			if (((x.m_gu & 16) != 0)) {
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[15] += (__x_xpd__[4][0] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[11] += (__x_xpd__[4][0] * __y_xpd__[1][3]);
+				__tmp_coord_array_2__[12] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][2]);
+				__tmp_coord_array_2__[13] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][0]);
+				__tmp_coord_array_2__[14] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][1]);
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[5] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][5]);
+				__tmp_coord_array_2__[6] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][3]);
+				__tmp_coord_array_2__[7] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][4]);
+				__tmp_coord_array_2__[8] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][1]);
+				__tmp_coord_array_2__[9] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][2]);
+				__tmp_coord_array_2__[10] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][0]);
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][2]);
+				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][3]);
+				__tmp_coord_array_2__[3] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][1]);
+				__tmp_coord_array_2__[4] += (__x_xpd__[4][0] * __y_xpd__[3][0]);
+
+			}
+			if (((y.m_gu & 16) != 0)) {
 				__tmp_coord_array_2__[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
 
 			}
@@ -8119,23 +8496,23 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[5] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+				__tmp_coord_array_3__[5] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
 				__tmp_coord_array_3__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
-				__tmp_coord_array_3__[7] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
+				__tmp_coord_array_3__[7] += ((__x_xpd__[1][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]));
 				__tmp_coord_array_3__[8] += ((__x_xpd__[1][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]));
 				__tmp_coord_array_3__[9] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][3]));
 				__tmp_coord_array_3__[10] += ((__x_xpd__[1][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[11] += ((__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]));
-				__tmp_coord_array_3__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (__x_xpd__[2][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]));
-				__tmp_coord_array_3__[13] += ((__x_xpd__[2][1] * __y_xpd__[1][3]) + (__x_xpd__[2][5] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]));
-				__tmp_coord_array_3__[14] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[11] += ((__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][0] * __y_xpd__[1][2]));
+				__tmp_coord_array_3__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[13] += ((__x_xpd__[2][5] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]));
+				__tmp_coord_array_3__[14] += ((__x_xpd__[2][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][3]));
 
 			}
 			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_3__[15] += ((__x_xpd__[3][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]));
+				__tmp_coord_array_3__[15] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (__x_xpd__[3][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]));
 
 			}
 
@@ -8151,14 +8528,14 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[11] += ((__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_3__[11] += ((__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][1] * __y_xpd__[2][2]));
 				__tmp_coord_array_3__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]) + (__x_xpd__[1][0] * __y_xpd__[2][4]));
-				__tmp_coord_array_3__[13] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][1] * __y_xpd__[2][5]) + (__x_xpd__[1][3] * __y_xpd__[2][1]));
-				__tmp_coord_array_3__[14] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][3] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][3]));
+				__tmp_coord_array_3__[13] += ((__x_xpd__[1][3] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]));
+				__tmp_coord_array_3__[14] += ((__x_xpd__[1][3] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[15] += ((__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][2] * __y_xpd__[2][4]));
+				__tmp_coord_array_3__[15] += ((__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][5] * __y_xpd__[2][0]));
 
 			}
 
@@ -8172,7 +8549,7 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[15] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][1] * __y_xpd__[3][3]) + (__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][2] * __y_xpd__[3][1]));
+				__tmp_coord_array_3__[15] += ((__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][1] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][2] * __y_xpd__[3][1]));
 
 			}
 
@@ -8264,41 +8641,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_5__[16] ;
 		mv_zero(__tmp_coord_array_5__, 16);
-		const float* __x_xpd__[5] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
-			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
-			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
-			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[1][3]);
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][0]);
-			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][1]);
-			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[2][2]);
-			__tmp_coord_array_5__[8] += (-1.0f * __y_xpd__[2][3]);
-			__tmp_coord_array_5__[9] += (-1.0f * __y_xpd__[2][4]);
-			__tmp_coord_array_5__[10] += (-1.0f * __y_xpd__[2][5]);
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_5__[11] += (-1.0f * __y_xpd__[3][0]);
-			__tmp_coord_array_5__[12] += (-1.0f * __y_xpd__[3][1]);
-			__tmp_coord_array_5__[13] += (-1.0f * __y_xpd__[3][2]);
-			__tmp_coord_array_5__[14] += (-1.0f * __y_xpd__[3][3]);
-
-		}
-		if (((y.m_gu & 16) != 0)) {
-			__tmp_coord_array_5__[15] += (-1.0f * __y_xpd__[4][0]);
-
-		}
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
 		if (((x.m_gu & 1) != 0)) {
 			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
 
@@ -8330,6 +8676,37 @@
 			__tmp_coord_array_5__[15] += __x_xpd__[4][0];
 
 		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
+			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
+			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
+			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[1][3]);
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][0]);
+			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][1]);
+			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[2][2]);
+			__tmp_coord_array_5__[8] += (-1.0f * __y_xpd__[2][3]);
+			__tmp_coord_array_5__[9] += (-1.0f * __y_xpd__[2][4]);
+			__tmp_coord_array_5__[10] += (-1.0f * __y_xpd__[2][5]);
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			__tmp_coord_array_5__[11] += (-1.0f * __y_xpd__[3][0]);
+			__tmp_coord_array_5__[12] += (-1.0f * __y_xpd__[3][1]);
+			__tmp_coord_array_5__[13] += (-1.0f * __y_xpd__[3][2]);
+			__tmp_coord_array_5__[14] += (-1.0f * __y_xpd__[3][3]);
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			__tmp_coord_array_5__[15] += (-1.0f * __y_xpd__[4][0]);
+
+		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
 		return __temp_var_1__;
 	}
@@ -8346,11 +8723,11 @@
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8368,15 +8745,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			e2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
+			e2.m_c[0] += ((__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+			e2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8394,15 +8771,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+			e2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]));
+			e2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+			e2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8457,15 +8834,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8483,15 +8860,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			r2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
+			r2.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
+			r2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8509,15 +8886,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
+			r2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]));
+			r2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+			r2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8732,15 +9109,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			n.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			n.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			n.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
+			n.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			n.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+			n.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -8793,26 +9170,26 @@
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
 		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_13__[1] += ((x.m_c[3] * __y_xpd__[1][3]) + (x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[2] * __y_xpd__[1][2]));
-			__tmp_coord_array_13__[2] += ((x.m_c[6] * __y_xpd__[1][2]) + (x.m_c[7] * __y_xpd__[1][3]) + (x.m_c[5] * __y_xpd__[1][1]) + (x.m_c[4] * __y_xpd__[1][0]));
-			__tmp_coord_array_13__[3] += ((x.m_c[10] * __y_xpd__[1][2]) + (x.m_c[9] * __y_xpd__[1][1]) + (x.m_c[8] * __y_xpd__[1][0]) + (x.m_c[11] * __y_xpd__[1][3]));
-			__tmp_coord_array_13__[4] += ((x.m_c[13] * __y_xpd__[1][1]) + (x.m_c[15] * __y_xpd__[1][3]) + (x.m_c[14] * __y_xpd__[1][2]) + (x.m_c[12] * __y_xpd__[1][0]));
+			__tmp_coord_array_13__[1] += ((x.m_c[2] * __y_xpd__[1][2]) + (x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[3] * __y_xpd__[1][3]));
+			__tmp_coord_array_13__[2] += ((x.m_c[4] * __y_xpd__[1][0]) + (x.m_c[6] * __y_xpd__[1][2]) + (x.m_c[7] * __y_xpd__[1][3]) + (x.m_c[5] * __y_xpd__[1][1]));
+			__tmp_coord_array_13__[3] += ((x.m_c[8] * __y_xpd__[1][0]) + (x.m_c[10] * __y_xpd__[1][2]) + (x.m_c[11] * __y_xpd__[1][3]) + (x.m_c[9] * __y_xpd__[1][1]));
+			__tmp_coord_array_13__[4] += ((x.m_c[12] * __y_xpd__[1][0]) + (x.m_c[15] * __y_xpd__[1][3]) + (x.m_c[13] * __y_xpd__[1][1]) + (x.m_c[14] * __y_xpd__[1][2]));
 
 		}
 		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_13__[5] += ((x.m_c[19] * __y_xpd__[2][3]) + (x.m_c[20] * __y_xpd__[2][4]) + (x.m_c[18] * __y_xpd__[2][2]) + (x.m_c[17] * __y_xpd__[2][1]) + (x.m_c[16] * __y_xpd__[2][0]) + (x.m_c[21] * __y_xpd__[2][5]));
-			__tmp_coord_array_13__[6] += ((x.m_c[27] * __y_xpd__[2][5]) + (x.m_c[25] * __y_xpd__[2][3]) + (x.m_c[24] * __y_xpd__[2][2]) + (x.m_c[23] * __y_xpd__[2][1]) + (x.m_c[26] * __y_xpd__[2][4]) + (x.m_c[22] * __y_xpd__[2][0]));
-			__tmp_coord_array_13__[7] += ((x.m_c[30] * __y_xpd__[2][2]) + (x.m_c[29] * __y_xpd__[2][1]) + (x.m_c[33] * __y_xpd__[2][5]) + (x.m_c[31] * __y_xpd__[2][3]) + (x.m_c[28] * __y_xpd__[2][0]) + (x.m_c[32] * __y_xpd__[2][4]));
-			__tmp_coord_array_13__[8] += ((x.m_c[39] * __y_xpd__[2][5]) + (x.m_c[34] * __y_xpd__[2][0]) + (x.m_c[37] * __y_xpd__[2][3]) + (x.m_c[36] * __y_xpd__[2][2]) + (x.m_c[35] * __y_xpd__[2][1]) + (x.m_c[38] * __y_xpd__[2][4]));
-			__tmp_coord_array_13__[9] += ((x.m_c[42] * __y_xpd__[2][2]) + (x.m_c[45] * __y_xpd__[2][5]) + (x.m_c[41] * __y_xpd__[2][1]) + (x.m_c[44] * __y_xpd__[2][4]) + (x.m_c[43] * __y_xpd__[2][3]) + (x.m_c[40] * __y_xpd__[2][0]));
-			__tmp_coord_array_13__[10] += ((x.m_c[48] * __y_xpd__[2][2]) + (x.m_c[47] * __y_xpd__[2][1]) + (x.m_c[49] * __y_xpd__[2][3]) + (x.m_c[50] * __y_xpd__[2][4]) + (x.m_c[51] * __y_xpd__[2][5]) + (x.m_c[46] * __y_xpd__[2][0]));
+			__tmp_coord_array_13__[5] += ((x.m_c[21] * __y_xpd__[2][5]) + (x.m_c[20] * __y_xpd__[2][4]) + (x.m_c[19] * __y_xpd__[2][3]) + (x.m_c[16] * __y_xpd__[2][0]) + (x.m_c[18] * __y_xpd__[2][2]) + (x.m_c[17] * __y_xpd__[2][1]));
+			__tmp_coord_array_13__[6] += ((x.m_c[24] * __y_xpd__[2][2]) + (x.m_c[27] * __y_xpd__[2][5]) + (x.m_c[25] * __y_xpd__[2][3]) + (x.m_c[23] * __y_xpd__[2][1]) + (x.m_c[26] * __y_xpd__[2][4]) + (x.m_c[22] * __y_xpd__[2][0]));
+			__tmp_coord_array_13__[7] += ((x.m_c[32] * __y_xpd__[2][4]) + (x.m_c[33] * __y_xpd__[2][5]) + (x.m_c[31] * __y_xpd__[2][3]) + (x.m_c[30] * __y_xpd__[2][2]) + (x.m_c[28] * __y_xpd__[2][0]) + (x.m_c[29] * __y_xpd__[2][1]));
+			__tmp_coord_array_13__[8] += ((x.m_c[34] * __y_xpd__[2][0]) + (x.m_c[37] * __y_xpd__[2][3]) + (x.m_c[39] * __y_xpd__[2][5]) + (x.m_c[38] * __y_xpd__[2][4]) + (x.m_c[36] * __y_xpd__[2][2]) + (x.m_c[35] * __y_xpd__[2][1]));
+			__tmp_coord_array_13__[9] += ((x.m_c[41] * __y_xpd__[2][1]) + (x.m_c[43] * __y_xpd__[2][3]) + (x.m_c[45] * __y_xpd__[2][5]) + (x.m_c[44] * __y_xpd__[2][4]) + (x.m_c[42] * __y_xpd__[2][2]) + (x.m_c[40] * __y_xpd__[2][0]));
+			__tmp_coord_array_13__[10] += ((x.m_c[50] * __y_xpd__[2][4]) + (x.m_c[47] * __y_xpd__[2][1]) + (x.m_c[46] * __y_xpd__[2][0]) + (x.m_c[49] * __y_xpd__[2][3]) + (x.m_c[48] * __y_xpd__[2][2]) + (x.m_c[51] * __y_xpd__[2][5]));
 
 		}
 		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_13__[11] += ((x.m_c[54] * __y_xpd__[3][2]) + (x.m_c[53] * __y_xpd__[3][1]) + (x.m_c[52] * __y_xpd__[3][0]) + (x.m_c[55] * __y_xpd__[3][3]));
-			__tmp_coord_array_13__[12] += ((x.m_c[59] * __y_xpd__[3][3]) + (x.m_c[58] * __y_xpd__[3][2]) + (x.m_c[56] * __y_xpd__[3][0]) + (x.m_c[57] * __y_xpd__[3][1]));
-			__tmp_coord_array_13__[13] += ((x.m_c[63] * __y_xpd__[3][3]) + (x.m_c[60] * __y_xpd__[3][0]) + (x.m_c[61] * __y_xpd__[3][1]) + (x.m_c[62] * __y_xpd__[3][2]));
-			__tmp_coord_array_13__[14] += ((x.m_c[64] * __y_xpd__[3][0]) + (x.m_c[66] * __y_xpd__[3][2]) + (x.m_c[65] * __y_xpd__[3][1]) + (x.m_c[67] * __y_xpd__[3][3]));
+			__tmp_coord_array_13__[11] += ((x.m_c[54] * __y_xpd__[3][2]) + (x.m_c[53] * __y_xpd__[3][1]) + (x.m_c[55] * __y_xpd__[3][3]) + (x.m_c[52] * __y_xpd__[3][0]));
+			__tmp_coord_array_13__[12] += ((x.m_c[58] * __y_xpd__[3][2]) + (x.m_c[57] * __y_xpd__[3][1]) + (x.m_c[59] * __y_xpd__[3][3]) + (x.m_c[56] * __y_xpd__[3][0]));
+			__tmp_coord_array_13__[13] += ((x.m_c[61] * __y_xpd__[3][1]) + (x.m_c[60] * __y_xpd__[3][0]) + (x.m_c[63] * __y_xpd__[3][3]) + (x.m_c[62] * __y_xpd__[3][2]));
+			__tmp_coord_array_13__[14] += ((x.m_c[64] * __y_xpd__[3][0]) + (x.m_c[65] * __y_xpd__[3][1]) + (x.m_c[67] * __y_xpd__[3][3]) + (x.m_c[66] * __y_xpd__[3][2]));
 
 		}
 		if (((y.m_gu & 16) != 0)) {
@@ -8882,57 +9259,57 @@
 			__x__.m_c[15] = __image_of_e0__.m_c[3];
 			__x__.m_c[16] = ((__x__.m_c[5] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[4]));
 			__x__.m_c[22] = ((__x__.m_c[9] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[8]));
-			__x__.m_c[28] = ((__x__.m_c[1] * __x__.m_c[8]) + (-1.0f * __x__.m_c[9] * __x__.m_c[0]));
+			__x__.m_c[28] = ((-1.0f * __x__.m_c[9] * __x__.m_c[0]) + (__x__.m_c[1] * __x__.m_c[8]));
 			__x__.m_c[34] = ((-1.0f * __x__.m_c[1] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[0]));
-			__x__.m_c[40] = ((-1.0f * __x__.m_c[5] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[4]));
+			__x__.m_c[40] = ((__x__.m_c[13] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[12]));
 			__x__.m_c[46] = ((__x__.m_c[13] * __x__.m_c[8]) + (-1.0f * __x__.m_c[9] * __x__.m_c[12]));
 			__x__.m_c[17] = ((-1.0f * __x__.m_c[2] * __x__.m_c[5]) + (__x__.m_c[6] * __x__.m_c[1]));
-			__x__.m_c[23] = ((__x__.m_c[10] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[9]));
-			__x__.m_c[29] = ((__x__.m_c[2] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[1]));
+			__x__.m_c[23] = ((-1.0f * __x__.m_c[6] * __x__.m_c[9]) + (__x__.m_c[10] * __x__.m_c[5]));
+			__x__.m_c[29] = ((-1.0f * __x__.m_c[10] * __x__.m_c[1]) + (__x__.m_c[2] * __x__.m_c[9]));
 			__x__.m_c[35] = ((-1.0f * __x__.m_c[2] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[1]));
 			__x__.m_c[41] = ((__x__.m_c[14] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[13]));
 			__x__.m_c[47] = ((__x__.m_c[14] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[13]));
 			__x__.m_c[18] = ((__x__.m_c[2] * __x__.m_c[4]) + (-1.0f * __x__.m_c[6] * __x__.m_c[0]));
 			__x__.m_c[24] = ((__x__.m_c[6] * __x__.m_c[8]) + (-1.0f * __x__.m_c[10] * __x__.m_c[4]));
 			__x__.m_c[30] = ((-1.0f * __x__.m_c[2] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[0]));
-			__x__.m_c[36] = ((-1.0f * __x__.m_c[14] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[12]));
-			__x__.m_c[42] = ((-1.0f * __x__.m_c[14] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[12]));
+			__x__.m_c[36] = ((__x__.m_c[2] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[0]));
+			__x__.m_c[42] = ((__x__.m_c[6] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[4]));
 			__x__.m_c[48] = ((-1.0f * __x__.m_c[14] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[12]));
-			__x__.m_c[19] = ((__x__.m_c[7] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[4]));
+			__x__.m_c[19] = ((-1.0f * __x__.m_c[3] * __x__.m_c[4]) + (__x__.m_c[7] * __x__.m_c[0]));
 			__x__.m_c[25] = ((__x__.m_c[11] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[8]));
 			__x__.m_c[31] = ((__x__.m_c[3] * __x__.m_c[8]) + (-1.0f * __x__.m_c[11] * __x__.m_c[0]));
 			__x__.m_c[37] = ((__x__.m_c[15] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[12]));
-			__x__.m_c[43] = ((__x__.m_c[15] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[12]));
+			__x__.m_c[43] = ((-1.0f * __x__.m_c[7] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[4]));
 			__x__.m_c[49] = ((-1.0f * __x__.m_c[11] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[8]));
 			__x__.m_c[20] = ((-1.0f * __x__.m_c[3] * __x__.m_c[5]) + (__x__.m_c[7] * __x__.m_c[1]));
 			__x__.m_c[26] = ((__x__.m_c[11] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[9]));
 			__x__.m_c[32] = ((-1.0f * __x__.m_c[11] * __x__.m_c[1]) + (__x__.m_c[3] * __x__.m_c[9]));
-			__x__.m_c[38] = ((-1.0f * __x__.m_c[3] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[1]));
+			__x__.m_c[38] = ((__x__.m_c[15] * __x__.m_c[1]) + (-1.0f * __x__.m_c[3] * __x__.m_c[13]));
 			__x__.m_c[44] = ((__x__.m_c[15] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[13]));
 			__x__.m_c[50] = ((__x__.m_c[15] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[13]));
-			__x__.m_c[21] = ((__x__.m_c[7] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[6]));
-			__x__.m_c[27] = ((__x__.m_c[11] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[10]));
-			__x__.m_c[33] = ((-1.0f * __x__.m_c[11] * __x__.m_c[2]) + (__x__.m_c[3] * __x__.m_c[10]));
+			__x__.m_c[21] = ((-1.0f * __x__.m_c[3] * __x__.m_c[6]) + (__x__.m_c[7] * __x__.m_c[2]));
+			__x__.m_c[27] = ((-1.0f * __x__.m_c[7] * __x__.m_c[10]) + (__x__.m_c[11] * __x__.m_c[6]));
+			__x__.m_c[33] = ((__x__.m_c[3] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[2]));
 			__x__.m_c[39] = ((__x__.m_c[15] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[14]));
-			__x__.m_c[45] = ((-1.0f * __x__.m_c[7] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[6]));
-			__x__.m_c[51] = ((-1.0f * __x__.m_c[11] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[10]));
-			__x__.m_c[52] = ((__x__.m_c[30] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[1]));
-			__x__.m_c[56] = ((-1.0f * __x__.m_c[36] * __x__.m_c[5]) + (__x__.m_c[42] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[13]));
-			__x__.m_c[60] = ((__x__.m_c[48] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[13]) + (-1.0f * __x__.m_c[42] * __x__.m_c[9]));
-			__x__.m_c[64] = ((-1.0f * __x__.m_c[48] * __x__.m_c[1]) + (__x__.m_c[36] * __x__.m_c[9]) + (__x__.m_c[30] * __x__.m_c[13]));
-			__x__.m_c[53] = ((__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[4]) + (__x__.m_c[20] * __x__.m_c[8]));
+			__x__.m_c[45] = ((__x__.m_c[15] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[14]));
+			__x__.m_c[51] = ((__x__.m_c[15] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[14]));
+			__x__.m_c[52] = ((__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[30] * __x__.m_c[5]));
+			__x__.m_c[56] = ((__x__.m_c[18] * __x__.m_c[13]) + (__x__.m_c[42] * __x__.m_c[1]) + (-1.0f * __x__.m_c[36] * __x__.m_c[5]));
+			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[48] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[13]));
+			__x__.m_c[64] = ((__x__.m_c[36] * __x__.m_c[9]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]) + (__x__.m_c[30] * __x__.m_c[13]));
+			__x__.m_c[53] = ((__x__.m_c[20] * __x__.m_c[8]) + (__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[4]));
 			__x__.m_c[57] = ((__x__.m_c[44] * __x__.m_c[0]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]) + (__x__.m_c[20] * __x__.m_c[12]));
-			__x__.m_c[61] = ((__x__.m_c[26] * __x__.m_c[12]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]) + (__x__.m_c[50] * __x__.m_c[4]));
-			__x__.m_c[65] = ((-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[12]) + (__x__.m_c[38] * __x__.m_c[8]));
-			__x__.m_c[54] = ((__x__.m_c[33] * __x__.m_c[5]) + (__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[9]));
-			__x__.m_c[58] = ((__x__.m_c[45] * __x__.m_c[1]) + (-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[21] * __x__.m_c[13]));
-			__x__.m_c[62] = ((-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[27] * __x__.m_c[13]) + (__x__.m_c[51] * __x__.m_c[5]));
-			__x__.m_c[66] = ((__x__.m_c[39] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[13]) + (-1.0f * __x__.m_c[51] * __x__.m_c[1]));
-			__x__.m_c[55] = ((-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[0]) + (-1.0f * __x__.m_c[21] * __x__.m_c[8]));
-			__x__.m_c[59] = ((__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]));
-			__x__.m_c[63] = ((-1.0f * __x__.m_c[51] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (__x__.m_c[45] * __x__.m_c[8]));
-			__x__.m_c[67] = ((-1.0f * __x__.m_c[39] * __x__.m_c[8]) + (-1.0f * __x__.m_c[33] * __x__.m_c[12]) + (__x__.m_c[51] * __x__.m_c[0]));
-			__x__.m_c[68] = ((__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[63] * __x__.m_c[1]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]));
+			__x__.m_c[61] = ((__x__.m_c[50] * __x__.m_c[4]) + (__x__.m_c[26] * __x__.m_c[12]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]));
+			__x__.m_c[65] = ((__x__.m_c[32] * __x__.m_c[12]) + (-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[38] * __x__.m_c[8]));
+			__x__.m_c[54] = ((__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[5]));
+			__x__.m_c[58] = ((-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[21] * __x__.m_c[13]) + (__x__.m_c[45] * __x__.m_c[1]));
+			__x__.m_c[62] = ((__x__.m_c[27] * __x__.m_c[13]) + (-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[51] * __x__.m_c[5]));
+			__x__.m_c[66] = ((-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[13]) + (__x__.m_c[39] * __x__.m_c[9]));
+			__x__.m_c[55] = ((-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[0]));
+			__x__.m_c[59] = ((-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]));
+			__x__.m_c[63] = ((__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (-1.0f * __x__.m_c[51] * __x__.m_c[4]));
+			__x__.m_c[67] = ((-1.0f * __x__.m_c[33] * __x__.m_c[12]) + (__x__.m_c[51] * __x__.m_c[0]) + (-1.0f * __x__.m_c[39] * __x__.m_c[8]));
+			__x__.m_c[68] = ((__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[59] * __x__.m_c[9]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]) + (__x__.m_c[63] * __x__.m_c[1]));
 		}
 	} /* end of namespace __G2_GENERATED__ */
 

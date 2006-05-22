@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-22 12:56:24 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2006-05-22 13:47:30 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -472,7 +472,7 @@
 
 
 
-	float improperLine::largestCoordinate() const {
+	float lineAtInfinity::largestCoordinate() const {
 
 		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
 
@@ -483,7 +483,41 @@
 		return maxC;
 	}
 
-	float improperLine::largestBasisBlade(unsigned int &bm) const {
+	float lineAtInfinity::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+		bm = 3;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) {
+			maxC = C;
+			bm = 6;
+		}
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) {
+			maxC = C;
+			bm = 5;
+		}
+		return maxC;
+	}
+
+
+
+
+
+
+	float bivector::largestCoordinate() const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) maxC = C;
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) maxC = C;
+		return maxC;
+	}
+
+	float bivector::largestBasisBlade(unsigned int &bm) const {
 
 		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
 		bm = 3;
@@ -547,14 +581,14 @@
 
 
 
-	float improperPlane::largestCoordinate() const {
+	float planeAtInfinity::largestCoordinate() const {
 
 		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
 
 		return maxC;
 	}
 
-	float improperPlane::largestBasisBlade(unsigned int &bm) const {
+	float planeAtInfinity::largestBasisBlade(unsigned int &bm) const {
 
 		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
 		bm = 7;

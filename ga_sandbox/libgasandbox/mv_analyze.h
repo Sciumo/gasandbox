@@ -50,6 +50,10 @@ public:
 	static const int VERSOR = e3ga::mvType::VERSOR;
 	static const int BLADE = e3ga::mvType::BLADE;
 
+	// blade classes for HOMOGENEOUS Model
+	static const int LOCALIZED = 0;
+	static const int INFINITE = 1;
+
 	// blade classes for Conformal Model
 	static const int SCALAR = 0;
 	static const int FLAT = 1;
@@ -63,6 +67,11 @@ public:
 	static const int POINT = 1; // is shared with ROUNDS
 	static const int LINE = 2;
 	static const int PLANE = 3;
+
+	// these are used for H3GA:
+//	static const int POINT_AT_INFINITY = 4;
+//	static const int LINE_AT_INFINITY = 5;
+//	static const int PLANE_AT_INFINITY = 6;
 
 	// ROUNDs
 	static const int POINT_PAIR = 2;
@@ -79,9 +88,10 @@ public:
 	// extra vector space constants:
 	static const int NOT_USED = 0; // used as m_type[2] for vector space model
 
-	// used for  vector space versors (m_type[3]:
+	// used for vector space versors (m_type[3]):
 	static const int EVEN_VERSOR = 0;
 	static const int ODD_VERSOR = 1;
+	static const int ROTOR = 2;
 
 public:
 	mvAnalysis();

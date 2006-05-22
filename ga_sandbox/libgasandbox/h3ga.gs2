@@ -40,9 +40,10 @@ ga {
 	specialization: blade point(e1, e2, e3, e0);
 	specialization: blade normalizedPoint(e1, e2, e3, e0=1);
 	specialization: blade line(e1^e2, e2^e3, e3^e1, e1^e0, e2^e0, e3^e0);
-	specialization: blade improperLine(e1^e2, e2^e3, e3^e1);
+	specialization: blade lineAtInfinity(e1^e2, e2^e3, e3^e1);
+	specialization: blade bivector(e1^e2, e2^e3, e3^e1);
 	specialization: blade plane(e1^e2^e3, e1^e2^e0, e2^e3^e0, e3^e1^e0);
-	specialization: blade improperPlane(e1^e2^e3);
+	specialization: blade planeAtInfinity(e1^e2^e3);
 	
 	
 	specialization: versor rotor(1.0, e1^e2, e2^e3, e3^e1);

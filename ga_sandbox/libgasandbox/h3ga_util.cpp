@@ -17,102 +17,11 @@
 
 #include <string>
 
-#include "e3ga.h"
-#include "e3ga_util.h"
+#include "h3ga.h"
+#include "h3ga_util.h"
 #include "gabits.h"
 
-namespace e3ga {
-
-rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
-	if (_Float(scp(v1, v2)) < -0.99999f) {
-		// (near) 180 degree rotation:
-		vector tmp = _vector(lcont(v1, op(v1, v2)));
-		double n2 = _Float(norm_e2(tmp));
-		if (n2 != 0.0f) tmp = _vector(tmp * (1.0f /  (mv::Float)sqrt(n2)));
-		else
-			tmp = (_Float(norm_e2(v1 ^ e1)) > _Float(norm_e2(v1 ^ e2))) ? _vector(e1) : _vector(e2);
-		return _rotor(unit_e(v1 ^ tmp));
-	}
-	else {
-		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
-		return _rotor((1.0 + v2 * v1) * (1.0f / s));
-	}
-}
-
-rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &rotPlane) {
-	if (_Float(scp(v1, v2)) < -0.99999f) {
-		return _rotor(unit_e(rotPlane));
-	}
-	else {
-		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
-		return _rotor((1.0 + v2 * v1) * (1.0f / s));
-	}
-}
-
-void rotorToMatrix(const rotor &R, mv::Float M[9]) {
-	mv::Float qw = _Float(R);
-	mv::Float qx = -R.e2e3(); 
-	mv::Float qy = -R.e3e1(); 
-	mv::Float qz = -R.e1e2(); 
-
-	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
-	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
-	M[2 * 3 + 0] = 2.0f * (qx * qz - qy * qw);
-
-	M[0 * 3 + 1] = 2.0f * (qx * qy - qz * qw);
-	M[1 * 3 + 1] = 1.0f - 2.0f * qx * qx - 2.0f * qz * qz;
-	M[2 * 3 + 1] = 2.0f * (qy * qz + qx * qw);
-
-	M[0 * 3 + 2] = 2.0f * (qx * qz + qy * qw);
-	M[1 * 3 + 2] = 2.0f * (qy * qz - qx * qw);
-	M[2 * 3 + 2] = 1.0f - 2.0f * qx * qx - 2.0f * qy * qy;
-}
-
-
-rotor matrixToRotor(const mv::Float M[9]) {
-	mv::Float trace = M[0 * 3 + 0] + M[1 * 3 + 1] + M[2 * 3 + 2] + 1.0f;
-	mv::Float qw; // scalar coordinate
-	mv::Float qx; // coordinate for -e2^e3
-	mv::Float qy; // coordinate for -e3^e1
-	mv::Float qz; // coordinate for -e1^e2
-	if (trace > 0.00001f) {
-	    mv::Float s = 0.5f / (mv::Float)sqrt(trace);
-	    qw = 0.25f / s;
-	    qw = sqrt(trace) * (0.5f);
-	    qx = (M[2 * 3 + 1] - M[1 * 3 + 2]) * s;
-	    qy = (M[0 * 3 + 2] - M[2 * 3 + 0]) * s;
-	    qz = (M[1 * 3 + 0] - M[0 * 3 + 1]) * s;
-	}
-	else {
-	    if (M[0 * 3 + 0] > M[1 * 3 + 1] && M[0 * 3 + 0] > M[2 * 3 + 2]) {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[0 * 3 + 0] - M[1 * 3 + 1] - M[2 * 3 + 2]);
-			qx = 0.25f * s;
-			qy = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qz = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qw = (M[1 * 3 + 2] - M[2 * 3 + 1]) / s;
-	    }
-	    else if (M[1 * 3 + 1] > M[2 * 3 + 2]) {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[1 * 3 + 1] - M[0 * 3 + 0] - M[2 * 3 + 2]);
-			qx = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qy = 0.25f * s;
-			qz = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qw = (M[0 * 3 + 2] - M[2 * 3 + 0]) / s;
-	    }
-	    else {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[2 * 3 + 2] - M[0 * 3 + 0] - M[1 * 3 + 1] );
-			qx = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qy = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qz = 0.25f * s;
-			qw = (M[0 * 3 + 1] - M[1 * 3 + 0]) / s;
-	    }
-	}
-
-	mv::Float s = (mv::Float) sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-	
-	
-	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
-}
-
+namespace h3ga {
 
 mv exp(const mv &x, int order /*= 9*/) {
 	// First try special cases:
@@ -176,7 +85,7 @@ mv exp(const mv &x, int order /*= 9*/) {
 	return result;
 }
 
-e3ga::bivector log(const e3ga::rotor &R) {
+bivector log(const rotor &R) {
 	mv::Float R2 = _Float(norm_r(_bivector(R)));
 	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
 	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
@@ -191,40 +100,6 @@ rotor exp(const bivector &x) {
 }
 
 
-
-void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
-	if (nbVectors == 0) return; // nothing to do
-	else if (nbVectors == 1) {
-		// trivial case
-		if (_Float(norm_r2(IF[0])) == 0.0)
-			throw std::string("reciprocalFrame(): null vector");
-		RF[0] = inverse(IF[0]);
-		return;
-	}
-	else {
-		// compute pseudoscalar 'I' of space spanned by input frame:
-		mv I = IF[0];
-		for (int i = 1; i < nbVectors; i++) I ^= IF[i];
-		if (_Float(norm_r2(I)) == 0.0) 
-			throw std::string("reciprocalFrame(): vectors are not independent");
-
-		// compute inverse of 'I':
-		mv Ii = inverse(I);
-
-		// compute the vectors of the reciprocal framevector
-		for (int i = 0; i < nbVectors; i++) {
-			// compute outer product of all vectors except IF[i]
-			mv P = (i & 1) ? -1.0f : 1.0f; // = pow(-1, i)
-			for (int j = 0; j < nbVectors; j++)
-				if (j != i) P ^= IF[j];
-
-			// compute reciprocal vector 'i':
-			RF[i] = _vector(P << Ii);
-		}
-		return;
-	}
-
-}
 
 
 /// factors blade into vectors (euclidean unit length), returns  scale (or throws exception when non-blade is passed)
@@ -257,7 +132,7 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
 	
-	mv::Float coords[3] = {0.0, 0.0, 0.0};
+	mv::Float coords[4] = {0.0, 0.0, 0.0, 0.0};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
 		while (!(E&1)) {
@@ -301,7 +176,7 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 		const mv::Float *largestC = NULL;
 		const mv::Float *C = X.m_c;
 
-		for (int i = 0; i <= 3; i++) {
+		for (int i = 0; i <= 4; i++) {
 			if ((X.gu() & (1 << i)) == 0) continue;
 			else {
 				// square, sum 
@@ -342,7 +217,7 @@ mv grade(const mv &X, float epsilon /* = 1e-7 */);
 
 // todo: integrate into G2
 mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
-	int g = 3, gu = X.gu(), iX = mv_size[gu], size, i;
+	int g = 4, gu = X.gu(), iX = mv_size[gu], size, i;
 	const float *cptr = NULL;
 	do {
 		if (gu & (1 << g)) {
@@ -395,8 +270,9 @@ mv deltaProduct(const mv &X, const mv &Y, float epsilon /* = 1e-7 */, int *grade
 }
 
 inline mv randomVector() {
-	float c[3] =
+	float c[4] =
 	{
+		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2)
@@ -419,8 +295,8 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	if (grade == 0) {
 		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
 	}
-	else if (grade == 3) {
-		return mv(GRADE_3, size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
+	else if (grade == 4) {
+		return mv(GRADE_4, size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
 	}
 	else {
 		mv result = randomVector();
@@ -432,9 +308,9 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	}
 }
 
-mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 */, float size /*= 1.0f*/) {
+mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 | GRADE_4 */, float size /*= 1.0f*/) {
 	mv::Float C[8];
-	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3; // to prevent weird input
+	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 | GRADE_4; // to prevent weird input
 	int s = mv_size[gradeParts];
 	for (int i = 0; i < s; i++) {
 		C[i] = -1.0f + 2.0f * (float)rand() * size / (float)RAND_MAX;
@@ -500,8 +376,8 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	}
 
 	// init join
-	j = I3;
-	int Ej = 3 - ((ga + gb + gd) >> 1);
+	j = I4;
+	int Ej = 4 - ((ga + gb + gd) >> 1);
 
 	// check join excessity
 	if (Ej == 0) {
@@ -515,18 +391,19 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	int Em = ((ga + gb - gd) >> 1);
 
 	// init s, the dual of the delta product:
-	mv s = lcont(d, I3i);
+	mv s = lcont(d, I4i);
 
 	// precompute inverse of ca
 	mv cai = inverse(ca);
 
-	mv e[3] = {
-		mv(GRADE_1, 1.0f, 0.0f, 0.0f),
-		mv(GRADE_1, 0.0f, 1.0f, 0.0f),
-		mv(GRADE_1, 0.0f, 0.0f, 1.0f)
+	mv e[4] = {
+		mv(GRADE_1, 1.0f, 0.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 1.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 0.0f, 1.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 0.0f, 0.0f, 1.0f)
 	};
 
-	for (unsigned int i = 0; i < 3; i++) {
+	for (unsigned int i = 0; i < 4; i++) {
 		// compute next factor 'c'
 		mv c = lcont(lcont(e[i], s), s);		
 
@@ -574,4 +451,4 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 }
 
 
-} /* end of namespace e3ga */
+} /* end of namespace h3ga */
