@@ -27,13 +27,6 @@ plane
 rotor
 
 
-
-
-
-
-
-
-
 */
 
 #ifdef WIN32

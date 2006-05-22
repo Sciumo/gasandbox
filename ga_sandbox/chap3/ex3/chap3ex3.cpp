@@ -164,8 +164,9 @@ void display() {
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "Input Frame:");
-		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");
 		renderBitmapString(g_viewportWidth * 3 / 4 - 50, g_viewportHeight - 20, font, "Reciprocal Frame");
+
+		renderBitmapString(20, 20, font, "-use mouse to drag (Input Frame) vectors and to orbit scene");
 	}
 
 	if (!GLpick::g_pickActive) {
