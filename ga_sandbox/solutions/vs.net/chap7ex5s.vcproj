@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="chap6ex3s"
+	Name="chap7ex5s"
 	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C112C1B8}"
 	Keyword="Win32Proj">
 	<Platforms>
@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="chap6ex3s_Debug"
+			IntermediateDirectory="chap7ex5s_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -33,10 +33,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="wsock32.lib"
-				OutputFile="$(OutDir)/chap6ex3s.exe"
+				OutputFile="$(OutDir)/chap7ex5s.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/chap6ex3s.pdb"
+				ProgramDatabaseFile="$(OutDir)/chap7ex5s.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -63,7 +63,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="chap6ex3s_Release"
+			IntermediateDirectory="chap7ex5s_Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -80,7 +80,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="wsock32.lib"
-				OutputFile="$(OutDir)/chap6ex3s.exe"
+				OutputFile="$(OutDir)/chap7ex5s.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
@@ -117,7 +117,7 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\chap6\ex3\chap6ex3s.cpp">
+				RelativePath="..\chap7\ex5\chap7ex5s.cpp">
 			</File>
 		</Filter>
 		<Filter
