@@ -31,7 +31,7 @@ namespace mv_draw {
 
 using namespace e3ga;
 
-void draw(const e3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*/) {
+void draw(const e3ga::mv &X, int method /* = 0*/, Palet *o /*= NULL*/) {
 	mvAnalysis A(X);
 
 	if (A.isBlade()) {

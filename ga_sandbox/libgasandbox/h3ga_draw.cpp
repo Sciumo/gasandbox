@@ -22,38 +22,81 @@
 #include <GL/gl.h>
 
 #include "h3ga_draw.h"
-#include "h3ga_util.h"
+#include "e3ga_util.h"
 #include "mv_analyze.h"
 
 using namespace mv_analyze;
+using namespace e3ga;
 
 namespace mv_draw {
 
-using namespace h3ga;
+void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
+	/*
+	Draw:
+	Versors:
+		ROTOR
+	Blades:
+		LOCALIZED_BLADE
+			POINT (option: MAGNITUDE)
+			LINE (option: ORIENTATION, MAGNITUDE)
+			PLANE (option: ORIENTATION, MAGNITUDE)
+		INFINITE_BLADE
+			VECTOR
+	*/
 
-void draw(const h3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*/) {
+
 	mvAnalysis A(X);
 
 	if (A.isBlade()) {
+		if (A.bladeClass() == mvAnalysis::LOCALIZED_BLADE) {
+			switch (A.bladeSubclass()) {
+				case mvAnalysis::POINT:
+					{
+						g_drawState.pushDrawModeOff(OD_ORIENTATION);
+						drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+						g_drawState.popDrawMode();
+					}
+					break;
+				case mvAnalysis::LINE:
+					{
+					}
+					break;
+				case mvAnalysis::PLANE:
+					{
+					}
+					break;
+			}
+
+		}
+		if (A.bladeClass() == mvAnalysis::LOCALIZED_BLADE) {
+			switch (A.bladeSubclass()) {
+				case mvAnalysis::VECTOR:
+					{
+						drawVector(e3ga::vector(), A.m_vc[0], A.m_sc[0]);
+					}
+					break;
+				case mvAnalysis::LINE:
+					{
+					}
+					break;
+				case mvAnalysis::PLANE:
+					{
+					}
+					break;
+			}
+
+		}
 		switch (A.bladeSubclass()) {
 			case mvAnalysis::VECTOR:
 				{
-					drawVector(h3ga::vector(), A.m_vc[0], A.m_sc[0]);
 				}
 				break;
-			case mvAnalysis::BIVECTOR:
+			case mvAnalysis::LINE:
 				{
-					h3ga::mv::Float scale =
-						(g_drawState.getDrawMode() & OD_MAGNITUDE)
-						? (h3ga::mv::Float)sqrt(fabs(A.m_sc[0]) / M_PI)
-						: 1.0f;
-
-					drawBivector(h3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
 				}
 				break;
-			case mvAnalysis::TRIVECTOR:
+			case mvAnalysis::PLANE:
 				{
-					drawTriVector(h3ga::vector(), A.m_sc[0],  A.m_vc, method, o);
 				}
 				break;
 		}
@@ -67,13 +110,13 @@ void draw(const h3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 				// draw plane of rotation
 				glPolygonMode(GL_FRONT_AND_BACK, (g_drawState.getDrawMode() & OD_WIREFRAME) ? GL_LINE : GL_FILL);
 				g_drawState.pushDrawModeOff(OD_ORIENTATION);
-				drawBivector(h3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], DRAW_BV_CIRCLE, o);
+				drawBivector(e3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], DRAW_BV_CIRCLE, o);
 				g_drawState.popDrawMode();
 
 				// draw 'angle of rotation'
 				if (o) o->setOlColor();
 				else glColor3f(0.0, 0.0, 0.0);
-				h3ga::vector v = A.m_vc[0]; // vector in rotation plane
+				vector v = A.m_vc[0]; // vector in rotation plane
 
 				bivector b = _bivector(-dual(A.m_vc[2])); // rotation plane
 				v = _vector(unit_e(v) * (mv::Float)(0.8f * scale));
@@ -104,8 +147,6 @@ void draw(const h3ga::mv &X, int method /*= DRAW_BV_CIRCLE*/, Palet *o /*= NULL*
 			}
 		}
 	}
-
-
 }
 
 

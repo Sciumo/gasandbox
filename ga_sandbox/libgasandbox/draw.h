@@ -32,7 +32,7 @@ namespace mv_draw {
 
 class DrawState {
 public:
-	DrawState() : m_ambient(0.2f),  m_diffuse(1.0f), m_sphere(NULL) {
+	DrawState() : m_ambient(0.2f),  m_diffuse(1.0f), m_sphere(NULL), m_pointSize(0.01f) {
 		m_drawMode.push_back(OD_MAGNITUDE | OD_ORIENTATION);
 	}
 
@@ -42,6 +42,7 @@ public:
 
 	float m_ambient;
 	float m_diffuse;
+	float m_pointSize;
 
 	inline int getDrawMode() const {
 		return	m_drawMode[m_drawMode.size()-1];
@@ -58,6 +59,8 @@ public:
 protected:
 	std::vector<int> m_drawMode;
 	// line width, etc
+	// point size, etc
+	
 };
 
 extern DrawState g_drawState;

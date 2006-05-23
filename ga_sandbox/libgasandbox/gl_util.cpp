@@ -137,6 +137,16 @@ void rotorGLMult(const e3ga::rotor &v) {
 	glMultMatrixf(GLmatrix);
 }
 
+void rotorGLMult(const h3ga::rotor &v) {
+	rotorGLMult(e3ga::rotor(e3ga::rotor_scalar_e1e2_e2e3_e3e1, v.getC(h3ga::rotor_scalar_e1e2_e2e3_e3e1)));
+}
+
+/*
+void rotorGLMult(const c3ga::rotor &v) {
+	rotorGLMult(e3ga::rotor(e3ga::rotor_scalar_e1e2_e2e3_e3e1, v.getC(c3ga::rotor_scalar_e1e2_e2e3_e3e1)));
+}
+*/
+
 /// Loads color (also into GL 'material' colors, for lighting)
 void glColor3fm(float r, float g, float b) {
 	const float af = 0.3f;

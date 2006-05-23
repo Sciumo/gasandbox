@@ -140,6 +140,9 @@
 				RelativePath="..\libgasandbox\h3ga.cpp">
 			</File>
 			<File
+				RelativePath="..\libgasandbox\h3ga_draw.cpp">
+			</File>
+			<File
 				RelativePath="..\libgasandbox\h3ga_util.cpp">
 			</File>
 			<File
@@ -221,6 +224,9 @@
 			</File>
 			<File
 				RelativePath="..\libgasandbox\h3ga.h">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\h3ga_draw.h">
 			</File>
 			<File
 				RelativePath="..\libgasandbox\h3ga_util.h">
