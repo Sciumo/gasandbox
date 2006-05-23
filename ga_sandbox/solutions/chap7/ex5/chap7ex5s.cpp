@@ -30,7 +30,7 @@
 
 using namespace e2ga;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 6, Example 3: Fractals";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 7, Example 5: Fractals";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -51,25 +51,29 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 					std::vector<unsigned char> &rgbBuffer, int width, int height) {
 	int idx = 0;
 
+	// we use e = e1 ('__e1_ct__' stands for 'e1 constant type')
+	__e1_ct__ e;
+
 	// for each pixel in the image, evaluate fractal function:
-	for (int y = 0; y < height; y++) {
-		for (int x = 0; x < width; x++) {
-			float xf = (float)(x-width/2);
-			float yf = (float)(y-height/2);
-			e2ga::vector p(vector_e1_e2, xf, yf);
-			e2ga::vector r = _vector(zoom * p - translation);
+	for (int imageY = 0; imageY < height; imageY++) {
+		for (int imageX = 0; imageX < width; imageX++) {
+			float imageXf = (float)(imageX-width/2);
+			float imageYf = (float)(imageY-height/2);
+			e2ga::vector p(vector_e1_e2, imageXf, imageYf);
+			e2ga::vector x = _vector(zoom * p - translation);
 
 			for (int i = 0; i < maxIter; i++) {
-				// r = _vector(r * e1 * r + c); // n = 2
-				r = _vector(r * e1 * r * e1 * r + c); // n = 3
-				// r = _vector(r * e1 * r * e1 * r * e1 * r  + c); // n = 4
-				// r = _vector(r * e1 * r * e1 * r * e1 * r  * e1 * r  + c); // n = 5
+				// x = _vector(x * e * x + c); // n = 2
+				x = _vector(x * e * x * e * x+ c); // n = 3
+				// x = _vector(x * e * x * e * x * e * x  + c); // n = 4
+				// x = _vector(x * e * x * e * x * e * x  * e * x  + c); // n = 5
 				// etc
-		        if (_Float(norm_e2(r)) > 1e4f) break; // 1e4 = 'infinity'
+
+		        if (_Float(norm_e2(x)) > 1e4f) break; // 1e4 = 'infinity'
 			}
 
 			// convert to grey-scale value:
-			float valF = _Float(norm_e(r)) / 10.0f;
+			float valF = _Float(norm_e(x)) / 10.0f;
 			unsigned char val = (valF > 255) ? 255 : (unsigned char)(valF + 0.5f);
 
 			rgbBuffer[idx + 0] = rgbBuffer[idx + 1] = rgbBuffer[idx + 2] = val;

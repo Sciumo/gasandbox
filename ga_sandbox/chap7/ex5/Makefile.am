@@ -1,11 +1,11 @@
 sandbindir = $(bindir)/ga_sandbox
 
-sandbin_PROGRAMS = chap6ex3
+sandbin_PROGRAMS = chap7ex5
 
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
 
-chap6ex3_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+chap7ex5_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
 
-chap6ex3_SOURCES = chap6ex3.cpp
+chap7ex5_SOURCES = chap7ex5.cpp
 
 noinst_HEADERS = 

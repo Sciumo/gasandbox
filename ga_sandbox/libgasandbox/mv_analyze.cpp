@@ -466,7 +466,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	// blade
 	else if (m_mvType.m_type == BLADE) {
 		if (m_mvType.m_grade == 0) {
-			m_type[2] =	 LOCALIZED;
+			m_type[2] =	 LOCALIZED_BLADE;
 			m_type[3] = SCALAR;
 
 			// format for scalar:
@@ -475,7 +475,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 			return;
 		}
 		else if (m_mvType.m_grade == 4) {
-			m_type[2] =	 LOCALIZED;
+			m_type[2] =	 LOCALIZED_BLADE;
 			m_type[3] = PSEUDOSCALAR;
 
 			// format for scalar:
@@ -488,7 +488,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 			h3ga::mv moment = h3ga::e0i << (h3ga::e0 ^ X);
 
 			if (_Float(norm_e(attitude)) < epsilon) {
-				m_type[2] =	 INFINITE;
+				m_type[2] =	 INFINITE_BLADE;
 				// INFINITE blade
 				// VECTOR, LINE, or PLANE
 
@@ -525,7 +525,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 				return;
 			}
 			else {
-				m_type[2] =	 LOCALIZED;
+				m_type[2] =	 LOCALIZED_BLADE;
 
 				h3ga::vector supportVector = h3ga::_vector(moment * inverse(attitude));
 				h3ga::point supportPoint = h3ga::_point(X * inverse(attitude));

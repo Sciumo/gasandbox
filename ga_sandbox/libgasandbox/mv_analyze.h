@@ -53,8 +53,8 @@ public:
 	// todo: enumerate these logically!!! so no double names can occur
 
 	// blade classes for HOMOGENEOUS Model
-	static const int LOCALIZED = 0;
-	static const int INFINITE = 1;
+	static const int LOCALIZED_BLADE = 0;
+	static const int INFINITE_BLADE = 1;
 
 	// blade classes for Conformal Model
 	static const int SCALAR = 0;
