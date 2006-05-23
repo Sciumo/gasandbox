@@ -17,7 +17,7 @@ http://www.fltk.org/
 ANTLR (2.7.6): required by chap10ex3
 http://www.antlr.org/
 
-OpenCV (0.9.7 beta5): required by chap10ex3
+OpenCV (0.9.7 beta5): required by chap10ex3, chap11ex2
 http://sourceforge.net/projects/opencvlibrary/
 
 Qhull (2003.1): required by chap10ex3

@@ -41,7 +41,6 @@ const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 1: Points";
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
-int g_GLUTmenu;
 
 // mouse position on last call to MouseButton() / MouseMotion()
 h3ga::vector g_prevMousePos;
@@ -56,12 +55,6 @@ float g_dragDistance = -1.0f;
 
 // rotation of the model
 h3ga::rotor g_modelRotor(_rotor(1.0f));
-
-// when did the current interpolation start?
-double g_startTime = -1.0;
-
-// how long does one interpolation take:
-const double interpolationTime = 1.5f;
 
 const int NB_POINTS = 3;
 const int NB_NORMALIZED_POINTS = 3;
@@ -213,7 +206,7 @@ void MouseButton(int button, int state, int x, int y) {
 	g_prevMousePos = mousePosToVector(x, y);
 
 	g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-	printf("Drag point = %d %f\n", g_dragPoint, g_dragDistance);
+
 	if (g_dragPoint < 0) {
 		h3ga::vector mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;

@@ -41,7 +41,6 @@ const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 1: Interpolat
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
-int g_GLUTmenu;
 
 // mouse position on last call to MouseButton() / MouseMotion()
 e3ga::vector g_prevMousePos;

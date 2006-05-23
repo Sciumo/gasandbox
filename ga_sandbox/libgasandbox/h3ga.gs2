@@ -59,6 +59,10 @@ ga {
 			e1^e2^e3, e1^e2^e0,    e2^e3^e0,    e3^e1^e0, // grade 3
 			e1^e2^e3^e0 // grade 4
 		);
+		
+		
+	// outermorphism for use with OpenGL modelview matrix:
+	om_specialization: transpose omPoint(e1, e2, e3, e0);
 	
 }
 
