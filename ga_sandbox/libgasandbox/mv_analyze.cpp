@@ -367,8 +367,6 @@ void mvAnalysis::analyze(e3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 	// blade
 	else if (m_mvType.m_type == BLADE) {
-		m_type[3] = m_mvType.m_grade;
-
 		// format for blade:
 		// m_sc[0] = size (unit_e())
 
@@ -382,14 +380,17 @@ void mvAnalysis::analyze(e3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 		// m_vc[0], m_vc[1], m_vc[2]
 
 		m_sc[0] = e3ga::_Float(e3ga::norm_e(X));
-		if (m_type[3] == VECTOR) {
+		if (m_mvType.m_grade == 1) {
+			m_type[3] = VECTOR;
 			m_vc[0] = e3ga::_vector(e3ga::unit_e(X));
 		}
-		else if (m_type[3] == BIVECTOR) {
+		else if (m_mvType.m_grade == 2) {
+			m_type[3] = BIVECTOR;
 			e3ga::factorizeBlade(_bivector(X), m_vc);
 			m_vc[2] = _vector(e3ga::dual(m_vc[0] ^ m_vc[1]));
 		}
-		else if (m_type[3] == TRIVECTOR) {
+		else if (m_mvType.m_grade == 3) {
+			m_type[3] = TRIVECTOR;
 			m_vc[0] = e3ga::_vector(e3ga::e1);
 			m_vc[1] = e3ga::_vector(e3ga::e2);
 			m_vc[2] = e3ga::_vector(e3ga::e3);
@@ -407,7 +408,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 	// type is vector space
 	m_type[0] = HOMOGENEOUS_MODEL;
-	m_type[2] = NOT_USED; // later on, when it is a blade, the m_type[2] will be set to either LOCALIZED or INFINITE
+	m_type[2] = NOT_USED; // later on in this function, if 'X' it is a blade, the m_type[2] will be set to either LOCALIZED_BLADE or INFINITE_BLADE
 
 	// forced dual interpretation?
 	if (intFlags & FLAG_DUAL) {

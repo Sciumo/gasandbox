@@ -11,7 +11,7 @@ libgasandbox_a_include_HEADERS = \
 	draw.h \
 	e2ga.h e2ga_draw.h e2ga_util.h \
 	e3ga.h e3ga_util.h e3ga_draw.h \
-	h3ga.h  \
+	h3ga.h h3ga_util.h h3ga_draw.h \
 	mv_analyze.h common.h     geosphere.h  mvtypebase.h \
 	timing.h glut_util.h gl_util.h gabits.h
 
@@ -19,7 +19,7 @@ libgasandbox_a_SOURCES =  \
 	draw.cpp mv_analyze.cpp \
 	e2ga.cpp e2ga_draw.cpp \
 	e3ga.cpp e3ga_util.cpp e3ga_draw.cpp \
-	h3ga.cpp \
+	h3ga.cpp h3ga_util.cpp h3ga_draw.cpp \
 	geosphere.cpp timing.cpp \
 	glut_util.cpp gl_util.cpp 
 
