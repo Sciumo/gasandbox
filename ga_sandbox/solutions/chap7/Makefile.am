@@ -1,1 +1,1 @@
-SUBDIRS = ex4
+SUBDIRS = ex4 ex5

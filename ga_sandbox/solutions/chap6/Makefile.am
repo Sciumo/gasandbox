@@ -1,3 +1,3 @@
-SUBDIRS = ex1 ex3
+SUBDIRS = ex1
 
 
