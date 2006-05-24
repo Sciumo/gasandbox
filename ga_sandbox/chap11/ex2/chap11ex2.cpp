@@ -58,8 +58,8 @@ const int MODE_CREATE_LINES = 2;
 const int MODE_CREATE_PLANES = 3;
 
 const char *g_modeName[] = {
-	"Drag points",
-	"Create points",
+	"Drag red points",
+	"Create points (no scene orbit available)",
 	"Create lines (select two points)",
 	"Create planes (select three points)",
 };
@@ -83,6 +83,14 @@ std::vector<std::vector<int> > g_lines;
 
 // the planes (triplets of indices into g_points)
 std::vector<std::vector<int> > g_planes;
+
+// used for construction of new lines:
+std::vector<int> g_createLinePtList;
+// used for construction of new planes:
+std::vector<int> g_createPlanePtList;
+
+
+h3ga::vector vectorAtDepth(double depth, const h3ga::vector &v2d);
 
 void display() {
 	// setup projection & transform for the vectors:
@@ -121,6 +129,8 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
+	// we collect all lines and planes in this list:
+	std::vector<mv> primitives;
 
 	// draw the points
 	glColor3fm(1.0f, 0.0f, 0.0f);
@@ -128,21 +138,113 @@ void display() {
 	for (unsigned int i = 0; i < g_points.size(); i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
 		draw(g_points[i]);
+//		primitives.push_back(g_points[i]);
 	}
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 
 	if (!GLpick::g_pickActive) {
+
 		// draw the lines
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
 		glColor3fm(0.0f, 1.0f, 0.0f);
 		for (unsigned int i = 0; i < g_lines.size(); i++) {
 			// compute the line from the points:
 			line L = _line(g_points[g_lines[i][0]] ^ g_points[g_lines[i][1]]);
 			// draw it:
 			draw(L);
+
+			primitives.push_back(unit_r(L));
+		}
+		g_drawState.popDrawMode();
+
+		// COMPUTE the planes (they are drawn last, because they are transparent
+		for (unsigned int i = 0; i < g_planes.size(); i++) {
+			// compute the plane from the points:
+			plane P = _plane(g_points[g_planes[i][0]] ^ 
+				g_points[g_planes[i][1]] ^ 
+				g_points[g_planes[i][2]]);
+			primitives.push_back(unit_r(P));
 		}
 
-		// draw the planes
+		// we collect all intersection primitives here (if they are lines):
+		std::vector<mv> iPrimitives;
+
+		// draw intersections of primitives:
+		glPushMatrix();
+
+		{
+			// translate a little bit so intersections are drawn ON TOP of the other primitives
+			// This is used instead of using polygon offset)
+			vector T = _vector(inverse(g_modelRotor) * 0.01 * e3 * g_modelRotor);
+			glTranslatef(T.e1(), T.e2(), T.e3());
+		}
+
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
+		glColor3fm(1.0f, 1.0f, 1.0f);
+		for (int x = 0; x < 2; x++) { // loop twice (the second loop brings up intersections of intersections)
+			for (unsigned int i = 0; i < primitives.size(); i++) {
+				for (unsigned int j = i + 1; j < primitives.size(); j++) {
+					mv P1, P2;
+
+					// get the primitives such that grade(P1) <= grade(P2)
+					if (primitives[i].gu() < primitives[j].gu()) {
+						P1 = primitives[i];
+						P2 = primitives[j];
+					}
+					else {
+						P2 = primitives[i];
+						P1 = primitives[j];
+					}
+
+					mv projection = (P1 << inverse(P2)) << P2;
+
+					// check if projection of P1 onto P2 is 'close' to P1
+					if (_Float(norm_e(projection - P1)) < 0.02f) {
+						// yes: P1 = projection of P1 onto P2
+						P1 = projection;
+					}
+
+					// compute 'pseudoscalar' of the space which P1 and P2 life in:
+					mv I = unit_e(join(P1, P2));
+
+					// compute P1* . P2
+					mv intersection = (P1 << inverse(I)) << P2;
+
+					// draw intersection
+					draw(intersection);
+
+					// if intersection is a line, then add to list of new intersection primitives:
+					 if (intersection.gu() == GRADE_2) 
+						iPrimitives.push_back(intersection);
+				}
+			}
+			primitives = iPrimitives;
+		}
+		g_drawState.popDrawMode();
+		g_drawState.popDrawMode();
+
+		// draw (GRAY) lines between mouse and points selected as lines / planes
+		{
+			std::vector<int> L = g_createLinePtList;
+			glColor3f(0.5f, 0.5f, 0.5f);
+			for (int x = 0; x < 2; x++) { // first loop: LINES, second loop: PLANES
+				if (L.size()) {
+					for (unsigned int i = 0; i < L.size(); i++) {
+						draw(g_points[L[i]]);
+					}
+					glEnd();
+				}
+
+				L = g_createPlanePtList;
+			}
+		}
+
+		glPopMatrix();
+
+		// draw the planes LAST! because they are transparent . . . 
+		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4fm(0.0f, 0.0f, 1.0f, 0.5f);
@@ -154,11 +256,10 @@ void display() {
 			draw(P);
 		}
 		glDisable(GL_BLEND);
+		g_drawState.popDrawMode();
 
-		// compute intersection of lines & lines, lines & planes, planes & planes
-		// todo....
-		// lines & lines: use meet (large epsilon)
 	}
+
 
 	glPopMatrix();
 
@@ -179,8 +280,9 @@ void display() {
 			renderBitmapString(20, g_viewportHeight - 20, font, buf);
 		}
 
-		renderBitmapString(20, 40, font, "Use the left mouse button to manipulate the scene, and to orbit it.");
-		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu, and select different manipulation modes.");
+		renderBitmapString(20, 60, font, "Use the left mouse button to manipulate the scene, and to orbit it.");
+		renderBitmapString(20, 40, font, "Use the other mouse buttons to access the popup menu, and select different manipulation modes.");
+		renderBitmapString(20, 20, font, "The intersections of the primitives are drawn in white.");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -212,12 +314,25 @@ h3ga::vector mousePosToVector(int x, int y) {
 	return h3ga::_vector((float)x * h3ga::e1 - (float)y * h3ga::e2);
 }
 
+void invert4x4Matrix(const float _M[16], float _M_inverse[16]) {
+	// use OpenCV to invert matrix:
+	CvMat M = cvMat(4, 4, CV_32F, (void*)_M);
+	CvMat M_inverse = cvMat(4, 4, CV_32F, (void*)_M_inverse);
+
+	cvInvert(&M, &M_inverse);
+}
+
+void addPtToList(std::vector<int> &list, int idx) {
+	for (unsigned int i = 0; i < list.size(); i++)
+		if (list[i] == idx) return;
+	list.push_back(idx);
+}
+
+
 void MouseButton(int button, int state, int x, int y) {
-	if (state != GLUT_DOWN) return;
+	if (state != GLUT_DOWN) return; // don't respond when button goes up . . .
 
 	g_rotateModel = false;
-
-	printf("State: %d\n", state);
 
 	g_prevMousePos = mousePosToVector(x, y);
 
@@ -241,33 +356,41 @@ void MouseButton(int button, int state, int x, int y) {
 
 		// invert matrix, then try again . . . 
 		float inverseModelviewMatrix[16];
-		{
-			// use OpenCV to invert matrix:
-			CvMat M = cvMat(4, 4, CV_32F, modelviewMatrix);
-			CvMat M_inverse = cvMat(4, 4, CV_32F, inverseModelviewMatrix);
-
-			cvInvert(&M, &M_inverse);
-		}
+		invert4x4Matrix(modelviewMatrix, inverseModelviewMatrix);
 
 		// use it to initialize an outermorphism; apply it to the point
 		omPoint M(inverseModelviewMatrix);
 		pt = apply_om(M, pt);
-
-		printf("After transform: %s\n", pt.c_str());
 
 		// add point to list of points:
 		g_points.push_back(_normalizedPoint(pt));
 
 		g_dragPoint = (int)g_points.size()-1;
 
-		glutPostRedisplay();
+	}
+	else if (g_mouseMode == MODE_CREATE_LINES) {
+		int ptIdx = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+		if (ptIdx >= 0) {
+			addPtToList(g_createLinePtList, ptIdx);
+			if (g_createLinePtList.size() == 2) {
+				g_lines.push_back(g_createLinePtList);
+				g_createLinePtList.clear();
+			}
+		}
+		else g_rotateModel = true;
+	}
+	else if (g_mouseMode == MODE_CREATE_PLANES) {
+		int ptIdx = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+		if (ptIdx >= 0) {
+			addPtToList(g_createPlanePtList, ptIdx);
+			if (g_createPlanePtList.size() == 3) {
+				g_planes.push_back(g_createPlanePtList);
+				g_createPlanePtList.clear();
+			}
+		}
+		else g_rotateModel = true;
 	}
 
-/*const int MODE_CREATE_POINTS = 1;
-const int MODE_CREATE_LINES = 2;
-const int MODE_CREATE_PLANES = 3;*/
-
-//	printf("Drag point = %d %f\n", g_dragPoint, g_dragDistance);
 	if (g_rotateModel) {
 		h3ga::vector mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;
@@ -275,6 +398,9 @@ const int MODE_CREATE_PLANES = 3;*/
 			g_rotateModelOutOfPlane = true;
 		else g_rotateModelOutOfPlane = false;
 	}
+
+	// redraw viewport
+	glutPostRedisplay();
 }
 
 void MouseMotion(int x, int y) {
@@ -302,12 +428,23 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
+void PassiveMouseMotion(int x, int y) {
+	// remember mouse pos for next motion:
+	g_prevMousePos = mousePosToVector(x, y);
+
+	// redraw viewport
+	glutPostRedisplay();
+}
+
 void Keyboard(unsigned char key, int x, int y) {
 
 }
 
 void menuCallback(int value) {
 	g_mouseMode = value;
+
+	g_createLinePtList.clear();
+	g_createPlanePtList.clear();
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -329,6 +466,7 @@ int main(int argc, char*argv[]) {
 	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+	glutPassiveMotionFunc(PassiveMouseMotion);
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry(g_modeName[MODE_DRAG], MODE_DRAG);
@@ -341,10 +479,10 @@ int main(int argc, char*argv[]) {
 	// create the initial points
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 1.0f, 0.0f));
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, -1.0f, 1.0f, 0.0f));
-	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 0.0f, 1.0f, 0.0f));
+	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 0.0f, 0.0f));
 
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 1.0f, 1.0f));
-	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, -1.0f, -1.0f, -.0f));
+	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, -1.0f, -1.0f, -1.0f));
 
 	// create initial line
 	g_lines.push_back(std::vector<int>());

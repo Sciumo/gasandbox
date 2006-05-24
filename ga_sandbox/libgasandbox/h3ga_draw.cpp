@@ -23,6 +23,7 @@
 
 #include "h3ga_draw.h"
 #include "e3ga_util.h"
+#include "gl_util.h"
 #include "mv_analyze.h"
 
 using namespace mv_analyze;
@@ -47,6 +48,9 @@ void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
 
 	mvAnalysis A(X);
 
+	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
+	mv::Float stepSize = 0.1f;
+
 	if (A.isBlade()) {
 		if (A.bladeClass() == mvAnalysis::LOCALIZED_BLADE) {
 			switch (A.bladeSubclass()) {
@@ -59,16 +63,89 @@ void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
 					break;
 				case mvAnalysis::LINE:
 					{
+						glDisable(GL_LIGHTING);
+						glPushMatrix();
+						// translate to point on line 
+						glTranslatef(A.m_pt[0].e1(), A.m_pt[0].e2(), A.m_pt[0].e3());
+
+						// rotate e3 to line direction
+						rotor rt = rotorFromVectorToVector(_vector(e3), A.m_vc[0]);
+						rotorGLMult(rt);
+
+						// draw line
+						glBegin(GL_LINE_STRIP);
+						for (mv::Float z = -scaleConst; z <= scaleConst; z += stepSize * scaleConst)
+							glVertex3f(0.0, 0.0, z);
+						glEnd();
+
+						// draw 'orientation'
+						if (g_drawState.getDrawMode() & OD_ORIENTATION) { 
+							// option 3: little hooks 
+							glTranslatef(0.0, 0.0, -scaleConst);
+							for (mv::Float c = 0.0; c < 1.0; c += stepSize) {
+								glPushMatrix();
+								// if magnitude: scale
+								if (g_drawState.getDrawMode() & OD_MAGNITUDE)
+									glScaled(0.5 * fabs(A.m_sc[0]), 0.5 * fabs(A.m_sc[0]), 0.5 * fabs(A.m_sc[0]));
+								else glScalef(0.5f, 0.5f, 0.5f);
+
+								glBegin(GL_LINE_STRIP);
+								glVertex3f(-0.25f, 0.0f, -1.0f);
+								glVertex3f(0.0f, 0.0f, 0.0f);
+								glVertex3f(0.25f, 0.0f, -1.0f);
+								glEnd();
+
+								glPopMatrix();
+								glRotated(90.0f, 0.0f, 0.0f, 1.0f);
+								glTranslated(0.0f, 0.0f, 2.0f * stepSize * scaleConst);
+							}
+						}
+						glPopMatrix();
 					}
 					break;
 				case mvAnalysis::PLANE:
 					{
+						for (int s = 0; s < 2; s++) { // draw both front and back side individually
+							if (s == 0) { // front
+								glPolygonMode(GL_FRONT, (g_drawState.getDrawMode() & OD_WIREFRAME) ? GL_LINE : GL_FILL);
+								glNormal3fv(A.m_vc[2].getC(vector_e1_e2_e3)); 
+							}
+							else { // back
+								glPolygonMode(GL_FRONT, ((g_drawState.getDrawMode() & OD_WIREFRAME) || 
+									(g_drawState.getDrawMode() & OD_ORIENTATION)) ? GL_LINE : GL_FILL);
+								glNormal3fv(_vector(-A.m_vc[2]).getC(vector_e1_e2_e3)); 
+							}
+							for (mv::Float y = -scaleConst; y < scaleConst - stepSize * scaleConst; y += stepSize * scaleConst) {
+								glBegin(GL_QUAD_STRIP);
+								for (mv::Float x = -scaleConst; x < scaleConst; x += stepSize * scaleConst) {
+									glVertex3fv(_vector(A.m_pt[0] + x * A.m_vc[0] + ((s == 0) ? (y + stepSize * scaleConst) : y) * A.m_vc[1]).getC(vector_e1_e2_e3));
+									glVertex3fv(_vector(A.m_pt[0] + x * A.m_vc[0] + ((s == 1) ? (y + stepSize * scaleConst) : y) * A.m_vc[1]).getC(vector_e1_e2_e3));
+								}
+								glEnd();
+							}
+						}
+
+						
+						if (g_drawState.getDrawMode() & OD_MAGNITUDE) { // draw normals
+							mv::Float scaleMag = A.m_sc[0];
+							glDisable(GL_LIGHTING);
+							glBegin(GL_LINES);
+							for (mv::Float y = -scaleConst; y <= scaleConst; y += stepSize * scaleConst) {
+								for (mv::Float x = -scaleConst; x <= scaleConst; x += stepSize * scaleConst) {
+									glVertex3fv(_vector(A.m_pt[0] + x * A.m_vc[0] + y * A.m_vc[1]).getC(vector_e1_e2_e3));
+									glVertex3fv(_vector(A.m_pt[0] + x * A.m_vc[0] + y * A.m_vc[1] + scaleMag * A.m_vc[2]).getC(vector_e1_e2_e3));
+								}
+							}
+							glEnd();
+						}
+
 					}
 					break;
 			}
+			return;
 
 		}
-		if (A.bladeClass() == mvAnalysis::LOCALIZED_BLADE) {
+		else if (A.bladeClass() == mvAnalysis::INFINITE_BLADE) {
 			switch (A.bladeSubclass()) {
 				case mvAnalysis::VECTOR:
 					{
@@ -77,28 +154,17 @@ void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
 					break;
 				case mvAnalysis::LINE:
 					{
+						// todo: draw as bivector
 					}
 					break;
 				case mvAnalysis::PLANE:
 					{
+						// todo: draw as trivector
 					}
 					break;
 			}
+			return;
 
-		}
-		switch (A.bladeSubclass()) {
-			case mvAnalysis::VECTOR:
-				{
-				}
-				break;
-			case mvAnalysis::LINE:
-				{
-				}
-				break;
-			case mvAnalysis::PLANE:
-				{
-				}
-				break;
 		}
 	}
 	else if (A.isVersor()) {
@@ -146,6 +212,7 @@ void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
 				glEnd();
 			}
 		}
+		return;
 	}
 }
 
