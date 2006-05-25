@@ -32,16 +32,16 @@
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
 #include <libgasandbox/timing.h>
+#include <libgasandbox/mvtypebase.h>
 
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 1: Points";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 3: Don't Add Lines";
 
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
-int g_GLUTmenu;
 
 // mouse position on last call to MouseButton() / MouseMotion()
 h3ga::vector g_prevMousePos;
@@ -57,35 +57,50 @@ float g_dragDistance = -1.0f;
 // rotation of the model
 h3ga::rotor g_modelRotor(_rotor(1.0f));
 
-// when did the current interpolation start?
-double g_startTime = -1.0;
+const int NB_POINTS = 4;
 
-// how long does one interpolation take:
-const double interpolationTime = 1.5f;
-
-const int NB_POINTS = 3;
-const int NB_NORMALIZED_POINTS = 3;
-
-// the regular points:
-point g_points[NB_POINTS] = {
-// note that we deliberately give weights to the points (1.0, 2.0, 3.0)
-	_point(1.0f * (e1 + e2 + e0)),
-	_point(2.0f * (2.0f * e1 + 0.5f * e2 + e0)),
-	_point(3.0f * (e1 + 0.5f * e3 + e0)),
-};
 // the normalized points:
-normalizedPoint g_normalizedPoints[NB_NORMALIZED_POINTS] = {
-// note the hack here: because normalizedPoints have a 
-// constant 'e0' coordinate, no need to do '+ e0' for each point.
-// You can initialize a normalizedPoint straight for a '3D vector'
-	_normalizedPoint(-e1 + e2), 
-	_normalizedPoint(-1.5f * e1 + 0.5f * e2),
-	_normalizedPoint(-e1 + 0.5f * e3),
+normalizedPoint g_points[NB_POINTS] = {
+	_normalizedPoint(-e1 + e2 + e0), 
+	_normalizedPoint(e1 + e2 + e0), 
+	_normalizedPoint(-e1 - e2 + e0), 
+	_normalizedPoint(e1 - e2 + e0), 
 };
 
 
 
 void display() {
+	// copy points to local array:
+	normalizedPoint pt[NB_POINTS];
+	for (int i = 0; i < NB_POINTS; i++) {
+		pt[i] = g_points[i];
+	}
+
+	{ 
+		// `snap' the points (for POSITION)
+		const float CLOSE_POINTS = 0.1f;
+		for (int i = 0; i < NB_POINTS; i++) {
+			for (int j = 0; j < NB_POINTS; j++) {
+				if (_Float(norm_e(pt[i] - pt[j])) < CLOSE_POINTS)
+					pt[i] = pt[j]; // snap!
+			}
+		}
+
+		// `snap' the points (for DIRECTION)
+		const float CLOSE_DIRECTIONS = 0.1f;
+		if (_Float(norm_e(unit_e(pt[1] - pt[0]) ^ unit_e(pt[3] - pt[2]))) < CLOSE_DIRECTIONS) {
+			// snap!
+			h3ga::vector dir = _vector(unit_e(pt[1] - pt[0]));
+			mv::Float l = _Float(dir << (pt[3] - pt[2]));
+			pt[3] = _normalizedPoint(pt[2] + l * dir);
+		}
+	}
+
+	// compute the lines
+	line L1 = _line(pt[0] ^ pt[1]);
+	line L2 = _line(pt[2] ^ pt[3]);
+	line L1plusL2 = _line(L1 + L2);
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -126,39 +141,20 @@ void display() {
 	glColor3fm(1.0f, 0.0f, 0.0f);
 	for (int i = 0; i < NB_POINTS; i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
-		draw(g_points[i]);
-	}
-
-	// draw normalized points
-	glColor3fm(0.0f, 1.0f, 0.0f);
-	for (int i = 0; i < NB_NORMALIZED_POINTS; i++) {
-		if (GLpick::g_pickActive) glLoadName(NB_POINTS + i);
-		draw(g_normalizedPoints[i]);
+		draw(pt[i]);
 	}
 
 	if (!GLpick::g_pickActive) {
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
 
-		// draw loops through the points:
-		glDisable(GL_LIGHTING);
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glBegin(GL_LINE_LOOP);
-		for (int i = 0; i < NB_POINTS; i++) {
-			const point &P = g_points[i];
-			glVertex4fv(P.getC(point_e1_e2_e3_e0));
-			// or:
-			// glVertex4f(P.e1(), P.e2(), P.e3(), P.e0());
-		}
-		glEnd();
+		// draw the lines
+		glColor3fm(0.0f, 1.0f, 0.0f);
+		draw(L1);
+		draw(L2);
+		glColor3fm(1.0f, 1.0f, 1.0f);
+		draw(L1plusL2);
 
-		// draw loops through the normalized points:
-		glBegin(GL_LINE_LOOP);
-		for (int i = 0; i < NB_NORMALIZED_POINTS; i++) {
-			const normalizedPoint &P = g_normalizedPoints[i];
-			glVertex3fv(P.getC(normalizedPoint_e1_e2_e3_e0f1_0)); //note e0 'fixed' at 1.0
-			// or:
-			// glVertex3f(P.e1(), P.e2(), P.e3());
-		}
-		glEnd();
+		g_drawState.popDrawMode();
 	}
 
 	glPopMatrix();
@@ -174,8 +170,68 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 40, font, "This simple example demonstrates using (normalized) points with OpenGL.");
-		renderBitmapString(20, 20, font, "Use the mouse buttons to drag the red/green points.");
+
+		int y = g_viewportHeight - 20;
+		char buf[1024];
+
+		// is L1plusL2 a blade?
+		h3ga::mvType T(L1plusL2);
+		sprintf(buf, "pt1^pt2 + pt3^pt4 is a blade: %s\n", (T.m_type == mvTypeBase::BLADE) ? "true" : "false");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		/*
+		// compute the conditions for being a blade:
+
+		// Check: versor inverse == inverse
+		mv VI = reverse(L1plusL2) * inverse(L1plusL2 * reverse(L1plusL2));
+
+		mv check1 = gradeInvolution(L1plusL2) * VI;
+		bool check1OK = _Float(norm_e(check1 - _Float(check1))) < 0.01f;
+
+		sprintf(buf, "grade(gi(L1 + L2) * inverse(L1 + L2)) == 0: %s\n", (check1OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		mv check2 = gradeInvolution(L1plusL2) * VI - VI * gradeInvolution(L1plusL2);
+		bool check2OK = _Float(norm_e(check2)) < 0.01f;
+
+		sprintf(buf, "gi(L1 + L2) * inverse(L1 + L2) == inverse(L1 + L2) * gi(L1 + L2): %s\n", (check2OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		// Check: apply L1 + L2 to the basis vectors, check if result is vector
+		mv checkE1 = gradeInvolution(L1plusL2) * e1 * reverse(L1plusL2);
+		mv checkE2 = gradeInvolution(L1plusL2) * e2 * reverse(L1plusL2);
+		mv checkE3 = gradeInvolution(L1plusL2) * e3 * reverse(L1plusL2);
+		mv checkE0 = gradeInvolution(L1plusL2) * e0 * reverse(L1plusL2);
+
+		bool checkE1OK = _Float(norm_e(checkE1 - _point(checkE1))) < 0.01f;
+		bool checkE2OK = _Float(norm_e(checkE2 - _point(checkE2))) < 0.01f;
+		bool checkE3OK = _Float(norm_e(checkE3 - _point(checkE3))) < 0.01f;
+		bool checkE0OK = _Float(norm_e(checkE0 - _point(checkE0))) < 0.01f;
+
+		sprintf(buf, "grade(gi(L1 + L2) * e1 * reverse(L1 + L2)) == 1: %s\n", (checkE1OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		sprintf(buf, "grade(gi(L1 + L2) * e2 * reverse(L1 + L2)) == 1: %s\n", (checkE2OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		sprintf(buf, "grade(gi(L1 + L2) * e3 * reverse(L1 + L2)) == 1: %s\n", (checkE3OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+
+		sprintf(buf, "grade(gi(L1 + L2) * e0 * reverse(L1 + L2)) == 1: %s\n", (checkE0OK) ? "OK" : "FAILED");
+		renderBitmapString(20, y, font, buf);
+		y -= 20;
+*/
+
+		renderBitmapString(20, 80, font, "Use the mouse buttons to drag the red points and orbit the scene.");
+		renderBitmapString(20, 60, font, "The white line (when drawn) is the sum of the two green lines.");
+		renderBitmapString(20, 40, font, "When the white line is not drawn, the sum of the green lines is not a blade.");
+		renderBitmapString(20, 20, font, "NOTE: You need to orbit the scene a little before this situation can arise!.");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -213,7 +269,7 @@ void MouseButton(int button, int state, int x, int y) {
 	g_prevMousePos = mousePosToVector(x, y);
 
 	g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-	printf("Drag point = %d %f\n", g_dragPoint, g_dragDistance);
+
 	if (g_dragPoint < 0) {
 		h3ga::vector mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;
@@ -236,17 +292,9 @@ void MouseMotion(int x, int y) {
 	else if (g_dragPoint >= 0) {
 		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-//		printf("T = %s\n", T.c_str());
 
-		if (g_dragPoint < NB_POINTS) {
-			int idx = g_dragPoint;
-			g_points[idx] = _point(g_points[idx] + (T ^ (e0 << g_points[idx])));
-		}
-		else {
-			int idx = g_dragPoint - NB_POINTS;
-			g_normalizedPoints[idx] = 
-				_normalizedPoint(g_normalizedPoints[idx] + (T ^ (e0 << g_normalizedPoints[idx])));
-		}
+		int idx = g_dragPoint;
+		g_points[idx] = _point(g_points[idx] + (T ^ (e0 << g_points[idx])));
 	}
 
 	// remember mouse pos for next motion:
@@ -267,7 +315,7 @@ int main(int argc, char*argv[]) {
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
-	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
 
 	// Register callbacks:

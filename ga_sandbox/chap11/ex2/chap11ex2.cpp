@@ -149,8 +149,11 @@ void display() {
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
 		glColor3fm(0.0f, 1.0f, 0.0f);
 		for (unsigned int i = 0; i < g_lines.size(); i++) {
+			int pointIdx1 = g_lines[i][0];
+			int pointIdx2 = g_lines[i][1];
+
 			// compute the line from the points:
-			line L = _line(g_points[g_lines[i][0]] ^ g_points[g_lines[i][1]]);
+			line L = _line(g_points[pointIdx1] ^ g_points[pointIdx2]);
 			// draw it:
 			draw(L);
 
@@ -160,10 +163,12 @@ void display() {
 
 		// COMPUTE the planes (they are drawn last, because they are transparent
 		for (unsigned int i = 0; i < g_planes.size(); i++) {
+			int pointIdx1 = g_planes[i][0];
+			int pointIdx2 = g_planes[i][1];
+			int pointIdx3 = g_planes[i][2];
+
 			// compute the plane from the points:
-			plane P = _plane(g_points[g_planes[i][0]] ^ 
-				g_points[g_planes[i][1]] ^ 
-				g_points[g_planes[i][2]]);
+			plane P = _plane(g_points[pointIdx1] ^ g_points[pointIdx2] ^ g_points[pointIdx3]);
 			primitives.push_back(unit_r(P));
 		}
 
@@ -198,15 +203,19 @@ void display() {
 						P1 = primitives[j];
 					}
 
-					mv projection = (P1 << inverse(P2)) << P2;
+					// make primitive 'snap' to each other
+					{
+						mv projection = (P1 << inverse(P2)) << P2;
 
-					// check if projection of P1 onto P2 is 'close' to P1
-					if (_Float(norm_e(projection - P1)) < 0.02f) {
-						// yes: P1 = projection of P1 onto P2
-						P1 = projection;
+						// check if projection of P1 onto P2 is 'close' to P1
+						const float CLOSE = 0.02f;
+						if (_Float(norm_e(projection - P1)) < CLOSE) {
+							// yes: P1 = projection of P1 onto P2
+							P1 = projection;
+						}
 					}
 
-					// compute 'pseudoscalar' of the space which P1 and P2 life in:
+					// compute 'pseudoscalar' of the space spanned by P1 and P2
 					mv I = unit_e(join(P1, P2));
 
 					// compute P1* . P2
@@ -343,7 +352,6 @@ void MouseButton(int button, int state, int x, int y) {
 	else if (g_mouseMode == MODE_CREATE_POINTS) {
 		// create a new point at g_dragDistance from camera
 		normalizedPoint pt = _normalizedPoint(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance);
-		printf("Create new point at %s\n", pt.c_str());
 
 		// get modelview matrix (as used for drawing the scene) from OpenGL:
 		glMatrixMode(GL_MODELVIEW);
@@ -457,7 +465,7 @@ int main(int argc, char*argv[]) {
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
-	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
 
 	// Register callbacks:

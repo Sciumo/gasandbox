@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(1024, 768);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow("GLUT test");
 
 	glutDisplayFunc(display);

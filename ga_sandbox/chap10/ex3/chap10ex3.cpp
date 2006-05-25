@@ -364,7 +364,7 @@ int main(int argc, char*argv[]) {
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
-	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
 
 	// Register callbacks:
