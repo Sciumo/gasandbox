@@ -32,6 +32,11 @@ using namespace e3ga;
 namespace mv_draw {
 
 void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
+	mvAnalysis A(X);
+	drawH3GA(A, method, o);
+}
+
+void drawH3GA(mvAnalysis &A, int method /*= 0 */, Palet *o /*= NULL*/) {
 	/*
 	Draw:
 	Versors:
@@ -46,7 +51,7 @@ void draw(const h3ga::mv &X, int method /*= 0 */, Palet *o /*= NULL*/) {
 	*/
 
 
-	mvAnalysis A(X);
+	//mvAnalysis A(X);
 
 	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
 	mv::Float stepSize = 0.1f;

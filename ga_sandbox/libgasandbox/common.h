@@ -16,6 +16,7 @@
 
 #ifndef _COMMON_H_
 #define _COMMON_H_
+#include <stdio.h>
 #include <math.h>
 
 #ifndef M_PI
@@ -24,6 +25,13 @@
 
 #define U_RAD2DEG( x ) ( (x) * (float)180.0 / (float)M_PI)
 #define U_DEG2RAD( x ) ( (x) * (float)M_PI / (float)180.0)
+
+inline void print4x4Matrix(const float M[16]) {
+	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
+}
 
 
 #endif /* _COMMON_H_ */

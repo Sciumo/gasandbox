@@ -107,7 +107,7 @@ public:
 		const normalizedPoint &probe = _normalizedPoint(no));*/
 	mvAnalysis(const e2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const e3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
-	mvAnalysis(const h3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	mvAnalysis(const h3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
 	mvAnalysis(const mvAnalysis &I);
 	virtual ~mvAnalysis();
 
@@ -117,7 +117,7 @@ public:
 	/** intFlags can be FLAG_DUAL for dual intepretation */
 	void analyze(e2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(e3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
-	void analyze(h3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	void analyze(h3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
 //	void analyze(mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const normalizedPoint &probe = _normalizedPoint(no));
 
 	std::string toString() const;

@@ -87,7 +87,7 @@ rotor matrixToRotorClassic(const float M[9]) {
 }
 
 
-void rotorToMatrixClassic(const rotor &R, float M[9]) {
+void rotorToMatrixGeo(const rotor &R, float M[9]) {
 	// compute images of the basis vectors:
 	rotor Ri = _rotor(inverse(R));
 	e3ga::vector image[3] = {

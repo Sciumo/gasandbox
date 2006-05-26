@@ -37,7 +37,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 4: Perspective Projection";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 5: Loading Transformations into OpenGL";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -75,28 +75,9 @@ const char *g_modelNames[] = {
 NULL
 };
 
-// when true, rays are drawn through frame camera point, vertex & projected vertex
-bool g_drawRays = false;
-
-
-const int CAMERA_PT_IDX = 0;
-const int IMAGE_PLANE_PT_IDX = 1;
-
-// camera, image plane point 1, image plane point 2, image plane point 3
-const int NB_POINTS = 4;
-normalizedPoint g_points[NB_POINTS] = {
-	_normalizedPoint(6.0f *  e1 + e0),
-	_normalizedPoint(4.0f * e1 + e2 + e0),
-	_normalizedPoint(4.0f * e1 - e2 + e0),
-	_normalizedPoint(4.0f * e1 - e3 + e0)
-};
-
 // what point to drag (or -1 for none)
 int g_dragPoint = -1; 
 float g_dragDistance = -1.0f;
-
-
-
 
 
 void getGLUTmodel3D(const std::string &modelName);
@@ -123,26 +104,38 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 
-	if (false) {
-		// use this type of perspective projection to set OpenGL projection:
-		// allow toggle for this one?
-		h3ga::point camPt = h3ga::_point(h3ga::e0);
-		h3ga::point screenPt = h3ga::_point(h3ga::e3 + h3ga::e0);
-		h3ga::plane screenPlane = h3ga::_plane(screenPt ^ h3ga::e1 ^ h3ga::e2);
-		h3ga::point imageOfE0 = h3ga::_point(h3ga::dual(camPt ^ screenPt) << screenPlane);
-		h3ga::point imageOfE1 = h3ga::_point(h3ga::dual(camPt ^ h3ga::e1) << screenPlane);
-		h3ga::point imageOfE2 = h3ga::_point(h3ga::dual(camPt ^ h3ga::e2) << screenPlane);
-		h3ga::point imageOfE3 = h3ga::_point(h3ga::dual(camPt ^ h3ga::e3) << screenPlane);
-
-		h3ga::omPoint omPt(imageOfE1, imageOfE2, imageOfE3, imageOfE0);
-		glLoadMatrixf(omPt.m_c);
-	}
-
 
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -20.0f);
-	rotorGLMult(g_modelRotor);
 
+	// replace with GA based stuff:
+	float distance = -20.0f;
+	if (false) {
+		// direct OpenGL:
+		glTranslatef(0.0f, 0.0f, distance);
+		rotor R = g_modelRotor;
+		rotorGLMult(R);
+	}
+	else {
+		// compose transform through GA:
+
+		// translation vector & rotor
+		vector T = _vector(distance * e3);
+		rotor R = g_modelRotor;
+		rotor Ri = _rotor(inverse(R));
+
+		// compute images of basis vectors:
+		point imageOfE1 = _point(R * e1 * Ri + (T ^ (e0 << e1)));
+		point imageOfE2 = _point(R * e2 * Ri + (T ^ (e0 << e2)));
+		point imageOfE3 = _point(R * e3 * Ri + (T ^ (e0 << e3)));
+		point imageOfE0 = _point(R * e0 * Ri + (T ^ (e0 << e0)));
+
+		// create matrix representation:
+		omPoint M(imageOfE1, imageOfE2, imageOfE3, imageOfE0);
+
+		// load matrix representation into GL:
+		glLoadMatrixf(M.m_c);
+	}
+	
 
 	// clear viewport
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -157,108 +150,23 @@ void display() {
 	glEnable(GL_LIGHT0);
 	glLineWidth(1.0f);
 
-	// draw camera, image plane points (maybe allow camera to be moved (one point))
-	glColor3fm(1.0f, 0.0f, 0.0f);
-	g_drawState.m_pointSize = 0.005f;
-	for (int i = 0; i < NB_POINTS; i++) {
-		glLoadName(i);
-		draw(g_points[i]);
+	glDisable(GL_LIGHTING);
+	// render model
+	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
+		// draw polygon & compute center of polygon
+		glColor3fm(1.0, 1.0, 1.0);
+		glBegin(GL_POLYGON);
+		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
+			// get vertex:
+			const normalizedPoint &v = g_vertices3D[g_polygons3D[i][j]];
+
+			glVertex3fv(v.getC(normalizedPoint_e1_e2_e3_e0f1_0));
+		}
+		glEnd();
 	}
+	glEnable(GL_LIGHTING);
 
-	if (!GLpick::g_pickActive) {
-		glDisable(GL_LIGHTING);
-		// render model
-		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
-			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
-			glBegin(GL_POLYGON);
-			for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
-				// get vertex:
-				const normalizedPoint &v = g_vertices3D[g_polygons3D[i][j]];
-
-				glVertex3fv(v.getC(normalizedPoint_e1_e2_e3_e0f1_0));
-			}
-			glEnd();
-		}
-		glEnable(GL_LIGHTING);
-
-
-		// we store the original & projected points here (we not culled), so we can easily draw the rays
-		std::vector<normalizedPoint> originalVertices;
-		std::vector<point> projectedVertices;
-
-		// draw projection of model
-		glDisable(GL_LIGHTING);
-		glDisable(GL_CULL_FACE); // we do our own back-face culling!
-		normalizedPoint cameraPoint = g_points[CAMERA_PT_IDX];
-		plane imagePlane = _plane(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 2]);
-		// render model
-		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
-			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
-
-			// first compute the projected vertices
-			std::vector<point> PV; // PV = projectedVertices
-			for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
-				const normalizedPoint &vertex = g_vertices3D[g_polygons3D[i][j]];
-				// project:
-				point pv = _point(dual(vertex ^ cameraPoint) << imagePlane);
-				if (pv.e0() < 0.0f) pv = -pv; // I don't understand why this is required (OpenGL doesn't like vertices with negative 'w'?)
-
-				// store
-				PV.push_back(pv);
-			}
-
-			// perform back-face culling:
-			// Compute the plane spanned by the first three vertices,
-			// compare it's orientation to the image plane
-			mv::Float ori = _Float((PV[0] ^ PV[1] ^ PV[2]) * inverse(imagePlane));
-
-			if (ori > 0.0f) {
-				glBegin(GL_POLYGON);
-				for (unsigned int j = 0; j < PV.size(); j++) {
-					glVertex4fv(PV[j].getC(point_e1_e2_e3_e0));
-
-					if (g_drawRays) {
-						const normalizedPoint &vertex = g_vertices3D[g_polygons3D[i][j]];
-						originalVertices.push_back(vertex);
-						projectedVertices.push_back(PV[j]);
-					}
-				}
-				glEnd();
-			}
-		}
-
-		if (g_drawRays) {
-			// draw rays:
-			glColor3f(0.5f, 0.5f, 0.5f);
-			for (unsigned int i = 0; i < projectedVertices.size(); i++) {
-				glBegin(GL_LINE_STRIP);
-				glVertex3fv(cameraPoint.getC(normalizedPoint_e1_e2_e3_e0f1_0));
-				glVertex3fv(originalVertices[i].getC(normalizedPoint_e1_e2_e3_e0f1_0));
-				glVertex4fv(projectedVertices[i].getC(point_e1_e2_e3_e0));
-				glEnd();
-			}
-		}
-
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_LIGHTING);
-
-		// draw image plane (transparent?) (maybe allow camera to be moved (one point))
-		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glColor4fm(0.2f, 0.2f, 0.75f, 0.5f);
-		draw(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 2]);
-		glDisable(GL_BLEND);
-		g_drawState.popDrawMode();
-	}
-
-	if (!GLpick::g_pickActive) {
+	{
 		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -269,15 +177,11 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1,1,1);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "The four red points represent the camera and span the imaging plane.");
-		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red points, and to orbit the scene.");
-		renderBitmapString(20, 20, font, "Use the other mouse buttons access the popup menu (to select a different model, and to toggle rays on/off).");
+		renderBitmapString(20, 40, font, "This example demonstrates loading transformation into OpenGL");
+		renderBitmapString(20, 20, font, "(see the source code).");
 	}
 
-
-	if (!GLpick::g_pickActive) {
-		glutSwapBuffers();
-	}
+	glutSwapBuffers();
 }
 
 void reshape(GLint width, GLint height) {
@@ -306,16 +210,6 @@ h3ga::vector mousePosToVector(int x, int y) {
 	return h3ga::_vector((mv::Float)x * h3ga::e1 - (mv::Float)y * h3ga::e2);
 }
 
-h3ga::vector vectorAtDepth(double depth, const h3ga::vector &v2d) {
-	if ((GLpick::g_frustumWidth <= 0) || (GLpick::g_frustumHeight <= 0) ||
-		(GLpick::g_frustumNear <= 0) || (GLpick::g_frustumFar <= 0)) {
-		return h3ga::vector();
-	}
-
-	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 +
-		(depth * (double)v2d.e2() * GLpick::g_frustumHeight) / (g_viewportHeight * GLpick::g_frustumNear) * e2);
-}
-
 void MouseMotion(int x, int y) {
 	// get mouse position, motion
 	h3ga::vector mousePos = mousePosToVector(x, y);
@@ -326,13 +220,6 @@ void MouseMotion(int x, int y) {
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(h3ga::exp(0.005f * (motion ^ h3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(h3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
-	}
-	else if (g_dragPoint >= 0) {
-		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
-		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-
-		g_points[g_dragPoint] = 
-				_normalizedPoint(g_points[g_dragPoint] + (T ^ (e0 << g_points[g_dragPoint])));
 	}
 
 	// remember mouse pos for next motion:
@@ -348,17 +235,12 @@ void MouseButton(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON) {
 		g_prevMousePos = mousePosToVector(x, y);
 
-		g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-
-		if (g_dragPoint < 0) {
-			h3ga::vector mousePos = mousePosToVector(x, y);
-			g_rotateModel = true;
-			if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
-				g_rotateModelOutOfPlane = true;
-			else g_rotateModelOutOfPlane = false;
-		}
+		h3ga::vector mousePos = mousePosToVector(x, y);
+		g_rotateModel = true;
+		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
+			g_rotateModelOutOfPlane = true;
+		else g_rotateModelOutOfPlane = false;
 	}
-	else g_rotateModel = false;
 }
 
 
@@ -368,12 +250,8 @@ void Keyboard(unsigned char key, int x, int y) {
 
 
 void menuCallback(int value) {
-	if (value == -1)
-		g_drawRays ^= true;
-	else {
-		g_modelName = g_modelNames[value];
-		g_initModelRequired = true;
-	}
+	g_modelName = g_modelNames[value];
+	g_initModelRequired = true;
 
 	glutPostRedisplay();
 }
@@ -400,7 +278,6 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
-	glutAddMenuEntry("Draw rays", -1);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

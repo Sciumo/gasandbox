@@ -202,8 +202,13 @@ void display() {
 			std::vector<point> PV; // PV = projectedVertices
 			for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
 				const normalizedPoint &vertex = g_vertices3D[g_polygons3D[i][j]];
-				// project:
-				point pv = _point(dual(vertex ^ cameraPoint) << imagePlane);
+				// project (perspective):
+				//point pv = _point(dual(vertex ^ cameraPoint) << imagePlane);
+
+				// project (orthogonal):
+				// Form line through cameraPoint, in direction of plane normal 
+				// Intersect that line with the image plane
+				point pv = _point(dual(vertex ^ _vector(dual(imagePlane))) << imagePlane);
 				if (pv.e0() < 0.0f) pv = -pv; // I don't understand why this is required (OpenGL doesn't like vertices with negative 'w'?)
 
 				// store

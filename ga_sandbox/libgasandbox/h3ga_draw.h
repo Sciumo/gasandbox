@@ -21,6 +21,10 @@
 #include "h3ga.h"
 #include "draw.h"
 
+namespace mv_analyze {
+	class mvAnalysis;
+}
+
 namespace mv_draw {
 
 /*
@@ -37,6 +41,9 @@ If this gets annoying, allow DrawState to be passed along
 as argument (and also integrate 'Palet')
 */
 void draw(const h3ga::mv &X, int method = 0, Palet *o = NULL);
+
+void drawH3GA(mv_analyze::mvAnalysis &A, int method = 0, Palet *o = NULL);
+
 
 } /* end of namespace mv_draw */
 

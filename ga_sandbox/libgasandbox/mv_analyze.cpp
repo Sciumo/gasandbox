@@ -79,8 +79,9 @@ mvAnalysis::mvAnalysis(const e3ga::mv &X, int intFlags/* = 0 */, double epsilon/
 	analyze(X, intFlags, epsilon);
 }
 
-mvAnalysis::mvAnalysis(const h3ga::mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */) {
-	analyze(X, intFlags, epsilon);
+mvAnalysis::mvAnalysis(const h3ga::mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */, 
+					   const h3ga::normalizedPoint &probe /*= h3ga::_normalizedPoint(h3ga::e0)*/) {
+	analyze(X, intFlags, epsilon, probe);
 }
 
 mvAnalysis::~mvAnalysis() {
@@ -151,6 +152,67 @@ std::string mvAnalysis::toString() const {
 				case EVEN_VERSOR:
 					result += " even versor";
 					break;
+			}
+		}
+	}
+
+	else if (model() == HOMOGENEOUS_MODEL) {
+		// model:
+		result += "Conformal";
+
+		// flags / special stuff:
+		if (isDual()) result += " dual";
+		if (isZero()) result += " zero";
+
+		// blade / versor / multivector?
+		if (isBlade()) result += " blade";
+		else if (isVersor()) result += " versor";
+		else result += " multivector";
+
+		if (!isZero()) {
+			if (isBlade()) {
+				result += ":";
+
+				if (bladeClass() == INFINITE_BLADE) {
+					switch(bladeSubclass()) {
+					case POINT:
+						result += " vector";
+						break;
+					case LINE:
+						result += " line at infinity";
+						break;
+					case PLANE:
+						result += " plane at infinity";
+						break;
+					}
+				}
+				else if (bladeClass() == LOCALIZED_BLADE) {
+					switch(bladeSubclass()) {
+					case POINT:
+						result += " point";
+						break;
+					case LINE:
+						result += " line";
+						break;
+					case PLANE:
+						result += " plane";
+						break;
+					}
+				}
+			}
+			else if (isVersor()) {
+				result += ":";
+				switch(versorSubclass()) {
+					case ODD_VERSOR:
+						result += " odd versor";
+						break;
+					case EVEN_VERSOR:
+						result += " even versor";
+						break;
+					case ROTOR:
+						result += " rotor";
+						break;
+				}
 			}
 		}
 	}
@@ -399,7 +461,8 @@ void mvAnalysis::analyze(e3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	}
 }
 
-void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */) {
+void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */, 
+						 const h3ga::normalizedPoint &probe /*= h3ga::_normalizedPoint(h3ga::e0)*/) {
 	// cleanup:
 	m_flags = FLAG_VALID;
 	m_epsilon = epsilon;
@@ -526,6 +589,16 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 				return;
 			}
 			else {
+				// translate blade such that probe == origin
+				h3ga::vector T = _vector(probe);
+				if (_Float(h3ga::norm_e2(T)) != 0.0f)
+					X = X - (T ^ (h3ga::e0 << X));
+			
+
+				// recompute attitude & moment
+				attitude = h3ga::e0i << X;
+				moment = h3ga::e0i << (h3ga::e0 ^ X);
+
 				m_type[2] =	 LOCALIZED_BLADE;
 
 				h3ga::vector supportVector = h3ga::_vector(moment * inverse(attitude));
@@ -570,6 +643,10 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 					m_vc[1] = e3ga::vector(e3ga::vector_e1_e2_e3, factors[1].getC(h3ga::vector_e1_e2_e3));
 					m_vc[2] = _vector(e3ga::dual(m_vc[0] ^ m_vc[1]));
 				}
+
+				// translate support point to undo the probe translation, above:
+				if (_Float(h3ga::norm_e2(T)) != 0.0)
+					m_pt[0] = _vector(m_pt[0] + T.e1() * e3ga::e1 + T.e2() * e3ga::e2 + T.e3() * e3ga::e3);
 
 				return;
 			}
