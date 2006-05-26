@@ -87,7 +87,7 @@ rotor matrixToRotorClassic(const float M[9]) {
 }
 
 
-void rotorToMatrix(const rotor &R, float M[9]) {
+void rotorToMatrixClassic(const rotor &R, float M[9]) {
 	// compute images of the basis vectors:
 	rotor Ri = _rotor(inverse(R));
 	e3ga::vector image[3] = {
@@ -154,7 +154,7 @@ int main(int argc, char*argv[]) {
 	std::vector<float> Mg(NB*9);
 	double geometricRMT = u_timeGet();
 	for (int i = 0; i < NB; i++) {
-		rotorToMatrix(R[i], &(Mg[i * 9]));
+		rotorToMatrixClassic(R[i], &(Mg[i * 9]));
 	}
 	geometricRMT = u_timeGet() - geometricRMT;
 

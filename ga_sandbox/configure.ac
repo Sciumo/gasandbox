@@ -73,6 +73,9 @@ AC_OUTPUT(
 	solutions/chap7/ex4/Makefile \
 	solutions/chap7/ex6/Makefile \
 	\
+	solutions/chap11/Makefile \
+	solutions/chap11/ex4/Makefile \
+	\
 	solutions/vs.net/Makefile \
 	\
 	attic/Makefile\

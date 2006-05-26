@@ -37,7 +37,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 4: Perspective Projection";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 4: ORTHOGONAL Projection";
 
 // GLUT state information
 int g_viewportWidth = 800;
