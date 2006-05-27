@@ -122,181 +122,11 @@ pointPair log(const TRversor &V) {
 }
 
 
-#ifdef RIEN
-rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
-	if (_Float(scp(v1, v2)) < -0.99999f) {
-		// (near) 180 degree rotation:
-		vector tmp = _vector(lcont(v1, op(v1, v2)));
-		double n2 = _Float(norm_e2(tmp));
-		if (n2 != 0.0f) tmp = _vector(tmp * (1.0f /  (mv::Float)sqrt(n2)));
-		else
-			tmp = (_Float(norm_e2(v1 ^ e1)) > _Float(norm_e2(v1 ^ e2))) ? _vector(e1) : _vector(e2);
-		return _rotor(unit_e(v1 ^ tmp));
-	}
-	else {
-		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
-		return _rotor((1.0 + v2 * v1) * (1.0f / s));
-	}
-}
-
-rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &rotPlane) {
-	if (_Float(scp(v1, v2)) < -0.99999f) {
-		return _rotor(unit_e(rotPlane));
-	}
-	else {
-		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
-		return _rotor((1.0 + v2 * v1) * (1.0f / s));
-	}
-}
-
-void rotorToMatrix(const rotor &R, mv::Float M[9]) {
-	mv::Float qw = _Float(R);
-	mv::Float qx = -R.e2e3(); 
-	mv::Float qy = -R.e3e1(); 
-	mv::Float qz = -R.e1e2(); 
-
-	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
-	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
-	M[2 * 3 + 0] = 2.0f * (qx * qz - qy * qw);
-
-	M[0 * 3 + 1] = 2.0f * (qx * qy - qz * qw);
-	M[1 * 3 + 1] = 1.0f - 2.0f * qx * qx - 2.0f * qz * qz;
-	M[2 * 3 + 1] = 2.0f * (qy * qz + qx * qw);
-
-	M[0 * 3 + 2] = 2.0f * (qx * qz + qy * qw);
-	M[1 * 3 + 2] = 2.0f * (qy * qz - qx * qw);
-	M[2 * 3 + 2] = 1.0f - 2.0f * qx * qx - 2.0f * qy * qy;
-}
-
-
-rotor matrixToRotor(const mv::Float M[9]) {
-	mv::Float trace = M[0 * 3 + 0] + M[1 * 3 + 1] + M[2 * 3 + 2] + 1.0f;
-	mv::Float qw; // scalar coordinate
-	mv::Float qx; // coordinate for -e2^e3
-	mv::Float qy; // coordinate for -e3^e1
-	mv::Float qz; // coordinate for -e1^e2
-	if (trace > 0.00001f) {
-	    mv::Float s = 0.5f / (mv::Float)sqrt(trace);
-	    qw = 0.25f / s;
-	    qw = sqrt(trace) * (0.5f);
-	    qx = (M[2 * 3 + 1] - M[1 * 3 + 2]) * s;
-	    qy = (M[0 * 3 + 2] - M[2 * 3 + 0]) * s;
-	    qz = (M[1 * 3 + 0] - M[0 * 3 + 1]) * s;
-	}
-	else {
-	    if (M[0 * 3 + 0] > M[1 * 3 + 1] && M[0 * 3 + 0] > M[2 * 3 + 2]) {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[0 * 3 + 0] - M[1 * 3 + 1] - M[2 * 3 + 2]);
-			qx = 0.25f * s;
-			qy = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qz = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qw = (M[1 * 3 + 2] - M[2 * 3 + 1]) / s;
-	    }
-	    else if (M[1 * 3 + 1] > M[2 * 3 + 2]) {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[1 * 3 + 1] - M[0 * 3 + 0] - M[2 * 3 + 2]);
-			qx = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qy = 0.25f * s;
-			qz = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qw = (M[0 * 3 + 2] - M[2 * 3 + 0]) / s;
-	    }
-	    else {
-			mv::Float s = 2.0f * (mv::Float)sqrt( 1.0f + M[2 * 3 + 2] - M[0 * 3 + 0] - M[1 * 3 + 1] );
-			qx = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qy = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qz = 0.25f * s;
-			qw = (M[0 * 3 + 1] - M[1 * 3 + 0]) / s;
-	    }
-	}
-
-	mv::Float s = (mv::Float) sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-	
-	
-	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
-}
-
-
-mv exp(const mv &x, int order /*= 9*/) {
-	// First try special cases:
-	// Check if (x * x == scalar) is scalar
-	mv x2 = x * x;
-	mv::Float s_x2 = _Float(x2);
-	if ((_Float(norm_e2(x2) - s_x2 * s_x2)) < 1e-7f) {
-		// OK (x * x == scalar), so use special cases:
-		if (s_x2 < 0.0) {
-			mv::Float a = sqrt(-s_x2);
-			return (mv::Float)cos(a) + (mv::Float)sin(a) * x * (1.0f / a);
-		}
-		else if (s_x2 > 0.0) {
-			mv::Float a = sqrt(s_x2);
-			return (mv::Float)cosh(a) + (mv::Float)sinh(a) * x * (1.0f / a);
-		}
-		else {
-			return 1 + x;
-		}
-	}
-
-
-	// now do general series eval:
-
-
-    int i;
-    mv result;
-
-    result = 1.0;
-    if (order == 0) {
-        return result;
-    }
-
-    // scale by power of 2 so that its norm is < 1
-    unsigned long max = (unsigned long)x.largestCoordinate();
-    unsigned long scale=1;
-    if (max > 1) scale <<= 1;
-    while (max)
-    {
-        max >>= 1;
-        scale <<= 1;
-    }
-
-    mv scaled = x * scalar(1.0f / (mv::Float)scale);
-
-    // taylor approximation
-    mv tmp;
-
-    tmp = 1.0;
-    for (i = 1; i < order; i++) {
-        tmp = tmp*scaled * scalar(1.0f / (mv::Float)i);
-        result += tmp;
-    }
-
-    // undo scaling
-    while (scale > 1)
-    {
-        result *= result;
-        scale >>= 1;
-    }
-	return result;
-}
-
-e3ga::bivector log(const e3ga::rotor &R) {
-	mv::Float R2 = _Float(norm_r(_bivector(R)));
-	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
-	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
-}
-
-// special exp for 3D Euclidean bivectors:
-rotor exp(const bivector &x) {
-	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
-	mv::Float x2 = _Float(x << x);
-	mv::Float ha = sqrt(-x2);
-	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
-}
-
-
-
-void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
+void reciprocalFrame(const dualSphere *IF, dualSphere *RF, int nbVectors) {
 	if (nbVectors == 0) return; // nothing to do
 	else if (nbVectors == 1) {
 		// trivial case
-		if (_Float(norm_r2(IF[0])) == 0.0)
+		if (_Float(norm_r2(IF[0])) == 0.0f)
 			throw std::string("reciprocalFrame(): null vector");
 		RF[0] = inverse(IF[0]);
 		return;
@@ -305,7 +135,7 @@ void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
 		// compute pseudoscalar 'I' of space spanned by input frame:
 		mv I = IF[0];
 		for (int i = 1; i < nbVectors; i++) I ^= IF[i];
-		if (_Float(norm_r2(I)) == 0.0) 
+		if (_Float(norm_r2(I)) == 0.0f) 
 			throw std::string("reciprocalFrame(): vectors are not independent");
 
 		// compute inverse of 'I':
@@ -319,16 +149,14 @@ void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
 				if (j != i) P ^= IF[j];
 
 			// compute reciprocal vector 'i':
-			RF[i] = _vector(P << Ii);
+			RF[i] = _dualSphere(P << Ii);
 		}
 		return;
 	}
-
 }
 
-
 /// factors blade into vectors (euclidean unit length), returns  scale (or throws exception when non-blade is passed)
-mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) {
+mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX /* = -1 */) {
 //	printf("X = %s;\n", X.c_str());
 	// get scale of blade, grade of blade
 	int k = gradeOfX;
@@ -357,7 +185,7 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
 	
-	mv::Float coords[3] = {0.0, 0.0, 0.0};
+	mv::Float coords[5] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
 		while (!(E&1)) {
@@ -369,14 +197,14 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 		mv ei(GRADE_1, coords);
 
 	    // project basis vector ei, normalize projection:
-	    factor[i] = _vector(unit_e(lcont(lcont(ei, Bc), Bc))); // no inverse(Bc) required, since Bc is always unit
+	    factor[i] = _dualSphere(unit_e(lcontEM(lcontEM(ei, Bc), Bc))); // no inverse(Bc) required, since Bc is always unit
 	    
 	    // remove f[i] from Bc
-	    Bc = lcont(factor[i], Bc);
+	    Bc = lcontEM(factor[i], Bc);
 	}
 	
 	// last factor = what is left of the input blade
-	factor[k-1] = _vector(unit_e(Bc)); // already normalized, but renormalize to remove any FP round-off error
+	factor[k-1] = _dualSphere(unit_e(Bc)); // already normalized, but renormalize to remove any FP round-off error
 	
 	return scale;
 }
@@ -401,7 +229,7 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 		const mv::Float *largestC = NULL;
 		const mv::Float *C = X.m_c;
 
-		for (int i = 0; i <= 3; i++) {
+		for (int i = 0; i <= 5; i++) {
 			if ((X.gu() & (1 << i)) == 0) continue;
 			else {
 				// square, sum 
@@ -442,7 +270,7 @@ mv grade(const mv &X, float epsilon /* = 1e-7 */);
 
 // todo: integrate into G2
 mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
-	int g = 3, gu = X.gu(), iX = mv_size[gu], size, i;
+	int g = 5, gu = X.gu(), iX = mv_size[gu], size, i;
 	const float *cptr = NULL;
 	do {
 		if (gu & (1 << g)) {
@@ -494,9 +322,12 @@ mv deltaProduct(const mv &X, const mv &Y, float epsilon /* = 1e-7 */, int *grade
 	return highestGradePart(gp(X, Y), epsilon, gradeIdx);
 }
 
+
 inline mv randomVector() {
-	float c[3] =
+	float c[5] =
 	{
+		(float)(rand() - RAND_MAX / 2),
+		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2),
 		(float)(rand() - RAND_MAX / 2)
@@ -513,14 +344,14 @@ Todo: use Mersenne twister or something (license issues?)
 */
 mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	if (grade < 0) 
-		grade = rand() % 4;
+		grade = rand() % 6;
 	
 
 	if (grade == 0) {
 		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
 	}
-	else if (grade == 3) {
-		return mv(GRADE_3, size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
+	else if (grade == 5) {
+		return mv(GRADE_5, size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
 	}
 	else {
 		mv result = randomVector();
@@ -532,16 +363,15 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	}
 }
 
-mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 */, float size /*= 1.0f*/) {
+mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3  | GRADE_4 | GRADE_5 */, float size /*= 1.0f*/) {
 	mv::Float C[8];
-	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3; // to prevent weird input
+	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 | GRADE_4 | GRADE_5; // to prevent weird input
 	int s = mv_size[gradeParts];
 	for (int i = 0; i < s; i++) {
 		C[i] = -1.0f + 2.0f * (float)rand() * size / (float)RAND_MAX;
 	}
 	return mv(gradeParts, C);
 }
-
 
 void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, mv::Float largeEpsilon) {
 	mv::Float la = a.largestCoordinate();
@@ -600,12 +430,12 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	}
 
 	// init join
-	j = I3;
-	int Ej = 3 - ((ga + gb + gd) >> 1);
+	j = I5;
+	int Ej = 5 - ((ga + gb + gd) >> 1);
 
 	// check join excessity
 	if (Ej == 0) {
-		m = lcont(d, j);
+		m = lcontEM(d, j);
 		// todo: largest coordinate positive?
 		return;
 	}
@@ -615,20 +445,22 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	int Em = ((ga + gb - gd) >> 1);
 
 	// init s, the dual of the delta product:
-	mv s = lcont(d, I3i);
+	mv s = lcontEM(d, I3i);
 
 	// precompute inverse of ca
-	mv cai = inverse(ca);
+	mv cai = inverseEM(ca);
 
-	mv e[3] = {
-		mv(GRADE_1, 1.0f, 0.0f, 0.0f),
-		mv(GRADE_1, 0.0f, 1.0f, 0.0f),
-		mv(GRADE_1, 0.0f, 0.0f, 1.0f)
+	mv e[5] = {
+		mv(GRADE_1, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f),
+		mv(GRADE_1, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
 	};
 
-	for (unsigned int i = 0; i < 3; i++) {
+	for (unsigned int i = 0; i < 5; i++) {
 		// compute next factor 'c'
-		mv c = lcont(lcont(e[i], s), s);		
+		mv c = lcontEM(lcontEM(e[i], s), s);		
 
 		// check if 'c' is OK to use:
 		if (c.largestCoordinate() < largeEpsilon)
@@ -636,8 +468,8 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 		// compute projection, rejection of 'c' wrt to 'ca'
 		mv cp, cr; // c projected, c rejected
-		mv tmpc = lcont(c, ca);
-		cp = lcont(tmpc, cai); // use correct inverse because otherwise cr != c - cp
+		mv tmpc = lcontEM(c, ca);
+		cp = lcontEM(tmpc, cai); // use correct inverse because otherwise cr != c - cp
 		cr = subtract(c, cp);
 
 		// if 'c' has enough of it in 'ca', then add to meet
@@ -655,10 +487,10 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		}
 
 		if (cr.largestCoordinate() > largeEpsilon) {
-			j = lcont(cr, j);
+			j = lcontEM(cr, j);
 			Ej--;	
 			if (Ej == 0) {
-				m = lcont(d, j);
+				m = lcontEM(d, j);
 				m = unit_e(m);
 				j = unit_e(j);
 
@@ -672,8 +504,5 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 	throw std::string("Error while computing meet & join!");
 }
-
-#endif /* RIEN */
-
 
 } /* end of namespace c3ga */

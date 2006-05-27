@@ -132,7 +132,7 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
 	
-	mv::Float coords[4] = {0.0, 0.0, 0.0, 0.0};
+	mv::Float coords[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
 		while (!(E&1)) {
@@ -289,7 +289,7 @@ Todo: use Mersenne twister or something (license issues?)
 */
 mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 	if (grade < 0) 
-		grade = rand() % 4;
+		grade = rand() % 5;
 	
 
 	if (grade == 0) {

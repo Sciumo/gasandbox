@@ -45,13 +45,13 @@ Todo / warning: not fully compatible with meet & join described in book.
 Todo!
 */
 void meetJoin(const h3ga::mv  &a, const h3ga::mv &b, h3ga::mv &m, mv &j, 
-			  h3ga::mv::Float smallEpsilon = 1e-7, h3ga::mv::Float largeEpsilon = 1e-4);
+			  h3ga::mv::Float smallEpsilon = 1e-7f, h3ga::mv::Float largeEpsilon = 1e-4f);
 
 /**
 Returns the meet of 'a' and 'b'
 */
 inline h3ga::mv meet(const h3ga::mv &a, const h3ga::mv &b, 
-			  h3ga::mv::Float smallEpsilon = 1e-7, h3ga::mv::Float largeEpsilon = 1e-4) {
+			  h3ga::mv::Float smallEpsilon = 1e-7f, h3ga::mv::Float largeEpsilon = 1e-4f) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return m;
@@ -61,7 +61,7 @@ inline h3ga::mv meet(const h3ga::mv &a, const h3ga::mv &b,
 Returns the join of 'a' and 'b'
 */
 inline h3ga::mv join(const h3ga::mv &a, const h3ga::mv &b, 
-			  h3ga::mv::Float smallEpsilon = 1e-7, h3ga::mv::Float largeEpsilon = 1e-4) {
+			  h3ga::mv::Float smallEpsilon = 1e-7f, h3ga::mv::Float largeEpsilon = 1e-4f) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return j;

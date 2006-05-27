@@ -101,7 +101,11 @@ ga {
 	
 	specialization: versor scalor(1.0, no ^ ni);
 			
-	
+	constant: noni = "no ^ ni"; 
+	constant: I3 = "e1 ^ e2 ^ e3"; 
+	constant: I5 = "no ^ e1 ^ e2 ^ e3 ^ ni"; 
+	constant: I5i = "::g2bi::inverse(no ^ e1 ^ e2 ^ e3 ^ ni)"; 
+
 
 	outermorphism: om(
 			no, e1, e2, e3, ni, // grade 1
@@ -219,8 +223,10 @@ mv gradeInvolution(mv x) {
 	return ::g2bi::grade_involution(x);
 }
 
+/*
 normalizedPoint c3gaPoint(vectorE3GA l) {
 	return ::g2bi::scp(l, e1) * e1 + ::g2bi::scp(l, e2) * e2 + ::g2bi::scp(l, e3) * e3 + 
 	no + 
 	0.5 * (::g2bi::scp(l, e1) * ::g2bi::scp(l, e1) + ::g2bi::scp(l, e2) * ::g2bi::scp(l, e2) + ::g2bi::scp(l, e3) * ::g2bi::scp(l, e3)) * ni;
 }
+*/

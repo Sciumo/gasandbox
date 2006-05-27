@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-27 19:59:19 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2006-05-27 23:07:00 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1955,6 +1955,86 @@
 
 
 
+	float __noni_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __noni_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 17;
+
+		return maxC;
+	}
+
+
+
+
+
+
+	float __I3_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __I3_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 14;
+
+		return maxC;
+	}
+
+
+
+
+
+
+	float __I5_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __I5_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 31;
+
+		return maxC;
+	}
+
+
+
+
+
+
+	float __I5i_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __I5i_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 31;
+
+		return maxC;
+	}
+
+
+
+
+
+
 
 
 
@@ -1964,8 +2044,12 @@
 	__no_ct__ no;
 	__ni_ct__ ni;
 	__e3_ct__ e3;
+	__I3_ct__ I3;
 	__e1_ct__ e1;
 	__e2_ct__ e2;
+	__noni_ct__ noni;
+	__I5_ct__ I5;
+	__I5i_ct__ I5i;
 
 	char *string(const mv & obj, char *str, int maxLength, const char *fp /* = NULL */) {
 		int stdIdx = 0, l;

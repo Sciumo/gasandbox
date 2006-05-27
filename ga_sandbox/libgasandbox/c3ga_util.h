@@ -58,7 +58,7 @@ pointPair log(const c3ga::TRSversor &V);
 //rotor matrixToRotor(const mv::Float M[9]);
 
 
-//mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX = -1);
+mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX = -1);
 
 
 /**
@@ -66,7 +66,7 @@ Computes the reciprocal frame 'RF' of input frame 'IF'
 Throws std::string when vectors in 'IF' are not independent, 
 or if one of the IF[i] is null.
 */
-//void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors);
+void reciprocalFrame(const dualSphere *IF, dualSphere *RF, int nbVectors);
 
 
 /**
@@ -79,35 +79,35 @@ Todo / warning: not fully compatible with meet & join described in book.
 -> in the way the meet is computed from the join, and vice versa.
 Todo!
 */
-/*void meetJoin(const e3ga::mv  &a, const e3ga::mv &b, e3ga::mv &m, mv &j, 
-			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4);*/
+void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, 
+			  mv::Float smallEpsilon = 1e-7f, mv::Float largeEpsilon = 1e-4f);
 
 /**
 Returns the meet of 'a' and 'b'
 */
-/*inline e3ga::mv meet(const e3ga::mv &a, const e3ga::mv &b, 
-			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4) {
+inline mv meet(const mv &a, const mv &b, 
+			  mv::Float smallEpsilon = 1e-7f, mv::Float largeEpsilon = 1e-4f) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return m;
-}*/
+}
 
 /**
 Returns the join of 'a' and 'b'
 */
-/*inline e3ga::mv join(const e3ga::mv &a, const e3ga::mv &b, 
-			  e3ga::mv::Float smallEpsilon = 1e-7, e3ga::mv::Float largeEpsilon = 1e-4) {
+inline mv join(const mv &a, const mv &b, 
+			  mv::Float smallEpsilon = 1e-7f, mv::Float largeEpsilon = 1e-4f) {
 	mv m, j;
 	meetJoin(a, b, m, j, smallEpsilon, largeEpsilon);
 	return j;
-}*/
+}
 
-/*
-e3ga::mv largestGradePart(const e3ga::mv &X, int *gradeIdx = NULL);
-e3ga::mv highestGradePart(const e3ga::mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
-e3ga::mv deltaProduct(const e3ga::mv &X, const e3ga::mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
-e3ga::mv takeGrade(const e3ga::mv &X, int gradeUsageBitmap);
-*/
+
+mv largestGradePart(const mv &X, int *gradeIdx = NULL);
+mv highestGradePart(const mv &X, float epsilon = 1e-7f, int *gradeIdx = NULL);
+mv deltaProduct(const mv &X, const mv &Y, float epsilon = 1e-7f, int *gradeIdx = NULL);
+mv takeGrade(const mv &X, int gradeUsageBitmap);
+
 
 /** 
 Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
@@ -117,13 +117,13 @@ If 'grade' < 0, then a random grade is picked
 Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something similar (license issues?)
 */
-//e3ga::mv randomBlade(int grade = -1, float size = 1.0f);
+mv randomBlade(int grade = -1, float size = 1.0f);
 
 /**
 Returns a random multivector (so not necessarily a blade or versor)
 Which grade parts to fill with random coordinates is determined by 'gradeParts
 */
-//e3ga::mv randomMultivector(int gradeParts = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3, float size = 1.0f);
+mv randomMultivector(int gradeParts = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3, float size = 1.0f);
 
 
 

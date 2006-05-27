@@ -257,7 +257,7 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
 	
-	mv::Float coords[3] = {0.0, 0.0, 0.0};
+	mv::Float coords[3] = {0.0f, 0.0f, 0.0f};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
 		while (!(E&1)) {
