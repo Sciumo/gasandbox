@@ -56,10 +56,6 @@ mv scp(mv x, mv y) {
 	return ::g2bi::scp(x, y);
 }
 
-mv extract_coord(mv x, mv y) {
-	return ::g2bi::scp_em(x, ::g2bi::reverse(y));
-}
-
 mv gp(mv x, mv y) {
 	return x y;
 }

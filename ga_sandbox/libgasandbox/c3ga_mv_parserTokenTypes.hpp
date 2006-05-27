@@ -1,15 +1,15 @@
-#ifndef INC_e2ga_mv_parserTokenTypes_hpp_
-#define INC_e2ga_mv_parserTokenTypes_hpp_
+#ifndef INC_c3ga_mv_parserTokenTypes_hpp_
+#define INC_c3ga_mv_parserTokenTypes_hpp_
 
-ANTLR_BEGIN_NAMESPACE(e2ga)
-/* $ANTLR 2.7.6 (2005-12-22): "e2ga_parser.g" -> "e2ga_mv_parserTokenTypes.hpp"$ */
+ANTLR_BEGIN_NAMESPACE(c3ga)
+/* $ANTLR 2.7.6 (2005-12-22): "c3ga_parser.g" -> "c3ga_mv_parserTokenTypes.hpp"$ */
 
 #ifndef CUSTOM_API
 # define CUSTOM_API
 #endif
 
 #ifdef __cplusplus
-struct CUSTOM_API e2ga_mv_parserTokenTypes {
+struct CUSTOM_API c3ga_mv_parserTokenTypes {
 #endif
 	enum {
 		EOF_ = 1,
@@ -27,4 +27,4 @@ struct CUSTOM_API e2ga_mv_parserTokenTypes {
 };
 #endif
 ANTLR_END_NAMESPACE
-#endif /*INC_e2ga_mv_parserTokenTypes_hpp_*/
+#endif /*INC_c3ga_mv_parserTokenTypes_hpp_*/

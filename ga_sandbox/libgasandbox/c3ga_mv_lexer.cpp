@@ -1,12 +1,12 @@
-/* $ANTLR 2.7.6 (2005-12-22): "e3ga_lexer.g" -> "e3ga_mv_lexer.cpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "c3ga_lexer.g" -> "c3ga_mv_lexer.cpp"$ */
 
 	#include <iostream>
 		#include <antlr/SemanticException.hpp>
 		#include <antlr/String.hpp>
-		#include "e3ga.h"
+		#include "c3ga.h"
 		using namespace std;
 
-#include "e3ga_mv_lexer.hpp"
+#include "c3ga_mv_lexer.hpp"
 #include <antlr/CharBuffer.hpp>
 #include <antlr/TokenStreamException.hpp>
 #include <antlr/TokenStreamIOException.hpp>
@@ -15,30 +15,30 @@
 #include <antlr/CharStreamIOException.hpp>
 #include <antlr/NoViableAltForCharException.hpp>
 
-ANTLR_BEGIN_NAMESPACE(e3ga)
-e3ga_mv_lexer::e3ga_mv_lexer(ANTLR_USE_NAMESPACE(std)istream& in)
+ANTLR_BEGIN_NAMESPACE(c3ga)
+c3ga_mv_lexer::c3ga_mv_lexer(ANTLR_USE_NAMESPACE(std)istream& in)
 	: ANTLR_USE_NAMESPACE(antlr)CharScanner(new ANTLR_USE_NAMESPACE(antlr)CharBuffer(in),true)
 {
 	initLiterals();
 }
 
-e3ga_mv_lexer::e3ga_mv_lexer(ANTLR_USE_NAMESPACE(antlr)InputBuffer& ib)
+c3ga_mv_lexer::c3ga_mv_lexer(ANTLR_USE_NAMESPACE(antlr)InputBuffer& ib)
 	: ANTLR_USE_NAMESPACE(antlr)CharScanner(ib,true)
 {
 	initLiterals();
 }
 
-e3ga_mv_lexer::e3ga_mv_lexer(const ANTLR_USE_NAMESPACE(antlr)LexerSharedInputState& state)
+c3ga_mv_lexer::c3ga_mv_lexer(const ANTLR_USE_NAMESPACE(antlr)LexerSharedInputState& state)
 	: ANTLR_USE_NAMESPACE(antlr)CharScanner(state,true)
 {
 	initLiterals();
 }
 
-void e3ga_mv_lexer::initLiterals()
+void c3ga_mv_lexer::initLiterals()
 {
 }
 
-ANTLR_USE_NAMESPACE(antlr)RefToken e3ga_mv_lexer::nextToken()
+ANTLR_USE_NAMESPACE(antlr)RefToken c3ga_mv_lexer::nextToken()
 {
 	ANTLR_USE_NAMESPACE(antlr)RefToken theRetToken;
 	for (;;) {
@@ -81,6 +81,7 @@ ANTLR_USE_NAMESPACE(antlr)RefToken e3ga_mv_lexer::nextToken()
 				break;
 			}
 			case 0x65 /* 'e' */ :
+			case 0x6e /* 'n' */ :
 			{
 				mBASIS_VECTOR(true);
 				theRetToken=_returnToken;
@@ -133,7 +134,7 @@ tryAgain:;
 	}
 }
 
-void e3ga_mv_lexer::mWS_(bool _createToken) {
+void c3ga_mv_lexer::mWS_(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = WS_;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -176,7 +177,7 @@ void e3ga_mv_lexer::mWS_(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mMINUS(bool _createToken) {
+void c3ga_mv_lexer::mMINUS(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = MINUS;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -190,7 +191,7 @@ void e3ga_mv_lexer::mMINUS(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mPLUS(bool _createToken) {
+void c3ga_mv_lexer::mPLUS(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = PLUS;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -204,7 +205,7 @@ void e3ga_mv_lexer::mPLUS(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mGP(bool _createToken) {
+void c3ga_mv_lexer::mGP(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = GP;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -218,7 +219,7 @@ void e3ga_mv_lexer::mGP(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mOP(bool _createToken) {
+void c3ga_mv_lexer::mOP(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = OP;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -232,13 +233,16 @@ void e3ga_mv_lexer::mOP(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mBASIS_VECTOR(bool _createToken) {
+void c3ga_mv_lexer::mBASIS_VECTOR(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = BASIS_VECTOR;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
 	
 	{
-	if ((LA(1) == 0x65 /* 'e' */ ) && (LA(2) == 0x31 /* '1' */ )) {
+	if ((LA(1) == 0x6e /* 'n' */ ) && (LA(2) == 0x6f /* 'o' */ )) {
+		match("no");
+	}
+	else if ((LA(1) == 0x65 /* 'e' */ ) && (LA(2) == 0x31 /* '1' */ )) {
 		match("e1");
 	}
 	else if ((LA(1) == 0x65 /* 'e' */ ) && (LA(2) == 0x32 /* '2' */ )) {
@@ -246,6 +250,9 @@ void e3ga_mv_lexer::mBASIS_VECTOR(bool _createToken) {
 	}
 	else if ((LA(1) == 0x65 /* 'e' */ ) && (LA(2) == 0x33 /* '3' */ )) {
 		match("e3");
+	}
+	else if ((LA(1) == 0x6e /* 'n' */ ) && (LA(2) == 0x69 /* 'i' */ )) {
+		match("ni");
 	}
 	else {
 		throw ANTLR_USE_NAMESPACE(antlr)NoViableAltForCharException(LA(1), getFilename(), getLine(), getColumn());
@@ -260,7 +267,7 @@ void e3ga_mv_lexer::mBASIS_VECTOR(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mINT(bool _createToken) {
+void c3ga_mv_lexer::mINT(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = INT;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;
@@ -287,7 +294,7 @@ void e3ga_mv_lexer::mINT(bool _createToken) {
 	_saveIndex=0;
 }
 
-void e3ga_mv_lexer::mNUMBER(bool _createToken) {
+void c3ga_mv_lexer::mNUMBER(bool _createToken) {
 	int _ttype; ANTLR_USE_NAMESPACE(antlr)RefToken _token; ANTLR_USE_NAMESPACE(std)string::size_type _begin = text.length();
 	_ttype = NUMBER;
 	ANTLR_USE_NAMESPACE(std)string::size_type _saveIndex;

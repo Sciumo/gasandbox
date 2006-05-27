@@ -1,15 +1,15 @@
-#ifndef INC_e2ga_mv_lexer_hpp_
-#define INC_e2ga_mv_lexer_hpp_
+#ifndef INC_c3ga_mv_lexer_hpp_
+#define INC_c3ga_mv_lexer_hpp_
 
 #include <antlr/config.hpp>
-/* $ANTLR 2.7.6 (2005-12-22): "e2ga_lexer.g" -> "e2ga_mv_lexer.hpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "c3ga_lexer.g" -> "c3ga_mv_lexer.hpp"$ */
 #include <antlr/CommonToken.hpp>
 #include <antlr/InputBuffer.hpp>
 #include <antlr/BitSet.hpp>
-#include "e2ga_mv_lexerTokenTypes.hpp"
+#include "c3ga_mv_lexerTokenTypes.hpp"
 #include <antlr/CharScanner.hpp>
-ANTLR_BEGIN_NAMESPACE(e2ga)
-class CUSTOM_API e2ga_mv_lexer : public ANTLR_USE_NAMESPACE(antlr)CharScanner, public e2ga_mv_lexerTokenTypes
+ANTLR_BEGIN_NAMESPACE(c3ga)
+class CUSTOM_API c3ga_mv_lexer : public ANTLR_USE_NAMESPACE(antlr)CharScanner, public c3ga_mv_lexerTokenTypes
 {
 private:
 	void initLiterals();
@@ -19,9 +19,9 @@ public:
 		return true;
 	}
 public:
-	e2ga_mv_lexer(ANTLR_USE_NAMESPACE(std)istream& in);
-	e2ga_mv_lexer(ANTLR_USE_NAMESPACE(antlr)InputBuffer& ib);
-	e2ga_mv_lexer(const ANTLR_USE_NAMESPACE(antlr)LexerSharedInputState& state);
+	c3ga_mv_lexer(ANTLR_USE_NAMESPACE(std)istream& in);
+	c3ga_mv_lexer(ANTLR_USE_NAMESPACE(antlr)InputBuffer& ib);
+	c3ga_mv_lexer(const ANTLR_USE_NAMESPACE(antlr)LexerSharedInputState& state);
 	ANTLR_USE_NAMESPACE(antlr)RefToken nextToken();
 	public: void mWS_(bool _createToken);
 	public: void mMINUS(bool _createToken);
@@ -36,4 +36,4 @@ private:
 };
 
 ANTLR_END_NAMESPACE
-#endif /*INC_e2ga_mv_lexer_hpp_*/
+#endif /*INC_c3ga_mv_lexer_hpp_*/

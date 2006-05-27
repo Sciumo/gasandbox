@@ -15,14 +15,22 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
-#ifndef _H3GA_PARSE_H_
-#define _H3GA_PARSE_H_
-
+#include <iostream>
 #include <string>
-#include "h3ga.h"
+#include <sstream>
 
-/** parses a multivector string, returns multivectors (or throws std::string() on error) */
-h3ga::mv parseMVString(const std::string &str);
+#include "c3ga_parse.h"
+#include "c3ga_mv_lexer.hpp"
+#include "c3ga_mv_parser.hpp"
 
+c3ga::mv parseMVString(const std::string &str) {
+ 	try {
+ 		std::istringstream inputStream(str);
+ 		c3ga::c3ga_mv_lexer lex(inputStream);
 
-#endif /* _H3GA_PARSE_H_ */
+ 		c3ga::c3ga_mv_parser par(lex);
+ 		return par.multivector();
+ 	} catch (...) {
+ 		throw std::string("parseMVString() could not parse: " + str);
+ 	}
+}

@@ -1,4 +1,4 @@
-/* $ANTLR 2.7.5rc2 (20050108): "e3ga_parser.g" -> "e3ga_mv_parser.cpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "e3ga_parser.g" -> "e3ga_mv_parser.cpp"$ */
 
 	#include <iostream>
 		#include <utility>

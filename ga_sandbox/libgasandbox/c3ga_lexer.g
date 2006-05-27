@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-27 14:37:01 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2006-05-27 14:35:39 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@ header "pre_include_cpp" {
 	#include <iostream>
 		#include <antlr/SemanticException.hpp>
 		#include <antlr/String.hpp>
-		#include "e2ga.h"
+		#include "c3ga.h"
 		using namespace std;
 }
 
@@ -29,13 +29,13 @@ header "pre_include_cpp" {
 options {
 	mangleLiteralPrefix = "TK_";
 	language="Cpp";
-	namespace = "e2ga";
+	namespace = "c3ga";
 }
 
-class e2ga_mv_lexer extends Lexer;
+class c3ga_mv_lexer extends Lexer;
 options {
 	k=4;
-	exportVocab=e2ga_mv_lexer;
+	exportVocab=c3ga_mv_lexer;
 	charVocabulary = '\3'..'\377';
 	interactive = false;
 	genHashLines=false;
@@ -53,7 +53,7 @@ GP : "*";
 OP : "^";
 
 
-BASIS_VECTOR options {paraphrase = "a basis vector";}: ("e1" | "e2");
+BASIS_VECTOR options {paraphrase = "a basis vector";}: ("no" | "e1" | "e2" | "e3" | "ni");
 
 /*
 Todo: if you could supply this small piece of lexer code for

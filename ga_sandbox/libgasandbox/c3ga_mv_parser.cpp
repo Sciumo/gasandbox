@@ -1,22 +1,22 @@
-/* $ANTLR 2.7.6 (2005-12-22): "e2ga_parser.g" -> "e2ga_mv_parser.cpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "c3ga_parser.g" -> "c3ga_mv_parser.cpp"$ */
 
 	#include <iostream>
 		#include <utility>
 		#include <string>
 		#include <antlr/String.hpp>
 		#include <stdlib.h>
-		#include "e2ga.h"
+		#include "c3ga.h"
 		using namespace std;
 
-#include "e2ga_mv_parser.hpp"
+#include "c3ga_mv_parser.hpp"
 #include <antlr/NoViableAltException.hpp>
 #include <antlr/SemanticException.hpp>
 #include <antlr/ASTFactory.hpp>
-ANTLR_BEGIN_NAMESPACE(e2ga)
+ANTLR_BEGIN_NAMESPACE(c3ga)
 
 
-	void mv_parserProcessBasisElement(float coordinates[4], float c, unsigned int bitmap) {
-		if (bitmap > 7) {
+	void mv_parserProcessBasisElement(float coordinates[32], float c, unsigned int bitmap) {
+		if (bitmap > 63) {
 			mv_throw_exception("mv_parserProcessBasisElement(): parse error", MV_EXCEPTION_ERROR);
 		}
 
@@ -59,36 +59,36 @@ ANTLR_BEGIN_NAMESPACE(e2ga)
 
 
 
-e2ga_mv_parser::e2ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf, int k)
+c3ga_mv_parser::c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf, int k)
 : ANTLR_USE_NAMESPACE(antlr)LLkParser(tokenBuf,k)
 {
 }
 
-e2ga_mv_parser::e2ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf)
+c3ga_mv_parser::c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf)
 : ANTLR_USE_NAMESPACE(antlr)LLkParser(tokenBuf,2)
 {
 }
 
-e2ga_mv_parser::e2ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer, int k)
+c3ga_mv_parser::c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer, int k)
 : ANTLR_USE_NAMESPACE(antlr)LLkParser(lexer,k)
 {
 }
 
-e2ga_mv_parser::e2ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer)
+c3ga_mv_parser::c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer)
 : ANTLR_USE_NAMESPACE(antlr)LLkParser(lexer,2)
 {
 }
 
-e2ga_mv_parser::e2ga_mv_parser(const ANTLR_USE_NAMESPACE(antlr)ParserSharedInputState& state)
+c3ga_mv_parser::c3ga_mv_parser(const ANTLR_USE_NAMESPACE(antlr)ParserSharedInputState& state)
 : ANTLR_USE_NAMESPACE(antlr)LLkParser(state,2)
 {
 }
 
-mv  e2ga_mv_parser::multivector() {
+mv  c3ga_mv_parser::multivector() {
 	mv result;
 	
-		float coordinates[4];
-		mv_zero(coordinates, 4); 
+		float coordinates[32];
+		mv_zero(coordinates, 32); 
 		std::pair<float, unsigned int> be; 
 		float sg; 
 		float scale = (float)1.0;
@@ -139,7 +139,7 @@ mv  e2ga_mv_parser::multivector() {
 		_loop7:;
 		} // ( ... )*
 		
-			result = mv_compress(coordinates/*, 0.0, 7*/);
+			result = mv_compress(coordinates/*, 0.0, 63*/);
 		
 	}
 	catch (ANTLR_USE_NAMESPACE(antlr)RecognitionException& ex) {
@@ -149,7 +149,7 @@ mv  e2ga_mv_parser::multivector() {
 	return result;
 }
 
-float  e2ga_mv_parser::sign() {
+float  c3ga_mv_parser::sign() {
 	float sg;
 	sg = (float)1.0;
 	
@@ -181,7 +181,7 @@ float  e2ga_mv_parser::sign() {
 	return sg;
 }
 
-std::pair<float, unsigned int>  e2ga_mv_parser::basis_element() {
+std::pair<float, unsigned int>  c3ga_mv_parser::basis_element() {
 	std::pair<float, unsigned int> r;
 	ANTLR_USE_NAMESPACE(antlr)RefToken  t1 = ANTLR_USE_NAMESPACE(antlr)nullToken;
 	ANTLR_USE_NAMESPACE(antlr)RefToken  t2 = ANTLR_USE_NAMESPACE(antlr)nullToken;
@@ -300,10 +300,10 @@ std::pair<float, unsigned int>  e2ga_mv_parser::basis_element() {
 	return r;
 }
 
-void e2ga_mv_parser::initializeASTFactory( ANTLR_USE_NAMESPACE(antlr)ASTFactory& )
+void c3ga_mv_parser::initializeASTFactory( ANTLR_USE_NAMESPACE(antlr)ASTFactory& )
 {
 }
-const char* e2ga_mv_parser::tokenNames[] = {
+const char* c3ga_mv_parser::tokenNames[] = {
 	"<0>",
 	"EOF",
 	"<2>",
@@ -319,15 +319,15 @@ const char* e2ga_mv_parser::tokenNames[] = {
 	0
 };
 
-const unsigned long e2ga_mv_parser::_tokenSet_0_data_[] = { 2UL, 0UL, 0UL, 0UL };
+const unsigned long c3ga_mv_parser::_tokenSet_0_data_[] = { 2UL, 0UL, 0UL, 0UL };
 // EOF 
-const ANTLR_USE_NAMESPACE(antlr)BitSet e2ga_mv_parser::_tokenSet_0(_tokenSet_0_data_,4);
-const unsigned long e2ga_mv_parser::_tokenSet_1_data_[] = { 2656UL, 0UL, 0UL, 0UL };
+const ANTLR_USE_NAMESPACE(antlr)BitSet c3ga_mv_parser::_tokenSet_0(_tokenSet_0_data_,4);
+const unsigned long c3ga_mv_parser::_tokenSet_1_data_[] = { 2656UL, 0UL, 0UL, 0UL };
 // MINUS PLUS BASIS_VECTOR NUMBER 
-const ANTLR_USE_NAMESPACE(antlr)BitSet e2ga_mv_parser::_tokenSet_1(_tokenSet_1_data_,4);
-const unsigned long e2ga_mv_parser::_tokenSet_2_data_[] = { 98UL, 0UL, 0UL, 0UL };
+const ANTLR_USE_NAMESPACE(antlr)BitSet c3ga_mv_parser::_tokenSet_1(_tokenSet_1_data_,4);
+const unsigned long c3ga_mv_parser::_tokenSet_2_data_[] = { 98UL, 0UL, 0UL, 0UL };
 // EOF MINUS PLUS 
-const ANTLR_USE_NAMESPACE(antlr)BitSet e2ga_mv_parser::_tokenSet_2(_tokenSet_2_data_,4);
+const ANTLR_USE_NAMESPACE(antlr)BitSet c3ga_mv_parser::_tokenSet_2(_tokenSet_2_data_,4);
 
 
 ANTLR_END_NAMESPACE

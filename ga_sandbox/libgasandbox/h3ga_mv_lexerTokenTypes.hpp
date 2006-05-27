@@ -2,7 +2,7 @@
 #define INC_h3ga_mv_lexerTokenTypes_hpp_
 
 ANTLR_BEGIN_NAMESPACE(h3ga)
-/* $ANTLR 2.7.5rc2 (20050108): "h3ga_lexer.g" -> "h3ga_mv_lexerTokenTypes.hpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "h3ga_lexer.g" -> "h3ga_mv_lexerTokenTypes.hpp"$ */
 
 #ifndef CUSTOM_API
 # define CUSTOM_API

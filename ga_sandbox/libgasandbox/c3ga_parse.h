@@ -15,14 +15,14 @@
 
 // Daniel Fontijne -- fontijne@science.uva.nl
 
-#ifndef _H3GA_PARSE_H_
-#define _H3GA_PARSE_H_
+#ifndef _C3GA_PARSE_H_
+#define _C3GA_PARSE_H_
 
 #include <string>
-#include "h3ga.h"
+#include "c3ga.h"
 
 /** parses a multivector string, returns multivectors (or throws std::string() on error) */
-h3ga::mv parseMVString(const std::string &str);
+c3ga::mv parseMVString(const std::string &str);
 
 
-#endif /* _H3GA_PARSE_H_ */
+#endif /* _C3GA_PARSE_H_ */

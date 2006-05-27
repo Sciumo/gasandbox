@@ -1,39 +1,39 @@
-#ifndef INC_h3ga_mv_parser_hpp_
-#define INC_h3ga_mv_parser_hpp_
+#ifndef INC_c3ga_mv_parser_hpp_
+#define INC_c3ga_mv_parser_hpp_
 
 #include <antlr/config.hpp>
-/* $ANTLR 2.7.6 (2005-12-22): "h3ga_parser.g" -> "h3ga_mv_parser.hpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "c3ga_parser.g" -> "c3ga_mv_parser.hpp"$ */
 #include <antlr/TokenStream.hpp>
 #include <antlr/TokenBuffer.hpp>
-#include "h3ga_mv_parserTokenTypes.hpp"
+#include "c3ga_mv_parserTokenTypes.hpp"
 #include <antlr/LLkParser.hpp>
 
-ANTLR_BEGIN_NAMESPACE(h3ga)
-class CUSTOM_API h3ga_mv_parser : public ANTLR_USE_NAMESPACE(antlr)LLkParser, public h3ga_mv_parserTokenTypes
+ANTLR_BEGIN_NAMESPACE(c3ga)
+class CUSTOM_API c3ga_mv_parser : public ANTLR_USE_NAMESPACE(antlr)LLkParser, public c3ga_mv_parserTokenTypes
 {
 public:
 	void initializeASTFactory( ANTLR_USE_NAMESPACE(antlr)ASTFactory& factory );
 protected:
-	h3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf, int k);
+	c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf, int k);
 public:
-	h3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf);
+	c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenBuffer& tokenBuf);
 protected:
-	h3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer, int k);
+	c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer, int k);
 public:
-	h3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer);
-	h3ga_mv_parser(const ANTLR_USE_NAMESPACE(antlr)ParserSharedInputState& state);
+	c3ga_mv_parser(ANTLR_USE_NAMESPACE(antlr)TokenStream& lexer);
+	c3ga_mv_parser(const ANTLR_USE_NAMESPACE(antlr)ParserSharedInputState& state);
 	int getNumTokens() const
 	{
-		return h3ga_mv_parser::NUM_TOKENS;
+		return c3ga_mv_parser::NUM_TOKENS;
 	}
 	const char* getTokenName( int type ) const
 	{
 		if( type > getNumTokens() ) return 0;
-		return h3ga_mv_parser::tokenNames[type];
+		return c3ga_mv_parser::tokenNames[type];
 	}
 	const char* const* getTokenNames() const
 	{
-		return h3ga_mv_parser::tokenNames;
+		return c3ga_mv_parser::tokenNames;
 	}
 	public: mv  multivector();
 	public: float  sign();
@@ -65,4 +65,4 @@ private:
 };
 
 ANTLR_END_NAMESPACE
-#endif /*INC_h3ga_mv_parser_hpp_*/
+#endif /*INC_c3ga_mv_parser_hpp_*/

@@ -2,7 +2,7 @@
 #define INC_e3ga_mv_parser_hpp_
 
 #include <antlr/config.hpp>
-/* $ANTLR 2.7.5rc2 (20050108): "e3ga_parser.g" -> "e3ga_mv_parser.hpp"$ */
+/* $ANTLR 2.7.6 (2005-12-22): "e3ga_parser.g" -> "e3ga_mv_parser.hpp"$ */
 #include <antlr/TokenStream.hpp>
 #include <antlr/TokenBuffer.hpp>
 #include "e3ga_mv_parserTokenTypes.hpp"
