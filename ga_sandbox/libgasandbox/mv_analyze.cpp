@@ -18,6 +18,7 @@
 #include "mv_analyze.h"
 #include "e3ga_util.h"
 #include "h3ga_util.h"
+#include "c3ga_util.h"
 
 namespace mv_analyze {
 
@@ -67,10 +68,6 @@ mvAnalysis::mvAnalysis() : m_flags(0), m_epsilon(0.0) {
 		m_type[i] = INVALID_TYPE;
 }
 
-//mvAnalysis::mvAnalysis(const mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */, const normalizedPoint &probe /*= _normalizedPoint(no)*/) {
-//	analyze(X, intFlags, epsilon, probe);
-//}
-
 mvAnalysis::mvAnalysis(const e2ga::mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */) {
 	analyze(X, intFlags, epsilon);
 }
@@ -83,6 +80,12 @@ mvAnalysis::mvAnalysis(const h3ga::mv &X, int intFlags/* = 0 */, double epsilon/
 					   const h3ga::normalizedPoint &probe /*= h3ga::_normalizedPoint(h3ga::e0)*/) {
 	analyze(X, intFlags, epsilon, probe);
 }
+
+mvAnalysis::mvAnalysis(const c3ga::mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */, 
+					   const c3ga::normalizedPoint &probe /*= c3ga::_normalizedPoint(c3ga::no)*/) {
+	analyze(X, intFlags, epsilon, probe);
+}
+
 
 mvAnalysis::~mvAnalysis() {
 }
@@ -392,8 +395,7 @@ void mvAnalysis::analyze(e3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	}
 
 	// get basic mv type (BLADE, VERSOR, etc)
-	e3ga::mvType tmp(X, (e3ga::mv::Float)epsilon);
-	m_mvType = tmp;
+	m_mvType = e3ga::mvType(X, (e3ga::mv::Float)epsilon);
 	m_type[1] = m_mvType.m_type;
 
 	// zero blade? 
@@ -480,8 +482,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	}
 
 	// get basic mv type (BLADE, VERSOR, etc)
-	h3ga::mvType tmp(X, (h3ga::mv::Float)epsilon);
-	m_mvType = tmp;
+	m_mvType = h3ga::mvType(X, (h3ga::mv::Float)epsilon);
 	m_type[1] = m_mvType.m_type;
 
 	// zero blade? 
@@ -655,11 +656,8 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 }
 
-
-
-#ifdef RIEN
-void mvAnalysis::analyze(mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */, 
-						 const normalizedPoint &probe /*= _normalizedPoint(no)*/) {
+void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */, 
+						 const c3ga::normalizedPoint &probe /*= c3ga::_normalizedPoint(c3ga::no)*/) {
 	// cleanup:
 	m_flags = FLAG_VALID;
 	m_epsilon = epsilon;
@@ -667,7 +665,7 @@ void mvAnalysis::analyze(mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAUL
 		m_type[i] = INVALID_TYPE;
 
 	// type is conformal
-	m_type[0] = CONFORMAL;
+	m_type[0] = CONFORMAL_MODEL;
 
 	// forced dual interpretation?
 	if (intFlags & FLAG_DUAL) {
@@ -676,7 +674,7 @@ void mvAnalysis::analyze(mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAUL
 	}
 
 	// get basic mv type (BLADE, VERSOR, etc)
-	m_mvType = mvType(X, epsilon);
+	m_mvType = c3ga::mvType(X, (c3ga::mv::Float)epsilon);
 	m_type[1] = m_mvType.m_type;
 
 	// zero blade? 
@@ -689,8 +687,8 @@ void mvAnalysis::analyze(mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAUL
 	// scalar, pseudoscalar???
 
 	// init basic classifiers:
-	double _opNiX = _double(norm_e(op(ni, X)));
-	double _ipNiX = _double(norm_e(lcont(ni, X)));
+	double _opNiX = _double(norm_e(op(c3ga::ni, X)));
+	double _ipNiX = _double(norm_e(lcont(c3ga::ni, X)));
 	double _X2 = _double(norm_r(X));
 
 	// init basic classifiers (bool):
@@ -724,9 +722,9 @@ void mvAnalysis::analyze(mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAUL
 		analyzeRound(X, intFlags,  epsilon);
 }
 
-void mvAnalysis::analyzeRound(const mv &X, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
+void mvAnalysis::analyzeRound(const c3ga::mv &X, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
 	m_type[2] = ROUND;
-	int Agrade = getAnalysisGrade();
+	int Agrade = m_mvType.m_grade;
 
 	// make exception for scalars:
 	if (Agrade == 0) {
@@ -735,27 +733,27 @@ void mvAnalysis::analyzeRound(const mv &X, int intFlags /* = 0 */, double epsilo
 		// ************* format of 'round' scalar***************
 		// m_sc[0] = signed weight
 		// ************* END format of round ***************
-		m_sc[0] = _double(X);
+		m_sc[0] = _float(X);
 		return;
 	}
 
 
 	// free N-vector
-	mv attitude = negate(op(lcont(ni, X), ni)); 
+	c3ga::mv attitude = c3ga::negate(c3ga::op(c3ga::lcont(c3ga::ni, X), c3ga::ni)); 
 
 	// _location is normalized dual sphere
-	mv _location = gp(X, inverse(lcont(ni, X))); 
-	_location = gp(_location, inverse(-_Float(scp(ni, _location))));
+	c3ga::mv _location = c3ga::gp(X, c3ga::inverse(c3ga::lcont(c3ga::ni, X))); 
+	_location = c3ga::gp(_location, c3ga::inverse(-c3ga::_Float(c3ga::scp(c3ga::ni, _location))));
 	// location:
-	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
+	c3ga::normalizedPoint location = c3ga::c3gaPoint(c3ga::_vectorE3GA(_location));
 
-	double niX2 = _double(scp(lcont(ni, X), lcont(ni, X)));
+	c3ga::mv::Float niX2 = c3ga::_Float(scp(lcont(c3ga::ni, X), lcont(c3ga::ni, X)));
 
 	// radius squared:
-	double radius2 = _double(gp(X, gradeInvolution(X)) * (1.0 / niX2)); // *-1 required?
+	c3ga::mv::Float radius2 = c3ga::_Float(c3ga::gp(X, c3ga::gradeInvolution(X)) * (1.0f / niX2)); // *-1 required?
 
 	// weight:
-	double weight = _double(norm_r(lcont(no, attitude)));
+	c3ga::mv::Float weight = c3ga::_Float(c3ga::norm_r(c3ga::lcont(c3ga::no, attitude)));
 
 	// ************* format of round ***************
 	// m_pt[0] = location
@@ -764,31 +762,31 @@ void mvAnalysis::analyzeRound(const mv &X, int intFlags /* = 0 */, double epsilo
 	// m_vc[0] .. m_vc[2] = unit 3D vector basis for attitude
 	// ************* END format of round ***************
 
-	m_pt[0] = location;
-	m_sc[0] = sqrt(fabs(radius2)) * ((radius2 < 0) ? -1.0 : 1.0);
+	m_pt[0] = vectorToE3GA(c3ga::_vectorE3GA(location));
+	m_sc[0] = sqrt(fabs(radius2)) * ((radius2 < 0) ? -1.0f : 1.0f);
 	m_sc[1] = weight;
 
 	// factor attitude:
 	if ((Agrade == 4) || (Agrade == 1)) { 
 		// (dual) sphere 
-		m_vc[0] = _vectorE3GA(e1);
-		m_vc[1] = _vectorE3GA(e2);
-		m_vc[2] = _vectorE3GA(e3);
+		m_vc[0] = e3ga::_vector(e3ga::e1);
+		m_vc[1] = e3ga::_vector(e3ga::e2);
+		m_vc[2] = e3ga::_vector(e3ga::e3);
 	}
 	else if (Agrade == 2) {
 //		printf("att = %s,\n", attitude.c_str());
 		// point pair
-		m_vc[0] = _vectorE3GA(unit_e(lcont(no, attitude)));
+		m_vc[0] = vectorToE3GA(c3ga::_vectorE3GA(unit_e(lcont(c3ga::no, attitude))));
 //		printf("vc = %s,\n", m_vc[0].c_str());
 	}
 	else if (Agrade == 3) {
 		// circle
 		// explicit factorization required:
-		dualSphere factor[5];
+		c3ga::dualSphere factor[5];
 		const int gradeOfBlade = 2;
-		double scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
-		m_vc[0] = _vectorE3GA(factor[0]);
-		m_vc[1] = _vectorE3GA(factor[1]);
+		c3ga::mv::Float scale = factorizeBlade(c3ga::reverse(c3ga::lcont(c3ga::no, c3ga::reverse(attitude))), factor, gradeOfBlade);
+		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
+		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
 	}
 
 	switch (Agrade) {
@@ -824,7 +822,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 	// location:
 	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
 
-	double weight = sqrt(_double(norm_e(ni << X)));
+	c3ga::mv::Float weight = sqrt(_double(norm_e(ni << X)));
 
 	// ************* format of tangent ***************
 	// m_pt[0] = location
@@ -850,7 +848,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 		// explicit factorization required:
 		dualSphere factor[5];
 		int gradeOfBlade = 2;
-		double scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
+		c3ga::mv::Float scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = _vectorE3GA(factor[0]);
 		m_vc[1] = _vectorE3GA(factor[1]);
 	}
@@ -874,7 +872,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 
 }
 
-void mvAnalysis::analyzeFlat(const mv &X, const mv &probe, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
+void mvAnalysis::analyzeFlat(const mv &X, const c3ga::normalizedPoint &probe, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
 	m_type[2] = FLAT;
 	int Agrade = getAnalysisGrade();
 
@@ -890,7 +888,7 @@ void mvAnalysis::analyzeFlat(const mv &X, const mv &probe, int intFlags /* = 0 *
 
 //	printf("loc = %s,\n", location.c_str_e20());
 
-	double weight = (Agrade == 1) ? -_double(scp(X, no))  : fabs(_double(norm_r(X)));
+	c3ga::mv::Float weight = (Agrade == 1) ? -_Float(scp(X, no))  : fabs(_Float(norm_r(X)));
 
 
 	// ************* format of flat ***************
@@ -990,7 +988,6 @@ void mvAnalysis::analyzeFree(const mv &X, int intFlags /* = 0 */, double epsilon
 	}
 
 }
-#endif 
 
 
 } /** end of namespace mv_analyze */

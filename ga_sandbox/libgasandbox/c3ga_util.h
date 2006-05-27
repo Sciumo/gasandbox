@@ -23,26 +23,36 @@
 
 namespace c3ga {
 
+inline normalizedPoint c3gaPoint(vectorE3GA l) {
+	return _normalizedPoint(l + no + 0.5f * norm_e2(l) * ni);
+}
+
+inline e3ga::vector vectorToE3GA(const c3ga::vectorE3GA &v) {
+	return e3ga::vector(e3ga::vector_e1_e2_e3, v.getC(c3ga::vectorE3GA_e1_e2_e3));
+}
 
 //rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
 //rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &altPlane);
 mv exp(const mv &x, int order = 9);
 
-/** special exp() for Euclidean bivectors */
+/** special exp() for Euclidean bivectors (rotation) */
 rotor exp(const c3ga::bivectorE3GA &x);
 
-/** special exp() for general free vectors (translation */
+/** special exp() for general free vectors (translation) */
 normalizedTranslator exp(const c3ga::freeVector &x);
 
+/** special exp() for bivectors */
+// todo:
+//evenVersor exp(const c3ga::pointPair &x);
 
 /** special log() for rotors */
 bivectorE3GA log(const c3ga::rotor &R);
 
 /** special log() for TRversors (todo: specialize the return type) */
-pointPair log(const c3ga::TRversor &R);
+pointPair log(const c3ga::TRversor &V);
 
 /** special log() for TRSversors (todo: specialize the return type) */
-pointPair log(const c3ga::TRSversor &R);
+pointPair log(const c3ga::TRSversor &V);
 
 //void rotorToMatrix(const rotor &R, mv::Float M[9]);
 //rotor matrixToRotor(const mv::Float M[9]);

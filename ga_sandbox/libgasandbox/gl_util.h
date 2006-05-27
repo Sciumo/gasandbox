@@ -25,6 +25,7 @@
 
 #include "e3ga.h"
 #include "h3ga.h"
+#include "c3ga.h"
 
 /**
 Todo: use GLUproject() instead!
@@ -52,6 +53,7 @@ void GLmatrixVectorMul(const GLfloat m[16], const GLfloat v[4], GLfloat r[4]);
 /// Multiplies the current OpenGL matrix with rotor 'v'
 void rotorGLMult(const e3ga::rotor &v);
 void rotorGLMult(const h3ga::rotor &v);
+void rotorGLMult(const c3ga::rotor &v);
 //void rotorGLMult(const c3ga::rotor &v);
 
 /// Loads color (also into GL 'material' colors, for lighting)

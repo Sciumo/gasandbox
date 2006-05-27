@@ -21,6 +21,7 @@
 #include "e2ga.h"
 #include "e3ga.h"
 #include "h3ga.h"
+#include "c3ga.h"
 
 namespace mv_analyze {
 
@@ -103,11 +104,10 @@ public:
 public:
 	mvAnalysis();
 	/** intFlags can be FLAG_DUAL for dual intepretation */
-/*	mvAnalysis(const mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, 
-		const normalizedPoint &probe = _normalizedPoint(no));*/
 	mvAnalysis(const e2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const e3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const h3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
+	mvAnalysis(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON,  const c3ga::normalizedPoint &probe = c3ga::_normalizedPoint(c3ga::no));
 	mvAnalysis(const mvAnalysis &I);
 	virtual ~mvAnalysis();
 
@@ -118,7 +118,7 @@ public:
 	void analyze(e2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(e3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(h3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
-//	void analyze(mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const normalizedPoint &probe = _normalizedPoint(no));
+	void analyze(c3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const c3ga::normalizedPoint &probe = c3ga::_normalizedPoint(c3ga::no));
 
 	std::string toString() const;
 
@@ -186,15 +186,15 @@ public:
 
 
 protected:
-	/** called by analyze to analyze rounds */
-//	void analyzeRound(const mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
-	/** called by analyze to tangents */
-//	void analyzeTangent(const mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to analyze C3GA rounds */
+	void analyzeRound(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to C3GA tangents */
+	void analyzeTangent(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 
-	/** called by analyze to analyze flats (you must supply a 'probe' relative to which positions are determined)*/
-//	void analyzeFlat(const mv &X, const mv &probe, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
-	/** called by analyze to analyze free blades */
-//	void analyzeFree(const mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to analyze C3GA flats (you must supply a 'probe' relative to which positions are determined)*/
+	void analyzeFlat(const c3ga::mv &X, const c3ga::normalizedPoint &probe, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to analyze C3GA free blades */
+	void analyzeFree(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 
 	inline int getAnalysisGrade(int topGrade) const {
 		if (m_flags & FLAG_DUAL) {
