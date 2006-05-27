@@ -28,7 +28,7 @@ mv exp(const mv &x, int order /*= 9*/) {
 	// Check if (x * x == scalar) is scalar
 	mv x2 = x * x;
 	mv::Float s_x2 = _Float(x2);
-	if ((_Float(norm_e2(x2) - s_x2 * s_x2)) < 1e-7) {
+	if ((_Float(norm_e2(x2) - s_x2 * s_x2)) < 1e-7f) {
 		// OK (x * x == scalar), so use special cases:
 		if (s_x2 < 0.0) {
 			mv::Float a = sqrt(-s_x2);

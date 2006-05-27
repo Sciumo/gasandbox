@@ -98,6 +98,15 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
+				RelativePath="..\libgasandbox\c3ga_mv_lexer.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_mv_parser.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_parse.cpp">
+			</File>
+			<File
 				RelativePath="..\libgasandbox\e2ga_mv_lexer.cpp">
 			</File>
 			<File
@@ -129,6 +138,21 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\libgasandbox\c3ga_mv_lexer.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_mv_lexerTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_mv_parser.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_mv_parserTokenTypes.hpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\c3ga_parse.h">
+			</File>
 			<File
 				RelativePath="..\libgasandbox\e2ga_mv_lexer.hpp">
 			</File>

@@ -17,12 +17,108 @@
 
 #include <string>
 
-#include "e3ga.h"
-#include "e3ga_util.h"
+#include "c3ga.h"
+#include "c3ga_util.h"
 #include "gabits.h"
 
-namespace e3ga {
+namespace c3ga {
 
+mv exp(const mv &x, int order /*= 9*/) {
+	// First try special cases:
+	// Check if (x * x == scalar) is scalar
+	mv x2 = x * x;
+	mv::Float s_x2 = _Float(x2);
+	if ((_Float(norm_e2(x2) - s_x2 * s_x2)) < 1e-7f) {
+		// OK (x * x == scalar), so use special cases:
+		if (s_x2 < 0.0) {
+			mv::Float a = sqrt(-s_x2);
+			return (mv::Float)cos(a) + (mv::Float)sin(a) * x * (1.0f / a);
+		}
+		else if (s_x2 > 0.0) {
+			mv::Float a = sqrt(s_x2);
+			return (mv::Float)cosh(a) + (mv::Float)sinh(a) * x * (1.0f / a);
+		}
+		else {
+			return 1 + x;
+		}
+	}
+
+
+	// now do general series eval:
+
+
+    int i;
+    mv result;
+
+    result = 1.0;
+    if (order == 0) {
+        return result;
+    }
+
+    // scale by power of 2 so that its norm is < 1
+    unsigned long max = (unsigned long)x.largestCoordinate();
+    unsigned long scale=1;
+    if (max > 1) scale <<= 1;
+    while (max)
+    {
+        max >>= 1;
+        scale <<= 1;
+    }
+
+    mv scaled = x * scalar(1.0f / (mv::Float)scale);
+
+    // taylor approximation
+    mv tmp;
+
+    tmp = 1.0;
+    for (i = 1; i < order; i++) {
+        tmp = tmp*scaled * scalar(1.0f / (mv::Float)i);
+        result += tmp;
+    }
+
+    // undo scaling
+    while (scale > 1)
+    {
+        result *= result;
+        scale >>= 1;
+    }
+	return result;
+}
+
+rotor exp(const bivectorE3GA &x) {
+	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	mv::Float x2 = _Float(x << x);
+	mv::Float ha = sqrt(-x2);
+	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
+}
+
+normalizedTranslator exp(const freeVector &x) {
+	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	return _normalizedTranslator(1.0f + x);
+}
+
+bivectorE3GA log(const c3ga::rotor &R) {
+	mv::Float R2 = _Float(norm_r(_bivectorE3GA(R)));
+	if (R2 <= 0.0) return bivectorE3GA(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
+	return _bivectorE3GA(_bivectorE3GA(R) * ((float)atan2(R2, _Float(R)) / R2));
+}
+
+pointPair log(const TRversor &V) {
+	rotor R = _rotor(-no << (V * ni));
+	vectorE3GA t = _vectorE3GA(-2.0f * (no << V) * inverse(R));
+	bivectorE3GA Iphi = log(R);
+	bivectorE3GA I = (_Float(norm_e2(Iphi)) != 0.0f) ? _bivectorE3GA(e1 ^ e2) : _bivectorE3GA(unit_e(Iphi));
+
+
+	return _pointPair(
+		0.5f * (
+		(t ^ I) * inverse(I) * ni + 
+		inverse(1 - R * R) * (t << Iphi) * ni -
+		Iphi));
+}
+
+
+#ifdef RIEN
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
 	if (_Float(scp(v1, v2)) < -0.99999f) {
 		// (near) 180 degree rotation:
@@ -573,5 +669,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	throw std::string("Error while computing meet & join!");
 }
 
+#endif /* RIEN */
 
-} /* end of namespace e3ga */
+
+} /* end of namespace c3ga */

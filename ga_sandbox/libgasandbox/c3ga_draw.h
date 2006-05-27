@@ -18,6 +18,7 @@
 #ifndef _C3GA_DRAW_H_
 #define _C3GA_DRAW_H_
 
+#ifdef RIEN
 #include "c3ga_analyze.h"
 
 namespace c3ga {
@@ -39,6 +40,7 @@ Thows -1 when no position can be generated (e.g., a scalar)
 normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator = 0);
 
 }
+#endif 
 
 
 #endif /* _C3GA_DRAW_H_ */

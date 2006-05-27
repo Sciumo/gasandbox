@@ -65,7 +65,7 @@ ga {
 	
 	specialization: blade freeVector(e1^ni, e2^ni, e3^ni);
 	specialization: blade freeBivector(e1^e2^ni, e2^e3^ni, e3^e1^ni);
-	specialization: blade freeBivector(e1^e2^e3^ni);
+	specialization: blade freeTrivector(e1^e2^e3^ni);
 	
 	
 	specialization: blade tangentVector(no^e1,    no^e2,    no^e3,    e1^e2,    e2^e3,    e3^e1,    e1^ni,    e2^ni,    e3^ni,    no^ni);
@@ -73,16 +73,25 @@ ga {
 	
 	specialization: blade vectorE2GA(e1, e2);
 	specialization: blade vectorE3GA(e1, e2, e3);
+	specialization: blade bivectorE3GA(e1^e2, e2^e3, e3^e1);
 	
-	specialization: versor EXForm(1.0,  // grade 0
+	specialization: versor TRversor(1.0,  // grade 0
+					e1^e2, e1^e3, e2^e3, e1^ni, e2^ni, e3^ni,  // grade 2
+					e1^e2^e3^ni);      // grade 4
+					
+	specialization: versor TRSversor(1.0,  // grade 0
 					e1^e2, e1^e3, e2^e3, e1^ni, e2^ni, e3^ni, no^ni,  // grade 2
 					e1^e2^no^ni, e1^e3^no^ni, e2^e3^no^ni, e1^e2^e3^ni);      // grade 4
 
-	specialization: versor conformalRotor(1.0,  // grade 0
+	specialization: versor evenVersor(1.0,  // grade 0
 		no^e1,    no^e2,    no^e3,    e1^e2,    e2^e3,    e3^e1,    e1^ni,    e2^ni,    e3^ni,    no^ni, // grade 2
 		e1^e2^e3^ni, e1^e2^no^ni, e1^e3^no^ni, e2^e3^no^ni, e1^e2^e3^no);      // grade 4
 	
 	specialization: versor translator(1.0, // grade 0
+			e1^ni,    e2^ni,    e3^ni    // grade 2
+			);
+	
+	specialization: versor normalizedTranslator(1.0=1, // grade 0
 			e1^ni,    e2^ni,    e3^ni    // grade 2
 			);
 	

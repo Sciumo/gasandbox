@@ -12,6 +12,9 @@ AC_OUTPUT(
 	\
 	libgasandbox/Makefile \
 	\
+	chap1/Makefile \
+	chap1/ex1/Makefile\
+	\
 	chap2/Makefile \
 	chap2/ex1/Makefile\
 	chap2/ex2/Makefile\

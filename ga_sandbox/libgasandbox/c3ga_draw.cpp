@@ -2,6 +2,8 @@
 #include <windows.h>
 #endif
 
+#ifdef RIEN
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 
@@ -283,3 +285,5 @@ normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator /* = 0 */)
 
 
 } // end of namespace c3ga
+
+#endif 
