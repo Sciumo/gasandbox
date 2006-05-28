@@ -88,6 +88,7 @@ chap4ex3.o chap4ex3.o: chap4ex3.cpp /usr/include/GL/gl.h \
   /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
   ../../libgasandbox/e3ga.h ../../libgasandbox/mvtypebase.h \
   ../../libgasandbox/e3ga_util.h ../../libgasandbox/gl_util.h \
+  ../../libgasandbox/h3ga.h ../../libgasandbox/c3ga.h \
   ../../libgasandbox/glut_util.h
 
 /usr/include/GL/gl.h:
@@ -341,5 +342,9 @@ chap4ex3.o chap4ex3.o: chap4ex3.cpp /usr/include/GL/gl.h \
 ../../libgasandbox/e3ga_util.h:
 
 ../../libgasandbox/gl_util.h:
+
+../../libgasandbox/h3ga.h:
+
+../../libgasandbox/c3ga.h:
 
 ../../libgasandbox/glut_util.h:

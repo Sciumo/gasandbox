@@ -35,8 +35,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-sandbin_PROGRAMS = chap6ex3$(EXEEXT)
-subdir = chap6/ex3
+sandbin_PROGRAMS = chap7ex5$(EXEEXT)
+subdir = chap7/ex5
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -48,10 +48,10 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(sandbindir)"
 sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
-am_chap6ex3_OBJECTS = chap6ex3.$(OBJEXT)
-chap6ex3_OBJECTS = $(am_chap6ex3_OBJECTS)
+am_chap7ex5_OBJECTS = chap7ex5.$(OBJEXT)
+chap7ex5_OBJECTS = $(am_chap7ex5_OBJECTS)
 am__DEPENDENCIES_1 =
-chap6ex3_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+chap7ex5_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -61,8 +61,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(chap6ex3_SOURCES)
-DIST_SOURCES = $(chap6ex3_SOURCES)
+SOURCES = $(chap7ex5_SOURCES)
+DIST_SOURCES = $(chap7ex5_SOURCES)
 HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -157,8 +157,8 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap6ex3_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
-chap6ex3_SOURCES = chap6ex3.cpp
+chap7ex5_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+chap7ex5_SOURCES = chap7ex5.cpp
 noinst_HEADERS = 
 all: all-am
 
@@ -173,9 +173,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap6/ex3/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap7/ex5/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  chap6/ex3/Makefile
+	  $(AUTOMAKE) --gnu  chap7/ex5/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -216,9 +216,9 @@ uninstall-sandbinPROGRAMS:
 
 clean-sandbinPROGRAMS:
 	-test -z "$(sandbin_PROGRAMS)" || rm -f $(sandbin_PROGRAMS)
-chap6ex3$(EXEEXT): $(chap6ex3_OBJECTS) $(chap6ex3_DEPENDENCIES) 
-	@rm -f chap6ex3$(EXEEXT)
-	$(CXXLINK) $(chap6ex3_LDFLAGS) $(chap6ex3_OBJECTS) $(chap6ex3_LDADD) $(LIBS)
+chap7ex5$(EXEEXT): $(chap7ex5_OBJECTS) $(chap7ex5_DEPENDENCIES) 
+	@rm -f chap7ex5$(EXEEXT)
+	$(CXXLINK) $(chap7ex5_LDFLAGS) $(chap7ex5_OBJECTS) $(chap7ex5_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -226,7 +226,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap6ex3.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap7ex5.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

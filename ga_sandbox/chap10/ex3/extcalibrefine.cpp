@@ -20,12 +20,12 @@
 #define USE_OPENCV
 
 #ifdef USE_OPENCV
-#include <cv.h>
+#include <opencv/cv.h>
 #else 
 #include <mkl_lapack.h>
 #include <mkl_blas.h>
 
-#endif USE_OPENCV
+#endif /* USE_OPENCV */
 
 #include "extcalibrefine.h"
 

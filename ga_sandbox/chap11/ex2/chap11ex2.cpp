@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <cv.h>
+#include <opencv/cv.h>
 
 #include <vector>
 

@@ -36,7 +36,8 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 subdir = libgasandbox
-DIST_COMMON = $(libgasandbox_a_include_HEADERS) $(srcdir)/Makefile.am \
+DIST_COMMON = $(libgasandbox_a_include_HEADERS) \
+	$(libgasandboxparse_a_include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -51,7 +52,8 @@ am__vpath_adj = case $$p in \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
 am__installdirs = "$(DESTDIR)$(libdir)" \
-	"$(DESTDIR)$(libgasandbox_a_includedir)"
+	"$(DESTDIR)$(libgasandbox_a_includedir)" \
+	"$(DESTDIR)$(libgasandboxparse_a_includedir)"
 libLIBRARIES_INSTALL = $(INSTALL_DATA)
 LIBRARIES = $(lib_LIBRARIES)
 AR = ar
@@ -60,15 +62,32 @@ libgasandbox_a_AR = $(AR) $(ARFLAGS)
 libgasandbox_a_LIBADD =
 am_libgasandbox_a_OBJECTS = libgasandbox_a-draw.$(OBJEXT) \
 	libgasandbox_a-mv_analyze.$(OBJEXT) \
-	libgasandbox_a-e2ga.$(OBJEXT) libgasandbox_a-e3ga.$(OBJEXT) \
-	libgasandbox_a-e3ga_util.$(OBJEXT) \
+	libgasandbox_a-e2ga.$(OBJEXT) \
 	libgasandbox_a-e2ga_draw.$(OBJEXT) \
+	libgasandbox_a-e3ga.$(OBJEXT) \
+	libgasandbox_a-e3ga_util.$(OBJEXT) \
 	libgasandbox_a-e3ga_draw.$(OBJEXT) \
+	libgasandbox_a-h3ga.$(OBJEXT) \
+	libgasandbox_a-h3ga_util.$(OBJEXT) \
+	libgasandbox_a-h3ga_draw.$(OBJEXT) \
+	libgasandbox_a-c3ga.$(OBJEXT) \
+	libgasandbox_a-c3ga_util.$(OBJEXT) \
+	libgasandbox_a-c3ga_draw.$(OBJEXT) \
 	libgasandbox_a-geosphere.$(OBJEXT) \
+	libgasandbox_a-timing.$(OBJEXT) \
 	libgasandbox_a-glut_util.$(OBJEXT) \
-	libgasandbox_a-gl_util.$(OBJEXT) \
-	libgasandbox_a-timing.$(OBJEXT)
+	libgasandbox_a-gl_util.$(OBJEXT)
 libgasandbox_a_OBJECTS = $(am_libgasandbox_a_OBJECTS)
+libgasandboxparse_a_AR = $(AR) $(ARFLAGS)
+libgasandboxparse_a_LIBADD =
+am_libgasandboxparse_a_OBJECTS = e2ga_parse.$(OBJEXT) \
+	e2ga_mv_lexer.$(OBJEXT) e2ga_mv_parser.$(OBJEXT) \
+	e3ga_parse.$(OBJEXT) e3ga_mv_lexer.$(OBJEXT) \
+	e3ga_mv_parser.$(OBJEXT) h3ga_parse.$(OBJEXT) \
+	h3ga_mv_lexer.$(OBJEXT) h3ga_mv_parser.$(OBJEXT) \
+	c3ga_parse.$(OBJEXT) c3ga_mv_lexer.$(OBJEXT) \
+	c3ga_mv_parser.$(OBJEXT)
+libgasandboxparse_a_OBJECTS = $(am_libgasandboxparse_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -77,10 +96,13 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(libgasandbox_a_SOURCES)
-DIST_SOURCES = $(libgasandbox_a_SOURCES)
+SOURCES = $(libgasandbox_a_SOURCES) $(libgasandboxparse_a_SOURCES)
+DIST_SOURCES = $(libgasandbox_a_SOURCES) \
+	$(libgasandboxparse_a_SOURCES)
 libgasandbox_a_includeHEADERS_INSTALL = $(INSTALL_HEADER)
-HEADERS = $(libgasandbox_a_include_HEADERS)
+libgasandboxparse_a_includeHEADERS_INSTALL = $(INSTALL_HEADER)
+HEADERS = $(libgasandbox_a_include_HEADERS) \
+	$(libgasandboxparse_a_include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -172,27 +194,58 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-lib_LIBRARIES = libgasandbox.a
+lib_LIBRARIES = libgasandbox.a libgasandboxparse.a
 libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) 
 
 #-I/opt/local/include
 libgasandbox_a_includedir = $(includedir)/libgasandbox
 libgasandbox_a_include_HEADERS = \
-	draw.h  e2ga_draw.h  e3ga.h       e3ga_util.h  mv_analyze.h \
-	common.h     e2ga.h  e2ga_util.h  e3ga_draw.h  geosphere.h  mvtypebase.h \
+	draw.h \
+	e2ga.h e2ga_draw.h e2ga_util.h \
+	e3ga.h e3ga_util.h e3ga_draw.h \
+	h3ga.h h3ga_util.h h3ga_draw.h \
+	c3ga.h c3ga_util.h c3ga_draw.h \
+	mv_analyze.h common.h     geosphere.h  mvtypebase.h \
 	timing.h glut_util.h gl_util.h gabits.h
 
-EXTRA_DIST = e2ga.gs2 e3ga.gs2 e2ga_lexer.g e2ga_parser.g e3ga_lexer.g e3ga_parser.g \
-	c3ga_draw.cpp main.cpp e2ga_mv_lexer.cpp e3ga_mv_lexer.cpp e2ga_mv_parser.cpp \
-	e3ga_mv_parser.cpp  c3ga_draw.h 
-
 libgasandbox_a_SOURCES = \
-	draw.cpp       mv_analyze.cpp \
-	e2ga.cpp       e3ga.cpp            e3ga_util.cpp \
-	e2ga_draw.cpp  e3ga_draw.cpp       geosphere.cpp \
-	glut_util.cpp gl_util.cpp timing.cpp
+	draw.cpp mv_analyze.cpp \
+	e2ga.cpp e2ga_draw.cpp \
+	e3ga.cpp e3ga_util.cpp e3ga_draw.cpp \
+	h3ga.cpp h3ga_util.cpp h3ga_draw.cpp \
+	c3ga.cpp c3ga_util.cpp c3ga_draw.cpp \
+	geosphere.cpp timing.cpp \
+	glut_util.cpp gl_util.cpp 
 
-libgasandbox_a_CFLAGS = 
+libgasandboxparse_a_includedir = $(includedir)/libgasandbox
+libgasandboxparse_a_include_HEADERS = \
+	e2ga_mv_lexer.hpp e2ga_mv_parser.hpp e2ga_mv_parserTokenTypes.hpp \
+	e3ga_mv_lexer.hpp e3ga_mv_parser.hpp e3ga_mv_parserTokenTypes.hpp \
+	h3ga_mv_lexer.hpp h3ga_mv_parser.hpp h3ga_mv_parserTokenTypes.hpp \
+	c3ga_mv_lexer.hpp c3ga_mv_parser.hpp c3ga_mv_parserTokenTypes.hpp 
+
+libgasandboxparse_a_SOURCES = \
+	e2ga_parse.cpp e2ga_mv_lexer.cpp e2ga_mv_parser.cpp \
+	e3ga_parse.cpp e3ga_mv_lexer.cpp e3ga_mv_parser.cpp \
+	h3ga_parse.cpp h3ga_mv_lexer.cpp h3ga_mv_parser.cpp \
+	c3ga_parse.cpp c3ga_mv_lexer.cpp c3ga_mv_parser.cpp 
+
+EXTRA_DIST = \
+	e2ga.gs2 e3ga.gs2 h3ga.gs2 \
+	e2ga.gp2 e3ga.gp2 h3ga.gp2 \
+	e2ga_lexer.g e2ga_parser.g \
+	e3ga_lexer.g e3ga_parser.g \
+	h3ga_lexer.g h3ga_parser.g \
+	c3ga_lexer.g c3ga_parser.g \
+	e2ga_mv_lexerTokenTypes.txt \
+	e2ga_mv_parserTokenTypes.txt \
+	e3ga_mv_lexerTokenTypes.txt \
+	e3ga_mv_parserTokenTypes.txt \
+	h3ga_mv_lexerTokenTypes.txt \
+	h3ga_mv_parserTokenTypes.txt \
+	c3ga_mv_lexerTokenTypes.txt \
+	c3ga_mv_parserTokenTypes.txt
+
 all: all-am
 
 .SUFFIXES:
@@ -259,6 +312,10 @@ libgasandbox.a: $(libgasandbox_a_OBJECTS) $(libgasandbox_a_DEPENDENCIES)
 	-rm -f libgasandbox.a
 	$(libgasandbox_a_AR) libgasandbox.a $(libgasandbox_a_OBJECTS) $(libgasandbox_a_LIBADD)
 	$(RANLIB) libgasandbox.a
+libgasandboxparse.a: $(libgasandboxparse_a_OBJECTS) $(libgasandboxparse_a_DEPENDENCIES) 
+	-rm -f libgasandboxparse.a
+	$(libgasandboxparse_a_AR) libgasandboxparse.a $(libgasandboxparse_a_OBJECTS) $(libgasandboxparse_a_LIBADD)
+	$(RANLIB) libgasandboxparse.a
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -266,6 +323,21 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/c3ga_mv_lexer.Po
+include ./$(DEPDIR)/c3ga_mv_parser.Po
+include ./$(DEPDIR)/c3ga_parse.Po
+include ./$(DEPDIR)/e2ga_mv_lexer.Po
+include ./$(DEPDIR)/e2ga_mv_parser.Po
+include ./$(DEPDIR)/e2ga_parse.Po
+include ./$(DEPDIR)/e3ga_mv_lexer.Po
+include ./$(DEPDIR)/e3ga_mv_parser.Po
+include ./$(DEPDIR)/e3ga_parse.Po
+include ./$(DEPDIR)/h3ga_mv_lexer.Po
+include ./$(DEPDIR)/h3ga_mv_parser.Po
+include ./$(DEPDIR)/h3ga_parse.Po
+include ./$(DEPDIR)/libgasandbox_a-c3ga.Po
+include ./$(DEPDIR)/libgasandbox_a-c3ga_draw.Po
+include ./$(DEPDIR)/libgasandbox_a-c3ga_util.Po
 include ./$(DEPDIR)/libgasandbox_a-draw.Po
 include ./$(DEPDIR)/libgasandbox_a-e2ga.Po
 include ./$(DEPDIR)/libgasandbox_a-e2ga_draw.Po
@@ -275,6 +347,9 @@ include ./$(DEPDIR)/libgasandbox_a-e3ga_util.Po
 include ./$(DEPDIR)/libgasandbox_a-geosphere.Po
 include ./$(DEPDIR)/libgasandbox_a-gl_util.Po
 include ./$(DEPDIR)/libgasandbox_a-glut_util.Po
+include ./$(DEPDIR)/libgasandbox_a-h3ga.Po
+include ./$(DEPDIR)/libgasandbox_a-h3ga_draw.Po
+include ./$(DEPDIR)/libgasandbox_a-h3ga_util.Po
 include ./$(DEPDIR)/libgasandbox_a-mv_analyze.Po
 include ./$(DEPDIR)/libgasandbox_a-timing.Po
 
@@ -334,6 +409,20 @@ libgasandbox_a-e2ga.obj: e2ga.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e2ga.obj `if test -f 'e2ga.cpp'; then $(CYGPATH_W) 'e2ga.cpp'; else $(CYGPATH_W) '$(srcdir)/e2ga.cpp'; fi`
 
+libgasandbox_a-e2ga_draw.o: e2ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e2ga_draw.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" -c -o libgasandbox_a-e2ga_draw.o `test -f 'e2ga_draw.cpp' || echo '$(srcdir)/'`e2ga_draw.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-e2ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo"; exit 1; fi
+#	source='e2ga_draw.cpp' object='libgasandbox_a-e2ga_draw.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e2ga_draw.o `test -f 'e2ga_draw.cpp' || echo '$(srcdir)/'`e2ga_draw.cpp
+
+libgasandbox_a-e2ga_draw.obj: e2ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e2ga_draw.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" -c -o libgasandbox_a-e2ga_draw.obj `if test -f 'e2ga_draw.cpp'; then $(CYGPATH_W) 'e2ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/e2ga_draw.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-e2ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo"; exit 1; fi
+#	source='e2ga_draw.cpp' object='libgasandbox_a-e2ga_draw.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e2ga_draw.obj `if test -f 'e2ga_draw.cpp'; then $(CYGPATH_W) 'e2ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/e2ga_draw.cpp'; fi`
+
 libgasandbox_a-e3ga.o: e3ga.cpp
 	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e3ga.Tpo" -c -o libgasandbox_a-e3ga.o `test -f 'e3ga.cpp' || echo '$(srcdir)/'`e3ga.cpp; \
 	then mv -f "$(DEPDIR)/libgasandbox_a-e3ga.Tpo" "$(DEPDIR)/libgasandbox_a-e3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e3ga.Tpo"; exit 1; fi
@@ -362,20 +451,6 @@ libgasandbox_a-e3ga_util.obj: e3ga_util.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e3ga_util.obj `if test -f 'e3ga_util.cpp'; then $(CYGPATH_W) 'e3ga_util.cpp'; else $(CYGPATH_W) '$(srcdir)/e3ga_util.cpp'; fi`
 
-libgasandbox_a-e2ga_draw.o: e2ga_draw.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e2ga_draw.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" -c -o libgasandbox_a-e2ga_draw.o `test -f 'e2ga_draw.cpp' || echo '$(srcdir)/'`e2ga_draw.cpp; \
-	then mv -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-e2ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo"; exit 1; fi
-#	source='e2ga_draw.cpp' object='libgasandbox_a-e2ga_draw.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e2ga_draw.o `test -f 'e2ga_draw.cpp' || echo '$(srcdir)/'`e2ga_draw.cpp
-
-libgasandbox_a-e2ga_draw.obj: e2ga_draw.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e2ga_draw.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" -c -o libgasandbox_a-e2ga_draw.obj `if test -f 'e2ga_draw.cpp'; then $(CYGPATH_W) 'e2ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/e2ga_draw.cpp'; fi`; \
-	then mv -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-e2ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e2ga_draw.Tpo"; exit 1; fi
-#	source='e2ga_draw.cpp' object='libgasandbox_a-e2ga_draw.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e2ga_draw.obj `if test -f 'e2ga_draw.cpp'; then $(CYGPATH_W) 'e2ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/e2ga_draw.cpp'; fi`
-
 libgasandbox_a-e3ga_draw.o: e3ga_draw.cpp
 	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e3ga_draw.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e3ga_draw.Tpo" -c -o libgasandbox_a-e3ga_draw.o `test -f 'e3ga_draw.cpp' || echo '$(srcdir)/'`e3ga_draw.cpp; \
 	then mv -f "$(DEPDIR)/libgasandbox_a-e3ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-e3ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-e3ga_draw.Tpo"; exit 1; fi
@@ -390,6 +465,90 @@ libgasandbox_a-e3ga_draw.obj: e3ga_draw.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-e3ga_draw.obj `if test -f 'e3ga_draw.cpp'; then $(CYGPATH_W) 'e3ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/e3ga_draw.cpp'; fi`
 
+libgasandbox_a-h3ga.o: h3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga.Tpo" -c -o libgasandbox_a-h3ga.o `test -f 'h3ga.cpp' || echo '$(srcdir)/'`h3ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga.Tpo"; exit 1; fi
+#	source='h3ga.cpp' object='libgasandbox_a-h3ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga.o `test -f 'h3ga.cpp' || echo '$(srcdir)/'`h3ga.cpp
+
+libgasandbox_a-h3ga.obj: h3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga.Tpo" -c -o libgasandbox_a-h3ga.obj `if test -f 'h3ga.cpp'; then $(CYGPATH_W) 'h3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga.Tpo"; exit 1; fi
+#	source='h3ga.cpp' object='libgasandbox_a-h3ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga.obj `if test -f 'h3ga.cpp'; then $(CYGPATH_W) 'h3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga.cpp'; fi`
+
+libgasandbox_a-h3ga_util.o: h3ga_util.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga_util.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo" -c -o libgasandbox_a-h3ga_util.o `test -f 'h3ga_util.cpp' || echo '$(srcdir)/'`h3ga_util.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga_util.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo"; exit 1; fi
+#	source='h3ga_util.cpp' object='libgasandbox_a-h3ga_util.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga_util.o `test -f 'h3ga_util.cpp' || echo '$(srcdir)/'`h3ga_util.cpp
+
+libgasandbox_a-h3ga_util.obj: h3ga_util.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga_util.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo" -c -o libgasandbox_a-h3ga_util.obj `if test -f 'h3ga_util.cpp'; then $(CYGPATH_W) 'h3ga_util.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga_util.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga_util.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga_util.Tpo"; exit 1; fi
+#	source='h3ga_util.cpp' object='libgasandbox_a-h3ga_util.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga_util.obj `if test -f 'h3ga_util.cpp'; then $(CYGPATH_W) 'h3ga_util.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga_util.cpp'; fi`
+
+libgasandbox_a-h3ga_draw.o: h3ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga_draw.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo" -c -o libgasandbox_a-h3ga_draw.o `test -f 'h3ga_draw.cpp' || echo '$(srcdir)/'`h3ga_draw.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo"; exit 1; fi
+#	source='h3ga_draw.cpp' object='libgasandbox_a-h3ga_draw.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga_draw.o `test -f 'h3ga_draw.cpp' || echo '$(srcdir)/'`h3ga_draw.cpp
+
+libgasandbox_a-h3ga_draw.obj: h3ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-h3ga_draw.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo" -c -o libgasandbox_a-h3ga_draw.obj `if test -f 'h3ga_draw.cpp'; then $(CYGPATH_W) 'h3ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga_draw.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-h3ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-h3ga_draw.Tpo"; exit 1; fi
+#	source='h3ga_draw.cpp' object='libgasandbox_a-h3ga_draw.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-h3ga_draw.obj `if test -f 'h3ga_draw.cpp'; then $(CYGPATH_W) 'h3ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/h3ga_draw.cpp'; fi`
+
+libgasandbox_a-c3ga.o: c3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga.Tpo" -c -o libgasandbox_a-c3ga.o `test -f 'c3ga.cpp' || echo '$(srcdir)/'`c3ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga.Tpo"; exit 1; fi
+#	source='c3ga.cpp' object='libgasandbox_a-c3ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga.o `test -f 'c3ga.cpp' || echo '$(srcdir)/'`c3ga.cpp
+
+libgasandbox_a-c3ga.obj: c3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga.Tpo" -c -o libgasandbox_a-c3ga.obj `if test -f 'c3ga.cpp'; then $(CYGPATH_W) 'c3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga.Tpo"; exit 1; fi
+#	source='c3ga.cpp' object='libgasandbox_a-c3ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga.obj `if test -f 'c3ga.cpp'; then $(CYGPATH_W) 'c3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga.cpp'; fi`
+
+libgasandbox_a-c3ga_util.o: c3ga_util.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga_util.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo" -c -o libgasandbox_a-c3ga_util.o `test -f 'c3ga_util.cpp' || echo '$(srcdir)/'`c3ga_util.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga_util.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo"; exit 1; fi
+#	source='c3ga_util.cpp' object='libgasandbox_a-c3ga_util.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga_util.o `test -f 'c3ga_util.cpp' || echo '$(srcdir)/'`c3ga_util.cpp
+
+libgasandbox_a-c3ga_util.obj: c3ga_util.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga_util.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo" -c -o libgasandbox_a-c3ga_util.obj `if test -f 'c3ga_util.cpp'; then $(CYGPATH_W) 'c3ga_util.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga_util.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga_util.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga_util.Tpo"; exit 1; fi
+#	source='c3ga_util.cpp' object='libgasandbox_a-c3ga_util.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga_util.obj `if test -f 'c3ga_util.cpp'; then $(CYGPATH_W) 'c3ga_util.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga_util.cpp'; fi`
+
+libgasandbox_a-c3ga_draw.o: c3ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga_draw.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo" -c -o libgasandbox_a-c3ga_draw.o `test -f 'c3ga_draw.cpp' || echo '$(srcdir)/'`c3ga_draw.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo"; exit 1; fi
+#	source='c3ga_draw.cpp' object='libgasandbox_a-c3ga_draw.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga_draw.o `test -f 'c3ga_draw.cpp' || echo '$(srcdir)/'`c3ga_draw.cpp
+
+libgasandbox_a-c3ga_draw.obj: c3ga_draw.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-c3ga_draw.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo" -c -o libgasandbox_a-c3ga_draw.obj `if test -f 'c3ga_draw.cpp'; then $(CYGPATH_W) 'c3ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga_draw.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo" "$(DEPDIR)/libgasandbox_a-c3ga_draw.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-c3ga_draw.Tpo"; exit 1; fi
+#	source='c3ga_draw.cpp' object='libgasandbox_a-c3ga_draw.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-c3ga_draw.obj `if test -f 'c3ga_draw.cpp'; then $(CYGPATH_W) 'c3ga_draw.cpp'; else $(CYGPATH_W) '$(srcdir)/c3ga_draw.cpp'; fi`
+
 libgasandbox_a-geosphere.o: geosphere.cpp
 	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-geosphere.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-geosphere.Tpo" -c -o libgasandbox_a-geosphere.o `test -f 'geosphere.cpp' || echo '$(srcdir)/'`geosphere.cpp; \
 	then mv -f "$(DEPDIR)/libgasandbox_a-geosphere.Tpo" "$(DEPDIR)/libgasandbox_a-geosphere.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-geosphere.Tpo"; exit 1; fi
@@ -403,6 +562,20 @@ libgasandbox_a-geosphere.obj: geosphere.cpp
 #	source='geosphere.cpp' object='libgasandbox_a-geosphere.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-geosphere.obj `if test -f 'geosphere.cpp'; then $(CYGPATH_W) 'geosphere.cpp'; else $(CYGPATH_W) '$(srcdir)/geosphere.cpp'; fi`
+
+libgasandbox_a-timing.o: timing.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-timing.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-timing.Tpo" -c -o libgasandbox_a-timing.o `test -f 'timing.cpp' || echo '$(srcdir)/'`timing.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-timing.Tpo" "$(DEPDIR)/libgasandbox_a-timing.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-timing.Tpo"; exit 1; fi
+#	source='timing.cpp' object='libgasandbox_a-timing.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-timing.o `test -f 'timing.cpp' || echo '$(srcdir)/'`timing.cpp
+
+libgasandbox_a-timing.obj: timing.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-timing.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-timing.Tpo" -c -o libgasandbox_a-timing.obj `if test -f 'timing.cpp'; then $(CYGPATH_W) 'timing.cpp'; else $(CYGPATH_W) '$(srcdir)/timing.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-timing.Tpo" "$(DEPDIR)/libgasandbox_a-timing.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-timing.Tpo"; exit 1; fi
+#	source='timing.cpp' object='libgasandbox_a-timing.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-timing.obj `if test -f 'timing.cpp'; then $(CYGPATH_W) 'timing.cpp'; else $(CYGPATH_W) '$(srcdir)/timing.cpp'; fi`
 
 libgasandbox_a-glut_util.o: glut_util.cpp
 	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-glut_util.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-glut_util.Tpo" -c -o libgasandbox_a-glut_util.o `test -f 'glut_util.cpp' || echo '$(srcdir)/'`glut_util.cpp; \
@@ -431,20 +604,6 @@ libgasandbox_a-gl_util.obj: gl_util.cpp
 #	source='gl_util.cpp' object='libgasandbox_a-gl_util.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-gl_util.obj `if test -f 'gl_util.cpp'; then $(CYGPATH_W) 'gl_util.cpp'; else $(CYGPATH_W) '$(srcdir)/gl_util.cpp'; fi`
-
-libgasandbox_a-timing.o: timing.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-timing.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-timing.Tpo" -c -o libgasandbox_a-timing.o `test -f 'timing.cpp' || echo '$(srcdir)/'`timing.cpp; \
-	then mv -f "$(DEPDIR)/libgasandbox_a-timing.Tpo" "$(DEPDIR)/libgasandbox_a-timing.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-timing.Tpo"; exit 1; fi
-#	source='timing.cpp' object='libgasandbox_a-timing.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-timing.o `test -f 'timing.cpp' || echo '$(srcdir)/'`timing.cpp
-
-libgasandbox_a-timing.obj: timing.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-timing.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-timing.Tpo" -c -o libgasandbox_a-timing.obj `if test -f 'timing.cpp'; then $(CYGPATH_W) 'timing.cpp'; else $(CYGPATH_W) '$(srcdir)/timing.cpp'; fi`; \
-	then mv -f "$(DEPDIR)/libgasandbox_a-timing.Tpo" "$(DEPDIR)/libgasandbox_a-timing.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-timing.Tpo"; exit 1; fi
-#	source='timing.cpp' object='libgasandbox_a-timing.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-timing.obj `if test -f 'timing.cpp'; then $(CYGPATH_W) 'timing.cpp'; else $(CYGPATH_W) '$(srcdir)/timing.cpp'; fi`
 uninstall-info-am:
 install-libgasandbox_a_includeHEADERS: $(libgasandbox_a_include_HEADERS)
 	@$(NORMAL_INSTALL)
@@ -462,6 +621,23 @@ uninstall-libgasandbox_a_includeHEADERS:
 	  f=$(am__strip_dir) \
 	  echo " rm -f '$(DESTDIR)$(libgasandbox_a_includedir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(libgasandbox_a_includedir)/$$f"; \
+	done
+install-libgasandboxparse_a_includeHEADERS: $(libgasandboxparse_a_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(libgasandboxparse_a_includedir)" || $(mkdir_p) "$(DESTDIR)$(libgasandboxparse_a_includedir)"
+	@list='$(libgasandboxparse_a_include_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(libgasandboxparse_a_includeHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(libgasandboxparse_a_includedir)/$$f'"; \
+	  $(libgasandboxparse_a_includeHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(libgasandboxparse_a_includedir)/$$f"; \
+	done
+
+uninstall-libgasandboxparse_a_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libgasandboxparse_a_include_HEADERS)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(libgasandboxparse_a_includedir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(libgasandboxparse_a_includedir)/$$f"; \
 	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
@@ -543,7 +719,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libgasandbox_a_includedir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libgasandbox_a_includedir)" "$(DESTDIR)$(libgasandboxparse_a_includedir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -590,7 +766,8 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libgasandbox_a_includeHEADERS
+install-data-am: install-libgasandbox_a_includeHEADERS \
+	install-libgasandboxparse_a_includeHEADERS
 
 install-exec-am: install-libLIBRARIES
 
@@ -618,7 +795,8 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-info-am uninstall-libLIBRARIES \
-	uninstall-libgasandbox_a_includeHEADERS
+	uninstall-libgasandbox_a_includeHEADERS \
+	uninstall-libgasandboxparse_a_includeHEADERS
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-libLIBRARIES ctags distclean distclean-compile \
@@ -626,12 +804,14 @@ uninstall-am: uninstall-info-am uninstall-libLIBRARIES \
 	html-am info info-am install install-am install-data \
 	install-data-am install-exec install-exec-am install-info \
 	install-info-am install-libLIBRARIES \
-	install-libgasandbox_a_includeHEADERS install-man \
+	install-libgasandbox_a_includeHEADERS \
+	install-libgasandboxparse_a_includeHEADERS install-man \
 	install-strip installcheck installcheck-am installdirs \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
 	tags uninstall uninstall-am uninstall-info-am \
-	uninstall-libLIBRARIES uninstall-libgasandbox_a_includeHEADERS
+	uninstall-libLIBRARIES uninstall-libgasandbox_a_includeHEADERS \
+	uninstall-libgasandboxparse_a_includeHEADERS
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

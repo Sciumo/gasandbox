@@ -31,9 +31,9 @@ const int mvAnalysis::NB_SCALARS ;
 const int mvAnalysis::NB_TYPE_LEVELS ;
 const int mvAnalysis::FLAG_VALID ;
 const int mvAnalysis::FLAG_DUAL;
-const int mvAnalysis::VECTOR_SPACE;
-const int mvAnalysis::HOMOGENEOUS ;
-const int mvAnalysis::CONFORMAL;
+const int mvAnalysis::VECTOR_SPACE_MODEL;
+const int mvAnalysis::HOMOGENEOUS_MODEL;
+const int mvAnalysis::CONFORMAL_MODEL;
 const int mvAnalysis::INVALID_TYPE ;
 const int mvAnalysis::MULTIVECTOR;
 const int mvAnalysis::VERSOR;
@@ -58,6 +58,12 @@ const int mvAnalysis::TRIVECTOR;
 const int mvAnalysis::NOT_USED ;
 const int mvAnalysis::EVEN_VERSOR;
 const int mvAnalysis::ODD_VERSOR;
+const int mvAnalysis::ROTOR;
+
+const int mvAnalysis::LOCALIZED_BLADE;
+const int mvAnalysis::INFINITE_BLADE;
+
+
 #endif
 
 mvAnalysis::mvAnalysis() : m_flags(0), m_epsilon(0.0) {

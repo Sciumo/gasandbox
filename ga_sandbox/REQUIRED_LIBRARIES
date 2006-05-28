@@ -7,8 +7,9 @@ Below we list the libraries
 GLUT (3.8) / freeglut (2.4): required by nearly all examples
 http://freeglut.sourceforge.net/
 
-	The original GLUT (OpenGL Utility Toolkit ) is not maintained anymore. 
-	On top of that, it is not 'open' in a sense that you can modify & redistribute it.
+	The original GLUT (OpenGL Utility Toolkit) is not maintained anymore. 
+	On top of that, GLUT is not 'open' in a sense that you are not allowed
+	to modify & redistribute it (unless you happen to beMark J Kilgard).
 	'freeglut' is a completely open source alternative to the GLUT.
 
 FLTK (1.1.7): required by gaigenhp
@@ -17,7 +18,7 @@ http://www.fltk.org/
 ANTLR (2.7.6): required by chap10ex3
 http://www.antlr.org/
 
-OpenCV (0.9.7 beta5): required by chap10ex3, chap11ex2
+OpenCV (0.9.7 beta5): required by chap10ex3, chap11ex2, chap11ex6
 http://sourceforge.net/projects/opencvlibrary/
 
 Qhull (2003.1): required by chap10ex3

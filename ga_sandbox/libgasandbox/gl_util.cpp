@@ -220,7 +220,7 @@ int pick(int x, int y,
 
 	// initialize OpenGL picking names 
 	glInitNames();
-	glPushName(-1);
+	glPushName((GLuint)-1);
 
 	drawFunc();
 

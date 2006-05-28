@@ -138,7 +138,8 @@ EXTRA_DIST = \
 	chap3ex2s.vcproj \
 	chap6ex1s.vcproj \
 	chap6ex3s.vcproj \
-	chap7ex4s.vcproj
+	chap7ex4s.vcproj \
+	chap11ex4s.vcproj
 
 all: all-am
 

@@ -76,11 +76,6 @@ public:
 	// used by H3GA:
 	static const int PSEUDOSCALAR = 6;
 
-	// these are used for H3GA:
-//	static const int POINT_AT_INFINITY = 4;
-//	static const int LINE_AT_INFINITY = 5;
-//	static const int PLANE_AT_INFINITY = 6;
-
 	// ROUNDs
 	static const int POINT_PAIR = 2;
 	static const int CIRCLE = 3;
