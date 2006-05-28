@@ -689,14 +689,15 @@ void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	// scalar, pseudoscalar???
 
 	// init basic classifiers:
-	double _opNiX = _Float(norm_e(op(ni, X)));
-	double _ipNiX = _Float(norm_e(lcont(ni, X)));
-	double _X2 = _Float(norm_r(X));
+	c3ga::mv::Float _opNiX = _Float(norm_e(op(ni, X)));
+	c3ga::mv::Float _ipNiX = _Float(norm_e(lcont(ni, X)));
+	c3ga::mv::Float _X2 = _Float(norm_r2(X));
 
 	// init basic classifiers (bool):
 	bool opNiX = (fabs(_opNiX) >= epsilon);
 	bool ipNiX = (fabs(_ipNiX) >= epsilon);
 	bool X2 = (fabs(_X2) >= epsilon);
+	//printf("X2 = %e\n", _X2);
 
 	// free?
 	if ((!opNiX) && (!ipNiX))
@@ -856,6 +857,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 		mv::Float scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
 		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
+		m_vc[2] = _vector(dual(m_vc[0] ^ m_vc[1]));
 	}
 
 	switch (Agrade) {
@@ -915,6 +917,7 @@ void mvAnalysis::analyzeFlat(const mv &X, const normalizedPoint &probe, int intF
 		double scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
 		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
+		m_vc[2] = _vector(dual(m_vc[0] ^ m_vc[1]));
 //		printf("vc0 = %s,\n", (m_vc[0] ^ ni).c_str_e20());
 //		printf("vc1 = %s,\n", (m_vc[1] ^ ni).c_str_e20());
 	}
@@ -979,6 +982,7 @@ void mvAnalysis::analyzeFree(const mv &X, int intFlags /* = 0 */, double epsilon
 		double scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
 		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
+		m_vc[2] = _vector(dual(m_vc[0] ^ m_vc[1]));
 	}
 
 	switch (Agrade) {

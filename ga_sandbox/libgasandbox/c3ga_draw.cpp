@@ -50,64 +50,83 @@ void drawFlat(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 }
 
 void drawRound(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
-	// todo:
+	// todo test if all of these get drawn correctly!:
 	if (A.bladeSubclass() == mvAnalysis::POINT_PAIR) {
-		drawSphere(_vectorE3GA(A.m_pt[0] + A.m_sc[0] * A.m_vc[0]), POINT_SIZE);
-		drawSphere(_vectorE3GA(A.m_pt[0] - A.m_sc[0] * A.m_vc[0]), POINT_SIZE);
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		drawTriVector(_vector(A.m_pt[0] + A.m_sc[0] * A.m_vc[0]), g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		drawTriVector(_vector(A.m_pt[0] - A.m_sc[0] * A.m_vc[0]), g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		g_drawState.popDrawMode();
 	}
 	else if (A.bladeSubclass() == mvAnalysis::CIRCLE) {
 		glLineWidth(2.0f);
-		int flags = DD_OUTLINE;
-		drawDisc(_vectorE3GA(A.m_pt[0]), _vectorE3GA((A.m_vc[0] ^ A.m_vc[1]) << inverse(I3)), A.m_sc[0], flags);
+		int method = DRAW_BV_CIRCLE_OUTLINE;
+		drawBivector(A.m_pt[0], A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], method, o);
 		glLineWidth(1.0f);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::SPHERE) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		drawSphere(_vectorE3GA(A.m_pt[0]),  A.m_sc[0]);
+		drawTriVector(_vector(A.m_pt[0]), A.m_sc[0], NULL, DRAW_TV_SPHERE, o);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 }
 
 void drawTangent(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::SCALAR) {
-		drawSphere(_vectorE3GA(A.m_pt[0]), POINT_SIZE);		
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		g_drawState.popDrawMode();
 	}
 	
 	else if (A.bladeSubclass() == mvAnalysis::VECTOR) {
-		drawVector(_vectorE3GA(A.m_pt[0]), A.m_vc[0], A.m_sc[0]);
+		drawVector(A.m_pt[0], A.m_vc[0], A.m_sc[0]);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::BIVECTOR) {
-		int flags = DD_OUTLINE | DD_FILL;
-		double r2 = A.m_sc[0] / M_PI;
-		double r = sqrt(r2);
-		drawDisc(_vectorE3GA(A.m_pt[0]), _vectorE3GA((A.m_vc[0] ^ A.m_vc[1]) << inverse(I3)), r, flags);
+		drawBivector(A.m_pt[0], A.m_vc[2], A.m_vc[0], A.m_vc[1], 
+				 A.m_sc[0], method, o);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::TRIVECTOR) {
-		double r3 = A.m_sc[0] * 3 / (4 * M_PI);
-		double r = pow(r3, 1.0/3.0);
-		drawSphere(_vectorE3GA(A.m_pt[0]),  r/2);
+		drawTriVector(A.m_pt[0],  A.m_sc[0], A.m_vc, method, o);
 	}
 
 
 }
 
+namespace {
+GLubyte s_polygonStipplePattern[] = {
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 
+	0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 0X33, 
+	0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC, 0XCC
+};
+}
+
 void drawFree(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
+	glLineStipple(1, 0x0F0F);
+	glPolygonStipple(s_polygonStipplePattern);
+
 	glEnable(GL_POLYGON_STIPPLE);
 	glEnable(GL_LINE_STIPPLE);
 
 	if (A.bladeSubclass() == mvAnalysis::VECTOR) {
-		drawVector(vectorE3GA(), A.m_vc[0], A.m_sc[0]);
+		drawVector(vector(), A.m_vc[0], A.m_sc[0]);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::BIVECTOR) {
-		int flags = DD_OUTLINE | DD_FILL;
-		double r2 = A.m_sc[0] / M_PI;
-		double r = sqrt(r2);
-		drawDisc(vectorE3GA(), _vectorE3GA((A.m_vc[0] ^ A.m_vc[1]) << inverse(I3)), r, flags);
+		drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], method, o);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::TRIVECTOR) {
-		double r3 = A.m_sc[0] * 3 / (4 * M_PI);
-		double r = pow(r3, 1.0/3.0);
-		drawSphere(vectorE3GA(),  r/2);
+		drawTriVector(vector(),  A.m_sc[0], A.m_vc, method, o);
 	}
 
 	glDisable(GL_LINE_STIPPLE);
@@ -116,8 +135,8 @@ void drawFree(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 
 
 
-void drawC3GA(const mvAnalysis &A, int method/*= 0*/, Palet *o/* = NULL*/) {
-	if (A.model() != mvAnalysis::CONFORMAL)
+void drawC3GA(const mv_analyze::mvAnalysis &A, int method/*= 0*/, Palet *o/* = NULL*/) {
+	if (A.model() != mvAnalysis::CONFORMAL_MODEL)
 		return;
 
 	switch(A.bladeClass()) {
@@ -140,6 +159,12 @@ void drawC3GA(const mvAnalysis &A, int method/*= 0*/, Palet *o/* = NULL*/) {
 	}
 
 }
+
+void draw(const c3ga::mv &X, int method/*= 0*/, Palet *o/* = NULL*/) {
+	mv_analyze::mvAnalysis A(X);
+	drawC3GA(A, method, o);
+}
+
 
 /*
 normalizedPoint labelPositionPoint(const mvAnalysis &A, unsigned int labelGenerator) {
@@ -287,4 +312,3 @@ normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator) {
 
 } // end of namespace mv_draw
 
-#endif 

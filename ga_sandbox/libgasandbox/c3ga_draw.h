@@ -43,7 +43,8 @@ as argument (and also integrate 'Palet')
 */
 void draw(const c3ga::mv &X, int method = 0, Palet *o = NULL);
 
-void drawC3GA(mv_analyze::mvAnalysis &A, int method = 0, Palet *o = NULL);
+void drawC3GA(const mv_analyze::mvAnalysis &A, int method= 0, Palet *o = NULL);
+
 
 } /* end of namespace mv_draw */
 

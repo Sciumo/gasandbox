@@ -130,6 +130,7 @@ void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, e3ga::mv::Flo
 #define DRAW_BV_CROSS 3
 #define DRAW_BV_CURLYTAIL 4
 #define DRAW_BV_SWIRL 5
+#define DRAW_BV_CIRCLE_OUTLINE 6
 
 /*
 Draws a bivector at 'base'. 
@@ -169,7 +170,7 @@ If you specify an object 'o' this can be used to set
 the appropriate colors (i.e. foreground, outline)
 
 */
-void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector vector[3], int method = DRAW_TV_SPHERE, Palet *o = NULL);
+void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, const e3ga::vector vector[3], int method = DRAW_TV_SPHERE, Palet *o = NULL);
 
 /*
 Draws a line at position 'pt' in direction 'dir'. 

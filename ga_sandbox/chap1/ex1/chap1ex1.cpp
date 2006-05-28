@@ -32,9 +32,10 @@
 #include <libgasandbox/c3ga_util.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/mv_analyze.h>
 
 using namespace c3ga;
-//using namespace mv_draw;
+using namespace mv_draw;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 1, Example 1: An Example in Geometric Algebra";
 
@@ -44,15 +45,29 @@ int g_viewportHeight = 600;
 int g_GLUTmenu;
 
 // mouse position on last call to MouseButton() / MouseMotion()
-c3ga::vectorE2GA g_prevMousePos;
+vectorE2GA g_prevMousePos;
 
 // when true, MouseMotion() will rotate the model
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // rotation of the model
-c3ga::rotor g_modelRotor(_rotor(1.0f));
+rotor g_modelRotor(_rotor(1.0f));
 
+// the points:
+const int NB_POINTS = 6;
+point g_points[NB_POINTS] = {
+	_point(no), 	
+	_point(no), 	
+	_point(no), 	
+	_point(no), 	
+	_point(no), 	
+	_point(no)
+};
+
+// point dragging info:
+int g_dragPoint = -1;
+float g_dragDistance = -1.0f;
 
 void display() {
 	// setup projection & transform for the vectors:
@@ -91,6 +106,19 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
+	glColor3fm(1.0f, 0.0f, 0.0f);
+	for (int i = 0; i < NB_POINTS; i++) {
+		glLoadName((GLuint)i);
+		draw(g_points[i]);
+	}
+
+
+	
+	if (!GLpick::g_pickActive) {
+
+	}
+
+
 
 	glPopMatrix();
 
@@ -125,13 +153,68 @@ void reshape(GLint width, GLint height) {
 	glLoadIdentity();
 }
 
-void MouseButton(int button, int state, int x, int y) {
 
+vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d) {
+	if ((GLpick::g_frustumWidth <= 0) || (GLpick::g_frustumHeight <= 0) ||
+		(GLpick::g_frustumNear <= 0) || (GLpick::g_frustumFar <= 0)) {
+		return vectorE3GA();
+	}
+
+	return _vectorE3GA((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 +
+		(depth * (double)v2d.e2() * GLpick::g_frustumHeight) / (g_viewportHeight * GLpick::g_frustumNear) * e2);
+}
+
+vectorE2GA mousePosToVector(int x, int y) {
+	x -= g_viewportWidth / 2;
+	y -= g_viewportHeight / 2;
+	return _vectorE2GA((float)x * e1 - (float)y * e2);
+}
+
+
+void MouseButton(int button, int state, int x, int y) {
+	g_rotateModel = false;
+
+	g_prevMousePos = mousePosToVector(x, y);
+
+	g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+
+	if (g_dragPoint < 0) {
+		vectorE2GA mousePos = mousePosToVector(x, y);
+		g_rotateModel = true;
+		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
+			g_rotateModelOutOfPlane = true;
+		else g_rotateModelOutOfPlane = false;
+	}
 }
 
 void MouseMotion(int x, int y) {
+	// get mouse position, motion
+	vectorE2GA mousePos = mousePosToVector(x, y);
+	vectorE2GA motion = _vectorE2GA(mousePos - g_prevMousePos);
+	if (g_rotateModel) {
+		// update rotor
+		if (g_rotateModelOutOfPlane)
+			g_modelRotor = _rotor(exp(_bivectorE3GA(0.005f * (motion ^ e3))) * g_modelRotor);
+		else g_modelRotor = _rotor(exp(_bivectorE3GA(0.00001f * (motion ^ mousePos))) * g_modelRotor);
+	}
+	else if (g_dragPoint >= 0) {
+		vectorE3GA t = vectorAtDepth(g_dragDistance, motion);
+		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
+		printf("T = %s\n", T.c_str());
 
+		g_points[g_dragPoint] = 
+				_point(T * g_points[g_dragPoint] * inverse(T));
 
+		mv_analyze::mvAnalysis A(g_points[g_dragPoint]);
+
+		printf("P = %s\n", g_points[g_dragPoint].c_str());
+	}
+
+	// remember mouse pos for next motion:
+	g_prevMousePos = mousePos;
+
+	// redraw viewport
+	glutPostRedisplay();
 }
 
 void Keyboard(unsigned char key, int x, int y) {

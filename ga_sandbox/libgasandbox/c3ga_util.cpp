@@ -445,7 +445,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 	int Em = ((ga + gb - gd) >> 1);
 
 	// init s, the dual of the delta product:
-	mv s = lcontEM(d, I3i);
+	mv s = lcontEM(d, I5i);
 
 	// precompute inverse of ca
 	mv cai = inverseEM(ca);

@@ -278,7 +278,9 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 
 	switch(method) {
 	case DRAW_BV_CIRCLE:
-		if ((o == NULL) || o->fgColor(3) > 0.0)  {
+	case DRAW_BV_CIRCLE_OUTLINE:
+		if ((method == DRAW_BV_CIRCLE) && ((o == NULL) || o->fgColor(3) > 0.0))  {
+			
 			// draw the filled-in circle (back)
 			glNormal3d(0.0, 0.0, 1.0);
 			glBegin(GL_TRIANGLE_FAN);
@@ -415,7 +417,7 @@ void drawBivector(const e3ga::vector &base, const e3ga::vector &normal,
 	glPopMatrix();
 }
 
-void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector vc[3], int method /*= DRAW_TV_SPHERE*/, Palet *o /*= NULL*/) {
+void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, const e3ga::vector vc[3], int method /*= DRAW_TV_SPHERE*/, Palet *o /*= NULL*/) {
 	mv::Float scaleSign = (scale < 0.0f) ? -1.0f : 1.0f;
 
 	if ((method == DRAW_TV_PARALLELEPIPED) ||
