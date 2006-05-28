@@ -543,6 +543,92 @@ void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector
 
 }
 
+void drawLine(const e3ga::vector &pt, const e3ga::vector &dir, float weight, int method /*= 0 */, Palet *o /*= NULL*/) {
+	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
+	mv::Float stepSize = 0.1f;
+
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+	// translate to point on line 
+	glTranslatef(pt.e1(), pt.e2(), pt.e3());
+
+	// rotate e3 to line direction
+	rotor rt = rotorFromVectorToVector(_vector(e3), dir);
+	rotorGLMult(rt);
+
+	// draw line
+	glBegin(GL_LINE_STRIP);
+	for (mv::Float z = -scaleConst; z <= scaleConst; z += stepSize * scaleConst)
+		glVertex3f(0.0, 0.0, z);
+	glEnd();
+
+	// draw 'orientation'
+	if (g_drawState.getDrawMode() & OD_ORIENTATION) { 
+		// option 3: little hooks 
+		glTranslatef(0.0, 0.0, -scaleConst);
+		for (mv::Float c = 0.0; c < 1.0; c += stepSize) {
+			glPushMatrix();
+			// if magnitude: scale
+			if (g_drawState.getDrawMode() & OD_MAGNITUDE)
+				glScaled(0.5 * fabs(weight), 0.5 * fabs(weight), 0.5 * fabs(weight));
+			else glScalef(0.5f, 0.5f, 0.5f);
+
+			glBegin(GL_LINE_STRIP);
+			glVertex3f(-0.25f, 0.0f, -1.0f);
+			glVertex3f(0.0f, 0.0f, 0.0f);
+			glVertex3f(0.25f, 0.0f, -1.0f);
+			glEnd();
+
+			glPopMatrix();
+			glRotated(90.0f, 0.0f, 0.0f, 1.0f);
+			glTranslated(0.0f, 0.0f, 2.0f * stepSize * scaleConst);
+		}
+	}
+	glPopMatrix();
+}
+
+void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::vector &ortho2,
+			   const e3ga::vector &normal, float weight, int method /*= 0 */, Palet *o /*= NULL*/) {
+	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
+	mv::Float stepSize = 0.1f;
+
+	for (int s = 0; s < 2; s++) { // draw both front and back side individually
+		if (s == 0) { // front
+			glPolygonMode(GL_FRONT, (g_drawState.getDrawMode() & OD_WIREFRAME) ? GL_LINE : GL_FILL);
+			glNormal3fv(normal.getC(vector_e1_e2_e3)); 
+		}
+		else { // back
+			glPolygonMode(GL_FRONT, ((g_drawState.getDrawMode() & OD_WIREFRAME) || 
+				(g_drawState.getDrawMode() & OD_ORIENTATION)) ? GL_LINE : GL_FILL);
+			glNormal3fv(_vector(-normal).getC(vector_e1_e2_e3)); 
+		}
+		for (mv::Float y = -scaleConst; y < scaleConst - stepSize * scaleConst; y += stepSize * scaleConst) {
+			glBegin(GL_QUAD_STRIP);
+			for (mv::Float x = -scaleConst; x < scaleConst; x += stepSize * scaleConst) {
+				glVertex3fv(_vector(pt + x * ortho1 + ((s == 0) ? (y + stepSize * scaleConst) : y) * ortho2).getC(vector_e1_e2_e3));
+				glVertex3fv(_vector(pt + x * ortho1 + ((s == 1) ? (y + stepSize * scaleConst) : y) * ortho2).getC(vector_e1_e2_e3));
+			}
+			glEnd();
+		}
+	}
+
+
+	if (g_drawState.getDrawMode() & OD_MAGNITUDE) { // draw normals
+		mv::Float scaleMag = weight;
+		glDisable(GL_LIGHTING);
+		glBegin(GL_LINES);
+		for (mv::Float y = -scaleConst; y <= scaleConst; y += stepSize * scaleConst) {
+			for (mv::Float x = -scaleConst; x <= scaleConst; x += stepSize * scaleConst) {
+				glVertex3fv(_vector(pt + x * ortho1 + y * ortho2).getC(vector_e1_e2_e3));
+				glVertex3fv(_vector(pt + x * ortho1 + y * ortho2 + scaleMag * normal).getC(vector_e1_e2_e3));
+			}
+		}
+		glEnd();
+	}
+
+}
+
+
 
 } /* end of namespace mv_draw */
 

@@ -32,7 +32,8 @@ namespace mv_draw {
 
 class DrawState {
 public:
-	DrawState() : m_ambient(0.2f),  m_diffuse(1.0f), m_sphere(NULL), m_pointSize(0.01f) {
+	DrawState() : m_ambient(0.2f),  m_diffuse(1.0f), m_sphere(NULL), m_pointSize(0.01f),
+		m_lineLength(5.0f), m_planeSize(10.0f) {
 		m_drawMode.push_back(OD_MAGNITUDE | OD_ORIENTATION);
 	}
 
@@ -43,6 +44,9 @@ public:
 	float m_ambient;
 	float m_diffuse;
 	float m_pointSize;
+	float m_lineLength;
+	float m_planeSize;
+
 
 	inline int getDrawMode() const {
 		return	m_drawMode[m_drawMode.size()-1];
@@ -167,6 +171,17 @@ the appropriate colors (i.e. foreground, outline)
 */
 void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, e3ga::vector vector[3], int method = DRAW_TV_SPHERE, Palet *o = NULL);
 
+/*
+Draws a line at position 'pt' in direction 'dir'. 
+*/
+void drawLine(const e3ga::vector &pt, const e3ga::vector &dir, float weight, int method = 0, Palet *o = NULL);
+
+
+/*
+Draws a plane at position 'pt' in plane 'ortho1 ^ ortho2' with normal 'normal' .
+*/
+void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::vector &ortho2,
+			   const e3ga::vector &normal, float weight, int method = 0, Palet *o = NULL);
 
 } /* end of namespace mv_draw */
 

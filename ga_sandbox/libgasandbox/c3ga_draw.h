@@ -18,30 +18,34 @@
 #ifndef _C3GA_DRAW_H_
 #define _C3GA_DRAW_H_
 
-#ifdef RIEN
-#include "c3ga_analyze.h"
+#include "c3ga.h"
+#include "draw.h"
 
-namespace c3ga {
-
-namespace drawConst {
-extern const double POINT_SIZE;
-extern const double LINE_LENGTH;
-extern const double PLANE_SIZE;
+namespace mv_analyze {
+	class mvAnalysis;
 }
 
+namespace mv_draw {
 
-/// uses OpenGL to draw a analyzed multivector
-void draw(const mvAnalysis &A);
 
-/**
-Returns the position where a label can be drawn for multivector 'A'
-Thows -1 when no position can be generated (e.g., a scalar)
+/* 
+Method & flags are dependent on what 'X' represents.
+They are forwarded to drawVector, drawBivector, drawTrivector.
+
+Currently, 'method' is some integer in range [0, n), where each
+integer indicates a different way of drawing the multivector.
+
+The Palet can be used to specify foreground, background and outline color.
+
+Uses g_drawState for some extra flags!
+If this gets annoying, allow DrawState to be passed along
+as argument (and also integrate 'Palet')
 */
-normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator = 0);
+void draw(const c3ga::mv &X, int method = 0, Palet *o = NULL);
 
-}
-#endif 
+void drawC3GA(mv_analyze::mvAnalysis &A, int method = 0, Palet *o = NULL);
 
+} /* end of namespace mv_draw */
 
 #endif /* _C3GA_DRAW_H_ */
 

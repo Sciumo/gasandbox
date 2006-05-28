@@ -1,58 +1,56 @@
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+
+// Daniel Fontijne -- fontijne@science.uva.nl
+
 #ifdef WIN32
 #include <windows.h>
 #endif
 
-#ifdef RIEN
-
 #include <GL/gl.h>
-#include <GL/glu.h>
 
-#include "draw.h"
 #include "c3ga_draw.h"
-#include "c3ga_analyze.h"
-#include "c3ga_util.h"
+#include "e3ga_util.h"
+#include "mv_analyze.h"
 
-#ifndef M_PI
-#define M_PI 3.1415926535897932384626433832795
-#endif /* M_PI */
+using namespace mv_analyze;
 
-// todo: . . . .
+namespace mv_draw {
 
-namespace c3ga {
+using namespace e3ga;
 
-namespace drawConst {
-const double POINT_SIZE = 0.033;
-const double LINE_LENGTH = 5.0;
-const double PLANE_SIZE = 10.0;
-}
-using namespace drawConst;
 
 // test all done so far . . .
 // 4 points, and sphere, line, plane, etc thorugh them . .. 
 // 
-void drawFlat(const mvAnalysis &A) {
+void drawFlat(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::POINT) {
-		drawSphere(_vectorE3GA(A.m_pt[0]), POINT_SIZE);
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		g_drawState.popDrawMode();
 	}
 	else if (A.bladeSubclass() == mvAnalysis::LINE) {
-		glLineWidth(2.0f);
-		glBegin(GL_LINES);
-		glVertex3dv(_vectorE3GA(A.m_pt[0] + LINE_LENGTH * A.m_vc[0]).getC(vectorE3GA_e1_e2_e3));
-		glVertex3dv(_vectorE3GA(A.m_pt[0] - LINE_LENGTH * A.m_vc[0]).getC(vectorE3GA_e1_e2_e3));
-		glEnd();
-		glLineWidth(1.0f);
+		drawLine(A.m_pt[0], A.m_vc[0], A.m_sc[0], method, o);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::PLANE) {
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		double scale = 1.0;
-		int flags = 0;
-		int nbSegs = (int)PLANE_SIZE;
-		drawPlane(_vectorE3GA(A.m_pt[0]), _vectorE3GA((A.m_vc[0] ^ A.m_vc[1]) << inverse(I3)), scale, flags, nbSegs);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		drawPlane(A.m_pt[0], A.m_vc[0], A.m_vc[1], A.m_vc[2], A.m_sc[0], method, o);
 	}
 }
 
-void drawRound(const mvAnalysis &A) {
+void drawRound(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
+	// todo:
 	if (A.bladeSubclass() == mvAnalysis::POINT_PAIR) {
 		drawSphere(_vectorE3GA(A.m_pt[0] + A.m_sc[0] * A.m_vc[0]), POINT_SIZE);
 		drawSphere(_vectorE3GA(A.m_pt[0] - A.m_sc[0] * A.m_vc[0]), POINT_SIZE);
@@ -70,7 +68,7 @@ void drawRound(const mvAnalysis &A) {
 	}
 }
 
-void drawTangent(const mvAnalysis &A) {
+void drawTangent(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::SCALAR) {
 		drawSphere(_vectorE3GA(A.m_pt[0]), POINT_SIZE);		
 	}
@@ -93,7 +91,7 @@ void drawTangent(const mvAnalysis &A) {
 
 }
 
-void drawFree(const mvAnalysis &A) {
+void drawFree(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	glEnable(GL_POLYGON_STIPPLE);
 	glEnable(GL_LINE_STIPPLE);
 
@@ -118,30 +116,32 @@ void drawFree(const mvAnalysis &A) {
 
 
 
-void draw(const mvAnalysis &A) {
+void drawC3GA(const mvAnalysis &A, int method/*= 0*/, Palet *o/* = NULL*/) {
 	if (A.model() != mvAnalysis::CONFORMAL)
 		return;
 
 	switch(A.bladeClass()) {
+	case mvAnalysis::PSEUDOSCALAR:
 	case mvAnalysis::SCALAR:
 	case mvAnalysis::ZERO:
 		return;
 	case mvAnalysis::FLAT:
-		drawFlat(A);
+		drawFlat(A, method, o);
 		return;
 	case mvAnalysis::ROUND:
-		drawRound(A);
+		drawRound(A, method, o);
 		return;
 	case mvAnalysis::TANGENT:
-		drawTangent(A);
+		drawTangent(A, method, o);
 		return;
 	case mvAnalysis::FREE:
-		drawFree(A);
+		drawFree(A, method, o);
 		return;
 	}
 
 }
 
+/*
 normalizedPoint labelPositionPoint(const mvAnalysis &A, unsigned int labelGenerator) {
 	double r = POINT_SIZE + 2.0 * POINT_SIZE * (double)(labelGenerator % 5) / 4; // distance to center point
 	double a1 = 2.0 * M_PI * (double)((labelGenerator / 5) % 11) / 10;
@@ -162,7 +162,7 @@ normalizedPoint labelPositionFlat(const mvAnalysis &A, unsigned int labelGenerat
 	else if (A.bladeSubclass() == mvAnalysis::LINE) {
 		double a1 = -1.0 + 2.0 * (double)(labelGenerator % 31) / 30.0;
 
-		freeVector t = _freeVector((LINE_LENGTH * a1 * A.m_vc[0]) ^ ni);
+		freeVector t = _freeVector((m_lineLength * a1 * A.m_vc[0]) ^ ni);
 		translator T = _translator(1.0 - 0.5 * t);
 		return _normalizedPoint(T * A.m_pt[0] * inverse(T));
 	}
@@ -172,7 +172,7 @@ normalizedPoint labelPositionFlat(const mvAnalysis &A, unsigned int labelGenerat
 
 		
 
-		freeVector t = _freeVector((0.5 * PLANE_SIZE * A.m_vc[0] + a1 * 0.5 * PLANE_SIZE * A.m_vc[1]) ^ ni);
+		freeVector t = _freeVector((0.5 * m_planeSize * A.m_vc[0] + a1 * 0.5 * m_planeSize * A.m_vc[1]) ^ ni);
 		rotor R = _rotor(exp(0.5 * r1 * (A.m_vc[0] ^ A.m_vc[1])));
 		t = _freeVector(R * t * inverse(R));
 		translator T = _translator(1.0 - 0.5 * t);
@@ -264,7 +264,7 @@ normalizedPoint labelPositionFree(const mvAnalysis &A, int labelGenerator) {
 }
 
 
-normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator /* = 0 */) {
+normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator) {
 	if (A.model() != mvAnalysis::CONFORMAL)
 		throw -1;
 
@@ -283,8 +283,8 @@ normalizedPoint labelPosition(const mvAnalysis &A, int labelGenerator /* = 0 */)
 	}
 	throw -1;
 }
+*/
 
-
-} // end of namespace c3ga
+} // end of namespace mv_draw
 
 #endif 
