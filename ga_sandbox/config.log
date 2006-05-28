@@ -329,7 +329,7 @@ configure:4980: result: yes
 configure:4995: checking for OpenGL
 configure:5052: checking for library containing glAccum
 configure:5082: gcc -o conftest -g -O2   conftest.c  -lSM -lICE  -lX11 -lXext -lXmu -lXt -lXi  >&5
-/tmp/ccUFr3zS.o(.text+0xa): In function `main':
+/tmp/cc6r1K80.o(.text+0xa): In function `main':
 /root/ga/ga_sandbox/conftest.c:25: undefined reference to `glAccum'
 collect2: ld returned 1 exit status
 configure:5088: $? = 1
@@ -405,7 +405,7 @@ configure:5156: $? = 0
 configure:5171: result: -lGL
 configure:5180: checking for library containing gluBeginCurve
 configure:5210: gcc -o conftest -g -O2   conftest.c -lGL  -lSM -lICE  -lX11 -lXext -lXmu -lXt -lXi  >&5
-/tmp/ccOxth9p.o(.text+0xa): In function `main':
+/tmp/ccUtf2mB.o(.text+0xa): In function `main':
 /root/ga/ga_sandbox/conftest.c:25: undefined reference to `gluBeginCurve'
 collect2: ld returned 1 exit status
 configure:5216: $? = 1
@@ -490,7 +490,7 @@ configure:5357: $? = 0
 configure:5427: result: none required
 configure:5436: checking for library containing glutInit
 configure:5466: gcc -o conftest -g -O2   conftest.c -lGLU -lGL  -lSM -lICE  -lX11 -lXext -lXmu -lXt -lXi  >&5
-/tmp/ccofWHAc.o(.text+0xa): In function `main':
+/tmp/cc2rs2Fq.o(.text+0xa): In function `main':
 /root/ga/ga_sandbox/conftest.c:25: undefined reference to `glutInit'
 collect2: ld returned 1 exit status
 configure:5472: $? = 1

@@ -170,6 +170,7 @@ chap3ex4_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
 chap3ex4_SOURCES = chap3ex4.cpp
 noinst_HEADERS = 
 sandbin_DATA = image.raw
+EXTRA_DIST = image.raw
 all: all-am
 
 .SUFFIXES:
@@ -439,7 +440,6 @@ uninstall-am: uninstall-info-am uninstall-sandbinDATA \
 	uninstall-am uninstall-info-am uninstall-sandbinDATA \
 	uninstall-sandbinPROGRAMS
 
-#EXTRA_DIST = image.raw
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

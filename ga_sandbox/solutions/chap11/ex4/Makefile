@@ -52,7 +52,7 @@ am_chap11ex4s_OBJECTS = chap11ex4s.$(OBJEXT)
 chap11ex4s_OBJECTS = $(am_chap11ex4s_OBJECTS)
 am__DEPENDENCIES_1 =
 chap11ex4s_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../libgasandbox/libgasandbox.a
+	../../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -156,8 +156,8 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 sandbindir = $(bindir)/ga_sandbox
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap11ex4s_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+AM_CPPFLAGS = -I../../.. $(GL_CFLAGS)
+chap11ex4s_LDADD = $(GL_LIBS) ../../../libgasandbox/libgasandbox.a
 chap11ex4s_SOURCES = chap11ex4s.cpp
 noinst_HEADERS = 
 all: all-am

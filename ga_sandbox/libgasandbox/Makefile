@@ -219,10 +219,10 @@ libgasandbox_a_SOURCES = \
 
 libgasandboxparse_a_includedir = $(includedir)/libgasandbox
 libgasandboxparse_a_include_HEADERS = \
-	e2ga_mv_lexer.hpp e2ga_mv_parser.hpp e2ga_mv_parserTokenTypes.hpp \
-	e3ga_mv_lexer.hpp e3ga_mv_parser.hpp e3ga_mv_parserTokenTypes.hpp \
-	h3ga_mv_lexer.hpp h3ga_mv_parser.hpp h3ga_mv_parserTokenTypes.hpp \
-	c3ga_mv_lexer.hpp c3ga_mv_parser.hpp c3ga_mv_parserTokenTypes.hpp 
+	e2ga_parse.h e2ga_mv_lexer.hpp e2ga_mv_lexerTokenTypes.hpp e2ga_mv_parser.hpp e2ga_mv_parserTokenTypes.hpp \
+	e3ga_parse.h e3ga_mv_lexer.hpp e3ga_mv_lexerTokenTypes.hpp e3ga_mv_parser.hpp e3ga_mv_parserTokenTypes.hpp \
+	h3ga_parse.h h3ga_mv_lexer.hpp h3ga_mv_lexerTokenTypes.hpp h3ga_mv_parser.hpp h3ga_mv_parserTokenTypes.hpp \
+	c3ga_parse.h c3ga_mv_lexer.hpp c3ga_mv_lexerTokenTypes.hpp c3ga_mv_parser.hpp c3ga_mv_parserTokenTypes.hpp 
 
 libgasandboxparse_a_SOURCES = \
 	e2ga_parse.cpp e2ga_mv_lexer.cpp e2ga_mv_parser.cpp \
