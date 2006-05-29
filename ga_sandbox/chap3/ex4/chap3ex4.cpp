@@ -36,7 +36,7 @@ using namespace e3ga;
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 4: Color Space Conversion";
 
 // note that image name is hard coded!!!
-const char *IMAGE_NAME = "image.raw";
+const char *IMAGE_NAME = "image2.raw";
 
 // dimension of images
 unsigned int g_imageWidth, g_imageHeight;
@@ -53,16 +53,16 @@ int g_GLUTmenu;
 
 // the color 'frame'
 e3ga::vector g_IFcolors[3] = {
-	_vector(e3), // 'red'
-	_vector(e1), // 'green'
-	_vector(e2) // 'blue'
+	_vector(0.82*e1 + 0.08*e2 + 0.08*e3), // 'red'
+	_vector(0.01*e1 + 0.54*e2 + 0.35*e3), // 'green'
+	_vector(0.18*e2 + 0.37*e3) // 'blue'
 };
 
 // the reciprocal color 'frame'
 e3ga::vector g_RFcolors[3] = {
-	_vector(e2), // reciprocal of 'red'
-	_vector(e3), // reciprocal of 'green'
-	_vector(e1) // reciprocal of 'blue'
+	_vector(e1), // reciprocal of 'red'
+	_vector(e2), // reciprocal of 'green'
+	_vector(e3) // reciprocal of 'blue'
 };
 
 // the index [0, 1, 2] of the color that will be modified by sampleColorAt()
@@ -149,23 +149,33 @@ void display() {
 
 	// get 'white' vector:
 	e3ga::vector white = _vector(unit_e(e1 + e2 +e3));
-	// get two vectors, orthogonal to 'white'
+
+	// Get two vectors, orthogonal to white:
+	// factorizeBlade() find two vectors such that
+	// dual(white) == O[1] ^ O[2]
 	e3ga::vector O[2];
-	factorizeBlade(dual(white), O);
+	factorizeBlade(dual(white), O); 
 
 	const float PI2 = (float)(2.0f * M_PI);
 	const float STEP = 0.025f;
 	float YT = (float)g_viewportHeight;
 	float YB = (float)g_viewportHeight - 20;
-	for (float alpha = 0.0f; alpha < PI2; alpha += STEP) {
-		// alpha runs from 0 to 2 PI
+
+	// alpha runs from 0 to 2 PI
+	for (float angle = 0.0f; angle < PI2; angle += STEP) {
+		// generate all fully saturated colors:
+		e3ga::vector C = _vector(white + cos(angle) * O[0] + sin(angle) * O[1]);
+
+		// alternative method (using exp() and geometric product)
 //		rotor R = exp(_bivector(0.5f * alpha * (O[0] ^ O[1])));
-//		e3ga::vector C = _vector(white + R * O[0] * inverse(R));
-		e3ga::vector C = _vector(white + cos(alpha) * O[0] + sin(alpha) * O[1]);
+//		e3ga::vector C = _vector(R * (white + O[0]) * inverse(R));
+
+		// set current color:
 		glColor3fv(C.getC(vector_e1_e2_e3));
 
-		float xl = (alpha / PI2) * g_viewportWidth;
-		float xr = ((alpha + STEP) / PI2) * g_viewportWidth;
+		// draw small patch in the current color:
+		float xl = (angle / PI2) * g_viewportWidth;
+		float xr = ((angle + STEP) / PI2) * g_viewportWidth;
 		glBegin(GL_QUADS);
 		glVertex2f(xl, YB);
 		glVertex2f(xr, YB);
@@ -178,7 +188,7 @@ void display() {
 	{
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		glPixelZoom(1.0f, -1.0f);
-		glRasterPos2i(0, g_viewportHeight - 40);
+		glRasterPos2i(0, g_viewportHeight - 20);
 
 		GLsizei width = g_imageWidth; 
 		GLsizei height = g_imageHeight;
@@ -188,7 +198,7 @@ void display() {
 
 		glDrawPixels(width, height, format, type, pixels);
 
-		glRasterPos2i(g_viewportWidth / 2, g_viewportHeight - 40);
+		glRasterPos2i(g_viewportWidth / 2, g_viewportHeight - 20);
 		pixels  = &(g_destImage[0]);
 		glDrawPixels(width, height, format, type, pixels);
 	}
@@ -198,7 +208,7 @@ void display() {
 		const int arrowWidth = 20;
 		int width = 80;
 		int left = g_viewportWidth / 2 - width - arrowWidth;
-		int height = (g_viewportHeight - g_imageHeight) / 3;
+		int height = (g_viewportHeight - g_imageHeight - 20) / 3;
 		int top = height * 2;
 		// input:
 		for (int i = 0; i < 3; i++) {
@@ -222,7 +232,7 @@ void display() {
 		// active:
 		left = g_viewportWidth / 2 - width - arrowWidth;
 		width = 80 * 2 + arrowWidth * 2;
-		height = (g_viewportHeight - g_imageHeight) / 3;
+		height = (g_viewportHeight - g_imageHeight - 20) / 3;
 		top = height * (2 - g_sampleColorIdx);
 		glColor3f(0.0f, 0.0f, 0.0f);
 		glLineWidth(3.0f);
@@ -257,7 +267,7 @@ void sampleColorAt(int x, int y) {
 	// sample color at x, y
 	unsigned char rgb[3];
 	glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, rgb);
-//	printf("Color: %d %d %d\n", rgb[0], rgb[1], rgb[2]);
+	printf("Color: %d %d %d\n", rgb[0], rgb[1], rgb[2]);
 	e3ga::vector newColor = e3ga::vector(vector_e1_e2_e3, (float)rgb[0] / 255.0f, (float)rgb[1] / 255.0f, (float)rgb[2] / 255.0f);
 
 	// set new value

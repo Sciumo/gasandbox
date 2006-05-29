@@ -33,11 +33,11 @@ int main(int argc, char*argv[]) {
 	a = e1;
 	b = e1;
 
-	float alpha = 1e-9f;
+	float probeEpsilon = 1e-10f;
 	
 	while (true) {// the loop will be broken when the join is a bivector;
 		// add a tiny bit of 'e2' to b:
-		b = _vector(b + alpha * e2);
+		b = _vector(b + probeEpsilon * e2);
 
 		// compute the join
 		mv X = join(a, b);
@@ -62,9 +62,9 @@ int main(int argc, char*argv[]) {
 			else printf("%s is a vector\n", str.c_str());
 		}
 		
-		// Grow 'alpha' a little such that it won't take forever to reach 
+		// Grow 'probeEpsilon' a little such that it won't take forever to reach 
 		// the point where join(a, b) is a 2-blade:
-		alpha *= 1.01f;
+		probeEpsilon *= 1.01f;
 	};
 
 	return 0;

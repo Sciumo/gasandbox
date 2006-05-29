@@ -122,7 +122,7 @@ void display() {
 
 
 	// clear viewport
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// setup other GL stuff
@@ -150,7 +150,8 @@ void display() {
 		e3ga::vector center;
 
 		// draw polygon & compute center of polygon
-		glColor3fm(1.0, 1.0, 1.0);
+//		glColor3fm(1.0f, 1.0f, 1.0f);
+		glColor3fm(0.8f, 0.8f, 0.8f);
 		glEnable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
@@ -214,7 +215,7 @@ void display() {
 		glDisable(GL_DEPTH_TEST);
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 100, font, "-use left mouse button to orbit scene");
 		renderBitmapString(20, 80, font, "-use other mouse buttons to select model and normal visibility");

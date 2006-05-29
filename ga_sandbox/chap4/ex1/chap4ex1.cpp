@@ -83,7 +83,7 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -10.0f);
 
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -109,7 +109,7 @@ void display() {
 
 	// draw vector 1 ^ vector 2
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
-	glColor3fm(0.5f, 0.5f, 0.5f);
+	glColor3fm(0.7f, 0.7f, 0.7f);
 	g_drawState.pushDrawModeOff(OD_ORIENTATION);
 	draw(B);
 	g_drawState.popDrawMode();
@@ -156,7 +156,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 20, font, "-use mouse buttons to drag (red, green, blue) vectors and to orbit the scene");
 	}
