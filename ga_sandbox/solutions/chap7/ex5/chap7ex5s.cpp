@@ -30,7 +30,7 @@
 
 using namespace e2ga;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 7, Example 5: Fractals";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 7, Example 5: Fractals (SOLUTION)";
 
 // GLUT state information
 int g_viewportWidth = 800;

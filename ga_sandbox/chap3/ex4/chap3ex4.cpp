@@ -140,15 +140,45 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glDisable(GL_LIGHTING);
 
+	// draw color bar
+
+	// get 'white' vector:
+	e3ga::vector white = _vector(unit_e(e1 + e2 +e3));
+	// get two vectors, orthogonal to 'white'
+	e3ga::vector O[2];
+	factorizeBlade(dual(white), O);
+
+	const float PI2 = (float)(2.0f * M_PI);
+	const float STEP = 0.025f;
+	float YT = (float)g_viewportHeight;
+	float YB = (float)g_viewportHeight - 20;
+	for (float alpha = 0.0f; alpha < PI2; alpha += STEP) {
+		// alpha runs from 0 to 2 PI
+//		rotor R = exp(_bivector(0.5f * alpha * (O[0] ^ O[1])));
+//		e3ga::vector C = _vector(white + R * O[0] * inverse(R));
+		e3ga::vector C = _vector(white + cos(alpha) * O[0] + sin(alpha) * O[1]);
+		glColor3fv(C.getC(vector_e1_e2_e3));
+
+		float xl = (alpha / PI2) * g_viewportWidth;
+		float xr = ((alpha + STEP) / PI2) * g_viewportWidth;
+		glBegin(GL_QUADS);
+		glVertex2f(xl, YB);
+		glVertex2f(xr, YB);
+		glVertex2f(xr, YT);
+		glVertex2f(xl, YT);
+		glEnd();
+	}
+
+
 	{
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		glPixelZoom(1.0f, -1.0f);
-		glRasterPos2i(0, g_viewportHeight);
+		glRasterPos2i(0, g_viewportHeight - 40);
 
 		GLsizei width = g_imageWidth; 
 		GLsizei height = g_imageHeight;
@@ -158,7 +188,7 @@ void display() {
 
 		glDrawPixels(width, height, format, type, pixels);
 
-		glRasterPos2i(g_viewportWidth / 2, g_viewportHeight);
+		glRasterPos2i(g_viewportWidth / 2, g_viewportHeight - 40);
 		pixels  = &(g_destImage[0]);
 		glDrawPixels(width, height, format, type, pixels);
 	}
@@ -178,7 +208,7 @@ void display() {
 
 		// arrows:
 		left =  g_viewportWidth / 2 - arrowWidth/2;
-		glColor3f(1.0, 1.0, 1.0);
+		glColor3f(0.0, 0.0, 0.0);
 		for (int i = 0; i < 3; i++)
 			drawArrow(left, top - i * height + height/2, arrowWidth, 8);
 
@@ -194,7 +224,7 @@ void display() {
 		width = 80 * 2 + arrowWidth * 2;
 		height = (g_viewportHeight - g_imageHeight) / 3;
 		top = height * (2 - g_sampleColorIdx);
-		glColor3f(1.0, 1.0, 1.0);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		glLineWidth(3.0f);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		drawRectangle(left, top, width, height);
@@ -204,10 +234,10 @@ void display() {
 	}
 
 
-	glColor3f(1,1,1);
+	glColor3f(0.0f, 0.0f, 0.0f);
 	void *font = GLUT_BITMAP_HELVETICA_12;
-	renderBitmapString(10, 40, font, "-use left mouse button to 'sample' colors");
-	renderBitmapString(10, 20, font, "-use other mouse buttons for popup menu");
+	renderBitmapString(20, 40, font, "-use left mouse button to 'sample' colors");
+	renderBitmapString(20, 20, font, "-use other mouse buttons for popup menu");
 
 
 

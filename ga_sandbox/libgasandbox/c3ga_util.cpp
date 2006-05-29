@@ -105,7 +105,6 @@ bivectorE3GA log(const c3ga::rotor &R) {
 
 pointPair log(const TRversor &V) {
 	rotor R = _rotor(-no << (V * ni));
-	printf("R = %s;\n", R.c_str());
 	vectorE3GA t = _vectorE3GA(-2.0f * (no << V) * inverse(R));
 	bivectorE3GA Iphi = _bivectorE3GA(-2.0f * log(R));
 	rotor I = (_Float(norm_e2(Iphi)) == 0.0f) ? _rotor(1) :_rotor(unit_e(Iphi));

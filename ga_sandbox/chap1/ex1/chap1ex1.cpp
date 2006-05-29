@@ -56,14 +56,20 @@ rotor g_modelRotor(_rotor(1.0f));
 
 // the points:
 const int NB_POINTS = 6;
-point g_points[NB_POINTS] = {
-	_point(no), 	
-	_point(no), 	
-	_point(no), 	
-	_point(no), 	
-	_point(no), 	
-	_point(no)
+normalizedPoint g_points[NB_POINTS] = {
+	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.356756*e1 - 0.881980*e2))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.725786*e1 + 0.934177*e2 - 0.366154*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.612482*e1 + 1.495455*e2 - 2.704073*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.218644*e1 + 0.425753*e2 - 1.780935*e3))), 	
+	_normalizedPoint(c3gaPoint(_vectorE3GA(0.865897*e1 + 0.629159*e2 - 1.438985*e3))), 	
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.846445*e1 - 1.112365*e2 - 0.366769*e3)))
 };
+  
+ 
+const int LINE_POINT_IDX = 0;
+const int CIRCLE_POINT_IDX = 2;
+const int PLANE_POINT_IDX = 5;
+
 
 // point dragging info:
 int g_dragPoint = -1;
@@ -85,10 +91,10 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -8.0f);
+	glTranslatef(0.0f, 0.0f, -14.0f);
 
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -106,21 +112,86 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
+	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
+	g_drawState.m_pointSize = 0.005f;
+
 	glColor3fm(1.0f, 0.0f, 0.0f);
 	for (int i = 0; i < NB_POINTS; i++) {
 		glLoadName((GLuint)i);
 		draw(g_points[i]);
+		//printf("p%d = %s\n", i, _vectorE3GA(g_points[i]).c_str_f());
 	}
 
-
-	
 	if (!GLpick::g_pickActive) {
+		// get labeled references to all the points
+		const normalizedPoint &l1 = g_points[LINE_POINT_IDX + 0];
+		const normalizedPoint &l2 = g_points[LINE_POINT_IDX + 1];
+		const normalizedPoint &c1 = g_points[CIRCLE_POINT_IDX + 0];
+		const normalizedPoint &c2 = g_points[CIRCLE_POINT_IDX + 1];
+		const normalizedPoint &c3 = g_points[CIRCLE_POINT_IDX + 2];
+		const normalizedPoint &p1 = g_points[PLANE_POINT_IDX + 0];
 
+		// l1, l2, c1, c2, c3, p1 are points
+		line L = _line(unit_r(l1 ^ l2 ^ ni));
+		circle C = _circle(c1 ^ c2 ^ c3);
+//		plane P = _plane(p1 ^ dual(-e2^ni));
+		// size of sphere not OK?
+		sphere P = _sphere(dual(p1 - 5.0f * ni));
+
+		// draw line (red)
+		glColor3fm(1.0f, 0.0f, 0.0f); 	
+		draw(L);
+		// draw cicle (green)
+		glColor3fm(0.0f, 1.0f, 0.0f);	
+		draw(C);
+
+		// draw reflected line (magenta)
+		glColor3fm(1.0f, 0.0f, 1.0f);	
+		draw(-dual(P) * L * inverse(dual(P)));
+
+		// draw reflected circle (blue)
+		glColor3fm(0.0f, 0.0f, 1.0f);	
+		draw(-dual(P) * C * inverse(dual(P)));
+
+		// compute rotation versor:
+		const float phi = (float)(M_PI / 2.0);
+		TRversor R = _TRversor(exp(0.5f * phi * dual(L)));
+
+		// draw rotated cicle (green)
+		glColor3fm(0.0f, 1.0f, 0.0f);	
+		draw(R * C * inverse(R));
+
+		// draw reflected, rotated circle (blue)
+		glColor3fm(0.0f, 0.0f, 1.0f);	
+		draw(-dual(P) * R * C * inverse(R) * inverse(dual(P)));
+
+		// draw interpolated circles
+		pointPair LR = log(R); // get log of R
+		for (float alpha = 0; alpha < 1.0; alpha += 0.1f) 
+		{
+			// compute interpolated rotor
+			TRversor iR = _TRversor(exp(alpha * LR)); 
+
+			// draw rotated circle (light green)
+			glColor3fm(0.5f, 1.0f, 0.5f);	
+			draw(iR * C * inverse(iR));
+
+			// draw reflected, rotated circle (light blue)
+			glColor3fm(0.5f, 0.5f, 1.0f);	
+			draw(-dual(P) * iR * C * inverse(iR) * inverse(dual(P)));
+		}
+
+		// draw plane (yellow)
+		glColor4fm(1.0f, 1.0f, 0.0f, 0.5f); 	
+		draw(P);
 	}
 
 
+
+	g_drawState.popDrawMode();
 
 	glPopMatrix();
+
 
 	if (!GLpick::g_pickActive) {
 		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -199,15 +270,13 @@ void MouseMotion(int x, int y) {
 	}
 	else if (g_dragPoint >= 0) {
 		vectorE3GA t = vectorAtDepth(g_dragDistance, motion);
-		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
-		printf("T = %s\n", T.c_str());
+		normalizedTranslator T = exp(_freeVector(-0.5f * inverse(g_modelRotor) * (t ^ ni) * g_modelRotor));
 
 		g_points[g_dragPoint] = 
 				_point(T * g_points[g_dragPoint] * inverse(T));
 
 		mv_analyze::mvAnalysis A(g_points[g_dragPoint]);
 
-		printf("P = %s\n", g_points[g_dragPoint].c_str());
 	}
 
 	// remember mouse pos for next motion:

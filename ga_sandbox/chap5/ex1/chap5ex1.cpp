@@ -102,7 +102,7 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -6.0f);
 
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -148,16 +148,17 @@ void display() {
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	if (!GLpick::g_pickActive) {
-		mv X = (g_draw == DRAW_MEET) 
-			? meet(M1, M2)
-			: join(M1, M2);
+		mv X;
+		if (g_draw == DRAW_MEET) X = meet(M1, M2);
+		else X = join(M1, M2);
 
 		// a little hack to draw everthing in the 'right' size:
 		double scale = 1.2f;
 		if (X.e1e2e3() != 0.0) scale = 0.5f;
 
 		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(scale * unit_e(X));
+		X = scale * unit_e(X);
+		draw(X);
 	}
 	} catch(std::string &str) {
 		printf("%s!\n", str.c_str());
@@ -177,7 +178,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 40, font, "-use left mouse button to rotate the red and green multivectors and to orbit scene");
 		renderBitmapString(20, 20, font, "-use other mouse buttons to access popup menu");

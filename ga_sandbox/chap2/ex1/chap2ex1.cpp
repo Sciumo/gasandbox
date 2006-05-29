@@ -46,7 +46,7 @@ bool g_drawParallelogram = true;
 
 
 void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -133,7 +133,7 @@ void display() {
 	glPopMatrix();
 	
 	// draw the labels:
-	glColor3f(0.8, 0.8, 0.8);
+	glColor3f(0.2, 0.2, 0.2);
 	void *font = GLUT_BITMAP_HELVETICA_12;
 	for (unsigned int i = 0; i < labelString.size(); i++) {
 		float w = getBitmapStringWidth(font, labelString[i].c_str());

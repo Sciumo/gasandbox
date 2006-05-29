@@ -79,7 +79,7 @@ void getGLUTmodel2D(const std::string &modelName);
 
 
 void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	// get model, if required:
@@ -92,9 +92,10 @@ void display() {
 	
 	// DONT cull faces (we will do this ourselves!)
 	glDisable(GL_CULL_FACE);
-	// fill all polygons (otherwise they get turned into LINES
+	// fill all polygons (otherwise they get turned into LINES)
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+	glColor3f(0.0f, 0.0f, 0.0f);
 
 	bivector B;
 
@@ -255,7 +256,7 @@ void getGLUTmodel2D(const std::string &modelName) {
 	rotorGLMult(g_modelRotor);
 	
 	
-	glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(0.0f, 0.0f, 0.0f);
 
 	// buffer for OpenGL feedback.
 	// Format will be:
