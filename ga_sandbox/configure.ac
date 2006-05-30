@@ -85,5 +85,7 @@ AC_OUTPUT(
 	solutions/vs.net/Makefile \
 	\
 	attic/Makefile\
-	attic/gaigen2hp/Makefile
+	attic/gaigen2hp/Makefile \
+	\
+	screenshots/Makefile
 	)
