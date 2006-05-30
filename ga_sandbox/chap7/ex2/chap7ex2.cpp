@@ -97,7 +97,7 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -6.0f);
 
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -180,7 +180,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 40, font, "The green vector is reflected, first in one red vector, then in the other.");
 		renderBitmapString(20, 20, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");

@@ -76,7 +76,7 @@ void computeOrthoVectors(const e3ga::vector nonOrtho[3], e3ga::vector ortho[3]) 
 	ortho[1] = unit_e(ortho[0] << (ortho[0] ^ nonOrtho[1]));
 
 	// compute ortho vector 3:
-	ortho[2] = unit_e((ortho[0] ^ ortho[1]) << 
+	ortho[2] = unit_e((ortho[1] ^ ortho[0]) << 
 		(ortho[0] ^ ortho[1] ^ nonOrtho[2]));
 }
 
