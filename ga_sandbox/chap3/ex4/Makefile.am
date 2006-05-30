@@ -10,5 +10,5 @@ chap3ex4_SOURCES = chap3ex4.cpp
 
 noinst_HEADERS = 
 
-sandbin_DATA = image.raw
-EXTRA_DIST = image.raw
+sandbin_DATA = image.raw image2.raw
+EXTRA_DIST = image.raw image2.raw
