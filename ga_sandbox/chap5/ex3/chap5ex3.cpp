@@ -31,13 +31,13 @@ int main(int argc, char*argv[]) {
 	// get two vectors, initialize them to 'e1'
 	vector a, b;
 	a = e1;
-	b = e1;
+//	b = e1;
 
 	float probeEpsilon = 1e-10f;
 	
 	while (true) {// the loop will be broken when the join is a bivector;
 		// add a tiny bit of 'e2' to b:
-		b = _vector(b + probeEpsilon * e2);
+		b = e1 + probeEpsilon * e2;
 
 		// compute the join
 		mv X = join(a, b);

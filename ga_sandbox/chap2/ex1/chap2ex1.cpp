@@ -100,6 +100,8 @@ void display() {
 			draw(B);
 		}
 		else {
+			glDisable(GL_CULL_FACE);
+
 			v1_plus_v2 = v1 + v2;
 			// draw QUAD with vertices
 			// origin  ->  v1  ->  (v1+v2)  ->  v2
