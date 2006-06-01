@@ -36,7 +36,8 @@ using namespace e3ga;
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 3, Example 4: Color Space Conversion";
 
 // note that image name is hard coded!!!
-const char *IMAGE_NAME = "image2.raw";
+const char *IMAGE_NAME_1 = "image2.raw";
+const char *IMAGE_NAME_2 = "image3.raw";
 
 // dimension of images
 unsigned int g_imageWidth, g_imageHeight;
@@ -296,9 +297,44 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
+void loadRawImage(const char *filename) {
+	FILE *F = fopen(filename, "rb");
+	if (F == NULL) {
+		fprintf(stderr, "Could not open '%s'. This file should be in the current directory for this example to work!\n", filename);
+		exit(-1);
+	}
+	unsigned char buf[4];
+	if (fread(buf, 4, 1, F) != 1) {
+		fprintf(stderr, "Could not read '%s'.\n", filename);
+		exit(-1);
+	}
+	g_imageWidth = (buf[0] << 8) + buf[1];
+	g_imageHeight = (buf[2] << 8) + buf[3];
+	printf("Image is %d X %d\n", g_imageWidth, g_imageHeight);
+	g_sourceImage.resize(g_imageWidth*g_imageHeight*3);
+	g_destImage.resize(g_imageWidth*g_imageHeight*3);
+
+	if (fread(&(g_sourceImage[0]), 1, g_sourceImage.size(), F) != g_sourceImage.size()) {
+		fprintf(stderr, "Could not read '%s'.\n", filename);
+		exit(-1);
+	}
+	
+	fclose(F);
+
+	colorSpaceConvert(&(g_sourceImage[0]), &(g_destImage[0]),
+		g_imageWidth, g_imageHeight, g_IFcolors, g_RFcolors);
+}
+
+
 void menuCallback(int value) {
 	if ((value >= 0) && (value < 3))
 		g_sampleColorIdx = value;
+	else if (value == -1) {
+		loadRawImage(IMAGE_NAME_1);
+	}
+	else if (value == -2) {
+		loadRawImage(IMAGE_NAME_2);
+	}
 
 	glutPostRedisplay();
 }
@@ -307,33 +343,7 @@ int main(int argc, char*argv[]) {
 	e3ga::g2Profiling::init();
 
 	// load the raw image:
-	{
-		FILE *F = fopen(IMAGE_NAME, "rb");
-		if (F == NULL) {
-			fprintf(stderr, "Could not open '%s'. This file should be in the current directory for this example to work!\n", IMAGE_NAME);
-			return -1;
-		}
-		unsigned char buf[4];
-		if (fread(buf, 4, 1, F) != 1) {
-			fprintf(stderr, "Could not read '%s'.\n", IMAGE_NAME);
-			return -1;
-		}
-		g_imageWidth = (buf[0] << 8) + buf[1];
-		g_imageHeight = (buf[2] << 8) + buf[3];
-		printf("Image is %d X %d\n", g_imageWidth, g_imageHeight);
-		g_sourceImage.resize(g_imageWidth*g_imageHeight*3);
-		g_destImage.resize(g_imageWidth*g_imageHeight*3);
-
-		if (fread(&(g_sourceImage[0]), 1, g_sourceImage.size(), F) != g_sourceImage.size()) {
-			fprintf(stderr, "Could not read '%s'.\n", IMAGE_NAME);
-			return -1;
-		}
-		
-		fclose(F);
-
-		colorSpaceConvert(&(g_sourceImage[0]), &(g_destImage[0]),
-			g_imageWidth, g_imageHeight, g_IFcolors, g_RFcolors);
-	}
+	loadRawImage(IMAGE_NAME_1);
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -353,6 +363,9 @@ int main(int argc, char*argv[]) {
 	glutAddMenuEntry("sample red", 0);
 	glutAddMenuEntry("sample green", 1);
 	glutAddMenuEntry("sample blue", 2);
+	glutAddMenuEntry("-------------------------", -3);
+	glutAddMenuEntry("Image: computer parts", -1);
+	glutAddMenuEntry("Image: soda cans", -2);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
