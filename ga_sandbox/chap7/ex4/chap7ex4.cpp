@@ -72,8 +72,6 @@ rotor matrixToRotorGeo(const float M[9]) {
 	}
 }
 
-
-using namespace e3ga;
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
@@ -162,7 +160,7 @@ int main(int argc, char*argv[]) {
 	}
 
 	printf("Error: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
-	
+
 
 
 	return 0;

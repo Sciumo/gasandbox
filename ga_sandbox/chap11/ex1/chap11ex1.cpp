@@ -36,7 +36,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 1: Points";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 1: Working with Points";
 
 // GLUT state information
 int g_viewportWidth = 800;
