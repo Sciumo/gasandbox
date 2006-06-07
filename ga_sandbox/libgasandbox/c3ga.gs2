@@ -101,6 +101,9 @@ ga {
 	
 	specialization: versor scalor(1.0, no ^ ni);
 			
+	constant: e1ni = "e1 ^ ni"; 
+	constant: e2ni = "e2 ^ ni"; 
+	constant: e3ni = "e3 ^ ni"; 
 	constant: noni = "no ^ ni"; 
 	constant: I3 = "e1 ^ e2 ^ e3"; 
 	constant: I5 = "no ^ e1 ^ e2 ^ e3 ^ ni"; 
@@ -115,6 +118,8 @@ ga {
 			no ^ e1 ^ e2 ^ e3 ^ ni // grade 5
 	);
 		
+	// outermorphism for use with OpenGL modelview matrix:
+	om_specialization: transpose omFlatPoint(e1^ni, e2^ni, e3^ni, no^ni);
 		
 	
 }

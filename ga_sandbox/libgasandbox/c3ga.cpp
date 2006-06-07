@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-27 23:07:00 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2006-06-07 15:25:52 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1975,6 +1975,46 @@
 
 
 
+	float __e3ni_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __e3ni_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 24;
+
+		return maxC;
+	}
+
+
+
+
+
+
+	float __e2ni_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __e2ni_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 20;
+
+		return maxC;
+	}
+
+
+
+
+
+
 	float __I3_ct__::largestCoordinate() const {
 
 		Float maxC = (Float)1.0f;
@@ -1986,6 +2026,26 @@
 
 		Float maxC = (Float)1.0f;
 		bm = 14;
+
+		return maxC;
+	}
+
+
+
+
+
+
+	float __e1ni_ct__::largestCoordinate() const {
+
+		Float maxC = (Float)1.0f;
+
+		return maxC;
+	}
+
+	float __e1ni_ct__::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)1.0f;
+		bm = 18;
 
 		return maxC;
 	}
@@ -2040,13 +2100,19 @@
 
 
 
+
+
+
 	// algebra / user constants:
 	__no_ct__ no;
 	__ni_ct__ ni;
 	__e3_ct__ e3;
+	__e2ni_ct__ e2ni;
 	__I3_ct__ I3;
 	__e1_ct__ e1;
+	__e1ni_ct__ e1ni;
 	__e2_ct__ e2;
+	__e3ni_ct__ e3ni;
 	__noni_ct__ noni;
 	__I5_ct__ I5;
 	__I5i_ct__ I5i;

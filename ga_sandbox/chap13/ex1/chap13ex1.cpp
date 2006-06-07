@@ -26,6 +26,43 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
 
+	// get the basis vectors:
+	mv bv[5] = {no, e1, e2, e3, ni};
+
+	// print out the metric:
+	printf("Metric:\n");
+	printf("    ");
+	for (int i = 0; i < 5; i++)
+		printf(" %s  ", mv_basisVectorNames[i]);
+	printf("\n");
+	
+	for (int i = 0; i < 5; i++) {
+		printf("%s ", mv_basisVectorNames[i]);
+		for (int j = 0; j < 5; j++) {
+			printf(" % 1.1f", _float(bv[i] << bv[j]));
+		}
+		printf("\n");
+	}
+
+	printf("\n");
+
+	// create 'e' and 'eb'
+	const float sqrt2i = 1.0f / 1.4142135623730950488016887242097f;
+	mv e = sqrt2i * (no - ni);
+	mv eb = sqrt2i * (no + ni);
+
+	// print e and eb
+	printf("e and eb:\n");
+	printf(" e = %s\n", e.c_str());
+	printf("eb = %s\n", eb.c_str());
+	printf("\n");
+	printf("The metric of e and eb:\n");
+	printf(" e . e  = %f\n", _float(e << e));
+	printf("eb . eb = %f\n", _float(eb << eb));
+	printf(" e . eb = %f\n", _float(e << eb));
+
+
+
 
 
 	return 0;

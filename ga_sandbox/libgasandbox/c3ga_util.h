@@ -27,6 +27,10 @@ inline normalizedPoint c3gaPoint(vectorE3GA l) {
 	return _normalizedPoint(l + no + 0.5f * norm_e2(l) * ni);
 }
 
+inline normalizedPoint c3gaPoint(mv::Float x, mv::Float y, mv::Float z) {
+	return c3gaPoint(vectorE3GA(vectorE3GA_e1_e2_e3, x, y, z));
+}
+
 inline e3ga::vector vectorToE3GA(const c3ga::vectorE3GA &v) {
 	return e3ga::vector(e3ga::vector_e1_e2_e3, v.getC(c3ga::vectorE3GA_e1_e2_e3));
 }
