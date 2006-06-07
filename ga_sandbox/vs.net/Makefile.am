@@ -11,7 +11,7 @@ EXTRA_DIST = \
 	chap10ex1.vcproj chap10ex2.vcproj chap10ex3.vcproj \
 	chap11ex1.vcproj chap11ex2.vcproj chap11ex3.vcproj chap11ex4.vcproj chap11ex5.vcproj chap11ex6.vcproj \
 	\
-	chap13ex1.vcproj chap13ex2.vcproj chap13ex3.vcproj \
+	chap13ex1.vcproj chap13ex2.vcproj chap13ex3.vcproj chap13ex4.vcproj \
 	gaigen2hp.vcproj
 
 

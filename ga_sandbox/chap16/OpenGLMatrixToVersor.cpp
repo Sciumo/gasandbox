@@ -27,68 +27,30 @@
 #include <string>
 
 #include <libgasandbox/common.h>
-#include <libgasandbox/h3ga.h>
-#include <libgasandbox/h3ga_util.h>
-#include <libgasandbox/h3ga_draw.h>
+#include <libgasandbox/c3ga.h>
+#include <libgasandbox/c3ga_util.h>
+#include <libgasandbox/c3ga_draw.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
 
 
-using namespace h3ga;
+using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 5: Loading Transformations into OpenGL";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 4: OpenGL Matrices to Conformal Versors";
 
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
 // mouse position on last call to MouseButton() / MouseMotion()
-h3ga::vector g_prevMousePos;
+vectorE3GA g_prevMousePos;
 // when true, MouseMotion() will rotate the model
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
-// model info:
-bool g_initModelRequired = true;
-const char *g_modelName = "dodecahedron";
-
-// vertex positions: points
-std::vector<h3ga::normalizedPoint> g_vertices3D;
-// indices into the g_vertices3D vector:
-std::vector<std::vector<int> > g_polygons3D;
-
-h3ga::rotor g_modelRotor(h3ga::_rotor(1.0f));
-std::string g_prevStatisticsModelName = "";
-
-// model names:
-const char *g_modelNames[] = {
-"teapot",
-"cube",
-"sphere",
-"cone",
-"torus",
-"dodecahedron",
-"octahedron",
-"tetrahedron",
-"icosahedron",
-NULL
-};
-
-// what point to drag (or -1 for none)
-int g_dragPoint = -1; 
-float g_dragDistance = -1.0f;
-
-
-void getGLUTmodel3D(const std::string &modelName);
 
 void display() {
-	// get model, if required:
-	if (g_initModelRequired) {
-		g_initModelRequired = false;
-		getGLUTmodel3D(g_modelName);
-	}
-
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -107,34 +69,19 @@ void display() {
 
 	glMatrixMode(GL_MODELVIEW);
 
-	float distance = -20.0f;
-	if (false) {
-		// direct OpenGL:
-		glTranslatef(0.0f, 0.0f, distance);
-		rotor R = g_modelRotor;
-		rotorGLMult(R);
-	}
-	else {
-		// compose transform through GA:
+	// one button = scale, the other translate, the other scale!
+	glTranslatef(0.0f, 0.0f, g_modelDistance);
+	rotorGLMult(g_modelRotor);
 
-		// translation vector & rotor
-		h3ga::vector T = _vector(distance * e3);
-		rotor R = g_modelRotor;
-		rotor Ri = _rotor(inverse(R));
+	// get matrix
+	GLfloat modelViewMatrix[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
 
-		// compute images of basis vectors:
-		point imageOfE1 = _point(R * e1 * Ri + (T ^ (e0 << e1)));
-		point imageOfE2 = _point(R * e2 * Ri + (T ^ (e0 << e2)));
-		point imageOfE3 = _point(R * e3 * Ri + (T ^ (e0 << e3)));
-		point imageOfE0 = _point(R * e0 * Ri + (T ^ (e0 << e0)));
+	// extract rotation, translation
 
-		// create matrix representation:
-		omPoint M(imageOfE1, imageOfE2, imageOfE3, imageOfE0);
+	// create versor
 
-		// load matrix representation into GL:
-		glLoadMatrixf(M.m_c);
-	}
-	
+	// reset modelview matrix to nothing
 
 	// clear viewport
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -149,6 +96,8 @@ void display() {
 	glEnable(GL_LIGHT0);
 	glLineWidth(1.0f);
 
+	// NO: enable lighting!
+	// so you can show free bivectors getting transformed, dualized, and coordinates extracted
 	glDisable(GL_LIGHTING);
 	// render model
 	for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
@@ -159,7 +108,10 @@ void display() {
 			// get vertex:
 			const normalizedPoint &v = g_vertices3D[g_polygons3D[i][j]];
 
-			glVertex3fv(v.getC(normalizedPoint_e1_e2_e3_e0f1_0));
+			// todo:
+			// apply versor to vertices!
+			// load into GL with glVertex4f(e1(), e2(), e3(), no());
+			glVertex3fv(v.getC(normalizedPoint_e1_e2_e3_ni_nof1_0));
 		}
 		glEnd();
 	}
@@ -174,9 +126,9 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(0.0f, 0.0f, 0.0f);
+		glColor3f(0.0f, 0.0f,  0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 40, font, "This example demonstrates loading transformations into OpenGL");
+		renderBitmapString(20, 40, font, "This example demonstrates loading conformal transformations into OpenGL");
 		renderBitmapString(20, 20, font, "(see the source code).");
 	}
 
@@ -190,8 +142,8 @@ void reshape(GLint width, GLint height) {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -203,22 +155,22 @@ void reshape(GLint width, GLint height) {
 	glutPostRedisplay();
 }
 
-h3ga::vector mousePosToVector(int x, int y) {
+vectorE3GA mousePosToVector(int x, int y) {
 	x -= g_viewportWidth / 2;
 	y -= g_viewportHeight / 2;
-	return h3ga::_vector((mv::Float)x * e1 - (mv::Float)y * e2);
+	return c3ga::_vectorE3GA((mv::Float)x * e1 - (mv::Float)y * e2);
 }
 
 void MouseMotion(int x, int y) {
 	// get mouse position, motion
-	h3ga::vector mousePos = mousePosToVector(x, y);
-	h3ga::vector motion = _vector(mousePos - g_prevMousePos);
+	vectorE3GA mousePos = mousePosToVector(x, y);
+	vectorE3GA motion = _vectorE3GA(mousePos - g_prevMousePos);
 
 	if (g_rotateModel) {
 		// update rotor
 		if (g_rotateModelOutOfPlane)
-			g_modelRotor = _rotor(h3ga::exp(0.005f * (motion ^ e3)) * g_modelRotor);
-		else g_modelRotor = _rotor(h3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
+			g_modelRotor = _rotor(c3ga::exp(0.005f * (motion ^ e3)) * g_modelRotor);
+		else g_modelRotor = _rotor(c3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
 
 	// remember mouse pos for next motion:
@@ -234,7 +186,7 @@ void MouseButton(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON) {
 		g_prevMousePos = mousePosToVector(x, y);
 
-		h3ga::vector mousePos = mousePosToVector(x, y);
+		vectorE3GA mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;
 		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
 			g_rotateModelOutOfPlane = true;
@@ -258,7 +210,7 @@ void menuCallback(int value) {
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
-	h3ga::g2Profiling::init();
+	c3ga::g2Profiling::init();
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -309,7 +261,7 @@ void renderModel(const std::string &modelName) {
 }
 
 void getGLUTmodel3D(const std::string &modelName) {
-	// DONT cull faces 
+	// DONT cull faces
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -318,8 +270,8 @@ void getGLUTmodel3D(const std::string &modelName) {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -380,11 +332,11 @@ void getGLUTmodel3D(const std::string &modelName) {
 			vtxIdx[i] = (int)g_vertices3D.size();
 			mv::Float x = bufferXY[idx];
 			mv::Float y = bufferXY[idx+1];
-			mv::Float z = bufferZY[idx+0]; 
+			mv::Float z = bufferZY[idx+0];
 			x -= (mv::Float)g_viewportWidth / 2;
 			y -= (mv::Float)g_viewportHeight / 2;
 			z -= (mv::Float)g_viewportWidth / 2;
-			g_vertices3D.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, x, y, z));
+			g_vertices3D.push_back(c3gaPoint(x, y, z));
 			idx += 2;
 		}
 

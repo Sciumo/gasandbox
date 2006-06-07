@@ -82,6 +82,7 @@ float g_dragDistance = -1.0f;
 
 void getGLUTmodel3D(const std::string &modelName);
 
+// TODO: add normals & lighting!
 void display() {
 	// get model, if required:
 	if (g_initModelRequired) {
@@ -107,7 +108,6 @@ void display() {
 
 	glMatrixMode(GL_MODELVIEW);
 
-	// replace with GA based stuff:
 	float distance = -20.0f;
 	if (false) {
 		// direct OpenGL:
@@ -123,10 +123,6 @@ void display() {
 
 		normalizedTranslator T = _normalizedTranslator(exp(_freeVector(-0.5f * (t ^ ni))));
 		rotor &R = g_modelRotor;
-
-		printf("t = %s\n", t.c_str());
-		printf("T = %s\n", T.c_str());
-		printf("R = %s\n", R.c_str());
 
 		// combine 'T' and 'R' to form translation-rotation versor:
 		TRversor TR = _TRversor(T * R);

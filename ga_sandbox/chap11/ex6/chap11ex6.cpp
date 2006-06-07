@@ -322,8 +322,8 @@ void display() {
 		{
 			char buf[256];
 			sprintf(buf, "MODE: %s\n", g_modeName[g_mouseMode]);
-			renderBitmapString(20, g_viewportHeight - 20, font, buf);
-			renderBitmapString(40, g_viewportHeight - 20, font, "NOTE: THIS EXAMPLE IS NEARLY IDENTICAL TO EXAMPLE 11.2!");
+			renderBitmapString(20, g_viewportHeight - 40, font, buf);
+			renderBitmapString(20, g_viewportHeight - 20, font, "NOTE: THIS EXAMPLE IS NEARLY IDENTICAL TO EXAMPLE 11.2!");
 		}
 
 		renderBitmapString(20, 60, font, "Use the left mouse button to manipulate the scene, and to orbit it.");
