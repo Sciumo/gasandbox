@@ -50,9 +50,7 @@ sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
 am_chap13ex1_OBJECTS = chap13ex1.$(OBJEXT)
 chap13ex1_OBJECTS = $(am_chap13ex1_OBJECTS)
-am__DEPENDENCIES_1 =
-chap13ex1_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../libgasandbox/libgasandbox.a
+chap13ex1_DEPENDENCIES = ../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -156,8 +154,8 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap13ex1_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+AM_CPPFLAGS = -I../.. 
+chap13ex1_LDADD = ../../libgasandbox/libgasandbox.a
 chap13ex1_SOURCES = chap13ex1.cpp
 noinst_HEADERS = 
 all: all-am

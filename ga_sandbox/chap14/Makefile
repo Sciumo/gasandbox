@@ -141,7 +141,7 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-SUBDIRS = 
+SUBDIRS = ex1
 all: all-recursive
 
 .SUFFIXES:
