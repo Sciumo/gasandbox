@@ -1,5 +1,5 @@
 
-// Generated on 2006-06-08 14:31:39 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c2ga.gs2'
+// Generated on 2006-06-08 14:40:10 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1012,8 +1012,6 @@
 		if (C > maxC) maxC = C;
 		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
 		if (C > maxC) maxC = C;
-		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
-		if (C > maxC) maxC = C;
 		return maxC;
 	}
 
@@ -1031,11 +1029,6 @@
 		if (C > maxC) {
 			maxC = C;
 			bm = 12;
-		}
-		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
-		if (C > maxC) {
-			maxC = C;
-			bm = 0;
 		}
 		return maxC;
 	}
@@ -1085,8 +1078,6 @@
 
 		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
 		if (C > maxC) maxC = C;
-		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
-		if (C > maxC) maxC = C;
 		return maxC;
 	}
 
@@ -1099,11 +1090,6 @@
 		if (C > maxC) {
 			maxC = C;
 			bm = 6;
-		}
-		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
-		if (C > maxC) {
-			maxC = C;
-			bm = 0;
 		}
 		return maxC;
 	}

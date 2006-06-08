@@ -76,7 +76,7 @@ ga {
 		e1^e2^no^ni);      // grade 4
 	
 	specialization: versor translator(1.0, // grade 0
-			e1^ni,    e2^ni,    // grade 2
+			e1^ni,    e2^ni    // grade 2
 			);
 	
 	specialization: versor normalizedTranslator(1.0=1, // grade 0
@@ -84,7 +84,7 @@ ga {
 			);
 	
 	specialization: versor rotor(1.0, // grade 0
-			e1^e2,    // grade 2
+			e1^e2    // grade 2
 			);
 	
 	specialization: versor scalor(1.0, no ^ ni);
