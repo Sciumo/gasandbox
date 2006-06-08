@@ -12,34 +12,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
 // Daniel Fontijne -- fontijne@science.uva.nl
 
-#ifdef WIN32
-#include <windows.h>
-#endif
+#ifndef _C2GA_TO_C3GA_H_
+#define _C2GA_TO_C3GA_H_
 
-#include <GL/gl.h>
+#include "c2ga.h"
+#include "c3ga.h"
 
-#include "c2ga_draw.h"
-#include "c3ga_draw.h"
-#include "mv_analyze.h"
-
-using namespace mv_analyze;
-
-namespace mv_draw {
-
-using namespace e3ga;
-
-void drawC2GA(const mv_analyze::mvAnalysis &A, int method/*= 0*/, Palet *o/* = NULL*/) {
-	return drawC3GA(A, method, o);
-}
-
-void draw(const c2ga::mv &X, int method/*= 0*/, Palet *o/* = NULL*/) {
-	mv_analyze::mvAnalysis A(X);
-	drawC3GA(A, method, o);
-}
+c3ga::mv c2gaTOc3ga(const c2ga::mv &X);
 
 
-} // end of namespace mv_draw
-
+#endif /* _C2GA_TO_C3GA_H_ */

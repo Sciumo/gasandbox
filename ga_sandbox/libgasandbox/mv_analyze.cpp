@@ -19,6 +19,7 @@
 #include "e3ga_util.h"
 #include "h3ga_util.h"
 #include "c3ga_util.h"
+#include "c2gatoc3ga.h"
 
 namespace mv_analyze {
 
@@ -92,6 +93,11 @@ mvAnalysis::mvAnalysis(const c3ga::mv &X, int intFlags/* = 0 */, double epsilon/
 	analyze(X, intFlags, epsilon, probe);
 }
 
+mvAnalysis::mvAnalysis(const c2ga::mv &X, int intFlags/* = 0 */, double epsilon/* = DEFAULT_EPSILON */, 
+					   const c2ga::normalizedPoint &probe /*= c2ga::_normalizedPoint(c3ga::no)*/) {
+	analyze(X, intFlags, epsilon, probe);
+}
+
 
 mvAnalysis::~mvAnalysis() {
 }
@@ -124,7 +130,7 @@ std::string mvAnalysis::toString() const {
 
 	else if (model() == VECTOR_SPACE_MODEL) {
 		// model:
-		result += "Conformal";
+		result += "Vector space model";
 
 		// flags / special stuff:
 		if (isDual()) result += " dual";
@@ -139,7 +145,7 @@ std::string mvAnalysis::toString() const {
 			result += ":";
 			switch(bladeSubclass()) {
 				case SCALAR:
-					result += " point";
+					result += " scalar";
 					break;
 				case VECTOR:
 					result += " vector";
@@ -167,7 +173,7 @@ std::string mvAnalysis::toString() const {
 
 	else if (model() == HOMOGENEOUS_MODEL) {
 		// model:
-		result += "Conformal";
+		result += "Homogeneous";
 
 		// flags / special stuff:
 		if (isDual()) result += " dual";
@@ -181,8 +187,12 @@ std::string mvAnalysis::toString() const {
 		if (!isZero()) {
 			if (isBlade()) {
 				result += ":";
+				
+				if (bladeClass() == SCALAR) {
+					result += " scalar";
+				}
 
-				if (bladeClass() == INFINITE_BLADE) {
+				else if (bladeClass() == INFINITE_BLADE) {
 					switch(bladeSubclass()) {
 					case POINT:
 						result += " vector";
@@ -195,6 +205,7 @@ std::string mvAnalysis::toString() const {
 						break;
 					}
 				}
+				
 				else if (bladeClass() == LOCALIZED_BLADE) {
 					switch(bladeSubclass()) {
 					case POINT:
@@ -208,6 +219,11 @@ std::string mvAnalysis::toString() const {
 						break;
 					}
 				}
+				
+				else if (bladeClass() == PSEUDOSCALAR) {
+					result += " pseudoscalar";
+				}
+
 			}
 			else if (isVersor()) {
 				result += ":";
@@ -292,6 +308,9 @@ std::string mvAnalysis::toString() const {
 						result += " trivector";
 						break;
 					}
+					break;
+				case PSEUDOSCALAR:
+					result += " pseudoscalar";
 					break;
 				default:
 					result += "of unknown class";
@@ -537,7 +556,7 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	// blade
 	else if (m_mvType.m_type == BLADE) {
 		if (m_mvType.m_grade == 0) {
-			m_type[2] =	 LOCALIZED_BLADE;
+			m_type[2] =	LOCALIZED_BLADE;
 			m_type[3] = SCALAR;
 
 			// format for scalar:
@@ -662,6 +681,51 @@ void mvAnalysis::analyze(h3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 
 }
 
+void mvAnalysis::analyze(c2ga::mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */, 
+						 const c2ga::normalizedPoint &probe /*= _normalizedPoint(no)*/) {
+	// cleanup:
+	m_flags = FLAG_VALID;
+	m_epsilon = epsilon;
+	for (int i = 0; i < NB_TYPE_LEVELS; i++)
+		m_type[i] = INVALID_TYPE;
+
+	// type is conformal
+	m_type[0] = CONFORMAL_MODEL;
+
+	// forced dual interpretation?
+	if (intFlags & FLAG_DUAL) {
+		m_flags ^= FLAG_DUAL;
+		intFlags ^= FLAG_DUAL; // turn off
+		X = dual(X); // should 'dual' be 'undual?'
+	}
+							 
+	m_mvType = c2ga::mvType(X, (c2ga::mv::Float)epsilon);
+	
+	// zero blade? 
+	if (m_mvType.m_zero) {
+		m_type[2] = ZERO;
+		m_sc[0] = 0;
+		return;
+	}
+	
+	// scalar
+	if (m_mvType.m_gradeUsage == c2ga::GRADE_0) {
+		m_type[2] = SCALAR;
+		m_type[3] = SCALAR;		
+		m_sc[0] = _Float(X);
+		return;
+	}
+	// pseudo scalar
+	else if (m_mvType.m_gradeUsage == c2ga::GRADE_4) {
+		m_type[2] = PSEUDOSCALAR;
+		m_type[3] = PSEUDOSCALAR;		
+		m_sc[0] = X.noe1e2ni();
+		return;
+	}
+	else analyze(c2gaTOc3ga(X), intFlags, epsilon, c3ga::_normalizedPoint(c2gaTOc3ga(probe)));
+		
+}
+
 using namespace c3ga;
 
 void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = DEFAULT_EPSILON */, 
@@ -692,7 +756,20 @@ void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 		return;
 	}
 
-	// scalar, pseudoscalar???
+	// scalar
+	if (m_mvType.m_gradeUsage == GRADE_0) {
+		m_type[2] = SCALAR;
+		m_type[3] = SCALAR;		
+		m_sc[0] = _Float(X);
+		return;
+	}
+	// pseudo scalar
+	else if (m_mvType.m_gradeUsage == GRADE_5) {
+		m_type[2] = PSEUDOSCALAR;
+		m_type[3] = PSEUDOSCALAR;		
+		m_sc[0] = X.noe1e2e3ni();
+		return;
+	}
 
 	// init basic classifiers:
 	c3ga::mv::Float _opNiX = _Float(norm_e(op(ni, X)));
@@ -703,7 +780,8 @@ void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	bool opNiX = (fabs(_opNiX) >= epsilon);
 	bool ipNiX = (fabs(_ipNiX) >= epsilon);
 	bool X2 = (fabs(_X2) >= epsilon);
-	//printf("X2 = %e\n", _X2);
+	
+//	printf("%d %d %d\n", opNiX, ipNiX, X2);
 
 	// free?
 	if ((!opNiX) && (!ipNiX))

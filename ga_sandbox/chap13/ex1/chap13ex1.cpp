@@ -17,6 +17,7 @@
 #include <libgasandbox/c3ga.h>
 #include <libgasandbox/c3ga_util.h>
 #include <libgasandbox/timing.h>
+#include <libgasandbox/mv_analyze.h>
 
 #include <vector>
 

@@ -24,10 +24,8 @@ http://sourceforge.net/projects/opencvlibrary/
 Qhull (2003.1): required by chap14ex1
 http://www.qhull.org/
 	
-	On Unix, just download and install qhull-2003.1.
-	
-	For windows, we provide a vs.net project in the directory 'qhull-2003.1'
-	(as qhull itself does not provide this). 
-	You should download the qhull-2003.1 sources yourself, and extract it to 
-	this directory. Then build the library and copy the .libs and .h to where 
-	the compiler can find them.
+	QHull caused us so much trouble -- both on Unix and Windows --
+	that we decide to include the qhull distribution with this package.
+	It recides in the qhull-2003.1 directory. We hope we do not violate 
+	any rights of the QHull authors by redistributing it. The only 
+	modifications we made are in the Makefiles and VS projects.

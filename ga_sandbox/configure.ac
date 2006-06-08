@@ -10,6 +10,12 @@ AC_OUTPUT(
 	Makefile \
 	vs.net/Makefile \
 	\
+	qhull-2003.1/Makefile \
+	qhull-2003.1/src/Makefile \
+	qhull-2003.1/html/Makefile \
+	qhull-2003.1/eg/Makefile \
+	qhull-2003.1/vs.net/Makefile \
+	\
 	libgasandbox/Makefile \
 	\
 	chap1/Makefile \

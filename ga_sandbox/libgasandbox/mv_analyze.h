@@ -21,6 +21,7 @@
 #include "e2ga.h"
 #include "e3ga.h"
 #include "h3ga.h"
+#include "c2ga.h"
 #include "c3ga.h"
 
 namespace mv_analyze {
@@ -102,6 +103,7 @@ public:
 	mvAnalysis(const e2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const e3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	mvAnalysis(const h3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
+	mvAnalysis(const c2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON,  const c2ga::normalizedPoint &probe = c2ga::_normalizedPoint(c2ga::no));
 	mvAnalysis(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON,  const c3ga::normalizedPoint &probe = c3ga::_normalizedPoint(c3ga::no));
 	mvAnalysis(const mvAnalysis &I);
 	virtual ~mvAnalysis();
@@ -113,6 +115,7 @@ public:
 	void analyze(e2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(e3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	void analyze(h3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const h3ga::normalizedPoint &probe = h3ga::_normalizedPoint(h3ga::e0));
+	void analyze(c2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const c2ga::normalizedPoint &probe = c2ga::_normalizedPoint(c2ga::no));
 	void analyze(c3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON, const c3ga::normalizedPoint &probe = c3ga::_normalizedPoint(c3ga::no));
 
 	std::string toString() const;
