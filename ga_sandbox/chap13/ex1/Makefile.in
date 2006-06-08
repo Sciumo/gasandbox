@@ -15,7 +15,6 @@
 @SET_MAKE@
 
 
-
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -36,8 +35,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-sandbin_PROGRAMS = chap3ex4$(EXEEXT)
-subdir = chap3/ex4
+sandbin_PROGRAMS = chap13ex1$(EXEEXT)
+subdir = chap13/ex1
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -46,13 +45,13 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES =
-am__installdirs = "$(DESTDIR)$(sandbindir)" "$(DESTDIR)$(sandbindir)"
+am__installdirs = "$(DESTDIR)$(sandbindir)"
 sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
-am_chap3ex4_OBJECTS = chap3ex4.$(OBJEXT)
-chap3ex4_OBJECTS = $(am_chap3ex4_OBJECTS)
+am_chap13ex1_OBJECTS = chap13ex1.$(OBJEXT)
+chap13ex1_OBJECTS = $(am_chap13ex1_OBJECTS)
 am__DEPENDENCIES_1 =
-chap3ex4_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+chap13ex1_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -62,16 +61,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(chap3ex4_SOURCES)
-DIST_SOURCES = $(chap3ex4_SOURCES)
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-sandbinDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(sandbin_DATA)
+SOURCES = $(chap13ex1_SOURCES)
+DIST_SOURCES = $(chap13ex1_SOURCES)
 HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -166,11 +157,9 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap3ex4_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
-chap3ex4_SOURCES = chap3ex4.cpp
+chap13ex1_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+chap13ex1_SOURCES = chap13ex1.cpp
 noinst_HEADERS = 
-sandbin_DATA = image.raw image2.raw image3.raw
-EXTRA_DIST = image.raw image2.raw image3.raw
 all: all-am
 
 .SUFFIXES:
@@ -184,9 +173,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap3/ex4/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  chap13/ex1/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  chap3/ex4/Makefile
+	  $(AUTOMAKE) --gnu  chap13/ex1/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -227,9 +216,9 @@ uninstall-sandbinPROGRAMS:
 
 clean-sandbinPROGRAMS:
 	-test -z "$(sandbin_PROGRAMS)" || rm -f $(sandbin_PROGRAMS)
-chap3ex4$(EXEEXT): $(chap3ex4_OBJECTS) $(chap3ex4_DEPENDENCIES) 
-	@rm -f chap3ex4$(EXEEXT)
-	$(CXXLINK) $(chap3ex4_LDFLAGS) $(chap3ex4_OBJECTS) $(chap3ex4_LDADD) $(LIBS)
+chap13ex1$(EXEEXT): $(chap13ex1_OBJECTS) $(chap13ex1_DEPENDENCIES) 
+	@rm -f chap13ex1$(EXEEXT)
+	$(CXXLINK) $(chap13ex1_LDFLAGS) $(chap13ex1_OBJECTS) $(chap13ex1_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -237,7 +226,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap3ex4.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chap13ex1.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -253,23 +242,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 uninstall-info-am:
-install-sandbinDATA: $(sandbin_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(sandbindir)" || $(mkdir_p) "$(DESTDIR)$(sandbindir)"
-	@list='$(sandbin_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f=$(am__strip_dir) \
-	  echo " $(sandbinDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(sandbindir)/$$f'"; \
-	  $(sandbinDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(sandbindir)/$$f"; \
-	done
-
-uninstall-sandbinDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(sandbin_DATA)'; for p in $$list; do \
-	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(sandbindir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(sandbindir)/$$f"; \
-	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -348,9 +320,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS) $(DATA) $(HEADERS)
+all-am: Makefile $(PROGRAMS) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(sandbindir)" "$(DESTDIR)$(sandbindir)"; do \
+	for dir in "$(DESTDIR)$(sandbindir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -397,7 +369,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-sandbinDATA install-sandbinPROGRAMS
+install-data-am: install-sandbinPROGRAMS
 
 install-exec-am:
 
@@ -424,20 +396,18 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-sandbinDATA \
-	uninstall-sandbinPROGRAMS
+uninstall-am: uninstall-info-am uninstall-sandbinPROGRAMS
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-sandbinPROGRAMS ctags distclean distclean-compile \
 	distclean-generic distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-sandbinDATA \
-	install-sandbinPROGRAMS install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-info-am uninstall-sandbinDATA \
+	install-info-am install-man install-sandbinPROGRAMS \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-info-am \
 	uninstall-sandbinPROGRAMS
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

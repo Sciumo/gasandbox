@@ -1,4 +1,4 @@
-chap11ex5.o chap11ex5.o: chap11ex5.cpp /usr/include/GL/gl.h \
+chap13ex3.o chap13ex3.o: chap13ex3.cpp /usr/include/GL/gl.h \
   /usr/include/GL/glext.h \
   /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/include/stddef.h \
   /usr/include/GL/glut.h /usr/include/GL/glu.h /usr/include/stdio.h \
@@ -86,10 +86,10 @@ chap11ex5.o chap11ex5.o: chap11ex5.cpp /usr/include/GL/gl.h \
   /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
   /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
   /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
-  ../../libgasandbox/h3ga.h ../../libgasandbox/mvtypebase.h \
-  ../../libgasandbox/h3ga_util.h ../../libgasandbox/h3ga_draw.h \
-  ../../libgasandbox/draw.h ../../libgasandbox/e3ga.h \
-  ../../libgasandbox/gl_util.h ../../libgasandbox/c3ga.h \
+  ../../libgasandbox/c3ga.h ../../libgasandbox/mvtypebase.h \
+  ../../libgasandbox/c3ga_util.h ../../libgasandbox/e3ga.h \
+  ../../libgasandbox/c3ga_draw.h ../../libgasandbox/draw.h \
+  ../../libgasandbox/gl_util.h ../../libgasandbox/h3ga.h \
   ../../libgasandbox/glut_util.h
 
 /usr/include/GL/gl.h:
@@ -336,20 +336,20 @@ chap11ex5.o chap11ex5.o: chap11ex5.cpp /usr/include/GL/gl.h \
 
 /usr/include/bits/mathinline.h:
 
-../../libgasandbox/h3ga.h:
+../../libgasandbox/c3ga.h:
 
 ../../libgasandbox/mvtypebase.h:
 
-../../libgasandbox/h3ga_util.h:
-
-../../libgasandbox/h3ga_draw.h:
-
-../../libgasandbox/draw.h:
+../../libgasandbox/c3ga_util.h:
 
 ../../libgasandbox/e3ga.h:
 
+../../libgasandbox/c3ga_draw.h:
+
+../../libgasandbox/draw.h:
+
 ../../libgasandbox/gl_util.h:
 
-../../libgasandbox/c3ga.h:
+../../libgasandbox/h3ga.h:
 
 ../../libgasandbox/glut_util.h:
