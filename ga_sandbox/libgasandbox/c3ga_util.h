@@ -18,6 +18,7 @@
 #ifndef _C3GA_UTIL_H_
 #define _C3GA_UTIL_H_
 
+#include "c3ga.h"
 #include "e3ga.h"
 #include "common.h"
 

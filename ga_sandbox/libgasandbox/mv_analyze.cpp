@@ -268,7 +268,7 @@ std::string mvAnalysis::toString() const {
 						result += " scalar";
 						break;
 					case POINT:
-						result += " scalar (AKA: 'point')";
+						result += " flat point";
 						break;
 					case LINE:
 						result += " line";

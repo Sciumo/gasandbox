@@ -37,7 +37,9 @@ using namespace e3ga;
 // 
 void drawFlat(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::POINT) {
+		printf("Hey! %s\n", A.m_pt[0].c_str());
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		printf("Ps: %f\n", g_drawState.m_pointSize);
 		drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
 		g_drawState.popDrawMode();
 	}
