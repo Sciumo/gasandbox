@@ -183,6 +183,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap13ex4", "chap13ex4.vcpr
 		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull", "..\qhull-2003.1\vs.net\qhull.vcproj", "{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap14ex1", "chap14ex1.vcproj", "{B5F36C4C-5E7F-4442-B8B3-3C52C212C1C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2} = {077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}
+		{FA5DC3A9-AA89-4F04-9F78-38727225F84C} = {FA5DC3A9-AA89-4F04-9F78-38727225F84C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -337,6 +347,14 @@ Global
 		{B5F36C4C-5E7F-4442-B8B3-1B42B112C4C6}.Debug.Build.0 = Debug|Win32
 		{B5F36C4C-5E7F-4442-B8B3-1B42B112C4C6}.Release.ActiveCfg = Release|Win32
 		{B5F36C4C-5E7F-4442-B8B3-1B42B112C4C6}.Release.Build.0 = Release|Win32
+		{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}.Debug.ActiveCfg = Debug|Win32
+		{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}.Debug.Build.0 = Debug|Win32
+		{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}.Release.ActiveCfg = Release|Win32
+		{077A4370-606C-4AD0-AC41-A1BDBA4CC6B2}.Release.Build.0 = Release|Win32
+		{B5F36C4C-5E7F-4442-B8B3-3C52C212C1C4}.Debug.ActiveCfg = Debug|Win32
+		{B5F36C4C-5E7F-4442-B8B3-3C52C212C1C4}.Debug.Build.0 = Debug|Win32
+		{B5F36C4C-5E7F-4442-B8B3-3C52C212C1C4}.Release.ActiveCfg = Release|Win32
+		{B5F36C4C-5E7F-4442-B8B3-3C52C212C1C4}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
