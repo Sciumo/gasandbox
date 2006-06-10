@@ -309,7 +309,7 @@ void display() {
 
 //	glTranslatef((float)g_viewportWidth / 2.0f, (float)g_viewportHeight / 2.0f, 0.0f);
 
-	g_drawState.m_pointSize	= 100.0f;
+	g_drawState.m_pointSize	= 2.0f;
 	glColor3f(1.0f, 0.0f, 0.0f);
 	// draw the points:
 	for (unsigned int i = 0; i < g_points.size(); i++) {
