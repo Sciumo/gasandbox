@@ -265,11 +265,6 @@ void MouseMotion(int x, int y) {
 
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
-
 void menuCallback(int value) {
 	if ((value >= 1) && (value <= 3)) {
 		g_M1 = unit_e(randomBlade(value));
@@ -358,7 +353,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 

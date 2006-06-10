@@ -286,11 +286,6 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
@@ -304,29 +299,10 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 	
 	glutMainLoop();
-/*
-	rotor R = exp(bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1, 1.0f, 2.0f, 3.0f));
-	normalizedTranslator T = exp(freeVector(freeVector_e1ni_e2ni_e3ni, -1.0f, -0.5f, 0.1f));
 
-	TRversor TR = _TRversor(T * R);
-
-//	TR = R;
-	printf("TR = %s;\n", TR.c_str());
-	//printf("X = %s;\n", exp(log(R)).c_str());
-
-	pointPair L = log(TR);
-
-	printf("L = %s;\n", L.c_str());
-
-	mv TR2 = exp(L);
-
-	printf("TR2 = %s;\n", TR2.c_str());
-	printf("TR2 / TR= %s;\n", (TR2 * inverse(TR)).c_str());
-*/
 	return 0;	
 }

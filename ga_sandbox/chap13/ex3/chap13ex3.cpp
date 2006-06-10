@@ -249,11 +249,6 @@ void MouseButton(int button, int state, int x, int y) {
 }
 
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
-
 void menuCallback(int value) {
 	g_modelName = g_modelNames[value];
 	g_initModelRequired = true;
@@ -275,7 +270,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 

@@ -264,10 +264,6 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
 void menuCallback(int value) {
 	// redraw viewport
 	glutPostRedisplay();
@@ -291,7 +287,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 	glutIdleFunc(Idle);

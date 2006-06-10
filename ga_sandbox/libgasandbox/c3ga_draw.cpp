@@ -37,11 +37,14 @@ using namespace e3ga;
 // 
 void drawFlat(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::POINT) {
-		printf("Hey! %s\n", A.m_pt[0].c_str());
+		GLboolean l;
+		glGetBooleanv(GL_LIGHTING, &l);
+		glDisable(GL_LIGHTING);
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
-		printf("Ps: %f\n", g_drawState.m_pointSize);
-		drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		e3ga::mv::Float scale = pow(g_drawState.m_pointSize, 3) * ((4.0f/3.0f) * (float)M_PI);
+		drawTriVector(A.m_pt[0], scale, NULL, DRAW_TV_SPHERE, o);
 		g_drawState.popDrawMode();
+		if (l) glEnable(GL_LIGHTING);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::LINE) {
 		drawLine(A.m_pt[0], A.m_vc[0], A.m_sc[0], method, o);
@@ -54,10 +57,15 @@ void drawFlat(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 void drawRound(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	// todo test if all of these get drawn correctly!:
 	if (A.bladeSubclass() == mvAnalysis::POINT_PAIR) {
+		GLboolean l;
+		glGetBooleanv(GL_LIGHTING, &l);
+		glDisable(GL_LIGHTING);
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
-		drawTriVector(_vector(A.m_pt[0] + A.m_sc[0] * A.m_vc[0]), g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
-		drawTriVector(_vector(A.m_pt[0] - A.m_sc[0] * A.m_vc[0]), g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		e3ga::mv::Float scale = pow(g_drawState.m_pointSize, 3) * ((4.0f/3.0f) * (float)M_PI);
+		drawTriVector(_vector(A.m_pt[0] + A.m_sc[0] * A.m_vc[0]), scale, NULL, DRAW_TV_SPHERE, o);
+		drawTriVector(_vector(A.m_pt[0] - A.m_sc[0] * A.m_vc[0]), scale, NULL, DRAW_TV_SPHERE, o);
 		g_drawState.popDrawMode();
+		if (l) glEnable(GL_LIGHTING);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::CIRCLE) {
 		glLineWidth(2.0f);
@@ -66,17 +74,23 @@ void drawRound(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 		glLineWidth(1.0f);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::SPHERE) {
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		drawTriVector(_vector(A.m_pt[0]), A.m_sc[0], NULL, DRAW_TV_SPHERE, o);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+//		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		e3ga::mv::Float scale = pow(A.m_sc[0], 3) * ((4.0f/3.0f) * (float)M_PI);
+		drawTriVector(_vector(A.m_pt[0]), scale, NULL, DRAW_TV_SPHERE, o);
+//		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 }
 
 void drawTangent(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	if (A.bladeSubclass() == mvAnalysis::SCALAR) {
+		GLboolean l;
+		glGetBooleanv(GL_LIGHTING, &l);
+		glDisable(GL_LIGHTING);
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
-		drawTriVector(A.m_pt[0], g_drawState.m_pointSize, NULL, DRAW_TV_SPHERE, o);
+		e3ga::mv::Float scale = pow(g_drawState.m_pointSize, 3) * ((4.0f/3.0f) * (float)M_PI);
+		drawTriVector(A.m_pt[0], scale, NULL, DRAW_TV_SPHERE, o);
 		g_drawState.popDrawMode();
+		if (l) glEnable(GL_LIGHTING);
 	}
 	
 	else if (A.bladeSubclass() == mvAnalysis::VECTOR) {

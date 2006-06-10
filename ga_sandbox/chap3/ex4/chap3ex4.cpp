@@ -293,10 +293,6 @@ void MouseMotion(int x, int y) {
 	sampleColorAt(x, g_viewportHeight - y);
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
 void loadRawImage(const char *filename) {
 	FILE *F = fopen(filename, "rb");
 	if (F == NULL) {
@@ -354,7 +350,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 

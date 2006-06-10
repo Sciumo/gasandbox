@@ -249,10 +249,6 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	h3ga::g2Profiling::init();
@@ -266,7 +262,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 

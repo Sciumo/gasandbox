@@ -58,8 +58,8 @@ int g_dragObject = -1;
 
 // the three non-orthogonal vectors:
 e3ga::vector g_vectors[3] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
+	_vector(e1 - e2 - 0.3f * e3),
+	_vector(e1 + 0.3f * e2 - 0.1f * e3),
 	_vector(e1 + e3)
 };
 
@@ -262,10 +262,6 @@ void MouseMotion(int x, int y) {
 
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
@@ -279,7 +275,6 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 

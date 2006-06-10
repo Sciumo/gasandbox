@@ -607,8 +607,8 @@ void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::v
 		for (mv::Float y = -scaleConst; y < scaleConst - stepSize * scaleConst; y += stepSize * scaleConst) {
 			glBegin(GL_QUAD_STRIP);
 			for (mv::Float x = -scaleConst; x < scaleConst; x += stepSize * scaleConst) {
-				glVertex3fv(_vector(pt + x * ortho1 + ((s == 0) ? (y + stepSize * scaleConst) : y) * ortho2).getC(vector_e1_e2_e3));
 				glVertex3fv(_vector(pt + x * ortho1 + ((s == 1) ? (y + stepSize * scaleConst) : y) * ortho2).getC(vector_e1_e2_e3));
+				glVertex3fv(_vector(pt + x * ortho1 + ((s == 0) ? (y + stepSize * scaleConst) : y) * ortho2).getC(vector_e1_e2_e3));
 			}
 			glEnd();
 		}
@@ -617,15 +617,18 @@ void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::v
 
 	if (g_drawState.getDrawMode() & OD_MAGNITUDE) { // draw normals
 		mv::Float scaleMag = weight;
+		GLboolean l;
+		glGetBooleanv(GL_LIGHTING, &l);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_LINES);
-		for (mv::Float y = -scaleConst; y <= scaleConst; y += stepSize * scaleConst) {
-			for (mv::Float x = -scaleConst; x <= scaleConst; x += stepSize * scaleConst) {
+		for (mv::Float y = -scaleConst; y < scaleConst; y += stepSize * scaleConst) {
+			for (mv::Float x = -scaleConst; x < scaleConst; x += stepSize * scaleConst) {
 				glVertex3fv(_vector(pt + x * ortho1 + y * ortho2).getC(vector_e1_e2_e3));
-				glVertex3fv(_vector(pt + x * ortho1 + y * ortho2 + scaleMag * normal).getC(vector_e1_e2_e3));
+				glVertex3fv(_vector(pt + x * ortho1 + y * ortho2 - scaleMag * normal).getC(vector_e1_e2_e3));
 			}
 		}
 		glEnd();
+		if (l) glEnable(GL_LIGHTING);
 	}
 
 }

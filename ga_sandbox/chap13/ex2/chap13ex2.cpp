@@ -237,17 +237,6 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
-void Keyboard(unsigned char key, int x, int y) {
-
-}
-
-/*
-void menuCallback(int value) {
-	// redraw viewport
-	glutPostRedisplay();
-}
-*/
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
@@ -261,24 +250,15 @@ int main(int argc, char*argv[]) {
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(Keyboard);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
 
-/*	g_GLUTmenu = glutCreateMenu(menuCallback);
-	glutAddMenuEntry(g_modeName[MODE_DRAG], MODE_DRAG);
-	glutAddMenuEntry(g_modeName[MODE_CREATE_POINTS], MODE_CREATE_POINTS);
-	glutAddMenuEntry(g_modeName[MODE_CREATE_LINES], MODE_CREATE_LINES);
-	glutAddMenuEntry(g_modeName[MODE_CREATE_PLANES], MODE_CREATE_PLANES);
-	glutAttachMenu(GLUT_MIDDLE_BUTTON);
-	glutAttachMenu(GLUT_RIGHT_BUTTON);*/
-
 	// create the initial points
-	g_points.push_back(c3gaPoint(3.759879, -1.404804, 0.000000));
-	g_points.push_back(c3gaPoint(1.242272, 2.631137, 0.000000));
-	g_points.push_back(c3gaPoint(1.476579, -2.886040, 1.000000));
-	g_points.push_back(c3gaPoint(-3.424791, 1.417571, 0.000000));
-	g_points.push_back(c3gaPoint(-1.646863, -1.932975, 0.000000));
+	g_points.push_back(c3gaPoint(3.759879f, -1.404804f, 0.000000f));
+	g_points.push_back(c3gaPoint(1.242272f, 2.631137f, 0.000000f));
+	g_points.push_back(c3gaPoint(1.476579f, -2.886040f, 1.000000f));
+	g_points.push_back(c3gaPoint(-3.424791f, 1.417571f, 0.000000f));
+	g_points.push_back(c3gaPoint(-1.646863f, -1.932975f, 0.000000f));
 
 
 	glutMainLoop();
