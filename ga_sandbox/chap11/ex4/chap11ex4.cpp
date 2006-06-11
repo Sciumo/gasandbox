@@ -267,7 +267,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 60, font, "The four red points represent the camera and span the imaging plane.");
 		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red points, and to orbit the scene.");

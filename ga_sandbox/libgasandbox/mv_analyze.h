@@ -185,7 +185,7 @@ public:
 
 protected:
 	/** called by analyze to analyze C3GA rounds */
-	void analyzeRound(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	void analyzeRound(c3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	/** called by analyze to C3GA tangents */
 	void analyzeTangent(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 

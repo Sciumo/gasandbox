@@ -195,7 +195,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 60, font, "The green vector(s) are reflected in the red vector.");
 		renderBitmapString(20, 40, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");

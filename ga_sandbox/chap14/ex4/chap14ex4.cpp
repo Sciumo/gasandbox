@@ -38,7 +38,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 2: Primitives and Intersections";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 4: Fitting a Sphere";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -51,6 +51,13 @@ h3ga::vector g_prevMousePos;
 // when true, MouseMotion() will rotate the model
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
+
+/**
+Allow points to be created, dragged
+Fit sphere
+
+*/
+
 
 const int MODE_DRAG = 0;
 const int MODE_CREATE_POINTS = 1;

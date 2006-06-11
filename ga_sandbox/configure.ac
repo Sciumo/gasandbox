@@ -79,6 +79,8 @@ AC_OUTPUT(
 	chap14/Makefile \
 	chap14/ex1/Makefile \
 	chap14/ex2/Makefile \
+	chap14/ex3/Makefile \
+	chap14/ex4/Makefile \
 	\
 	chap15/Makefile \
 	\

@@ -809,10 +809,15 @@ void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 		analyzeRound(X, intFlags,  epsilon);
 }
 
-void mvAnalysis::analyzeRound(const mv &X, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
+void mvAnalysis::analyzeRound(mv X, int intFlags /* = 0 */, double epsilon /* = DEFAULT_EPSILON */) {
 
 	m_type[2] = ROUND;
 	int Agrade = m_mvType.m_grade;
+
+	if (Agrade == 1) {
+		X = dual(X);
+		m_flags ^= FLAG_DUAL;
+	}
 
 	// make exception for scalars:
 	if (Agrade == 0) {

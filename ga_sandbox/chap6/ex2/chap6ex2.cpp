@@ -184,7 +184,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(g_viewportWidth / 4 - 50, g_viewportHeight - 20, font, "NON-ORTHOGONAL");
 		renderBitmapString(g_viewportWidth / 4 - 110, 20, font, "-use mouse to drag vectors and orbit scene");

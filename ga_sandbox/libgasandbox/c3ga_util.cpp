@@ -315,7 +315,7 @@ mv takeGrade(const mv &X, int gradeUsageBitmap) {
 
 // todo: integrate into G2
 mv deltaProduct(const mv &X, const mv &Y, float epsilon /* = 1e-7 */, int *gradeIdx /* = NULL*/) {
-	return highestGradePart(gp(X, Y), epsilon, gradeIdx);
+	return highestGradePart(gpEM(X, Y), epsilon, gradeIdx);
 }
 
 
@@ -454,6 +454,8 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		mv(GRADE_1, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
 	};
 
+//	printf("d = %s\n", d.c_str_e());
+
 	for (unsigned int i = 0; i < 5; i++) {
 		// compute next factor 'c'
 		mv c = lcontEM(lcontEM(e[i], s), s);		
@@ -470,10 +472,11 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 		// if 'c' has enough of it in 'ca', then add to meet
 		if (cp.largestCoordinate() > largeEpsilon) {
+//			printf("m%d = %s\n", Em, cp.c_str_e());
 			m = op(m, cp);
 			Em--;	
 			if (Em == 0) {
-				j = op(d, m);
+				j = op(d, m); // ???? here error?
 				m = unit_e(m);
 				j = unit_e(j);
 
@@ -496,6 +499,8 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		}
 
 		// optionally remove 'c' from 's' (do that?)
+		// put this also in other meet/join algos?
+		s = lcontEM(c, s);
 	}
 
 	throw std::string("Error while computing meet & join!");

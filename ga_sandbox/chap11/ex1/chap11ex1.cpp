@@ -165,7 +165,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 40, font, "This simple example demonstrates using (normalized) points with OpenGL.");
 		renderBitmapString(20, 20, font, "Use the mouse buttons to drag the red/green points.");

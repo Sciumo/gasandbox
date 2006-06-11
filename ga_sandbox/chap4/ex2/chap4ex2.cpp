@@ -169,7 +169,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 20, font, "-use mouse buttons to drag (red, green, blue) vectors and to orbit the scene");
 	}

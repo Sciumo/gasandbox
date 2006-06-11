@@ -612,6 +612,7 @@ void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::v
 			}
 			glEnd();
 		}
+		glPolygonMode(GL_FRONT, GL_FILL);
 	}
 
 

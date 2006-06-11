@@ -141,7 +141,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1,1,1);
+		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(10, 40, font, "-use left mouse button to drag red/green vectors and to orbit scene");
 		renderBitmapString(10, 20, font, "-the blue vector should always be orthogonal to the red and green vectors");
