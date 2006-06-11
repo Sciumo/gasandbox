@@ -476,7 +476,7 @@ void menuCallback(int value) {
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
-	h3ga::g2Profiling::init();
+	c3ga::g2Profiling::init();
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
