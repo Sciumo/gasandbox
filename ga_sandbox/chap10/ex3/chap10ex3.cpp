@@ -56,13 +56,16 @@ bool g_rotateModelOutOfPlane = false;
 e3ga::rotor g_modelRotor(_rotor(1.0f));
 
 #define REFINE_1X -1
-#define REFINE_1_SEC - 2
+#define REFINE_10X -2
+#define REFINE_1_SEC - 3
 
 #define DRAW_MARKERS 1
 #define DRAW_ERRORS 2
 #define DRAW_RAYS 4
 #define DRAW_CAMERAS 8
 #define DRAW_PATH 16
+
+#define RELOAD_DATA -4
 
 int g_draw = DRAW_MARKERS | DRAW_CAMERAS;
 
@@ -324,12 +327,25 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
+int LoadData() {
+	try {
+		g_extCalibState = readCalibrationData("calibration_data.txt");
+	} catch (const std::string &str) {
+		printf("Error: %s\n", str.c_str());
+		return -1;
+	}
+}
+
 void menuCallback(int value) {
 	if (value < 0) {
 		if (value == REFINE_1X)
 			g_extCalibState.refineLoops(1);
-		if (value == REFINE_1_SEC)
+		else if (value == REFINE_10X)
+			g_extCalibState.refineLoops(10);
+		else if (value == REFINE_1_SEC)
 			g_extCalibState.refineSeconds(1.0);
+		else if (value == RELOAD_DATA)
+			LoadData();
 	}
 	else {
 		// toggle the DRAW_XXX constant
@@ -349,13 +365,8 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-	try {
-		g_extCalibState = readCalibrationData("calibration_data.txt");
-	} catch (const std::string &str) {
-		printf("Error: %s\n", str.c_str());
-		return -1;
-	}
-
+	// load calibration data
+	if (LoadData() < 0) return -1;
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -372,6 +383,7 @@ int main(int argc, char*argv[]) {
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry("Refine 1x", REFINE_1X);
+	glutAddMenuEntry("Refine 10x", REFINE_10X);
 	glutAddMenuEntry("Refine for One Second", REFINE_1_SEC);
 	glutAddMenuEntry("-------------------", 0);
 	glutAddMenuEntry("Draw Markers", DRAW_MARKERS);
@@ -379,6 +391,8 @@ int main(int argc, char*argv[]) {
 	glutAddMenuEntry("Draw Rays", DRAW_RAYS);
 	glutAddMenuEntry("Draw Cameras", DRAW_CAMERAS);
 	glutAddMenuEntry("Draw Marker Path", DRAW_PATH);
+	glutAddMenuEntry("-------------------", 0);
+	glutAddMenuEntry("Reload data (restart)", RELOAD_DATA);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

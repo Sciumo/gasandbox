@@ -38,6 +38,7 @@ ga {
 	specialization: blade e3_t(e3);
 	specialization: blade ni_t(ni);
 	specialization: blade scalar(1.0);
+	specialization: blade noni_t(no^ni);
 	
 	specialization: blade point(no, e1, e2, e3, ni);
 	specialization: blade normalizedPoint(no = 1, e1, e2, e3, ni);

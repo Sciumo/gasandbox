@@ -138,7 +138,7 @@ State readCalibrationData(const std::string &filename) {
 		}
 		else if (!strcmpnc(entryname, "frame")) {		// frame
 			// frame idx visible X3 vector
-			// frame 0 1 1.489079 0.3517250121*e1 - 0.2088123262*e2 - 1.0000000000*e3
+			// e.g.: frame 0 1 1.489079 0.3517250121*e1 - 0.2088123262*e2 - 1.0000000000*e3
 			unsigned int frameIdx, frameVisible;
 			double X3;
 			e3ga::vector t;

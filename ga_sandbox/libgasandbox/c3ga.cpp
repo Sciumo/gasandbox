@@ -1,5 +1,5 @@
 
-// Generated on 2006-06-07 15:25:52 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2006-06-12 15:51:32 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -337,6 +337,26 @@
 
 
 
+	float noni_t::largestCoordinate() const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
+
+		return maxC;
+	}
+
+	float noni_t::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
+		bm = 17;
+
+		return maxC;
+	}
+
+
+
+
+
+
 	float point::largestCoordinate() const {
 
 		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
@@ -589,6 +609,61 @@
 		if (C > maxC) {
 			maxC = C;
 			bm = 17;
+		}
+		return maxC;
+	}
+
+
+
+
+
+
+	float TRversorLog::largestCoordinate() const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) maxC = C;
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) maxC = C;
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) maxC = C;
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) maxC = C;
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) maxC = C;
+		return maxC;
+	}
+
+	float TRversorLog::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+		bm = 6;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) {
+			maxC = C;
+			bm = 12;
+		}
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) {
+			maxC = C;
+			bm = 10;
+		}
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) {
+			maxC = C;
+			bm = 18;
+		}
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) {
+			maxC = C;
+			bm = 20;
+		}
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) {
+			maxC = C;
+			bm = 24;
 		}
 		return maxC;
 	}

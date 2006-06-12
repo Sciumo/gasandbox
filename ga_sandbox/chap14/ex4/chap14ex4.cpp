@@ -77,79 +77,60 @@ std::vector<point> g_points;
 
 vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d);
 
-sphere fitSphere(const std::vector<point> &points) {
-	sphere TMP_S = _sphere(unit_e(points[0] ^ points[1] ^ points[2] ^ points[3]));
-
+dualSphere fitSphere(const std::vector<point> &points) {
 	float P[5 * 5];
-	{
-		// compute matrix P = sum_i (points[i] . points[i]^T)
-
-		// clear all entries:
+	{ // compute matrix P = sum_i (points[i] . points[i]^T)
+		// first clear all entries:
 		for (int i = 0; i < 5 * 5; i++) P[i] = 0.0f;
 
 		// fill the matrix:
 		for (unsigned int p = 0; p < points.size(); p++) {
-			const mv::Float *pc = points[p].getC();
+			const mv::Float *pc = points[p].getC(point_no_e1_e2_e3_ni);
 			for (int i = 0; i < 5; i++)
 				for (int j = i; j < 5; j++)
-					pc[i * 5 + j] = pc[j * 5 + i] = pc[i] * pc[j];
+					P[i * 5 + j] = P[j * 5 + i] += pc[i] * pc[j];
 		}
 	}
 
 	// initialize the metric matrix:
 	float M[5 *5 ] = {
-	//   no    e1     e2    e3     ni
-		0.0f, 0.0f, 0.0f, 0.0f, -1.0f, // no
-		0.0f, 1.0f, 0.0f, 0.0f, 0.0f, // e1
-		0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // e2
-		0.0f, 0.0f, 0.0f, 1.0f, 0.0f, // e3
-		-1.0f, 0.0f, 0.0f, 0.0f, 0.0f // ni
+	//  no    e1    e2    e3     ni
+		 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, // no
+		 0.0f, 1.0f, 0.0f, 0.0f,  0.0f, // e1
+		 0.0f, 0.0f, 1.0f, 0.0f,  0.0f, // e2
+		 0.0f, 0.0f, 0.0f, 1.0f,  0.0f, // e3
+		-1.0f, 0.0f, 0.0f, 0.0f,  0.0f  // ni
 	};
 
-	// construct OpenCV matrices
-/*
-	CvMat A = cvMat(3, 3, CV_32F, (void*)_a);
-	CvMat W = cvMat(3, 3, CV_32F, svd_s);
-	etc
-*/
+	// construct OpenCV matrices (on stack)
+	CvMat matrixP = cvMat(5, 5, CV_32F, P);
+	CvMat matrixM = cvMat(5, 5, CV_32F, M);
 
 	// use OpenCV to multiply matrices
-	// todo!
-	/*
-GEMM
-
-Performs generalized matrix multiplication
-
-void  cvGEMM( const CvArr* src1, const CvArr* src2, double alpha,
-              const CvArr* src3, double beta, CvArr* dst, int tABC=0 );
-#define cvMatMulAdd( src1, src2, src3, dst ) cvGEMM( src1, src2, 1, src3, 1, dst, 0 )
-#define cvMatMul( src1, src2, dst ) cvMatMulAdd( src1, src2, 0, dst )
-
-src1
-
-	*/
+	float PM[5 * 5];
+	CvMat matrixPM = cvMat(5, 5, CV_32F, PM); // create matrix P * M (on stack)
+	cvMatMul(&matrixP, &matrixM, &matrixPM);
 
 	// use OpenCV to compute SVD
-	// todo!
-	/*
-	CvMat A = cvMat(3, 3, CV_32F, (void*)_a);
-	CvMat W = cvMat(3, 3, CV_32F, svd_s);
-	CvMat U = cvMat(3, 3, CV_32F, svd_vt);
-	CvMat V = cvMat(3, 3, CV_32F, svd_u);
+	float S[5 * 5], U[5 * 5], V[5 * 5];
+	CvMat matrixS = cvMat(5, 5, CV_32F, S); // create matrix S (on stack)
+	CvMat matrixU = cvMat(5, 5, CV_32F, U); // create matrix U (on stack)
+	CvMat matrixV = cvMat(5, 5, CV_32F, V); // create matrix V (on stack)
+	int flags = 0;
+	cvSVD(&matrixPM, &matrixS, &matrixU, &matrixV, flags);
 
-	int flags=CV_SVD_V_T;
-	cvSVD(&A, &W, &U, &V, flags);
-	*/
+	// extract last column of V (coordinates of dual sphere);
+	dualSphere DS(dualSphere_no_e1_e2_e3_ni, 
+		V[0 * 5 + 4], V[1 * 5 + 4], V[2 * 5 + 4], V[3 * 5 + 4], V[4 * 5 + 4]);
 
-	// extract last column (coordinates of S);
-	// todo!
-
-	return sphere();
+	return DS;
 }
 
 
 
 void display() {
+	 dualSphere DS = fitSphere(g_points);
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -199,6 +180,16 @@ void display() {
 	}
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
+
+	g_drawState.pushDrawModeOff(OD_ORIENTATION);
+	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4fm(0.0f, 0.0f, 1.0f, 0.5f);
+	draw(dual(DS));
+	glDisable(GL_BLEND);
+	g_drawState.popDrawMode();
+	g_drawState.popDrawMode();
 
 	glPopMatrix();
 

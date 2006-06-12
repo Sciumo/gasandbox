@@ -19,6 +19,7 @@
 
 #include "c3ga.h"
 #include "c3ga_util.h"
+#include "e3ga_util.h"
 #include "gabits.h"
 
 namespace c3ga {
@@ -85,17 +86,6 @@ mv exp(const mv &x, int order /*= 9*/) {
 	return result;
 }
 
-rotor exp(const bivectorE3GA &x) {
-	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
-	mv::Float x2 = _Float(x << x);
-	mv::Float ha = sqrt(-x2);
-	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
-}
-
-normalizedTranslator exp(const freeVector &x) {
-	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
-	return _normalizedTranslator(1.0f + x);
-}
 
 bivectorE3GA log(const c3ga::rotor &R) {
 	mv::Float R2 = _Float(norm_r(_bivectorE3GA(R)));
@@ -115,6 +105,129 @@ pointPair log(const TRversor &V) {
 		-(t ^ I) * inverse(I) * ni + 
 		inverse(1.0f - R * R) * (t << Iphi) * ni -
 		Iphi));
+}
+#ifdef RIEN
+// this is the version that can not handle negative scaling . . .
+TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
+	const mv::Float *M = NULL;
+	mv::Float Mt[4 * 4];
+	if (transpose) {
+		Mt[0 * 4 + 0] = _M[0 * 4 + 0]; Mt[1 * 4 + 0] = _M[0 * 4 + 1]; Mt[2 * 4 + 0] = _M[0 * 4 + 2]; Mt[3 * 4 + 0] = _M[0 * 4 + 3]; 
+		Mt[0 * 4 + 1] = _M[1 * 4 + 0]; Mt[1 * 4 + 1] = _M[1 * 4 + 1]; Mt[2 * 4 + 1] = _M[1 * 4 + 2]; Mt[3 * 4 + 1] = _M[1 * 4 + 3]; 
+		Mt[0 * 4 + 2] = _M[2 * 4 + 0]; Mt[1 * 4 + 2] = _M[2 * 4 + 1]; Mt[2 * 4 + 2] = _M[2 * 4 + 2]; Mt[3 * 4 + 2] = _M[2 * 4 + 3]; 
+		Mt[0 * 4 + 3] = _M[3 * 4 + 0]; Mt[1 * 4 + 3] = _M[3 * 4 + 1]; Mt[2 * 4 + 3] = _M[3 * 4 + 2]; Mt[3 * 4 + 3] = _M[3 * 4 + 3]; 
+		M = Mt;
+	}
+	else M = _M;
+
+//	printf("Matrix:\n");
+//	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
+
+	// get scale of the whole matrix:
+	mv::Float scale = M[3 * 4 + 3];
+	// determine translation:
+	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3] / scale, M[1 * 4 + 3] / scale, M[2 * 4 + 3] / scale);
+
+	// initialize images of Euclidean basis vectors (the columns of the matrix)
+	vectorE3GA imageOfE1(vectorE3GA_e1_e2_e3, M[0 * 4 + 0], M[1 * 4 + 0], M[2 * 4 + 0]);
+	vectorE3GA imageOfE2(vectorE3GA_e1_e2_e3, M[0 * 4 + 1], M[1 * 4 + 1], M[2 * 4 + 1]);
+	vectorE3GA imageOfE3(vectorE3GA_e1_e2_e3, M[0 * 4 + 2], M[1 * 4 + 2], M[2 * 4 + 2]);
+
+	// get scale of the 3x3 part (e1, e2, e3)
+	mv::Float scaleR = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
+
+	// compute determinant of matrix (if negative, flip 3rd column)
+	float sc3 = 1.0f; // sc3 = scale column 3
+	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) sc3 = -1.0f;
+
+	printf("Scale: %f %f (total %f)\n", scale, scaleR, scale * scaleR);
+
+	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
+	float RM[3 * 3] = {
+		M[0 * 4 + 0] / scaleR, M[0 * 4 + 1] / scaleR, sc3 * M[0 * 4 + 2] / scaleR, 
+		M[1 * 4 + 0] / scaleR, M[1 * 4 + 1] / scaleR, sc3 * M[1 * 4 + 2] / scaleR, 
+		M[2 * 4 + 0] / scaleR, M[2 * 4 + 1] / scaleR, sc3 * M[2 * 4 + 2] / scaleR
+	};
+	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
+
+	// convert e3ga rotor to c3ga rotor:
+	c3ga::rotor R(rotor_scalar_e1e2_e2e3_e3e1,
+		tmpR.getC(e3ga::rotor_scalar_e1e2_e2e3_e3e1));
+
+	// get log of scale:
+	mv::Float logScale = (mv::Float) ::log(scale * scaleR);
+
+	// return full versor:
+	return _TRSversor(
+		exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
+		R * // rotation
+		exp(_noni_t(0.5f * logScale * noni)) // scaling
+		); 
+}
+#endif
+mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
+	const mv::Float *M = NULL;
+	mv::Float Mt[4 * 4];
+	if (transpose) {
+		Mt[0 * 4 + 0] = _M[0 * 4 + 0]; Mt[1 * 4 + 0] = _M[0 * 4 + 1]; Mt[2 * 4 + 0] = _M[0 * 4 + 2]; Mt[3 * 4 + 0] = _M[0 * 4 + 3]; 
+		Mt[0 * 4 + 1] = _M[1 * 4 + 0]; Mt[1 * 4 + 1] = _M[1 * 4 + 1]; Mt[2 * 4 + 1] = _M[1 * 4 + 2]; Mt[3 * 4 + 1] = _M[1 * 4 + 3]; 
+		Mt[0 * 4 + 2] = _M[2 * 4 + 0]; Mt[1 * 4 + 2] = _M[2 * 4 + 1]; Mt[2 * 4 + 2] = _M[2 * 4 + 2]; Mt[3 * 4 + 2] = _M[2 * 4 + 3]; 
+		Mt[0 * 4 + 3] = _M[3 * 4 + 0]; Mt[1 * 4 + 3] = _M[3 * 4 + 1]; Mt[2 * 4 + 3] = _M[3 * 4 + 2]; Mt[3 * 4 + 3] = _M[3 * 4 + 3]; 
+		M = Mt;
+	}
+	else M = _M;
+
+//	printf("Matrix:\n");
+//	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+//	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
+
+	// get scale of the whole matrix:
+	mv::Float scale = M[3 * 4 + 3];
+	// determine translation:
+	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3] / scale, M[1 * 4 + 3] / scale, M[2 * 4 + 3] / scale);
+
+	// initialize images of Euclidean basis vectors (the columns of the matrix)
+	vectorE3GA imageOfE1(vectorE3GA_e1_e2_e3, M[0 * 4 + 0], M[1 * 4 + 0], M[2 * 4 + 0]);
+	vectorE3GA imageOfE2(vectorE3GA_e1_e2_e3, M[0 * 4 + 1], M[1 * 4 + 1], M[2 * 4 + 1]);
+	vectorE3GA imageOfE3(vectorE3GA_e1_e2_e3, M[0 * 4 + 2], M[1 * 4 + 2], M[2 * 4 + 2]);
+
+	// get scale of the 3x3 part (e1, e2, e3)
+	mv::Float scaleR = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
+
+	// compute determinant of matrix (if negative, flip 3rd column)
+	float sc3 = 1.0f; // sc3 = scale column 3
+	mv reflectionPlane = 1;
+	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) {
+		sc3 = -1.0f;
+		reflectionPlane = e3;
+	}
+
+	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
+	float RM[3 * 3] = {
+		M[0 * 4 + 0] / scaleR, M[0 * 4 + 1] / scaleR, sc3 * M[0 * 4 + 2] / scaleR, 
+		M[1 * 4 + 0] / scaleR, M[1 * 4 + 1] / scaleR, sc3 * M[1 * 4 + 2] / scaleR, 
+		M[2 * 4 + 0] / scaleR, M[2 * 4 + 1] / scaleR, sc3 * M[2 * 4 + 2] / scaleR
+	};
+	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
+
+	// convert e3ga rotor to c3ga rotor:
+	c3ga::rotor R(rotor_scalar_e1e2_e2e3_e3e1,
+		tmpR.getC(e3ga::rotor_scalar_e1e2_e2e3_e3e1));
+
+	// get log of scale:
+	mv::Float logScale = (mv::Float) ::log(scale * scaleR);
+
+	// return full versor:
+	return exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
+		R * // rotation
+		exp(_noni_t(0.5f * logScale * noni)) * // scaling
+		reflectionPlane;
+
 }
 
 

@@ -41,10 +41,33 @@ inline e3ga::vector vectorToE3GA(const c3ga::vectorE3GA &v) {
 mv exp(const mv &x, int order = 9);
 
 /** special exp() for Euclidean bivectors (rotation) */
-rotor exp(const c3ga::bivectorE3GA &x);
+inline rotor exp(const bivectorE3GA &x) {
+	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	mv::Float x2 = _Float(x << x);
+	mv::Float ha = sqrt(-x2);
+	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
+}
+
 
 /** special exp() for general free vectors (translation) */
-normalizedTranslator exp(const c3ga::freeVector &x);
+inline normalizedTranslator exp(const freeVector &x) {
+	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	return _normalizedTranslator(1.0f + x);
+}
+
+/** special exp() for noni (scaling) */
+inline scalor exp(const noni_t &x) {
+	// Since (x*x >= 0) for 3D bivector in Euclidean metric, we can optimize:
+	return _scalor((mv::Float)cosh(fabs(x.noni())) + 
+		(mv::Float)sinh(x.noni()) * noni);
+}
+
+/** 
+Converts `homogeneous 4x4 matrix' to translate-rotate-UNIFORM scale versor 
+transpose = true for OpenGL matrices
+*/
+//TRSversor matrix4x4ToVersor(const mv::Float M[16], bool transpose = false);
+mv matrix4x4ToVersor(const mv::Float M[16], bool transpose = false);
 
 /** special exp() for bivectors */
 // todo:

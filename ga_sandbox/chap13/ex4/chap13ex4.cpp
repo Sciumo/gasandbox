@@ -36,7 +36,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 4: Interpolation Rigid Body Motions";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 4: Interpolation of Rigid Body Motions";
 
 // GLUT state information
 int g_viewportWidth = 800;
