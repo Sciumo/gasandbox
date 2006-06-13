@@ -106,19 +106,62 @@ pointPair log(const TRversor &V) {
 		inverse(1.0f - R * R) * (t << Iphi) * ni -
 		Iphi));
 }
-#ifdef RIEN
+
+pointPair log(const TRSversor &V) {
+	// Leo's log 20060326 of a versor with scale + rbm: TRS
+	TRSversor U = V;
+
+	rotor gR = _rotor(- no << (U * ni)); // should give exp (-g/2) R
+	rotor R = _rotor(unit_e(gR));
+
+	mv::Float gam = -2.0f * (mv::Float)::log(_Float(gR * reverse(R)));  // this is the old, wrong convention; actually gamma -> -gamma throughout
+	mv::Float gamfactor;
+	if (fabs(gam) < 1e-6f) gamfactor = 1.0;
+	else gamfactor = - gam/(::exp(-gam)-1);
+	
+	scalor S = exp(_noni_t(0.5 * noni * gam)); 
+	translator T = _translator(U * inverse(S) * inverse(R)); 		// retrieval of parameters for V = T R S
+	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
+
+	if ((1.0f - _Float(R)) < 1e-6) {
+		// no rotation, so no rotation plane; could set I=1, phi=0;
+		 pointPair result = _pointPair(-0.5f * (gam * noni - gamfactor * (t ^ ni)));
+		 return result;
+	} 
+	else {
+		// we have a rotation plane
+		bivectorE3GA I = _bivectorE3GA(R); 
+		mv::Float sR2 = _Float(norm_e(I)); 
+		I = _bivectorE3GA(I * (1.0f / sR2));
+		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R)); 
+		vectorE3GA w = _vectorE3GA(gamfactor * (t^I) * reverse(I));
+		vectorE3GA v = _vectorE3GA(1.0f * inverse(1.0f -(mv::Float)::exp(-gam) * R * R) * ((t << I) * reverse(I)));
+		normalizedTranslator tv = exp(_freeVector(-0.5f * (v^ni)));
+		pointPair result = _pointPair(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
+	 }
+}	
+
+
+
+
+
 // this is the version that can not handle negative scaling . . .
-TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
-	const mv::Float *M = NULL;
-	mv::Float Mt[4 * 4];
+TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
+	mv::Float M[4 * 4];
 	if (transpose) {
-		Mt[0 * 4 + 0] = _M[0 * 4 + 0]; Mt[1 * 4 + 0] = _M[0 * 4 + 1]; Mt[2 * 4 + 0] = _M[0 * 4 + 2]; Mt[3 * 4 + 0] = _M[0 * 4 + 3]; 
-		Mt[0 * 4 + 1] = _M[1 * 4 + 0]; Mt[1 * 4 + 1] = _M[1 * 4 + 1]; Mt[2 * 4 + 1] = _M[1 * 4 + 2]; Mt[3 * 4 + 1] = _M[1 * 4 + 3]; 
-		Mt[0 * 4 + 2] = _M[2 * 4 + 0]; Mt[1 * 4 + 2] = _M[2 * 4 + 1]; Mt[2 * 4 + 2] = _M[2 * 4 + 2]; Mt[3 * 4 + 2] = _M[2 * 4 + 3]; 
-		Mt[0 * 4 + 3] = _M[3 * 4 + 0]; Mt[1 * 4 + 3] = _M[3 * 4 + 1]; Mt[2 * 4 + 3] = _M[3 * 4 + 2]; Mt[3 * 4 + 3] = _M[3 * 4 + 3]; 
-		M = Mt;
+		// transpose & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
 	}
-	else M = _M;
+	else {
+		// copy & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+	}
 
 //	printf("Matrix:\n");
 //	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
@@ -126,10 +169,8 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 //	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
 //	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
 
-	// get scale of the whole matrix:
-	mv::Float scale = M[3 * 4 + 3];
 	// determine translation:
-	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3] / scale, M[1 * 4 + 3] / scale, M[2 * 4 + 3] / scale);
+	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3], M[1 * 4 + 3], M[2 * 4 + 3]);
 
 	// initialize images of Euclidean basis vectors (the columns of the matrix)
 	vectorE3GA imageOfE1(vectorE3GA_e1_e2_e3, M[0 * 4 + 0], M[1 * 4 + 0], M[2 * 4 + 0]);
@@ -137,19 +178,19 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 	vectorE3GA imageOfE3(vectorE3GA_e1_e2_e3, M[0 * 4 + 2], M[1 * 4 + 2], M[2 * 4 + 2]);
 
 	// get scale of the 3x3 part (e1, e2, e3)
-	mv::Float scaleR = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
+	mv::Float scale = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
 
 	// compute determinant of matrix (if negative, flip 3rd column)
 	float sc3 = 1.0f; // sc3 = scale column 3
 	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) sc3 = -1.0f;
 
-	printf("Scale: %f %f (total %f)\n", scale, scaleR, scale * scaleR);
+	printf("Scale: %f %f (total %f)\n", scale, scale, scale * scale);
 
 	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
 	float RM[3 * 3] = {
-		M[0 * 4 + 0] / scaleR, M[0 * 4 + 1] / scaleR, sc3 * M[0 * 4 + 2] / scaleR, 
-		M[1 * 4 + 0] / scaleR, M[1 * 4 + 1] / scaleR, sc3 * M[1 * 4 + 2] / scaleR, 
-		M[2 * 4 + 0] / scaleR, M[2 * 4 + 1] / scaleR, sc3 * M[2 * 4 + 2] / scaleR
+		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale, 
+		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale, 
+		M[2 * 4 + 0] / scale, M[2 * 4 + 1] / scale, sc3 * M[2 * 4 + 2] / scale
 	};
 	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
 
@@ -158,7 +199,7 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 		tmpR.getC(e3ga::rotor_scalar_e1e2_e2e3_e3e1));
 
 	// get log of scale:
-	mv::Float logScale = (mv::Float) ::log(scale * scaleR);
+	mv::Float logScale = (mv::Float) ::log(scale);
 
 	// return full versor:
 	return _TRSversor(
@@ -167,29 +208,38 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 		exp(_noni_t(0.5f * logScale * noni)) // scaling
 		); 
 }
-#endif
+
 mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
-	const mv::Float *M = NULL;
-	mv::Float Mt[4 * 4];
+/*	printf("Raw Matrix:\n");
+	printf("%f %f %f %f\n", _M[0 * 4 + 0], _M[0 * 4 + 1], _M[0 * 4 + 2], _M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[1 * 4 + 0], _M[1 * 4 + 1], _M[1 * 4 + 2], _M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[2 * 4 + 0], _M[2 * 4 + 1], _M[2 * 4 + 2], _M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[3 * 4 + 0], _M[3 * 4 + 1], _M[3 * 4 + 2], _M[3 * 4 + 3]);*/
+
+	mv::Float M[4 * 4];
 	if (transpose) {
-		Mt[0 * 4 + 0] = _M[0 * 4 + 0]; Mt[1 * 4 + 0] = _M[0 * 4 + 1]; Mt[2 * 4 + 0] = _M[0 * 4 + 2]; Mt[3 * 4 + 0] = _M[0 * 4 + 3]; 
-		Mt[0 * 4 + 1] = _M[1 * 4 + 0]; Mt[1 * 4 + 1] = _M[1 * 4 + 1]; Mt[2 * 4 + 1] = _M[1 * 4 + 2]; Mt[3 * 4 + 1] = _M[1 * 4 + 3]; 
-		Mt[0 * 4 + 2] = _M[2 * 4 + 0]; Mt[1 * 4 + 2] = _M[2 * 4 + 1]; Mt[2 * 4 + 2] = _M[2 * 4 + 2]; Mt[3 * 4 + 2] = _M[2 * 4 + 3]; 
-		Mt[0 * 4 + 3] = _M[3 * 4 + 0]; Mt[1 * 4 + 3] = _M[3 * 4 + 1]; Mt[2 * 4 + 3] = _M[3 * 4 + 2]; Mt[3 * 4 + 3] = _M[3 * 4 + 3]; 
-		M = Mt;
+		// transpose & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
 	}
-	else M = _M;
+	else {
+		// copy & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+	}
 
-//	printf("Matrix:\n");
-//	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
+/*	printf("Input Matrix:\n");
+	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);*/
 
-	// get scale of the whole matrix:
-	mv::Float scale = M[3 * 4 + 3];
 	// determine translation:
-	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3] / scale, M[1 * 4 + 3] / scale, M[2 * 4 + 3] / scale);
+	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3], M[1 * 4 + 3], M[2 * 4 + 3]);
 
 	// initialize images of Euclidean basis vectors (the columns of the matrix)
 	vectorE3GA imageOfE1(vectorE3GA_e1_e2_e3, M[0 * 4 + 0], M[1 * 4 + 0], M[2 * 4 + 0]);
@@ -197,7 +247,7 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 	vectorE3GA imageOfE3(vectorE3GA_e1_e2_e3, M[0 * 4 + 2], M[1 * 4 + 2], M[2 * 4 + 2]);
 
 	// get scale of the 3x3 part (e1, e2, e3)
-	mv::Float scaleR = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
+	mv::Float scale = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
 
 	// compute determinant of matrix (if negative, flip 3rd column)
 	float sc3 = 1.0f; // sc3 = scale column 3
@@ -209,9 +259,9 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 
 	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
 	float RM[3 * 3] = {
-		M[0 * 4 + 0] / scaleR, M[0 * 4 + 1] / scaleR, sc3 * M[0 * 4 + 2] / scaleR, 
-		M[1 * 4 + 0] / scaleR, M[1 * 4 + 1] / scaleR, sc3 * M[1 * 4 + 2] / scaleR, 
-		M[2 * 4 + 0] / scaleR, M[2 * 4 + 1] / scaleR, sc3 * M[2 * 4 + 2] / scaleR
+		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale, 
+		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale, 
+		M[2 * 4 + 0] / scale, M[2 * 4 + 1] / scale, sc3 * M[2 * 4 + 2] / scale
 	};
 	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
 
@@ -220,14 +270,36 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 		tmpR.getC(e3ga::rotor_scalar_e1e2_e2e3_e3e1));
 
 	// get log of scale:
-	mv::Float logScale = (mv::Float) ::log(scale * scaleR);
+	mv::Float logScale = (mv::Float) ::log(scale);
 
 	// return full versor:
-	return exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
+	mv result = exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
 		R * // rotation
 		exp(_noni_t(0.5f * logScale * noni)) * // scaling
 		reflectionPlane;
 
+/*	{
+		mv V = result;
+		mv Vi = inverse(V);
+		// compute images of basis vectors:
+		flatPoint imageOfE1NI = _flatPoint(V * e1ni * Vi);
+		flatPoint imageOfE2NI = _flatPoint(V * e2ni * Vi);
+		flatPoint imageOfE3NI = _flatPoint(V * e3ni * Vi);
+		flatPoint imageOfNONI = _flatPoint(V * noni * Vi);
+
+		// create matrix representation:
+		omFlatPoint OM(imageOfE1NI, imageOfE2NI, imageOfE3NI, imageOfNONI);
+
+		printf("Reconstructed Matrix:\n");
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 0], OM.m_c[1 * 4 + 0], OM.m_c[2 * 4 + 0], OM.m_c[3 * 4 + 0]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 1], OM.m_c[1 * 4 + 1], OM.m_c[2 * 4 + 1], OM.m_c[3 * 4 + 1]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 2], OM.m_c[1 * 4 + 2], OM.m_c[2 * 4 + 2], OM.m_c[3 * 4 + 2]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 3], OM.m_c[1 * 4 + 3], OM.m_c[2 * 4 + 3], OM.m_c[3 * 4 + 3]);
+
+
+	}*/
+
+	return result;
 }
 
 

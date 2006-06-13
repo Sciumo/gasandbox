@@ -56,6 +56,8 @@ void rotorGLMult(const h3ga::rotor &v);
 void rotorGLMult(const c3ga::rotor &v);
 //void rotorGLMult(const c3ga::rotor &v);
 
+void versorGLMult(const c3ga::mv &v);
+
 /// Loads color (also into GL 'material' colors, for lighting)
 void glColor3fm(float r, float g, float b);
 void glColor4fm(float r, float g, float b, float a);

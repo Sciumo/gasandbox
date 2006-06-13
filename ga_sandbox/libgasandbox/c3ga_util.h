@@ -62,11 +62,18 @@ inline scalor exp(const noni_t &x) {
 		(mv::Float)sinh(x.noni()) * noni);
 }
 
+
 /** 
-Converts `homogeneous 4x4 matrix' to translate-rotate-UNIFORM scale versor 
+Converts `homogeneous 4x4 matrix' to translate-rotate-POSITIVE SCALING UNIFORM scaling versor 
 transpose = true for OpenGL matrices
 */
-//TRSversor matrix4x4ToVersor(const mv::Float M[16], bool transpose = false);
+TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= false*/);
+
+/** 
+Converts `homogeneous 4x4 matrix' to translate-rotate-UNIFORM scale versor 
+(negative scaling is allowed)
+transpose = true for OpenGL matrices
+*/
 mv matrix4x4ToVersor(const mv::Float M[16], bool transpose = false);
 
 /** special exp() for bivectors */

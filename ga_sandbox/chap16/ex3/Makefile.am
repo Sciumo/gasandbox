@@ -1,0 +1,11 @@
+sandbindir = $(bindir)/ga_sandbox
+
+sandbin_PROGRAMS = chap16ex3
+
+AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
+
+chap16ex3_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+
+chap16ex3_SOURCES = chap16ex3.cpp
+
+noinst_HEADERS = 

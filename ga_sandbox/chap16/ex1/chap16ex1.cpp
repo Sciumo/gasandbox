@@ -122,7 +122,14 @@ void display() {
 
 	// one button = scale, the other translate, the other scale!
 	glTranslatef(g_modelTranslation.e1(), g_modelTranslation.e2(), g_modelTranslation.e3());
-	glScalef(g_modelScale, g_modelScale, g_modelScale);
+	float matrix[16] = {
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, g_modelScale
+	};
+	glMultMatrixf(matrix);
+	//glScalef(g_modelScale, g_modelScale, g_modelScale);
 	rotorGLMult(g_modelRotor);
 
 //	TRSversor V(_TRSversor(1.0f));
@@ -144,8 +151,6 @@ void display() {
 //		Vi = _TRSversor(inverse(V));
 		V = matrix4x4ToVersor(modelViewMatrix, transpose);
 		Vi = inverse(V);
-		printf("FUll versor = %s,\n", V.c_str());
-		printf("FUll versori = %s,\n", Vi.c_str());
 
 		// -> The versor is applied below, before points are sent to OpenGL
 

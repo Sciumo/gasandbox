@@ -146,6 +146,22 @@ void rotorGLMult(const c3ga::rotor &v) {
 	rotorGLMult(e3ga::rotor(e3ga::rotor_scalar_e1e2_e2e3_e3e1, v.getC(c3ga::rotor_scalar_e1e2_e2e3_e3e1)));
 }
 
+void versorGLMult(const c3ga::mv &V) {
+	c3ga::mv Vi(inverse(V));
+
+	// compute images of basis vectors:
+	c3ga::flatPoint imageOfE1NI = _flatPoint(V * c3ga::e1ni * Vi);
+	c3ga::flatPoint imageOfE2NI = _flatPoint(V * c3ga::e2ni * Vi);
+	c3ga::flatPoint imageOfE3NI = _flatPoint(V * c3ga::e3ni * Vi);
+	c3ga::flatPoint imageOfNONI = _flatPoint(V * c3ga::noni * Vi);
+
+	// create matrix representation:
+	c3ga::omFlatPoint M(imageOfE1NI, imageOfE2NI, imageOfE3NI, imageOfNONI);
+
+	// multiply current OpenGL matrix:
+	glMultMatrixf(M.m_c);
+}
+
 
 /// Loads color (also into GL 'material' colors, for lighting)
 void glColor3fm(float r, float g, float b) {
