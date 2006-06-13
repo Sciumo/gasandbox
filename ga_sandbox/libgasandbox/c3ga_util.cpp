@@ -107,37 +107,40 @@ pointPair log(const TRversor &V) {
 		Iphi));
 }
 
-pointPair log(const TRSversor &V) {
-	// Leo's log 20060326 of a versor with scale + rbm: TRS
-	TRSversor U = V;
-
+pointPair log(const TRSversor &U) {
+	// get rotor part:
 	rotor gR = _rotor(- no << (U * ni)); // should give exp (-g/2) R
 	rotor R = _rotor(unit_e(gR));
 
+	// get scaling part
 	mv::Float gam = -2.0f * (mv::Float)::log(_Float(gR * reverse(R)));  // this is the old, wrong convention; actually gamma -> -gamma throughout
 	mv::Float gamfactor;
 	if (fabs(gam) < 1e-6f) gamfactor = 1.0;
 	else gamfactor = - gam/(::exp(-gam)-1);
-	
-	scalor S = exp(_noni_t(0.5 * noni * gam)); 
+	scalor S = exp(_noni_t(-0.5f * noni * gam)); 
+
+	// get translation part:
 	translator T = _translator(U * inverse(S) * inverse(R)); 		// retrieval of parameters for V = T R S
 	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
 
 	if ((1.0f - _Float(R)) < 1e-6) {
 		// no rotation, so no rotation plane; could set I=1, phi=0;
-		 pointPair result = _pointPair(-0.5f * (gam * noni - gamfactor * (t ^ ni)));
+		 pointPair result = _pointPair(-0.5f * (gam * noni + gamfactor * (t ^ ni)));
 		 return result;
 	} 
 	else {
-		// we have a rotation plane
+		// get rotation plane, angle
 		bivectorE3GA I = _bivectorE3GA(R); 
 		mv::Float sR2 = _Float(norm_e(I)); 
 		I = _bivectorE3GA(I * (1.0f / sR2));
 		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R)); 
+
+		// form bivector log of versor:
 		vectorE3GA w = _vectorE3GA(gamfactor * (t^I) * reverse(I));
 		vectorE3GA v = _vectorE3GA(1.0f * inverse(1.0f -(mv::Float)::exp(-gam) * R * R) * ((t << I) * reverse(I)));
 		normalizedTranslator tv = exp(_freeVector(-0.5f * (v^ni)));
 		pointPair result = _pointPair(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
+		return result;
 	 }
 }	
 

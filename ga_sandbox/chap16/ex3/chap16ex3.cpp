@@ -36,7 +36,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 4: Interpolation of Rigid Body Motions";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 16, Example 3: Interpolation of Scaled Rigid Body Motions";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -59,9 +59,9 @@ double g_startTime = -1.0;
 const double interpolationTime = 1.0f;
 
 // interpolate from:
-TRversor g_sourceVersor;
+TRSversor g_sourceVersor;
 // interpolate to:
-TRversor g_destVersor;
+TRSversor g_destVersor;
 
 // we show a trail of previous frames:
 double g_prevTrailTime = -1;
@@ -76,13 +76,18 @@ void initRandomDest() {
 	normalizedTranslator T1 =  exp(_freeVector(randomBlade(2, 3.0f)));
 	normalizedTranslator T2 =  exp(_freeVector(randomBlade(2, 3.0f)));
 	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
+	mv::Float s1 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
+	scalor S1 = exp(_noni_t(0.5f * log(s1) * noni));
+		
+	mv::Float s2 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
+	scalor S2 = exp(_noni_t(0.5f * log(s2) * noni));
 
-	g_destVersor = _TRversor(T1 * T2 * R * inverse(T2));
+	g_destVersor = _TRSversor(T1 * S1 * T2 * R * inverse(T2) * S2);
 }
 
-TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
+TRSversor interpolateTRSversor(const TRSversor &src, const TRSversor &dst, mv::Float alpha) {
 	// return src * exp(alpha * log(dst * inverse(src)));
-	return _TRversor(src * exp(_TRversor(alpha * log(_TRversor(inverse(src) * dst)))));
+	return _TRSversor(src * exp(_TRSversor(alpha * log(_TRSversor(inverse(src) * dst)))));
 }
 
 
@@ -105,7 +110,7 @@ void display() {
 
 	// interpolate:
 	mv::Float alpha = (mv::Float)(currentTime - g_startTime) / (mv::Float)interpolationTime;
-	TRversor V = interpolateTRversor(g_sourceVersor, g_destVersor, alpha);
+	TRSversor V = interpolateTRSversor(g_sourceVersor, g_destVersor, alpha);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -176,20 +181,6 @@ void display() {
 
 
 	glPopMatrix();
-
-/*
-	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glDisable(GL_LIGHTING);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	void *font = GLUT_BITMAP_HELVETICA_12;
-	renderBitmapString(20, 20, font, ". . .");
-*/
 
 	glutSwapBuffers();
 }

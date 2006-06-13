@@ -16,55 +16,41 @@
 
 #include <libgasandbox/c3ga.h>
 #include <libgasandbox/c3ga_util.h>
-#include <libgasandbox/timing.h>
-#include <libgasandbox/mv_analyze.h>
 
 #include <vector>
 
 using namespace c3ga;
 
+
+TRSversor generateRandomTRSversor() {
+	vectorE3GA tv = _vectorE3GA(randomBlade(1));
+	vectorE3GA rv1 = _vectorE3GA(randomBlade(1));
+	vectorE3GA rv2 = _vectorE3GA(randomBlade(1));
+	mv::Float s = (mv::Float)(1 + rand()) / (mv::Float)RAND_MAX;
+
+	return _TRSversor(exp(_freeVector(tv ^ ni)) * exp(_bivectorE3GA(rv1 ^ rv2)) * exp(_noni_t(s * noni)));
+}
+
+
+
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
 
-	// get the basis vectors:
-	mv bv[5] = {no, e1, e2, e3, ni};
-
-	// print out the metric:
-	printf("Metric:\n");
-	printf("    ");
-	for (int i = 0; i < 5; i++)
-		printf(" %s  ", mv_basisVectorNames[i]);
-	printf("\n");
-	
-	for (int i = 0; i < 5; i++) {
-		printf("%s ", mv_basisVectorNames[i]);
-		for (int j = 0; j < 5; j++) {
-			printf(" % 1.1f", _float(bv[i] << bv[j]));
+	for (int i = 0; i < 100000; i++) {
+		TRSversor V = _TRSversor(generateRandomTRSversor() * generateRandomTRSversor());
+		
+		pointPair P = log(V);
+		
+		mv X = exp(P);
+		
+		mv dif1 = X * inverse(V);
+		mv dif2 = inverse(V) * X;
+		
+		if ((fabs(_Float(norm_e(dif1)) - 1.0f) > 1e-4f) || (fabs(_Float(norm_e(dif2)) - 1.0f) > 1e-4f)) {
+			printf("Error for V = %s\n", V.c_str_e20());
 		}
-		printf("\n");
 	}
-
-	printf("\n");
-
-	// create 'e' and 'eb'
-	const float sqrt2i = 1.0f / 1.4142135623730950488016887242097f;
-	mv e = sqrt2i * (no - ni);
-	mv eb = sqrt2i * (no + ni);
-
-	// print e and eb
-	printf("e and eb:\n");
-	printf(" e = %s\n", e.c_str());
-	printf("eb = %s\n", eb.c_str());
-	printf("\n");
-	printf("The metric of e and eb:\n");
-	printf(" e . e  = %f\n", _float(e << e));
-	printf("eb . eb = %f\n", _float(eb << eb));
-	printf(" e . eb = %f\n", _float(e << eb));
-
-
-
-
 
 	return 0;
 }
