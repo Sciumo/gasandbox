@@ -68,10 +68,10 @@ void drawRound(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 		if (l) glEnable(GL_LIGHTING);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::CIRCLE) {
-		glLineWidth(2.0f);
+//		glLineWidth(2.0f);
 		int method = DRAW_BV_CIRCLE_OUTLINE;
 		drawBivector(A.m_pt[0], A.m_vc[2], A.m_vc[0], A.m_vc[1], A.m_sc[0], method, o);
-		glLineWidth(1.0f);
+//		glLineWidth(1.0f);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::SPHERE) {
 //		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

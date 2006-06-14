@@ -154,9 +154,17 @@ const float *Palet::olColor() const {
 
 
 void DrawState::drawSphere(e3ga::mv::Float normal) {
-	if (m_sphere == NULL)
+	if (m_sphere == NULL) {
 		gsCompute(&m_sphere, 4);
-	gsDraw(m_sphere, normal);
+		m_sphereGLlist = glGenLists(1);
+		glNewList(m_sphereGLlist, GL_COMPILE);
+		gsDraw(m_sphere, 0.0f);
+		glEndList();
+	}
+	if (normal == 0.0f) {
+		glCallList(m_sphereGLlist);
+	}
+	else gsDraw(m_sphere, normal);
 }
 
 void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float scale) {

@@ -39,7 +39,9 @@ public:
 
 	void drawSphere(e3ga::mv::Float normal);
 
+	/// used for drawing spheres:
 	struct geosphere_s *m_sphere;
+	GLuint m_sphereGLlist;
 
 	float m_ambient;
 	float m_diffuse;

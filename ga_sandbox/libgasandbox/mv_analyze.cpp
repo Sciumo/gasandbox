@@ -749,6 +749,9 @@ void mvAnalysis::analyze(c3ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 	m_mvType = mvType(X, (mv::Float)epsilon);
 	m_type[1] = m_mvType.m_type;
 
+	// todo: check for VERSOR, MULTIVECTOR HERE!!!
+
+
 	// zero blade? 
 	if (m_mvType.m_zero) {
 		m_type[2] = ZERO;

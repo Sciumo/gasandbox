@@ -36,7 +36,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 4: Interpolation of Rigid Body Motions";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 16, Example 4: The Sea Shell";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -49,63 +49,12 @@ vectorE3GA g_prevMousePos;
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
-// rotation of the model
-rotor g_modelRotor(_rotor(1.0f));
-
-// when did the current interpolation start?
-double g_startTime = -1.0;
-
-// how long does one interpolation take:
-const double interpolationTime = 1.0f;
-
-// interpolate from:
-TRversor g_sourceVersor;
-// interpolate to:
-TRversor g_destVersor;
-
-// we show a trail of previous frames:
-double g_prevTrailTime = -1;
-std::vector<circle> g_circleTrail;
-
-
-void copyDestToSource() {
-	g_sourceVersor = g_destVersor;
-}
-
-void initRandomDest() {
-	normalizedTranslator T1 =  exp(_freeVector(randomBlade(2, 3.0f)));
-	normalizedTranslator T2 =  exp(_freeVector(randomBlade(2, 3.0f)));
-	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
-
-	g_destVersor = _TRversor(T1 * T2 * R * inverse(T2));
-}
-
-TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
-	// return src * exp(alpha * log(dst * inverse(src)));
-	return _TRversor(src * exp(_TRversor(alpha * log(_TRversor(inverse(src) * dst)))));
-}
-
+// rotation of the model (initial value gives a good view of the shell)
+rotor g_modelRotor(_rotor( 0.573281f - 0.440218f*(e1^e2) + 0.320870f*(e2^e3) + 0.612044f*(e1^e3)));
 
 
 void display() {
 	double currentTime = u_timeGet();
-
-	// check if we should get new random dest
-	if (currentTime - g_startTime > interpolationTime) {
-		g_startTime = g_startTime + interpolationTime;
-
-		// when the process has been 'asleep' for a long time, simply skip:
-		if (currentTime - g_startTime > interpolationTime)
-			g_startTime = currentTime;
-		
-		// start new interpolation
-		copyDestToSource();
-		initRandomDest();
-	}
-
-	// interpolate:
-	mv::Float alpha = (mv::Float)(currentTime - g_startTime) / (mv::Float)interpolationTime;
-	TRversor V = interpolateTRversor(g_sourceVersor, g_destVersor, alpha);
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -121,7 +70,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -12.0f);
+	glTranslatef(0.7f, 0.2f, -6.0f);
 
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -134,62 +83,60 @@ void display() {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
-	glLineWidth(2.0f);
+	glLineWidth(1.0f);
 
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 
 	rotorGLMult(g_modelRotor);
+	glTranslatef(0.0, 0.0, -4.0f);
 
-	circle C = _circle((e1^e2^no) + (e1^e2^ni));
-	circle imageOfC = _circle(V * C * inverse(V));
+	g_drawState.pushDrawModeOff(OD_ORIENTATION);
+	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 
-	// draw the circle
-	glColor3fm(0.0f, 0.0f, 0.0f);
-	draw(imageOfC);
+	// Create versor that generates the sea shell:
+	TRSversor V = _TRSversor((1.0f - 0.25f * e3ni) * exp(_bivectorE3GA((e1^e2) * 0.4f)) * exp(_noni_t(-0.05f  * noni)));
+	// Take 1/5st of the versor:
+ 	V = exp(0.2f * log(V));
 
-	// draw trail:
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	for (unsigned int i = 0; i < g_circleTrail.size(); i++) {
-		float a = 0.7f * (float)i / (float)(g_circleTrail.size());
-		
-		// draw the frame
-		glColor4fm(1.0f - a, 1.0f - a, 1.0f - a, a);
-		draw(g_circleTrail[i]);
+	// precompute inverse of the versor:
+	TRSversor Vi = _TRSversor(inverse(V));
+
+	mv::Float e = 2.71828182845904523536f;
+
+	// create a circle at the right position:
+	circle C = _circle(dual( no<<((no+e2)^ni) ^e1));
+	normalizedTranslator TC = exp(_freeVector(-0.5f * e * e3ni));
+	C = TC * C * inverse(TC);
+
+	// draw the circles:
+	glColor3fm(0.0f, 0.6f, 0.0f);
+	const int NB_ITER = 200;
+	for (int i = 0; i < NB_ITER; i++) {
+		draw(C);
+		// update circle such that we draw a 'trail' of circles
+		C = V * C * Vi;
 	}
 
-	glDisable(GL_BLEND);
+	// create a sphere at the right position:
+	sphere S = _sphere(dual(no- 0.005f * ni));
+	normalizedTranslator TS = exp(_freeVector(-0.5f * (e * e3ni + 2.0f * e2ni)));
+	S = TS * S * inverse(TS);
 
-	// update the trail:
-	if (((currentTime - g_prevTrailTime) / interpolationTime) > 0.15) {
-		g_prevTrailTime = currentTime;
-		g_circleTrail.push_back(imageOfC);
-
-		// trim trail to length 20:
-		if (g_circleTrail.size() > 20) {
-			g_circleTrail.erase(g_circleTrail.begin());
-		}
+	// draw spheres:
+	glColor3fm(0.6f, 0.0f, 0.0f);
+	for (int i = 0; i < NB_ITER; i++) {
+		draw(S);
+		// update sphere such that we draw a 'trail' of spheres
+		S = V * S * Vi;
 	}
 
 
+	g_drawState.popDrawMode();
+	g_drawState.popDrawMode();
 
 	glPopMatrix();
-
-/*
-	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glDisable(GL_LIGHTING);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	void *font = GLUT_BITMAP_HELVETICA_12;
-	renderBitmapString(20, 20, font, ". . .");
-*/
 
 	glutSwapBuffers();
 }
@@ -238,11 +185,6 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
-void Idle() {
-	// redraw viewport
-	glutPostRedisplay();
-}
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
@@ -258,15 +200,6 @@ int main(int argc, char*argv[]) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	glutIdleFunc(Idle);
-
-	// initialize the interpolation data:
-	srand(time(NULL));
-	g_startTime = u_timeGet();
-	initRandomDest();
-	copyDestToSource();
-	initRandomDest();
-
 
 	glutMainLoop();
 
