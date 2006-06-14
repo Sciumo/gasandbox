@@ -294,11 +294,6 @@ void menuCallback(int value) {
 	glutPostRedisplay();
 }
 
-void Idle() {
-	// redraw viewport
-	glutPostRedisplay();
-}
-
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
@@ -314,7 +309,6 @@ int main(int argc, char*argv[]) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	glutIdleFunc(Idle);
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry("vector mode", 1);

@@ -166,11 +166,11 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
 	}
 
-//	printf("Matrix:\n");
-//	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
-//	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);
+/*	printf("Matrix:\n");
+	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);*/
 
 	// determine translation:
 	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3], M[1 * 4 + 3], M[2 * 4 + 3]);
@@ -186,8 +186,6 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 	// compute determinant of matrix (if negative, flip 3rd column)
 	float sc3 = 1.0f; // sc3 = scale column 3
 	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) sc3 = -1.0f;
-
-	printf("Scale: %f %f (total %f)\n", scale, scale, scale * scale);
 
 	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
 	float RM[3 * 3] = {
@@ -205,11 +203,32 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 	mv::Float logScale = (mv::Float) ::log(scale);
 
 	// return full versor:
-	return _TRSversor(
+	TRSversor result = _TRSversor(
 		exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
 		R * // rotation
 		exp(_noni_t(0.5f * logScale * noni)) // scaling
 		); 
+
+/*	{
+		mv V = result;
+		mv Vi = inverse(V);
+		// compute images of basis vectors:
+		flatPoint imageOfE1NI = _flatPoint(V * e1ni * Vi);
+		flatPoint imageOfE2NI = _flatPoint(V * e2ni * Vi);
+		flatPoint imageOfE3NI = _flatPoint(V * e3ni * Vi);
+		flatPoint imageOfNONI = _flatPoint(V * noni * Vi);
+
+		// create matrix representation:
+		omFlatPoint OM(imageOfE1NI, imageOfE2NI, imageOfE3NI, imageOfNONI);
+
+		printf("Reconstructed Matrix:\n");
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 0], OM.m_c[1 * 4 + 0], OM.m_c[2 * 4 + 0], OM.m_c[3 * 4 + 0]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 1], OM.m_c[1 * 4 + 1], OM.m_c[2 * 4 + 1], OM.m_c[3 * 4 + 1]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 2], OM.m_c[1 * 4 + 2], OM.m_c[2 * 4 + 2], OM.m_c[3 * 4 + 2]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 3], OM.m_c[1 * 4 + 3], OM.m_c[2 * 4 + 3], OM.m_c[3 * 4 + 3]);
+	}*/
+
+	return result;
 }
 
 mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {

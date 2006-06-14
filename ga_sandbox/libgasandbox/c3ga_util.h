@@ -89,10 +89,6 @@ pointPair log(const c3ga::TRversor &V);
 /** special log() for TRSversors (todo: specialize the return type) */
 pointPair log(const c3ga::TRSversor &V);
 
-//void rotorToMatrix(const rotor &R, mv::Float M[9]);
-//rotor matrixToRotor(const mv::Float M[9]);
-
-
 mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX = -1);
 
 

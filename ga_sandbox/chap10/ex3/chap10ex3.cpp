@@ -356,10 +356,12 @@ void menuCallback(int value) {
 	glutPostRedisplay();
 }
 
+/*
 void Idle() {
 	// redraw viewport
 	glutPostRedisplay();
 }
+*/
 
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
@@ -379,7 +381,7 @@ int main(int argc, char*argv[]) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	glutIdleFunc(Idle);
+//	glutIdleFunc(Idle);
 
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry("Refine 1x", REFINE_1X);

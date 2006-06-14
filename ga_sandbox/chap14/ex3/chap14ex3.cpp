@@ -53,6 +53,11 @@ vectorE2GA g_prevMousePos;
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
+// rotation of the model
+rotor g_modelRotor(_rotor(1.0f));
+
+float g_modelDistance = -16.0f;
+
 const int MODE_DRAG = 0;
 const int MODE_CREATE_POINTS = 1;
 const int MODE_CREATE_LINES_CIRCLES = 2;
@@ -73,8 +78,6 @@ int g_mouseMode = MODE_DRAG;
 int g_dragPoint = -1; 
 float g_dragDistance = 12.0f;
 
-// rotation of the model
-rotor g_modelRotor(_rotor(1.0f));
 
 // the points:
 std::vector<point> g_points;
@@ -109,7 +112,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -16.0f);
+	glTranslatef(0.0f, 0.0f, g_modelDistance);
 
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -300,10 +303,30 @@ void display() {
 		}
 
 		{
-			glColor3f(1.0f, 0.0, 0.0);
-			char *str = "The point at infinity -> O";
 			if (GLpick::g_pickActive) glLoadName(0);
-			renderBitmapString(g_viewportWidth - 20 - (int)getBitmapStringWidth(font, str), g_viewportHeight - 20, font, str);
+
+			char *str = "The point at infinity -> O";
+
+			int w = (int)getBitmapStringWidth(font, str);
+			int h = 20;
+			int x = g_viewportWidth - 20 - w;
+			int y = g_viewportHeight - 20;
+
+			glDisable(GL_CULL_FACE);
+			glColor3f(0.8f, 0.8f, 0.8f);
+			glBegin(GL_QUADS);
+			glVertex3i(x-2, y+13,-1);
+			glVertex3i(x+w+2, y+13,-1);
+			glVertex3i(x+w+2, y+13-h,-1);
+			glVertex3i(x-2, y+13-h,-1);
+			glEnd();
+			glEnable(GL_CULL_FACE);
+
+
+			glColor3f(1.0f, 0.0f, 0.0f);
+			renderBitmapString(x, y, font, str);
+
+			if (GLpick::g_pickActive) glLoadName(-1);
 		}
 
 
@@ -364,32 +387,28 @@ void MouseButton(int button, int state, int x, int y) {
 		g_rotateModel = (g_dragPoint < 0);
 	}
 	else if (g_mouseMode == MODE_CREATE_POINTS) {
-		// create a new point at g_dragDistance from camera
-		point pt = _point(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance);
 
 		// get modelview matrix (as used for drawing the scene) from OpenGL:
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
-		glTranslatef(0.0f, 0.0f, -16.0f);
+		glTranslatef(0.0f, 0.0f, g_modelDistance);
 		rotorGLMult(g_modelRotor);
-		float modelviewMatrix[16];
+		mv::Float modelviewMatrix[16];
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
 		glPopMatrix();
 
-		// invert matrix, then try again . . . 
-		float inverseModelviewMatrix[16];
-		invert4x4Matrix(modelviewMatrix, inverseModelviewMatrix);
+		// convert modelview matrix to versor:
+		bool transpose = true;
+		TRversor V = _TRversor(matrix4x4ToVersorPS(modelviewMatrix, transpose));
 
-		// TODO: instead of inverting the matrix, convert it to GA, then invert the versor!!!
-		// Do this once the example code (16.x) is ready . . . 
+		// create a new point at g_dragDistance from camera
+		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance)));
 
-		// use it to initialize an outermorphism; apply it to the point
-		omFlatPoint M(inverseModelviewMatrix);
-		flatPoint fptIn = _flatPoint(pt^ni); // somethings is wrong with flatPointOM -> general  OM conversion
-		flatPoint fpt = _flatPoint(apply_om(M, fptIn));
+		// use OpenGL transform to create a point at the right location (`under' the mouse)
+		pt = inverse(V) * pt * V;
 
-		// add point to list of points:
-		g_points.push_back(_point(c3gaPoint(_vectorE3GA(-no << fpt))));
+		// add point to list:
+		g_points.push_back(pt); // c3gaPoint(_vectorE3GA(-no << fpt))));
 
 		g_dragPoint = (int)g_points.size()-1;
 

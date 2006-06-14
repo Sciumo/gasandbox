@@ -125,13 +125,17 @@ void display() {
 	S = TS * S * inverse(TS);
 
 	// draw spheres:
-	glColor3fm(0.6f, 0.0f, 0.0f);
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4fm(0.6f, 0.0f, 0.0f, 0.5f);
 	for (int i = 0; i < NB_ITER; i++) {
 		draw(S);
 		// update sphere such that we draw a 'trail' of spheres
 		S = V * S * Vi;
 	}
-
+	glDisable(GL_BLEND);
+	glDepthMask(GL_TRUE);
 
 	g_drawState.popDrawMode();
 	g_drawState.popDrawMode();
