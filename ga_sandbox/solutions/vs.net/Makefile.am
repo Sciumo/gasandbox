@@ -5,6 +5,7 @@ EXTRA_DIST = \
 	chap6ex1s.vcproj \
 	chap7ex4s.vcproj \
 	chap7ex5s.vcproj \
-	chap11ex4s.vcproj
+	chap11ex4s.vcproj \
+	chap14ex2s.vcproj
 
 
