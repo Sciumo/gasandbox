@@ -189,7 +189,7 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "free vector";
-							X = 4.0f * e1 ^ ni;
+							X = 6.0f * e1 ^ ni;
 							break;
 						case 3:
 							name = "free bivector";
@@ -206,7 +206,7 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "tangent vector";
-							X = 4.0f * no ^ e1;
+							X = 6.0f * no ^ e1;
 							break;
 						case 3:
 							name = "tangent bivector";
@@ -234,6 +234,11 @@ void display() {
 	
 			int w = (int)getBitmapStringWidth(font, name);
 			renderBitmapString((boxWidth - w)/2, boxHeight - 20, font, name);
+
+			font = GLUT_BITMAP_HELVETICA_10;
+			std::string coordStr = X.toString();
+			w = (int)getBitmapStringWidth(font, coordStr.c_str());
+			renderBitmapString((boxWidth - w)/2, boxHeight - 40, font, coordStr.c_str());
 
 
 		}

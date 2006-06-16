@@ -148,6 +148,15 @@ void display() {
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 
 	if (!GLpick::g_pickActive) {
+	/*	// some test code for 14.2
+		glColor3fm(0.0f, 1.0f, 1.0f);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		g_drawState.pushDrawModeOn(OD_MAGNITUDE);
+		draw(4 * ni^e1);
+//		draw(ni^e1 ^ e2);
+		g_drawState.popDrawMode();*/
+
 
 		// draw the lines
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);

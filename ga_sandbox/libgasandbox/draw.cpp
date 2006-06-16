@@ -179,7 +179,7 @@ void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float sca
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	if (_Float(norm_e2(tail))) glTranslated(tail.e1(), tail.e2(), tail.e3());
-	glScaled(scale, scale, scale);
+	glScalef(scale, scale, scale);
 
 	// draw the stick of the vector
 	glGetBooleanv(GL_LIGHTING, &l);
@@ -195,8 +195,10 @@ void drawVector(const e3ga::vector &tail, const e3ga::vector &dir, mv::Float sca
 	// translate to head of vector
 	glTranslated(dir.e1(), dir.e2(), dir.e3());
 
-	if (scale > 1.2) // 1.2 = arbitrary constant
-		glScaled(1.2 / scale, 1.2 / scale, 1.2 / scale);
+	if (scale > 1.2f) {// 1.2 = arbitrary constant
+		glScalef(1.2f / scale, 1.2f / scale, 1.2f / scale);
+		glScalef(1.1f * sqrt(scale), 1.1f * sqrt(scale), 1.1f * sqrt(scale));
+	}
 
 	// rotate e3 to vector direction
 	rt = rotorFromVectorToVector(_vector(e3), _vector(unit_e(dir)));

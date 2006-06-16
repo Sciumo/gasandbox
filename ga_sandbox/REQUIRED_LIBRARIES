@@ -29,8 +29,9 @@ http://sourceforge.net/projects/opencvlibrary/
 Qhull (2003.1): required by chap14ex1
 http://www.qhull.org/
 	
-	QHull caused us so much trouble -- both on Unix and Windows --
+	Building QHull caused us so much trouble -- both on Unix and Windows --
 	that we decide to include the qhull distribution with this package.
 	It recides in the qhull-2003.1 directory. We hope we do not violate 
-	any rights of the QHull authors by redistributing it. The only 
-	modifications we made are in the Makefiles and VS projects.
+	any rights of the QHull authors by redistributing it. 
+	(The only  odifications we made are in the Makefiles and VS projects)
+	(Why QHull? -> OpenCV has only 2D convex hull, we need 3D . . .)

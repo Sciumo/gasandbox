@@ -921,7 +921,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 	// location:
 	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
 
-	mv::Float weight = sqrt(_Float(norm_e(ni << X)));
+	mv::Float weight = _Float(norm_e(ni << X));
 
 	// ************* format of tangent ***************
 	// m_pt[0] = location
@@ -950,7 +950,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 		mv::Float scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
 		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
-		m_vc[2] = _vector(dual(m_vc[0] ^ m_vc[1]));
+		m_vc[2] = _vector(-dual(m_vc[0] ^ m_vc[1]));
 	}
 
 	switch (Agrade) {
@@ -1075,7 +1075,7 @@ void mvAnalysis::analyzeFree(const mv &X, int intFlags /* = 0 */, double epsilon
 		double scale = factorizeBlade(reverse(lcont(no, reverse(attitude))), factor, gradeOfBlade);
 		m_vc[0] = vectorToE3GA(_vectorE3GA(factor[0]));
 		m_vc[1] = vectorToE3GA(_vectorE3GA(factor[1]));
-		m_vc[2] = _vector(dual(m_vc[0] ^ m_vc[1]));
+		m_vc[2] = _vector(-dual(m_vc[0] ^ m_vc[1]));
 	}
 
 	switch (Agrade) {
