@@ -45,7 +45,7 @@ const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 2: Drawing Eu
 int g_randCol = 0;
 
 // GLUT state information 
-int g_viewportWidth = 800;
+int g_viewportWidth = 900;
 int g_viewportHeight = 600;
 
 void display() {

@@ -83,6 +83,10 @@ AC_OUTPUT(
 	chap14/ex4/Makefile \
 	\
 	chap15/Makefile \
+	chap15/ex1/Makefile \
+	chap15/ex2/Makefile \
+	chap15/ex3/Makefile \
+	chap15/ex4/Makefile \
 	\
 	chap16/Makefile \
 	chap16/ex1/Makefile \
@@ -107,6 +111,9 @@ AC_OUTPUT(
 	\
 	solutions/chap11/Makefile \
 	solutions/chap11/ex4/Makefile \
+	\
+	solutions/chap14/Makefile \
+	solutions/chap14/ex2/Makefile \
 	\
 	solutions/vs.net/Makefile \
 	\
