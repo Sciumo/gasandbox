@@ -40,7 +40,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 2: Drawing Euclid's Elements";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 2: Drawing Euclid's Elements (SOLUTION)";
 
 int g_randCol = 0;
 
