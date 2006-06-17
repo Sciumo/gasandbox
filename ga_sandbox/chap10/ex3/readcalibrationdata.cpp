@@ -116,7 +116,7 @@ State readCalibrationData(const std::string &filename) {
 			char *rotorStr = line + skipNb;
 
 			try {
-				rotor R = _rotor(parseMVString(rotorStr));
+				rotor R = _rotor(e3ga::parseMVString(rotorStr));
 				cameras[camIdx].setR(R);
 			} catch (const std::string &str) {
 				printf("%s\n", str.c_str());
@@ -129,7 +129,7 @@ State readCalibrationData(const std::string &filename) {
 			char *vectorStr = line + skipNb;
 
 			try {
-				vector t = _vector(parseMVString(vectorStr));
+				vector t = _vector(e3ga::parseMVString(vectorStr));
 				cameras[camIdx].m_t = t;
 			} catch (const std::string &str) {
 				printf("%s\n", str.c_str());
@@ -158,7 +158,7 @@ State readCalibrationData(const std::string &filename) {
 				}
 				tStr = line + idx;
 				try {
-					t = _vector(parseMVString(tStr));
+					t = _vector(e3ga::parseMVString(tStr));
 				} catch (const std::string &str) {
 					printf("%s\n", str.c_str());
 					err = -1;break;

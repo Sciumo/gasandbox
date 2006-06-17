@@ -23,6 +23,8 @@
 #include "c2ga_mv_lexer.hpp"
 #include "c2ga_mv_parser.hpp"
 
+namespace c2ga {
+
 c2ga::mv parseMVString(const std::string &str) {
  	try {
  		std::istringstream inputStream(str);
@@ -31,6 +33,8 @@ c2ga::mv parseMVString(const std::string &str) {
  		c2ga::c2ga_mv_parser par(lex);
  		return par.multivector();
  	} catch (...) {
- 		throw std::string("parseMVString() could not parse: " + str);
+ 		throw std::string("parseMVString(): could not parse: " + str);
  	}
 }
+
+} /* end of namespace c2ga */

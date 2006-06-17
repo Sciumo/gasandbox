@@ -23,6 +23,8 @@
 #include "e2ga_mv_lexer.hpp"
 #include "e2ga_mv_parser.hpp"
 
+namespace e2ga {
+
 e2ga::mv parseMVString(const std::string &str) {
  	try {
  		std::istringstream inputStream(str);
@@ -34,3 +36,5 @@ e2ga::mv parseMVString(const std::string &str) {
  		throw std::string("parseMVString() could not parse: " + str);
  	}
 }
+
+} /* end of namespace e2ga */

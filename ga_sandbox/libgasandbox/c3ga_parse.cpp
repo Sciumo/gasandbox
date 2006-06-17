@@ -23,6 +23,8 @@
 #include "c3ga_mv_lexer.hpp"
 #include "c3ga_mv_parser.hpp"
 
+namespace c3ga {
+
 c3ga::mv parseMVString(const std::string &str) {
  	try {
  		std::istringstream inputStream(str);
@@ -34,3 +36,5 @@ c3ga::mv parseMVString(const std::string &str) {
  		throw std::string("parseMVString() could not parse: " + str);
  	}
 }
+
+} /* end of namespace c3ga */

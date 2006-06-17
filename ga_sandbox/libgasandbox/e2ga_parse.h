@@ -21,8 +21,11 @@
 #include <string>
 #include "e2ga.h"
 
+namespace e2ga {
+
 /** parses a multivector string, returns multivectors (or throws std::string() on error) */
 e2ga::mv parseMVString(const std::string &str);
 
+} /* end of namespace e2ga */
 
 #endif /* _E2GA_PARSE_H_ */

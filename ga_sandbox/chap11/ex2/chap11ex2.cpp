@@ -480,8 +480,8 @@ int main(int argc, char*argv[]) {
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	// create the initial points
-	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 1.0f, 0.0f));
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, -1.0f, 1.0f, 0.0f));
+	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 1.0f, 0.0f));
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 0.0f, 0.0f));
 
 	g_points.push_back(normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, 1.0f, 1.0f, 1.0f));

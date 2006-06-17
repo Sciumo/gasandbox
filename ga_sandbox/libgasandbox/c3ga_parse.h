@@ -21,8 +21,11 @@
 #include <string>
 #include "c3ga.h"
 
+namespace c3ga {
+
 /** parses a multivector string, returns multivectors (or throws std::string() on error) */
 c3ga::mv parseMVString(const std::string &str);
 
+} /* end of namespace c3ga */
 
 #endif /* _C3GA_PARSE_H_ */

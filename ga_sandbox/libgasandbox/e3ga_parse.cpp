@@ -23,6 +23,8 @@
 #include "e3ga_mv_lexer.hpp"
 #include "e3ga_mv_parser.hpp"
 
+namespace e3ga {
+
 e3ga::mv parseMVString(const std::string &str) {
  	try {
  		std::istringstream inputStream(str);
@@ -31,6 +33,8 @@ e3ga::mv parseMVString(const std::string &str) {
  		e3ga::e3ga_mv_parser par(lex);
  		return par.multivector();
  	} catch (...) {
- 		throw std::string("parseMVString() could not parse: " + str);
+ 		throw std::string("parseMVString(): could not parse: " + str);
  	}
 }
+
+} /* end of namespace e3ga */

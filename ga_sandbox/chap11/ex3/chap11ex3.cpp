@@ -176,6 +176,7 @@ void display() {
 
 		// is L1plusL2 a blade?
 		h3ga::mvType T(L1plusL2);
+		printf("??? %d %d\n", T.m_type, mvTypeBase::BLADE);
 		sprintf(buf, "pt1^pt2 + pt3^pt4 is a blade: %s\n", (T.m_type == mvTypeBase::BLADE) ? "true" : "false");
 		renderBitmapString(20, y, font, buf);
 		y -= 20;
@@ -231,7 +232,7 @@ void display() {
 		renderBitmapString(20, 80, font, "Use the mouse buttons to drag the red points and orbit the scene.");
 		renderBitmapString(20, 60, font, "The white line (when drawn) is the sum of the two green lines.");
 		renderBitmapString(20, 40, font, "When the white line is not drawn, the sum of the green lines is not a blade.");
-		renderBitmapString(20, 20, font, "NOTE: You need to orbit the scene a little before this situation can arise!.");
+		renderBitmapString(20, 20, font, "NOTE: You need to orbit the scene before this situation can arise!");
 	}
 
 	if (!GLpick::g_pickActive) {
