@@ -155,15 +155,15 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "flat point";
-							X = no ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 3:
 							name = "line";
-							X = no ^ e1 ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 4:
 							name = "plane";
-							X = no ^ (e2 - 2.0f * e3) ^ e1  ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 					}
 					break;
@@ -172,15 +172,15 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "point pair";
-							X = c3gaPoint(_vectorE3GA(3.0f * e1)) ^ c3gaPoint(_vectorE3GA(-3.0 * e1));
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 3:
 							name = "circle";
-							X = c3gaPoint(_vectorE3GA(3.0f * e1)) ^ c3gaPoint(_vectorE3GA(3.0 * e2)) ^ c3gaPoint(_vectorE3GA(-3.0 * e1));
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 4:
 							name = "sphere";
-							X = c3gaPoint(_vectorE3GA(3.0f * e1)) ^ c3gaPoint(_vectorE3GA(3.0 * e2)) ^ c3gaPoint(_vectorE3GA(-3.0 * e1)) ^ c3gaPoint(_vectorE3GA(-3.0 * e3));
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 					}
 					break;
@@ -189,15 +189,15 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "free vector";
-							X = 6.0f * e1 ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 3:
 							name = "free bivector";
-							X = 3.0f * e1 ^ e2 ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 4:
 							name = "free trivector";
-							X = 50.0f * e1 ^ e2 ^ e3 ^ ni;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 					}
 					break;
@@ -206,15 +206,15 @@ void display() {
 					switch (j + 2) {
 						case 2:
 							name = "tangent vector";
-							X = 6.0f * no ^ e1;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 3:
 							name = "tangent bivector";
-							X = 3.0f * no ^ e1 ^ e2;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 						case 4:
 							name = "tangent trivector";
-							X = 50.0f * no ^ e1 ^ e2 ^ e3;
+							X = no; // <- EXERCISE: insert correct primitive here
 							break;
 					}
 					break;

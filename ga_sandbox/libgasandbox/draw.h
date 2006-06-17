@@ -33,7 +33,7 @@ namespace mv_draw {
 class DrawState {
 public:
 	DrawState() : m_ambient(0.2f),  m_diffuse(1.0f), m_sphere(NULL), m_pointSize(0.01f),
-		m_lineLength(5.0f), m_planeSize(10.0f) {
+		m_lineLength(6.0f), m_planeSize(6.0f) {
 		m_drawMode.push_back(OD_MAGNITUDE | OD_ORIENTATION);
 	}
 

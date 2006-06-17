@@ -188,11 +188,19 @@ protected:
 	void analyzeRound(c3ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	/** called by analyze to C3GA tangents */
 	void analyzeTangent(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
-
 	/** called by analyze to analyze C3GA flats (you must supply a 'probe' relative to which positions are determined)*/
 	void analyzeFlat(const c3ga::mv &X, const c3ga::normalizedPoint &probe, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 	/** called by analyze to analyze C3GA free blades */
 	void analyzeFree(const c3ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+
+	/** called by analyze to analyze C2GA rounds */
+	void analyzeRound(c2ga::mv X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to C2GA tangents */
+	void analyzeTangent(const c2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to analyze C2GA flats (you must supply a 'probe' relative to which positions are determined)*/
+	void analyzeFlat(const c2ga::mv &X, const c2ga::normalizedPoint &probe, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
+	/** called by analyze to analyze C2GA free blades */
+	void analyzeFree(const c2ga::mv &X, int intFlags = 0, double epsilon = DEFAULT_EPSILON);
 
 	inline int getAnalysisGrade(int topGrade) const {
 		if (m_flags & FLAG_DUAL) {

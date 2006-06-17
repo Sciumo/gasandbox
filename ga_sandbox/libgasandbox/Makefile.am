@@ -18,7 +18,8 @@ libgasandbox_a_include_HEADERS = \
 	timing.h glut_util.h gl_util.h gabits.h c2gatoc3ga.h
 
 libgasandbox_a_SOURCES =  \
-	draw.cpp mv_analyze.cpp \
+	draw.cpp \
+	mv_analyze.cpp mv_analyze_e2ga.cpp mv_analyze_e3ga.cpp mv_analyze_h3ga.cpp mv_analyze_c2ga.cpp mv_analyze_c3ga.cpp \
 	e2ga.cpp e2ga_draw.cpp \
 	e3ga.cpp e3ga_util.cpp e3ga_draw.cpp \
 	h3ga.cpp h3ga_util.cpp h3ga_draw.cpp \

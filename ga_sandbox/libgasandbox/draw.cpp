@@ -556,7 +556,7 @@ void drawTriVector(const e3ga::vector &base, e3ga::mv::Float scale, const e3ga::
 }
 
 void drawLine(const e3ga::vector &pt, const e3ga::vector &dir, float weight, int method /*= 0 */, Palet *o /*= NULL*/) {
-	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
+	mv::Float scaleConst = g_drawState.m_lineLength; // 4.0f * (mv::Float)sqrt(2.0);
 	mv::Float stepSize = 0.1f;
 
 	glDisable(GL_LIGHTING);
@@ -601,7 +601,7 @@ void drawLine(const e3ga::vector &pt, const e3ga::vector &dir, float weight, int
 
 void drawPlane(const e3ga::vector &pt, const e3ga::vector &ortho1, const e3ga::vector &ortho2,
 			   const e3ga::vector &normal, float weight, int method /*= 0 */, Palet *o /*= NULL*/) {
-	mv::Float scaleConst = 4.0f * (mv::Float)sqrt(2.0);
+	mv::Float scaleConst = g_drawState.m_planeSize; // 4.0f * (mv::Float)sqrt(2.0);
 	mv::Float stepSize = 0.1f;
 
 	for (int s = 0; s < 2; s++) { // draw both front and back side individually

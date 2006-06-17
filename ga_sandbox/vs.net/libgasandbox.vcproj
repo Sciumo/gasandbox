@@ -173,6 +173,21 @@
 				RelativePath="..\libgasandbox\mv_analyze.cpp">
 			</File>
 			<File
+				RelativePath="..\libgasandbox\mv_analyze_c2ga.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\mv_analyze_c3ga.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\mv_analyze_e2ga.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\mv_analyze_e3ga.cpp">
+			</File>
+			<File
+				RelativePath="..\libgasandbox\mv_analyze_h3ga.cpp">
+			</File>
+			<File
 				RelativePath="..\libgasandbox\timing.cpp">
 			</File>
 		</Filter>
