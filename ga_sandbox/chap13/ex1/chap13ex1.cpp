@@ -47,20 +47,20 @@ int main(int argc, char*argv[]) {
 
 	printf("\n");
 
-	// create 'e' and 'eb'
+	// create 'e+' and 'e-'
 	const float sqrt2i = 1.0f / 1.4142135623730950488016887242097f;
-	mv e = sqrt2i * (no - ni);
-	mv eb = sqrt2i * (no + ni);
+	mv ep = sqrt2i * (no - ni);
+	mv em = sqrt2i * (no + ni);
 
-	// print e and eb
-	printf("e and eb:\n");
-	printf(" e = %s\n", e.c_str());
-	printf("eb = %s\n", eb.c_str());
+	// print ep and em
+	printf("e+ and e-:\n");
+	printf("e+ = %s\n", ep.c_str());
+	printf("e_ = %s\n", em.c_str());
 	printf("\n");
-	printf("The metric of e and eb:\n");
-	printf(" e . e  = %f\n", _float(e << e));
-	printf("eb . eb = %f\n", _float(eb << eb));
-	printf(" e . eb = %f\n", _float(e << eb));
+	printf("The metric of e+ and e-:\n");
+	printf("e+ . e+ = %f\n", _float(ep << ep));
+	printf("e- . e- = %f\n", _float(em << em));
+	printf("e+ . e- = %f\n", _float(ep << em));
 
 
 

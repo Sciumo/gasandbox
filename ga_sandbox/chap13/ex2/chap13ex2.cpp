@@ -102,7 +102,7 @@ void display() {
 
 	// draw the points
 	glColor3fm(1.0f, 0.0f, 0.0f);
-	g_drawState.m_pointSize = 0.005f;
+	g_drawState.m_pointSize = 0.1f;
 	for (unsigned int i = 0; i < g_points.size(); i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
 		draw(g_points[i]);

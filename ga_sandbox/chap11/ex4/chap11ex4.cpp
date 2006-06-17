@@ -86,8 +86,8 @@ const int IMAGE_PLANE_PT_IDX = 1;
 const int NB_POINTS = 4;
 normalizedPoint g_points[NB_POINTS] = {
 	_normalizedPoint(6.0f *  e1 + e0),
-	_normalizedPoint(4.0f * e1 + e2 + e0),
 	_normalizedPoint(4.0f * e1 - e2 + e0),
+	_normalizedPoint(4.0f * e1 + e2 + e0),
 	_normalizedPoint(4.0f * e1 - e3 + e0)
 };
 
@@ -145,7 +145,7 @@ void display() {
 
 
 	// clear viewport
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// setup other GL stuff
@@ -170,7 +170,7 @@ void display() {
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
+			glColor3fm(0.0, 0.0, 0.0);
 			glBegin(GL_POLYGON);
 			for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
 				// get vertex:
@@ -197,7 +197,7 @@ void display() {
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
+			glColor3fm(0.0, 0.0, 0.0);
 
 			// first compute the projected vertices
 			std::vector<point> PV; // PV = projectedVertices
@@ -267,7 +267,7 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, 60, font, "The four red points represent the camera and span the imaging plane.");
 		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red points, and to orbit the scene.");
