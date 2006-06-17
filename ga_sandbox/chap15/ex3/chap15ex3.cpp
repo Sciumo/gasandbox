@@ -39,8 +39,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-// Everybody takes the plunge the first time.
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 15, Example 1: The Plunge";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 15, Example 3: Euclidean Projections";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -58,16 +57,25 @@ bool g_rotateModelOutOfPlane = false;
 rotor g_modelRotor(_rotor(1.0f));
 
 // what point to drag (or -1 for none)
-int g_dragPrimitive = -1; 
+int g_dragPoint = -1; 
 float g_dragDistance = 0.0f;
 
-// the primitives:
-const int NB_PRIMITIVES = 3;
-mv g_primitives[NB_PRIMITIVES] = {
-		c3gaPoint(-1.0f, 1.5f, 0.0f), // point
-		3.25f * e1 + 2.68f * e2 -0.34f * e3 + 1.00f * no + 8.43f * ni, // dual sphere
-		-e2 + 2.0f * ni, // dual plane
+// the points:
+const int NB_POINTS = 6;
+normalizedPoint g_points[NB_POINTS] = {
+	c3gaPoint(1, 2, 3),
+	c3gaPoint(-1, 2, 3),
+	c3gaPoint(1, -2, 3),
+	c3gaPoint(-1, -2, -3),
+	c3gaPoint(1, 2, -3),
+	c3gaPoint(-1, 2, -3)
 };
+
+const int MODE_LINE = 1;
+const int MODE_CIRCLE = 2;
+const int MODE_CIRCLE_WITH_SPHERE = 6;
+
+int g_mode = MODE_CIRCLE;
 
 vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d);
 
@@ -108,34 +116,19 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// draw the plunge
-	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_primitives[0] ^ g_primitives[1] ^ g_primitives[2]);
+	// we collect all lines and planes in this list:
+	std::vector<mv> primitives;
 
-	// draw the primitives
+	// draw the points
 	glColor3fm(1.0f, 0.0f, 0.0f);
 	g_drawState.m_pointSize = 0.1f;
-	g_drawState.pushDrawModeOff(OD_ORIENTATION);
-	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
-	for (unsigned int i = 0; i < NB_PRIMITIVES; i++) { 
+	for (unsigned int i = 0; i < NB_POINTS; i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
-
-		if (i > 0) { // draw the sphere and plane transparent
-			glDepthMask(GL_FALSE);
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			glColor4fm(1.0f, 0.0f, 0.0f, 0.5f);
-		}
-
-		draw(g_primitives[i]);
+		draw(g_points[i]);
 	}
-	glDisable(GL_BLEND); // blending off
-	glDepthMask(GL_TRUE); // enable depth buffer writes
-	g_drawState.popDrawMode();
-	g_drawState.popDrawMode();
-
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
+
 
 	glPopMatrix();
 
@@ -153,10 +146,11 @@ void display() {
 		void *font = GLUT_BITMAP_HELVETICA_12;
 
 		if (!GLpick::g_pickActive) {
-
-			renderBitmapString(20, 40, font, "Use the mouse buttons to drag the point, plane and sphere, and to orbit the scene.");
-			renderBitmapString(20, 20, font, "Notice how the circle always intersects the other primitives orthogonally");
+			renderBitmapString(20, 60, font, "BLAH.");
+			renderBitmapString(20, 40, font, "BLAH.");
+			renderBitmapString(20, 20, font, "BLAH.");
 		}
+
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -189,13 +183,14 @@ vectorE2GA mousePosToVector(int x, int y) {
 }
 
 void MouseButton(int button, int state, int x, int y) {
+	if (state != GLUT_DOWN) return; // don't respond when button goes up . . .
+
 	g_rotateModel = false;
 
 	g_prevMousePos = mousePosToVector(x, y);
 
-	g_dragPrimitive = pick(x, g_viewportHeight - y, display, &g_dragDistance);
-	g_rotateModel = (g_dragPrimitive < 0);
-
+	g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+	g_rotateModel = (g_dragPoint < 0);
 	if (g_rotateModel) {
 		vectorE2GA mousePos = mousePosToVector(x, y);
 		g_rotateModel = true;
@@ -203,7 +198,6 @@ void MouseButton(int button, int state, int x, int y) {
 			g_rotateModelOutOfPlane = true;
 		else g_rotateModelOutOfPlane = false;
 	}
-
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -219,17 +213,24 @@ void MouseMotion(int x, int y) {
 			g_modelRotor = _rotor(c3ga::exp(0.005f * (motion ^ e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(c3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
-	else if (g_dragPrimitive >= 0) {
+	else if (g_dragPoint >= 0) {
 		vectorE3GA t = vectorAtDepth(g_dragDistance, motion);
 		t = _vectorE3GA(inverse(g_modelRotor) * t * g_modelRotor);
 		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
 
-		g_primitives[g_dragPrimitive] = 
-				T * g_primitives[g_dragPrimitive] * inverse(T);
+		// note the hack required here (repeated application of translators turns points into spheres, at least, with 32-bit floats  :(     )
+		g_points[g_dragPoint] = 
+				c3gaPoint(_vectorE3GA(T * g_points[g_dragPoint] * inverse(T)));
 	}
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
+
+	// redraw viewport
+	glutPostRedisplay();
+}
+
+void menuCallback(int value) {
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -250,6 +251,13 @@ int main(int argc, char*argv[]) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+
+	g_GLUTmenu = glutCreateMenu(menuCallback);
+	glutAddMenuEntry("line mode", MODE_LINE);
+	glutAddMenuEntry("circle mode", MODE_CIRCLE);
+	glutAddMenuEntry("draw sphere (in circle mode)", MODE_CIRCLE_WITH_SPHERE);
+	glutAttachMenu(GLUT_MIDDLE_BUTTON);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	glutMainLoop();
 
