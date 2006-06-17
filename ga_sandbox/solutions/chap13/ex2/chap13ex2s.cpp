@@ -36,7 +36,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 2: The Distance Between Points";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 13, Example 2: The Distance Between Points (SOLUTION)";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -51,7 +51,7 @@ bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = 12.0f;
 
 // rotation of the model
@@ -112,9 +112,9 @@ void display() {
 		// draw lines between points, remember positions for labels
 		glDisable(GL_LIGHTING);
 		glColor3f(0.0, 1.0, 0.0);
-		for (unsigned int i = 0; i < g_points.size(); i++) {	
+		for (unsigned int i = 0; i < g_points.size(); i++) {
 			const normalizedPoint &pt1 = g_points[i];
-			for (unsigned int j = i+1; j < g_points.size(); j++) {	
+			for (unsigned int j = i+1; j < g_points.size(); j++) {
 				const normalizedPoint &pt2 = g_points[j];
 
 				// draw the line:
@@ -123,8 +123,10 @@ void display() {
 				glVertex3f(pt2.e1(), pt2.e2(), pt2.e3());
 				glEnd();
 
-				// compute distance
-				float distance = 0.0; // EXERCISE: fill in the code to compute the distance!
+				// Compute distance:
+				// We use fabs() because (due to FP round off error), it is possible that (pt1 << pt2 > 0)
+				// So in principle, the -2.0f could be just 2.0f (without the minus).
+				float distance = sqrt(fabs(-2.0f * _Float(pt1 << pt2))); 
 
 				// create the label:
 				char buf[256];

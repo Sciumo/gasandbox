@@ -111,6 +111,9 @@ AC_OUTPUT(
 	solutions/chap11/Makefile \
 	solutions/chap11/ex4/Makefile \
 	\
+	solutions/chap13/Makefile \
+	solutions/chap13/ex2/Makefile \
+	\
 	solutions/chap14/Makefile \
 	solutions/chap14/ex2/Makefile \
 	\
