@@ -141,7 +141,7 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-SUBDIRS = chap2 chap3 chap6 chap7 chap11 chap14 vs.net
+SUBDIRS = chap2 chap3 chap6 chap7 chap11 chap13 chap14 vs.net
 all: all-recursive
 
 .SUFFIXES:

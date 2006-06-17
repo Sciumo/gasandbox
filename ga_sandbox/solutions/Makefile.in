@@ -141,7 +141,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = chap2 chap3 chap6 chap7 chap11 chap14 vs.net
+SUBDIRS = chap2 chap3 chap6 chap7 chap11 chap13 chap14 vs.net
 all: all-recursive
 
 .SUFFIXES:
