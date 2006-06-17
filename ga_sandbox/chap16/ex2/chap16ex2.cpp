@@ -37,7 +37,11 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
 
-	for (int i = 0; i < 100000; i++) {
+	const int NB_CHECKS = 100000;
+	printf("Checking that exp(log(V)) == V for %d random translate-rotate-scale versors\n", NB_CHECKS);
+	
+	int nbErrors = 0;
+	for (int i = 0; i < NB_CHECKS; i++) {
 		TRSversor V = _TRSversor(generateRandomTRSversor() * generateRandomTRSversor());
 		
 		pointPair P = log(V);
@@ -49,8 +53,10 @@ int main(int argc, char*argv[]) {
 		
 		if ((fabs(_Float(norm_e(dif1)) - 1.0f) > 1e-4f) || (fabs(_Float(norm_e(dif2)) - 1.0f) > 1e-4f)) {
 			printf("Error for V = %s\n", V.c_str_e20());
+			nbErrors++;
 		}
 	}
+	printf("Done (%d errors)!\n", nbErrors);
 
 	return 0;
 }

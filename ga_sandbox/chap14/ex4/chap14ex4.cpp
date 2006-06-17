@@ -53,6 +53,8 @@ vectorE2GA g_prevMousePos;
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
+const float g_modelDistance = -16.0f;
+
 const int MODE_DRAG = 0;
 const int MODE_CREATE_POINTS = 1;
 
@@ -117,7 +119,7 @@ dualSphere fitSphere(const std::vector<point> &points) {
 	CvMat matrixU = cvMat(5, 5, CV_32F, U); // create matrix U (on stack)
 	CvMat matrixV = cvMat(5, 5, CV_32F, V); // create matrix V (on stack)
 	int flags = 0;
-	cvSVD(&matrixPM, &matrixS, &matrixU, &matrixV, flags);
+	cvSVD(&matrixPM, &matrixS, &matrixU, &matrixV, flags); // compute SVD
 
 	// extract last column of V (coordinates of dual sphere);
 	dualSphere DS(dualSphere_no_e1_e2_e3_ni, 
@@ -146,7 +148,7 @@ void display() {
 		-GLpick::g_frustumHeight / 2.0, GLpick::g_frustumHeight / 2.0,
 		GLpick::g_frustumNear, GLpick::g_frustumFar);
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(0.0f, 0.0f, -16.0f);
+	glTranslatef(0.0f, 0.0f, g_modelDistance);
 
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -246,14 +248,6 @@ vectorE2GA mousePosToVector(int x, int y) {
 	return _vectorE2GA((float)x * e1 - (float)y * e2);
 }
 
-void invert4x4Matrix(const float _M[16], float _M_inverse[16]) {
-	// use OpenCV to invert matrix:
-	CvMat M = cvMat(4, 4, CV_32F, (void*)_M);
-	CvMat M_inverse = cvMat(4, 4, CV_32F, (void*)_M_inverse);
-
-	cvInvert(&M, &M_inverse);
-}
-
 void MouseButton(int button, int state, int x, int y) {
 	if (state != GLUT_DOWN) return; // don't respond when button goes up . . .
 
@@ -266,13 +260,38 @@ void MouseButton(int button, int state, int x, int y) {
 		g_rotateModel = (g_dragPoint < 0);
 	}
 	else if (g_mouseMode == MODE_CREATE_POINTS) {
+	
+		// get modelview matrix (as used for drawing the scene) from OpenGL:
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glTranslatef(0.0f, 0.0f, g_modelDistance);
+		rotorGLMult(g_modelRotor);
+		mv::Float modelviewMatrix[16];
+		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
+		glPopMatrix();
+
+		// convert modelview matrix to versor:
+		bool transpose = true;
+		TRversor V = _TRversor(matrix4x4ToVersorPS(modelviewMatrix, transpose));
+
+		// create a new point at g_dragDistance from camera
+		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance)));
+
+		// use OpenGL transform to create a point at the right location (`under' the mouse)
+		pt = inverse(V) * pt * V;
+
+		// add point to list:
+		g_points.push_back(pt); // c3gaPoint(_vectorE3GA(-no << fpt))));
+
+		g_dragPoint = (int)g_points.size()-1;
+/*	
 		// create a new point at g_dragDistance from camera
 		point pt = _point(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance);
 
 		// get modelview matrix (as used for drawing the scene) from OpenGL:
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
-		glTranslatef(0.0f, 0.0f, -16.0f);
+		glTranslatef(0.0f, 0.0f, g_modelDistance);
 		rotorGLMult(g_modelRotor);
 		float modelviewMatrix[16];
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
@@ -294,7 +313,7 @@ void MouseButton(int button, int state, int x, int y) {
 		g_points.push_back(_point(c3gaPoint(_vectorE3GA(-no << fpt))));
 
 		g_dragPoint = (int)g_points.size()-1;
-
+*/
 	}
 
 	if (g_rotateModel) {

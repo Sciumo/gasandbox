@@ -24,8 +24,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <opencv/cv.h>
-
 #include <vector>
 
 #include <libgasandbox/c3ga.h>
@@ -335,7 +333,7 @@ void display() {
 			glColor3f(1.0f, 0.0f, 0.0f);
 			renderBitmapString(x, y, font, str);
 
-			if (GLpick::g_pickActive) glLoadName(-1);
+			if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 		}
 
 
@@ -370,13 +368,6 @@ vectorE2GA mousePosToVector(int x, int y) {
 	return _vectorE2GA((float)x * e1 - (float)y * e2);
 }
 
-void invert4x4Matrix(const float _M[16], float _M_inverse[16]) {
-	// use OpenCV to invert matrix:
-	CvMat M = cvMat(4, 4, CV_32F, (void*)_M);
-	CvMat M_inverse = cvMat(4, 4, CV_32F, (void*)_M_inverse);
-
-	cvInvert(&M, &M_inverse);
-}
 
 void addPtToList(std::vector<int> &list, int idx) {
 	for (unsigned int i = 0; i < list.size(); i++)

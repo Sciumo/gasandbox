@@ -183,6 +183,14 @@ void draw(const c3ga::mv &X, int method/*= 0*/, Palet *o/* = NULL*/) {
 	drawC3GA(A, method, o);
 }
 
+/// same as above, but with option to set analysis epsilon
+void draw(const c3ga::mv &X, double epsilon, int method/*= 0*/, Palet *o/* = NULL*/) {
+	const int intFlags = 0;
+	mv_analyze::mvAnalysis A(X, intFlags, epsilon);
+	drawC3GA(A, method, o);
+}
+
+
 
 /*
 normalizedPoint labelPositionPoint(const mvAnalysis &A, unsigned int labelGenerator) {

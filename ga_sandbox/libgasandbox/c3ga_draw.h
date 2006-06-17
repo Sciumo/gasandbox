@@ -43,6 +43,9 @@ as argument (and also integrate 'Palet')
 */
 void draw(const c3ga::mv &X, int method = 0, Palet *o = NULL);
 
+/// same as above, but with option to set analysis epsilon
+void draw(const c3ga::mv &X, double epsilon, int method = 0, Palet *o = NULL);
+
 void drawC3GA(const mv_analyze::mvAnalysis &A, int method= 0, Palet *o = NULL);
 
 

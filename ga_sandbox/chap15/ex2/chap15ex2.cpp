@@ -38,7 +38,7 @@
 using namespace c2ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 2: Affine Combinations of Points";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 15, Example 2: Affine Combinations of Points";
 
 // GLUT state information 
 int g_viewportWidth = 800;

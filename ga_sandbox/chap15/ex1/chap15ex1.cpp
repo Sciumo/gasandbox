@@ -119,6 +119,7 @@ void display() {
 	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 	for (unsigned int i = 0; i < NB_PRIMITIVES; i++) { 
 		if (GLpick::g_pickActive) glLoadName(i);
+		if (i == 2) glLoadName((GLuint)-1); // do not allow for dragging the plane!
 
 		if (i > 0) { // draw the sphere and plane transparent
 			glDepthMask(GL_FALSE);
@@ -127,7 +128,7 @@ void display() {
 			glColor4fm(1.0f, 0.0f, 0.0f, 0.5f);
 		}
 
-		draw(g_primitives[i]);
+		draw(g_primitives[i], 1e-5);
 	}
 	glDisable(GL_BLEND); // blending off
 	glDepthMask(GL_TRUE); // enable depth buffer writes
@@ -154,7 +155,7 @@ void display() {
 
 		if (!GLpick::g_pickActive) {
 
-			renderBitmapString(20, 40, font, "Use the mouse buttons to drag the point, plane and sphere, and to orbit the scene.");
+			renderBitmapString(20, 40, font, "Use the mouse buttons to drag the point or sphere, or to orbit the scene.");
 			renderBitmapString(20, 20, font, "Notice how the circle always intersects the other primitives orthogonally");
 		}
 	}
