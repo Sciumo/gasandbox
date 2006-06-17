@@ -175,8 +175,8 @@ void display() {
 		char buf[1024];
 
 		// is L1plusL2 a blade?
-		h3ga::mvType T(L1plusL2);
-		printf("??? %d %d\n", T.m_type, mvTypeBase::BLADE);
+		mv::Float epsilon = 1e-7f;
+		h3ga::mvType T(L1plusL2, epsilon);
 		sprintf(buf, "pt1^pt2 + pt3^pt4 is a blade: %s\n", (T.m_type == mvTypeBase::BLADE) ? "true" : "false");
 		renderBitmapString(20, y, font, buf);
 		y -= 20;
