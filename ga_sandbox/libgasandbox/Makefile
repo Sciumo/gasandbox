@@ -62,6 +62,11 @@ libgasandbox_a_AR = $(AR) $(ARFLAGS)
 libgasandbox_a_LIBADD =
 am_libgasandbox_a_OBJECTS = libgasandbox_a-draw.$(OBJEXT) \
 	libgasandbox_a-mv_analyze.$(OBJEXT) \
+	libgasandbox_a-mv_analyze_e2ga.$(OBJEXT) \
+	libgasandbox_a-mv_analyze_e3ga.$(OBJEXT) \
+	libgasandbox_a-mv_analyze_h3ga.$(OBJEXT) \
+	libgasandbox_a-mv_analyze_c2ga.$(OBJEXT) \
+	libgasandbox_a-mv_analyze_c3ga.$(OBJEXT) \
 	libgasandbox_a-e2ga.$(OBJEXT) \
 	libgasandbox_a-e2ga_draw.$(OBJEXT) \
 	libgasandbox_a-e3ga.$(OBJEXT) \
@@ -215,7 +220,8 @@ libgasandbox_a_include_HEADERS = \
 	timing.h glut_util.h gl_util.h gabits.h c2gatoc3ga.h
 
 libgasandbox_a_SOURCES = \
-	draw.cpp mv_analyze.cpp \
+	draw.cpp \
+	mv_analyze.cpp mv_analyze_e2ga.cpp mv_analyze_e3ga.cpp mv_analyze_h3ga.cpp mv_analyze_c2ga.cpp mv_analyze_c3ga.cpp \
 	e2ga.cpp e2ga_draw.cpp \
 	e3ga.cpp e3ga_util.cpp e3ga_draw.cpp \
 	h3ga.cpp h3ga_util.cpp h3ga_draw.cpp \
@@ -370,6 +376,11 @@ include ./$(DEPDIR)/libgasandbox_a-h3ga.Po
 include ./$(DEPDIR)/libgasandbox_a-h3ga_draw.Po
 include ./$(DEPDIR)/libgasandbox_a-h3ga_util.Po
 include ./$(DEPDIR)/libgasandbox_a-mv_analyze.Po
+include ./$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Po
+include ./$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Po
+include ./$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Po
+include ./$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Po
+include ./$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Po
 include ./$(DEPDIR)/libgasandbox_a-timing.Po
 
 .cpp.o:
@@ -413,6 +424,76 @@ libgasandbox_a-mv_analyze.obj: mv_analyze.cpp
 #	source='mv_analyze.cpp' object='libgasandbox_a-mv_analyze.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze.obj `if test -f 'mv_analyze.cpp'; then $(CYGPATH_W) 'mv_analyze.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze.cpp'; fi`
+
+libgasandbox_a-mv_analyze_e2ga.o: mv_analyze_e2ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_e2ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo" -c -o libgasandbox_a-mv_analyze_e2ga.o `test -f 'mv_analyze_e2ga.cpp' || echo '$(srcdir)/'`mv_analyze_e2ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo"; exit 1; fi
+#	source='mv_analyze_e2ga.cpp' object='libgasandbox_a-mv_analyze_e2ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_e2ga.o `test -f 'mv_analyze_e2ga.cpp' || echo '$(srcdir)/'`mv_analyze_e2ga.cpp
+
+libgasandbox_a-mv_analyze_e2ga.obj: mv_analyze_e2ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_e2ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo" -c -o libgasandbox_a-mv_analyze_e2ga.obj `if test -f 'mv_analyze_e2ga.cpp'; then $(CYGPATH_W) 'mv_analyze_e2ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_e2ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e2ga.Tpo"; exit 1; fi
+#	source='mv_analyze_e2ga.cpp' object='libgasandbox_a-mv_analyze_e2ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_e2ga.obj `if test -f 'mv_analyze_e2ga.cpp'; then $(CYGPATH_W) 'mv_analyze_e2ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_e2ga.cpp'; fi`
+
+libgasandbox_a-mv_analyze_e3ga.o: mv_analyze_e3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_e3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo" -c -o libgasandbox_a-mv_analyze_e3ga.o `test -f 'mv_analyze_e3ga.cpp' || echo '$(srcdir)/'`mv_analyze_e3ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_e3ga.cpp' object='libgasandbox_a-mv_analyze_e3ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_e3ga.o `test -f 'mv_analyze_e3ga.cpp' || echo '$(srcdir)/'`mv_analyze_e3ga.cpp
+
+libgasandbox_a-mv_analyze_e3ga.obj: mv_analyze_e3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_e3ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo" -c -o libgasandbox_a-mv_analyze_e3ga.obj `if test -f 'mv_analyze_e3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_e3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_e3ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_e3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_e3ga.cpp' object='libgasandbox_a-mv_analyze_e3ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_e3ga.obj `if test -f 'mv_analyze_e3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_e3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_e3ga.cpp'; fi`
+
+libgasandbox_a-mv_analyze_h3ga.o: mv_analyze_h3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_h3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo" -c -o libgasandbox_a-mv_analyze_h3ga.o `test -f 'mv_analyze_h3ga.cpp' || echo '$(srcdir)/'`mv_analyze_h3ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_h3ga.cpp' object='libgasandbox_a-mv_analyze_h3ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_h3ga.o `test -f 'mv_analyze_h3ga.cpp' || echo '$(srcdir)/'`mv_analyze_h3ga.cpp
+
+libgasandbox_a-mv_analyze_h3ga.obj: mv_analyze_h3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_h3ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo" -c -o libgasandbox_a-mv_analyze_h3ga.obj `if test -f 'mv_analyze_h3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_h3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_h3ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_h3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_h3ga.cpp' object='libgasandbox_a-mv_analyze_h3ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_h3ga.obj `if test -f 'mv_analyze_h3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_h3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_h3ga.cpp'; fi`
+
+libgasandbox_a-mv_analyze_c2ga.o: mv_analyze_c2ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_c2ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo" -c -o libgasandbox_a-mv_analyze_c2ga.o `test -f 'mv_analyze_c2ga.cpp' || echo '$(srcdir)/'`mv_analyze_c2ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo"; exit 1; fi
+#	source='mv_analyze_c2ga.cpp' object='libgasandbox_a-mv_analyze_c2ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_c2ga.o `test -f 'mv_analyze_c2ga.cpp' || echo '$(srcdir)/'`mv_analyze_c2ga.cpp
+
+libgasandbox_a-mv_analyze_c2ga.obj: mv_analyze_c2ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_c2ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo" -c -o libgasandbox_a-mv_analyze_c2ga.obj `if test -f 'mv_analyze_c2ga.cpp'; then $(CYGPATH_W) 'mv_analyze_c2ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_c2ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c2ga.Tpo"; exit 1; fi
+#	source='mv_analyze_c2ga.cpp' object='libgasandbox_a-mv_analyze_c2ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_c2ga.obj `if test -f 'mv_analyze_c2ga.cpp'; then $(CYGPATH_W) 'mv_analyze_c2ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_c2ga.cpp'; fi`
+
+libgasandbox_a-mv_analyze_c3ga.o: mv_analyze_c3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_c3ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo" -c -o libgasandbox_a-mv_analyze_c3ga.o `test -f 'mv_analyze_c3ga.cpp' || echo '$(srcdir)/'`mv_analyze_c3ga.cpp; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_c3ga.cpp' object='libgasandbox_a-mv_analyze_c3ga.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_c3ga.o `test -f 'mv_analyze_c3ga.cpp' || echo '$(srcdir)/'`mv_analyze_c3ga.cpp
+
+libgasandbox_a-mv_analyze_c3ga.obj: mv_analyze_c3ga.cpp
+	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-mv_analyze_c3ga.obj -MD -MP -MF "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo" -c -o libgasandbox_a-mv_analyze_c3ga.obj `if test -f 'mv_analyze_c3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_c3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_c3ga.cpp'; fi`; \
+	then mv -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo" "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Po"; else rm -f "$(DEPDIR)/libgasandbox_a-mv_analyze_c3ga.Tpo"; exit 1; fi
+#	source='mv_analyze_c3ga.cpp' object='libgasandbox_a-mv_analyze_c3ga.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libgasandbox_a-mv_analyze_c3ga.obj `if test -f 'mv_analyze_c3ga.cpp'; then $(CYGPATH_W) 'mv_analyze_c3ga.cpp'; else $(CYGPATH_W) '$(srcdir)/mv_analyze_c3ga.cpp'; fi`
 
 libgasandbox_a-e2ga.o: e2ga.cpp
 	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgasandbox_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libgasandbox_a-e2ga.o -MD -MP -MF "$(DEPDIR)/libgasandbox_a-e2ga.Tpo" -c -o libgasandbox_a-e2ga.o `test -f 'e2ga.cpp' || echo '$(srcdir)/'`e2ga.cpp; \
