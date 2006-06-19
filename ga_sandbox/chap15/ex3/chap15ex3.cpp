@@ -73,7 +73,9 @@ normalizedPoint g_points[NB_POINTS] = {
 
 const int MODE_LINE = 1;
 const int MODE_CIRCLE = 2;
-const int MODE_CIRCLE_WITH_SPHERE = 6;
+const int MODE_DRAW_PLUNGE = 4;
+const int MODE_CIRCLE_WITH_SPHERE = MODE_CIRCLE | MODE_DRAW_PLUNGE;
+const int MODE_LINE_WITH_PLANE = MODE_LINE | MODE_DRAW_PLUNGE;
 
 int g_mode = MODE_CIRCLE;
 
@@ -116,9 +118,6 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// we collect all lines and planes in this list:
-	std::vector<mv> primitives;
-
 	// draw the points
 	glColor3fm(1.0f, 0.0f, 0.0f);
 	g_drawState.m_pointSize = 0.1f;
@@ -128,6 +127,47 @@ void display() {
 	}
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
+
+	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
+	if (!GLpick::g_pickActive) {
+		// compute circle or line, depending on mode
+		circle CL;
+		if (g_mode & MODE_CIRCLE)
+			CL =_circle(g_points[0] ^ g_points[1] ^ g_points[2]); // compute circle
+		else CL =_circle(g_points[0] ^ g_points[1] ^ ni); // compute line
+
+		// draw the circle or the line:
+		glColor3fm(0.0f, 1.0f, 0.0f);
+		draw(CL);
+
+		// compute/draw the plane:
+		plane PL = _plane(g_points[3] ^ g_points[4] ^ g_points[5] ^ ni);
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		glColor3fm(0.0f, 0.0f, 1.0f);
+		draw(PL);
+		g_drawState.popDrawMode();
+
+		// draw the projected circle / line:
+		glColor3fm(0.0f, 1.0f, 1.0f);
+		draw((CL << inverse(PL)) << PL);
+
+		if (g_mode & 4) { // todo: const
+			// Draw the sphere (CL ^ PL*)
+			// That is: the sphere that contains both the circle and its projection.
+			g_drawState.pushDrawModeOff(OD_ORIENTATION);
+			glDepthMask(GL_FALSE);
+			glEnable(GL_BLEND);
+			glColor4fm(0.0f, 1.0f, 1.0f, 0.5f);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			draw(CL ^ dual(PL));
+			glDisable(GL_BLEND);
+			glDepthMask(GL_TRUE);
+			g_drawState.popDrawMode();
+		}
+
+	}
+
+	g_drawState.popDrawMode();
 
 
 	glPopMatrix();
@@ -146,9 +186,8 @@ void display() {
 		void *font = GLUT_BITMAP_HELVETICA_12;
 
 		if (!GLpick::g_pickActive) {
-			renderBitmapString(20, 60, font, "BLAH.");
-			renderBitmapString(20, 40, font, "BLAH.");
-			renderBitmapString(20, 20, font, "BLAH.");
+			renderBitmapString(20, 40, font, "Use the left mouse button to manipulate the points, and to orbit the scene.");
+			renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
 		}
 
 	}
@@ -231,6 +270,7 @@ void MouseMotion(int x, int y) {
 }
 
 void menuCallback(int value) {
+	g_mode = value;
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -255,7 +295,9 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry("line mode", MODE_LINE);
 	glutAddMenuEntry("circle mode", MODE_CIRCLE);
-	glutAddMenuEntry("draw sphere (in circle mode)", MODE_CIRCLE_WITH_SPHERE);
+	glutAddMenuEntry("line mode + plunge", MODE_LINE_WITH_PLANE);
+	glutAddMenuEntry("circle mode + plunge", MODE_CIRCLE_WITH_SPHERE);
+	
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
