@@ -6,7 +6,7 @@ AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
 
 chap12ex1_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a /usr/local/lib/libantlr.a
 
-chap12ex1_SOURCES = chap12ex1.cpp readopticaldata.cpp
+chap12ex1_SOURCES = chap12ex1.cpp readopticaldata.cpp reconstruct.cpp
 
 noinst_HEADERS = opticaldata.h readopticaldata.h
 

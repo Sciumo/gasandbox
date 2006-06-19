@@ -77,7 +77,6 @@ const double FPS = 60.0;
 #define DRAW_MARKERS 1
 #define DRAW_RAYS 2
 #define DRAW_CAMERAS 4
-#define DRAW_IMAGE_PLANES 8
 
 int g_draw = DRAW_MARKERS | DRAW_CAMERAS;
 
@@ -91,6 +90,18 @@ void drawCamera();
 
 
 void display() {
+	int frameIdx = (int)g_currentFrameIdx;
+	if (frameIdx >= (int)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size())
+		frameIdx = 0;
+
+	// reconstruct the data:
+	std::vector<h3ga::normalizedPoint> reconstructedMarkers;
+	mv::Float epsilon = 0.01f; // ~1 cm in image plane (at 1 meter distance)
+	mv::Float markerSize = 0.02f; // ~2 cm in world 
+	g_opticalCaptureData.reconstructFrame(
+		frameIdx, reconstructedMarkers, epsilon, markerSize, g_minNbCams);
+
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -124,10 +135,6 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	int frameIdx = (int)g_currentFrameIdx;
-	if (frameIdx >= (int)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size())
-		frameIdx = 0;
-
 	if (g_draw & DRAW_CAMERAS) {
 		// draw all cameras
 		for (unsigned int c = 0; c < g_opticalCaptureData.m_cameraData.size(); c++) {
@@ -144,6 +151,17 @@ void display() {
 		}
 	}
 
+	if (g_draw & DRAW_MARKERS) {
+		// draw all markers
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glPointSize(3.0f);
+		glBegin(GL_POINTS);
+		for (unsigned int m = 0; m < reconstructedMarkers.size(); m++)
+				glVertex3fv(reconstructedMarkers[m].getC(normalizedPoint_e1_e2_e3_e0f1_0));
+		glEnd();
+	}
+	
+
 	if (g_draw & DRAW_RAYS) {
 		// draw rays from camera to marker, for all markers
 		glColor3f(0.0f, 1.0f, 0.0f);
@@ -152,22 +170,19 @@ void display() {
 		for (unsigned int c = 0; c < g_opticalCaptureData.m_cameraData.size(); c++) {
 			const OpticalCaptureCameraData &C = g_opticalCaptureData.m_cameraData[c];
 			for (unsigned int m = 0; m < C.m_2Dmarkers[frameIdx].size(); m++) {
-				// todo: position = point, and longer rays
 				// next up: write recon function
-				const normalizedPoint &pt = C.m_2Dmarkers[frameIdx][m]
+				const normalizedPoint &camPt = C.m_position;
+				const normalizedPoint &markerPt = C.m_2Dmarkers[frameIdx][m];
+				const float L = 6.0f;
+				normalizedPoint extendedPt = _normalizedPoint(L * markerPt - (L-1.0f) * camPt);
 
 				// draw line from camera center, out into the scene:
-				glVertex3fv(C.m_position.getC(h3ga::vector_e1_e2_e3));
-				glVertex3fv(_vector(C.m_2Dmarkers[frameIdx][m] + 3.0f * ()).getC(vector_e1_e2_e3));
+				glVertex3fv(camPt.getC(normalizedPoint_e1_e2_e3_e0f1_0));
+				glVertex3fv(extendedPt.getC(normalizedPoint_e1_e2_e3_e0f1_0));
 			}
 		}
 		glEnd();
 	}
-
-
-
-
-
 
 
 	glPopMatrix();
@@ -292,7 +307,6 @@ void menuCallback(int value) {
 }
 
 void Idle() {
-	printf("IDle!\n");
 	if (g_playing) {
 		// update the current frame:
 		double t = u_timeGet();
@@ -301,7 +315,6 @@ void Idle() {
 			double nbFrames = (double)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size();
 			while ((int)g_currentFrameIdx > nbFrames)
 				g_currentFrameIdx -= nbFrames;
-			printf("Frame %f\n", g_currentFrameIdx);
 		}
 		g_prevFrameTime = t;
 
@@ -313,6 +326,7 @@ void Idle() {
 int LoadData() {
 	try {
 		g_opticalCaptureData = readOpticalData("chap12data.txt");
+		printf("Done\n");
 	} catch (const std::string &str) {
 		printf("Error: %s\n", str.c_str());
 		return -1;
@@ -345,7 +359,6 @@ int main(int argc, char*argv[]) {
 	glutAddMenuEntry("Draw Reconstructed Markers", DRAW_MARKERS);
 	glutAddMenuEntry("Draw Rays", DRAW_RAYS);
 	glutAddMenuEntry("Draw Cameras", DRAW_CAMERAS);
-	glutAddMenuEntry("Draw Image Planes", DRAW_IMAGE_PLANES);
 	glutAddMenuEntry("-------------------", 0);
 	glutAddMenuEntry("Playback data", PLAYBACK);
 	glutAddMenuEntry("-------------------", 0);

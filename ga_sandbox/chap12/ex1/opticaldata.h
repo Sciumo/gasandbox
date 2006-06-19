@@ -46,7 +46,7 @@ public:
 	}
 
 	/// position of camera (derived from m_XF)
-	h3ga::vector m_position;
+	h3ga::normalizedPoint m_position;
 	/// orientation of camera  (derived from m_XF)
 	h3ga::rotor m_orientation;
 
@@ -95,7 +95,7 @@ public:
 	in 'econstructedMarkers'.
 	*/
 	void reconstructFrame(int frameIdx, std::vector<h3ga::normalizedPoint> &reconstructedMarkers,
-		h3ga::mv::Float epsilon, int minNbCameras);
+		h3ga::mv::Float epsilon, h3ga::mv::Float close, int minNbCameras);
 
 	/// the cameras (each camera holds its own data):
 	std::vector<OpticalCaptureCameraData> m_cameraData;

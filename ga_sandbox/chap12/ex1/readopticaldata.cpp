@@ -183,20 +183,19 @@ OpticalCaptureData readOpticalData(const std::string &filename) {
 		throw std::string(buf);
 	}
 
-	// post process all cameras
-	// get rotor, translation
+	// post process all cameras:
 	for (unsigned int c = 0; c < OCD.m_cameraData.size(); c++) {
 		OpticalCaptureCameraData &C = OCD.m_cameraData[c];
 
-		// factor XF, convert to h3ga
+		// factor XF intro translation, rotation, convert to h3ga
 		const c3ga::TRversor &V = C.m_XF;
 		c3ga::rotor R = c3ga::_rotor(-c3ga::no << (V * c3ga::ni));
 		c3ga::vectorE3GA t = c3ga::_vectorE3GA(-2.0f * (c3ga::no << V) * c3ga::inverse(R));
-		C.m_position = h3ga::vector(h3ga::vector_e1_e2_e3, t.getC(c3ga::vectorE3GA_e1_e2_e3));
+		C.m_position = h3ga::normalizedPoint(h3ga::normalizedPoint_e1_e2_e3_e0f1_0, t.getC(c3ga::vectorE3GA_e1_e2_e3));
 		C.m_orientation = h3ga::rotor(h3ga::rotor_scalar_e1e2_e2e3_e3e1, R.getC(c3ga::rotor_scalar_e1e2_e2e3_e3e1));
 
 		// compute image plane, convert to h3ga
-		c3ga::plane P = c3ga::_plane(C.m_XF * (c3ga::e3 - c3ga::ni) * C.m_XFi);
+		c3ga::plane P = c3ga::_plane(c3ga::unit_r(C.m_XF * (c3ga::e3 - c3ga::ni) * C.m_XFi));
 		C.m_imagePlane = h3ga::plane(h3ga::plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0,
 			P.e1e2e3ni(), P.e1e2noni(), P.e2e3noni(), -P.e1e3noni());
 	}

@@ -122,6 +122,9 @@
 			<File
 				RelativePath="..\chap12\ex1\readopticaldata.cpp">
 			</File>
+			<File
+				RelativePath="..\chap12\ex1\reconstruct.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
