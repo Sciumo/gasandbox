@@ -30,7 +30,8 @@ public:
 		m_orientation(CD.m_orientation), 
 		m_imagePlane(CD.m_imagePlane), 
 		m_2Dmarkers(CD.m_2Dmarkers), 
-		m_XF(CD.m_XF) {}
+		m_XF(CD.m_XF), 
+		m_XFi(CD.m_XFi) {}
 
 	OpticalCaptureCameraData &operator=(const OpticalCaptureCameraData &CD) {
 		if (this != &CD) {
@@ -39,6 +40,7 @@ public:
 			m_imagePlane = CD.m_imagePlane;
 			m_2Dmarkers = CD.m_2Dmarkers;
 			m_XF = CD.m_XF;
+			m_XFi = CD.m_XFi;
 		}
 		return *this;
 	}
@@ -58,10 +60,11 @@ public:
 	*/
 	std::vector<std::vector<h3ga::normalizedPoint> >m_2Dmarkers;
 
-protected:
-
 	/// the transform of the camera (conformal model versor)
 	c3ga::TRversor m_XF;
+
+	/// inverse transform of the camera (conformal model versor)
+	c3ga::TRversor m_XFi;
 };
 
 

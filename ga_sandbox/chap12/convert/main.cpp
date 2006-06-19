@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
 		for (int i = 0; i < S->getCameras().size(); i++) {
 			fprintf(F, "cam %d\n", i);
-			fprintf(F, "xf: %s\n", S->getCameras()[i].getXForm().c_str_e20());
+			fprintf(F, "xf %s\n", S->getCameras()[i].getXForm().c_str_e20());
 			for (int f = 0; f < S->getFrames().size(); f++) {
 				for (int m = 0; m < S->getFrames()[f].getMarkers2D(i).size(); m++) {
 					if (x == 0)

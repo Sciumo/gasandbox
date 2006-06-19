@@ -74,7 +74,7 @@ bool empty_line(const char *line) {
 
 } /* end of anon. namespace */
 
-State readCalibrationData(const std::string &filename) {
+OpticalCaptureData readOpticalData(const std::string &filename) {
 	const int maxLineLength = 1024;
 	char line[maxLineLength];
 	int lineNumber = 0, nTabs, l;
@@ -83,7 +83,10 @@ State readCalibrationData(const std::string &filename) {
 	char entryname[256];
 	int nbCams = 0;
 	int camIdx = 0;
-	std::vector<Camera> cameras;
+	OpticalCaptureData OCD;
+	OpticalCaptureCameraData *cam = NULL;
+	int nbFrames = 0;
+
 
 	if ( (F = fopen(filename.c_str(), "rb")) == NULL) {
 		throw "readCalibrationData(): can not open '" + filename + "'";
@@ -102,79 +105,72 @@ State readCalibrationData(const std::string &filename) {
 
 		if (!strcmpnc(entryname, "nbCams")) {		// nbCams
 			if ((sscanf(line, "%s %d", entryname, &nbCams) != 2)) {err = -1;break;	}
-			cameras.resize(nbCams);
+			OCD.m_cameraData.resize(nbCams);
+		}
+		else if (!strcmpnc(entryname, "nbFrames")) {		// nbFrames
+			if ((sscanf(line, "%s %d", entryname, &nbFrames) != 2)) {err = -1;break;	}
 		}
 		else if (!strcmpnc(entryname, "cam")) {		// cam
 			if ((sscanf(line, "%s %d", entryname, &camIdx) != 2)) {err = -1;break;	}
-			if (camIdx >= (int)cameras.size()) {err = -1;break;	}
+			if (camIdx >= nbCams) {err = -1;break;	}
+			cam = &(OCD.m_cameraData[camIdx]);
+			cam->m_2Dmarkers.resize(nbFrames); // set # frames
+			printf("Reading data for camera %d/%d\n", camIdx+1, nbCams);
 		}
-		else if (!strcmpnc(entryname, "orientation")) {		// orientation
-			size_t skipNb = strlen("orientation") + 1;
+		else if (!strcmpnc(entryname, "xf")) {		// xf
+			size_t skipNb = strlen("xf") + 1;
 			if (strlen(line) <= skipNb) {err = -1;break;	}
-			char *rotorStr = line + skipNb;
+			char *versorStr = line + skipNb;
 
 			try {
-				rotor R = _rotor(e3ga::parseMVString(rotorStr));
-				cameras[camIdx].setR(R);
-			} catch (const std::string &str) {
-				printf("%s\n", str.c_str());
-				err = -1;break;
-			}
-		}
-		else if (!strcmpnc(entryname, "translation")) {		// translation
-			size_t skipNb = strlen("translation") + 1;
-			if (strlen(line) <= skipNb) {err = -1;break;	}
-			char *vectorStr = line + skipNb;
-
-			try {
-				vector t = _vector(e3ga::parseMVString(vectorStr));
-				cameras[camIdx].m_t = t;
+				cam->m_XF = c3ga::_TRversor(c3ga::parseMVString(versorStr));
+				cam->m_XFi = c3ga::_TRversor(inverse(cam->m_XF));
 			} catch (const std::string &str) {
 				printf("%s\n", str.c_str());
 				err = -1;break;
 			}
 		}
 		else if (!strcmpnc(entryname, "frame")) {		// frame
-			// frame idx visible X3 vector
-			// e.g.: frame 0 1 1.489079 0.3517250121*e1 - 0.2088123262*e2 - 1.0000000000*e3
-			unsigned int frameIdx, frameVisible;
-			double X3;
-			e3ga::vector t;
+			// frame idx image_plane_pt
+			// e.g.: frame 2 1.000000*no + 0.297491*e1 - 0.045351*e2 + 0.045279*ni
+			int frameIdx;
 
-			// get frameidx, frameVisible, X3
-			if ((sscanf(line, "%s %d %d %f", entryname, &frameIdx, &frameVisible, &X3) != 4)) {
+			// get frameidx
+			if ((sscanf(line, "%s %d", entryname, &frameIdx) != 2)) {
 				err = -1;break;
 			}
 
-			// find start of 't':
-			const char *tStr = NULL;
+			// find start of image point:
+			const char *ptStr = NULL;
 			{
 				int idx = 0;
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < 2; i++) {
 					while (line[idx] > ' ') idx++;
 					while (line[idx] <= ' ') idx++;
 				}
-				tStr = line + idx;
+				ptStr = line + idx;
+
 				try {
-					t = _vector(e3ga::parseMVString(tStr));
+					c3ga::normalizedPoint _pt = c3ga::_normalizedPoint(c3ga::parseMVString(ptStr));
+					if ((frameIdx < 0) || (frameIdx >= (int)cam->m_2Dmarkers.size())) {
+						err = -1;break;
+					}
+
+					// translate over -e3 (hack) + convert to world frame
+					c3ga::dualSphere pt = c3ga::_dualSphere(cam->m_XF * (_pt-c3ga::e3) * cam->m_XFi);
+
+					// set marker in array:
+					cam->m_2Dmarkers[frameIdx].push_back(
+						h3ga::normalizedPoint(h3ga::normalizedPoint_e1_e2_e3_e0f1_0, pt.e1(), pt.e2(), pt.e3())); // e3 = -1.0f
 				} catch (const std::string &str) {
 					printf("%s\n", str.c_str());
 					err = -1;break;
 				}
 			}
 
-			// resize nb frames, if required:
-			if (frameIdx >= cameras[camIdx].getNbFrames()) {
-				cameras[camIdx].setNbFrames(frameIdx + 1);
-			}
-
-			cameras[camIdx].m_visible[frameIdx] = (frameVisible != 0);
-			cameras[camIdx].m_X3[frameIdx] = (mv::Float)X3;
-			cameras[camIdx].m_pt[frameIdx] = t;
-
 		}
 		else {
-			//printf("warning: readCalibrationData(): Unknown entry '%s' at line '%d'\n", entryname, lineNumber);
+			//printf("warning: readOpticalData(): Unknown entry '%s' at line '%d'\n", entryname, lineNumber);
 		}
 
 	}
@@ -183,10 +179,28 @@ State readCalibrationData(const std::string &filename) {
 	if (err) {
 		// error detected:
 		char buf[1024];
-		sprintf(buf, "readCalibrationData(): Invalid entry '%s' at line %d\n", entryname, lineNumber);
+		sprintf(buf, "readOpticalData(): Invalid entry '%s' at line %d\n", entryname, lineNumber);
 		throw std::string(buf);
 	}
 
+	// post process all cameras
+	// get rotor, translation
+	for (unsigned int c = 0; c < OCD.m_cameraData.size(); c++) {
+		OpticalCaptureCameraData &C = OCD.m_cameraData[c];
 
-	return State(cameras);
+		// factor XF, convert to h3ga
+		const c3ga::TRversor &V = C.m_XF;
+		c3ga::rotor R = c3ga::_rotor(-c3ga::no << (V * c3ga::ni));
+		c3ga::vectorE3GA t = c3ga::_vectorE3GA(-2.0f * (c3ga::no << V) * c3ga::inverse(R));
+		C.m_position = h3ga::vector(h3ga::vector_e1_e2_e3, t.getC(c3ga::vectorE3GA_e1_e2_e3));
+		C.m_orientation = h3ga::rotor(h3ga::rotor_scalar_e1e2_e2e3_e3e1, R.getC(c3ga::rotor_scalar_e1e2_e2e3_e3e1));
+
+		// compute image plane, convert to h3ga
+		c3ga::plane P = c3ga::_plane(C.m_XF * (c3ga::e3 - c3ga::ni) * C.m_XFi);
+		C.m_imagePlane = h3ga::plane(h3ga::plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0,
+			P.e1e2e3ni(), P.e1e2noni(), P.e2e3noni(), -P.e1e3noni());
+	}
+
+
+	return OCD;
 }

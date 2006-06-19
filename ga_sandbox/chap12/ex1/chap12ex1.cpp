@@ -33,6 +33,9 @@
 #include <libgasandbox/glut_util.h>
 #include <libgasandbox/timing.h>
 
+#include "readopticaldata.h"
+
+
 using namespace h3ga;
 using namespace mv_draw;
 
@@ -41,6 +44,7 @@ const char *WINDOW_TITLE = "Geometric Algebra, Chapter 12, Example 1: Marker Rec
 // GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
+int g_GLUTmenu;
 
 // mouse position on last call to MouseButton() / MouseMotion()
 h3ga::vector g_prevMousePos;
@@ -49,33 +53,41 @@ h3ga::vector g_prevMousePos;
 bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
-// what point to drag (or -1 for none)
-int g_dragPoint = -1; 
-float g_dragDistance = -1.0f;
-
-// rotation of the model
+/// rotation of the model
 h3ga::rotor g_modelRotor(_rotor(1.0f));
 
-const int NB_POINTS = 3;
-const int NB_NORMALIZED_POINTS = 3;
 
-// the regular points:
-point g_points[NB_POINTS] = {
-// note that we deliberately give weights to the points (1.0, 2.0, 3.0)
-	_point(1.0f * (e1 + e2 + e0)),
-	_point(2.0f * (2.0f * e1 + 0.5f * e2 + e0)),
-	_point(3.0f * (e1 + 0.5f * e3 + e0)),
-};
-// the normalized points:
-normalizedPoint g_normalizedPoints[NB_NORMALIZED_POINTS] = {
-// note the hack here: because normalizedPoints have a 
-// constant 'e0' coordinate, no need to do '+ e0' for each point.
-// You can initialize a normalizedPoint straight for a '3D vector'
-	_normalizedPoint(-e1 + e2), 
-	_normalizedPoint(-1.5f * e1 + 0.5f * e2),
-	_normalizedPoint(-e1 + 0.5f * e3),
-};
+/// the raw marker data:
+OpticalCaptureData g_opticalCaptureData;
 
+/// what frame are we displaying currently?
+double g_currentFrameIdx = 10.0f;
+
+/// What was the last time we changed frames?
+double g_prevFrameTime = -1.0;
+
+/// when true, the idle() function auto-updates 'g_currentFrameIdx' and m_prevFrameTime'
+bool g_playing = false;
+
+/// how many cameras make a marker?
+int g_minNbCams = 3;
+
+const double FPS = 60.0;
+
+#define DRAW_MARKERS 1
+#define DRAW_RAYS 2
+#define DRAW_CAMERAS 4
+#define DRAW_IMAGE_PLANES 8
+
+int g_draw = DRAW_MARKERS | DRAW_CAMERAS;
+
+#define PLAYBACK -1
+#define MIN_NB_CAMS_2 -2
+#define MIN_NB_CAMS_3 -3
+#define MIN_NB_CAMS_4 -4
+
+
+void drawCamera();
 
 
 void display() {
@@ -86,7 +98,6 @@ void display() {
 	glMatrixMode(GL_PROJECTION);
 	const float screenWidth = 1600.0f;
 	glLoadIdentity();
-	pickLoadMatrix();
 	GLpick::g_frustumWidth = 2.0 *  (double)g_viewportWidth / screenWidth;
 	GLpick::g_frustumHeight = 2.0 *  (double)g_viewportHeight / screenWidth;
 	glFrustum(
@@ -97,83 +108,113 @@ void display() {
 	glTranslatef(0.0f, 0.0f, -8.0f);
 
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
-	glLineWidth(2.0f);
-
+	glLineWidth(1.0f);
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 
 	rotorGLMult(g_modelRotor);
 
-	// draw points
-	glColor3fm(1.0f, 0.0f, 0.0f);
-	for (int i = 0; i < NB_POINTS; i++) {
-		if (GLpick::g_pickActive) glLoadName(i);
-		draw(g_points[i]);
+	int frameIdx = (int)g_currentFrameIdx;
+	if (frameIdx >= (int)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size())
+		frameIdx = 0;
+
+	if (g_draw & DRAW_CAMERAS) {
+		// draw all cameras
+		for (unsigned int c = 0; c < g_opticalCaptureData.m_cameraData.size(); c++) {
+			const OpticalCaptureCameraData &C = g_opticalCaptureData.m_cameraData[c];
+			glPushMatrix();
+			// translate / rotate to camera pos/ori
+			versorGLMult(C.m_XF);
+
+			// draw the camera:
+			glColor3f(1.0, 0.0, 0.0);
+			drawCamera();
+
+			glPopMatrix();
+		}
 	}
 
-	// draw normalized points
-	glColor3fm(0.0f, 1.0f, 0.0f);
-	for (int i = 0; i < NB_NORMALIZED_POINTS; i++) {
-		if (GLpick::g_pickActive) glLoadName(NB_POINTS + i);
-		draw(g_normalizedPoints[i]);
-	}
+	if (g_draw & DRAW_RAYS) {
+		// draw rays from camera to marker, for all markers
+		glColor3f(0.0f, 1.0f, 0.0f);
 
-	if (!GLpick::g_pickActive) {
+		glBegin(GL_LINES);
+		for (unsigned int c = 0; c < g_opticalCaptureData.m_cameraData.size(); c++) {
+			const OpticalCaptureCameraData &C = g_opticalCaptureData.m_cameraData[c];
+			for (unsigned int m = 0; m < C.m_2Dmarkers[frameIdx].size(); m++) {
+				// todo: position = point, and longer rays
+				// next up: write recon function
+				const normalizedPoint &pt = C.m_2Dmarkers[frameIdx][m]
 
-		// draw loops through the points:
-		glDisable(GL_LIGHTING);
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glBegin(GL_LINE_LOOP);
-		for (int i = 0; i < NB_POINTS; i++) {
-			const point &P = g_points[i];
-			glVertex4fv(P.getC(point_e1_e2_e3_e0));
-			// or:
-			// glVertex4f(P.e1(), P.e2(), P.e3(), P.e0());
+				// draw line from camera center, out into the scene:
+				glVertex3fv(C.m_position.getC(h3ga::vector_e1_e2_e3));
+				glVertex3fv(_vector(C.m_2Dmarkers[frameIdx][m] + 3.0f * ()).getC(vector_e1_e2_e3));
+			}
 		}
 		glEnd();
-
-		// draw loops through the normalized points:
-		glBegin(GL_LINE_LOOP);
-		for (int i = 0; i < NB_NORMALIZED_POINTS; i++) {
-			const normalizedPoint &P = g_normalizedPoints[i];
-			glVertex3fv(P.getC(normalizedPoint_e1_e2_e3_e0f1_0)); //note e0 'fixed' at 1.0
-			// or:
-			// glVertex3f(P.e1(), P.e2(), P.e3());
-		}
-		glEnd();
 	}
+
+
+
+
+
+
 
 	glPopMatrix();
 
-	if (!GLpick::g_pickActive) {
-		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
+	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-		glDisable(GL_LIGHTING);
-		glColor3f(1.0f, 1.0f, 1.0f);
-		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 40, font, "This simple example demonstrates using (normalized) points with OpenGL.");
-		renderBitmapString(20, 20, font, "Use the mouse buttons to drag the red/green points.");
-	}
+	glDisable(GL_LIGHTING);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	void *font = GLUT_BITMAP_HELVETICA_12;
+	renderBitmapString(20, 40, font, "Yada ");
+	renderBitmapString(20, 20, font, "Yada ");
 
-	if (!GLpick::g_pickActive) {
-		glutSwapBuffers();
+	glutSwapBuffers();
+}
+
+void drawCamera() {
+	float rect[4][2] =
+	{
+		-1.0f, 0.75f,
+		1.0f, 0.75f,
+		1.0f, -0.75f,
+		-1.0f, -0.75f,
+	};
+	float f = 0.5;
+	int i;
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPushMatrix();
+	glScalef(0.1f, 0.1f, 0.1f);
+	glBegin(GL_TRIANGLES);
+	for (i = 0; i < 4; i++) {
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(f * rect[i][0], f * rect[i][1], -1.0f);
+		glVertex3f(f * rect[(i+1)%4][0], f * rect[(i+1)%4][1], -1.0f);
 	}
+	glEnd();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glBegin(GL_LINES);
+	glVertex3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(0.0f, 0.0f, -4.0f);
+	glEnd();
+	glPopMatrix();
 }
 
 void reshape(GLint width, GLint height) {
@@ -205,15 +246,12 @@ void MouseButton(int button, int state, int x, int y) {
 
 	g_prevMousePos = mousePosToVector(x, y);
 
-	g_dragPoint = pick(x, g_viewportHeight - y, display, &g_dragDistance);
+	h3ga::vector mousePos = mousePosToVector(x, y);
+	g_rotateModel = true;
+	if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
+		g_rotateModelOutOfPlane = true;
+	else g_rotateModelOutOfPlane = false;
 
-	if (g_dragPoint < 0) {
-		h3ga::vector mousePos = mousePosToVector(x, y);
-		g_rotateModel = true;
-		if ((_Float(norm_e(mousePos)) / _Float(norm_e(g_viewportWidth * e1 + g_viewportHeight * e2))) < 0.2)
-			g_rotateModelOutOfPlane = true;
-		else g_rotateModelOutOfPlane = false;
-	}
 }
 
 void MouseMotion(int x, int y) {
@@ -226,21 +264,6 @@ void MouseMotion(int x, int y) {
 			g_modelRotor = _rotor(h3ga::exp(0.005f * (motion ^ h3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(h3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
-	else if (g_dragPoint >= 0) {
-		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
-		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
-//		printf("T = %s\n", T.c_str());
-
-		if (g_dragPoint < NB_POINTS) {
-			int idx = g_dragPoint;
-			g_points[idx] = _point(g_points[idx] + (T ^ (e0 << g_points[idx])));
-		}
-		else {
-			int idx = g_dragPoint - NB_POINTS;
-			g_normalizedPoints[idx] = 
-				_normalizedPoint(g_normalizedPoints[idx] + (T ^ (e0 << g_normalizedPoints[idx])));
-		}
-	}
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
@@ -249,9 +272,60 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
+void menuCallback(int value) {
+	if (value < 0) {
+		if (value == PLAYBACK) {
+			g_playing = !g_playing;
+			if (g_playing) g_prevFrameTime = u_timeGet();
+		}
+		else if (value == MIN_NB_CAMS_2) g_minNbCams = 2;
+		else if (value == MIN_NB_CAMS_3) g_minNbCams = 3;
+		else if (value == MIN_NB_CAMS_4) g_minNbCams = 4;
+	}
+	else {
+		// toggle the DRAW_XXX constant
+		g_draw ^= value;
+	}
+
+	// redraw viewport
+	glutPostRedisplay();
+}
+
+void Idle() {
+	printf("IDle!\n");
+	if (g_playing) {
+		// update the current frame:
+		double t = u_timeGet();
+		if (g_prevFrameTime >= 0.0) {
+			g_currentFrameIdx += (t - g_prevFrameTime) * FPS;
+			double nbFrames = (double)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size();
+			while ((int)g_currentFrameIdx > nbFrames)
+				g_currentFrameIdx -= nbFrames;
+			printf("Frame %f\n", g_currentFrameIdx);
+		}
+		g_prevFrameTime = t;
+
+		// redraw viewport
+		glutPostRedisplay();
+	}
+}
+
+int LoadData() {
+	try {
+		g_opticalCaptureData = readOpticalData("chap12data.txt");
+	} catch (const std::string &str) {
+		printf("Error: %s\n", str.c_str());
+		return -1;
+	}
+	return 0;
+}
+
+
 int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	h3ga::g2Profiling::init();
+
+	if (LoadData() < 0) return -1;
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
@@ -264,7 +338,22 @@ int main(int argc, char*argv[]) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
+	glutIdleFunc(Idle);
 
+
+	g_GLUTmenu = glutCreateMenu(menuCallback);
+	glutAddMenuEntry("Draw Reconstructed Markers", DRAW_MARKERS);
+	glutAddMenuEntry("Draw Rays", DRAW_RAYS);
+	glutAddMenuEntry("Draw Cameras", DRAW_CAMERAS);
+	glutAddMenuEntry("Draw Image Planes", DRAW_IMAGE_PLANES);
+	glutAddMenuEntry("-------------------", 0);
+	glutAddMenuEntry("Playback data", PLAYBACK);
+	glutAddMenuEntry("-------------------", 0);
+	glutAddMenuEntry(">= 2 cams / marker", MIN_NB_CAMS_2);
+	glutAddMenuEntry(">= 3 cams / marker", MIN_NB_CAMS_3);
+	glutAddMenuEntry(">= 4 cams / marker", MIN_NB_CAMS_4);
+	glutAttachMenu(GLUT_MIDDLE_BUTTON);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	glutMainLoop();
 

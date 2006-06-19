@@ -175,7 +175,7 @@ void display() {
 				glVertex3fv(_vector(C.m_t + 4.0f * C.m_pt[f]).getC(vector_e1_e2_e3));
 			}
 		}
-		glEnd();	
+		glEnd();
 	}
 
 	if (g_draw & DRAW_PATH) {
@@ -242,7 +242,7 @@ void display() {
 
 
 void drawCamera() {
-	float rect[4][2] = 
+	float rect[4][2] =
 	{
 		-1.0f, 0.75f,
 		1.0f, 0.75f,
@@ -334,6 +334,7 @@ int LoadData() {
 		printf("Error: %s\n", str.c_str());
 		return -1;
 	}
+	return 0;
 }
 
 void menuCallback(int value) {
