@@ -54,7 +54,7 @@ void drawH3GA(mvAnalysis &A, int method /*= 0 */, Palet *o /*= NULL*/) {
 					break;
 				case mvAnalysis::PLANE:
 					{
-						drawPlane(A.m_pt[0], A.m_vc[0], A.m_vc[1], A.m_vc[2], A.m_sc[0], method, o);
+						drawPlane(A.m_pt[0], A.m_vc[0], A.m_vc[1], _vector(-A.m_vc[2]), A.m_sc[0], method, o);
 					}
 					break;
 			}

@@ -166,6 +166,7 @@ void display() {
 	}
 
 	if (!GLpick::g_pickActive) {
+		
 		glDisable(GL_LIGHTING);
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
@@ -250,7 +251,7 @@ void display() {
 		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glColor4fm(0.2f, 0.2f, 0.75f, 0.5f);
+		glColor4fm(0.5f, 0.5f, 1.0f, 0.5f);
 		draw(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
 			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
 			g_points[IMAGE_PLANE_PT_IDX + 2]);
@@ -363,11 +364,13 @@ void MouseButton(int button, int state, int x, int y) {
 
 
 void menuCallback(int value) {
-	if (value == -1)
-		g_drawRays ^= true;
-	else {
+	if (value >= 0) {
 		g_modelName = g_modelNames[value];
 		g_initModelRequired = true;
+	}
+	else {
+		if (value == -1)
+			g_drawRays ^= true;
 	}
 
 	glutPostRedisplay();
@@ -394,6 +397,7 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
+	glutAddMenuEntry("----------------", -2);
 	glutAddMenuEntry("Draw rays", -1);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
