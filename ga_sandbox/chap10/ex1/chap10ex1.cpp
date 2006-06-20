@@ -91,7 +91,7 @@ e3ga::vector interpolateVector(const e3ga::vector &src, const e3ga::vector &dst,
 
 rotor interpolateRotor(const rotor &src, const rotor &dst, mv::Float alpha) {
 	// return src * exp(alpha * log(dst * inverse(src)));
-	return _rotor(src * exp(_rotor(alpha * log(_rotor(inverse(src) * dst)))));
+	return _rotor(src * exp(_bivector(alpha * log(_rotor(inverse(src) * dst)))));
 }
 
 

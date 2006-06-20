@@ -176,17 +176,32 @@ mv exp(const mv &x, int order /*= 9*/) {
 	return result;
 }
 
-e3ga::bivector log(const e3ga::rotor &R) {
-	mv::Float R2 = _Float(norm_r(_bivector(R)));
-	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
-	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
+bivector log(const rotor &R) {
+	// get the bivector/2-blade part of R
+	bivector B = _bivector(R);
+
+	// compute the 'reverse norm' of the bivector part of R:
+	mv::Float R2 = _Float(norm_r(B));
+
+	// check to avoid divide-by-zero (and also below zero due to FP roundoff):
+	if (R2 <= 0.0) return bivector(); 
+
+	// return the log:
+	return _bivector(B * ((float)atan2(R2, _Float(R)) / R2));
 }
 
 // special exp for 3D Euclidean bivectors:
 rotor exp(const bivector &x) {
-	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
+	// compute the square
 	mv::Float x2 = _Float(x << x);
+
+	// x2 must always be <= 0, but round off error can make it positive:
+	if (x2 > 0.0f) x2 = 0.0f;
+
+	// compute half angle:
 	mv::Float ha = sqrt(-x2);
+
+	// return rotor:
 	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
 }
 
