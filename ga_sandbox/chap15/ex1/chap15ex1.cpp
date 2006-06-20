@@ -24,8 +24,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <opencv/cv.h>
-
 #include <vector>
 
 #include <libgasandbox/c3ga.h>
