@@ -67,12 +67,13 @@ double g_currentFrameIdx = 10.0f;
 double g_prevFrameTime = -1.0;
 
 /// when true, the idle() function auto-updates 'g_currentFrameIdx' and m_prevFrameTime'
-bool g_playing = false;
+bool g_playing = true;
 
 /// how many cameras make a marker?
 int g_minNbCams = 3;
 
-const double FPS = 60.0;
+// the capture data is 50 frames per second
+const double FPS = 50.0;
 
 #define DRAW_MARKERS 1
 #define DRAW_RAYS 2
@@ -197,8 +198,14 @@ void display() {
 	glDisable(GL_LIGHTING);
 	glColor3f(0.0f, 0.0f, 0.0f);
 	void *font = GLUT_BITMAP_HELVETICA_12;
-	renderBitmapString(20, 40, font, "Yada ");
-	renderBitmapString(20, 20, font, "Yada ");
+	{
+		char str[1024];
+		sprintf(str, "Playing frame %d", frameIdx);
+		int w = (int)getBitmapStringWidth(font, str);
+		renderBitmapString((g_viewportWidth - w) / 2, g_viewportHeight - 20, font, str);
+	}
+	renderBitmapString(20, 40, font, "Use left mouse button to orbit the scene.");
+	renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
 
 	glutSwapBuffers();
 }

@@ -4,7 +4,10 @@ sandbin_PROGRAMS = chap12ex1
 
 AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
 
-chap12ex1_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a /usr/local/lib/libantlr.a
+chap12ex1_LDADD = $(GL_LIBS) \
+	../../libgasandbox/libgasandbox.a \
+	../../libgasandbox/libgasandboxparse.a  \
+	/usr/local/lib/libantlr.a
 
 chap12ex1_SOURCES = chap12ex1.cpp readopticaldata.cpp reconstruct.cpp
 

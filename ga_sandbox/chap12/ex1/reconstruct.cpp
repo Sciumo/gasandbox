@@ -73,7 +73,7 @@ void OpticalCaptureData::reconstructFrame(int frameIdx,
 
 		for (unsigned int m1 = 0; m1 < F1.size(); m1++) {
 			const normalizedPoint &M1 = F1[m1]; // position of marker in image plane
-			h3ga::vector &D1 = _vector(M1 - P1); // ray direction 
+			h3ga::vector D1 = _vector(M1 - P1); // ray direction 
 
 			line L1 = _line(unit_r(P1 ^ M1)); // line from camera pinhole through marker
 
@@ -93,11 +93,7 @@ void OpticalCaptureData::reconstructFrame(int frameIdx,
 					mv::Float dis = fabs(_Float((M2 << IP) << L2));
 					if (dis > epsilon) continue;
 
-
-
-					h3ga::vector &D2 = _vector(M2 - P2); // ray direction 
-
-
+					h3ga::vector D2 = _vector(M2 - P2); // ray direction 
 
 					// compute candidate for reconstructed marker
 					mv::Float d1, d2;
