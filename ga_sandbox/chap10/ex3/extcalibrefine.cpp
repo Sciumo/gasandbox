@@ -20,7 +20,7 @@
 #define USE_OPENCV
 
 #ifdef USE_OPENCV
-#include <opencv/cv.h>
+#include <opencv/cxcore.h>
 #else 
 #include <mkl_lapack.h>
 #include <mkl_blas.h>
