@@ -99,9 +99,9 @@ void drawH3GA(mvAnalysis &A, int method /*= 0 */, Palet *o /*= NULL*/) {
 				// draw 'angle of rotation'
 				if (o) o->setOlColor();
 				else glColor3f(0.0, 0.0, 0.0);
-				vector v = A.m_vc[0]; // vector in rotation plane
+				e3ga::vector v = A.m_vc[0]; // vector in rotation plane
 
-				bivector b = _bivector(-dual(A.m_vc[2])); // rotation plane
+				e3ga::bivector b = _bivector(-dual(A.m_vc[2])); // rotation plane
 				v = _vector(unit_e(v) * (mv::Float)(0.8f * scale));
 
 				int nbSteps, i;

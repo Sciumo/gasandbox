@@ -137,14 +137,14 @@ void drawFree(const mvAnalysis &A, int method = 0, Palet *o = NULL) {
 	glEnable(GL_LINE_STIPPLE);
 
 	if (A.bladeSubclass() == mvAnalysis::VECTOR) {
-		drawVector(vector(), A.m_vc[0], A.m_sc[0]);
+		drawVector(e3ga::vector(), A.m_vc[0], A.m_sc[0]);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::BIVECTOR) {
 		e3ga::mv::Float scale = (e3ga::mv::Float)sqrt(A.m_sc[0] / M_PI);
-		drawBivector(vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
+		drawBivector(e3ga::vector(), A.m_vc[2], A.m_vc[0], A.m_vc[1], scale, method, o);
 	}
 	else if (A.bladeSubclass() == mvAnalysis::TRIVECTOR) {
-		drawTriVector(vector(),  A.m_sc[0], A.m_vc, method, o);
+		drawTriVector(e3ga::vector(),  A.m_sc[0], A.m_vc, method, o);
 	}
 
 	glDisable(GL_LINE_STIPPLE);
