@@ -71,7 +71,7 @@ int g_mouseMode = MODE_DRAG;
 
 // what point to drag (or -1 for none)
 int g_dragPoint = -1; 
-float g_dragDistance = 12.0f;
+float g_dragDistance = 16.0f;
 
 // rotation of the model
 h3ga::rotor g_modelRotor(_rotor(1.0f));
@@ -139,6 +139,7 @@ void display() {
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
 	glLineWidth(2.0f);
+	g_drawState.m_planeSize = 5.0f;
 
 
 	glMatrixMode(GL_MODELVIEW);
