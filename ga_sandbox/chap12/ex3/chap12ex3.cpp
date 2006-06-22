@@ -39,7 +39,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 12, Example 1: Marker Reconstruction in Optical Motion Capture";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 12, Example 3: Marker Reconstruction in Optical Motion Capture";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -98,7 +98,7 @@ void display() {
 	// reconstruct the data:
 	std::vector<h3ga::normalizedPoint> reconstructedMarkers;
 	mv::Float epsilon = 0.01f; // ~1 cm in image plane (at 1 meter distance)
-	mv::Float markerSize = 0.02f; // ~2 cm in world 
+	mv::Float markerSize = 0.02f; // ~2 cm in world
 	g_opticalCaptureData.reconstructFrame(
 		frameIdx, reconstructedMarkers, epsilon, markerSize, g_minNbCams);
 
@@ -161,7 +161,7 @@ void display() {
 				glVertex3fv(reconstructedMarkers[m].getC(normalizedPoint_e1_e2_e3_e0f1_0));
 		glEnd();
 	}
-	
+
 
 	if (g_draw & DRAW_RAYS) {
 		// draw rays from camera to marker, for all markers
@@ -332,7 +332,7 @@ void Idle() {
 
 int LoadData() {
 	try {
-		g_opticalCaptureData = readOpticalData("chap12data.txt");
+		g_opticalCaptureData = readOpticalData("silly_moves.txt");
 		printf("Done\n");
 	} catch (const std::string &str) {
 		printf("Error: %s\n", str.c_str());

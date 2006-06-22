@@ -39,7 +39,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 6: Transforming Primitives with OpenGL Matrices";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 12, Example 2: Transforming Primitives with OpenGL Matrices";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -70,7 +70,7 @@ int g_mouseMode = MODE_DRAG;
 
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = 16.0f;
 
 // rotation of the model
@@ -262,7 +262,7 @@ void display() {
 					applyTransformAndDraw(M, intersection);
 
 					// if intersection is a line, then add to list of new intersection primitives:
-					 if (intersection.gu() == GRADE_2) 
+					 if (intersection.gu() == GRADE_2)
 						iPrimitives.push_back(intersection);
 				}
 			}
@@ -289,15 +289,15 @@ void display() {
 
 		glPopMatrix();
 
-		// draw the planes LAST! because they are transparent . . . 
+		// draw the planes LAST! because they are transparent . . .
 		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4fm(0.0f, 0.0f, 1.0f, 0.5f);
 		for (unsigned int i = 0; i < g_planes.size(); i++) {
 			// compute the plane from the points:
-			plane P = _plane(g_points[g_planes[i][0]] ^ 
-				g_points[g_planes[i][1]] ^ 
+			plane P = _plane(g_points[g_planes[i][0]] ^
+				g_points[g_planes[i][1]] ^
 				g_points[g_planes[i][2]]);
 			applyTransformAndDraw(M, P);
 		}
@@ -323,7 +323,7 @@ void display() {
 		{
 			renderBitmapString(20, g_viewportHeight - 20, font, "NOTE: THIS EXAMPLE IS NEARLY IDENTICAL TO EXAMPLE 11.2!");
 			renderBitmapString(20, g_viewportHeight - 40, font, "The difference is in the point where transformation get applied to the primitives.");
-			
+
 			char buf[256];
 			sprintf(buf, "MODE: %s\n", g_modeName[g_mouseMode]);
 			renderBitmapString(20, g_viewportHeight - 60, font, buf);
@@ -402,7 +402,7 @@ void MouseButton(int button, int state, int x, int y) {
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
 		glPopMatrix();
 
-		// invert matrix, then try again . . . 
+		// invert matrix, then try again . . .
 		float inverseModelviewMatrix[16];
 		invert4x4Matrix(modelviewMatrix, inverseModelviewMatrix);
 
@@ -465,7 +465,7 @@ void MouseMotion(int x, int y) {
 		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
 
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				_normalizedPoint(g_points[g_dragPoint] + (T ^ (e0 << g_points[g_dragPoint])));
 	}
 

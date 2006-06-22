@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="chap12ex1"
+	Name="chap12ex3"
 	ProjectGUID="{B5F36C4C-5E7F-4442-B8B3-1A52C212C1C4}"
 	Keyword="Win32Proj">
 	<Platforms>
@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
-			IntermediateDirectory="chap12ex1_Debug"
+			IntermediateDirectory="chap12ex3_Debug"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -33,10 +33,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="wsock32.lib glut32.lib opengl32.lib glu32.lib antlrd.lib"
-				OutputFile="$(OutDir)/chap12ex1.exe"
+				OutputFile="$(OutDir)/chap12ex3.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/chap12ex1.pdb"
+				ProgramDatabaseFile="$(OutDir)/chap12ex3.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -63,7 +63,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="chap12ex1_Release"
+			IntermediateDirectory="chap12ex3_Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -80,7 +80,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="wsock32.lib glut32.lib opengl32.lib glu32.lib antlr.lib"
-				OutputFile="$(OutDir)/chap12ex1.exe"
+				OutputFile="$(OutDir)/chap12ex3.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
@@ -117,13 +117,13 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\chap12\ex1\chap12ex1.cpp">
+				RelativePath="..\chap12\ex3\chap12ex3.cpp">
 			</File>
 			<File
-				RelativePath="..\chap12\ex1\readopticaldata.cpp">
+				RelativePath="..\chap12\ex3\readopticaldata.cpp">
 			</File>
 			<File
-				RelativePath="..\chap12\ex1\reconstruct.cpp">
+				RelativePath="..\chap12\ex3\reconstruct.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -131,10 +131,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\chap12\ex1\opticaldata.h">
+				RelativePath="..\chap12\ex3\opticaldata.h">
 			</File>
 			<File
-				RelativePath="..\chap12\ex1\readopticaldata.h">
+				RelativePath="..\chap12\ex3\readopticaldata.h">
 			</File>
 		</Filter>
 		<Filter

@@ -37,7 +37,7 @@
 using namespace h3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 11, Example 5: Loading Transformations into OpenGL";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 12, Example 1: Loading Transformations into OpenGL";
 
 // GLUT state information
 int g_viewportWidth = 800;
@@ -76,7 +76,7 @@ NULL
 };
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = -1.0f;
 
 
@@ -134,7 +134,7 @@ void display() {
 		// load matrix representation into GL:
 		glLoadMatrixf(M.m_c);
 	}
-	
+
 
 	// clear viewport
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -190,8 +190,8 @@ void reshape(GLint width, GLint height) {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -303,7 +303,7 @@ void renderModel(const std::string &modelName) {
 }
 
 void getGLUTmodel3D(const std::string &modelName) {
-	// DONT cull faces 
+	// DONT cull faces
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -312,8 +312,8 @@ void getGLUTmodel3D(const std::string &modelName) {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -374,7 +374,7 @@ void getGLUTmodel3D(const std::string &modelName) {
 			vtxIdx[i] = (int)g_vertices3D.size();
 			mv::Float x = bufferXY[idx];
 			mv::Float y = bufferXY[idx+1];
-			mv::Float z = bufferZY[idx+0]; 
+			mv::Float z = bufferZY[idx+0];
 			x -= (mv::Float)g_viewportWidth / 2;
 			y -= (mv::Float)g_viewportHeight / 2;
 			z -= (mv::Float)g_viewportWidth / 2;
