@@ -20,7 +20,7 @@ http://www.antlr.org/
 
 	If you link to libgasandboxparse, you need to link to ANTLR (libantlr), too.
 
-OpenCV (0.9.7 beta5): required by chap10ex3, chap11ex2, chap11ex6, chap14ex4
+OpenCV (0.9.7 beta5): required by chap10ex3, chap11ex2, chap12ex2, chap14ex4
 http://sourceforge.net/projects/opencvlibrary/
 
 	We use OpenCV for its linear algebra implementation
