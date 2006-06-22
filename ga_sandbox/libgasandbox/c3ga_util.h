@@ -83,8 +83,9 @@ mv matrix4x4ToVersor(const mv::Float M[16], bool transpose = false);
 /** special log() for rotors */
 bivectorE3GA log(const c3ga::rotor &R);
 
-/** special log() for TRversors (todo: specialize the return type) */
-pointPair log(const c3ga::TRversor &V);
+/** special log() for TRversors */
+//pointPair log(const c3ga::TRversor &V);
+dualLine log(const TRversor &V);
 
 /** special log() for TRSversors (todo: specialize the return type) */
 pointPair log(const c3ga::TRSversor &V);

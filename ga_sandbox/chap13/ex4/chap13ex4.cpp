@@ -81,6 +81,7 @@ void initRandomDest() {
 }
 
 TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
+	printf("Log: %s\n", log(_TRversor(inverse(src) * dst)).c_str());
 	// return src * exp(alpha * log(dst * inverse(src)));
 	return _TRversor(src * exp(_TRversor(alpha * log(_TRversor(inverse(src) * dst)))));
 }

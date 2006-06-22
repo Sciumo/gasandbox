@@ -166,7 +166,7 @@ void display() {
 		draw(-dual(P) * R * C * inverse(R) * inverse(dual(P)));
 
 		// draw interpolated circles
-		pointPair LR = log(R); // get log of R
+		dualLine LR = log(R); // get log of R
 		for (float alpha = 0; alpha < 1.0; alpha += 0.1f) 
 		{
 			// compute interpolated rotor

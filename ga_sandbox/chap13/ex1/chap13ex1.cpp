@@ -40,7 +40,7 @@ int main(int argc, char*argv[]) {
 	for (int i = 0; i < 5; i++) {
 		printf("%s ", mv_basisVectorNames[i]);
 		for (int j = 0; j < 5; j++) {
-			printf(" % 1.1f", _float(bv[i] << bv[j]));
+			printf(" % 1.1f", _Float(bv[i] << bv[j]));
 		}
 		printf("\n");
 	}
@@ -49,18 +49,18 @@ int main(int argc, char*argv[]) {
 
 	// create 'e+' and 'e-'
 	const float sqrt2i = 1.0f / 1.4142135623730950488016887242097f;
-	mv ep = sqrt2i * (no - ni);
-	mv em = sqrt2i * (no + ni);
+	dualSphere ep = _dualSphere(sqrt2i * (no - ni));
+	dualSphere em = _dualSphere(sqrt2i * (no + ni));
 
 	// print ep and em
 	printf("e+ and e-:\n");
 	printf("e+ = %s\n", ep.c_str());
-	printf("e_ = %s\n", em.c_str());
+	printf("e- = %s\n", em.c_str());
 	printf("\n");
 	printf("The metric of e+ and e-:\n");
-	printf("e+ . e+ = %f\n", _float(ep << ep));
-	printf("e- . e- = %f\n", _float(em << em));
-	printf("e+ . e- = %f\n", _float(ep << em));
+	printf("e+ . e+ = %f\n", _Float(ep << ep));
+	printf("e- . e- = %f\n", _Float(em << em));
+	printf("e+ . e- = %f\n", _Float(ep << em));
 
 
 

@@ -124,7 +124,7 @@ void display() {
 				glEnd();
 
 				// compute distance
-				float distance = 0.0; // EXERCISE: fill in the code to compute the distance!
+				float distance = 0.0; // EXERCISE: fill in the code to compute the distance between pt1 and pt2
 
 				// create the label:
 				char buf[256];

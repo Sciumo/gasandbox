@@ -94,13 +94,15 @@ bivectorE3GA log(const c3ga::rotor &R) {
 }
 
 // todo: don't return pointpair (there is no 'no' in the log of TRversor)
-pointPair log(const TRversor &V) {
+//pointPair log(const TRversor &V) {
+dualLine log(const TRversor &V) {
 	rotor R = _rotor(-no << (V * ni));
 	vectorE3GA t = _vectorE3GA(-2.0f * (no << V) * inverse(R));
 	bivectorE3GA Iphi = _bivectorE3GA(-2.0f * log(R));
 	rotor I = (_Float(norm_e2(Iphi)) == 0.0f) ? _rotor(1) :_rotor(unit_e(Iphi));
 
-	return _pointPair(
+//	return _pointPair(
+	return _dualLine(
 		0.5f * (
 		-(t ^ I) * inverse(I) * ni + 
 		inverse(1.0f - R * R) * (t << Iphi) * ni -
