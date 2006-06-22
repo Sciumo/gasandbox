@@ -65,11 +65,11 @@ AC_OUTPUT(
 	chap11/ex2/Makefile \
 	chap11/ex3/Makefile \
 	chap11/ex4/Makefile \
-	chap11/ex5/Makefile \
-	chap11/ex6/Makefile
 	\
 	chap12/Makefile \
 	chap12/ex1/Makefile \
+	chap12/ex2/Makefile \
+	chap12/ex3/Makefile \
 	\
 	chap13/Makefile \
 	chap13/ex1/Makefile \
