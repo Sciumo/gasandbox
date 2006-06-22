@@ -329,7 +329,7 @@ void State::updateRotation() {
 	std::vector<e3ga::vector> &v(m_v);
 
 
-	for (unsigned int c = 1; c < m_cam.size(); c++) { // start at '1' because translation of first camera is always 0
+	for (unsigned int c = 1; c < m_cam.size(); c++) { // start at '1' because rotation of first camera is always 1
 		u.resize(m_pt.size());
 		v.resize(m_pt.size());
 

@@ -120,10 +120,11 @@ protected:
 	/// temp buffer, used by updateRotation()
 	std::vector<e3ga::vector> m_u;
 
-	e3ga::vector etYijk(int i, int j, int k) const;
+	// the following not used anymore???
+/*	e3ga::vector etYijk(int i, int j, int k) const;
 	e3ga::vector etAijk(int i, int j, int k) const;
 	e3ga::vector etPjk(int j, int k) const;
-	void computeAsijk(int i, int j, int k, double Asijk[3]);
+	void computeAsijk(int i, int j, int k, double Asijk[3]);*/
 
 };
 
