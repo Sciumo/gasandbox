@@ -15,7 +15,7 @@ http://freeglut.sourceforge.net/
 FLTK (1.1.7): required by gaigenhp
 http://www.fltk.org/
 
-ANTLR (2.7.6): required by chap10ex3, chap12ex1
+ANTLR (2.7.6): required by chap10ex3, chap12ex3
 http://www.antlr.org/
 
 	If you link to libgasandboxparse, you need to link to ANTLR (libantlr), too.
