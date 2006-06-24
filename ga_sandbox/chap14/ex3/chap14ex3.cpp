@@ -393,21 +393,21 @@ void MouseButton(int button, int state, int x, int y) {
 	}
 	else if (g_mouseMode == MODE_CREATE_POINTS) {
 
+		// create a new point at g_dragDistance from camera
+		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance)));
+
 		// get modelview matrix (as used for drawing the scene) from OpenGL:
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glTranslatef(0.0f, 0.0f, g_modelDistance);
 		rotorGLMult(g_modelRotor);
-		mv::Float modelviewMatrix[16];
+		float modelviewMatrix[16];
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
 		glPopMatrix();
 
 		// convert modelview matrix to versor:
 		bool transpose = true;
 		TRversor V = _TRversor(matrix4x4ToVersorPS(modelviewMatrix, transpose));
-
-		// create a new point at g_dragDistance from camera
-		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance)));
 
 		// use OpenGL transform to create a point at the right location (`under' the mouse)
 		pt = inverse(V) * pt * V;

@@ -362,7 +362,7 @@ void MouseButton(int button, int state, int x, int y) {
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
 		glPopMatrix();
 
-		// invert matrix, then try again . . . 
+		// invert matrix
 		float inverseModelviewMatrix[16];
 		invert4x4Matrix(modelviewMatrix, inverseModelviewMatrix);
 
