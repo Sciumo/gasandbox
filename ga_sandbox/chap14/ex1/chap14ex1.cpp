@@ -47,14 +47,14 @@ extern "C" {
 using namespace c2ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 1: Vonoroi Diagrams and Delaunay Triangulations";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 1: Voronoi Diagrams and Delaunay Triangulations";
 
 // GLUT state information 
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
 
-#define DRAW_VONOROI 1
+#define DRAW_VORONOI 1
 #define DRAW_DELAUNAY 2
 
 int g_drawMode = DRAW_DELAUNAY;
@@ -300,7 +300,7 @@ void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	
@@ -334,8 +334,8 @@ void display() {
 		}
 	}
 	
-	if ((!GLpick::g_pickActive) && (g_drawMode == DRAW_VONOROI)) {
-		// draw the Vonoroi diagram
+	if ((!GLpick::g_pickActive) && (g_drawMode == DRAW_VORONOI)) {
+		// draw the Voronoi diagram
 		glLineStipple(1, 0x0F0F);
 		
 		// set of pair<triangleIdx, triangleIdx> that lists edges that were already drawn
@@ -398,10 +398,11 @@ void display() {
 	glPopMatrix();
 	
 	if (!GLpick::g_pickActive) {
+		glDisable(GL_DEPTH_TEST);
 		glColor3f(0.0, 0.0, 0.0);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 		renderBitmapString(20, g_viewportHeight - 20, font, (g_mouseMode == DRAG_POINTS) ? "Mouse mode: DRAG points" : "Mouse mode: CREATE points");
-		renderBitmapString(g_viewportWidth / 2, g_viewportHeight - 20, font, (g_drawMode == DRAW_VONOROI) ? "Draw mode: VONOROI" : "Draw mode: DELAUNAY");
+		renderBitmapString(g_viewportWidth / 2, g_viewportHeight - 20, font, (g_drawMode == DRAW_VORONOI) ? "Draw mode: VORONOI" : "Draw mode: DELAUNAY");
 		
 		renderBitmapString(20, 40, font, "Use the left mouse button to create and drag points (depending on mouse mode).");
 		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu (to select mouse mode, select draw mode).");
@@ -494,7 +495,7 @@ int main(int argc, char*argv[]) {
 	glutMotionFunc(MouseMotion);
 	
 	g_GLUTmenu = glutCreateMenu(menuCallback);
-	glutAddMenuEntry("Vonoroi Diagram", DRAW_VONOROI);
+	glutAddMenuEntry("Voronoi Diagram", DRAW_VORONOI);
 	glutAddMenuEntry("Delaunay Triangulation", DRAW_DELAUNAY);
 	glutAddMenuEntry("Mode: Drag Points", -DRAG_POINTS);
 	glutAddMenuEntry("Mode: Create Points", -CREATE_POINTS);

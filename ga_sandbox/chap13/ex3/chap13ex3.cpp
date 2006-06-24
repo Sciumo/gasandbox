@@ -79,6 +79,9 @@ NULL
 int g_dragPoint = -1; 
 float g_dragDistance = -1.0f;
 
+#define TOGGLE_GL_GA -1
+// toggle to switch between GL and GA applying the transform
+bool g_useGL = false;
 
 void getGLUTmodel3D(const std::string &modelName);
 
@@ -109,7 +112,7 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 
 	float distance = -20.0f;
-	if (false) {
+	if (g_useGL) {
 		// direct OpenGL:
 		glTranslatef(0.0f, 0.0f, distance);
 		rotor R = g_modelRotor;
@@ -120,15 +123,14 @@ void display() {
 
 		// get translator and rotor
 		vectorE3GA t = _vectorE3GA(distance * e3);
-
-		normalizedTranslator T = _normalizedTranslator(exp(_freeVector(-0.5f * (t ^ ni))));
+		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
 		rotor &R = g_modelRotor;
 
 		// combine 'T' and 'R' to form translation-rotation versor:
 		TRversor TR = _TRversor(T * R);
 		TRversor TRi = _TRversor(inverse(TR)); // compute inverse
 
-		// compute images of basis vectors:
+		// compute images of basis blades e1^ni, e2^ni, e3^ni, no^ni:
 		flatPoint imageOfE1NI = _flatPoint(TR * e1ni * TRi);
 		flatPoint imageOfE2NI = _flatPoint(TR * e2ni * TRi);
 		flatPoint imageOfE3NI = _flatPoint(TR * e3ni * TRi);
@@ -250,8 +252,14 @@ void MouseButton(int button, int state, int x, int y) {
 
 
 void menuCallback(int value) {
-	g_modelName = g_modelNames[value];
-	g_initModelRequired = true;
+	if (value < 0) {
+		if (value == TOGGLE_GL_GA)
+			g_useGL = !g_useGL;
+	}
+	else {
+		g_modelName = g_modelNames[value];
+		g_initModelRequired = true;
+	}
 
 	glutPostRedisplay();
 }
@@ -277,6 +285,7 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
+	glutAddMenuEntry("Toggle GL/GA", TOGGLE_GL_GA);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
