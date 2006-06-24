@@ -91,6 +91,13 @@ std::vector<int> g_createLinePtList;
 // used for construction of new planes:
 std::vector<int> g_createPlanePtList;
 
+bool isSelected(int ptIdx) {
+	for (unsigned int j = 0; j < g_createLinePtList.size(); j++)
+		if (g_createLinePtList[j] == ptIdx) return true;
+	for (unsigned int j = 0; j < g_createPlanePtList.size(); j++)
+		if (g_createPlanePtList[j] == ptIdx) return true;
+	return false;
+}
 
 vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d);
 
@@ -135,27 +142,21 @@ void display() {
 	std::vector<mv> primitives;
 
 	// draw the points
-	glColor3fm(1.0f, 0.0f, 0.0f);
+	
 	g_drawState.m_pointSize = 0.1f;
 	for (unsigned int i = 1; i < g_points.size(); i++) { // start at i = 1 because first point is NI!
 		if (GLpick::g_pickActive) glLoadName(i);
+	
+		// draw 'selected' points in dark grey:
+		if (isSelected((int)i)) glColor3fm(0.3f, 0.3f, 0.3f);
+		else glColor3fm(1.0f, 0.0f, 0.0f); // red otherwise
+
 		draw(g_points[i]);
-//		primitives.push_back(g_points[i]);
 	}
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 
 	if (!GLpick::g_pickActive) {
-	/*	// some test code for 14.2
-		glColor3fm(0.0f, 1.0f, 1.0f);
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
-		g_drawState.pushDrawModeOn(OD_MAGNITUDE);
-		draw(4 * ni^e1);
-//		draw(ni^e1 ^ e2);
-		g_drawState.popDrawMode();*/
-
-
 		// draw the lines
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
 		glColor3fm(0.0f, 1.0f, 0.0f);
@@ -217,29 +218,30 @@ void display() {
 						P1 = primitives[j];
 					}
 
-//					printf("P1 = %s,\n", P1.c_str_e20());
-//					printf("P2 = %s,\n", P2.c_str_e20());
-
 					// make primitive 'snap' to each other (this is done in Euclidean metric)
-					// keep this? It only works for flats . . . 
-					if (false) {
-						mv projection = lcontEM(lcontEM(P1, inverseEM(P2)), P2);
+					// keep this? It only works well for flats . . . 
+					if (true) {
+						mv projection = (P1 << inverse(P2)) << P2;
 
 						// check if projection of P1 onto P2 is 'close' to P1
 						const float CLOSE = 0.02f;
 						if (_Float(norm_e(projection - P1)) < CLOSE) {
 							// yes: P1 = projection of P1 onto P2
 							P1 = projection;
-							mv I = unit_e(join(P1, P2));
 						}
 					}
 
 					// compute 'pseudoscalar' of the space spanned by P1 and P2
-					mv I = unit_e(join(P1, P2));
+					mv I = I5;
+					try {
+						I = unit_e(join(P1, P2));
+					} catch (const std::string &str) {
+						printf("%s\n", str.c_str());
+					}
 
 					// NOTE: intersection in Eucliden metric (else it doesn't work for flats, in degenerate cases)
 					// compute P1* . P2
-					mv intersection = lcontEM(lcontEM(P1, I), P2);
+					mv intersection = (P1 <<  I) << P2;
 
 					// do not draw 'imaginary' intersections:
 					mv_analyze::mvAnalysis A(intersection);
@@ -320,7 +322,10 @@ void display() {
 			int y = g_viewportHeight - 20;
 
 			glDisable(GL_CULL_FACE);
-			glColor3f(0.8f, 0.8f, 0.8f);
+
+			if (isSelected(0)) glColor3f(0.3f, 0.3f, 0.3f);
+			else glColor3f(0.8f, 0.8f, 0.8f);
+			
 			glBegin(GL_QUADS);
 			glVertex3i(x-2, y+13,-1);
 			glVertex3i(x+w+2, y+13,-1);
