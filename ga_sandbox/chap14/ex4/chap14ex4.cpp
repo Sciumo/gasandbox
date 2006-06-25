@@ -87,15 +87,19 @@ dualSphere fitSphere(const std::vector<point> &points) {
 
 		// fill the matrix:
 		for (unsigned int p = 0; p < points.size(); p++) {
+			// get coordinates of point 'p':
 			const mv::Float *pc = points[p].getC(point_no_e1_e2_e3_ni);
+
 			for (int i = 0; i < 5; i++)
-				for (int j = i; j < 5; j++)
-					P[i * 5 + j] = P[j * 5 + i] += pc[i] * pc[j];
+				for (int j = i; j < 5; j++) {
+					P[i * 5 + j] += pc[i] * pc[j];
+					P[j * 5 + i] = P[i * 5 + j];
+				}
 		}
 	}
 
 	// initialize the metric matrix:
-	float M[5 *5 ] = {
+	float M[5 * 5] = {
 	//  no    e1    e2    e3     ni
 		 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, // no
 		 0.0f, 1.0f, 0.0f, 0.0f,  0.0f, // e1

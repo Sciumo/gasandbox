@@ -61,12 +61,12 @@ float g_dragDistance = 0.0f;
 // the points:
 const int NB_POINTS = 6;
 normalizedPoint g_points[NB_POINTS] = {
-	c3gaPoint(1, 2, 3),
-	c3gaPoint(-1, 2, 3),
-	c3gaPoint(1, -2, 3),
-	c3gaPoint(-1, -2, -3),
-	c3gaPoint(1, 2, -3),
-	c3gaPoint(-1, 2, -3)
+	c3gaPoint(1, 2, 2),
+	c3gaPoint(-1, 2, 2),
+	c3gaPoint(1, -2, 2),
+	c3gaPoint(-1, -2, -2),
+	c3gaPoint(1, 2, -2),
+	c3gaPoint(-1, 2, -2)
 };
 
 const int MODE_LINE = 1;
@@ -138,30 +138,33 @@ void display() {
 		glColor3fm(0.0f, 1.0f, 0.0f);
 		draw(CL);
 
-		// compute/draw the plane:
+		// compute the plane:
 		plane PL = _plane(g_points[3] ^ g_points[4] ^ g_points[5] ^ ni);
-		g_drawState.pushDrawModeOff(OD_ORIENTATION);
-		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(PL);
-		g_drawState.popDrawMode();
 
 		// draw the projected circle / line:
 		glColor3fm(0.0f, 1.0f, 1.0f);
 		draw((CL << inverse(PL)) << PL);
 
-		if (g_mode & 4) { // todo: const
+		g_drawState.pushDrawModeOff(OD_ORIENTATION);
+		glDepthMask(GL_FALSE);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		// compute/draw the plane:
+		glColor4fm(0.0f, 0.0f, 1.0f, 0.5f);
+		draw(PL);
+
+		if (g_mode & 4) {
 			// Draw the sphere (CL ^ PL*)
 			// That is: the sphere that contains both the circle and its projection.
-			g_drawState.pushDrawModeOff(OD_ORIENTATION);
-			glDepthMask(GL_FALSE);
-			glEnable(GL_BLEND);
 			glColor4fm(0.0f, 1.0f, 1.0f, 0.5f);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			draw(CL ^ dual(PL));
-			glDisable(GL_BLEND);
-			glDepthMask(GL_TRUE);
-			g_drawState.popDrawMode();
 		}
+
+		glDisable(GL_BLEND);
+		glDepthMask(GL_TRUE);
+		g_drawState.popDrawMode();
+
 
 	}
 
