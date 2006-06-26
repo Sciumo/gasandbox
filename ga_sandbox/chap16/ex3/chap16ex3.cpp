@@ -79,10 +79,7 @@ void initRandomDest() {
 	mv::Float s1 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
 	scalor S1 = exp(_noni_t(0.5f * log(s1) * noni));
 		
-	mv::Float s2 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
-	scalor S2 = exp(_noni_t(0.5f * log(s2) * noni));
-
-	g_destVersor = _TRSversor(T1 * S1 * T2 * R * inverse(T2) * S2);
+	g_destVersor = _TRSversor(T1 * S1 * T2 * R * inverse(T2));
 }
 
 TRSversor interpolateTRSversor(const TRSversor &src, const TRSversor &dst, mv::Float alpha) {

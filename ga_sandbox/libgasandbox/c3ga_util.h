@@ -87,8 +87,8 @@ bivectorE3GA log(const c3ga::rotor &R);
 //pointPair log(const c3ga::TRversor &V);
 dualLine log(const TRversor &V);
 
-/** special log() for TRSversors (todo: specialize the return type) */
-pointPair log(const c3ga::TRSversor &V);
+/** special log() for TRSversors */
+TRSversorLog log(const TRSversor &U);
 
 mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX = -1);
 

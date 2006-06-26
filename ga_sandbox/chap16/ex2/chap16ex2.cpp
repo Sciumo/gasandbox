@@ -44,7 +44,7 @@ int main(int argc, char*argv[]) {
 	for (int i = 0; i < NB_CHECKS; i++) {
 		TRSversor V = _TRSversor(generateRandomTRSversor() * generateRandomTRSversor());
 		
-		pointPair P = log(V);
+		TRSversorLog P = log(V);
 		
 		mv X = exp(P);
 		

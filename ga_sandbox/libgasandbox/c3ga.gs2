@@ -48,7 +48,6 @@ ga {
 	
 	
 	specialization: blade pointPair(no^e1,    no^e2,    no^e3,    e1^e2,    e2^e3,    e3^e1,    e1^ni,    e2^ni,    e3^ni,    no^ni);
-	specialization: blade TRversorLog(e1^e2,    e2^e3,    e3^e1,    e1^ni,    e2^ni,    e3^ni);
 	
 	specialization: blade line(e1^e2^ni, e1^e3^ni, e2^e3^ni, e1^no^ni, e2^no^ni, e3^no^ni);
 	specialization: blade dualLine(e1^e2, e1^e3, e2^e3, e1^ni, e2^ni, e3^ni);
@@ -76,6 +75,9 @@ ga {
 	specialization: blade vectorE2GA(e1, e2);
 	specialization: blade vectorE3GA(e1, e2, e3);
 	specialization: blade bivectorE3GA(e1^e2, e2^e3, e3^e1);
+	
+	specialization: blade TRversorLog(e1^e2, e2^e3, e3^e1, e1^ni, e2^ni, e3^ni);
+	specialization: blade TRSversorLog(e1^e2, e1^e3, e2^e3, e1^ni, e2^ni, e3^ni, no^ni);	
 	
 	specialization: versor TRversor(1.0,  // grade 0
 					e1^e2, e1^e3, e2^e3, e1^ni, e2^ni, e3^ni,  // grade 2

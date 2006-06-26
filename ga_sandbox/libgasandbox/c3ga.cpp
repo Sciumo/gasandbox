@@ -1,5 +1,5 @@
 
-// Generated on 2006-06-12 15:51:32 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2006-06-26 14:12:36 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -149,9 +149,9 @@
 		}
 		void reset() {
 		}
-		void save(const char *filename /*= "E:\\ga\\ga_sandbox\\libgasandbox\\c3ga.gp2"*/, bool append /*= false*/) {
+		void save(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\c3ga.gp2"*/, bool append /*= false*/) {
 		}
-		void init(const char *filename /*= "E:\\ga\\ga_sandbox\\libgasandbox\\c3ga.gp2"*/,
+		void init(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\c3ga.gp2"*/,
 		const char *hostName /*= "localhost"*/, int port /*= 7693*/) {
 		}
 	} // end of namespace g2Profiling
@@ -609,61 +609,6 @@
 		if (C > maxC) {
 			maxC = C;
 			bm = 17;
-		}
-		return maxC;
-	}
-
-
-
-
-
-
-	float TRversorLog::largestCoordinate() const {
-
-		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
-
-		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
-		if (C > maxC) maxC = C;
-		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
-		if (C > maxC) maxC = C;
-		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
-		if (C > maxC) maxC = C;
-		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
-		if (C > maxC) maxC = C;
-		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
-		if (C > maxC) maxC = C;
-		return maxC;
-	}
-
-	float TRversorLog::largestBasisBlade(unsigned int &bm) const {
-
-		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
-		bm = 6;
-
-		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
-		if (C > maxC) {
-			maxC = C;
-			bm = 12;
-		}
-		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
-		if (C > maxC) {
-			maxC = C;
-			bm = 10;
-		}
-		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
-		if (C > maxC) {
-			maxC = C;
-			bm = 18;
-		}
-		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
-		if (C > maxC) {
-			maxC = C;
-			bm = 20;
-		}
-		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
-		if (C > maxC) {
-			maxC = C;
-			bm = 24;
 		}
 		return maxC;
 	}
@@ -1480,6 +1425,123 @@
 		if (C > maxC) {
 			maxC = C;
 			bm = 10;
+		}
+		return maxC;
+	}
+
+
+
+
+
+
+	float TRversorLog::largestCoordinate() const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) maxC = C;
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) maxC = C;
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) maxC = C;
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) maxC = C;
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) maxC = C;
+		return maxC;
+	}
+
+	float TRversorLog::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+		bm = 6;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) {
+			maxC = C;
+			bm = 12;
+		}
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) {
+			maxC = C;
+			bm = 10;
+		}
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) {
+			maxC = C;
+			bm = 18;
+		}
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) {
+			maxC = C;
+			bm = 20;
+		}
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) {
+			maxC = C;
+			bm = 24;
+		}
+		return maxC;
+	}
+
+
+
+
+
+
+	float TRSversorLog::largestCoordinate() const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) maxC = C;
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) maxC = C;
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) maxC = C;
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) maxC = C;
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) maxC = C;
+		C = (m_c[6] < (Float)0.0) ? -m_c[6] : m_c[6];
+		if (C > maxC) maxC = C;
+		return maxC;
+	}
+
+	float TRSversorLog::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0], C;
+		bm = 6;
+
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) {
+			maxC = C;
+			bm = 10;
+		}
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) {
+			maxC = C;
+			bm = 12;
+		}
+		C = (m_c[3] < (Float)0.0) ? -m_c[3] : m_c[3];
+		if (C > maxC) {
+			maxC = C;
+			bm = 18;
+		}
+		C = (m_c[4] < (Float)0.0) ? -m_c[4] : m_c[4];
+		if (C > maxC) {
+			maxC = C;
+			bm = 20;
+		}
+		C = (m_c[5] < (Float)0.0) ? -m_c[5] : m_c[5];
+		if (C > maxC) {
+			maxC = C;
+			bm = 24;
+		}
+		C = (m_c[6] < (Float)0.0) ? -m_c[6] : m_c[6];
+		if (C > maxC) {
+			maxC = C;
+			bm = 17;
 		}
 		return maxC;
 	}

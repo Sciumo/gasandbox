@@ -398,7 +398,7 @@ int main(int argc, char*argv[]) {
 	g_points.push_back(_point(c3gaPoint(1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(-1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(1.0f, 0.0f, 0.0f)));
-	g_points.push_back(_point(c3gaPoint(0.0f, 0.0f, -1.0f)));
+	g_points.push_back(_point(c3gaPoint(0.0f, 1.0f, 2.0f)));
 
 
 	glutMainLoop();

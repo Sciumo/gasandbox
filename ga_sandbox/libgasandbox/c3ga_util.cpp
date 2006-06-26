@@ -112,7 +112,7 @@ dualLine log(const TRversor &V) {
     Iphi));
 }
 
-pointPair log(const TRSversor &U) {
+TRSversorLog log(const TRSversor &U) {
 	// get rotor part:
 	rotor gR = _rotor(- no << (U * ni)); // should give exp (-g/2) R
 	rotor R = _rotor(unit_e(gR));
@@ -130,8 +130,7 @@ pointPair log(const TRSversor &U) {
 
 	if ((1.0f - _Float(R)) < 1e-6) {
 		// no rotation, so no rotation plane; could set I=1, phi=0;
-		 pointPair result = _pointPair(-0.5f * (gam * noni + gamfactor * (t ^ ni)));
-		 return result;
+		 return _TRSversorLog(-0.5f * (gam * noni + gamfactor * (t ^ ni)));
 	} 
 	else {
 		// get rotation plane, angle
@@ -144,8 +143,7 @@ pointPair log(const TRSversor &U) {
 		vectorE3GA w = _vectorE3GA(gamfactor * (t^I) * reverse(I));
 		vectorE3GA v = _vectorE3GA(1.0f * inverse(1.0f -(mv::Float)::exp(-gam) * R * R) * ((t << I) * reverse(I)));
 		normalizedTranslator tv = exp(_freeVector(-0.5f * (v^ni)));
-		pointPair result = _pointPair(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
-		return result;
+		return _TRSversorLog(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
 	 }
 }	
 

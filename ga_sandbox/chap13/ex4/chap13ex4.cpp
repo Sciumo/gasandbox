@@ -73,6 +73,12 @@ void copyDestToSource() {
 }
 
 void initRandomDest() {
+	normalizedTranslator T1 =  exp(_freeVector(randomBlade(2, 3.0f)));
+	normalizedTranslator T2 =  exp(_freeVector(randomBlade(2, 3.0f)));
+	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
+
+	g_destVersor = _TRversor(T1 * T2 * R * inverse(T2));
+	/*
 	// create random translation-rotation versor as the exp of a dual line:
 
 	// get random dual spheres:
@@ -85,7 +91,7 @@ void initRandomDest() {
 	dualLine dL = _dualLine(dual(S1 ^ S2 ^ ni));
 
 	// set the `destination versor':
-	g_destVersor = _TRversor(exp(dL));
+	g_destVersor = _TRversor(exp(dL));*/
 }
 
 // interpolate between 'src' and 'dst', as determined by 'alpha' 
