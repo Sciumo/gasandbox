@@ -333,11 +333,15 @@ void Idle() {
 int LoadData() {
 	try {
 		g_opticalCaptureData = readOpticalData("silly_moves.txt");
-		printf("Done\n");
 	} catch (const std::string &str) {
-		printf("Error: %s\n", str.c_str());
-		return -1;
+		try {
+			g_opticalCaptureData = readOpticalData("../chap12/ex3/silly_moves.txt");
+		} catch (const std::string &str) {
+			printf("Error: %s\n", str.c_str());
+			return -1;
+		}
 	}
+	printf("Done\n");
 	return 0;
 }
 

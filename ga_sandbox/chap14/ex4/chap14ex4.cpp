@@ -55,6 +55,8 @@ bool g_rotateModelOutOfPlane = false;
 
 const float g_modelDistance = -16.0f;
 
+const int FLATTEN = -2;
+const int NONE = -1;
 const int MODE_DRAG = 0;
 const int MODE_CREATE_POINTS = 1;
 
@@ -182,7 +184,6 @@ void display() {
 	for (unsigned int i = 0; i < g_points.size(); i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
 		draw(g_points[i]);
-//		primitives.push_back(g_points[i]);
 	}
 
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
@@ -335,7 +336,14 @@ void PassiveMouseMotion(int x, int y) {
 }
 
 void menuCallback(int value) {
-	g_mouseMode = value;
+	if (value > 0)
+		g_mouseMode = value;
+	else if (value == FLATTEN) {
+		// project all onto e3:
+		for (unsigned int i = 0; i < g_points.size(); i++) {
+			g_points[i] = _point(c3gaPoint(g_points[i].e1(), g_points[i].e2(), 0.0f));
+		}
+	}
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -361,10 +369,12 @@ int main(int argc, char*argv[]) {
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry(g_modeName[MODE_DRAG], MODE_DRAG);
 	glutAddMenuEntry(g_modeName[MODE_CREATE_POINTS], MODE_CREATE_POINTS);
+	glutAddMenuEntry("--------------------------------------------", NONE);
+	glutAddMenuEntry("Project points onto the plane dual(e3)", FLATTEN);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
-	// create the initial points (what happens when degenerate?
+	// create the initial points 
 	g_points.push_back(_point(c3gaPoint(1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(-1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(1.0f, 0.0f, 0.0f)));

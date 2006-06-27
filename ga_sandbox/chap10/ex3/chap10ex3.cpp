@@ -93,7 +93,7 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glTranslatef(0.0f, 0.0f, -4.0f);
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_DEPTH_TEST);
@@ -127,7 +127,7 @@ void display() {
 
 	if (g_draw & DRAW_MARKERS) {
 		// draw all markers
-		glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		glPointSize(2.0f);
 		glBegin(GL_POINTS);
 		for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
@@ -140,7 +140,7 @@ void display() {
 
 	if (g_draw & DRAW_ERRORS) {
 		// draw errors for all markers
-		glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		glBegin(GL_LINES);
 		for (unsigned int f = 0; f < g_extCalibState.m_pt.size(); f++) {
 			if (g_extCalibState.m_ptValid[f]) {
@@ -226,7 +226,7 @@ void display() {
 	glLoadIdentity();
 
 	glDisable(GL_LIGHTING);
-	glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(0.0f, 0.0f, 0.0f);
 	void *font = GLUT_BITMAP_HELVETICA_12;
 	{
 		char buf[1024];
@@ -331,8 +331,13 @@ int LoadData() {
 	try {
 		g_extCalibState = readCalibrationData("calibration_data.txt");
 	} catch (const std::string &str) {
-		printf("Error: %s\n", str.c_str());
-		return -1;
+		try {
+			// try alternative path, when called from inside visual studio:
+			g_extCalibState = readCalibrationData("../chap10/ex3/calibration_data.txt");
+		} catch (const std::string &str) {
+			printf("Error: %s\n", str.c_str());
+			return -1;
+		}
 	}
 	return 0;
 }

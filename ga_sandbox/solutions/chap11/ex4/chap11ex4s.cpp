@@ -144,7 +144,7 @@ void display() {
 
 
 	// clear viewport
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// setup other GL stuff
@@ -169,7 +169,7 @@ void display() {
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
+			glColor3fm(0.0, 0.0, 0.0);
 			glBegin(GL_POLYGON);
 			for (unsigned int j = 0; j < g_polygons3D[i].size(); j++) {
 				// get vertex:
@@ -196,7 +196,7 @@ void display() {
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
 			// draw polygon & compute center of polygon
-			glColor3fm(1.0, 1.0, 1.0);
+			glColor3fm(0.0, 0.0, 0.0);
 
 			// first compute the projected vertices
 			std::vector<point> PV; // PV = projectedVertices
@@ -254,7 +254,7 @@ void display() {
 		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glColor4fm(0.2f, 0.2f, 0.75f, 0.5f);
+		glColor4fm(0.5f, 0.5f, 1.0f, 0.5f);
 		draw(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
 			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
 			g_points[IMAGE_PLANE_PT_IDX + 2]);
@@ -262,7 +262,21 @@ void display() {
 		g_drawState.popDrawMode();
 	}
 
+	if (!GLpick::g_pickActive) {
+		glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 
+		glDisable(GL_LIGHTING);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		void *font = GLUT_BITMAP_HELVETICA_12;
+		renderBitmapString(20, 60, font, "The four red points represent the camera and span the imaging plane.");
+		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red points, and to orbit the scene.");
+		renderBitmapString(20, 20, font, "Use the other mouse buttons access the popup menu (to select a different model, and to toggle rays on/off).");
+	}
 
 	if (!GLpick::g_pickActive) {
 		glutSwapBuffers();
@@ -437,8 +451,6 @@ void getGLUTmodel3D(const std::string &modelName) {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
-
-	glColor3f(1.0f, 1.0f, 1.0f);
 
 	// buffer for OpenGL feedback.
 	// Format will be:

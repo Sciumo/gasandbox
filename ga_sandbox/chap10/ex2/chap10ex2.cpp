@@ -51,11 +51,11 @@ int g_dragObject = -1;
 
 
 const float VEC_LENGTH = 200.0f;
-const int NB_INPUT_VECTORS = 3;
+const int NB_INPUT_VECTORS = 2;
 e2ga::vector g_inputVectors[NB_INPUT_VECTORS] = {
 	_vector(VEC_LENGTH * e2),
-	_vector(VEC_LENGTH * unit_e(e2 + 0.2f * e1)),
-	_vector(VEC_LENGTH * unit_e(e2 - 0.2f * e1))
+	_vector(VEC_LENGTH * unit_e(e2 + 0.2f * e1))
+//	_vector(VEC_LENGTH * unit_e(e2 - 0.2f * e1))
 };
 
 
@@ -73,7 +73,7 @@ void display() {
 
 	// repeatedly reflect every vector in every vector (very brute force)
 	double tStart = u_timeGet();
-	const double NB_VEC_LIMIT = 1000;
+	const double NB_VEC_LIMIT = 200;
 	while (V.size() < NB_VEC_LIMIT) {
 		unsigned int nbVec = V.size();
 		for (unsigned int i = 0; i < nbVec; i++) {

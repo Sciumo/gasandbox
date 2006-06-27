@@ -296,8 +296,13 @@ void MouseMotion(int x, int y) {
 void loadRawImage(const char *filename) {
 	FILE *F = fopen(filename, "rb");
 	if (F == NULL) {
-		fprintf(stderr, "Could not open '%s'. This file should be in the current directory for this example to work!\n", filename);
-		exit(-1);
+		char altName[1024];
+		sprintf(altName, "../chap3/ex4/%s", filename);
+		F = fopen(altName, "rb");
+		if (F == NULL) {
+			fprintf(stderr, "Could not open '%s'. This file should be in the current directory for this example to work!\n", filename);
+			exit(-1);
+		}
 	}
 	unsigned char buf[4];
 	if (fread(buf, 4, 1, F) != 1) {
