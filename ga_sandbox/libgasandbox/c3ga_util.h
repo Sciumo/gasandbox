@@ -90,6 +90,7 @@ dualLine log(const TRversor &V);
 /** special log() for TRSversors */
 TRSversorLog log(const TRSversor &U);
 
+
 mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX = -1);
 
 

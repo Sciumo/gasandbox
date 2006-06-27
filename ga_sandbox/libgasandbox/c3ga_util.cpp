@@ -112,6 +112,7 @@ dualLine log(const TRversor &V) {
     Iphi));
 }
 
+/*
 TRSversorLog log(const TRSversor &U) {
 	// get rotor part:
 	rotor gR = _rotor(- no << (U * ni)); // should give exp (-g/2) R
@@ -128,7 +129,7 @@ TRSversorLog log(const TRSversor &U) {
 	translator T = _translator(U * inverse(S) * inverse(R)); 		// retrieval of parameters for V = T R S
 	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
 
-	if ((1.0f - _Float(R)) < 1e-6) {
+	if ((1.0f - _Float(R)) < 1e-6f) {
 		// no rotation, so no rotation plane; could set I=1, phi=0;
 		 return _TRSversorLog(-0.5f * (gam * noni + gamfactor * (t ^ ni)));
 	} 
@@ -146,7 +147,43 @@ TRSversorLog log(const TRSversor &U) {
 		return _TRSversorLog(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
 	 }
 }	
+*/
 
+TRSversorLog log(const TRSversor &V) {
+	// get rotor part:
+	rotor X = _rotor(- no << (V * ni));
+
+	// get scaling part
+	mv::Float gamma = (mv::Float)::log(_Float(X * reverse(X)));
+	mv::Float gammaPrime;
+	if (fabs(gamma) < 1e-6f) gammaPrime = 1.0f;
+	else gammaPrime = gamma / (1.0f - ::exp(gamma));
+	scalor S = exp(_noni_t(0.5f * gamma * noni)); 
+
+	// get rotation part
+	rotor R = _rotor(::exp(-0.5f * gamma) * X);
+
+	// get translation part:
+	translator T = _translator(V * reverse(S) * reverse(R)); 
+	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
+
+	if ((1.0f - _Float(R)) < 1e-6f) {
+		// no rotation, so no rotation plane
+		 return _TRSversorLog((0.5f * gammaPrime * (t ^ ni) + 0.5f * gamma * noni));
+	} 
+	else {
+		// get rotation plane, angle
+		bivectorE3GA I = _bivectorE3GA(R); 
+		mv::Float sR2 = _Float(norm_e(I)); 
+		I = _bivectorE3GA(I * (1.0f / sR2));
+		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R)); 
+
+		// form bivector log of versor:
+		normalizedTranslator Tv = _normalizedTranslator(
+			1.0f - 0.5f * inverse(1.0f - (mv::Float)::exp(gamma) * R * R) * (t << I) * reverse(I) * ni);
+		return _TRSversorLog(0.5f * (gammaPrime * (t^I) * reverse(I) * ni + Tv * (-phi * I + gamma * noni) * reverse(Tv)));
+	 }
+}	
 
 
 

@@ -49,6 +49,12 @@ void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -135,7 +141,7 @@ void display() {
 	glPopMatrix();
 	
 	// draw the labels:
-	glColor3f(0.2, 0.2, 0.2);
+	glColor3f(0.2f, 0.2f, 0.2f);
 	void *font = GLUT_BITMAP_HELVETICA_12;
 	for (unsigned int i = 0; i < labelString.size(); i++) {
 		float w = getBitmapStringWidth(font, labelString[i].c_str());
@@ -150,12 +156,6 @@ void reshape(GLint width, GLint height) {
 	g_viewportWidth = width;
 	g_viewportHeight = height;
 
-	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 }
 
 

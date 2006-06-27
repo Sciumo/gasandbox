@@ -73,12 +73,14 @@ void copyDestToSource() {
 }
 
 void initRandomDest() {
+	// // get two random translators, a random rotor and a random scalor:
 	normalizedTranslator T1 =  exp(_freeVector(randomBlade(2, 3.0f)));
 	normalizedTranslator T2 =  exp(_freeVector(randomBlade(2, 3.0f)));
 	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
 	mv::Float s1 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
 	scalor S1 = exp(_noni_t(0.5f * log(s1) * noni));
 		
+	// return a random TRS versor:
 	g_destVersor = _TRSversor(T1 * S1 * T2 * R * inverse(T2));
 }
 

@@ -288,36 +288,6 @@ void MouseButton(int button, int state, int x, int y) {
 		g_points.push_back(pt); // c3gaPoint(_vectorE3GA(-no << fpt))));
 
 		g_dragPoint = (int)g_points.size()-1;
-/*	
-		// create a new point at g_dragDistance from camera
-		point pt = _point(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance);
-
-		// get modelview matrix (as used for drawing the scene) from OpenGL:
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glTranslatef(0.0f, 0.0f, g_modelDistance);
-		rotorGLMult(g_modelRotor);
-		float modelviewMatrix[16];
-		glGetFloatv(GL_MODELVIEW_MATRIX, modelviewMatrix);
-		glPopMatrix();
-
-		// invert matrix, then try again . . . 
-		float inverseModelviewMatrix[16];
-		invert4x4Matrix(modelviewMatrix, inverseModelviewMatrix);
-
-		// TODO: instead of inverting the matrix, convert it to GA, then invert the versor!!!
-		// Do this once the example code (16.x) is ready . . . 
-
-		// use it to initialize an outermorphism; apply it to the point
-		omFlatPoint M(inverseModelviewMatrix);
-		flatPoint fptIn = _flatPoint(pt^ni); // somethings is wrong with flatPointOM -> general  OM conversion
-		flatPoint fpt = _flatPoint(apply_om(M, fptIn));
-
-		// add point to list of points:
-		g_points.push_back(_point(c3gaPoint(_vectorE3GA(-no << fpt))));
-
-		g_dragPoint = (int)g_points.size()-1;
-*/
 	}
 
 	if (g_rotateModel) {
