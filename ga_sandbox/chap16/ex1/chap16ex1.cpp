@@ -37,7 +37,7 @@
 using namespace c3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 16, Example 1: OpenGL Matrices to Conformal Versors";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 16, Example 1: Homogeneous 4x4 Matrices to Conformal Versors";
 
 // GLUT state information
 int g_viewportWidth = 800;
