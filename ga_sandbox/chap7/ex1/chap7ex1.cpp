@@ -50,7 +50,7 @@ bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // rotation of the model
-e3ga::rotor g_modelRotor(_rotor(1.0f));
+rotor g_modelRotor(_rotor(1.0f));
 
 // when dragging vectors: which one, and at what depth:
 float g_dragDistance = -1.0f;
