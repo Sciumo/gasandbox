@@ -67,20 +67,35 @@ e3ga::vector g_inputVectors[NB_INPUT_VECTORS] = {
 
 e3ga::vector g_point = _vector(e1 + e2);
 
+bool g_ac = false;
+bool g_abc = false;
+
 e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 	return _vector(-a * x * inverse(a));
 }
 
+
 const int CUBIC = 1;
 const int HEXAGONAL = 2;
 const int TETRAGONAL = 3;
-const int ORTHORHOMBRIC = 5;
+const int ORTHORHOMBRIC = 4;
+const int TRICLINIC = 5;
+const int MONOCLINIC = 6;
+const int TRIGONAL = 7;
 
 void display() {
-	// initialize array of vectors:
+	// initialize array of operators:
 	std::vector<mv> V;
-	for (int i = 0; i < NB_INPUT_VECTORS; i++) {
-		V.push_back(g_inputVectors[i]);
+	if (g_ac) {
+		V.push_back(g_inputVectors[0] ^ g_inputVectors[2]);
+		V.push_back(g_inputVectors[1]);
+	}
+	else if (g_abc) {
+		V.push_back(g_inputVectors[0] ^ g_inputVectors[1] ^ g_inputVectors[2]);
+	}
+	else {
+		for (int i = 0; i < NB_INPUT_VECTORS; i++)
+			V.push_back(g_inputVectors[i]);
 	}
 
 	// repeatedly reflect every vector in every vector (very brute force)
@@ -113,6 +128,8 @@ void display() {
 		if (nbVec == V.size()) break;
 	}
 
+//	printf("%d operators\n", V.size());
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);
@@ -142,25 +159,12 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
-	// draw the operators:
-/*	if (!GLpick::g_pickActive) {
-		glColor3f(0.5f, 0.5f, 0.5f);
-		glLineWidth(1.0f);
-		glBegin(GL_LINES);
-		for (unsigned int i = NB_INPUT_VECTORS; i < V.size(); i++) {
-			glVertex3f(0.0f, 0.0f, 0.0f);
-			glVertex3f(V[i].e1(), V[i].e2(), V[i].e3());
-		}
-		glEnd();
-	}*/
-
 	// draw the reflected points
 	if (!GLpick::g_pickActive) {
 		glColor3f(0.0f, 0.0f, 1.0f);
 		for (int i = 0; i < V.size(); i++) {
 			glBegin(GL_POINTS);
 			glVertex3fv(_vector(gradeInvolution(V[i]) * g_point * inverse(V[i])).getC(vector_e1_e2_e3));
-//			glVertex3fv(_vector(-reflectVector(V[i], g_point)).getC(vector_e1_e2_e3));
 			glEnd();
 		}
 	}
@@ -172,7 +176,7 @@ void display() {
 		if (GLpick::g_pickActive) glLoadName(i);
 		glBegin(GL_LINES);
 		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(V[i].e1(), V[i].e2(), V[i].e3());
+		glVertex3fv(g_inputVectors[i].getC(vector_e1_e2_e3));
 		glEnd();
 	}
 	
@@ -275,6 +279,7 @@ void MouseMotion(int x, int y) {
 }
 
 void menuCallback(int value) {
+	g_ac = g_abc = false;
 	switch (value) {
 	case 	CUBIC:
 		{
@@ -304,6 +309,31 @@ void menuCallback(int value) {
 			g_inputVectors[2] = _vector(e3);
 		}
 		break;
+	case TRIGONAL:
+		{
+			g_ac = true;
+			g_inputVectors[0] = _vector(e1);
+			g_inputVectors[1] = _vector(g_inputVectors[0] * exp((e1^e2) * (M_PI / 6.0f)));
+			g_inputVectors[2] = _vector(unit_e(e1 + e3));
+		}
+		break;
+	case MONOCLINIC:
+		{
+			g_ac = true;
+			g_inputVectors[0] = _vector(e1);
+			g_inputVectors[1] = _vector(e2);
+			g_inputVectors[2] = _vector(unit_e(e3 + 3.0f * e1));
+		}
+		break;
+	case TRICLINIC:
+		{
+			g_abc = true;
+			g_inputVectors[0] = _vector(e1);
+			g_inputVectors[1] = _vector(unit_e(e1 + e2 + e3));
+			g_inputVectors[2] = _vector(unit_e(e1 + -4.0f * e2));
+		}
+		break;
+
 	}
 
 
@@ -333,6 +363,9 @@ int main(int argc, char*argv[]) {
 	glutAddMenuEntry("Hexagonal", HEXAGONAL);
 	glutAddMenuEntry("Tetragonal", TETRAGONAL);
 	glutAddMenuEntry("Orthohombric", ORTHORHOMBRIC);
+	glutAddMenuEntry("Triclinic", TRICLINIC);
+	glutAddMenuEntry("Monoclinic", MONOCLINIC);
+	glutAddMenuEntry("Trigonal", TRIGONAL);
 
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
