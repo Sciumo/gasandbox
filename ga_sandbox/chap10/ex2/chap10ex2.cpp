@@ -56,25 +56,7 @@ rotor g_modelRotor(_rotor(1.0f));
 float g_dragDistance = -1.0f;
 int g_dragObject = -1;
 
-
-const float VEC_LENGTH = 1.0f;
-const int NB_INPUT_VECTORS = 3;
-e3ga::vector g_inputVectors[NB_INPUT_VECTORS] = {
-	_vector(VEC_LENGTH * e1),
-	_vector(VEC_LENGTH * e2),
-	_vector(VEC_LENGTH * e3)
-};
-
-e3ga::vector g_point = _vector(e1 + e2);
-
-bool g_ac = false;
-bool g_abc = false;
-
-e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
-	return _vector(-a * x * inverse(a));
-}
-
-
+// the 7 crystal configurations
 const int CUBIC = 1;
 const int HEXAGONAL = 2;
 const int TETRAGONAL = 3;
@@ -83,9 +65,32 @@ const int TRICLINIC = 5;
 const int MONOCLINIC = 6;
 const int TRIGONAL = 7;
 
-void display() {
+/*
+These 3 vectors are used as input to generate the operators.
+The user can drag them around, and they can also be set to
+pre-programmed settings using the popup menu.
+*/
+const int NB_INPUT_VECTORS = 3;
+e3ga::vector g_inputVectors[NB_INPUT_VECTORS] = {
+	_vector(e1),
+	_vector(e2),
+	_vector(e3)
+};
+
+// when either of these booleans is true, the operators are initialized in a special way
+bool g_ac = false; // op 1 = a c, op 2 = b
+bool g_abc = false; // op 1 = a b c
+
+// the draggable point that is used as input for the `drawing the crystal'
+e3ga::vector g_point = _vector(e1 + e2 + e3);
+
+std::vector<mv> m_ops;
+
+void recomputeOps() {
+	m_ops.clear();
+
 	// initialize array of operators:
-	std::vector<mv> V;
+	std::vector<mv> &V = m_ops;
 	if (g_ac) {
 		V.push_back(g_inputVectors[0] ^ g_inputVectors[2]);
 		V.push_back(g_inputVectors[1]);
@@ -98,9 +103,9 @@ void display() {
 			V.push_back(g_inputVectors[i]);
 	}
 
-	// repeatedly reflect every vector in every vector (very brute force)
+	// repeatedly apply every op to every op (very brute force)
 	double tStart = u_timeGet();
-	const double NB_VEC_LIMIT = 200;
+	const double NB_VEC_LIMIT = 200; // limit on number of ops (48 is the actual limit, but we use 200 to visualize bad configurations)
 	while (V.size() < NB_VEC_LIMIT) {
 		unsigned int nbVec = V.size();
 		for (unsigned int i = 0; i < nbVec; i++) {
@@ -127,8 +132,13 @@ void display() {
 		// stop when no new vectors have been discovered
 		if (nbVec == V.size()) break;
 	}
-
 //	printf("%d operators\n", V.size());
+
+}
+
+
+void display() {
+
 
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -162,14 +172,14 @@ void display() {
 	// draw the reflected points
 	if (!GLpick::g_pickActive) {
 		glColor3f(0.0f, 0.0f, 1.0f);
-		for (int i = 0; i < V.size(); i++) {
+		for (int i = 0; i < m_ops.size(); i++) {
 			glBegin(GL_POINTS);
-			glVertex3fv(_vector(gradeInvolution(V[i]) * g_point * inverse(V[i])).getC(vector_e1_e2_e3));
+			glVertex3fv(_vector(gradeInvolution(m_ops[i]) * g_point * inverse(m_ops[i])).getC(vector_e1_e2_e3));
 			glEnd();
 		}
 	}
 
-	// draw the input vectors
+	// draw the 3 input vectors
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glLineWidth(3.0f);
 	for (unsigned int i = 0; i < NB_INPUT_VECTORS; i++) {
@@ -200,11 +210,10 @@ void display() {
 		glLoadIdentity();
 
 		glDisable(GL_LIGHTING);
-		glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "BLAH.");
-		renderBitmapString(20, 40, font, "BLAH.");
-		renderBitmapString(20, 20, font, "BLAH.");
+		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red point and the black lines (or to orbit).");
+		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu which contains pre-programmed configurations.");
 	}
 
 	if (!GLpick::g_pickActive) {
@@ -268,7 +277,10 @@ void MouseMotion(int x, int y) {
 		e3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
 		if (g_dragObject == NB_INPUT_VECTORS) g_point += T;
-		else g_inputVectors[g_dragObject] += T;
+		else {
+			g_inputVectors[g_dragObject] += T;
+			recomputeOps();
+		}
 	}
 
 	// remember mouse pos for next motion:
@@ -335,7 +347,7 @@ void menuCallback(int value) {
 		break;
 
 	}
-
+	recomputeOps();
 
 	// redraw viewport
 	glutPostRedisplay();
@@ -370,6 +382,7 @@ int main(int argc, char*argv[]) {
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
+	menuCallback(HEXAGONAL);
 
 	glutMainLoop();
 

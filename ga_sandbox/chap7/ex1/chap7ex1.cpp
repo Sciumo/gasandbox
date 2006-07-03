@@ -72,7 +72,7 @@ e3ga::vector g_reflectedVector2;
 int g_drawVectors = 1;
 
 e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
-	return _vector(a * x * inverse(a));
+	return _vector(-a * x * inverse(a));
 }
 
 void display() {
@@ -197,7 +197,7 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(1.0f, 1.0f, 1.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "The green vector(s) are reflected in the red vector.");
+		renderBitmapString(20, 60, font, "The green vector(s) are reflected in plane orthogonal to the red vector.");
 		renderBitmapString(20, 40, font, "Use the left mouse button to drag the (green or red) vectors and orbit the scene.");
 		renderBitmapString(20, 20, font, "Use the other mouse buttons to access the popup menu.");
 	}

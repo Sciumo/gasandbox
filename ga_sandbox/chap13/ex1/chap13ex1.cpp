@@ -48,9 +48,8 @@ int main(int argc, char*argv[]) {
 	printf("\n");
 
 	// create 'e+' and 'e-'
-	const float sqrt2i = 1.0f / 1.4142135623730950488016887242097f;
-	dualSphere ep = _dualSphere(sqrt2i * (no - ni));
-	dualSphere em = _dualSphere(sqrt2i * (no + ni));
+	dualSphere ep = _dualSphere(no - 0.5f * ni);
+	dualSphere em = _dualSphere(no + 0.5f * ni);
 
 	// print ep and em
 	printf("e+ and e-:\n");

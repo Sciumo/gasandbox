@@ -71,7 +71,7 @@ e3ga::vector g_rotatedVector;
 
 
 e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
-	return _vector(a * x * inverse(a));
+	return _vector(-a * x * inverse(a));
 }
 
 void display() {
