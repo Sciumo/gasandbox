@@ -159,7 +159,7 @@ void display() {
 		glColor3f(0.0f, 0.0f, 1.0f);
 		for (int i = 0; i < V.size(); i++) {
 			glBegin(GL_POINTS);
-			glVertex3fv(_vector(V[i] * g_point * inverse(V[i])).getC(vector_e1_e2_e3));
+			glVertex3fv(_vector(gradeInvolution(V[i]) * g_point * inverse(V[i])).getC(vector_e1_e2_e3));
 //			glVertex3fv(_vector(-reflectVector(V[i], g_point)).getC(vector_e1_e2_e3));
 			glEnd();
 		}
