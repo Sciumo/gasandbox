@@ -72,7 +72,8 @@ e3ga::vector g_reflectedVector2;
 int g_drawVectors = 1;
 
 e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
-	return _vector(-a * x * inverse(a));
+	// we use a _line_ reflection for this example
+	return _vector(a * x * inverse(a));
 }
 
 void display() {
