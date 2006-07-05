@@ -271,6 +271,104 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 	return result;
 }
 
+
+TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
+/*	printf("Raw Matrix:\n");
+	printf("%f %f %f %f\n", _M[0 * 4 + 0], _M[0 * 4 + 1], _M[0 * 4 + 2], _M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[1 * 4 + 0], _M[1 * 4 + 1], _M[1 * 4 + 2], _M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[2 * 4 + 0], _M[2 * 4 + 1], _M[2 * 4 + 2], _M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", _M[3 * 4 + 0], _M[3 * 4 + 1], _M[3 * 4 + 2], _M[3 * 4 + 3]);*/
+
+	mv::Float M[4 * 4];
+	if (transpose) {
+		// transpose & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+	}
+	else {
+		// copy & normalize
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+	}
+
+/*	printf("Input Matrix:\n");
+	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
+	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
+	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
+	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);*/
+
+	// determine translation:
+	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3], M[1 * 4 + 3], M[2 * 4 + 3]);
+
+	// initialize images of Euclidean basis vectors (the columns of the matrix)
+	vectorE3GA imageOfE1(vectorE3GA_e1_e2_e3, M[0 * 4 + 0], M[1 * 4 + 0], M[2 * 4 + 0]);
+	vectorE3GA imageOfE2(vectorE3GA_e1_e2_e3, M[0 * 4 + 1], M[1 * 4 + 1], M[2 * 4 + 1]);
+	vectorE3GA imageOfE3(vectorE3GA_e1_e2_e3, M[0 * 4 + 2], M[1 * 4 + 2], M[2 * 4 + 2]);
+
+	// get scale of the 3x3 part (e1, e2, e3)
+	mv::Float scale = _Float(norm_e(imageOfE1) + norm_e(imageOfE2) + norm_e(imageOfE3))  / 3.0f;
+
+	// compute determinant of matrix (if negative, negate all matrix elements)
+	mv::Float n = 1.0f; // used to negate the matrix
+	scalor negScale = _scalor(1.0f);  
+	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) {
+		n = -1.0f;
+		negScale = noni; // no^ni provides the negative scaling in the final versor
+	}
+
+	// initialize 3x3 'rotation' matrix RM, call e3ga::matrixToRotor
+	mv::Float si = n / scale; 
+	mv::Float RM[3 * 3] = {
+		M[0 * 4 + 0] * si, M[0 * 4 + 1] * si, M[0 * 4 + 2] * si, 
+		M[1 * 4 + 0] * si, M[1 * 4 + 1] * si, M[1 * 4 + 2] * si, 
+		M[2 * 4 + 0] * si, M[2 * 4 + 1] * si, M[2 * 4 + 2] * si
+	};
+	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
+
+	// convert e3ga rotor to c3ga rotor:
+	c3ga::rotor R(rotor_scalar_e1e2_e2e3_e3e1,
+		tmpR.getC(e3ga::rotor_scalar_e1e2_e2e3_e3e1));
+
+	// get log of scale:
+	mv::Float logScale = (mv::Float) ::log(scale);
+
+	// return full versor:
+	TRSversor result = _TRSversor(
+		exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
+		R *                                                   // rotation
+		exp(_noni_t(0.5f * logScale * noni)) * // scaling
+		negScale                                       // negative scaling
+		); 
+
+/*	{
+		mv V = result;
+		mv Vi = inverse(V);
+		// compute images of basis vectors:
+		flatPoint imageOfE1NI = _flatPoint(V * e1ni * Vi);
+		flatPoint imageOfE2NI = _flatPoint(V * e2ni * Vi);
+		flatPoint imageOfE3NI = _flatPoint(V * e3ni * Vi);
+		flatPoint imageOfNONI = _flatPoint(V * noni * Vi);
+
+		// create matrix representation:
+		omFlatPoint OM(imageOfE1NI, imageOfE2NI, imageOfE3NI, imageOfNONI);
+
+		printf("Reconstructed Matrix:\n");
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 0], OM.m_c[1 * 4 + 0], OM.m_c[2 * 4 + 0], OM.m_c[3 * 4 + 0]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 1], OM.m_c[1 * 4 + 1], OM.m_c[2 * 4 + 1], OM.m_c[3 * 4 + 1]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 2], OM.m_c[1 * 4 + 2], OM.m_c[2 * 4 + 2], OM.m_c[3 * 4 + 2]);
+		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 3], OM.m_c[1 * 4 + 3], OM.m_c[2 * 4 + 3], OM.m_c[3 * 4 + 3]);
+
+
+	}*/
+
+	return result;
+}
+
+#ifdef RIEN
 mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 /*	printf("Raw Matrix:\n");
 	printf("%f %f %f %f\n", _M[0 * 4 + 0], _M[0 * 4 + 1], _M[0 * 4 + 2], _M[0 * 4 + 3]);
@@ -363,7 +461,7 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 
 	return result;
 }
-
+#endif
 
 void reciprocalFrame(const dualSphere *IF, dualSphere *RF, int nbVectors) {
 	if (nbVectors == 0) return; // nothing to do

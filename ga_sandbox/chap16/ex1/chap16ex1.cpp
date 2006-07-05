@@ -56,7 +56,7 @@ bool g_rotateModelOutOfPlane = false;
 
 // the following specify the transformation of the model (translation, scale, rotation)
 vectorE3GA g_modelTranslation = _vectorE3GA(-12.0f * e3);
-float g_modelScale = 1.0f;
+float g_modelScale = -1.0f;
 rotor g_modelRotor(_rotor(1.0f));
 
 // model info:
@@ -132,13 +132,8 @@ void display() {
 	glScalef(g_modelScale, g_modelScale, g_modelScale);
 	rotorGLMult(g_modelRotor);
 
-#ifdef POSITIVE_SCALE_ONLY
-//	TRSversor V(_TRSversor(1.0f));
-//	TRSversor Vi(_TRSversor(1.0f));
-#else 
-	mv V(_TRSversor(1.0f));
-	mv Vi(_TRSversor(1.0f));
-#endif
+	TRSversor V(_TRSversor(1.0f));
+	TRSversor Vi(_TRSversor(1.0f));
 
 	if (g_useOpenGL) {
 		// nothing to do . . .
@@ -150,13 +145,8 @@ void display() {
 		
 		// Convert to versor.
 		bool transpose = true;
-#ifdef POSITIVE_SCALE_ONLY
-//		V = matrix4x4ToVersorPS(modelViewMatrix, transpose);
-//		Vi = _TRSversor(inverse(V));
-#else 
 		V = matrix4x4ToVersor(modelViewMatrix, transpose);
 		Vi = inverse(V);
-#endif
 
 		// -> The versor is applied below, before points are sent to OpenGL
 
