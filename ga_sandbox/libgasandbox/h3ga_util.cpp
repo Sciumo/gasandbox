@@ -86,9 +86,22 @@ mv exp(const mv &x, int order /*= 9*/) {
 }
 
 bivector log(const rotor &R) {
-	mv::Float R2 = _Float(norm_r(_bivector(R)));
-	if (R2 <= 0.0) return bivector(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
-	return _bivector(_bivector(R) * ((float)atan2(R2, _Float(R)) / R2));
+	// get the bivector/2-blade part of R
+	bivector B = _bivector(R);
+
+	// compute the 'reverse norm' of the bivector part of R:
+	mv::Float R2 = _Float(norm_r(B));
+
+	// check to avoid divide-by-zero (and also below zero due to FP roundoff):
+	if (R2 <= 0.0) {
+		if (_Float(R) < 0)  // this means the user ask for log(-1):
+			return _bivector((float)M_PI * (e1 ^ e2)); // we return 360 degree rotation in an arbitrary plane
+		else 
+			return bivector();  // return log(1) = 0
+	}
+
+	// return the log:
+	return _bivector(B * ((float)atan2(R2, _Float(R)) / R2));
 }
 
 // special exp for 3D Euclidean bivectors:

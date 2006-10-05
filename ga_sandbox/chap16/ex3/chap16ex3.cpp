@@ -237,6 +237,14 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	c3ga::g2Profiling::init();
 
+/*	// little test for log:
+	TRSversor V = _TRSversor(exp((e1+e2) ^ ni) * exp(M_PI * e1^e2) * exp((e1-e3) ^ ni));
+	printf("V = %s\n", V.c_str());
+	printf("L = %s\n", log(V).c_str());
+	printf("E = %s\n", exp(log(V)).c_str());
+	return 1;*/
+
+
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);

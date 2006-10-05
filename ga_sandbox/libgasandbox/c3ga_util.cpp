@@ -87,10 +87,23 @@ mv exp(const mv &x, int order /*= 9*/) {
 }
 
 
-bivectorE3GA log(const c3ga::rotor &R) {
-	mv::Float R2 = _Float(norm_r(_bivectorE3GA(R)));
-	if (R2 <= 0.0) return bivectorE3GA(); // check to avoid divide-by-zero (and below zero due to FP roundoff)
-	return _bivectorE3GA(_bivectorE3GA(R) * ((float)atan2(R2, _Float(R)) / R2));
+bivectorE3GA log(const rotor &R) {
+	// get the bivector/2-blade part of R
+	bivectorE3GA B = _bivectorE3GA(R);
+
+	// compute the 'reverse norm' of the bivector part of R:
+	mv::Float R2 = _Float(norm_r(B));
+
+	// check to avoid divide-by-zero (and also below zero due to FP roundoff):
+	if (R2 <= 0.0) {
+		if (_Float(R) < 0)  // this means the user ask for log(-1):
+			return _bivectorE3GA((float)M_PI * (e1 ^ e2)); // we return a 360 degree rotation in an arbitrary plane
+		else 
+			return bivectorE3GA();  // return log(1) = 0
+	}
+
+	// return the log:
+	return _bivectorE3GA(B * ((float)atan2(R2, _Float(R)) / R2));
 }
 
 dualLine log(const TRversor &V) {
@@ -98,66 +111,56 @@ dualLine log(const TRversor &V) {
   rotor R = _rotor(-no << (V * ni));
   vectorE3GA t = _vectorE3GA(-2.0f * (no << V) * inverse(R));
   
-  // compute logarithm of rotation part
-  bivectorE3GA Iphi = _bivectorE3GA(-2.0f * log(R));
-  
-  // determine rotation plane:
-  rotor I = (_Float(norm_e2(Iphi)) == 0.0f) ? _rotor(1) :_rotor(unit_e(Iphi));
+  const float EPSILON = 1e-6f;
 
-  // compose log of V:
-  return _dualLine(
-    0.5f * (
-    -(t ^ I) * inverse(I) * ni + 
-    inverse(1.0f - R * R) * (t << Iphi) * ni -
-    Iphi));
+  if (_Float(norm_e2(_bivectorE3GA(R))) < EPSILON * EPSILON) {
+	  // special cases:
+	  if (_Float(R) < 0.0f) 
+	  {// R = -1
+		// The versor has a rotation over 360 degrees.
+		bivectorE3GA I; // Get a rotation plane 'I', depending on 't'
+		if (_Float(norm_e2(t)) >  EPSILON * EPSILON)
+			I = _bivectorE3GA(unit_e(t << I3));
+		else I = _bivectorE3GA(e1^e2); // when t = 0, any plane will do
+
+		// return translation plus 360 degree rotation:
+		return _dualLine(0.5f *(I * 2.0f * (float)M_PI - (t^ni)));
+	  }
+	  else 
+	  { // R = 1;
+		// return translation :
+		return _dualLine(-0.5f *(t^ni));
+	  }
+  }
+  else { // regular case
+
+	// compute logarithm of rotation part
+	bivectorE3GA Iphi = _bivectorE3GA(-2.0f * log(R));
+	  
+	// determine rotation plane:
+	rotor I = _rotor(unit_e(Iphi));
+
+	// compose log of V:
+	return _dualLine(
+		0.5f * (
+		-(t ^ I) * inverse(I) * ni + 
+		inverse(1.0f - R * R) * (t << Iphi) * ni -
+		Iphi));
+  }
 }
 
-/*
-TRSversorLog log(const TRSversor &U) {
-	// get rotor part:
-	rotor gR = _rotor(- no << (U * ni)); // should give exp (-g/2) R
-	rotor R = _rotor(unit_e(gR));
-
-	// get scaling part
-	mv::Float gam = -2.0f * (mv::Float)::log(_Float(gR * reverse(R)));  // this is the old, wrong convention; actually gamma -> -gamma throughout
-	mv::Float gamfactor;
-	if (fabs(gam) < 1e-6f) gamfactor = 1.0;
-	else gamfactor = - gam/(::exp(-gam)-1);
-	scalor S = exp(_noni_t(-0.5f * noni * gam)); 
-
-	// get translation part:
-	translator T = _translator(U * inverse(S) * inverse(R)); 		// retrieval of parameters for V = T R S
-	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
-
-	if ((1.0f - _Float(R)) < 1e-6f) {
-		// no rotation, so no rotation plane; could set I=1, phi=0;
-		 return _TRSversorLog(-0.5f * (gam * noni + gamfactor * (t ^ ni)));
-	} 
-	else {
-		// get rotation plane, angle
-		bivectorE3GA I = _bivectorE3GA(R); 
-		mv::Float sR2 = _Float(norm_e(I)); 
-		I = _bivectorE3GA(I * (1.0f / sR2));
-		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R)); 
-
-		// form bivector log of versor:
-		vectorE3GA w = _vectorE3GA(gamfactor * (t^I) * reverse(I));
-		vectorE3GA v = _vectorE3GA(1.0f * inverse(1.0f -(mv::Float)::exp(-gam) * R * R) * ((t << I) * reverse(I)));
-		normalizedTranslator tv = exp(_freeVector(-0.5f * (v^ni)));
-		return _TRSversorLog(-0.5f * ((w ^ ni) + tv * (phi * I  + gam * noni) * inverse(tv)));
-	 }
-}	
-*/
 
 TRSversorLog log(const TRSversor &V) {
 	// get rotor part:
 	rotor X = _rotor(- no << (V * ni));
 
+	const float EPSILON = 1e-6f;
+
 	// get scaling part
 	mv::Float gamma = (mv::Float)::log(_Float(X * reverse(X)));
 	mv::Float gammaPrime;
-	if (fabs(gamma) < 1e-6f) gammaPrime = 1.0f;
-	else gammaPrime = gamma / (1.0f - ::exp(gamma));
+	if (fabs(gamma) < EPSILON) gammaPrime = 1.0f;
+	else gammaPrime = gamma / (::exp(gamma) - 1);
 	scalor S = exp(_noni_t(0.5f * gamma * noni)); 
 
 	// get rotation part
@@ -167,9 +170,24 @@ TRSversorLog log(const TRSversor &V) {
 	translator T = _translator(V * reverse(S) * reverse(R)); 
 	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
 
-	if ((1.0f - _Float(R)) < 1e-6f) {
-		// no rotation, so no rotation plane
-		 return _TRSversorLog((0.5f * gammaPrime * (t ^ ni) + 0.5f * gamma * noni));
+	if (_Float(norm_e2(_bivectorE3GA(R))) < EPSILON * EPSILON) {
+		if (_Float(R) > 0.0f) { // R = 1
+			// no rotation, so no rotation plane
+			return _TRSversorLog(0.5f * (-gammaPrime * (t ^ ni) + gamma * noni));
+		}
+		else { // R = -1
+			// We need to add a 360 degree rotation to the result.
+			// Take it perperdicular to 't':
+			bivectorE3GA I; // Get a rotation plane 'I', depending on 't'
+			if (_Float(norm_e2(t)) >  EPSILON * EPSILON)
+				I = _bivectorE3GA(unit_e(t << I3));
+			else I = _bivectorE3GA(e1^e2); // when t = 0, any plane will do
+
+			return _TRSversorLog(0.5f * (
+				-gammaPrime * (t ^ ni) + 
+				gamma * noni + 
+				2.0f * (float)M_PI * I));
+		}
 	} 
 	else {
 		// get rotation plane, angle
@@ -181,7 +199,7 @@ TRSversorLog log(const TRSversor &V) {
 		// form bivector log of versor:
 		normalizedTranslator Tv = _normalizedTranslator(
 			1.0f - 0.5f * inverse(1.0f - (mv::Float)::exp(gamma) * R * R) * (t << I) * reverse(I) * ni);
-		return _TRSversorLog(0.5f * (gammaPrime * (t^I) * reverse(I) * ni + Tv * (-phi * I + gamma * noni) * reverse(Tv)));
+		return _TRSversorLog(0.5f * (-gammaPrime * (t^I) * reverse(I) * ni + Tv * (-phi * I + gamma * noni) * reverse(Tv)));
 	 }
 }	
 

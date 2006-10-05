@@ -184,7 +184,12 @@ bivector log(const rotor &R) {
 	mv::Float R2 = _Float(norm_r(B));
 
 	// check to avoid divide-by-zero (and also below zero due to FP roundoff):
-	if (R2 <= 0.0) return bivector(); 
+	if (R2 <= 0.0) {
+		if (_Float(R) < 0)  // this means the user ask for log(-1):
+			return _bivector((float)M_PI * (e1 ^ e2)); // we return a 360 degree rotation in an arbitrary plane
+		else 
+			return bivector();  // return log(1) = 0
+	}
 
 	// return the log:
 	return _bivector(B * ((float)atan2(R2, _Float(R)) / R2));

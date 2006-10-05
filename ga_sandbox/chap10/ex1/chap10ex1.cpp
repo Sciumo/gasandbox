@@ -36,7 +36,7 @@
 using namespace e3ga;
 using namespace mv_draw;
 
-const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 1: Interpolation Rotations";
+const char *WINDOW_TITLE = "Geometric Algebra, Chapter 10, Example 1: Interpolation of Rotations";
 
 // GLUT state information
 int g_viewportWidth = 800;
