@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-27 14:36:42 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\e3ga.gs2'
+// Generated on 2006-12-14 13:53:03 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -190,8 +190,8 @@
 		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
 			unsigned short argType[], int nbReturnType, unsigned short returnType[]);
 		void reset();
-		void save(const char *filename = "E:\\ga\\ga_sandbox\\libgasandbox\\e3ga.gp2", bool append = true);
-		void init(const char *filename = "E:\\ga\\ga_sandbox\\libgasandbox\\e3ga.gp2",
+		void save(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\e3ga.gp2", bool append = true);
+		void init(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\e3ga.gp2",
 			const char *hostName = "localhost", int port = 7693);
 	} // end of namespace g2Profiling
 
@@ -737,7 +737,7 @@
 		}
 
 		// coordinate storage, grade usage
-		Float m_c[8]; ///< coordinate storage
+		Float m_c[8]; ///< coordinate storage (TODO: if parity pure, allocate only half of the coordinates!!!)
 		unsigned int m_gu; ///< grade usage
 		inline unsigned int gu() const {return m_gu;}
 		inline void gu(unsigned int g) {m_gu = g;}
@@ -8133,33 +8133,33 @@
 	extern __e1_ct__ e1;
 	extern __e2_ct__ e2;
 	extern __I3i_ct__ I3i;
-	inline mv lcont(const mv& x, const mv& y);
-	inline scalar scp(const mv& x, const mv& y);
-	inline mv gp(const mv& x, const mv& y);
-	inline mv op(const mv& x, const mv& y);
-	inline mv add(const mv& x, const mv& y);
-	inline mv subtract(const mv& x, const mv& y);
-	inline scalar norm_e2(const mv& x);
-	inline scalar norm_e(const mv& x);
-	inline mv unit_e(const mv& x);
-	inline scalar norm_r2(const mv& x);
-	inline scalar norm_r(const mv& x);
-	inline mv unit_r(const mv& x);
-	inline mv reverse(const mv& x);
-	inline mv negate(const mv& x);
-	inline mv dual(const mv& x);
-	inline mv undual(const mv& x);
-	inline mv inverse(const mv& x);
-	inline mv apply_om(const om& x, const mv& y);
-	inline mv gradeInvolution(const mv& x);
+	mv lcont(const mv& x, const mv& y);
+	scalar scp(const mv& x, const mv& y);
+	mv gp(const mv& x, const mv& y);
+	mv op(const mv& x, const mv& y);
+	mv add(const mv& x, const mv& y);
+	mv subtract(const mv& x, const mv& y);
+	scalar norm_e2(const mv& x);
+	scalar norm_e(const mv& x);
+	mv unit_e(const mv& x);
+	scalar norm_r2(const mv& x);
+	scalar norm_r(const mv& x);
+	mv unit_r(const mv& x);
+	mv reverse(const mv& x);
+	mv negate(const mv& x);
+	mv dual(const mv& x);
+	mv undual(const mv& x);
+	mv inverse(const mv& x);
+	mv apply_om(const om& x, const mv& y);
+	mv gradeInvolution(const mv& x);
 	namespace __G2_GENERATED__ {
-		inline void set(om& __x__, const vector& __image_of_e1__, const vector& __image_of_e2__, const vector& __image_of_e3__);
+		void set(om& __x__, const vector& __image_of_e1__, const vector& __image_of_e2__, const vector& __image_of_e3__);
 	} /* end of namespace __G2_GENERATED__ */
 	inline e2_t gp(const __e2_ct__& x, const scalar& y);
 	inline __syn_smv___e3f_1_0 negate(const __e3_ct__& x);
 	inline trivector op(const bivector& x, const vector& y);
 	inline bivector gradeInvolution(const bivector& x);
-	inline vector apply_om(const om& x, const vector& y);
+	vector apply_om(const om& x, const vector& y);
 	inline rotor subtract(const rotor& x, const rotor& y);
 	inline bivector add(const bivector& x, const bivector& y);
 	inline scalar scp(const bivector& x, const bivector& y);
@@ -8655,825 +8655,6 @@
 
 
 
-	// set to 0
-	inline void mv::set() {
-		// set grade usage
-		gu(0);
-
-	}
-
-	// set to copy 
-	inline void mv::set(const mv &arg1) {
-		// copy grade usage
-		gu(arg1.gu());
-		// copy coordinates
-		mv_memcpy(m_c, arg1.m_c, mv_size[gu()]);
-
-	}
-
-	// set to scalar
-	inline void mv::set(Float scalarVal) {
-		// set grade usage
-		gu(1);
-		// set type (if profile)
-		// set coordinate
-		m_c[0] = scalarVal;
-
-	}
-
-
-	// set to coordinates 
-	inline void mv::set(unsigned int gradeUsage, const Float *coordinates) {
-		// set grade usage
-		gu(gradeUsage);
-		// set coordinates
-		mv_memcpy(m_c, coordinates, mv_size[gu()]);
-
-	}
-
-
-	// set to 1 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 1)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-
-	}
-
-	// set to 2 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 2)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-
-	}
-
-	// set to 3 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 3)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-
-	}
-
-	// set to 4 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 4)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-		m_c[3] = c3;
-
-	}
-
-	// set to 5 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 5)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-		m_c[3] = c3;
-		m_c[4] = c4;
-
-	}
-
-	// set to 6 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 6)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-		m_c[3] = c3;
-		m_c[4] = c4;
-		m_c[5] = c5;
-
-	}
-
-	// set to 7 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 7)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-		m_c[3] = c3;
-		m_c[4] = c4;
-		m_c[5] = c5;
-		m_c[6] = c6;
-
-	}
-
-	// set to 8 coordinates 
-	inline void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7	) {
-		// set grade usage
-		gu(gradeUsage);
-		// check the number of coordinates
-		if (mv_size[gu()] != 8)
-			throw (-1); // todo: more sensible exception
-		// set coordinates
-		m_c[0] = c0;
-		m_c[1] = c1;
-		m_c[2] = c2;
-		m_c[3] = c3;
-		m_c[4] = c4;
-		m_c[5] = c5;
-		m_c[6] = c6;
-		m_c[7] = c7;
-
-	}
-
-
-
-	// set to e1_t 
-	inline void mv::set(const e1_t & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to e2_t 
-	inline void mv::set(const e2_t & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = arg1.m_c[0] ;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to e3_t 
-	inline void mv::set(const e3_t & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[0] ;
-
-
-	}
-	// set to scalar 
-	inline void mv::set(const scalar & arg1) {
-
-		// set grade usage 
-		gu(1);
-
-
-		m_c[0] = arg1.m_c[0] ;
-
-
-	}
-	// set to vector2D 
-	inline void mv::set(const vector2D & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to vector 
-	inline void mv::set(const vector & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[2] ;
-
-
-	}
-	// set to bivector 
-	inline void mv::set(const bivector & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[2] ;
-
-
-	}
-	// set to trivector 
-	inline void mv::set(const trivector & arg1) {
-
-		// set grade usage 
-		gu(8);
-
-
-		m_c[0] = arg1.m_c[0] ;
-
-
-	}
-	// set to rotor 
-	inline void mv::set(const rotor & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[2] ;
-		m_c[3] = arg1.m_c[3] ;
-
-
-	}
-	// set to __e1_ct__ 
-	inline void mv::set(const __e1_ct__ & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)1.0f; 
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __e2_ct__ 
-	inline void mv::set(const __e2_ct__ & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)1.0f; 
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __e3_ct__ 
-	inline void mv::set(const __e3_ct__ & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)1.0f; 
-
-
-	}
-	// set to __I3_ct__ 
-	inline void mv::set(const __I3_ct__ & arg1) {
-
-		// set grade usage 
-		gu(8);
-
-
-		m_c[0] = (Float)1.0f; 
-
-
-	}
-	// set to __I3i_ct__ 
-	inline void mv::set(const __I3i_ct__ & arg1) {
-
-		// set grade usage 
-		gu(8);
-
-
-		m_c[0] = (Float)-1.0f; 
-
-
-	}
-	// set to __syn_smv___e1_e2_e3_e1e2e3 
-	inline void mv::set(const __syn_smv___e1_e2_e3_e1e2e3 & arg1) {
-
-		// set grade usage 
-		gu(10);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[2] ;
-		m_c[3] = arg1.m_c[3] ;
-
-
-	}
-	// set to __syn_smv___e1e2f1_0 
-	inline void mv::set(const __syn_smv___e1e2f1_0 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)1.0f; 
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __syn_smv___e1e2 
-	inline void mv::set(const __syn_smv___e1e2 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __syn_smv___scalar_e1e2 
-	inline void mv::set(const __syn_smv___scalar_e1e2 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = (Float)0;
-		m_c[3] = (Float)0;
-
-
-	}
-	// set to __syn_smv___e3f_1_0 
-	inline void mv::set(const __syn_smv___e3f_1_0 & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)-1.0f; 
-
-
-	}
-	// set to __syn_smv___e1e3_e2e3 
-	inline void mv::set(const __syn_smv___e1e3_e2e3 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[0] * (Float)-1.0;
-
-
-	}
-	// set to __syn_smv___scalar_e1e3_e2e3 
-	inline void mv::set(const __syn_smv___scalar_e1e3_e2e3 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[2] ;
-		m_c[3] = arg1.m_c[1] * (Float)-1.0;
-
-
-	}
-	// set to __syn_smv___e1e2_e1e3_e2e3_e1e2e3 
-	inline void mv::set(const __syn_smv___e1e2_e1e3_e2e3_e1e2e3 & arg1) {
-
-		// set grade usage 
-		gu(12);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[2] ;
-		m_c[2] = arg1.m_c[1] * (Float)-1.0;
-		m_c[3] = arg1.m_c[3] ;
-
-
-	}
-	// set to __syn_smv___e1e3f_1_0 
-	inline void mv::set(const __syn_smv___e1e3f_1_0 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)1.0f; 
-
-
-	}
-	// set to __syn_smv___e1e3 
-	inline void mv::set(const __syn_smv___e1e3 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[0] * (Float)-1.0;
-
-
-	}
-	// set to __syn_smv___scalar_e1e3 
-	inline void mv::set(const __syn_smv___scalar_e1e3 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = (Float)0;
-		m_c[3] = arg1.m_c[1] * (Float)-1.0;
-
-
-	}
-	// set to __syn_smv___e2e3f1_0 
-	inline void mv::set(const __syn_smv___e2e3f1_0 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = (Float)1.0f; 
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __syn_smv___e2e3 
-	inline void mv::set(const __syn_smv___e2e3 & arg1) {
-
-		// set grade usage 
-		gu(4);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = arg1.m_c[0] ;
-		m_c[2] = (Float)0;
-
-
-	}
-	// set to __syn_smv___scalar_e2e3 
-	inline void mv::set(const __syn_smv___scalar_e2e3 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[1] ;
-		m_c[3] = (Float)0;
-
-
-	}
-	// set to __syn_smv___e2_e3 
-	inline void mv::set(const __syn_smv___e2_e3 & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = arg1.m_c[0] ;
-		m_c[2] = arg1.m_c[1] ;
-
-
-	}
-	// set to __syn_smv___e1_e3 
-	inline void mv::set(const __syn_smv___e1_e3 & arg1) {
-
-		// set grade usage 
-		gu(2);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[1] ;
-
-
-	}
-	// set to __syn_smv___e2_e3_e1e2e3 
-	inline void mv::set(const __syn_smv___e2_e3_e1e2e3 & arg1) {
-
-		// set grade usage 
-		gu(10);
-
-
-		m_c[0] = (Float)0;
-		m_c[1] = arg1.m_c[0] ;
-		m_c[2] = arg1.m_c[1] ;
-		m_c[3] = arg1.m_c[2] ;
-
-
-	}
-	// set to __syn_smv___e1_e3_e1e2e3 
-	inline void mv::set(const __syn_smv___e1_e3_e1e2e3 & arg1) {
-
-		// set grade usage 
-		gu(10);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = (Float)0;
-		m_c[2] = arg1.m_c[1] ;
-		m_c[3] = arg1.m_c[2] ;
-
-
-	}
-	// set to __syn_smv___e1_e2_e1e2e3 
-	inline void mv::set(const __syn_smv___e1_e2_e1e2e3 & arg1) {
-
-		// set grade usage 
-		gu(10);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = (Float)0;
-		m_c[3] = arg1.m_c[2] ;
-
-
-	}
-	// set to __syn_smv___scalar_e1e2_e1e3 
-	inline void mv::set(const __syn_smv___scalar_e1e2_e1e3 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = (Float)0;
-		m_c[3] = arg1.m_c[2] * (Float)-1.0;
-
-
-	}
-	// set to __syn_smv___scalar_e1e2_e2e3 
-	inline void mv::set(const __syn_smv___scalar_e1e2_e2e3 & arg1) {
-
-		// set grade usage 
-		gu(5);
-
-
-		m_c[0] = arg1.m_c[0] ;
-		m_c[1] = arg1.m_c[1] ;
-		m_c[2] = arg1.m_c[2] ;
-		m_c[3] = (Float)0;
-
-
-	}
-
-
-
-
-
-
-	// assign copy
-	inline mv& mv::operator=(const mv &arg1) {
-		set(arg1);
-		return *this;
-	}
-
-
-	// assign scalar
-	inline mv& mv::operator=(Float s) {
-		set(s);
-		return *this;
-	}
-
-	// assign e1_t 
-	inline mv& mv::operator=(const e1_t& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign e2_t 
-	inline mv& mv::operator=(const e2_t& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign e3_t 
-	inline mv& mv::operator=(const e3_t& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign scalar 
-	inline mv& mv::operator=(const scalar& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign vector2D 
-	inline mv& mv::operator=(const vector2D& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign vector 
-	inline mv& mv::operator=(const vector& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign bivector 
-	inline mv& mv::operator=(const bivector& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign trivector 
-	inline mv& mv::operator=(const trivector& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign rotor 
-	inline mv& mv::operator=(const rotor& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __e1_ct__ 
-	inline mv& mv::operator=(const __e1_ct__& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __e2_ct__ 
-	inline mv& mv::operator=(const __e2_ct__& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __e3_ct__ 
-	inline mv& mv::operator=(const __e3_ct__& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __I3_ct__ 
-	inline mv& mv::operator=(const __I3_ct__& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __I3i_ct__ 
-	inline mv& mv::operator=(const __I3i_ct__& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1_e2_e3_e1e2e3 
-	inline mv& mv::operator=(const __syn_smv___e1_e2_e3_e1e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e2f1_0 
-	inline mv& mv::operator=(const __syn_smv___e1e2f1_0& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e2 
-	inline mv& mv::operator=(const __syn_smv___e1e2& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e1e2 
-	inline mv& mv::operator=(const __syn_smv___scalar_e1e2& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e3f_1_0 
-	inline mv& mv::operator=(const __syn_smv___e3f_1_0& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e3_e2e3 
-	inline mv& mv::operator=(const __syn_smv___e1e3_e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e1e3_e2e3 
-	inline mv& mv::operator=(const __syn_smv___scalar_e1e3_e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e2_e1e3_e2e3_e1e2e3 
-	inline mv& mv::operator=(const __syn_smv___e1e2_e1e3_e2e3_e1e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e3f_1_0 
-	inline mv& mv::operator=(const __syn_smv___e1e3f_1_0& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1e3 
-	inline mv& mv::operator=(const __syn_smv___e1e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e1e3 
-	inline mv& mv::operator=(const __syn_smv___scalar_e1e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e2e3f1_0 
-	inline mv& mv::operator=(const __syn_smv___e2e3f1_0& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e2e3 
-	inline mv& mv::operator=(const __syn_smv___e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e2e3 
-	inline mv& mv::operator=(const __syn_smv___scalar_e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e2_e3 
-	inline mv& mv::operator=(const __syn_smv___e2_e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1_e3 
-	inline mv& mv::operator=(const __syn_smv___e1_e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e2_e3_e1e2e3 
-	inline mv& mv::operator=(const __syn_smv___e2_e3_e1e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1_e3_e1e2e3 
-	inline mv& mv::operator=(const __syn_smv___e1_e3_e1e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___e1_e2_e1e2e3 
-	inline mv& mv::operator=(const __syn_smv___e1_e2_e1e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e1e2_e1e3 
-	inline mv& mv::operator=(const __syn_smv___scalar_e1e2_e1e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-	// assign __syn_smv___scalar_e1e2_e2e3 
-	inline mv& mv::operator=(const __syn_smv___scalar_e1e2_e2e3& arg1) {
-		set(arg1);
-		return *this;
-	}
-
-
-
 
 
 
@@ -9516,26 +8697,6 @@
 	inline void e1_t::set(__e1_t_coordinates__, Float c_e1) {
 		// set coordinates
 		m_c[0] = c_e1;
-
-	}
-
-	// set to mv 
-	inline void e1_t::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -9604,26 +8765,6 @@
 
 	}
 
-	// set to mv 
-	inline void e2_t::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -9689,26 +8830,6 @@
 
 	}
 
-	// set to mv 
-	inline void e3_t::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -9771,20 +8892,6 @@
 	inline void scalar::set(__scalar_coordinates__, Float c_scalar) {
 		// set coordinates
 		m_c[0] = c_scalar;
-
-	}
-
-	// set to mv 
-	inline void scalar::set(const mv & arg1) {
-
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[0];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -9854,28 +8961,6 @@
 		// set coordinates
 		m_c[0] = c_e1;
 		m_c[1] = c_e2;
-
-	}
-
-	// set to mv 
-	inline void vector2D::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
 
 	}
 
@@ -9952,30 +9037,6 @@
 
 	}
 
-	// set to mv 
-	inline void vector::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 1];
-			m_c[2] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -10049,35 +9110,6 @@
 
 	}
 
-	// set to mv 
-	inline void bivector::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 1];
-			m_c[2] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -10140,36 +9172,6 @@
 	inline void trivector::set(__trivector_coordinates__, Float c_e1e2e3) {
 		// set coordinates
 		m_c[0] = c_e1e2e3;
-
-	}
-
-	// set to mv 
-	inline void trivector::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[0] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -10250,37 +9252,6 @@
 
 	}
 
-	// set to mv 
-	inline void rotor::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 0];
-			m_c[2] = arg1.m_c[gidx + 1];
-			m_c[3] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-			m_c[3] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -10332,13 +9303,6 @@
 	// set to 'coordinates specified' 
 	inline void __e1_ct__::set(____e1_ct___coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __e1_ct__::set(const mv & arg1) {
-
-
 
 	}
 
@@ -10396,13 +9360,6 @@
 
 	}
 
-	// set to mv 
-	inline void __e2_ct__::set(const mv & arg1) {
-
-
-
-	}
-
 
 
 
@@ -10454,13 +9411,6 @@
 	// set to 'coordinates specified' 
 	inline void __e3_ct__::set(____e3_ct___coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __e3_ct__::set(const mv & arg1) {
-
-
 
 	}
 
@@ -10518,13 +9468,6 @@
 
 	}
 
-	// set to mv 
-	inline void __I3_ct__::set(const mv & arg1) {
-
-
-
-	}
-
 
 
 
@@ -10576,13 +9519,6 @@
 	// set to 'coordinates specified' 
 	inline void __I3i_ct__::set(____I3i_ct___coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __I3i_ct__::set(const mv & arg1) {
-
-
 
 	}
 
@@ -10663,42 +9599,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___e1_e2_e3_e1e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 1];
-			m_c[2] = arg1.m_c[gidx + 2];
-			gidx += 3;		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 4) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[3] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[3] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -10750,13 +9650,6 @@
 	// set to 'coordinates specified' 
 	inline void __syn_smv___e1e2f1_0::set(____syn_smv___e1e2f1_0_coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1e2f1_0::set(const mv & arg1) {
-
-
 
 	}
 
@@ -10822,31 +9715,6 @@
 	inline void __syn_smv___e1e2::set(____syn_smv___e1e2_coordinates__, Float c_e1e2) {
 		// set coordinates
 		m_c[0] = c_e1e2;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1e2::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -10919,33 +9787,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___scalar_e1e2::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[1] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -10997,13 +9838,6 @@
 	// set to 'coordinates specified' 
 	inline void __syn_smv___e3f_1_0::set(____syn_smv___e3f_1_0_coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e3f_1_0::set(const mv & arg1) {
-
-
 
 	}
 
@@ -11073,33 +9907,6 @@
 		// set coordinates
 		m_c[0] = c_e1e3;
 		m_c[1] = c_e2e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1e3_e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 2]* (Float)-1.0;
-			m_c[1] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
 
 	}
 
@@ -11173,35 +9980,6 @@
 		m_c[0] = c_scalar;
 		m_c[1] = c_e1e3;
 		m_c[2] = c_e2e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___scalar_e1e3_e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 2]* (Float)-1.0;
-			m_c[2] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
 
 	}
 
@@ -11282,42 +10060,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___e1e2_e1e3_e2e3_e1e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 2]* (Float)-1.0;
-			m_c[2] = arg1.m_c[gidx + 1];
-			gidx += 3;		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[3] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[3] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -11369,13 +10111,6 @@
 	// set to 'coordinates specified' 
 	inline void __syn_smv___e1e3f_1_0::set(____syn_smv___e1e3f_1_0_coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1e3f_1_0::set(const mv & arg1) {
-
-
 
 	}
 
@@ -11441,31 +10176,6 @@
 	inline void __syn_smv___e1e3::set(____syn_smv___e1e3_coordinates__, Float c_e1e3) {
 		// set coordinates
 		m_c[0] = c_e1e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 2]* (Float)-1.0;
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -11538,33 +10248,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___scalar_e1e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 2]* (Float)-1.0;
-		}
-		else {
-			m_c[1] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -11616,13 +10299,6 @@
 	// set to 'coordinates specified' 
 	inline void __syn_smv___e2e3f1_0::set(____syn_smv___e2e3f1_0_coordinates__) {
 		// set coordinates
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e2e3f1_0::set(const mv & arg1) {
-
-
 
 	}
 
@@ -11688,31 +10364,6 @@
 	inline void __syn_smv___e2e3::set(____syn_smv___e2e3_coordinates__, Float c_e2e3) {
 		// set coordinates
 		m_c[0] = c_e2e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[0] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
 
 	}
 
@@ -11785,33 +10436,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___scalar_e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[1] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -11881,28 +10505,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___e2_e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 1];
-			m_c[1] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -11969,28 +10571,6 @@
 		// set coordinates
 		m_c[0] = c_e1;
 		m_c[1] = c_e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1_e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 2];
-		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
 
 	}
 
@@ -12067,40 +10647,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___e2_e3_e1e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 1];
-			m_c[1] = arg1.m_c[gidx + 2];
-			gidx += 3;		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 4) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[2] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[2] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -12171,40 +10717,6 @@
 		m_c[0] = c_e1;
 		m_c[1] = c_e3;
 		m_c[2] = c_e1e2e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___e1_e3_e1e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 2];
-			gidx += 3;		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 4) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[2] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[2] = (Float)0.0;
-		}
-
 
 	}
 
@@ -12281,40 +10793,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___e1_e2_e1e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			gidx += 1;		}
-		else {
-		}
-
-		if (arg1.gu() & 2) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			m_c[1] = arg1.m_c[gidx + 1];
-			gidx += 3;		}
-		else {
-			m_c[0] = (Float)0.0;
-			m_c[1] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 4) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 8) {
-			m_c[2] = arg1.m_c[gidx + 0];
-		}
-		else {
-			m_c[2] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -12385,35 +10863,6 @@
 		m_c[0] = c_scalar;
 		m_c[1] = c_e1e2;
 		m_c[2] = c_e1e3;
-
-	}
-
-	// set to mv 
-	inline void __syn_smv___scalar_e1e2_e1e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 0];
-			m_c[2] = arg1.m_c[gidx + 2]* (Float)-1.0;
-		}
-		else {
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
 
 	}
 
@@ -12490,35 +10939,6 @@
 
 	}
 
-	// set to mv 
-	inline void __syn_smv___scalar_e1e2_e2e3::set(const mv & arg1) {
-
-		int gidx = 0;
-
-		if (arg1.gu() & 1) {
-			m_c[0] = arg1.m_c[gidx + 0];
-			gidx += 1;		}
-		else {
-			m_c[0] = (Float)0.0;
-		}
-
-		if (arg1.gu() & 2) {
-			gidx += 3;		}
-		else {
-		}
-
-		if (arg1.gu() & 4) {
-			m_c[1] = arg1.m_c[gidx + 0];
-			m_c[2] = arg1.m_c[gidx + 1];
-		}
-		else {
-			m_c[1] = (Float)0.0;
-			m_c[2] = (Float)0.0;
-		}
-
-
-	}
-
 
 
 
@@ -12545,83 +10965,6 @@
 
 
 
-
-
-	// set to identity 'I'
-	inline void om::set() {
-		// simplify forward call to set(scalar)
-		set(1.0);
-	}
-
-	// set to copy
-	inline void om::set(const om &arg1) {
-		mv_memcpy(m_c, arg1.m_c, 19);
-	}
-
-	// set to scalar
-	inline void om::set(Float scalarVal) {
-		e3ga::__G2_GENERATED__::set(*this, vector(vector_e1_e2_e3, scalarVal, (Float)0, (Float)0), vector(vector_e1_e2_e3, (Float)0, scalarVal, (Float)0), vector(vector_e1_e2_e3, (Float)0, (Float)0, scalarVal));
-	}
-
-	// set to coordinates 
-	inline void om::set(const Float *coordinates) {
-		mv_memcpy(m_c, coordinates, 19);
-	}
-
-	// set from basis vectors array
-	inline void om::set(const vector *vectors) {
-		e3ga::__G2_GENERATED__::set(*this, vectors[0], vectors[1], vectors[2]);
-	}
-
-
-	// set from basis vectors 
-	inline void om::set(const vector & image_of_e1, const vector & image_of_e2, const vector & image_of_e3) {
-		e3ga::__G2_GENERATED__::set(*this, image_of_e1, image_of_e2, image_of_e3);
-	}
-
-
-	// set by coordinates, transpose
-	inline void om::set(const Float *coordinates, bool transpose) {
-		if (transpose) {
-			m_c[0] = coordinates[0];
-			m_c[3] = coordinates[1];
-			m_c[6] = coordinates[2];
-			m_c[1] = coordinates[3];
-			m_c[4] = coordinates[4];
-			m_c[7] = coordinates[5];
-			m_c[2] = coordinates[6];
-			m_c[5] = coordinates[7];
-			m_c[8] = coordinates[8];
-			m_c[9] = coordinates[9];
-			m_c[12] = coordinates[10];
-			m_c[15] = coordinates[11];
-			m_c[10] = coordinates[12];
-			m_c[13] = coordinates[13];
-			m_c[16] = coordinates[14];
-			m_c[11] = coordinates[15];
-			m_c[14] = coordinates[16];
-			m_c[17] = coordinates[17];
-			m_c[18] = coordinates[18];
-		}
-		else set(coordinates);
-	}
-
-
-
-
-	// assign copy
-	inline om &om::operator=(const om &arg1) {
-		set(arg1);
-		return *this;
-	}
-
-	// assign scalar (creates scalar * 'I' outermorphism)
-	inline om &om::operator=(Float scalarVal) {
-		set(scalarVal);
-		return *this;
-	}
-
-	/// assign specialization:
 
 
 
@@ -14060,830 +12403,6 @@
 
 
 	// G2 functions:
-	inline mv lcont(const mv& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_1__[8] ;
-		mv_zero(__tmp_coord_array_1__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_1__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_1__[1] += (__y_xpd__[1][0] * __x_xpd__[0][0]);
-				__tmp_coord_array_1__[2] += (__y_xpd__[1][1] * __x_xpd__[0][0]);
-				__tmp_coord_array_1__[3] += (__y_xpd__[1][2] * __x_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]));
-
-			}
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_1__[4] += (__y_xpd__[2][0] * __x_xpd__[0][0]);
-				__tmp_coord_array_1__[5] += (__y_xpd__[2][1] * __x_xpd__[0][0]);
-				__tmp_coord_array_1__[6] += (__y_xpd__[2][2] * __x_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[1] += ((__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]));
-				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (__x_xpd__[1][0] * __y_xpd__[2][0]));
-				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (__x_xpd__[1][1] * __y_xpd__[2][1]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]));
-
-			}
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_1__[7] += (__y_xpd__[3][0] * __x_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[4] += (__x_xpd__[1][2] * __y_xpd__[3][0]);
-				__tmp_coord_array_1__[5] += (__x_xpd__[1][0] * __y_xpd__[3][0]);
-				__tmp_coord_array_1__[6] += (__x_xpd__[1][1] * __y_xpd__[3][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_1__[1] += (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]);
-				__tmp_coord_array_1__[2] += (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]);
-				__tmp_coord_array_1__[3] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]);
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_1__[0] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]);
-
-			}
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_1__);
-		return __temp_var_1__;
-	}
-	inline scalar scp(const mv& x, const mv& y) {
-		scalar __temp_var_1__;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			if (((y.m_gu & 1) != 0)) {
-				__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			if (((y.m_gu & 2) != 0)) {
-				__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]));
-
-			}
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			if (((y.m_gu & 4) != 0)) {
-				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]));
-
-			}
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			if (((y.m_gu & 8) != 0)) {
-				__temp_var_1__.m_c[0] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]);
-
-			}
-
-		}
-		return __temp_var_1__;
-	}
-	inline mv gp(const mv& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_2__[8] ;
-		mv_zero(__tmp_coord_array_2__, 8);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[4] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[5] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[6] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[7] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
-				__tmp_coord_array_2__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
-				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[1][2]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[0] += ((__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[5] += ((__x_xpd__[1][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[1][2]) + (__x_xpd__[2][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][1] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]) + (__x_xpd__[2][2] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]));
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[4] += (__x_xpd__[3][0] * __y_xpd__[1][2]);
-				__tmp_coord_array_2__[5] += (__x_xpd__[3][0] * __y_xpd__[1][0]);
-				__tmp_coord_array_2__[6] += (__x_xpd__[3][0] * __y_xpd__[1][1]);
-
-			}
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[4] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
-				__tmp_coord_array_2__[5] += (__x_xpd__[0][0] * __y_xpd__[2][1]);
-				__tmp_coord_array_2__[6] += (__x_xpd__[0][0] * __y_xpd__[2][2]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[2] += ((__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][1]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]) + (__x_xpd__[2][2] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[5] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]) + (__x_xpd__[2][0] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[2][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]));
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]);
-				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]);
-				__tmp_coord_array_2__[3] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[7] += (__x_xpd__[0][0] * __y_xpd__[3][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[4] += (__x_xpd__[1][2] * __y_xpd__[3][0]);
-				__tmp_coord_array_2__[5] += (__x_xpd__[1][0] * __y_xpd__[3][0]);
-				__tmp_coord_array_2__[6] += (__x_xpd__[1][1] * __y_xpd__[3][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]);
-				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]);
-				__tmp_coord_array_2__[3] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]);
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[0] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]);
-
-			}
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_2__);
-		return __temp_var_1__;
-	}
-	inline mv op(const mv& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_3__[8] ;
-		mv_zero(__tmp_coord_array_3__, 8);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_3__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_3__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_3__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[4] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_3__[5] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
-				__tmp_coord_array_3__[6] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_3__[7] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_3__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
-				__tmp_coord_array_3__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
-				__tmp_coord_array_3__[3] += (__x_xpd__[0][0] * __y_xpd__[1][2]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[4] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_3__[5] += ((__x_xpd__[1][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]));
-				__tmp_coord_array_3__[6] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[7] += ((__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][2]));
-
-			}
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_3__[4] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
-				__tmp_coord_array_3__[5] += (__x_xpd__[0][0] * __y_xpd__[2][1]);
-				__tmp_coord_array_3__[6] += (__x_xpd__[0][0] * __y_xpd__[2][2]);
-
-			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[7] += ((__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][2]));
-
-			}
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_3__[7] += (__x_xpd__[0][0] * __y_xpd__[3][0]);
-
-			}
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_3__);
-		return __temp_var_1__;
-	}
-	inline mv add(const mv& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_4__[8] ;
-		mv_zero(__tmp_coord_array_4__, 8);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_4__[0] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_4__[1] += __x_xpd__[1][0];
-			__tmp_coord_array_4__[2] += __x_xpd__[1][1];
-			__tmp_coord_array_4__[3] += __x_xpd__[1][2];
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_4__[4] += __x_xpd__[2][0];
-			__tmp_coord_array_4__[5] += __x_xpd__[2][1];
-			__tmp_coord_array_4__[6] += __x_xpd__[2][2];
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_4__[7] += __x_xpd__[3][0];
-
-		}
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
-			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
-			__tmp_coord_array_4__[3] += __y_xpd__[1][2];
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_4__[4] += __y_xpd__[2][0];
-			__tmp_coord_array_4__[5] += __y_xpd__[2][1];
-			__tmp_coord_array_4__[6] += __y_xpd__[2][2];
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_4__[7] += __y_xpd__[3][0];
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_4__);
-		return __temp_var_1__;
-	}
-	inline mv subtract(const mv& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_5__[8] ;
-		mv_zero(__tmp_coord_array_5__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
-			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
-			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[2][0]);
-			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][1]);
-			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][2]);
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[3][0]);
-
-		}
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += __x_xpd__[1][0];
-			__tmp_coord_array_5__[2] += __x_xpd__[1][1];
-			__tmp_coord_array_5__[3] += __x_xpd__[1][2];
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[4] += __x_xpd__[2][0];
-			__tmp_coord_array_5__[5] += __x_xpd__[2][1];
-			__tmp_coord_array_5__[6] += __x_xpd__[2][2];
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_5__[7] += __x_xpd__[3][0];
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
-		return __temp_var_1__;
-	}
-	inline scalar norm_e2(const mv& x) {
-		scalar __temp_var_1__;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		return __temp_var_1__;
-	}
-	inline scalar norm_e(const mv& x) {
-		scalar e2;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			e2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
-	}
-	inline mv unit_e(const mv& x) {
-		scalar e2;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			e2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][0] * __x_xpd__[2][0]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		scalar ie;
-		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
-		mv __temp_var_1__;
-		float __tmp_coord_array_6__[8] ;
-		mv_zero(__tmp_coord_array_6__, 8);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_6__[0] += (__x_xpd__[0][0] * ie.m_c[0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_6__[1] += (__x_xpd__[1][0] * ie.m_c[0]);
-			__tmp_coord_array_6__[2] += (__x_xpd__[1][1] * ie.m_c[0]);
-			__tmp_coord_array_6__[3] += (__x_xpd__[1][2] * ie.m_c[0]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_6__[4] += (__x_xpd__[2][0] * ie.m_c[0]);
-			__tmp_coord_array_6__[5] += (__x_xpd__[2][1] * ie.m_c[0]);
-			__tmp_coord_array_6__[6] += (__x_xpd__[2][2] * ie.m_c[0]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_6__[7] += (__x_xpd__[3][0] * ie.m_c[0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_6__);
-		return __temp_var_1__;
-	}
-	inline scalar norm_r2(const mv& x) {
-		scalar __temp_var_1__;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		return __temp_var_1__;
-	}
-	inline scalar norm_r(const mv& x) {
-		scalar r2;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			r2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
-	}
-	inline mv unit_r(const mv& x) {
-		scalar r2;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			r2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		scalar ir;
-		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
-		mv __temp_var_1__;
-		float __tmp_coord_array_7__[8] ;
-		mv_zero(__tmp_coord_array_7__, 8);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_7__[0] += (__x_xpd__[0][0] * ir.m_c[0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_7__[1] += (__x_xpd__[1][0] * ir.m_c[0]);
-			__tmp_coord_array_7__[2] += (__x_xpd__[1][1] * ir.m_c[0]);
-			__tmp_coord_array_7__[3] += (__x_xpd__[1][2] * ir.m_c[0]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_7__[4] += (__x_xpd__[2][0] * ir.m_c[0]);
-			__tmp_coord_array_7__[5] += (__x_xpd__[2][1] * ir.m_c[0]);
-			__tmp_coord_array_7__[6] += (__x_xpd__[2][2] * ir.m_c[0]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_7__[7] += (__x_xpd__[3][0] * ir.m_c[0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_7__);
-		return __temp_var_1__;
-	}
-	inline mv reverse(const mv& x) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_8__[8] ;
-		mv_zero(__tmp_coord_array_8__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_8__[0] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_8__[1] += __x_xpd__[1][0];
-			__tmp_coord_array_8__[2] += __x_xpd__[1][1];
-			__tmp_coord_array_8__[3] += __x_xpd__[1][2];
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_8__[4] += (-1.0f * __x_xpd__[2][0]);
-			__tmp_coord_array_8__[5] += (-1.0f * __x_xpd__[2][1]);
-			__tmp_coord_array_8__[6] += (-1.0f * __x_xpd__[2][2]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_8__[7] += (-1.0f * __x_xpd__[3][0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_8__);
-		return __temp_var_1__;
-	}
-	inline mv negate(const mv& x) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_9__[8] ;
-		mv_zero(__tmp_coord_array_9__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_9__[0] += (-1.0f * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_9__[1] += (-1.0f * __x_xpd__[1][0]);
-			__tmp_coord_array_9__[2] += (-1.0f * __x_xpd__[1][1]);
-			__tmp_coord_array_9__[3] += (-1.0f * __x_xpd__[1][2]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_9__[4] += (-1.0f * __x_xpd__[2][0]);
-			__tmp_coord_array_9__[5] += (-1.0f * __x_xpd__[2][1]);
-			__tmp_coord_array_9__[6] += (-1.0f * __x_xpd__[2][2]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_9__[7] += (-1.0f * __x_xpd__[3][0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_9__);
-		return __temp_var_1__;
-	}
-	inline mv dual(const mv& x) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_10__[8] ;
-		mv_zero(__tmp_coord_array_10__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_10__[7] += (-1.0f * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_10__[4] += (-1.0f * __x_xpd__[1][2]);
-			__tmp_coord_array_10__[5] += (-1.0f * __x_xpd__[1][0]);
-			__tmp_coord_array_10__[6] += (-1.0f * __x_xpd__[1][1]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_10__[1] += __x_xpd__[2][1];
-			__tmp_coord_array_10__[2] += __x_xpd__[2][2];
-			__tmp_coord_array_10__[3] += __x_xpd__[2][0];
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_10__[0] += __x_xpd__[3][0];
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_10__);
-		return __temp_var_1__;
-	}
-	inline mv undual(const mv& x) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_11__[8] ;
-		mv_zero(__tmp_coord_array_11__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_11__[7] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_11__[4] += __x_xpd__[1][2];
-			__tmp_coord_array_11__[5] += __x_xpd__[1][0];
-			__tmp_coord_array_11__[6] += __x_xpd__[1][1];
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_11__[1] += (-1.0f * __x_xpd__[2][1]);
-			__tmp_coord_array_11__[2] += (-1.0f * __x_xpd__[2][2]);
-			__tmp_coord_array_11__[3] += (-1.0f * __x_xpd__[2][0]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_11__[0] += (-1.0f * __x_xpd__[3][0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_11__);
-		return __temp_var_1__;
-	}
-	inline mv inverse(const mv& x) {
-		scalar n;
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			n.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			n.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			n.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]));
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			n.m_c[0] += (__x_xpd__[3][0] * __x_xpd__[3][0]);
-
-		}
-		scalar in;
-		in.m_c[0] = ((char)1 / n.m_c[0]);
-		mv __temp_var_1__;
-		float __tmp_coord_array_12__[8] ;
-		mv_zero(__tmp_coord_array_12__, 8);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_12__[0] += (__x_xpd__[0][0] * in.m_c[0]);
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_12__[1] += (__x_xpd__[1][0] * in.m_c[0]);
-			__tmp_coord_array_12__[2] += (__x_xpd__[1][1] * in.m_c[0]);
-			__tmp_coord_array_12__[3] += (__x_xpd__[1][2] * in.m_c[0]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_12__[4] += (-1.0f * __x_xpd__[2][0] * in.m_c[0]);
-			__tmp_coord_array_12__[5] += (-1.0f * __x_xpd__[2][1] * in.m_c[0]);
-			__tmp_coord_array_12__[6] += (-1.0f * __x_xpd__[2][2] * in.m_c[0]);
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_12__[7] += (-1.0f * __x_xpd__[3][0] * in.m_c[0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_12__);
-		return __temp_var_1__;
-	}
-	inline mv apply_om(const om& x, const mv& y) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_13__[8] ;
-		mv_zero(__tmp_coord_array_13__, 8);
-		const float* __y_xpd__[4] ;
-		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_13__[1] += ((x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[2] * __y_xpd__[1][2]));
-			__tmp_coord_array_13__[2] += ((x.m_c[4] * __y_xpd__[1][1]) + (x.m_c[5] * __y_xpd__[1][2]) + (x.m_c[3] * __y_xpd__[1][0]));
-			__tmp_coord_array_13__[3] += ((x.m_c[7] * __y_xpd__[1][1]) + (x.m_c[6] * __y_xpd__[1][0]) + (x.m_c[8] * __y_xpd__[1][2]));
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_13__[4] += ((x.m_c[9] * __y_xpd__[2][0]) + (x.m_c[10] * __y_xpd__[2][1]) + (x.m_c[11] * __y_xpd__[2][2]));
-			__tmp_coord_array_13__[5] += ((x.m_c[12] * __y_xpd__[2][0]) + (x.m_c[13] * __y_xpd__[2][1]) + (x.m_c[14] * __y_xpd__[2][2]));
-			__tmp_coord_array_13__[6] += ((x.m_c[16] * __y_xpd__[2][1]) + (x.m_c[15] * __y_xpd__[2][0]) + (x.m_c[17] * __y_xpd__[2][2]));
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_13__[7] += (x.m_c[18] * __y_xpd__[3][0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_13__);
-		return __temp_var_1__;
-	}
-	inline mv gradeInvolution(const mv& x) {
-		mv __temp_var_1__;
-		float __tmp_coord_array_14__[8] ;
-		mv_zero(__tmp_coord_array_14__, 8);
-		const float* __x_xpd__[4] ;
-		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_14__[0] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_14__[1] += (-1.0f * __x_xpd__[1][0]);
-			__tmp_coord_array_14__[2] += (-1.0f * __x_xpd__[1][1]);
-			__tmp_coord_array_14__[3] += (-1.0f * __x_xpd__[1][2]);
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_14__[4] += __x_xpd__[2][0];
-			__tmp_coord_array_14__[5] += __x_xpd__[2][1];
-			__tmp_coord_array_14__[6] += __x_xpd__[2][2];
-
-		}
-		if (((x.m_gu & 8) != 0)) {
-			__tmp_coord_array_14__[7] += (-1.0f * __x_xpd__[3][0]);
-
-		}
-		__temp_var_1__ = mv_compress(__tmp_coord_array_14__);
-		return __temp_var_1__;
-	}
-	namespace __G2_GENERATED__ {
-		inline void set(om& __x__, const vector& __image_of_e1__, const vector& __image_of_e2__, const vector& __image_of_e3__) {
-			__x__.m_c[0] = __image_of_e1__.m_c[0];
-			__x__.m_c[3] = __image_of_e1__.m_c[1];
-			__x__.m_c[6] = __image_of_e1__.m_c[2];
-			__x__.m_c[1] = __image_of_e2__.m_c[0];
-			__x__.m_c[4] = __image_of_e2__.m_c[1];
-			__x__.m_c[7] = __image_of_e2__.m_c[2];
-			__x__.m_c[2] = __image_of_e3__.m_c[0];
-			__x__.m_c[5] = __image_of_e3__.m_c[1];
-			__x__.m_c[8] = __image_of_e3__.m_c[2];
-			__x__.m_c[9] = ((-1.0f * __x__.m_c[1] * __x__.m_c[3]) + (__x__.m_c[4] * __x__.m_c[0]));
-			__x__.m_c[12] = ((-1.0f * __x__.m_c[4] * __x__.m_c[6]) + (__x__.m_c[7] * __x__.m_c[3]));
-			__x__.m_c[15] = ((__x__.m_c[1] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[0]));
-			__x__.m_c[10] = ((-1.0f * __x__.m_c[2] * __x__.m_c[4]) + (__x__.m_c[5] * __x__.m_c[1]));
-			__x__.m_c[13] = ((-1.0f * __x__.m_c[5] * __x__.m_c[7]) + (__x__.m_c[8] * __x__.m_c[4]));
-			__x__.m_c[16] = ((__x__.m_c[2] * __x__.m_c[7]) + (-1.0f * __x__.m_c[8] * __x__.m_c[1]));
-			__x__.m_c[11] = ((-1.0f * __x__.m_c[5] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[3]));
-			__x__.m_c[14] = ((__x__.m_c[5] * __x__.m_c[6]) + (-1.0f * __x__.m_c[8] * __x__.m_c[3]));
-			__x__.m_c[17] = ((__x__.m_c[8] * __x__.m_c[0]) + (-1.0f * __x__.m_c[2] * __x__.m_c[6]));
-			__x__.m_c[18] = ((__x__.m_c[11] * __x__.m_c[7]) + (__x__.m_c[14] * __x__.m_c[1]) + (__x__.m_c[17] * __x__.m_c[4]));
-		}
-	} /* end of namespace __G2_GENERATED__ */
 	inline e2_t gp(const __e2_ct__& x, const scalar& y) {
 		return e2_t(e2_t_e2, y.m_c[0]);
 	}
@@ -14891,25 +12410,22 @@
 		return __syn_smv___e3f_1_0(__syn_smv___e3f_1_0_e3f_1_0);
 	}
 	inline trivector op(const bivector& x, const vector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
+		return trivector(trivector_e1e2e3, ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline bivector gradeInvolution(const bivector& x) {
 		return bivector(bivector_e1e2_e2e3_e3e1, x.m_c[0], x.m_c[1], x.m_c[2]);
-	}
-	inline vector apply_om(const om& x, const vector& y) {
-		return vector(vector_e1_e2_e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[5] * y.m_c[2])), ((x.m_c[7] * y.m_c[1]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[6] * y.m_c[0])));
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]));
 	}
 	inline bivector add(const bivector& x, const bivector& y) {
-		return bivector(bivector_e1e2_e2e3_e3e1, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]));
+		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e1e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
@@ -14919,14 +12435,14 @@
 	}
 	inline scalar norm_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2_e2e3 gp(const vector& x, const __e2_ct__& y) {
 		return __syn_smv___scalar_e1e2_e2e3(__syn_smv___scalar_e1e2_e2e3_scalar_e1e2_e2e3, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]));
 	}
 	inline bivector op(const vector& x, const vector& y) {
-		return bivector(bivector_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return bivector(bivector_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline scalar scp(const vector& x, const __e2_ct__& y) {
 		return scalar(scalar_scalar, x.m_c[1]);
@@ -14942,7 +12458,7 @@
 	}
 	inline bivector inverse(const bivector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
@@ -14954,10 +12470,10 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline bivector dual(const vector& x) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[2]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
@@ -14966,26 +12482,26 @@
 		return __syn_smv___e2e3f1_0(__syn_smv___e2e3f1_0_e2e3f1_0);
 	}
 	inline vector subtract(const __e3_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (1.0f + (-1.0f * y.m_c[2])));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), ((-1.0f * y.m_c[2]) + 1.0f));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3 gp(const vector& x, const __e1_ct__& y) {
 		return __syn_smv___scalar_e1e2_e1e3(__syn_smv___scalar_e1e2_e1e3_scalar_e1e2_e1e3, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline rotor unit_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
 	}
 	inline rotor add(const scalar& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), y.m_c[1], y.m_c[2], y.m_c[3]);
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (y.m_c[0] + x.m_c[0]), y.m_c[1], y.m_c[2], y.m_c[3]);
 	}
 	inline scalar norm_e2(const __syn_smv___scalar_e1e2& x) {
 		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])));
+		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]));
 	}
 	inline vector op(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
@@ -14998,7 +12514,7 @@
 	}
 	inline rotor inverse(const rotor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
@@ -15008,17 +12524,17 @@
 	}
 	inline scalar norm_e(const vector2D& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1e2f1_0 op(const __e1_ct__& x, const __e2_ct__& y) {
 		return __syn_smv___e1e2f1_0(__syn_smv___e1e2f1_0_e1e2f1_0);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e3_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e2_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), x.m_c[3]);
@@ -15027,7 +12543,7 @@
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[1] * y.m_c[0]), (x.m_c[0] * y.m_c[0]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_e1e2 subtract(const __syn_smv___scalar_e1e2& x, const scalar& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), x.m_c[1]);
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), x.m_c[1]);
 	}
 	inline bivector gp(const bivector& x, const scalar& y) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
@@ -15047,13 +12563,13 @@
 		return trivector(trivector_e1e2e3, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector subtract(const __e2_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), ((-1.0f * y.m_c[1]) + 1.0f), (-1.0f * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (1.0f + (-1.0f * y.m_c[1])), (-1.0f * y.m_c[2]));
 	}
 	inline __syn_smv___e1e2 gp(const __syn_smv___e1e2& x, const scalar& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline scalar scp(const vector& x, const vector& y) {
-		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline vector negate(const vector& x) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -15083,7 +12599,7 @@
 		return __syn_smv___e1_e2_e1e2e3(__syn_smv___e1_e2_e1e2e3_e1_e2_e1e2e3, (-1.0f * x.m_c[2]), x.m_c[1], x.m_c[0]);
 	}
 	inline rotor gp(const bivector& x, const bivector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline rotor gp(const rotor& x, const scalar& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
@@ -15095,24 +12611,24 @@
 		return vector2D(vector2D_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e2e3 gp(const scalar& x, const __syn_smv___e2e3f1_0& y) {
 		return __syn_smv___e2e3(__syn_smv___e2e3_e2e3, x.m_c[0]);
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1e3f_1_0 lcont(const __e2_ct__& x, const __I3_ct__& y) {
 		return __syn_smv___e1e3f_1_0(__syn_smv___e1e3f_1_0_e1e3f_1_0);
 	}
 	inline rotor gp(const __syn_smv___scalar_e1e3_e2e3& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline rotor gp(const vector& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_e1e3 add(const scalar& x, const __syn_smv___e1e3& y) {
 		return __syn_smv___scalar_e1e3(__syn_smv___scalar_e1e3_scalar_e1e3, x.m_c[0], y.m_c[0]);
@@ -15134,7 +12650,7 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2f1_0& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, x.m_c[0]);
@@ -15157,7 +12673,7 @@
 	}
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2_e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
@@ -15179,13 +12695,13 @@
 		return e1_t(e1_t_e1, x.m_c[0]);
 	}
 	inline scalar subtract(const scalar& x, const scalar& y) {
-		return scalar(scalar_scalar, ((-1.0f * y.m_c[0]) + x.m_c[0]));
+		return scalar(scalar_scalar, (x.m_c[0] + (-1.0f * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e3 lcont(const __e2_ct__& x, const bivector& y) {
 		return __syn_smv___e1_e3(__syn_smv___e1_e3_e1_e3, (-1.0f * y.m_c[0]), y.m_c[1]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline scalar norm_e2(const scalar& x) {
 		return scalar(scalar_scalar, (x.m_c[0] * x.m_c[0]));
@@ -15200,16 +12716,16 @@
 		return __syn_smv___scalar_e2e3(__syn_smv___scalar_e2e3_scalar_e2e3, x.m_c[0], y.m_c[0]);
 	}
 	inline trivector op(const vector& x, const bivector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
+		return trivector(trivector_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline rotor gp(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___scalar_e1e2 gp(const __syn_smv___e1e3_e2e3& x, const __syn_smv___e1e3_e2e3& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e2_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline vector lcont(const vector& x, const bivector& y) {
 		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
@@ -15227,11 +12743,13 @@
 		return e2_t(e2_t_e2, x.m_c[0]);
 	}
 	inline trivector add(const trivector& x, const trivector& y) {
-		return trivector(trivector_e1e2e3, (y.m_c[0] + x.m_c[0]));
+		return trivector(trivector_e1e2e3, (x.m_c[0] + y.m_c[0]));
 	}
 	inline vector lcont(const __syn_smv___e1_e3& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), (-1.0f * x.m_c[0] * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), (-1.0f * x.m_c[0] * y.m_c[2]));
 	}
+
+
 
 
 

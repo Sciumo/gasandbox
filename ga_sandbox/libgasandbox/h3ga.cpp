@@ -1,5 +1,5 @@
 
-// Generated on 2006-05-27 14:36:11 by G2 0.1 from 'E:\ga\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2006-12-14 13:53:20 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -133,9 +133,9 @@
 		}
 		void reset() {
 		}
-		void save(const char *filename /*= "E:\\ga\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/, bool append /*= false*/) {
+		void save(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/, bool append /*= false*/) {
 		}
-		void init(const char *filename /*= "E:\\ga\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/,
+		void init(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/,
 		const char *hostName /*= "localhost"*/, int port /*= 7693*/) {
 		}
 	} // end of namespace g2Profiling
@@ -149,6 +149,762 @@
 
 
 
+
+
+
+	// set to 0
+	void mv::set() {
+		// set grade usage
+		gu(0);
+
+	}
+
+	// set to copy 
+	void mv::set(const mv &arg1) {
+		// copy grade usage
+		gu(arg1.gu());
+		// copy coordinates
+		mv_memcpy(m_c, arg1.m_c, mv_size[gu()]);
+
+	}
+
+	// set to scalar
+	void mv::set(Float scalarVal) {
+		// set grade usage
+		gu(1);
+		// set type (if profile)
+		// set coordinate
+		m_c[0] = scalarVal;
+
+	}
+
+
+	// set to coordinates 
+	void mv::set(unsigned int gradeUsage, const Float *coordinates) {
+		// set grade usage
+		gu(gradeUsage);
+		// set coordinates
+		mv_memcpy(m_c, coordinates, mv_size[gu()]);
+
+	}
+
+
+	// set to 1 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 1)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+
+	}
+
+	// set to 2 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 2)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+
+	}
+
+	// set to 3 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 3)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+
+	}
+
+	// set to 4 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 4)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+
+	}
+
+	// set to 5 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 5)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+
+	}
+
+	// set to 6 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 6)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+
+	}
+
+	// set to 7 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 7)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+
+	}
+
+	// set to 8 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 8)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+
+	}
+
+	// set to 9 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 9)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+
+	}
+
+	// set to 10 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 10)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+
+	}
+
+	// set to 11 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 11)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+
+	}
+
+	// set to 12 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 12)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+		m_c[11] = c11;
+
+	}
+
+	// set to 13 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 13)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+		m_c[11] = c11;
+		m_c[12] = c12;
+
+	}
+
+	// set to 14 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 14)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+		m_c[11] = c11;
+		m_c[12] = c12;
+		m_c[13] = c13;
+
+	}
+
+	// set to 15 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 15)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+		m_c[11] = c11;
+		m_c[12] = c12;
+		m_c[13] = c13;
+		m_c[14] = c14;
+
+	}
+
+	// set to 16 coordinates 
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15	) {
+		// set grade usage
+		gu(gradeUsage);
+		// check the number of coordinates
+		if (mv_size[gu()] != 16)
+			throw (-1); // todo: more sensible exception
+		// set coordinates
+		m_c[0] = c0;
+		m_c[1] = c1;
+		m_c[2] = c2;
+		m_c[3] = c3;
+		m_c[4] = c4;
+		m_c[5] = c5;
+		m_c[6] = c6;
+		m_c[7] = c7;
+		m_c[8] = c8;
+		m_c[9] = c9;
+		m_c[10] = c10;
+		m_c[11] = c11;
+		m_c[12] = c12;
+		m_c[13] = c13;
+		m_c[14] = c14;
+		m_c[15] = c15;
+
+	}
+
+
+
+	// set to e1_t 
+	void mv::set(const e1_t & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to e2_t 
+	void mv::set(const e2_t & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = arg1.m_c[0] ;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to e3_t 
+	void mv::set(const e3_t & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)0;
+		m_c[2] = arg1.m_c[0] ;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to e0_t 
+	void mv::set(const e0_t & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = arg1.m_c[0] ;
+
+
+	}
+	// set to scalar 
+	void mv::set(const scalar & arg1) {
+
+		// set grade usage 
+		gu(1);
+
+
+		m_c[0] = arg1.m_c[0] ;
+
+
+	}
+	// set to vector 
+	void mv::set(const vector & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to point 
+	void mv::set(const point & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = arg1.m_c[3] ;
+
+
+	}
+	// set to normalizedPoint 
+	void mv::set(const normalizedPoint & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)1.0f; 
+
+
+	}
+	// set to line 
+	void mv::set(const line & arg1) {
+
+		// set grade usage 
+		gu(4);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = arg1.m_c[3] ;
+		m_c[4] = arg1.m_c[4] ;
+		m_c[5] = arg1.m_c[5] ;
+
+
+	}
+	// set to lineAtInfinity 
+	void mv::set(const lineAtInfinity & arg1) {
+
+		// set grade usage 
+		gu(4);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)0;
+		m_c[4] = (Float)0;
+		m_c[5] = (Float)0;
+
+
+	}
+	// set to bivector 
+	void mv::set(const bivector & arg1) {
+
+		// set grade usage 
+		gu(4);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)0;
+		m_c[4] = (Float)0;
+		m_c[5] = (Float)0;
+
+
+	}
+	// set to plane 
+	void mv::set(const plane & arg1) {
+
+		// set grade usage 
+		gu(8);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = arg1.m_c[3] ;
+
+
+	}
+	// set to planeAtInfinity 
+	void mv::set(const planeAtInfinity & arg1) {
+
+		// set grade usage 
+		gu(8);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to rotor 
+	void mv::set(const rotor & arg1) {
+
+		// set grade usage 
+		gu(5);
+
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = arg1.m_c[3] ;
+		m_c[4] = (Float)0;
+		m_c[5] = (Float)0;
+		m_c[6] = (Float)0;
+
+
+	}
+	// set to __e1_ct__ 
+	void mv::set(const __e1_ct__ & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)1.0f; 
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to __e2_ct__ 
+	void mv::set(const __e2_ct__ & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)1.0f; 
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to __e3_ct__ 
+	void mv::set(const __e3_ct__ & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)1.0f; 
+		m_c[3] = (Float)0;
+
+
+	}
+	// set to __e0_ct__ 
+	void mv::set(const __e0_ct__ & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)1.0f; 
+
+
+	}
+	// set to __e0i_ct__ 
+	void mv::set(const __e0i_ct__ & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+
+		m_c[0] = (Float)0;
+		m_c[1] = (Float)0;
+		m_c[2] = (Float)0;
+		m_c[3] = (Float)1.0f; 
+
+
+	}
+	// set to __I4i_ct__ 
+	void mv::set(const __I4i_ct__ & arg1) {
+
+		// set grade usage 
+		gu(16);
+
+
+		m_c[0] = (Float)1.0f; 
+
+
+	}
+
+
+
+
+
+
+	// assign copy
+	mv& mv::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+
+	// assign scalar
+	mv& mv::operator=(Float s) {
+		set(s);
+		return *this;
+	}
+
+	// assign e1_t 
+	mv& mv::operator=(const e1_t& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign e2_t 
+	mv& mv::operator=(const e2_t& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign e3_t 
+	mv& mv::operator=(const e3_t& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign e0_t 
+	mv& mv::operator=(const e0_t& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign scalar 
+	mv& mv::operator=(const scalar& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign vector 
+	mv& mv::operator=(const vector& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign point 
+	mv& mv::operator=(const point& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign normalizedPoint 
+	mv& mv::operator=(const normalizedPoint& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign line 
+	mv& mv::operator=(const line& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign lineAtInfinity 
+	mv& mv::operator=(const lineAtInfinity& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign bivector 
+	mv& mv::operator=(const bivector& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign plane 
+	mv& mv::operator=(const plane& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign planeAtInfinity 
+	mv& mv::operator=(const planeAtInfinity& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign rotor 
+	mv& mv::operator=(const rotor& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __e1_ct__ 
+	mv& mv::operator=(const __e1_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __e2_ct__ 
+	mv& mv::operator=(const __e2_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __e3_ct__ 
+	mv& mv::operator=(const __e3_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __e0_ct__ 
+	mv& mv::operator=(const __e0_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __e0i_ct__ 
+	mv& mv::operator=(const __e0i_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __I4i_ct__ 
+	mv& mv::operator=(const __I4i_ct__& arg1) {
+		set(arg1);
+		return *this;
+	}
 
 
 
@@ -199,6 +955,27 @@
 
 
 
+	// set to mv 
+	void e1_t::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 0];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float e1_t::largestCoordinate() const {
@@ -217,6 +994,27 @@
 	}
 
 
+
+
+	// set to mv 
+	void e2_t::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 1];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -239,6 +1037,27 @@
 
 
 
+	// set to mv 
+	void e3_t::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float e3_t::largestCoordinate() const {
@@ -257,6 +1076,27 @@
 	}
 
 
+
+
+	// set to mv 
+	void e0_t::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 3];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -279,6 +1119,21 @@
 
 
 
+	// set to mv 
+	void scalar::set(const mv & arg1) {
+
+
+		if (arg1.gu() & 1) {
+			m_c[0] = arg1.m_c[0];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float scalar::largestCoordinate() const {
@@ -297,6 +1152,31 @@
 	}
 
 
+
+
+	// set to mv 
+	void vector::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -331,6 +1211,33 @@
 	}
 
 
+
+
+	// set to mv 
+	void point::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+			m_c[3] = arg1.m_c[gidx + 3];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+			m_c[3] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -374,6 +1281,31 @@
 
 
 
+	// set to mv 
+	void normalizedPoint::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float normalizedPoint::largestCoordinate() const {
@@ -413,6 +1345,42 @@
 	}
 
 
+
+
+	// set to mv 
+	void line::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+			m_c[3] = arg1.m_c[gidx + 3];
+			m_c[4] = arg1.m_c[gidx + 4];
+			m_c[5] = arg1.m_c[gidx + 5];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+			m_c[3] = (Float)0.0;
+			m_c[4] = (Float)0.0;
+			m_c[5] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -470,6 +1438,36 @@
 
 
 
+	// set to mv 
+	void lineAtInfinity::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float lineAtInfinity::largestCoordinate() const {
@@ -504,6 +1502,36 @@
 
 
 
+	// set to mv 
+	void bivector::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float bivector::largestCoordinate() const {
@@ -536,6 +1564,43 @@
 	}
 
 
+
+
+	// set to mv 
+	void plane::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			gidx += 6;		}
+		else {
+		}
+
+		if (arg1.gu() & 8) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+			m_c[3] = arg1.m_c[gidx + 3];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+			m_c[3] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -579,6 +1644,37 @@
 
 
 
+	// set to mv 
+	void planeAtInfinity::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			gidx += 6;		}
+		else {
+		}
+
+		if (arg1.gu() & 8) {
+			m_c[0] = arg1.m_c[gidx + 0];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+
+	}
+
+
 
 
 	float planeAtInfinity::largestCoordinate() const {
@@ -597,6 +1693,38 @@
 	}
 
 
+
+
+	// set to mv 
+	void rotor::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			gidx += 1;		}
+		else {
+			m_c[0] = (Float)0.0;
+		}
+
+		if (arg1.gu() & 2) {
+			gidx += 4;		}
+		else {
+		}
+
+		if (arg1.gu() & 4) {
+			m_c[1] = arg1.m_c[gidx + 0];
+			m_c[2] = arg1.m_c[gidx + 1];
+			m_c[3] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+			m_c[3] = (Float)0.0;
+		}
+
+
+	}
 
 
 
@@ -640,6 +1768,14 @@
 
 
 
+	// set to mv 
+	void __e1_ct__::set(const mv & arg1) {
+
+
+
+	}
+
+
 
 
 	float __e1_ct__::largestCoordinate() const {
@@ -658,6 +1794,14 @@
 	}
 
 
+
+
+	// set to mv 
+	void __e2_ct__::set(const mv & arg1) {
+
+
+
+	}
 
 
 
@@ -680,6 +1824,14 @@
 
 
 
+	// set to mv 
+	void __e3_ct__::set(const mv & arg1) {
+
+
+
+	}
+
+
 
 
 	float __e3_ct__::largestCoordinate() const {
@@ -698,6 +1850,14 @@
 	}
 
 
+
+
+	// set to mv 
+	void __e0_ct__::set(const mv & arg1) {
+
+
+
+	}
 
 
 
@@ -720,6 +1880,14 @@
 
 
 
+	// set to mv 
+	void __e0i_ct__::set(const mv & arg1) {
+
+
+
+	}
+
+
 
 
 	float __e0i_ct__::largestCoordinate() const {
@@ -738,6 +1906,14 @@
 	}
 
 
+
+
+	// set to mv 
+	void __I4i_ct__::set(const mv & arg1) {
+
+
+
+	}
 
 
 
@@ -762,12 +1938,1462 @@
 
 
 
+	// set to identity 'I'
+	void om::set() {
+		// simplify forward call to set(scalar)
+		set(1.0);
+	}
+
+	// set to copy
+	void om::set(const om &arg1) {
+		mv_memcpy(m_c, arg1.m_c, 69);
+	}
+
+	// set to scalar
+	void om::set(Float scalarVal) {
+		h3ga::__G2_GENERATED__::set(*this, point(point_e1_e2_e3_e0, scalarVal, (Float)0, (Float)0, (Float)0), point(point_e1_e2_e3_e0, (Float)0, scalarVal, (Float)0, (Float)0), point(point_e1_e2_e3_e0, (Float)0, (Float)0, scalarVal, (Float)0), point(point_e1_e2_e3_e0, (Float)0, (Float)0, (Float)0, scalarVal));
+	}
+
+	// set to coordinates 
+	void om::set(const Float *coordinates) {
+		mv_memcpy(m_c, coordinates, 69);
+	}
+
+	// set from basis vectors array
+	void om::set(const point *vectors) {
+		h3ga::__G2_GENERATED__::set(*this, vectors[0], vectors[1], vectors[2], vectors[3]);
+	}
+
+
+	// set from basis vectors 
+	void om::set(const point & image_of_e1, const point & image_of_e2, const point & image_of_e3, const point & image_of_e0) {
+		h3ga::__G2_GENERATED__::set(*this, image_of_e1, image_of_e2, image_of_e3, image_of_e0);
+	}
+
+	// set to specialization
+	void om::set(const omPoint &arg1) {
+		h3ga::__G2_GENERATED__::set(*this, arg1);
+	}
+
+	// set by coordinates, transpose
+	void om::set(const Float *coordinates, bool transpose) {
+		if (transpose) {
+			m_c[0] = coordinates[0];
+			m_c[4] = coordinates[1];
+			m_c[8] = coordinates[2];
+			m_c[12] = coordinates[3];
+			m_c[1] = coordinates[4];
+			m_c[5] = coordinates[5];
+			m_c[9] = coordinates[6];
+			m_c[13] = coordinates[7];
+			m_c[2] = coordinates[8];
+			m_c[6] = coordinates[9];
+			m_c[10] = coordinates[10];
+			m_c[14] = coordinates[11];
+			m_c[3] = coordinates[12];
+			m_c[7] = coordinates[13];
+			m_c[11] = coordinates[14];
+			m_c[15] = coordinates[15];
+			m_c[16] = coordinates[16];
+			m_c[22] = coordinates[17];
+			m_c[28] = coordinates[18];
+			m_c[34] = coordinates[19];
+			m_c[40] = coordinates[20];
+			m_c[46] = coordinates[21];
+			m_c[17] = coordinates[22];
+			m_c[23] = coordinates[23];
+			m_c[29] = coordinates[24];
+			m_c[35] = coordinates[25];
+			m_c[41] = coordinates[26];
+			m_c[47] = coordinates[27];
+			m_c[18] = coordinates[28];
+			m_c[24] = coordinates[29];
+			m_c[30] = coordinates[30];
+			m_c[36] = coordinates[31];
+			m_c[42] = coordinates[32];
+			m_c[48] = coordinates[33];
+			m_c[19] = coordinates[34];
+			m_c[25] = coordinates[35];
+			m_c[31] = coordinates[36];
+			m_c[37] = coordinates[37];
+			m_c[43] = coordinates[38];
+			m_c[49] = coordinates[39];
+			m_c[20] = coordinates[40];
+			m_c[26] = coordinates[41];
+			m_c[32] = coordinates[42];
+			m_c[38] = coordinates[43];
+			m_c[44] = coordinates[44];
+			m_c[50] = coordinates[45];
+			m_c[21] = coordinates[46];
+			m_c[27] = coordinates[47];
+			m_c[33] = coordinates[48];
+			m_c[39] = coordinates[49];
+			m_c[45] = coordinates[50];
+			m_c[51] = coordinates[51];
+			m_c[52] = coordinates[52];
+			m_c[56] = coordinates[53];
+			m_c[60] = coordinates[54];
+			m_c[64] = coordinates[55];
+			m_c[53] = coordinates[56];
+			m_c[57] = coordinates[57];
+			m_c[61] = coordinates[58];
+			m_c[65] = coordinates[59];
+			m_c[54] = coordinates[60];
+			m_c[58] = coordinates[61];
+			m_c[62] = coordinates[62];
+			m_c[66] = coordinates[63];
+			m_c[55] = coordinates[64];
+			m_c[59] = coordinates[65];
+			m_c[63] = coordinates[66];
+			m_c[67] = coordinates[67];
+			m_c[68] = coordinates[68];
+		}
+		else set(coordinates);
+	}
+
+
+
+
+	// assign copy
+	om &om::operator=(const om &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar (creates scalar * 'I' outermorphism)
+	om &om::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+	/// assign specialization:
+	om &om::operator=(const omPoint &arg1) {
+		set(arg1);
+		return *this;
+	}
 
 
 
 
 
 
+
+
+
+	// G2 functions:
+	mv lcont(const mv& x, const mv& y) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_1__[16] ;
+		mv_zero(__tmp_coord_array_1__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_1__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
+
+			}
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_1__[1] += (__y_xpd__[1][0] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[2] += (__y_xpd__[1][1] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[3] += (__y_xpd__[1][2] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[4] += (__y_xpd__[1][3] * __x_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_1__[0] += ((__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
+
+			}
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_1__[5] += (__y_xpd__[2][0] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[6] += (__y_xpd__[2][1] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[7] += (__y_xpd__[2][2] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[8] += (__y_xpd__[2][3] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[9] += (__y_xpd__[2][4] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[10] += (__y_xpd__[2][5] * __x_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]));
+				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]));
+				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (__x_xpd__[1][1] * __y_xpd__[2][1]));
+				__tmp_coord_array_1__[4] += ((__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][2] * __y_xpd__[2][5]));
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]));
+
+			}
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_1__[11] += (__y_xpd__[3][0] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[12] += (__y_xpd__[3][1] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[13] += (__y_xpd__[3][2] * __x_xpd__[0][0]);
+				__tmp_coord_array_1__[14] += (__y_xpd__[3][3] * __x_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_1__[5] += ((__x_xpd__[1][2] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
+				__tmp_coord_array_1__[7] += ((__x_xpd__[1][3] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][0]));
+				__tmp_coord_array_1__[8] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[9] += ((__x_xpd__[1][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[10] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][2]));
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_1__[1] += ((__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[2] += ((__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]));
+				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]) + (__x_xpd__[2][4] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[4] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]));
+
+			}
+			if (((x.m_gu & 8) != 0)) {
+				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]));
+
+			}
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_1__[15] += (__y_xpd__[4][0] * __x_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_1__[11] += (-1.0f * __x_xpd__[1][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[12] += (__x_xpd__[1][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[13] += (__x_xpd__[1][0] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[14] += (__x_xpd__[1][1] * __y_xpd__[4][0]);
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_1__[5] += (-1.0f * __x_xpd__[2][5] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[6] += (-1.0f * __x_xpd__[2][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[7] += (-1.0f * __x_xpd__[2][4] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[8] += (-1.0f * __x_xpd__[2][1] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[9] += (-1.0f * __x_xpd__[2][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[10] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[4][0]);
+
+			}
+			if (((x.m_gu & 8) != 0)) {
+				__tmp_coord_array_1__[1] += (__x_xpd__[3][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[2] += (__x_xpd__[3][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[3] += (__x_xpd__[3][1] * __y_xpd__[4][0]);
+				__tmp_coord_array_1__[4] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[4][0]);
+
+			}
+			if (((x.m_gu & 16) != 0)) {
+				__tmp_coord_array_1__[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_1__);
+		return __temp_var_1__;
+	}
+	scalar scp(const mv& x, const mv& y) {
+		scalar __temp_var_1__;
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
+
+			}
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 2) != 0)) {
+				__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][3] * __y_xpd__[1][3]));
+
+			}
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			if (((x.m_gu & 4) != 0)) {
+				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]));
+
+			}
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			if (((x.m_gu & 8) != 0)) {
+				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
+
+			}
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			if (((x.m_gu & 16) != 0)) {
+				__temp_var_1__.m_c[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		return __temp_var_1__;
+	}
+	mv gp(const mv& x, const mv& y) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_2__[16] ;
+		mv_zero(__tmp_coord_array_2__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
+				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[1][2]);
+				__tmp_coord_array_2__[4] += (__x_xpd__[0][0] * __y_xpd__[1][3]);
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[5] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
+				__tmp_coord_array_2__[6] += (__x_xpd__[0][0] * __y_xpd__[2][1]);
+				__tmp_coord_array_2__[7] += (__x_xpd__[0][0] * __y_xpd__[2][2]);
+				__tmp_coord_array_2__[8] += (__x_xpd__[0][0] * __y_xpd__[2][3]);
+				__tmp_coord_array_2__[9] += (__x_xpd__[0][0] * __y_xpd__[2][4]);
+				__tmp_coord_array_2__[10] += (__x_xpd__[0][0] * __y_xpd__[2][5]);
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[11] += (__x_xpd__[0][0] * __y_xpd__[3][0]);
+				__tmp_coord_array_2__[12] += (__x_xpd__[0][0] * __y_xpd__[3][1]);
+				__tmp_coord_array_2__[13] += (__x_xpd__[0][0] * __y_xpd__[3][2]);
+				__tmp_coord_array_2__[14] += (__x_xpd__[0][0] * __y_xpd__[3][3]);
+
+			}
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[15] += (__x_xpd__[0][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[4] += (__x_xpd__[1][3] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[0] += ((__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][2] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[5] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[1][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[7] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[1][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[1] += ((__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[4] += ((__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[12] += ((__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][3] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[1][2] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[5] += ((__x_xpd__[1][3] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[1][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[1][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[1][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (__x_xpd__[1][1] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[11] += (-1.0f * __x_xpd__[1][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[12] += (__x_xpd__[1][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[13] += (__x_xpd__[1][0] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[14] += (__x_xpd__[1][1] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[5] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[6] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[7] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[8] += (__x_xpd__[2][3] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[9] += (__x_xpd__[2][4] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[10] += (__x_xpd__[2][5] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[1] += ((__x_xpd__[2][0] * __y_xpd__[1][1]) + (__x_xpd__[2][3] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[2] += ((__x_xpd__[2][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][4] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[2][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]) + (__x_xpd__[2][5] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]) + (__x_xpd__[2][5] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[2][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][4]) + (__x_xpd__[2][4] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[2][5] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[2][3] * __y_xpd__[2][5]) + (__x_xpd__[2][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[2][0] * __y_xpd__[2][4]) + (__x_xpd__[2][5] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[2][3] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][3]) + (__x_xpd__[2][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[2][4] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][4]) + (__x_xpd__[2][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][3] * __y_xpd__[2][1]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]) + (__x_xpd__[2][3] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (__x_xpd__[2][4] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][3] * __y_xpd__[3][2]) + (__x_xpd__[2][4] * __y_xpd__[3][3]) + (__x_xpd__[2][5] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][0]) + (__x_xpd__[2][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][1]) + (__x_xpd__[2][0] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][2]) + (__x_xpd__[2][1] * __y_xpd__[3][1]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[5] += (-1.0f * __x_xpd__[2][5] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[6] += (-1.0f * __x_xpd__[2][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[7] += (-1.0f * __x_xpd__[2][4] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[8] += (-1.0f * __x_xpd__[2][1] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[9] += (-1.0f * __x_xpd__[2][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[10] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[11] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[12] += (__x_xpd__[3][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[13] += (__x_xpd__[3][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[14] += (__x_xpd__[3][3] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[5] += ((__x_xpd__[3][0] * __y_xpd__[1][2]) + (__x_xpd__[3][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[3][2] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[3][0] * __y_xpd__[1][1]) + (__x_xpd__[3][3] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[3][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[3][1] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[3][2] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[15] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (__x_xpd__[3][0] * __y_xpd__[1][3]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]) + (__x_xpd__[3][3] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][5]) + (__x_xpd__[3][1] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][3]) + (__x_xpd__[3][2] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[11] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[12] += ((__x_xpd__[3][0] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][2]) + (__x_xpd__[3][3] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[13] += ((__x_xpd__[3][0] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][0]) + (__x_xpd__[3][1] * __y_xpd__[2][2]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[3][0] * __y_xpd__[2][4]) + (__x_xpd__[3][2] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][1]));
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[3][3] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][1]) + (__x_xpd__[3][1] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[7] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[3][2]) + (__x_xpd__[3][2] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[3][2] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[9] += ((__x_xpd__[3][3] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[3][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][1]));
+
+			}
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[3][2] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[3][3] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[3] += (__x_xpd__[3][1] * __y_xpd__[4][0]);
+				__tmp_coord_array_2__[4] += (-1.0f * __x_xpd__[3][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[15] += (__x_xpd__[4][0] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[11] += (__x_xpd__[4][0] * __y_xpd__[1][3]);
+				__tmp_coord_array_2__[12] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][2]);
+				__tmp_coord_array_2__[13] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][0]);
+				__tmp_coord_array_2__[14] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[1][1]);
+
+			}
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[5] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][5]);
+				__tmp_coord_array_2__[6] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][3]);
+				__tmp_coord_array_2__[7] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][4]);
+				__tmp_coord_array_2__[8] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][1]);
+				__tmp_coord_array_2__[9] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][2]);
+				__tmp_coord_array_2__[10] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[2][0]);
+
+			}
+			if (((y.m_gu & 8) != 0)) {
+				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][2]);
+				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][3]);
+				__tmp_coord_array_2__[3] += (-1.0f * __x_xpd__[4][0] * __y_xpd__[3][1]);
+				__tmp_coord_array_2__[4] += (__x_xpd__[4][0] * __y_xpd__[3][0]);
+
+			}
+			if (((y.m_gu & 16) != 0)) {
+				__tmp_coord_array_2__[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_2__);
+		return __temp_var_1__;
+	}
+	mv op(const mv& x, const mv& y) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_3__[16] ;
+		mv_zero(__tmp_coord_array_3__, 16);
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_3__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[3] += (__x_xpd__[1][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[4] += (__x_xpd__[1][3] * __y_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_3__[5] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[6] += (__x_xpd__[2][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[7] += (__x_xpd__[2][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[8] += (__x_xpd__[2][3] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[9] += (__x_xpd__[2][4] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[10] += (__x_xpd__[2][5] * __y_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 8) != 0)) {
+				__tmp_coord_array_3__[11] += (__x_xpd__[3][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[12] += (__x_xpd__[3][1] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[13] += (__x_xpd__[3][2] * __y_xpd__[0][0]);
+				__tmp_coord_array_3__[14] += (__x_xpd__[3][3] * __y_xpd__[0][0]);
+
+			}
+			if (((x.m_gu & 16) != 0)) {
+				__tmp_coord_array_3__[15] += (__x_xpd__[4][0] * __y_xpd__[0][0]);
+
+			}
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
+				__tmp_coord_array_3__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
+				__tmp_coord_array_3__[3] += (__x_xpd__[0][0] * __y_xpd__[1][2]);
+				__tmp_coord_array_3__[4] += (__x_xpd__[0][0] * __y_xpd__[1][3]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_3__[5] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
+				__tmp_coord_array_3__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
+				__tmp_coord_array_3__[7] += ((__x_xpd__[1][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]));
+				__tmp_coord_array_3__[8] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[9] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_3__[11] += ((__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_3__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[13] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]) + (__x_xpd__[2][5] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[14] += ((__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]));
+
+			}
+			if (((x.m_gu & 8) != 0)) {
+				__tmp_coord_array_3__[15] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (__x_xpd__[3][0] * __y_xpd__[1][3]));
+
+			}
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[5] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
+				__tmp_coord_array_3__[6] += (__x_xpd__[0][0] * __y_xpd__[2][1]);
+				__tmp_coord_array_3__[7] += (__x_xpd__[0][0] * __y_xpd__[2][2]);
+				__tmp_coord_array_3__[8] += (__x_xpd__[0][0] * __y_xpd__[2][3]);
+				__tmp_coord_array_3__[9] += (__x_xpd__[0][0] * __y_xpd__[2][4]);
+				__tmp_coord_array_3__[10] += (__x_xpd__[0][0] * __y_xpd__[2][5]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_3__[11] += ((__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_3__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]));
+				__tmp_coord_array_3__[13] += ((__x_xpd__[1][3] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_3__[14] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][2] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][2]));
+
+			}
+			if (((x.m_gu & 4) != 0)) {
+				__tmp_coord_array_3__[15] += ((__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][2] * __y_xpd__[2][4]));
+
+			}
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[11] += (__x_xpd__[0][0] * __y_xpd__[3][0]);
+				__tmp_coord_array_3__[12] += (__x_xpd__[0][0] * __y_xpd__[3][1]);
+				__tmp_coord_array_3__[13] += (__x_xpd__[0][0] * __y_xpd__[3][2]);
+				__tmp_coord_array_3__[14] += (__x_xpd__[0][0] * __y_xpd__[3][3]);
+
+			}
+			if (((x.m_gu & 2) != 0)) {
+				__tmp_coord_array_3__[15] += ((__x_xpd__[1][1] * __y_xpd__[3][3]) + (__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]));
+
+			}
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			if (((x.m_gu & 1) != 0)) {
+				__tmp_coord_array_3__[15] += (__x_xpd__[0][0] * __y_xpd__[4][0]);
+
+			}
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_3__);
+		return __temp_var_1__;
+	}
+	mv add(const mv& x, const mv& y) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_4__[16] ;
+		mv_zero(__tmp_coord_array_4__, 16);
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_4__[0] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_4__[1] += __x_xpd__[1][0];
+			__tmp_coord_array_4__[2] += __x_xpd__[1][1];
+			__tmp_coord_array_4__[3] += __x_xpd__[1][2];
+			__tmp_coord_array_4__[4] += __x_xpd__[1][3];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_4__[5] += __x_xpd__[2][0];
+			__tmp_coord_array_4__[6] += __x_xpd__[2][1];
+			__tmp_coord_array_4__[7] += __x_xpd__[2][2];
+			__tmp_coord_array_4__[8] += __x_xpd__[2][3];
+			__tmp_coord_array_4__[9] += __x_xpd__[2][4];
+			__tmp_coord_array_4__[10] += __x_xpd__[2][5];
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_4__[11] += __x_xpd__[3][0];
+			__tmp_coord_array_4__[12] += __x_xpd__[3][1];
+			__tmp_coord_array_4__[13] += __x_xpd__[3][2];
+			__tmp_coord_array_4__[14] += __x_xpd__[3][3];
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_4__[15] += __x_xpd__[4][0];
+
+		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
+			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
+			__tmp_coord_array_4__[3] += __y_xpd__[1][2];
+			__tmp_coord_array_4__[4] += __y_xpd__[1][3];
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_4__[5] += __y_xpd__[2][0];
+			__tmp_coord_array_4__[6] += __y_xpd__[2][1];
+			__tmp_coord_array_4__[7] += __y_xpd__[2][2];
+			__tmp_coord_array_4__[8] += __y_xpd__[2][3];
+			__tmp_coord_array_4__[9] += __y_xpd__[2][4];
+			__tmp_coord_array_4__[10] += __y_xpd__[2][5];
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			__tmp_coord_array_4__[11] += __y_xpd__[3][0];
+			__tmp_coord_array_4__[12] += __y_xpd__[3][1];
+			__tmp_coord_array_4__[13] += __y_xpd__[3][2];
+			__tmp_coord_array_4__[14] += __y_xpd__[3][3];
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			__tmp_coord_array_4__[15] += __y_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_4__);
+		return __temp_var_1__;
+	}
+	mv subtract(const mv& x, const mv& y) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_5__[16] ;
+		mv_zero(__tmp_coord_array_5__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
+			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
+			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
+			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[1][3]);
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][0]);
+			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][1]);
+			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[2][2]);
+			__tmp_coord_array_5__[8] += (-1.0f * __y_xpd__[2][3]);
+			__tmp_coord_array_5__[9] += (-1.0f * __y_xpd__[2][4]);
+			__tmp_coord_array_5__[10] += (-1.0f * __y_xpd__[2][5]);
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			__tmp_coord_array_5__[11] += (-1.0f * __y_xpd__[3][0]);
+			__tmp_coord_array_5__[12] += (-1.0f * __y_xpd__[3][1]);
+			__tmp_coord_array_5__[13] += (-1.0f * __y_xpd__[3][2]);
+			__tmp_coord_array_5__[14] += (-1.0f * __y_xpd__[3][3]);
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			__tmp_coord_array_5__[15] += (-1.0f * __y_xpd__[4][0]);
+
+		}
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += __x_xpd__[1][0];
+			__tmp_coord_array_5__[2] += __x_xpd__[1][1];
+			__tmp_coord_array_5__[3] += __x_xpd__[1][2];
+			__tmp_coord_array_5__[4] += __x_xpd__[1][3];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[5] += __x_xpd__[2][0];
+			__tmp_coord_array_5__[6] += __x_xpd__[2][1];
+			__tmp_coord_array_5__[7] += __x_xpd__[2][2];
+			__tmp_coord_array_5__[8] += __x_xpd__[2][3];
+			__tmp_coord_array_5__[9] += __x_xpd__[2][4];
+			__tmp_coord_array_5__[10] += __x_xpd__[2][5];
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_5__[11] += __x_xpd__[3][0];
+			__tmp_coord_array_5__[12] += __x_xpd__[3][1];
+			__tmp_coord_array_5__[13] += __x_xpd__[3][2];
+			__tmp_coord_array_5__[14] += __x_xpd__[3][3];
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_5__[15] += __x_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
+		return __temp_var_1__;
+	}
+	scalar norm_e2(const mv& x) {
+		scalar __temp_var_1__;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][0] * __x_xpd__[2][0]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__temp_var_1__.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		return __temp_var_1__;
+	}
+	scalar norm_e(const mv& x) {
+		scalar e2;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			e2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			e2.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
+	mv unit_e(const mv& x) {
+		scalar e2;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			e2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			e2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			e2.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		scalar ie;
+		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
+		mv __temp_var_1__;
+		float __tmp_coord_array_6__[16] ;
+		mv_zero(__tmp_coord_array_6__, 16);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_6__[0] += (__x_xpd__[0][0] * ie.m_c[0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_6__[1] += (__x_xpd__[1][0] * ie.m_c[0]);
+			__tmp_coord_array_6__[2] += (__x_xpd__[1][1] * ie.m_c[0]);
+			__tmp_coord_array_6__[3] += (__x_xpd__[1][2] * ie.m_c[0]);
+			__tmp_coord_array_6__[4] += (__x_xpd__[1][3] * ie.m_c[0]);
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_6__[5] += (__x_xpd__[2][0] * ie.m_c[0]);
+			__tmp_coord_array_6__[6] += (__x_xpd__[2][1] * ie.m_c[0]);
+			__tmp_coord_array_6__[7] += (__x_xpd__[2][2] * ie.m_c[0]);
+			__tmp_coord_array_6__[8] += (__x_xpd__[2][3] * ie.m_c[0]);
+			__tmp_coord_array_6__[9] += (__x_xpd__[2][4] * ie.m_c[0]);
+			__tmp_coord_array_6__[10] += (__x_xpd__[2][5] * ie.m_c[0]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_6__[11] += (__x_xpd__[3][0] * ie.m_c[0]);
+			__tmp_coord_array_6__[12] += (__x_xpd__[3][1] * ie.m_c[0]);
+			__tmp_coord_array_6__[13] += (__x_xpd__[3][2] * ie.m_c[0]);
+			__tmp_coord_array_6__[14] += (__x_xpd__[3][3] * ie.m_c[0]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_6__[15] += (__x_xpd__[4][0] * ie.m_c[0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_6__);
+		return __temp_var_1__;
+	}
+	scalar norm_r2(const mv& x) {
+		scalar __temp_var_1__;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__temp_var_1__.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		return __temp_var_1__;
+	}
+	scalar norm_r(const mv& x) {
+		scalar r2;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			r2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			r2.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
+	}
+	mv unit_r(const mv& x) {
+		scalar r2;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			r2.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			r2.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			r2.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		scalar ir;
+		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
+		mv __temp_var_1__;
+		float __tmp_coord_array_7__[16] ;
+		mv_zero(__tmp_coord_array_7__, 16);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_7__[0] += (__x_xpd__[0][0] * ir.m_c[0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_7__[1] += (__x_xpd__[1][0] * ir.m_c[0]);
+			__tmp_coord_array_7__[2] += (__x_xpd__[1][1] * ir.m_c[0]);
+			__tmp_coord_array_7__[3] += (__x_xpd__[1][2] * ir.m_c[0]);
+			__tmp_coord_array_7__[4] += (__x_xpd__[1][3] * ir.m_c[0]);
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_7__[5] += (__x_xpd__[2][0] * ir.m_c[0]);
+			__tmp_coord_array_7__[6] += (__x_xpd__[2][1] * ir.m_c[0]);
+			__tmp_coord_array_7__[7] += (__x_xpd__[2][2] * ir.m_c[0]);
+			__tmp_coord_array_7__[8] += (__x_xpd__[2][3] * ir.m_c[0]);
+			__tmp_coord_array_7__[9] += (__x_xpd__[2][4] * ir.m_c[0]);
+			__tmp_coord_array_7__[10] += (__x_xpd__[2][5] * ir.m_c[0]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_7__[11] += (__x_xpd__[3][0] * ir.m_c[0]);
+			__tmp_coord_array_7__[12] += (__x_xpd__[3][1] * ir.m_c[0]);
+			__tmp_coord_array_7__[13] += (__x_xpd__[3][2] * ir.m_c[0]);
+			__tmp_coord_array_7__[14] += (__x_xpd__[3][3] * ir.m_c[0]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_7__[15] += (__x_xpd__[4][0] * ir.m_c[0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_7__);
+		return __temp_var_1__;
+	}
+	mv reverse(const mv& x) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_8__[16] ;
+		mv_zero(__tmp_coord_array_8__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_8__[0] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_8__[1] += __x_xpd__[1][0];
+			__tmp_coord_array_8__[2] += __x_xpd__[1][1];
+			__tmp_coord_array_8__[3] += __x_xpd__[1][2];
+			__tmp_coord_array_8__[4] += __x_xpd__[1][3];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_8__[5] += (-1.0f * __x_xpd__[2][0]);
+			__tmp_coord_array_8__[6] += (-1.0f * __x_xpd__[2][1]);
+			__tmp_coord_array_8__[7] += (-1.0f * __x_xpd__[2][2]);
+			__tmp_coord_array_8__[8] += (-1.0f * __x_xpd__[2][3]);
+			__tmp_coord_array_8__[9] += (-1.0f * __x_xpd__[2][4]);
+			__tmp_coord_array_8__[10] += (-1.0f * __x_xpd__[2][5]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_8__[11] += (-1.0f * __x_xpd__[3][0]);
+			__tmp_coord_array_8__[12] += (-1.0f * __x_xpd__[3][1]);
+			__tmp_coord_array_8__[13] += (-1.0f * __x_xpd__[3][2]);
+			__tmp_coord_array_8__[14] += (-1.0f * __x_xpd__[3][3]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_8__[15] += __x_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_8__);
+		return __temp_var_1__;
+	}
+	mv negate(const mv& x) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_9__[16] ;
+		mv_zero(__tmp_coord_array_9__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_9__[0] += (-1.0f * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_9__[1] += (-1.0f * __x_xpd__[1][0]);
+			__tmp_coord_array_9__[2] += (-1.0f * __x_xpd__[1][1]);
+			__tmp_coord_array_9__[3] += (-1.0f * __x_xpd__[1][2]);
+			__tmp_coord_array_9__[4] += (-1.0f * __x_xpd__[1][3]);
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_9__[5] += (-1.0f * __x_xpd__[2][0]);
+			__tmp_coord_array_9__[6] += (-1.0f * __x_xpd__[2][1]);
+			__tmp_coord_array_9__[7] += (-1.0f * __x_xpd__[2][2]);
+			__tmp_coord_array_9__[8] += (-1.0f * __x_xpd__[2][3]);
+			__tmp_coord_array_9__[9] += (-1.0f * __x_xpd__[2][4]);
+			__tmp_coord_array_9__[10] += (-1.0f * __x_xpd__[2][5]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_9__[11] += (-1.0f * __x_xpd__[3][0]);
+			__tmp_coord_array_9__[12] += (-1.0f * __x_xpd__[3][1]);
+			__tmp_coord_array_9__[13] += (-1.0f * __x_xpd__[3][2]);
+			__tmp_coord_array_9__[14] += (-1.0f * __x_xpd__[3][3]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_9__[15] += (-1.0f * __x_xpd__[4][0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_9__);
+		return __temp_var_1__;
+	}
+	mv dual(const mv& x) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_10__[16] ;
+		mv_zero(__tmp_coord_array_10__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_10__[15] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_10__[11] += (-1.0f * __x_xpd__[1][3]);
+			__tmp_coord_array_10__[12] += __x_xpd__[1][2];
+			__tmp_coord_array_10__[13] += __x_xpd__[1][0];
+			__tmp_coord_array_10__[14] += __x_xpd__[1][1];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_10__[5] += (-1.0f * __x_xpd__[2][5]);
+			__tmp_coord_array_10__[6] += (-1.0f * __x_xpd__[2][3]);
+			__tmp_coord_array_10__[7] += (-1.0f * __x_xpd__[2][4]);
+			__tmp_coord_array_10__[8] += (-1.0f * __x_xpd__[2][1]);
+			__tmp_coord_array_10__[9] += (-1.0f * __x_xpd__[2][2]);
+			__tmp_coord_array_10__[10] += (-1.0f * __x_xpd__[2][0]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_10__[1] += __x_xpd__[3][2];
+			__tmp_coord_array_10__[2] += __x_xpd__[3][3];
+			__tmp_coord_array_10__[3] += __x_xpd__[3][1];
+			__tmp_coord_array_10__[4] += (-1.0f * __x_xpd__[3][0]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_10__[0] += __x_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_10__);
+		return __temp_var_1__;
+	}
+	mv undual(const mv& x) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_11__[16] ;
+		mv_zero(__tmp_coord_array_11__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_11__[15] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_11__[11] += (-1.0f * __x_xpd__[1][3]);
+			__tmp_coord_array_11__[12] += __x_xpd__[1][2];
+			__tmp_coord_array_11__[13] += __x_xpd__[1][0];
+			__tmp_coord_array_11__[14] += __x_xpd__[1][1];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_11__[5] += (-1.0f * __x_xpd__[2][5]);
+			__tmp_coord_array_11__[6] += (-1.0f * __x_xpd__[2][3]);
+			__tmp_coord_array_11__[7] += (-1.0f * __x_xpd__[2][4]);
+			__tmp_coord_array_11__[8] += (-1.0f * __x_xpd__[2][1]);
+			__tmp_coord_array_11__[9] += (-1.0f * __x_xpd__[2][2]);
+			__tmp_coord_array_11__[10] += (-1.0f * __x_xpd__[2][0]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_11__[1] += __x_xpd__[3][2];
+			__tmp_coord_array_11__[2] += __x_xpd__[3][3];
+			__tmp_coord_array_11__[3] += __x_xpd__[3][1];
+			__tmp_coord_array_11__[4] += (-1.0f * __x_xpd__[3][0]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_11__[0] += __x_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_11__);
+		return __temp_var_1__;
+	}
+	mv inverse(const mv& x) {
+		scalar n;
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			n.m_c[0] += (__x_xpd__[0][0] * __x_xpd__[0][0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			n.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			n.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			n.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			n.m_c[0] += (__x_xpd__[4][0] * __x_xpd__[4][0]);
+
+		}
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		mv __temp_var_1__;
+		float __tmp_coord_array_12__[16] ;
+		mv_zero(__tmp_coord_array_12__, 16);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_12__[0] += (__x_xpd__[0][0] * in.m_c[0]);
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_12__[1] += (__x_xpd__[1][0] * in.m_c[0]);
+			__tmp_coord_array_12__[2] += (__x_xpd__[1][1] * in.m_c[0]);
+			__tmp_coord_array_12__[3] += (__x_xpd__[1][2] * in.m_c[0]);
+			__tmp_coord_array_12__[4] += (__x_xpd__[1][3] * in.m_c[0]);
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_12__[5] += (-1.0f * __x_xpd__[2][0] * in.m_c[0]);
+			__tmp_coord_array_12__[6] += (-1.0f * __x_xpd__[2][1] * in.m_c[0]);
+			__tmp_coord_array_12__[7] += (-1.0f * __x_xpd__[2][2] * in.m_c[0]);
+			__tmp_coord_array_12__[8] += (-1.0f * __x_xpd__[2][3] * in.m_c[0]);
+			__tmp_coord_array_12__[9] += (-1.0f * __x_xpd__[2][4] * in.m_c[0]);
+			__tmp_coord_array_12__[10] += (-1.0f * __x_xpd__[2][5] * in.m_c[0]);
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_12__[11] += (-1.0f * __x_xpd__[3][0] * in.m_c[0]);
+			__tmp_coord_array_12__[12] += (-1.0f * __x_xpd__[3][1] * in.m_c[0]);
+			__tmp_coord_array_12__[13] += (-1.0f * __x_xpd__[3][2] * in.m_c[0]);
+			__tmp_coord_array_12__[14] += (-1.0f * __x_xpd__[3][3] * in.m_c[0]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_12__[15] += (__x_xpd__[4][0] * in.m_c[0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_12__);
+		return __temp_var_1__;
+	}
+	mv gradeInvolution(const mv& x) {
+		mv __temp_var_1__;
+		float __tmp_coord_array_13__[16] ;
+		mv_zero(__tmp_coord_array_13__, 16);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_13__[0] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_13__[1] += (-1.0f * __x_xpd__[1][0]);
+			__tmp_coord_array_13__[2] += (-1.0f * __x_xpd__[1][1]);
+			__tmp_coord_array_13__[3] += (-1.0f * __x_xpd__[1][2]);
+			__tmp_coord_array_13__[4] += (-1.0f * __x_xpd__[1][3]);
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_13__[5] += __x_xpd__[2][0];
+			__tmp_coord_array_13__[6] += __x_xpd__[2][1];
+			__tmp_coord_array_13__[7] += __x_xpd__[2][2];
+			__tmp_coord_array_13__[8] += __x_xpd__[2][3];
+			__tmp_coord_array_13__[9] += __x_xpd__[2][4];
+			__tmp_coord_array_13__[10] += __x_xpd__[2][5];
+
+		}
+		if (((x.m_gu & 8) != 0)) {
+			__tmp_coord_array_13__[11] += (-1.0f * __x_xpd__[3][0]);
+			__tmp_coord_array_13__[12] += (-1.0f * __x_xpd__[3][1]);
+			__tmp_coord_array_13__[13] += (-1.0f * __x_xpd__[3][2]);
+			__tmp_coord_array_13__[14] += (-1.0f * __x_xpd__[3][3]);
+
+		}
+		if (((x.m_gu & 16) != 0)) {
+			__tmp_coord_array_13__[15] += __x_xpd__[4][0];
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_13__);
+		return __temp_var_1__;
+	}
+
+	// G2 functions:
+	namespace __G2_GENERATED__ {
+		void set(om& __x__, const point& __image_of_e1__, const point& __image_of_e2__, const point& __image_of_e3__, const point& __image_of_e0__) {
+			__x__.m_c[0] = __image_of_e1__.m_c[0];
+			__x__.m_c[4] = __image_of_e1__.m_c[1];
+			__x__.m_c[8] = __image_of_e1__.m_c[2];
+			__x__.m_c[12] = __image_of_e1__.m_c[3];
+			__x__.m_c[1] = __image_of_e2__.m_c[0];
+			__x__.m_c[5] = __image_of_e2__.m_c[1];
+			__x__.m_c[9] = __image_of_e2__.m_c[2];
+			__x__.m_c[13] = __image_of_e2__.m_c[3];
+			__x__.m_c[2] = __image_of_e3__.m_c[0];
+			__x__.m_c[6] = __image_of_e3__.m_c[1];
+			__x__.m_c[10] = __image_of_e3__.m_c[2];
+			__x__.m_c[14] = __image_of_e3__.m_c[3];
+			__x__.m_c[3] = __image_of_e0__.m_c[0];
+			__x__.m_c[7] = __image_of_e0__.m_c[1];
+			__x__.m_c[11] = __image_of_e0__.m_c[2];
+			__x__.m_c[15] = __image_of_e0__.m_c[3];
+			__x__.m_c[16] = ((__x__.m_c[5] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[4]));
+			__x__.m_c[22] = ((__x__.m_c[9] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[8]));
+			__x__.m_c[28] = ((__x__.m_c[1] * __x__.m_c[8]) + (-1.0f * __x__.m_c[9] * __x__.m_c[0]));
+			__x__.m_c[34] = ((-1.0f * __x__.m_c[1] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[0]));
+			__x__.m_c[40] = ((__x__.m_c[13] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[12]));
+			__x__.m_c[46] = ((-1.0f * __x__.m_c[9] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[8]));
+			__x__.m_c[17] = ((__x__.m_c[6] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[5]));
+			__x__.m_c[23] = ((-1.0f * __x__.m_c[6] * __x__.m_c[9]) + (__x__.m_c[10] * __x__.m_c[5]));
+			__x__.m_c[29] = ((-1.0f * __x__.m_c[10] * __x__.m_c[1]) + (__x__.m_c[2] * __x__.m_c[9]));
+			__x__.m_c[35] = ((__x__.m_c[14] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[13]));
+			__x__.m_c[41] = ((__x__.m_c[14] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[13]));
+			__x__.m_c[47] = ((__x__.m_c[14] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[13]));
+			__x__.m_c[18] = ((-1.0f * __x__.m_c[6] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[4]));
+			__x__.m_c[24] = ((-1.0f * __x__.m_c[10] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[8]));
+			__x__.m_c[30] = ((-1.0f * __x__.m_c[2] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[0]));
+			__x__.m_c[36] = ((__x__.m_c[2] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[0]));
+			__x__.m_c[42] = ((-1.0f * __x__.m_c[14] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[12]));
+			__x__.m_c[48] = ((-1.0f * __x__.m_c[14] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[12]));
+			__x__.m_c[19] = ((-1.0f * __x__.m_c[3] * __x__.m_c[4]) + (__x__.m_c[7] * __x__.m_c[0]));
+			__x__.m_c[25] = ((__x__.m_c[11] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[8]));
+			__x__.m_c[31] = ((-1.0f * __x__.m_c[11] * __x__.m_c[0]) + (__x__.m_c[3] * __x__.m_c[8]));
+			__x__.m_c[37] = ((-1.0f * __x__.m_c[3] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[0]));
+			__x__.m_c[43] = ((-1.0f * __x__.m_c[7] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[4]));
+			__x__.m_c[49] = ((-1.0f * __x__.m_c[11] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[8]));
+			__x__.m_c[20] = ((-1.0f * __x__.m_c[3] * __x__.m_c[5]) + (__x__.m_c[7] * __x__.m_c[1]));
+			__x__.m_c[26] = ((-1.0f * __x__.m_c[7] * __x__.m_c[9]) + (__x__.m_c[11] * __x__.m_c[5]));
+			__x__.m_c[32] = ((__x__.m_c[3] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[1]));
+			__x__.m_c[38] = ((-1.0f * __x__.m_c[3] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[1]));
+			__x__.m_c[44] = ((-1.0f * __x__.m_c[7] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[5]));
+			__x__.m_c[50] = ((-1.0f * __x__.m_c[11] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[9]));
+			__x__.m_c[21] = ((-1.0f * __x__.m_c[3] * __x__.m_c[6]) + (__x__.m_c[7] * __x__.m_c[2]));
+			__x__.m_c[27] = ((-1.0f * __x__.m_c[7] * __x__.m_c[10]) + (__x__.m_c[11] * __x__.m_c[6]));
+			__x__.m_c[33] = ((-1.0f * __x__.m_c[11] * __x__.m_c[2]) + (__x__.m_c[3] * __x__.m_c[10]));
+			__x__.m_c[39] = ((__x__.m_c[15] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[14]));
+			__x__.m_c[45] = ((-1.0f * __x__.m_c[7] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[6]));
+			__x__.m_c[51] = ((-1.0f * __x__.m_c[11] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[10]));
+			__x__.m_c[52] = ((__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[30] * __x__.m_c[5]));
+			__x__.m_c[56] = ((-1.0f * __x__.m_c[36] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[13]) + (__x__.m_c[42] * __x__.m_c[1]));
+			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[13]) + (__x__.m_c[48] * __x__.m_c[5]));
+			__x__.m_c[64] = ((__x__.m_c[30] * __x__.m_c[13]) + (__x__.m_c[36] * __x__.m_c[9]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]));
+			__x__.m_c[53] = ((__x__.m_c[32] * __x__.m_c[4]) + (__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[20] * __x__.m_c[8]));
+			__x__.m_c[57] = ((__x__.m_c[44] * __x__.m_c[0]) + (__x__.m_c[20] * __x__.m_c[12]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]));
+			__x__.m_c[61] = ((__x__.m_c[26] * __x__.m_c[12]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]) + (__x__.m_c[50] * __x__.m_c[4]));
+			__x__.m_c[65] = ((-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[12]) + (__x__.m_c[38] * __x__.m_c[8]));
+			__x__.m_c[54] = ((__x__.m_c[33] * __x__.m_c[5]) + (__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[27] * __x__.m_c[1]));
+			__x__.m_c[58] = ((-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[45] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[13]));
+			__x__.m_c[62] = ((__x__.m_c[51] * __x__.m_c[5]) + (-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[27] * __x__.m_c[13]));
+			__x__.m_c[66] = ((-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[39] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[13]));
+			__x__.m_c[55] = ((-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[0]) + (-1.0f * __x__.m_c[21] * __x__.m_c[8]));
+			__x__.m_c[59] = ((__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]));
+			__x__.m_c[63] = ((__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (-1.0f * __x__.m_c[51] * __x__.m_c[4]));
+			__x__.m_c[67] = ((-1.0f * __x__.m_c[33] * __x__.m_c[12]) + (-1.0f * __x__.m_c[39] * __x__.m_c[8]) + (__x__.m_c[51] * __x__.m_c[0]));
+			__x__.m_c[68] = ((-1.0f * __x__.m_c[55] * __x__.m_c[13]) + (__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[63] * __x__.m_c[1]) + (__x__.m_c[67] * __x__.m_c[5]));
+		}
+		void set(om& __x__, const omPoint& __y__) {
+			__x__.m_c[0] = __y__.m_c[0];
+			__x__.m_c[4] = __y__.m_c[1];
+			__x__.m_c[8] = __y__.m_c[2];
+			__x__.m_c[12] = __y__.m_c[3];
+			__x__.m_c[1] = __y__.m_c[4];
+			__x__.m_c[5] = __y__.m_c[5];
+			__x__.m_c[9] = __y__.m_c[6];
+			__x__.m_c[13] = __y__.m_c[7];
+			__x__.m_c[2] = __y__.m_c[8];
+			__x__.m_c[6] = __y__.m_c[9];
+			__x__.m_c[10] = __y__.m_c[10];
+			__x__.m_c[14] = __y__.m_c[11];
+			__x__.m_c[3] = __y__.m_c[12];
+			__x__.m_c[7] = __y__.m_c[13];
+			__x__.m_c[11] = __y__.m_c[14];
+			__x__.m_c[15] = __y__.m_c[15];
+			__x__.m_c[16] = ((__x__.m_c[5] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[4]));
+			__x__.m_c[22] = ((__x__.m_c[9] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[8]));
+			__x__.m_c[28] = ((-1.0f * __x__.m_c[9] * __x__.m_c[0]) + (__x__.m_c[1] * __x__.m_c[8]));
+			__x__.m_c[34] = ((-1.0f * __x__.m_c[1] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[0]));
+			__x__.m_c[40] = ((__x__.m_c[13] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[12]));
+			__x__.m_c[46] = ((-1.0f * __x__.m_c[9] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[8]));
+			__x__.m_c[17] = ((-1.0f * __x__.m_c[2] * __x__.m_c[5]) + (__x__.m_c[6] * __x__.m_c[1]));
+			__x__.m_c[23] = ((-1.0f * __x__.m_c[6] * __x__.m_c[9]) + (__x__.m_c[10] * __x__.m_c[5]));
+			__x__.m_c[29] = ((__x__.m_c[2] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[1]));
+			__x__.m_c[35] = ((__x__.m_c[14] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[13]));
+			__x__.m_c[41] = ((__x__.m_c[14] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[13]));
+			__x__.m_c[47] = ((-1.0f * __x__.m_c[10] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[9]));
+			__x__.m_c[18] = ((-1.0f * __x__.m_c[6] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[4]));
+			__x__.m_c[24] = ((__x__.m_c[6] * __x__.m_c[8]) + (-1.0f * __x__.m_c[10] * __x__.m_c[4]));
+			__x__.m_c[30] = ((-1.0f * __x__.m_c[2] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[0]));
+			__x__.m_c[36] = ((-1.0f * __x__.m_c[14] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[12]));
+			__x__.m_c[42] = ((__x__.m_c[6] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[4]));
+			__x__.m_c[48] = ((-1.0f * __x__.m_c[14] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[12]));
+			__x__.m_c[19] = ((__x__.m_c[7] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[4]));
+			__x__.m_c[25] = ((-1.0f * __x__.m_c[7] * __x__.m_c[8]) + (__x__.m_c[11] * __x__.m_c[4]));
+			__x__.m_c[31] = ((-1.0f * __x__.m_c[11] * __x__.m_c[0]) + (__x__.m_c[3] * __x__.m_c[8]));
+			__x__.m_c[37] = ((__x__.m_c[15] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[12]));
+			__x__.m_c[43] = ((-1.0f * __x__.m_c[7] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[4]));
+			__x__.m_c[49] = ((-1.0f * __x__.m_c[11] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[8]));
+			__x__.m_c[20] = ((-1.0f * __x__.m_c[3] * __x__.m_c[5]) + (__x__.m_c[7] * __x__.m_c[1]));
+			__x__.m_c[26] = ((-1.0f * __x__.m_c[7] * __x__.m_c[9]) + (__x__.m_c[11] * __x__.m_c[5]));
+			__x__.m_c[32] = ((-1.0f * __x__.m_c[11] * __x__.m_c[1]) + (__x__.m_c[3] * __x__.m_c[9]));
+			__x__.m_c[38] = ((__x__.m_c[15] * __x__.m_c[1]) + (-1.0f * __x__.m_c[3] * __x__.m_c[13]));
+			__x__.m_c[44] = ((-1.0f * __x__.m_c[7] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[5]));
+			__x__.m_c[50] = ((-1.0f * __x__.m_c[11] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[9]));
+			__x__.m_c[21] = ((__x__.m_c[7] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[6]));
+			__x__.m_c[27] = ((-1.0f * __x__.m_c[7] * __x__.m_c[10]) + (__x__.m_c[11] * __x__.m_c[6]));
+			__x__.m_c[33] = ((-1.0f * __x__.m_c[11] * __x__.m_c[2]) + (__x__.m_c[3] * __x__.m_c[10]));
+			__x__.m_c[39] = ((__x__.m_c[15] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[14]));
+			__x__.m_c[45] = ((__x__.m_c[15] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[14]));
+			__x__.m_c[51] = ((-1.0f * __x__.m_c[11] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[10]));
+			__x__.m_c[52] = ((__x__.m_c[30] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[9]));
+			__x__.m_c[56] = ((__x__.m_c[42] * __x__.m_c[1]) + (-1.0f * __x__.m_c[36] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[13]));
+			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[48] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[13]));
+			__x__.m_c[64] = ((__x__.m_c[36] * __x__.m_c[9]) + (__x__.m_c[30] * __x__.m_c[13]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]));
+			__x__.m_c[53] = ((__x__.m_c[32] * __x__.m_c[4]) + (__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[20] * __x__.m_c[8]));
+			__x__.m_c[57] = ((__x__.m_c[20] * __x__.m_c[12]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]) + (__x__.m_c[44] * __x__.m_c[0]));
+			__x__.m_c[61] = ((__x__.m_c[50] * __x__.m_c[4]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]) + (__x__.m_c[26] * __x__.m_c[12]));
+			__x__.m_c[65] = ((__x__.m_c[38] * __x__.m_c[8]) + (-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[12]));
+			__x__.m_c[54] = ((__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[5]));
+			__x__.m_c[58] = ((-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[21] * __x__.m_c[13]) + (__x__.m_c[45] * __x__.m_c[1]));
+			__x__.m_c[62] = ((-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[51] * __x__.m_c[5]) + (__x__.m_c[27] * __x__.m_c[13]));
+			__x__.m_c[66] = ((__x__.m_c[39] * __x__.m_c[9]) + (-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[13]));
+			__x__.m_c[55] = ((-1.0f * __x__.m_c[21] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[0]) + (-1.0f * __x__.m_c[33] * __x__.m_c[4]));
+			__x__.m_c[59] = ((-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]));
+			__x__.m_c[63] = ((__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (-1.0f * __x__.m_c[51] * __x__.m_c[4]));
+			__x__.m_c[67] = ((-1.0f * __x__.m_c[39] * __x__.m_c[8]) + (-1.0f * __x__.m_c[33] * __x__.m_c[12]) + (__x__.m_c[51] * __x__.m_c[0]));
+			__x__.m_c[68] = ((__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[63] * __x__.m_c[1]) + (__x__.m_c[67] * __x__.m_c[5]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]));
+		}
+		void set(omPoint& __x__, const om& __y__) {
+			__x__.m_c[0] = __y__.m_c[0];
+			__x__.m_c[1] = __y__.m_c[4];
+			__x__.m_c[2] = __y__.m_c[8];
+			__x__.m_c[3] = __y__.m_c[12];
+			__x__.m_c[4] = __y__.m_c[1];
+			__x__.m_c[5] = __y__.m_c[5];
+			__x__.m_c[6] = __y__.m_c[9];
+			__x__.m_c[7] = __y__.m_c[13];
+			__x__.m_c[8] = __y__.m_c[2];
+			__x__.m_c[9] = __y__.m_c[6];
+			__x__.m_c[10] = __y__.m_c[10];
+			__x__.m_c[11] = __y__.m_c[14];
+			__x__.m_c[12] = __y__.m_c[3];
+			__x__.m_c[13] = __y__.m_c[7];
+			__x__.m_c[14] = __y__.m_c[11];
+			__x__.m_c[15] = __y__.m_c[15];
+		}
+	} /* end of namespace __G2_GENERATED__ */
 
 
 	// algebra / user constants:
