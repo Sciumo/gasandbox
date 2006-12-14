@@ -167,9 +167,6 @@
 				RelativePath="..\libgasandbox\h3ga_util.cpp">
 			</File>
 			<File
-				RelativePath="..\libgasandbox\main.cpp">
-			</File>
-			<File
 				RelativePath="..\libgasandbox\mv_analyze.cpp">
 			</File>
 			<File

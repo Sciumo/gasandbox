@@ -5,7 +5,7 @@ ga {
 	pass: reference; // or value
 	return: value; // or reference
 	namespace: c3ga; // what namespace to put the ga in (if any)
-	inline: constructors set assign operators functions;// what to inline:
+	inline: constructors set assign operators functions; // what to inline: general_mv general_om
 	exception: throw ; // how to handle exceptions: [callback | ignore | throw] 
 	
 	debug_coordinate_string: disable; //enable or disable
@@ -231,6 +231,7 @@ mv apply_om(om x, mv y) {
 mv gradeInvolution(mv x) {
 	return ::g2bi::grade_involution(x);
 }
+
 
 /*
 normalizedPoint c3gaPoint(vectorE3GA l) {
