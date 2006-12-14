@@ -1,0 +1,12 @@
+Write documentation
+	Installing
+		Win32
+		Linux/MacOSX
+	Basic usage
+		what libraries do you need? See REQUIRED_LIBRARIES
+		libraries (regular, parse->ANTLR)
+	List of examples (copy from book + what libs they need)
+		
+	Todo list
+		
+Profile all examples

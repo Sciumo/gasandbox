@@ -1,3 +1,4 @@
+# Optical Motion Capture Data by Fontijne Production Services -- http://www.fpros.nl
 nbCams 4
 nbFrames 729
 cam 0
