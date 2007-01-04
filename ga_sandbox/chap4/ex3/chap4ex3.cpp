@@ -136,8 +136,8 @@ void display() {
 
 	// initialize the outermorphism
 	om M(
-		_vector(g_scale[0] * e1), 
-		_vector(g_scale[1] * e2), 
+		_vector(g_scale[0] * e1),
+		_vector(g_scale[1] * e2),
 		_vector(g_scale[2] * e3));
 
 	// render model
@@ -172,9 +172,11 @@ void display() {
 //		if (_vector(g_modelRotor * g_normals3D[i] * inverse(g_modelRotor)).e3() > 0) {
 		glDisable(GL_LIGHTING);
 
+// *!*HTML_TAG*!* normals
+
 		// compute the normals
 		e3ga::vector badNormal, goodNormal;
-		
+
 		badNormal = unit_e(apply_om(M, g_normals3D[i]));
 		goodNormal = unit_e(dual(apply_om(M, g_attitude3D[i])));
 
@@ -191,7 +193,7 @@ void display() {
 			glVertex3fv(centerPlusGoodNormal.getC(vector_e1_e2_e3));
 			glEnd();
 		}
-		if (g_drawBadNormal && 
+		if (g_drawBadNormal &&
 			(_Float(norm_e(centerPlusBadNormal - centerPlusGoodNormal)) > 0.01f)) {
 			glColor3f(1.0f, 0.0f, 0.0f); // red = bad normal
 			glBegin(GL_LINES);
@@ -223,7 +225,7 @@ void display() {
 		renderBitmapString(5, 25, font, "Scale e2:");
 		renderBitmapString(5, 5, font, "Scale e3:");
 
-		
+
 		const int height = 20;
 		const int baseY = 40;
 		glBegin(GL_QUADS);
@@ -263,8 +265,8 @@ void reshape(GLint width, GLint height) {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -322,7 +324,7 @@ void MouseButton(int button, int state, int x, int y) {
 	// first check sliders:
 	for (int i = 0; i < 3; i++) {
 		int _y  = g_viewportHeight - y;
-		if ((x >= g_scaleSliderLeft[i]) && (x <= g_scaleSliderRight[i]) && 
+		if ((x >= g_scaleSliderLeft[i]) && (x <= g_scaleSliderRight[i]) &&
 			(_y >= g_scaleSliderBottom[i]) && (_y <= g_scaleSliderTop[i])) {
 				g_scaleSlide[i] = true;
 				MouseMotion(x, y); // to immediately set the slider position
@@ -411,7 +413,7 @@ void renderModel(const std::string &modelName) {
 }
 
 void getGLUTmodel3D(const std::string &modelName) {
-	// DONT cull faces 
+	// DONT cull faces
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -420,8 +422,8 @@ void getGLUTmodel3D(const std::string &modelName) {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -482,7 +484,7 @@ void getGLUTmodel3D(const std::string &modelName) {
 			vtxIdx[i] = (int)g_vertices3D.size();
 			mv::Float x = bufferXY[idx];
 			mv::Float y = bufferXY[idx+1];
-			mv::Float z = bufferZY[idx+0]; 
+			mv::Float z = bufferZY[idx+0];
 			x -= (mv::Float)g_viewportWidth / 2;
 			y -= (mv::Float)g_viewportHeight / 2;
 			z -= (mv::Float)g_viewportWidth / 2;

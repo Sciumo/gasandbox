@@ -44,7 +44,7 @@ unsigned int g_imageWidth, g_imageHeight;
 
 // original image (read from file)
 std::vector<unsigned char>g_sourceImage;
-// color-converted image 
+// color-converted image
 std::vector<unsigned char>g_destImage;
 
 // GLUT state information
@@ -69,12 +69,14 @@ e3ga::vector g_RFcolors[3] = {
 // the index [0, 1, 2] of the color that will be modified by sampleColorAt()
 int g_sampleColorIdx = 0;
 
+
+// *!*HTML_TAG*!* colorSpaceConvert
 /**
 Converts colors in 'source' images to 'dest' image, according
 to the color frame 'IFcolors'
 */
 void colorSpaceConvert(
-					   const unsigned char *source, 
+					   const unsigned char *source,
 					   unsigned char *dest,
 					   unsigned int width, unsigned int height,
 					   const e3ga::vector *IFcolors,
@@ -155,7 +157,7 @@ void display() {
 	// factorizeBlade() find two vectors such that
 	// dual(white) == O[1] ^ O[2]
 	e3ga::vector O[2];
-	factorizeBlade(dual(white), O); 
+	factorizeBlade(dual(white), O);
 
 	const float PI2 = (float)(2.0f * M_PI);
 	const float STEP = 0.025f;
@@ -191,7 +193,7 @@ void display() {
 		glPixelZoom(1.0f, -1.0f);
 		glRasterPos2i(0, g_viewportHeight - 20);
 
-		GLsizei width = g_imageWidth; 
+		GLsizei width = g_imageWidth;
 		GLsizei height = g_imageHeight;
 		GLenum format = GL_RGB;
 		GLenum type = GL_UNSIGNED_BYTE;
@@ -241,7 +243,7 @@ void display() {
 		drawRectangle(left, top, width, height);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glLineWidth(1.0f);
-		
+
 	}
 
 
@@ -261,7 +263,7 @@ void reshape(GLint width, GLint height) {
 	g_viewportHeight = height;
 
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 void sampleColorAt(int x, int y) {
@@ -280,7 +282,7 @@ void sampleColorAt(int x, int y) {
 			g_imageWidth, g_imageHeight, g_IFcolors, g_RFcolors);
 
 		// redraw viewport
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 }
 
@@ -319,7 +321,7 @@ void loadRawImage(const char *filename) {
 		fprintf(stderr, "Could not read '%s'.\n", filename);
 		exit(-1);
 	}
-	
+
 	fclose(F);
 
 	colorSpaceConvert(&(g_sourceImage[0]), &(g_destImage[0]),

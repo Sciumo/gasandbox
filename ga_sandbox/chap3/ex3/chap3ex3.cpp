@@ -68,6 +68,7 @@ e3ga::vector g_vectors[g_nbVectors] = {
 // the three reciprocal vectors:
 e3ga::vector g_recipVectors[g_nbVectors];
 
+// *!*HTML_TAG*!* display
 void display() {
 	// Update the reciprocal vectors
 	// The reciprocalFrame() function is in libgasandbox/e3ga_util.cpp
@@ -179,7 +180,7 @@ void reshape(GLint width, GLint height) {
 	g_viewportHeight = height;
 
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 
@@ -189,7 +190,7 @@ e3ga::vector vectorAtDepth(double depth, const e3ga::vector &v2d) {
 		return e3ga::vector();
 	}
 
-	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 + 
+	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 +
 		(depth * (double)v2d.e2() * GLpick::g_frustumHeight) / (g_viewportHeight * GLpick::g_frustumNear) * e2);
 }
 
@@ -216,14 +217,14 @@ void MouseButton(int button, int state, int x, int y) {
 }
 
 void MouseMotion(int x, int y) {
-	// get mouse position, motion 
+	// get mouse position, motion
 	e3ga::vector mousePos = mousePosToVector(x, y);
 	e3ga::vector motion = _vector(mousePos - g_prevMousePos);
 	if (g_rotateModel) {
 		// update rotor
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
-		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);		
+		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
 	else if ((g_dragObject >= 1) && (g_dragObject <= 3)) {
 		// add motion to vector:
@@ -234,9 +235,9 @@ void MouseMotion(int x, int y) {
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
-		
+
 		// redraw viewport
-		glutPostRedisplay();	
+		glutPostRedisplay();
 
 }
 

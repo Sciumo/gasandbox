@@ -51,9 +51,9 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector
 
 void rotorToMatrix(const rotor &R, mv::Float M[9]) {
 	mv::Float qw = _Float(R);
-	mv::Float qx = -R.e2e3(); 
-	mv::Float qy = -R.e3e1(); 
-	mv::Float qz = -R.e1e2(); 
+	mv::Float qx = -R.e2e3();
+	mv::Float qy = -R.e3e1();
+	mv::Float qz = -R.e1e2();
 
 	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
 	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
@@ -108,8 +108,8 @@ rotor matrixToRotor(const mv::Float M[9]) {
 	}
 
 	mv::Float s = (mv::Float) sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-	
-	
+
+
 	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
 }
 
@@ -187,7 +187,7 @@ bivector log(const rotor &R) {
 	if (R2 <= 0.0) {
 		if (_Float(R) < 0)  // this means the user ask for log(-1):
 			return _bivector((float)M_PI * (e1 ^ e2)); // we return a 360 degree rotation in an arbitrary plane
-		else 
+		else
 			return bivector();  // return log(1) = 0
 	}
 
@@ -211,7 +211,7 @@ rotor exp(const bivector &x) {
 }
 
 
-
+// *!*HTML_TAG*!* reciprocal
 void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
 	if (nbVectors == 0) return; // nothing to do
 	else if (nbVectors == 1) {
@@ -225,7 +225,7 @@ void reciprocalFrame(const e3ga::vector *IF, e3ga::vector *RF, int nbVectors) {
 		// compute pseudoscalar 'I' of space spanned by input frame:
 		mv I = IF[0];
 		for (int i = 1; i < nbVectors; i++) I ^= IF[i];
-		if (_Float(norm_r2(I)) == 0.0) 
+		if (_Float(norm_r2(I)) == 0.0)
 			throw std::string("reciprocalFrame(): vectors are not independent");
 
 		// compute inverse of 'I':
@@ -257,26 +257,26 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 		k = T.m_grade;
 	}
 	mv::Float s = (k == 0) ? _Float(X): _Float(norm_e(X));
-	
+
 	// detect non-blades
 	if (k < 0) throw -1;
-	
+
 	// set scale of output, no matter what:
 	mv::Float scale = s;
-	
+
 	// detect null-blades, scalar-blades
 	if ((s == 0.0) || (k == 0))
 	    return scale;
-	
-	
+
+
 	// get largest basis blade, basis vectors
 	unsigned int E;
 	int Eidx = 0;
 	X.largestBasisBlade(E);
-	
+
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
-	
+
 	mv::Float coords[3] = {0.0f, 0.0f, 0.0f};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
@@ -290,14 +290,14 @@ mv::Float factorizeBlade(const mv &X, vector factor[], int gradeOfX /* = -1 */) 
 
 	    // project basis vector ei, normalize projection:
 	    factor[i] = _vector(unit_e(lcont(lcont(ei, Bc), Bc))); // no inverse(Bc) required, since Bc is always unit
-	    
+
 	    // remove f[i] from Bc
 	    Bc = lcont(factor[i], Bc);
 	}
-	
+
 	// last factor = what is left of the input blade
 	factor[k-1] = _vector(unit_e(Bc)); // already normalized, but renormalize to remove any FP round-off error
-	
+
 	return scale;
 }
 
@@ -324,7 +324,7 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 		for (int i = 0; i <= 3; i++) {
 			if ((X.gu() & (1 << i)) == 0) continue;
 			else {
-				// square, sum 
+				// square, sum
 				mv::Float l = C[0] * C[0];
 				int s = mv_gradeSize[i];
 				for (int j = 1; j < s; j++) l = C[j] * C[j];
@@ -352,10 +352,10 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 // todo: integrate into G2
 /**
 Returns grade usage of multivector.
-The returned integer is a bitwise or of 
-GRADE_0 = 1, 
-GRADE_1 = 2, 
-GRADE_N = 1 << (N) 
+The returned integer is a bitwise or of
+GRADE_0 = 1,
+GRADE_1 = 2,
+GRADE_N = 1 << (N)
 constants.
 */
 mv grade(const mv &X, float epsilon /* = 1e-7 */);
@@ -369,7 +369,7 @@ mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = 
 			size = mv_gradeSize[g];
 			iX -= size;
 			cptr = X.m_c + iX;
-			for (i = 0; i < size; i++) 
+			for (i = 0; i < size; i++)
 				if ((cptr[i] > epsilon) || (-cptr[i] > epsilon)) {
 					if (gradeIdx) *gradeIdx = g;
 					return mv((unsigned int)(1 << g), cptr);
@@ -387,9 +387,9 @@ mv takeGrade(const mv &X, int gradeUsageBitmap) {
 
 	// determine what the grage usage 'gu' of the result should be:
 	if (gradeUsageBitmap = ((gua = X.gu()) & gradeUsageBitmap)) { // only execute if any grade will be present in the result
-		mv::Float C[8]; 
-		mv::Float *bc; 
-		const mv::Float *ac; 
+		mv::Float C[8];
+		mv::Float *bc;
+		const mv::Float *ac;
 
 		bc = C; ac = X.m_c; // pointers to the coordinates of source (ac) and result (bc)
 		for (int i = 1; i <= gradeUsageBitmap; i = i << 1) { // for each grade that is possibly in the result
@@ -424,7 +424,7 @@ inline mv randomVector() {
 	return mv(GRADE_1, c);
 }
 
-/** 
+/**
 Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
 If grade < 0, then a random grade is picked
 
@@ -432,9 +432,9 @@ Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something (license issues?)
 */
 mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
-	if (grade < 0) 
+	if (grade < 0)
 		grade = rand() % 4;
-	
+
 
 	if (grade == 0) {
 		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
@@ -530,7 +530,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		return;
 	}
 
-	// init meet 
+	// init meet
 	m = 1.0f;
 	int Em = ((ga + gb - gd) >> 1);
 
@@ -548,7 +548,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 	for (unsigned int i = 0; i < 3; i++) {
 		// compute next factor 'c'
-		mv c = lcont(lcont(e[i], s), s);		
+		mv c = lcont(lcont(e[i], s), s);
 
 		// check if 'c' is OK to use:
 		if (c.largestCoordinate() < largeEpsilon)
@@ -563,7 +563,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		// if 'c' has enough of it in 'ca', then add to meet
 		if (cp.largestCoordinate() > largeEpsilon) {
 			m = op(m, cp);
-			Em--;	
+			Em--;
 			if (Em == 0) {
 				j = op(d, m);
 				m = unit_e(m);
@@ -576,7 +576,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 		if (cr.largestCoordinate() > largeEpsilon) {
 			j = lcont(cr, j);
-			Ej--;	
+			Ej--;
 			if (Ej == 0) {
 				m = lcont(d, j);
 				m = unit_e(m);
