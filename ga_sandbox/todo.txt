@@ -1,3 +1,6 @@
+Profile all examples
+vs2005 projects?
+
 Write documentation
 	Installing
 		Win32
@@ -9,4 +12,3 @@ Write documentation
 		
 	Todo list
 		
-Profile all examples
