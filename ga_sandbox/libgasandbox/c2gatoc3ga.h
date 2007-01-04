@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifndef _C2GA_TO_C3GA_H_
 #define _C2GA_TO_C3GA_H_

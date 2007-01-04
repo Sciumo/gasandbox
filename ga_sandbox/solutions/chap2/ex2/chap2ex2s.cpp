@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -78,6 +78,8 @@ void getGLUTmodel2D(const std::string &modelName);
 
 
 
+// *!*HTML_TAG*!* display
+// SPOILER WARNING: below is the solution to Chapter 2, exercise 2.
 void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -121,11 +123,6 @@ void display() {
 				g_vertices2D[g_polygons2D[i][j]].e2());
 		glEnd();
 	}
-
-
-
-
-
 
 	glutSwapBuffers();
 }

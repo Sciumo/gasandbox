@@ -13,7 +13,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifndef _C3GA_PARSE_H_
 #define _C3GA_PARSE_H_

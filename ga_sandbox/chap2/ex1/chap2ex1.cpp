@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -37,7 +37,7 @@ using namespace mv_draw;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 2, Example 1: Drawing Bivectors";
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
@@ -45,6 +45,7 @@ int g_GLUTmenu;
 bool g_drawParallelogram = true;
 
 
+// *!*HTML_TAG*!* display
 void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -58,36 +59,36 @@ void display() {
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	
+
 	// we store the label positions & text here:
 	std::vector<std::string> labelString;
 	std::vector<e2ga::vector> labelPos;
-	
-	
+
+
 	// how many bivectors? what spacing between them?:
 	const float entryWidth = 2.75f;
 	const float entryHeight = 3.5f;
 	const int nbBivectorX = 6;
 	const int nbBivectorY = 4;
-	
+
 	// scale / translate to right transform:
 	const float scale = 40.0f;
 	glScalef(scale, scale, scale);
 	glTranslatef(entryWidth, ((float)nbBivectorY - 0.5f) * entryHeight, 0.0f);
-	
+
 	int posX = 0;
-	
+
 	e2ga::vector v1, v2, v1_plus_v2;
 	bivector B;
 
 	double step = 2 * M_PI / (nbBivectorX * nbBivectorY);
 	for (double a = 0; a < 2 * M_PI; a += step) {
-		// vector 1 is fixed to e1 	
+		// vector 1 is fixed to e1
 		v1 = e1;
-		
+
 		// compute vector 2:
 		v2 = cos(a) * e1 + sin(a) * e2;
 
@@ -99,7 +100,7 @@ void display() {
 		draw(v1);
 		glColor3f(0.0f, 1.0f, 0.0f);
 		draw(v2);
-		
+
 		// draw outer product v1^v2:
 		glColor3f(0.0f, 0.0f, 1.0f);
 		if (!g_drawParallelogram) {
@@ -118,8 +119,8 @@ void display() {
 			glVertex2f(v2.e1(), v2.e2());
 			glEnd();
 		}
-		
-		
+
+
 		// store label of bivector:
 		{
 			labelString.push_back(B.toString());
@@ -127,7 +128,7 @@ void display() {
 			viewportCoordinates(e3ga::_vector(0.35f * entryHeight * e3ga::e2).getC(e3ga::vector_e1_e2_e3), pos);
 			labelPos.push_back(e2ga::vector(vector_e1_e2, pos));
 		}
-		
+
 		// translate to next entry:
 		glTranslatef(entryWidth, 0.0f, 0.0f);
 		posX++;
@@ -135,11 +136,11 @@ void display() {
 			posX = 0;
 			glTranslatef(-(float)nbBivectorX * entryWidth, -entryHeight, 0.0f);
 		}
-	
+
 	}
-		
+
 	glPopMatrix();
-	
+
 	// draw the labels:
 	glColor3f(0.2f, 0.2f, 0.2f);
 	void *font = GLUT_BITMAP_HELVETICA_12;
@@ -147,9 +148,9 @@ void display() {
 		float w = getBitmapStringWidth(font, labelString[i].c_str());
 		renderBitmapString(labelPos[i].e1() - 0.45f * w, labelPos[i].e2(), font, labelString[i].c_str());
 	}
-	
-	
-	glutSwapBuffers();	
+
+
+	glutSwapBuffers();
 }
 
 void reshape(GLint width, GLint height) {
@@ -163,7 +164,7 @@ void menuCallback(int value) {
 	g_drawParallelogram = value != 0;
 
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 
@@ -177,11 +178,11 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	
+
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	glutAddMenuEntry("disc", 0);
 	glutAddMenuEntry("parallelogram", 1);
@@ -190,6 +191,6 @@ int main(int argc, char*argv[]) {
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	glutMainLoop();
-	
-	return 0;	
+
+	return 0;
 }

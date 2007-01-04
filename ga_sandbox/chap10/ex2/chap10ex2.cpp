@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -189,8 +189,8 @@ void display() {
 		glVertex3fv(g_inputVectors[i].getC(vector_e1_e2_e3));
 		glEnd();
 	}
-	
-	// draw the input points 
+
+	// draw the input points
 	glPointSize(5.0);
 	if (GLpick::g_pickActive) glLoadName(NB_INPUT_VECTORS);
 	glColor3f(1.0f, 0.0f, 0.0f);

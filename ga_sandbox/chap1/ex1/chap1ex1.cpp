@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -39,7 +39,7 @@ using namespace mv_draw;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 1, Example 1: An Example in Geometric Algebra";
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
@@ -60,12 +60,12 @@ normalizedPoint g_points[NB_POINTS] = {
 	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.356756*e1 - 0.881980*e2))),
 	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.725786*e1 + 0.934177*e2 - 0.366154*e3))),
 	_normalizedPoint(c3gaPoint(_vectorE3GA(2.612482*e1 + 1.495455*e2 - 2.704073*e3))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(2.218644*e1 + 0.425753*e2 - 1.780935*e3))), 	
-	_normalizedPoint(c3gaPoint(_vectorE3GA(0.865897*e1 + 0.629159*e2 - 1.438985*e3))), 	
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.218644*e1 + 0.425753*e2 - 1.780935*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(0.865897*e1 + 0.629159*e2 - 1.438985*e3))),
 	_normalizedPoint(c3gaPoint(_vectorE3GA(2.846445*e1 - 1.112365*e2 - 0.366769*e3)))
 };
-  
- 
+
+
 const int LINE_POINT_IDX = 0;
 const int CIRCLE_POINT_IDX = 2;
 const int PLANE_POINT_IDX = 5;
@@ -75,6 +75,7 @@ const int PLANE_POINT_IDX = 5;
 int g_dragPoint = -1;
 float g_dragDistance = -1.0f;
 
+// *!*HTML_TAG*!* display
 void display() {
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -139,18 +140,18 @@ void display() {
 		sphere P = _sphere(dual(p1 - 5.0f * ni));
 
 		// draw line (red)
-		glColor3fm(1.0f, 0.0f, 0.0f); 	
+		glColor3fm(1.0f, 0.0f, 0.0f);
 		draw(L);
 		// draw cicle (green)
-		glColor3fm(0.0f, 1.0f, 0.0f);	
+		glColor3fm(0.0f, 1.0f, 0.0f);
 		draw(C);
 
 		// draw reflected line (magenta)
-		glColor3fm(1.0f, 0.0f, 1.0f);	
+		glColor3fm(1.0f, 0.0f, 1.0f);
 		draw(-dual(P) * L * inverse(dual(P)));
 
 		// draw reflected circle (blue)
-		glColor3fm(0.0f, 0.0f, 1.0f);	
+		glColor3fm(0.0f, 0.0f, 1.0f);
 		draw(-dual(P) * C * inverse(dual(P)));
 
 		// compute rotation versor:
@@ -158,31 +159,31 @@ void display() {
 		TRversor R = _TRversor(exp(0.5f * phi * dual(L)));
 
 		// draw rotated cicle (green)
-		glColor3fm(0.0f, 1.0f, 0.0f);	
+		glColor3fm(0.0f, 1.0f, 0.0f);
 		draw(R * C * inverse(R));
 
 		// draw reflected, rotated circle (blue)
-		glColor3fm(0.0f, 0.0f, 1.0f);	
+		glColor3fm(0.0f, 0.0f, 1.0f);
 		draw(-dual(P) * R * C * inverse(R) * inverse(dual(P)));
 
 		// draw interpolated circles
 		dualLine LR = log(R); // get log of R
-		for (float alpha = 0; alpha < 1.0; alpha += 0.1f) 
+		for (float alpha = 0; alpha < 1.0; alpha += 0.1f)
 		{
 			// compute interpolated rotor
-			TRversor iR = _TRversor(exp(alpha * LR)); 
+			TRversor iR = _TRversor(exp(alpha * LR));
 
 			// draw rotated circle (light green)
-			glColor3fm(0.5f, 1.0f, 0.5f);	
+			glColor3fm(0.5f, 1.0f, 0.5f);
 			draw(iR * C * inverse(iR));
 
 			// draw reflected, rotated circle (light blue)
-			glColor3fm(0.5f, 0.5f, 1.0f);	
+			glColor3fm(0.5f, 0.5f, 1.0f);
 			draw(-dual(P) * iR * C * inverse(iR) * inverse(dual(P)));
 		}
 
 		// draw plane (yellow)
-		glColor4fm(1.0f, 1.0f, 0.0f, 0.5f); 	
+		glColor4fm(1.0f, 1.0f, 0.0f, 0.5f);
 		draw(P);
 	}
 
@@ -272,7 +273,7 @@ void MouseMotion(int x, int y) {
 		vectorE3GA t = vectorAtDepth(g_dragDistance, motion);
 		normalizedTranslator T = exp(_freeVector(-0.5f * inverse(g_modelRotor) * (t ^ ni) * g_modelRotor));
 
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				_point(T * g_points[g_dragPoint] * inverse(T));
 
 		mv_analyze::mvAnalysis A(g_points[g_dragPoint]);
@@ -295,14 +296,14 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	
+
 	glutMainLoop();
 
-	return 0;	
+	return 0;
 }

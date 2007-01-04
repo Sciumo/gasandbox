@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -106,7 +106,7 @@ void display() {
 		// when the process has been 'asleep' for a long time, simply skip:
 		if (currentTime - g_startTime > interpolationTime)
 			g_startTime = currentTime;
-		
+
 		// start new interpolation
 		copyDestToSource();
 		initRandomDest();
@@ -160,7 +160,7 @@ void display() {
 	glPushMatrix();
 		// translate to origin:
 		glTranslatef(pos.e1(), pos.e2(), pos.e3());
-	
+
 		// draw the frame
 		glColor3fm(1.0f, 0.0f, 0.0f);
 		draw(imageOfE1);
@@ -178,7 +178,7 @@ void display() {
 		glPushMatrix();
 			// translate to origin:
 			glTranslatef(g_posTrail[i].e1(), g_posTrail[i].e2(), g_posTrail[i].e3());
-		
+
 			// draw the frame
 			glColor4fm(a, 0.0f, 0.0f, a);
 			draw(g_positionTrailE1[i]);
@@ -206,7 +206,7 @@ void display() {
 			g_positionTrailE3.erase(g_positionTrailE3.begin());
 			g_posTrail.erase(g_posTrail.begin());
 		}
-		
+
 	}
 
 

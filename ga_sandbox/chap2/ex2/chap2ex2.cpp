@@ -12,7 +12,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// Daniel Fontijne -- fontijne@science.uva.nl
+// Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 #ifdef WIN32
 #include <windows.h>
@@ -36,7 +36,7 @@ using namespace e2ga;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 2, Example 2: Hidden Surface Removal";
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
@@ -81,15 +81,15 @@ void getGLUTmodel2D(const std::string &modelName);
 void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	// get model, if required:
 	if (g_initModelRequired) {
 		g_initModelRequired = false;
 		getGLUTmodel2D(g_modelName);
 	}
-	
+
 	glEnable(GL_DEPTH_TEST);
-	
+
 	// DONT cull faces (we will do this ourselves!)
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES)
@@ -105,28 +105,23 @@ void display() {
 		const e2ga::vector &v1 = g_vertices2D[g_polygons2D[i][0]];
 		const e2ga::vector &v2 = g_vertices2D[g_polygons2D[i][1]];
 		const e2ga::vector &v3 = g_vertices2D[g_polygons2D[i][2]];
-		
-		// Exercise: 
+
+		// Exercise:
 		// Insert code to remove back-facing polygons here.
 		// You can extract the e1^e2 coordinate of a bivector 'B' using:
 		// float c = B.e1e2();
 		// ...
-		
+
 		// draw polygon
 		glBegin(GL_POLYGON);
 		for (unsigned int j = 0; j < g_polygons2D[i].size(); j++)
 			glVertex2f(
-				g_vertices2D[g_polygons2D[i][j]].e1(), 
+				g_vertices2D[g_polygons2D[i][j]].e1(),
 				g_vertices2D[g_polygons2D[i][j]].e2());
 		glEnd();
 	}
 
-	
-	
-	
-	
-	
-	glutSwapBuffers();	
+	glutSwapBuffers();
 }
 
 void reshape(GLint width, GLint height) {
@@ -142,9 +137,9 @@ void reshape(GLint width, GLint height) {
 
 	// refresh model on next redraw
 	g_initModelRequired = true;
-	
+
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 e3ga::vector mousePosToVector(int x, int y) {
@@ -168,24 +163,24 @@ void MouseButton(int button, int state, int x, int y) {
 
 void MouseMotion(int x, int y) {
 	if (g_rotateModel) {
-		// get mouse position, motion 
+		// get mouse position, motion
 		e3ga::vector mousePos = mousePosToVector(x, y);
 		e3ga::vector motion = _vector(mousePos - g_prevMousePos);
-		
+
 		// update rotor
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
 		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
-		
-		
+
+
 		// remember mouse pos for next motion:
 		g_prevMousePos = mousePos;
-		
+
 		// refresh model on next redraw
 		g_initModelRequired = true;
-		
+
 		// redraw viewport
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 }
 
@@ -206,24 +201,24 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	
-	
+
+
 	g_GLUTmenu = glutCreateMenu(menuCallback);
 	for (int i = 0; g_modelNames[i]; i++)
 		glutAddMenuEntry(g_modelNames[i], i);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
-	
+
 
 	glutMainLoop();
-	
-	return 0;	
+
+	return 0;
 }
 
 void getGLUTmodel2D(const std::string &modelName) {
@@ -231,25 +226,25 @@ void getGLUTmodel2D(const std::string &modelName) {
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+
 	// setup projection & transform for the model:
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
 	const float screenWidth = 1600.0f;
 	glFrustum(
-		-(float)g_viewportWidth / screenWidth, (float)g_viewportWidth / screenWidth, 
-		-(float)g_viewportHeight / screenWidth, (float)g_viewportHeight / screenWidth, 
+		-(float)g_viewportWidth / screenWidth, (float)g_viewportWidth / screenWidth,
+		-(float)g_viewportHeight / screenWidth, (float)g_viewportHeight / screenWidth,
 		1.0, 100.0);
-	
+
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
 	glTranslatef(0.0, 0.0, -10.0f);
-	
+
 	rotorGLMult(g_modelRotor);
-	
-	
+
+
 	glColor3f(0.0f, 0.0f, 0.0f);
 
 	// buffer for OpenGL feedback.
@@ -261,11 +256,11 @@ void getGLUTmodel2D(const std::string &modelName) {
 	// vertex 2 x, vertex 2 y
 	// GL_POLYGON_TOKEN etc etc
 	std::vector<GLfloat> buffer(300000); // more than enough for the GLUT primitives
-	
+
 	// switch into feedback mode:
 	glFeedbackBuffer((GLsizei)buffer.size(), GL_2D, &(buffer[0]));
 	glRenderMode(GL_FEEDBACK);
-	
+
 	// render model
 	if (modelName == "teapot")
 		glutSolidTeapot(1.0);
@@ -285,13 +280,13 @@ void getGLUTmodel2D(const std::string &modelName) {
 		glutSolidTetrahedron();
 	else if (modelName == "icosahedron")
 		glutSolidIcosahedron();
-	
+
 	int nbFeedback = glRenderMode(GL_RENDER);
-	
-	// parse the buffer:		
+
+	// parse the buffer:
 	g_polygons2D.clear();
 	g_vertices2D.clear();
-	
+
 	int idx = 0;
 	while (idx < nbFeedback) {
 		// check for polygon:
@@ -300,12 +295,12 @@ void getGLUTmodel2D(const std::string &modelName) {
 			break;
 		}
 		idx++;
-		
+
 		// number of vertices (3)
 		int n = (int)buffer[idx];
 		idx++;
 		std::vector<int> vtxIdx(n);
-		
+
 		// get vertices:
 		// Maybe todo later: don't duplicate identical vertices  . . .
 		for (int i = 0; i < n; i++) {
@@ -313,7 +308,7 @@ void getGLUTmodel2D(const std::string &modelName) {
 			g_vertices2D.push_back(_vector(buffer[idx] * e1 + buffer[idx+1] * e2));
 			idx += 2;
 		}
-		
+
 		g_polygons2D.push_back(vtxIdx);
 	}
 
@@ -321,7 +316,7 @@ void getGLUTmodel2D(const std::string &modelName) {
 		printf("Model: %s, #polygons: %d, #vertices: %d\n", modelName.c_str(), g_polygons2D.size(), g_vertices2D.size());
 		g_prevStatisticsModelName = modelName;
 	}
-	
+
 	// restore transform & projection:
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
