@@ -120,6 +120,8 @@ void display() {
 	rotorGLMult(g_modelRotor);
 
 
+// *!*HTML_TAG*!* display
+
 	mv M1 = g_M1;
 	mv M2 = g_M2;
 
@@ -199,7 +201,7 @@ void reshape(GLint width, GLint height) {
 	g_viewportHeight = height;
 
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 }
 
 
@@ -209,7 +211,7 @@ e3ga::vector vectorAtDepth(double depth, const e3ga::vector &v2d) {
 		return e3ga::vector();
 	}
 
-	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 + 
+	return _vector((depth * (double)v2d.e1() * GLpick::g_frustumWidth) / (g_viewportWidth * GLpick::g_frustumNear) * e1 +
 		(depth * (double)v2d.e2() * GLpick::g_frustumHeight) / (g_viewportHeight * GLpick::g_frustumNear) * e2);
 }
 
@@ -237,14 +239,14 @@ void MouseButton(int button, int state, int x, int y) {
 }
 
 void MouseMotion(int x, int y) {
-	// get mouse position, motion 
+	// get mouse position, motion
 	e3ga::vector mousePos = mousePosToVector(x, y);
 	e3ga::vector motion = _vector(mousePos - g_prevMousePos);
 	if (g_rotateModel) {
 		// update rotor
 		if (g_rotateModelOutOfPlane)
 			g_modelRotor = _rotor(e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
-		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);		
+		else g_modelRotor = _rotor(e3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
 	else if ((g_dragObject >= 1) && (g_dragObject <= 2)) {
 		//rotor R = _rotor(inverse(g_modelRotor) * e3ga::exp(0.005f * (motion ^ e3ga::e3)) * g_modelRotor);
@@ -259,9 +261,9 @@ void MouseMotion(int x, int y) {
 
 	// remember mouse pos for next motion:
 	g_prevMousePos = mousePos;
-		
+
 	// redraw viewport
-	glutPostRedisplay();	
+	glutPostRedisplay();
 
 }
 
@@ -329,7 +331,7 @@ void testMeetJoin() {
 			printf("Ah 1!\n");
 		if (_Float(norm_e2(Y << J)) < 0.5f)
 			printf("Ah 2!\n");
-		
+
 		if (_Float(norm_e2(M << X)) < 0.5f)
 			printf("Ah 3!\n");
 		if (_Float(norm_e2(M << Y)) < 0.5f)

@@ -66,6 +66,7 @@ e3ga::vector g_vectors[3] = {
 // the three orthogonal vectors:
 e3ga::vector g_orthoVectors[3];
 
+// *!*HTML_TAG*!* gram
 /**
 Uses GA to perform Gram-Schmidt orthogonalization.
 Throws std::string when input vectors (vIn) are dependent.

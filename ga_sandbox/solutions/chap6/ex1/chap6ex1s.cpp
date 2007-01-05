@@ -20,16 +20,17 @@
 
 using namespace e3ga;
 
+// *!*HTML_TAG*!* subspaceProduct
+// SPOILER WARNING: solution to Chapter 6, Exercise 1 directly below
+
 // exercise 1a: complete in this function
 mv outerProduct_1a(const e3ga::vector &a, const mv &B) {
 	return 0.5f * (gp(a, B) + gp(gradeInvolution(B), a));
-//	return 0.0f;
 }
 
 // exercise 1a: complete in this function
 mv leftContraction_1a(const e3ga::vector &a, const mv &B) {
 	return 0.5f * (gp(a, B) - gp(gradeInvolution(B), a));
-//	return 0.0f;
 }
 
 // exercise 1b: complete in this function
@@ -45,7 +46,6 @@ mv outerProduct_1b(const mv &A, const mv &B) {
 		}
 	}
 	return result;
-	//return 0.0f;
 }
 
 // exercise 1b: complete in this function
@@ -59,7 +59,6 @@ mv leftContraction_1b(const mv &A, const mv &B) {
 		}
 	}
 	return result;
-//	return 0.0f;
 }
 
 int main(int argc, char*argv[]) {
@@ -106,7 +105,7 @@ int main(int argc, char*argv[]) {
 	if (OK1a)
 		printf("outerProduct_1a() and leftContraction_1a() seem to be OK.\n");
 
-	
+
 	// A test for Exercise 1b
 	// We generate pairs of random multivector, and use
 	// the regular outer product/left contraction functions to verify the results:

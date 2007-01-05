@@ -19,6 +19,7 @@
 
 using namespace e3ga;
 
+// *!*HTML_TAG*!* rotorToMatrix
 void rotorToMatrixGeo(const rotor &R, float M[9]) {
 	// compute images of the basis vectors:
 	rotor Ri = _rotor(inverse(R));

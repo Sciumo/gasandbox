@@ -71,6 +71,9 @@ e3ga::vector g_reflectedVector2;
 // what vectors to draw (bitmap):
 int g_drawVectors = 1;
 
+
+// *!*HTML_TAG*!* reflect
+
 e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 	// we use a _line_ reflection for this example
 	return _vector(a * x * inverse(a));

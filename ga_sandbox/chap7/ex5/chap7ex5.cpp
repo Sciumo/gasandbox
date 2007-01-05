@@ -46,7 +46,8 @@ e2ga::vector g_c(vector_e1_e2, -0.835f, -0.2321f);
 // mouse position on last call to MouseButton() / MouseMotion()
 e2ga::vector g_prevMousePos;
 
-void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::Float zoom, int maxIter, 
+// *!*HTML_TAG*!* fractal
+void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::Float zoom, int maxIter,
 					std::vector<unsigned char> &rgbBuffer, int width, int height) {
 	int idx = 0;
 
@@ -78,7 +79,7 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 }
 
 void display() {
-	// setup projection & transform 
+	// setup projection & transform
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -151,7 +152,7 @@ void MouseMotion(int x, int y) {
 }
 
 void Keyboard(unsigned char key, int x, int y) {
-	// set 
+	// set
 	if ((key >= '1') && (key <= '9'))
 		g_maxIter = 10 * (key - '0');
 

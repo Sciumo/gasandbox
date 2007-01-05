@@ -22,11 +22,12 @@
 
 using namespace e3ga;
 
+// *!*HTML_TAG*!* rotorToMatrix
 void rotorToMatrixClassic(const rotor &R, float M[9]) {
 	float qw = _Float(R);
-	float qx = -R.e2e3(); 
-	float qy = -R.e3e1(); 
-	float qz = -R.e1e2(); 
+	float qx = -R.e2e3();
+	float qy = -R.e3e1();
+	float qz = -R.e1e2();
 
 	M[0 * 3 + 0] = 1.0f - 2.0f * qy * qy - 2.0f * qz * qz;
 	M[1 * 3 + 0] = 2.0f * (qx * qy + qz * qw);
@@ -81,8 +82,8 @@ rotor matrixToRotorClassic(const float M[9]) {
 	}
 
 	float s = sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-	
-	
+
+
 	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
 }
 
@@ -214,7 +215,7 @@ int main(int argc, char*argv[]) {
 	}
 
 	printf("Error: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
-	
+
 
 
 	return 0;

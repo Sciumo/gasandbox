@@ -75,6 +75,10 @@ e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 }
 
 void display() {
+
+
+// *!*HTML_TAG*!* rotate
+
 	// update the reflected/rotated vectors
 	g_reflectedVector = reflectVector(g_reflectionVector1, g_inputVector);
 	g_rotatedVector = reflectVector(g_reflectionVector2, g_reflectedVector);
