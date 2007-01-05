@@ -44,7 +44,7 @@ const char *WINDOW_TITLE = "Geometric Algebra, Chapter 14, Example 2: Drawing Eu
 
 int g_randCol = 0;
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 900;
 int g_viewportHeight = 600;
 
@@ -79,7 +79,7 @@ void display() {
 
 		glColor3f(0.0, 0.0, 0.0);
 		void *font = GLUT_BITMAP_HELVETICA_18;
-	
+
 		const char *LABEL_TYPE_NAMES[NB_HOR] = {
 			"flat", "round", "free", "tangent"
 		};
@@ -145,8 +145,8 @@ void display() {
 			glEnable(GL_DEPTH_TEST);
 			glEnable(GL_CULL_FACE);
 			glCullFace(GL_BACK);
-			
-			
+
+// *!*HTML_TAG*!* elements
 			mv X; // X is initialized below
 			const char *name = "-";
 			switch (i) {
@@ -231,7 +231,7 @@ void display() {
 
 			glColor3f(0.0, 0.0, 0.0);
 			void *font = GLUT_BITMAP_HELVETICA_12;
-	
+
 			int w = (int)getBitmapStringWidth(font, name);
 			renderBitmapString((boxWidth - w)/2, boxHeight - 20, font, name);
 
@@ -247,7 +247,7 @@ void display() {
 	g_drawState.popDrawMode();
 	g_drawState.popDrawMode();
 
-	glutSwapBuffers();	
+	glutSwapBuffers();
 }
 
 void reshape(GLint width, GLint height) {
@@ -269,12 +269,12 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	
+
 	glutMainLoop();
-	
-	return 0;	
+
+	return 0;
 }

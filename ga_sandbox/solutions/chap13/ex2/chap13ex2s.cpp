@@ -123,10 +123,13 @@ void display() {
 				glVertex3f(pt2.e1(), pt2.e2(), pt2.e3());
 				glEnd();
 
+// *!*HTML_TAG*!* distance
+// SPOILER WARNING: the solution to Chapter 13 Exercise 2 is right below
+
 				// Compute distance:
 				// We use fabs() because (due to FP round off error), it is possible that (pt1 << pt2 > 0)
 				// So in principle, the -2.0f could be just 2.0f (without the minus).
-				float distance = sqrt(fabs(-2.0f * _Float(pt1 << pt2))); 
+				float distance = sqrt(fabs(-2.0f * _Float(pt1 << pt2)));
 
 				// create the label:
 				char buf[256];

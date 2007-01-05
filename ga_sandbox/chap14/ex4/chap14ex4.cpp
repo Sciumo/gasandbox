@@ -70,7 +70,7 @@ int g_mouseMode = MODE_DRAG;
 
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = 12.0f;
 
 // rotation of the model
@@ -81,6 +81,7 @@ std::vector<point> g_points;
 
 vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d);
 
+// *!*HTML_TAG*!* fitSphere
 dualSphere fitSphere(const std::vector<point> &points) {
 	float P[5 * 5];
 	{ // compute matrix P = sum_i (points[i] . points[i]^T)
@@ -128,7 +129,7 @@ dualSphere fitSphere(const std::vector<point> &points) {
 	cvSVD(&matrixPM, &matrixS, &matrixU, &matrixV, flags); // compute SVD
 
 	// extract last column of V (coordinates of dual sphere);
-	dualSphere DS(dualSphere_no_e1_e2_e3_ni, 
+	dualSphere DS(dualSphere_no_e1_e2_e3_ni,
 		V[0 * 5 + 4], V[1 * 5 + 4], V[2 * 5 + 4], V[3 * 5 + 4], V[4 * 5 + 4]);
 
 	return DS;
@@ -212,7 +213,7 @@ void display() {
 		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
 
-		
+
 		{
 			char buf[256];
 			sprintf(buf, "MODE: %s\n", g_modeName[g_mouseMode]);
@@ -265,7 +266,7 @@ void MouseButton(int button, int state, int x, int y) {
 		g_rotateModel = (g_dragPoint < 0);
 	}
 	else if (g_mouseMode == MODE_CREATE_POINTS) {
-	
+
 		// get modelview matrix (as used for drawing the scene) from OpenGL:
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
@@ -319,7 +320,7 @@ void MouseMotion(int x, int y) {
 		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
 
 		// note the hack required here (repeated application of translators turns points into spheres, at least, with 32-bit floats  :(     )
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				_point(c3gaPoint(_vectorE3GA(T * g_points[g_dragPoint] * inverse(T))));
 	}
 
@@ -374,7 +375,7 @@ int main(int argc, char*argv[]) {
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
-	// create the initial points 
+	// create the initial points
 	g_points.push_back(_point(c3gaPoint(1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(-1.0f, 1.0f, 0.0f)));
 	g_points.push_back(_point(c3gaPoint(1.0f, 0.0f, 0.0f)));

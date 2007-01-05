@@ -40,13 +40,13 @@ using namespace mv_draw;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 15, Example 2: Affine Combinations of Points";
 
-// GLUT state information 
+// GLUT state information
 int g_viewportWidth = 800;
 int g_viewportHeight = 600;
 int g_GLUTmenu;
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 
 // mouse position on last call to MouseButton() / MouseMotion()
 c2ga::vectorE2GA g_prevMousePos;
@@ -55,7 +55,7 @@ const int NB_POINTS = 2;
 normalizedPoint g_points[NB_POINTS] = {
 	c2gaPoint(350, 300),
 	c2gaPoint(450, 300)
-};	
+};
 
 void display() {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
@@ -65,7 +65,7 @@ void display() {
 	glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -73,7 +73,7 @@ void display() {
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glDisable(GL_LIGHTING);
-	
+
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 
@@ -87,7 +87,8 @@ void display() {
 		else glColor3f(0.0f, 0.0f, 1.0f);
 		draw(g_points[i]);
 	}
-	
+
+// *!*HTML_TAG*!* draw
 	if (!GLpick::g_pickActive) {
 		// draw line between the two points:
 		g_drawState.pushDrawModeOff(OD_ORIENTATION);
@@ -112,16 +113,16 @@ void display() {
 
 				glDisable(GL_LINE_STIPPLE);
 			}
-			
+
 			// draw the circle:
 			draw(lambda * g_points[0] + (1.0f - lambda) * g_points[1]);
 		}
 		glDisable(GL_LINE_STIPPLE);
 	}
 
-		
+
 	glPopMatrix();
-	
+
 	if (!GLpick::g_pickActive) {
 		glColor3f(0.0, 0.0, 0.0);
 		void *font = GLUT_BITMAP_HELVETICA_12;
@@ -129,9 +130,9 @@ void display() {
 		renderBitmapString(20, 40, font, "The circles are the affine combinations (sums) of the two points.");
 		renderBitmapString(20, 20, font, "The green line is the difference of the two points (pt1 - pt2).");
 	}
-	
+
 	if (!GLpick::g_pickActive) {
-		glutSwapBuffers();	
+		glutSwapBuffers();
 	}
 }
 
@@ -149,9 +150,9 @@ c2ga::vectorE2GA mousePosToVector(int x, int y) {
 
 void MouseButton(int button, int state, int x, int y) {
 	g_dragPoint = pick(x, g_viewportHeight - y, display, NULL); // NULL = pointer to distance
-	
+
 	g_prevMousePos = mousePosToVector(x, y);
-	
+
 	// redraw viewport
 	glutPostRedisplay();
 }
@@ -160,7 +161,7 @@ void MouseMotion(int x, int y) {
 	// get mouse position, motion
 	c2ga::vectorE2GA mousePos = mousePosToVector(x, y);
 	c2ga::vectorE2GA motion = _vectorE2GA(mousePos - g_prevMousePos);
-	
+
 	if (g_dragPoint >= 0) {
 		// translate point
 		normalizedTranslator T = _normalizedTranslator(1.0f - (0.5f * motion ^ ni));
@@ -183,14 +184,14 @@ int main(int argc, char*argv[]) {
 	glutInitWindowSize(g_viewportWidth, g_viewportHeight);
 	glutInitDisplayMode( GLUT_RGB | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow(WINDOW_TITLE);
-	
+
 	// Register callbacks:
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMotion);
-	
+
 	glutMainLoop();
-	
-	return 0;	
+
+	return 0;
 }

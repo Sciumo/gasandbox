@@ -93,6 +93,7 @@ std::vector<int> g_createPlanePtList;
 
 h3ga::vector vectorAtDepth(double depth, const h3ga::vector &v2d);
 
+// *!*HTML_TAG*!* apply
 void applyTransformAndDraw(const om &M, const mv &X) {
 	// apply the outermorphism:
 	mv MX = apply_om(M, X);

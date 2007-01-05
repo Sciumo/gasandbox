@@ -92,7 +92,7 @@ normalizedPoint g_points[NB_POINTS] = {
 };
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = -1.0f;
 
 
@@ -166,7 +166,7 @@ void display() {
 	}
 
 	if (!GLpick::g_pickActive) {
-		
+
 		glDisable(GL_LIGHTING);
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
@@ -184,7 +184,9 @@ void display() {
 		glEnable(GL_LIGHTING);
 
 
-		// we store the original & projected points here (we not culled), so we can easily draw the rays
+// *!*HTML_TAG*!* perspective
+
+		// we store the original & projected points here (not culled), so we can easily draw the rays
 		std::vector<normalizedPoint> originalVertices;
 		std::vector<point> projectedVertices;
 
@@ -192,8 +194,8 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glDisable(GL_CULL_FACE); // we do our own back-face culling!
 		normalizedPoint cameraPoint = g_points[CAMERA_PT_IDX];
-		plane imagePlane = _plane(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
+		plane imagePlane = _plane(g_points[IMAGE_PLANE_PT_IDX + 0] ^
+			g_points[IMAGE_PLANE_PT_IDX + 1] ^
 			g_points[IMAGE_PLANE_PT_IDX + 2]);
 		// render model
 		for (unsigned int i = 0; i < g_polygons3D.size(); i++) {
@@ -252,8 +254,8 @@ void display() {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4fm(0.5f, 0.5f, 1.0f, 0.5f);
-		draw(g_points[IMAGE_PLANE_PT_IDX + 0] ^ 
-			g_points[IMAGE_PLANE_PT_IDX + 1] ^ 
+		draw(g_points[IMAGE_PLANE_PT_IDX + 0] ^
+			g_points[IMAGE_PLANE_PT_IDX + 1] ^
 			g_points[IMAGE_PLANE_PT_IDX + 2]);
 		glDisable(GL_BLEND);
 		g_drawState.popDrawMode();
@@ -288,8 +290,8 @@ void reshape(GLint width, GLint height) {
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -332,7 +334,7 @@ void MouseMotion(int x, int y) {
 		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
 
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				_normalizedPoint(g_points[g_dragPoint] + (T ^ (e0 << g_points[g_dragPoint])));
 	}
 
@@ -431,7 +433,7 @@ void renderModel(const std::string &modelName) {
 }
 
 void getGLUTmodel3D(const std::string &modelName) {
-	// DONT cull faces 
+	// DONT cull faces
 	glDisable(GL_CULL_FACE);
 	// fill all polygons (otherwise they get turned into LINES
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -440,8 +442,8 @@ void getGLUTmodel3D(const std::string &modelName) {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2, 
-		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2, 
+	glOrtho(-g_viewportWidth/2, g_viewportWidth - g_viewportWidth/2,
+		-g_viewportHeight/2, g_viewportHeight - g_viewportHeight/2,
 		-100.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -502,7 +504,7 @@ void getGLUTmodel3D(const std::string &modelName) {
 			vtxIdx[i] = (int)g_vertices3D.size();
 			mv::Float x = bufferXY[idx];
 			mv::Float y = bufferXY[idx+1];
-			mv::Float z = bufferZY[idx+0]; 
+			mv::Float z = bufferZY[idx+0];
 			x -= (mv::Float)g_viewportWidth / 2;
 			y -= (mv::Float)g_viewportHeight / 2;
 			z -= (mv::Float)g_viewportWidth / 2;

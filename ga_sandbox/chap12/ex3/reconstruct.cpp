@@ -39,7 +39,7 @@ bool closestPointsOnCrossingLines(
 	bivector I = _bivector(D1 ^ D2);
 	if (_Float(norm_e2(I)) == 0.0f) return true; // check parallel
 	bivector Ii = _bivector(inverse(I));
-	
+
 	// compute reciprocals:
 	h3ga::vector rD1 = _vector(D2 << Ii);
 	h3ga::vector rD2 = _vector(D1 << Ii);
@@ -51,16 +51,16 @@ bool closestPointsOnCrossingLines(
 	return false;
 }
 
-
+// *!*HTML_TAG*!* reconstruct
 /**
 Simplistic algorithm for reconstructing markers in optical motion capture.
 We first try to reconstruct 3D markers using every possible combination of
 two cameras. When a marker is reconstructed, we try if it is also visible in
 other cameras.
 */
-void OpticalCaptureData::reconstructFrame(int frameIdx, 
+void OpticalCaptureData::reconstructFrame(int frameIdx,
 					std::vector<normalizedPoint> &reconstructedMarkers,
-					mv::Float epsilon, mv::Float markerSize, 
+					mv::Float epsilon, mv::Float markerSize,
 					int minNbCameras) {
 	// reconstructed markers go into 'R' first
 	// (at the end of the function, they are copied into reconstructedMarkers).
@@ -73,7 +73,7 @@ void OpticalCaptureData::reconstructFrame(int frameIdx,
 
 		for (unsigned int m1 = 0; m1 < F1.size(); m1++) {
 			const normalizedPoint &M1 = F1[m1]; // position of marker in image plane
-			h3ga::vector D1 = _vector(M1 - P1); // ray direction 
+			h3ga::vector D1 = _vector(M1 - P1); // ray direction
 
 			line L1 = _line(unit_r(P1 ^ M1)); // line from camera pinhole through marker
 
@@ -93,7 +93,7 @@ void OpticalCaptureData::reconstructFrame(int frameIdx,
 					mv::Float dis = fabs(_Float((M2 << IP) << L2));
 					if (dis > epsilon) continue;
 
-					h3ga::vector D2 = _vector(M2 - P2); // ray direction 
+					h3ga::vector D2 = _vector(M2 - P2); // ray direction
 
 					// compute candidate for reconstructed marker
 					mv::Float d1, d2;
@@ -122,7 +122,7 @@ void OpticalCaptureData::reconstructFrame(int frameIdx,
 
 				// move last marker to position 'j'
 				R[j] = R[R.size()-1];
-				R.resize(R.size()-1); 
+				R.resize(R.size()-1);
 				j--; // make sure we visit 'j' again, since it now has a new marker in it
 			}
 		}

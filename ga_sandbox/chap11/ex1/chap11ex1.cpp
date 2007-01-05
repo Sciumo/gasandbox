@@ -50,7 +50,7 @@ bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = -1.0f;
 
 // rotation of the model
@@ -68,10 +68,10 @@ point g_points[NB_POINTS] = {
 };
 // the normalized points:
 normalizedPoint g_normalizedPoints[NB_NORMALIZED_POINTS] = {
-// note the hack here: because normalizedPoints have a 
+// note the hack here: because normalizedPoints have a
 // constant 'e0' coordinate, no need to do '+ e0' for each point.
 // You can initialize a normalizedPoint straight for a '3D vector'
-	_normalizedPoint(-e1 + e2), 
+	_normalizedPoint(-e1 + e2),
 	_normalizedPoint(-1.5f * e1 + 0.5f * e2),
 	_normalizedPoint(-e1 + 0.5f * e3),
 };
@@ -130,6 +130,8 @@ void display() {
 	}
 
 	if (!GLpick::g_pickActive) {
+
+// *!*HTML_TAG*!* glVertex
 
 		// draw loops through the points:
 		glDisable(GL_LIGHTING);
@@ -237,7 +239,7 @@ void MouseMotion(int x, int y) {
 		}
 		else {
 			int idx = g_dragPoint - NB_POINTS;
-			g_normalizedPoints[idx] = 
+			g_normalizedPoints[idx] =
 				_normalizedPoint(g_normalizedPoints[idx] + (T ^ (e0 << g_normalizedPoints[idx])));
 		}
 	}

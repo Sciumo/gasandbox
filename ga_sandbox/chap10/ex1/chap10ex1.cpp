@@ -85,6 +85,7 @@ void initRandomDest() {
 	g_destOrientation = exp(_bivector(randomBlade(2, 100.0f)));
 }
 
+// *!*HTML_TAG*!* interpolate
 e3ga::vector interpolateVector(const e3ga::vector &src, const e3ga::vector &dst, mv::Float alpha) {
 	return _vector((1.0f - alpha) * src + alpha * dst);
 }

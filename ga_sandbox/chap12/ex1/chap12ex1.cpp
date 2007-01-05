@@ -107,6 +107,8 @@ void display() {
 
 	glMatrixMode(GL_MODELVIEW);
 
+// *!*HTML_TAG*!* glLoadMatrix
+
 	float distance = -20.0f;
 	if (false) {
 		// direct OpenGL:

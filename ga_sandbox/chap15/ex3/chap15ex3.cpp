@@ -55,7 +55,7 @@ bool g_rotateModelOutOfPlane = false;
 rotor g_modelRotor(_rotor(1.0f));
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = 0.0f;
 
 // the points:
@@ -137,6 +137,8 @@ void display() {
 		// draw the circle or the line:
 		glColor3fm(0.0f, 1.0f, 0.0f);
 		draw(CL);
+
+// *!*HTML_TAG*!* project
 
 		// compute the plane:
 		plane PL = _plane(g_points[3] ^ g_points[4] ^ g_points[5] ^ ni);
@@ -259,7 +261,7 @@ void MouseMotion(int x, int y) {
 		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
 
 		// note the hack required here (repeated application of translators turns points into spheres, at least, with 32-bit floats  :(     )
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				c3gaPoint(_vectorE3GA(T * g_points[g_dragPoint] * inverse(T)));
 	}
 
@@ -298,7 +300,7 @@ int main(int argc, char*argv[]) {
 	glutAddMenuEntry("circle mode", MODE_CIRCLE);
 	glutAddMenuEntry("line mode + plunge", MODE_LINE_WITH_PLANE);
 	glutAddMenuEntry("circle mode + plunge", MODE_CIRCLE_WITH_SPHERE);
-	
+
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

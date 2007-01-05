@@ -86,6 +86,8 @@ e3ga::vector g_point = _vector(e1 + e2 + e3);
 
 std::vector<mv> m_ops;
 
+// *!*HTML_TAG*!* crystal
+
 void recomputeOps() {
 	m_ops.clear();
 

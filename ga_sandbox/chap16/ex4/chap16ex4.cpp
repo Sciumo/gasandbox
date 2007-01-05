@@ -104,6 +104,9 @@ void display() {
 	g_drawState.pushDrawModeOff(OD_ORIENTATION);
 	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 
+
+// *!*HTML_TAG*!* draw
+
 	// Create versor that generates the sea shell:
 	TRSversor V = _TRSversor((1.0f - 0.25f * e3ni) * exp(_bivectorE3GA((e1^e2) * 0.4f)) * exp(_noni_t(-0.05f  * noni)));
 	// Take 1/5st of the versor:
@@ -151,7 +154,7 @@ void display() {
 
 	glPopMatrix();
 
-	if (!GLpick::g_pickActive) 
+	if (!GLpick::g_pickActive)
 		glutSwapBuffers();
 }
 

@@ -51,7 +51,7 @@ bool g_rotateModel = false;
 bool g_rotateModelOutOfPlane = false;
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = -1.0f;
 
 // rotation of the model
@@ -61,10 +61,10 @@ const int NB_POINTS = 4;
 
 // the normalized points:
 normalizedPoint g_points[NB_POINTS] = {
-	_normalizedPoint(-e1 + e2 + e0), 
-	_normalizedPoint(e1 + e2 + e0), 
-	_normalizedPoint(-e1 - e2 + e0), 
-	_normalizedPoint(e1 - e2 + e0), 
+	_normalizedPoint(-e1 + e2 + e0),
+	_normalizedPoint(e1 + e2 + e0),
+	_normalizedPoint(-e1 - e2 + e0),
+	_normalizedPoint(e1 - e2 + e0),
 };
 
 
@@ -76,7 +76,7 @@ void display() {
 		pt[i] = g_points[i];
 	}
 
-	{ 
+	{
 		// `snap' the points (for POSITION)
 		const float CLOSE_POINTS = 0.1f;
 		for (int i = 0; i < NB_POINTS; i++) {
@@ -95,6 +95,8 @@ void display() {
 			pt[3] = _normalizedPoint(pt[2] + l * dir);
 		}
 	}
+
+// *!*HTML_TAG*!* addLines
 
 	// compute the lines
 	line L1 = _line(pt[0] ^ pt[1]);

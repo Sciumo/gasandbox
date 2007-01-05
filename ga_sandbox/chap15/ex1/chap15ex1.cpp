@@ -56,7 +56,7 @@ bool g_rotateModelOutOfPlane = false;
 rotor g_modelRotor(_rotor(1.0f));
 
 // what point to drag (or -1 for none)
-int g_dragPrimitive = -1; 
+int g_dragPrimitive = -1;
 float g_dragDistance = 0.0f;
 
 // the primitives:
@@ -106,6 +106,8 @@ void display() {
 
 	rotorGLMult(g_modelRotor);
 
+// *!*HTML_TAG*!* plunge
+
 	// draw the plunge
 	glColor3fm(0.0f, 1.0f, 0.0f);
 	draw(g_primitives[0] ^ g_primitives[1] ^ g_primitives[2]);
@@ -115,7 +117,7 @@ void display() {
 	g_drawState.m_pointSize = 0.1f;
 	g_drawState.pushDrawModeOff(OD_ORIENTATION);
 	g_drawState.pushDrawModeOff(OD_MAGNITUDE);
-	for (unsigned int i = 0; i < NB_PRIMITIVES; i++) { 
+	for (unsigned int i = 0; i < NB_PRIMITIVES; i++) {
 		if (GLpick::g_pickActive) glLoadName(i);
 		if (i == 2) glLoadName((GLuint)-1); // do not allow for dragging the plane!
 
@@ -223,7 +225,7 @@ void MouseMotion(int x, int y) {
 		t = _vectorE3GA(inverse(g_modelRotor) * t * g_modelRotor);
 		normalizedTranslator T = exp(_freeVector(-0.5f * (t ^ ni)));
 
-		g_primitives[g_dragPrimitive] = 
+		g_primitives[g_dragPrimitive] =
 				T * g_primitives[g_dragPrimitive] * inverse(T);
 	}
 

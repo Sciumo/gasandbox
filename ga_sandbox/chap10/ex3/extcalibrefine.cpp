@@ -21,7 +21,7 @@
 
 #ifdef USE_OPENCV
 #include <opencv/cxcore.h>
-#else 
+#else
 #include <mkl_lapack.h>
 #include <mkl_blas.h>
 
@@ -39,7 +39,7 @@ Camera::Camera() {
 Camera::Camera(const e3ga::rotor &R, const e3ga::vector &t,
 		const std::vector<bool> &visible,
 		const std::vector<vector> &pt) :
-	m_R(R), m_t(t), 
+	m_R(R), m_t(t),
 	m_visible(visible), m_pt(pt), m_X3(pt.size()) {
 	initRom();
 }
@@ -88,13 +88,13 @@ State::State(const std::vector<Camera> &cam) : m_cam(cam), m_nbRefinements(0) {
 	// make room for points:
 	m_pt.resize(maxNbF);
 	m_ptValid.resize(maxNbF);
-	
+
 	init();
 }
 
 State::State(const State &S) : m_cam(S.m_cam), m_pt(S.m_pt),
 	m_ptValid(S.m_ptValid), m_nbRefinements(S.m_nbRefinements) {
-	
+
 }
 
 State &State::operator=(const State &S) {
@@ -122,7 +122,7 @@ void State::refineSeconds(double t) {
 }
 
 void State::init() {
-	normalizeTranslation(false); // false means: dont' update points 
+	normalizeTranslation(false); // false means: dont' update points
 	reconstructPoints();
 	updateX3();
 }
@@ -137,6 +137,7 @@ void State::refineOnce() {
 	m_nbRefinements++;
 }
 
+// *!*HTML_TAG*!* update
 void State::updateTranslation() {
 	for (unsigned int c = 1; c < m_cam.size(); c++) { // start at '1' because translation of first camera is always 0
 		Camera &C = m_cam[c];
@@ -157,7 +158,7 @@ void State::updateX3() {
 	for (unsigned int c = 0; c < m_cam.size(); c++) {
 		for (unsigned int i = 0; i < m_pt.size(); i++) {
 			if ((m_cam[c].m_visible[i]) && m_ptValid[i]) {
-				m_cam[c].m_X3[i] = 
+				m_cam[c].m_X3[i] =
 					_Float((m_pt[i] - m_cam[c].m_t) % apply_om(m_cam[c].m_Rom, m_cam[c].m_pt[i])) /
 					_Float(m_cam[c].m_pt[i] % m_cam[c].m_pt[i]);
 			}
@@ -220,7 +221,7 @@ void computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) 
 	int flags=CV_SVD_V_T;
 	cvSVD(&A, &W, &U, &V, flags);
 
-#else 
+#else
 	// MKL / LAPACK:
 	const int size = 3;
 	double a[9];
@@ -250,11 +251,11 @@ void computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) 
 	memcpy(svd_vt, pt, 9 * sizeof(double));
 	memcpy(svd_u, q, 9 * sizeof(double));
 	memset(svd_c, 0, 9 * sizeof(double));
-	DBDSQR(&uplo, &lap_order, &lap_m, &lap_n, &lap_zero, 
-		lap_d, lap_e, 
-		svd_vt, &lap_lda, 
-		svd_u, &lap_lda, 
-		NULL, &lap_lda, 
+	DBDSQR(&uplo, &lap_order, &lap_m, &lap_n, &lap_zero,
+		lap_d, lap_e,
+		svd_vt, &lap_lda,
+		svd_u, &lap_lda,
+		NULL, &lap_lda,
 		work, &lap_info);
 
 	memset(svd_s, 0, sizeof(double) * 9);
@@ -269,7 +270,7 @@ void computeSVD(const double *_a, double *svd_u, double *svd_s, double *svd_vt) 
 Constructs the rotor which (in a Least Squares sense) is the optimal rotor to rotate the
 vectors in u to v.
 */
-e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u, 
+e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 										const std::vector<e3ga::vector> &v) {
 	// compute the outermorphism representing the function 'f'
 	vector e[3];
@@ -285,8 +286,8 @@ e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 	// initialize the LAPACK input matrix 'a'
 	int lwork = 1000;
 	double a[9];
-	for (int i = 0; i < 3; i++) 
-		for (int j = 0; j < 3; j++) 
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
 			a[i * 3 + j] = fom.m_c[j * 3 + i]; // transpose for LAPACK input
 
 	// compute the svd of 'a'
@@ -301,8 +302,8 @@ e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 	CvMat U = cvMat(3, 3, CV_64F, svd_u);
 	CvMat R = cvMat(3, 3, CV_64F, _resultMatrix);
 	cvMatMul(&VT, &U, &R);
-	for (int i = 0; i < 3; i++) 
-		for (int j = 0; j < 3; j++) 
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
 			resultMatrix[i * 3 + j] = (mv::Float)_resultMatrix[i * 3 + j];
 #else
 	int lap_m = 3, lap_n = 3, lap_lda = 3;
@@ -312,8 +313,8 @@ e3ga::rotor constructFrame2FrameRotorLS(const std::vector<e3ga::vector> &u,
 	double alpha = 1.0f, beta = 0.0f;
 	DGEMM(&transa, &transb, &lap_n, &lap_n, &lap_n, &alpha, svd_vt, &lap_n, svd_u, &lap_n, &beta, lap_tmp1, &lap_n);
 
-	for (int i = 0; i < 3; i++) 
-		for (int j = 0; j < 3; j++) 
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
 			resultMatrix[i * 3 + j] = (mv::Float)lap_tmp1[j * 3 + i]; // transpose for LAPACK output
 #endif
 
@@ -373,7 +374,7 @@ double State::costFunction() {
 		const vector &t = m_cam[c].m_t;
 		for (unsigned int i = 0; i < m_pt.size(); i++) {
 			if (!(m_cam[c].m_visible[i] && m_ptValid[i])) continue;
-			vector C = _vector(m_cam[c].m_X3[i] * m_cam[c].m_pt[i] - 
+			vector C = _vector(m_cam[c].m_X3[i] * m_cam[c].m_pt[i] -
 				_vector(Ri * (m_pt[i] - t) * R));
 			double cc = _double(norm_e2(C));
 
@@ -387,8 +388,8 @@ double State::costFunction() {
 
 namespace {
 	template<class E> inline double computeEqns(
-		const e3ga::vector **camPt, 
-		const e3ga::vector **dir, 
+		const e3ga::vector **camPt,
+		const e3ga::vector **dir,
 		e3ga::vector &lhs, E e, int nb) {
 		double rhs = 0.0;
 
@@ -397,7 +398,7 @@ namespace {
 
 			lhs += _vector((_Float(*(dir[i]) % e)/ x2) * *(dir[i]));
 
-			rhs += _double(*(camPt[i]) % e) - 
+			rhs += _double(*(camPt[i]) % e) -
 				_double(scp(*(dir[i]), *(camPt[i]))) * _double(*(dir[i]) % e) / x2;
 		}
 
@@ -406,7 +407,7 @@ namespace {
 	}
 
 e3ga::vector reconstructSingleMarkerFrom2D(
-	const e3ga::vector *camPt[], 
+	const e3ga::vector *camPt[],
 	const e3ga::vector *dir[], int nb) {
 
 	double rhs;
@@ -451,7 +452,7 @@ e3ga::vector reconstructSingleMarkerFrom2D(
 	CvMat B = cvMat(3, 1, CV_64F, tmp);
 
 	cvSolve(&A, &B, &X, CV_SVD);
-#else 
+#else
 	// compute LU factorization (MKL)
 	char trans = 'n';
 	int lap_m = 3, lap_n = 3, ipiv[3], lda = 3, ldb = 3, info = 0, nrhs = 1;

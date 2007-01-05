@@ -122,13 +122,6 @@ void display() {
 
 	// one button = scale, the other translate, the other scale!
 	glTranslatef(g_modelTranslation.e1(), g_modelTranslation.e2(), g_modelTranslation.e3());
-	/*float matrix[16] = {
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, g_modelScale
-	};
-	glMultMatrixf(matrix);*/
 	glScalef(g_modelScale, g_modelScale, g_modelScale);
 	rotorGLMult(g_modelRotor);
 
@@ -142,7 +135,7 @@ void display() {
 		// get modelview matrix
 		GLfloat modelViewMatrix[16];
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
-		
+
 		// Convert to versor.
 		bool transpose = true;
 		V = matrix4x4ToVersor(modelViewMatrix, transpose);
@@ -150,7 +143,7 @@ void display() {
 
 		// -> The versor is applied below, before points are sent to OpenGL
 
-		// reset modelview matrix 
+		// reset modelview matrix
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 	}

@@ -98,7 +98,7 @@ bivectorE3GA log(const rotor &R) {
 	if (R2 <= 0.0) {
 		if (_Float(R) < 0)  // this means the user ask for log(-1):
 			return _bivectorE3GA((float)M_PI * (e1 ^ e2)); // we return a 360 degree rotation in an arbitrary plane
-		else 
+		else
 			return bivectorE3GA();  // return log(1) = 0
 	}
 
@@ -110,12 +110,12 @@ dualLine log(const TRversor &V) {
   // isolate rotation, translation part:
   rotor R = _rotor(-no << (V * ni));
   vectorE3GA t = _vectorE3GA(-2.0f * (no << V) * inverse(R));
-  
+
   const float EPSILON = 1e-6f;
 
   if (_Float(norm_e2(_bivectorE3GA(R))) < EPSILON * EPSILON) {
 	  // special cases:
-	  if (_Float(R) < 0.0f) 
+	  if (_Float(R) < 0.0f)
 	  {// R = -1
 		// The versor has a rotation over 360 degrees.
 		bivectorE3GA I; // Get a rotation plane 'I', depending on 't'
@@ -126,7 +126,7 @@ dualLine log(const TRversor &V) {
 		// return translation plus 360 degree rotation:
 		return _dualLine(0.5f *(I * 2.0f * (float)M_PI - (t^ni)));
 	  }
-	  else 
+	  else
 	  { // R = 1;
 		// return translation :
 		return _dualLine(-0.5f *(t^ni));
@@ -136,20 +136,21 @@ dualLine log(const TRversor &V) {
 
 	// compute logarithm of rotation part
 	bivectorE3GA Iphi = _bivectorE3GA(-2.0f * log(R));
-	  
+
 	// determine rotation plane:
 	rotor I = _rotor(unit_e(Iphi));
 
 	// compose log of V:
 	return _dualLine(
 		0.5f * (
-		-(t ^ I) * inverse(I) * ni + 
+		-(t ^ I) * inverse(I) * ni +
 		inverse(1.0f - R * R) * (t << Iphi) * ni -
 		Iphi));
   }
 }
 
 
+// *!*HTML_TAG*!* logTRS
 TRSversorLog log(const TRSversor &V) {
 	// get rotor part:
 	rotor X = _rotor(- no << (V * ni));
@@ -161,14 +162,14 @@ TRSversorLog log(const TRSversor &V) {
 	mv::Float gammaPrime;
 	if (fabs(gamma) < EPSILON) gammaPrime = 1.0f;
 	else gammaPrime = gamma / (::exp(gamma) - 1);
-	scalor S = exp(_noni_t(0.5f * gamma * noni)); 
+	scalor S = exp(_noni_t(0.5f * gamma * noni));
 
 	// get rotation part
 	rotor R = _rotor(::exp(-0.5f * gamma) * X);
 
 	// get translation part:
-	translator T = _translator(V * reverse(S) * reverse(R)); 
-	vectorE3GA t = _vectorE3GA(-2.0f * (no << T)); 
+	translator T = _translator(V * reverse(S) * reverse(R));
+	vectorE3GA t = _vectorE3GA(-2.0f * (no << T));
 
 	if (_Float(norm_e2(_bivectorE3GA(R))) < EPSILON * EPSILON) {
 		if (_Float(R) > 0.0f) { // R = 1
@@ -184,24 +185,24 @@ TRSversorLog log(const TRSversor &V) {
 			else I = _bivectorE3GA(e1^e2); // when t = 0, any plane will do
 
 			return _TRSversorLog(0.5f * (
-				-gammaPrime * (t ^ ni) + 
-				gamma * noni + 
+				-gammaPrime * (t ^ ni) +
+				gamma * noni +
 				2.0f * (float)M_PI * I));
 		}
-	} 
+	}
 	else {
 		// get rotation plane, angle
-		bivectorE3GA I = _bivectorE3GA(R); 
-		mv::Float sR2 = _Float(norm_e(I)); 
+		bivectorE3GA I = _bivectorE3GA(R);
+		mv::Float sR2 = _Float(norm_e(I));
 		I = _bivectorE3GA(I * (1.0f / sR2));
-		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R)); 
+		mv::Float phi = -2.0f * (mv::Float)atan2(sR2, _Float(R));
 
 		// form bivector log of versor:
 		normalizedTranslator Tv = _normalizedTranslator(
 			1.0f - 0.5f * inverse(1.0f - (mv::Float)::exp(gamma) * R * R) * (t << I) * reverse(I) * ni);
 		return _TRSversorLog(0.5f * (-gammaPrime * (t^I) * reverse(I) * ni + Tv * (-phi * I + gamma * noni) * reverse(Tv)));
 	 }
-}	
+}
 
 
 
@@ -211,17 +212,17 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 	mv::Float M[4 * 4];
 	if (transpose) {
 		// transpose & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
 	else {
 		// copy & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
 
 /*	printf("Matrix:\n");
@@ -247,8 +248,8 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 
 	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
 	float RM[3 * 3] = {
-		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale, 
-		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale, 
+		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale,
+		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale,
 		M[2 * 4 + 0] / scale, M[2 * 4 + 1] / scale, sc3 * M[2 * 4 + 2] / scale
 	};
 	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
@@ -265,7 +266,7 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 		exp(_freeVector(-0.5f * (t ^ ni))) *  // translation
 		R * // rotation
 		exp(_noni_t(0.5f * logScale * noni)) // scaling
-		); 
+		);
 
 /*	{
 		mv V = result;
@@ -290,34 +291,23 @@ TRSversor matrix4x4ToVersorPS(const mv::Float _M[4 * 4], bool transpose /*= fals
 }
 
 
+// *!*HTML_TAG*!* matrixToVersor
 TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
-/*	printf("Raw Matrix:\n");
-	printf("%f %f %f %f\n", _M[0 * 4 + 0], _M[0 * 4 + 1], _M[0 * 4 + 2], _M[0 * 4 + 3]);
-	printf("%f %f %f %f\n", _M[1 * 4 + 0], _M[1 * 4 + 1], _M[1 * 4 + 2], _M[1 * 4 + 3]);
-	printf("%f %f %f %f\n", _M[2 * 4 + 0], _M[2 * 4 + 1], _M[2 * 4 + 2], _M[2 * 4 + 3]);
-	printf("%f %f %f %f\n", _M[3 * 4 + 0], _M[3 * 4 + 1], _M[3 * 4 + 2], _M[3 * 4 + 3]);*/
-
 	mv::Float M[4 * 4];
 	if (transpose) {
 		// transpose & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
 	else {
 		// copy & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
-
-/*	printf("Input Matrix:\n");
-	printf("%f %f %f %f\n", M[0 * 4 + 0], M[0 * 4 + 1], M[0 * 4 + 2], M[0 * 4 + 3]);
-	printf("%f %f %f %f\n", M[1 * 4 + 0], M[1 * 4 + 1], M[1 * 4 + 2], M[1 * 4 + 3]);
-	printf("%f %f %f %f\n", M[2 * 4 + 0], M[2 * 4 + 1], M[2 * 4 + 2], M[2 * 4 + 3]);
-	printf("%f %f %f %f\n", M[3 * 4 + 0], M[3 * 4 + 1], M[3 * 4 + 2], M[3 * 4 + 3]);*/
 
 	// determine translation:
 	vectorE3GA t(vectorE3GA_e1_e2_e3, M[0 * 4 + 3], M[1 * 4 + 3], M[2 * 4 + 3]);
@@ -332,17 +322,17 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 
 	// compute determinant of matrix (if negative, negate all matrix elements)
 	mv::Float n = 1.0f; // used to negate the matrix
-	scalor negScale = _scalor(1.0f);  
+	scalor negScale = _scalor(1.0f);
 	if ((imageOfE1 ^ imageOfE2 ^ imageOfE3).e1e2e3() < 0.0f) {
 		n = -1.0f;
 		negScale = noni; // no^ni provides the negative scaling in the final versor
 	}
 
 	// initialize 3x3 'rotation' matrix RM, call e3ga::matrixToRotor
-	mv::Float si = n / scale; 
+	mv::Float si = n / scale;
 	mv::Float RM[3 * 3] = {
-		M[0 * 4 + 0] * si, M[0 * 4 + 1] * si, M[0 * 4 + 2] * si, 
-		M[1 * 4 + 0] * si, M[1 * 4 + 1] * si, M[1 * 4 + 2] * si, 
+		M[0 * 4 + 0] * si, M[0 * 4 + 1] * si, M[0 * 4 + 2] * si,
+		M[1 * 4 + 0] * si, M[1 * 4 + 1] * si, M[1 * 4 + 2] * si,
 		M[2 * 4 + 0] * si, M[2 * 4 + 1] * si, M[2 * 4 + 2] * si
 	};
 	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
@@ -360,28 +350,8 @@ TRSversor matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*
 		R *                                                   // rotation
 		exp(_noni_t(0.5f * logScale * noni)) * // scaling
 		negScale                                       // negative scaling
-		); 
+		);
 
-/*	{
-		mv V = result;
-		mv Vi = inverse(V);
-		// compute images of basis vectors:
-		flatPoint imageOfE1NI = _flatPoint(V * e1ni * Vi);
-		flatPoint imageOfE2NI = _flatPoint(V * e2ni * Vi);
-		flatPoint imageOfE3NI = _flatPoint(V * e3ni * Vi);
-		flatPoint imageOfNONI = _flatPoint(V * noni * Vi);
-
-		// create matrix representation:
-		omFlatPoint OM(imageOfE1NI, imageOfE2NI, imageOfE3NI, imageOfNONI);
-
-		printf("Reconstructed Matrix:\n");
-		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 0], OM.m_c[1 * 4 + 0], OM.m_c[2 * 4 + 0], OM.m_c[3 * 4 + 0]);
-		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 1], OM.m_c[1 * 4 + 1], OM.m_c[2 * 4 + 1], OM.m_c[3 * 4 + 1]);
-		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 2], OM.m_c[1 * 4 + 2], OM.m_c[2 * 4 + 2], OM.m_c[3 * 4 + 2]);
-		printf("%f %f %f %f\n", OM.m_c[0 * 4 + 3], OM.m_c[1 * 4 + 3], OM.m_c[2 * 4 + 3], OM.m_c[3 * 4 + 3]);
-
-
-	}*/
 
 	return result;
 }
@@ -397,17 +367,17 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 	mv::Float M[4 * 4];
 	if (transpose) {
 		// transpose & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 0] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 0] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 0] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 1] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 2] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[0 * 4 + 3] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
 	else {
 		// copy & normalize
-		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3]; 
-		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3]; 
+		M[0 * 4 + 0] = _M[0 * 4 + 0] / _M[3 * 4 + 3]; M[0 * 4 + 1] = _M[0 * 4 + 1] / _M[3 * 4 + 3]; M[0 * 4 + 2] = _M[0 * 4 + 2] / _M[3 * 4 + 3]; M[0 * 4 + 3] = _M[0 * 4 + 3] / _M[3 * 4 + 3];
+		M[1 * 4 + 0] = _M[1 * 4 + 0] / _M[3 * 4 + 3]; M[1 * 4 + 1] = _M[1 * 4 + 1] / _M[3 * 4 + 3]; M[1 * 4 + 2] = _M[1 * 4 + 2] / _M[3 * 4 + 3]; M[1 * 4 + 3] = _M[1 * 4 + 3] / _M[3 * 4 + 3];
+		M[2 * 4 + 0] = _M[2 * 4 + 0] / _M[3 * 4 + 3]; M[2 * 4 + 1] = _M[2 * 4 + 1] / _M[3 * 4 + 3]; M[2 * 4 + 2] = _M[2 * 4 + 2] / _M[3 * 4 + 3]; M[2 * 4 + 3] = _M[2 * 4 + 3] / _M[3 * 4 + 3];
+		M[3 * 4 + 0] = _M[3 * 4 + 0] / _M[3 * 4 + 3]; M[3 * 4 + 1] = _M[3 * 4 + 1] / _M[3 * 4 + 3]; M[3 * 4 + 2] = _M[3 * 4 + 2] / _M[3 * 4 + 3]; M[3 * 4 + 3] = _M[3 * 4 + 3] / _M[3 * 4 + 3];
 	}
 
 /*	printf("Input Matrix:\n");
@@ -437,8 +407,8 @@ mv matrix4x4ToVersor(const mv::Float _M[4 * 4], bool transpose /*= false*/) {
 
 	// initialize 3x3 'rotation' matrix, call e3ga::matrixToRotor
 	float RM[3 * 3] = {
-		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale, 
-		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale, 
+		M[0 * 4 + 0] / scale, M[0 * 4 + 1] / scale, sc3 * M[0 * 4 + 2] / scale,
+		M[1 * 4 + 0] / scale, M[1 * 4 + 1] / scale, sc3 * M[1 * 4 + 2] / scale,
 		M[2 * 4 + 0] / scale, M[2 * 4 + 1] / scale, sc3 * M[2 * 4 + 2] / scale
 	};
 	e3ga::rotor tmpR = e3ga::matrixToRotor(RM);
@@ -494,7 +464,7 @@ void reciprocalFrame(const dualSphere *IF, dualSphere *RF, int nbVectors) {
 		// compute pseudoscalar 'I' of space spanned by input frame:
 		mv I = IF[0];
 		for (int i = 1; i < nbVectors; i++) I ^= IF[i];
-		if (_Float(norm_r2(I)) == 0.0f) 
+		if (_Float(norm_r2(I)) == 0.0f)
 			throw std::string("reciprocalFrame(): vectors are not independent");
 
 		// compute inverse of 'I':
@@ -524,26 +494,26 @@ mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX /* = -1 
 		k = T.m_grade;
 	}
 	mv::Float s = (k == 0) ? _Float(X): _Float(norm_e(X));
-	
+
 	// detect non-blades
 	if (k < 0) throw -1;
-	
+
 	// set scale of output, no matter what:
 	mv::Float scale = s;
-	
+
 	// detect null-blades, scalar-blades
 	if ((s == 0.0) || (k == 0))
 	    return scale;
-	
-	
+
+
 	// get largest basis blade, basis vectors
 	unsigned int E;
 	int Eidx = 0;
 	X.largestBasisBlade(E);
-	
+
 	// setup the 'current input blade'
 	mv Bc = unit_e(X);
-	
+
 	mv::Float coords[5] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	for (int i = 0; i < (k-1); i++) {
 		// get next basisvector
@@ -557,14 +527,14 @@ mv::Float factorizeBlade(const mv &X, dualSphere factor[], int gradeOfX /* = -1 
 
 	    // project basis vector ei, normalize projection:
 	    factor[i] = _dualSphere(unit_e(lcontEM(lcontEM(ei, Bc), Bc))); // no inverse(Bc) required, since Bc is always unit
-	    
+
 	    // remove f[i] from Bc
 	    Bc = lcontEM(factor[i], Bc);
 	}
-	
+
 	// last factor = what is left of the input blade
 	factor[k-1] = _dualSphere(unit_e(Bc)); // already normalized, but renormalize to remove any FP round-off error
-	
+
 	return scale;
 }
 
@@ -591,7 +561,7 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 		for (int i = 0; i <= 5; i++) {
 			if ((X.gu() & (1 << i)) == 0) continue;
 			else {
-				// square, sum 
+				// square, sum
 				mv::Float l = C[0] * C[0];
 				int s = mv_gradeSize[i];
 				for (int j = 1; j < s; j++) l = C[j] * C[j];
@@ -619,10 +589,10 @@ mv largestGradePart(const mv &X, int *gradeIdx /* = NULL */) {
 // todo: integrate into G2
 /**
 Returns grade usage of multivector.
-The returned integer is a bitwise or of 
-GRADE_0 = 1, 
-GRADE_1 = 2, 
-GRADE_N = 1 << (N) 
+The returned integer is a bitwise or of
+GRADE_0 = 1,
+GRADE_1 = 2,
+GRADE_N = 1 << (N)
 constants.
 */
 mv grade(const mv &X, float epsilon /* = 1e-7 */);
@@ -636,7 +606,7 @@ mv highestGradePart(const mv &X, float epsilon /* = 1e-7 */, int *gradeIdx /* = 
 			size = mv_gradeSize[g];
 			iX -= size;
 			cptr = X.m_c + iX;
-			for (i = 0; i < size; i++) 
+			for (i = 0; i < size; i++)
 				if ((cptr[i] > epsilon) || (-cptr[i] > epsilon)) {
 					if (gradeIdx) *gradeIdx = g;
 					return mv((unsigned int)(1 << g), cptr);
@@ -654,9 +624,9 @@ mv takeGrade(const mv &X, int gradeUsageBitmap) {
 
 	// determine what the grage usage 'gu' of the result should be:
 	if (gradeUsageBitmap = ((gua = X.gu()) & gradeUsageBitmap)) { // only execute if any grade will be present in the result
-		mv::Float C[8]; 
-		mv::Float *bc; 
-		const mv::Float *ac; 
+		mv::Float C[8];
+		mv::Float *bc;
+		const mv::Float *ac;
 
 		bc = C; ac = X.m_c; // pointers to the coordinates of source (ac) and result (bc)
 		for (int i = 1; i <= gradeUsageBitmap; i = i << 1) { // for each grade that is possibly in the result
@@ -694,7 +664,7 @@ inline mv randomVector() {
 	return mv(GRADE_1, c);
 }
 
-/** 
+/**
 Returns a random blade of 'grade' with a (Euclidean) size in range [0, 1.0].
 If grade < 0, then a random grade is picked
 
@@ -702,9 +672,9 @@ Currently, rand() is used to generate the blade
 Todo: use Mersenne twister or something (license issues?)
 */
 mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
-	if (grade < 0) 
+	if (grade < 0)
 		grade = rand() % 6;
-	
+
 
 	if (grade == 0) {
 		return mv(size * (-1.0f + 2.0f * (float)rand() / (float)RAND_MAX));
@@ -799,7 +769,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		return;
 	}
 
-	// init meet 
+	// init meet
 	m = 1.0f;
 	int Em = ((ga + gb - gd) >> 1);
 
@@ -821,7 +791,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 	for (unsigned int i = 0; i < 5; i++) {
 		// compute next factor 'c'
-		mv c = lcontEM(lcontEM(e[i], s), s);		
+		mv c = lcontEM(lcontEM(e[i], s), s);
 
 		// check if 'c' is OK to use:
 		if (c.largestCoordinate() < largeEpsilon)
@@ -837,7 +807,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 		if (cp.largestCoordinate() > largeEpsilon) {
 //			printf("m%d = %s\n", Em, cp.c_str_e());
 			m = op(m, cp);
-			Em--;	
+			Em--;
 			if (Em == 0) {
 				j = op(d, m); // ???? here error?
 				m = unit_e(m);
@@ -850,7 +820,7 @@ void meetJoin(const mv  &a, const mv &b, mv &m, mv &j, mv::Float smallEpsilon, m
 
 		if (cr.largestCoordinate() > largeEpsilon) {
 			j = lcontEM(cr, j);
-			Ej--;	
+			Ej--;
 			if (Ej == 0) {
 				m = lcontEM(d, j);
 				m = unit_e(m);

@@ -69,7 +69,7 @@ int g_mouseMode = MODE_DRAG;
 
 
 // what point to drag (or -1 for none)
-int g_dragPoint = -1; 
+int g_dragPoint = -1;
 float g_dragDistance = 12.0f;
 
 // rotation of the model
@@ -215,6 +215,8 @@ void display() {
 						}
 					}
 
+// *!*HTML_TAG*!* intersect
+
 					// compute 'pseudoscalar' of the space spanned by P1 and P2
 					mv I = unit_e(join(P1, P2));
 
@@ -225,7 +227,7 @@ void display() {
 					draw(intersection);
 
 					// if intersection is a line, then add to list of new intersection primitives:
-					 if (intersection.gu() == GRADE_2) 
+					 if (intersection.gu() == GRADE_2)
 						iPrimitives.push_back(intersection);
 				}
 			}
@@ -252,15 +254,15 @@ void display() {
 
 		glPopMatrix();
 
-		// draw the planes LAST! because they are transparent . . . 
+		// draw the planes LAST! because they are transparent . . .
 		g_drawState.pushDrawModeOff(OD_MAGNITUDE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4fm(0.0f, 0.0f, 1.0f, 0.5f);
 		for (unsigned int i = 0; i < g_planes.size(); i++) {
 			// compute the plane from the points:
-			plane P = _plane(g_points[g_planes[i][0]] ^ 
-				g_points[g_planes[i][1]] ^ 
+			plane P = _plane(g_points[g_planes[i][0]] ^
+				g_points[g_planes[i][1]] ^
 				g_points[g_planes[i][2]]);
 			draw(P);
 		}
@@ -425,7 +427,7 @@ void MouseMotion(int x, int y) {
 		h3ga::vector T = vectorAtDepth(g_dragDistance, motion);
 		T = _vector(inverse(g_modelRotor) * T * g_modelRotor);
 
-		g_points[g_dragPoint] = 
+		g_points[g_dragPoint] =
 				_normalizedPoint(g_points[g_dragPoint] + (T ^ (e0 << g_points[g_dragPoint])));
 	}
 

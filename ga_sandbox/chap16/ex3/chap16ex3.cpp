@@ -79,11 +79,12 @@ void initRandomDest() {
 	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
 	mv::Float s1 = (mv::Float)(1 + rand()) / (mv::Float)(RAND_MAX/2);
 	scalor S1 = exp(_noni_t(0.5f * log(s1) * noni));
-		
+
 	// return a random TRS versor:
 	g_destVersor = _TRSversor(T1 * S1 * T2 * R * inverse(T2));
 }
 
+// *!*HTML_TAG*!* interpolate
 TRSversor interpolateTRSversor(const TRSversor &src, const TRSversor &dst, mv::Float alpha) {
 	// return src * exp(alpha * log(dst * inverse(src)));
 	return _TRSversor(src * exp(_TRSversor(alpha * log(_TRSversor(inverse(src) * dst)))));
@@ -101,7 +102,7 @@ void display() {
 		// when the process has been 'asleep' for a long time, simply skip:
 		if (currentTime - g_startTime > interpolationTime)
 			g_startTime = currentTime;
-		
+
 		// start new interpolation
 		copyDestToSource();
 		initRandomDest();
@@ -158,7 +159,7 @@ void display() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (unsigned int i = 0; i < g_circleTrail.size(); i++) {
 		float a = 0.7f * (float)i / (float)(g_circleTrail.size());
-		
+
 		// draw the frame
 		glColor4fm(1.0f - a, 1.0f - a, 1.0f - a, a);
 		draw(g_circleTrail[i]);

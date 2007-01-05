@@ -78,23 +78,11 @@ void initRandomDest() {
 	rotor R = exp(_bivectorE3GA(randomBlade(2, 100.0f)));
 
 	g_destVersor = _TRversor(T1 * T2 * R * inverse(T2));
-	/*
-	// create random translation-rotation versor as the exp of a dual line:
-
-	// get random dual spheres:
-	const int grade = 1;
-	const mv::Float size = 5.0f;
-	dualSphere S1 = _dualSphere(randomBlade(grade, size));
-	dualSphere S2 = _dualSphere(randomBlade(grade, size));
-
-	// compute dual line
-	dualLine dL = _dualLine(dual(S1 ^ S2 ^ ni));
-
-	// set the `destination versor':
-	g_destVersor = _TRversor(exp(dL));*/
 }
 
-// interpolate between 'src' and 'dst', as determined by 'alpha' 
+// *!*HTML_TAG*!* interpolate
+
+// interpolate between 'src' and 'dst', as determined by 'alpha'
 TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
 	// return src * exp(alpha * log(dst * inverse(src)));
 	return _TRversor(src * exp(_dualLine(alpha * log(_TRversor(inverse(src) * dst)))));
@@ -112,7 +100,7 @@ void display() {
 		// when the process has been 'asleep' for a long time, simply skip:
 		if (currentTime - g_startTime > interpolationTime)
 			g_startTime = currentTime;
-		
+
 		// start new interpolation
 		copyDestToSource();
 		initRandomDest();
@@ -169,7 +157,7 @@ void display() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (unsigned int i = 0; i < g_circleTrail.size(); i++) {
 		float a = 0.7f * (float)i / (float)(g_circleTrail.size());
-		
+
 		// draw the frame
 		glColor4fm(1.0f - a, 1.0f - a, 1.0f - a, a);
 		draw(g_circleTrail[i]);
