@@ -251,10 +251,10 @@ void MouseMotion(int x, int y) {
 		else g_modelRotor = _rotor(c3ga::exp(0.00001f * (motion ^ mousePos)) * g_modelRotor);
 	}
 	else if (g_mode == MODE_TRANSLATE) {
-		g_modelTranslation += motion.e2() * 0.03f * e3;
+		g_modelTranslation = g_modelTranslation + _vectorE3GA(motion.e2() * 0.03f * e3);
 	}
 	else if (g_mode == MODE_TRANSLATE_PAR) {
-		g_modelTranslation += motion * 0.03f;
+		g_modelTranslation = g_modelTranslation + _vectorE3GA(motion * 0.03f);
 	}
 	else if (g_mode == MODE_SCALE) {
 		g_modelScale += motion.e2() * 0.01f;

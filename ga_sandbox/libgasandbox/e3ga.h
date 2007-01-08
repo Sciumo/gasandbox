@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 15:54:54 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
+// Generated on 2007-01-08 21:04:26 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -244,57 +244,6 @@
 
 
 	class mv {
-		// the friend classes of mv 
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
-		// friend functions of mv 
-		friend char *string(const mv &obj, char *str, int maxLength, const char *fp /*= NULL*/);
-		friend void compress(const float *c, float *cc, int &cgu, float epsilon = 0.0, int gu = 15);
-		friend mv compress(const mv & arg, float epsilon);
-
 		public:
 			typedef float Float;
 
@@ -317,66 +266,66 @@
 		}
 
 		/// pointer to coordinates constructor
-		inline mv(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV) {
+		inline mv(unsigned int gradeUsage, const Float *coordinates) {
 
-			set(gradeUsage, coordinates, type);
+			set(gradeUsage, coordinates);
 		}
 
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, g2Type type = MVT_MV) {
+		, Float c0) {
 
 			set(gradeUsage
-				, c0, type);
+				, c0);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, g2Type type = MVT_MV) {
+		, Float c0, Float c1) {
 
 			set(gradeUsage
-				, c0, c1, type);
+				, c0, c1);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2) {
 
 			set(gradeUsage
-				, c0, c1, c2, type);
+				, c0, c1, c2);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, type);
+				, c0, c1, c2, c3);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, type);
+				, c0, c1, c2, c3, c4);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, type);
+				, c0, c1, c2, c3, c4, c5);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, type);
+				, c0, c1, c2, c3, c4, c5, c6);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, type);
+				, c0, c1, c2, c3, c4, c5, c6, c7);
 		}
 
 		/// init from e1_t constructor
@@ -563,33 +512,33 @@
 		void set(Float scalar);
 
 		/// pointer to coordinates constructor
-		void set(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV);
+		void set(unsigned int gradeUsage, const Float *coordinates);
 
 
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, g2Type type = MVT_MV);
+			, Float c0);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, g2Type type = MVT_MV);
+			, Float c0, Float c1);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3, Float c4);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7);
 
 
 		/// set to e1_t 
@@ -829,9 +778,6 @@
 		unsigned int m_gu; ///< grade usage
 		inline unsigned int gu() const {return m_gu;}
 		inline void gu(unsigned int g) {m_gu = g;}
-		g2Type m_type; ///< type (used for profiling)
-		inline g2Type type() const {return m_type;}
-		inline void type(g2Type t) {m_type = t;}
 
 
 
@@ -865,26 +811,14 @@
 
 	/// returns scalar part of arg1 as float
 	inline float _float(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
 	/// returns scalar part of arg1 as double
 	inline double _double(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)65), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
 	/// returns scalar part of arg1 as Float
 	inline float _Float(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)66), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
 
@@ -898,52 +832,6 @@
 	enum __e1_t_coordinates__ {e1_t_e1};
 
 	class e1_t {
-		// the friend classes of e1_t 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -1060,10 +948,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e1_t _e1_t(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)21), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return e1_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1112,52 +996,6 @@
 	enum __e2_t_coordinates__ {e2_t_e2};
 
 	class e2_t {
-		// the friend classes of e2_t 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-
 		public:
 			typedef float Float;
 
@@ -1274,10 +1112,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e2_t _e2_t(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)22), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return e2_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1326,52 +1160,6 @@
 	enum __e3_t_coordinates__ {e3_t_e3};
 
 	class e3_t {
-		// the friend classes of e3_t 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -1488,10 +1276,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e3_t _e3_t(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)23), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return e3_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1540,52 +1324,6 @@
 	enum __scalar_coordinates__ {scalar_scalar};
 
 	class scalar {
-		// the friend classes of scalar 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -1700,10 +1438,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline scalar _scalar(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)24), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return scalar(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1752,52 +1486,6 @@
 	enum __vector2D_coordinates__ {vector2D_e1_e2};
 
 	class vector2D {
-		// the friend classes of vector2D 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -1917,10 +1605,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vector2D _vector2D(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)25), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return vector2D(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1969,52 +1653,6 @@
 	enum __vector_coordinates__ {vector_e1_e2_e3};
 
 	class vector {
-		// the friend classes of vector 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -2137,10 +1775,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vector _vector(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)26), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return vector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2189,52 +1823,6 @@
 	enum __bivector_coordinates__ {bivector_e1e2_e2e3_e3e1};
 
 	class bivector {
-		// the friend classes of bivector 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -2357,10 +1945,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline bivector _bivector(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)27), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return bivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2409,52 +1993,6 @@
 	enum __trivector_coordinates__ {trivector_e1e2e3};
 
 	class trivector {
-		// the friend classes of trivector 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -2571,10 +2109,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline trivector _trivector(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)28), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return trivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2623,52 +2157,6 @@
 	enum __rotor_coordinates__ {rotor_scalar_e1e2_e2e3_e3e1};
 
 	class rotor {
-		// the friend classes of rotor 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -2791,10 +2279,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline rotor _rotor(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)29), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return rotor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2843,52 +2327,6 @@
 	enum ____e1_ct___coordinates__ {__e1_ct___e1f1_0};
 
 	class __e1_ct__ {
-		// the friend classes of __e1_ct__ 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -3004,10 +2442,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e1_ct__ ___e1_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)30), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __e1_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3056,52 +2490,6 @@
 	enum ____e2_ct___coordinates__ {__e2_ct___e2f1_0};
 
 	class __e2_ct__ {
-		// the friend classes of __e2_ct__ 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -3217,10 +2605,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e2_ct__ ___e2_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)31), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __e2_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3269,52 +2653,6 @@
 	enum ____e3_ct___coordinates__ {__e3_ct___e3f1_0};
 
 	class __e3_ct__ {
-		// the friend classes of __e3_ct__ 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -3430,10 +2768,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e3_ct__ ___e3_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)32), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __e3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3482,52 +2816,6 @@
 	enum ____I3_ct___coordinates__ {__I3_ct___e1e2e3f1_0};
 
 	class __I3_ct__ {
-		// the friend classes of __I3_ct__ 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -3643,10 +2931,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I3_ct__ ___I3_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)33), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __I3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3695,52 +2979,6 @@
 	enum ____I3i_ct___coordinates__ {__I3i_ct___e1e2e3f_1_0};
 
 	class __I3i_ct__ {
-		// the friend classes of __I3i_ct__ 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -3856,10 +3094,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I3i_ct__ ___I3i_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)34), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __I3i_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3908,52 +3142,6 @@
 	enum ____syn_smv___e1_e2_e3_e1e2e3_coordinates__ {__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3};
 
 	class __syn_smv___e1_e2_e3_e1e2e3 {
-		// the friend classes of __syn_smv___e1_e2_e3_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -4079,10 +3267,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e2_e3_e1e2e3 ___syn_smv___e1_e2_e3_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)35), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e2_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4131,52 +3315,6 @@
 	enum ____syn_smv___e1e2f1_0_coordinates__ {__syn_smv___e1e2f1_0_e1e2f1_0};
 
 	class __syn_smv___e1e2f1_0 {
-		// the friend classes of __syn_smv___e1e2f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -4292,10 +3430,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2f1_0 ___syn_smv___e1e2f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)36), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4344,52 +3478,6 @@
 	enum ____syn_smv___e1e2_coordinates__ {__syn_smv___e1e2_e1e2};
 
 	class __syn_smv___e1e2 {
-		// the friend classes of __syn_smv___e1e2 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -4506,10 +3594,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2 ___syn_smv___e1e2(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)37), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4558,52 +3642,6 @@
 	enum ____syn_smv___scalar_e1e2_coordinates__ {__syn_smv___scalar_e1e2_scalar_e1e2};
 
 	class __syn_smv___scalar_e1e2 {
-		// the friend classes of __syn_smv___scalar_e1e2 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -4720,10 +3758,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2 ___syn_smv___scalar_e1e2(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)38), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4772,52 +3806,6 @@
 	enum ____syn_smv___e3f_1_0_coordinates__ {__syn_smv___e3f_1_0_e3f_1_0};
 
 	class __syn_smv___e3f_1_0 {
-		// the friend classes of __syn_smv___e3f_1_0 
-		friend class mv;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -4933,10 +3921,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e3f_1_0 ___syn_smv___e3f_1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)39), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e3f_1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4985,52 +3969,6 @@
 	enum ____syn_smv___e1e3_e2e3_coordinates__ {__syn_smv___e1e3_e2e3_e1e3_e2e3};
 
 	class __syn_smv___e1e3_e2e3 {
-		// the friend classes of __syn_smv___e1e3_e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -5150,10 +4088,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3_e2e3 ___syn_smv___e1e3_e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)40), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5202,52 +4136,6 @@
 	enum ____syn_smv___scalar_e1e3_e2e3_coordinates__ {__syn_smv___scalar_e1e3_e2e3_scalar_e1e3_e2e3};
 
 	class __syn_smv___scalar_e1e3_e2e3 {
-		// the friend classes of __syn_smv___scalar_e1e3_e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -5367,10 +4255,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e3_e2e3 ___syn_smv___scalar_e1e3_e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)41), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e3_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5419,52 +4303,6 @@
 	enum ____syn_smv___e1e2_e1e3_e2e3_e1e2e3_coordinates__ {__syn_smv___e1e2_e1e3_e2e3_e1e2e3_e1e2_e1e3_e2e3_e1e2e3};
 
 	class __syn_smv___e1e2_e1e3_e2e3_e1e2e3 {
-		// the friend classes of __syn_smv___e1e2_e1e3_e2e3_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -5590,10 +4428,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2_e1e3_e2e3_e1e2e3 ___syn_smv___e1e2_e1e3_e2e3_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)42), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2_e1e3_e2e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5642,52 +4476,6 @@
 	enum ____syn_smv___e1e3f_1_0_coordinates__ {__syn_smv___e1e3f_1_0_e1e3f_1_0};
 
 	class __syn_smv___e1e3f_1_0 {
-		// the friend classes of __syn_smv___e1e3f_1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -5803,10 +4591,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3f_1_0 ___syn_smv___e1e3f_1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)43), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3f_1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5855,52 +4639,6 @@
 	enum ____syn_smv___e1e3_coordinates__ {__syn_smv___e1e3_e1e3};
 
 	class __syn_smv___e1e3 {
-		// the friend classes of __syn_smv___e1e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -6017,10 +4755,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3 ___syn_smv___e1e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)44), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6069,52 +4803,6 @@
 	enum ____syn_smv___scalar_e1e3_coordinates__ {__syn_smv___scalar_e1e3_scalar_e1e3};
 
 	class __syn_smv___scalar_e1e3 {
-		// the friend classes of __syn_smv___scalar_e1e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -6231,10 +4919,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e3 ___syn_smv___scalar_e1e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)45), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6283,52 +4967,6 @@
 	enum ____syn_smv___e2e3f1_0_coordinates__ {__syn_smv___e2e3f1_0_e2e3f1_0};
 
 	class __syn_smv___e2e3f1_0 {
-		// the friend classes of __syn_smv___e2e3f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -6444,10 +5082,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2e3f1_0 ___syn_smv___e2e3f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)46), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2e3f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6496,52 +5130,6 @@
 	enum ____syn_smv___e2e3_coordinates__ {__syn_smv___e2e3_e2e3};
 
 	class __syn_smv___e2e3 {
-		// the friend classes of __syn_smv___e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -6658,10 +5246,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2e3 ___syn_smv___e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)47), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6710,52 +5294,6 @@
 	enum ____syn_smv___scalar_e2e3_coordinates__ {__syn_smv___scalar_e2e3_scalar_e2e3};
 
 	class __syn_smv___scalar_e2e3 {
-		// the friend classes of __syn_smv___scalar_e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -6872,10 +5410,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e2e3 ___syn_smv___scalar_e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)48), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6924,52 +5458,6 @@
 	enum ____syn_smv___e2_e3_coordinates__ {__syn_smv___e2_e3_e2_e3};
 
 	class __syn_smv___e2_e3 {
-		// the friend classes of __syn_smv___e2_e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -7089,10 +5577,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2_e3 ___syn_smv___e2_e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)49), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2_e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7141,52 +5625,6 @@
 	enum ____syn_smv___e1_e3_coordinates__ {__syn_smv___e1_e3_e1_e3};
 
 	class __syn_smv___e1_e3 {
-		// the friend classes of __syn_smv___e1_e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -7306,10 +5744,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e3 ___syn_smv___e1_e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)50), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7358,52 +5792,6 @@
 	enum ____syn_smv___e2_e3_e1e2e3_coordinates__ {__syn_smv___e2_e3_e1e2e3_e2_e3_e1e2e3};
 
 	class __syn_smv___e2_e3_e1e2e3 {
-		// the friend classes of __syn_smv___e2_e3_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -7526,10 +5914,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2_e3_e1e2e3 ___syn_smv___e2_e3_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)51), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7578,52 +5962,6 @@
 	enum ____syn_smv___e1_e3_e1e2e3_coordinates__ {__syn_smv___e1_e3_e1e2e3_e1_e3_e1e2e3};
 
 	class __syn_smv___e1_e3_e1e2e3 {
-		// the friend classes of __syn_smv___e1_e3_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -7746,10 +6084,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e3_e1e2e3 ___syn_smv___e1_e3_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)52), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7798,52 +6132,6 @@
 	enum ____syn_smv___e1_e2_e1e2e3_coordinates__ {__syn_smv___e1_e2_e1e2e3_e1_e2_e1e2e3};
 
 	class __syn_smv___e1_e2_e1e2e3 {
-		// the friend classes of __syn_smv___e1_e2_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -7966,10 +6254,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e2_e1e2e3 ___syn_smv___e1_e2_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)53), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e2_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8018,52 +6302,6 @@
 	enum ____syn_smv___scalar_e1e2_e1e3_coordinates__ {__syn_smv___scalar_e1e2_e1e3_scalar_e1e2_e1e3};
 
 	class __syn_smv___scalar_e1e2_e1e3 {
-		// the friend classes of __syn_smv___scalar_e1e2_e1e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -8183,10 +6421,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2_e1e3 ___syn_smv___scalar_e1e2_e1e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)54), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2_e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8235,52 +6469,6 @@
 	enum ____syn_smv___scalar_e1e2_e2e3_coordinates__ {__syn_smv___scalar_e1e2_e2e3_scalar_e1e2_e2e3};
 
 	class __syn_smv___scalar_e1e2_e2e3 {
-		// the friend classes of __syn_smv___scalar_e1e2_e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -8400,10 +6588,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2_e2e3 ___syn_smv___scalar_e1e2_e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)55), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8452,52 +6636,6 @@
 	enum ____syn_smv___e2f_1_0_coordinates__ {__syn_smv___e2f_1_0_e2f_1_0};
 
 	class __syn_smv___e2f_1_0 {
-		// the friend classes of __syn_smv___e2f_1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -8613,10 +6751,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2f_1_0 ___syn_smv___e2f_1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)56), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2f_1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8665,52 +6799,6 @@
 	enum ____syn_smv___e1e2_e1e3_coordinates__ {__syn_smv___e1e2_e1e3_e1e2_e1e3};
 
 	class __syn_smv___e1e2_e1e3 {
-		// the friend classes of __syn_smv___e1e2_e1e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -8830,10 +6918,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2_e1e3 ___syn_smv___e1e2_e1e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)57), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2_e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8882,52 +6966,6 @@
 	enum ____syn_smv___e1e2_e2e3_coordinates__ {__syn_smv___e1e2_e2e3_e1e2_e2e3};
 
 	class __syn_smv___e1e2_e2e3 {
-		// the friend classes of __syn_smv___e1e2_e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -9047,10 +7085,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2_e2e3 ___syn_smv___e1e2_e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)58), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9099,52 +7133,6 @@
 	enum ____syn_smv___e1f1_0_e2f1_0_coordinates__ {__syn_smv___e1f1_0_e2f1_0_e1f1_0_e2f1_0};
 
 	class __syn_smv___e1f1_0_e2f1_0 {
-		// the friend classes of __syn_smv___e1f1_0_e2f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -9263,10 +7251,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1f1_0_e2f1_0 ___syn_smv___e1f1_0_e2f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)59), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1f1_0_e2f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9315,52 +7299,6 @@
 	enum ____syn_smv___e1f1_0_e2f1_0_e3f1_0_coordinates__ {__syn_smv___e1f1_0_e2f1_0_e3f1_0_e1f1_0_e2f1_0_e3f1_0};
 
 	class __syn_smv___e1f1_0_e2f1_0_e3f1_0 {
-		// the friend classes of __syn_smv___e1f1_0_e2f1_0_e3f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -9482,10 +7420,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 ___syn_smv___e1f1_0_e2f1_0_e3f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)60), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1f1_0_e2f1_0_e3f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9534,52 +7468,6 @@
 	enum ____syn_smv___e2_e1f1_0_coordinates__ {__syn_smv___e2_e1f1_0_e2_e1f1_0};
 
 	class __syn_smv___e2_e1f1_0 {
-		// the friend classes of __syn_smv___e2_e1f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -9699,10 +7587,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2_e1f1_0 ___syn_smv___e2_e1f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)61), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e2_e1f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9751,52 +7635,6 @@
 	enum ____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__ {__syn_smv___scalar_e1_e2_e3_e1e2e3_scalar_e1_e2_e3_e1e2e3};
 
 	class __syn_smv___scalar_e1_e2_e3_e1e2e3 {
-		// the friend classes of __syn_smv___scalar_e1_e2_e3_e1e2e3 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -9922,10 +7760,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 ___syn_smv___scalar_e1_e2_e3_e1e2e3(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1_e2_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9974,52 +7808,6 @@
 	enum ____syn_smv___e1_e3f1_0_coordinates__ {__syn_smv___e1_e3f1_0_e1_e3f1_0};
 
 	class __syn_smv___e1_e3f1_0 {
-		// the friend classes of __syn_smv___e1_e3f1_0 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class om;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -10139,10 +7927,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e3f1_0 ___syn_smv___e1_e3f1_0(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e3f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -10188,52 +7972,6 @@
 
 
 	class om {
-		// the friend classes of om 
-		friend class mv;
-		friend class __syn_smv___e3f_1_0;
-		friend class trivector;
-		friend class __syn_smv___e1e2f1_0;
-		friend class __syn_smv___e2_e1f1_0;
-		friend class __e1_ct__;
-		friend class __syn_smv___e1e3;
-		friend class __e2_ct__;
-		friend class __syn_smv___scalar_e1e2_e2e3;
-		friend class __syn_smv___e1_e3_e1e2e3;
-		friend class __syn_smv___e2_e3;
-		friend class e3_t;
-		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
-		friend class __e3_ct__;
-		friend class __syn_smv___e2f_1_0;
-		friend class vector2D;
-		friend class __syn_smv___e2e3f1_0;
-		friend class bivector;
-		friend class vector;
-		friend class __syn_smv___scalar_e1e2;
-		friend class __syn_smv___e1e2_e1e3;
-		friend class __syn_smv___scalar_e2e3;
-		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
-		friend class __syn_smv___scalar_e1e3;
-		friend class __syn_smv___e1_e2_e3_e1e2e3;
-		friend class __syn_smv___e1f1_0_e2f1_0;
-		friend class __syn_smv___scalar_e1e2_e1e3;
-		friend class scalar;
-		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
-		friend class __syn_smv___e1_e3f1_0;
-		friend class __syn_smv___e1e2_e2e3;
-		friend class __syn_smv___e2e3;
-		friend class __syn_smv___e1_e2_e1e2e3;
-		friend class __syn_smv___e2_e3_e1e2e3;
-		friend class e1_t;
-		friend class __I3_ct__;
-		friend class __syn_smv___e1e2;
-		friend class __syn_smv___scalar_e1e3_e2e3;
-		friend class __syn_smv___e1e3f_1_0;
-		friend class rotor;
-		friend class __I3i_ct__;
-		friend class __syn_smv___e1e3_e2e3;
-		friend class __syn_smv___e1_e3;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -10308,10 +8046,6 @@
 		Float m_c[19]; ///< coordinate storage
 
 
-
-		omType m_type; /// type (for profiling)
-		inline omType type() const {return m_type;}
-		inline void type(omType t) {m_type = t;}
 
 
 	}; // end of class om
@@ -15933,13 +13667,13 @@
 	}
 	inline __syn_smv___e1_e3 unit_e(const __syn_smv___e1_e3f1_0& x) {
 		scalar e2;
-		e2.m_c[0] = (1.0f + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + 1.0f);
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return __syn_smv___e1_e3(__syn_smv___e1_e3_e1_e3, (x.m_c[0] * ie.m_c[0]), ie.m_c[0]);
 	}
 	inline trivector op(const bivector& x, const vector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
+		return trivector(trivector_e1e2e3, ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline scalar norm_e2(const trivector& x) {
 		return scalar(scalar_scalar, (x.m_c[0] * x.m_c[0]));
@@ -15948,19 +13682,19 @@
 		return bivector(bivector_e1e2_e2e3_e3e1, x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]));
 	}
 	inline rotor reverse(const rotor& x) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline rotor gp(const rotor& x, const bivector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline scalar gp(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
 	}
 	inline bivector add(const bivector& x, const bivector& y) {
-		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
+		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
 		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])));
@@ -15974,11 +13708,11 @@
 	}
 	inline scalar norm_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
+		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e1e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
@@ -15988,11 +13722,11 @@
 	}
 	inline scalar norm_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline vector unit_e(const __syn_smv___e1f1_0_e2f1_0_e3f1_0& x) {
 		scalar e2;
@@ -16005,7 +13739,7 @@
 		return __syn_smv___scalar_e1e2_e2e3(__syn_smv___scalar_e1e2_e2e3_scalar_e1e2_e2e3, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]));
 	}
 	inline bivector op(const vector& x, const vector& y) {
-		return bivector(bivector_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return bivector(bivector_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gradeInvolution(const __syn_smv___e1_e2_e3_e1e2e3& x) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
@@ -16017,7 +13751,7 @@
 		return scalar(scalar_scalar, x.m_c[1]);
 	}
 	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___e1f1_0_e2f1_0 add(const __e1_ct__& x, const __e2_ct__& y) {
 		return __syn_smv___e1f1_0_e2f1_0(__syn_smv___e1f1_0_e2f1_0_e1f1_0_e2f1_0);
@@ -16036,7 +13770,7 @@
 	}
 	inline bivector inverse(const bivector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
@@ -16048,19 +13782,19 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline scalar lcont(const bivector& x, const bivector& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const vector& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])));
 	}
 	inline rotor add(const scalar& x, const bivector& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], y.m_c[0], y.m_c[1], y.m_c[2]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline bivector dual(const vector& x) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[2]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
@@ -16069,7 +13803,7 @@
 		return __syn_smv___e2e3f1_0(__syn_smv___e2e3f1_0_e2e3f1_0);
 	}
 	inline vector subtract(const __e3_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (1.0f + (-1.0f * y.m_c[2])));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), ((-1.0f * y.m_c[2]) + 1.0f));
 	}
 	inline vector dual(const bivector& x) {
 		return vector(vector_e1_e2_e3, x.m_c[1], x.m_c[2], x.m_c[0]);
@@ -16079,7 +13813,7 @@
 	}
 	inline rotor unit_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
@@ -16092,7 +13826,7 @@
 		return scalar(scalar_scalar, (x.m_c[0] * ie.m_c[0]));
 	}
 	inline rotor add(const scalar& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (y.m_c[0] + x.m_c[0]), y.m_c[1], y.m_c[2], y.m_c[3]);
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), y.m_c[1], y.m_c[2], y.m_c[3]);
 	}
 	inline scalar norm_e(const scalar& x) {
 		scalar e2;
@@ -16100,10 +13834,10 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline scalar norm_e2(const __syn_smv___scalar_e1e2& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]));
+		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]));
 	}
 	inline vector op(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
@@ -16116,17 +13850,17 @@
 	}
 	inline rotor inverse(const rotor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline scalar norm_e2(const vector& x) {
-		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline scalar norm_e(const vector2D& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline rotor subtract(const rotor& x, const scalar& y) {
@@ -16139,13 +13873,13 @@
 		return __syn_smv___e1_e3f1_0(__syn_smv___e1_e3f1_0_e1_e3f1_0, y.m_c[0]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e3_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar norm_e2(const rotor& x) {
-		return scalar(scalar_scalar, ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2])));
 	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]));
+		return vector(vector_e1_e2_e3, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e2_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), x.m_c[3]);
@@ -16155,11 +13889,11 @@
 	}
 	inline scalar norm_e(const __syn_smv___scalar_e1_e2_e3_e1e2e3& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2 subtract(const __syn_smv___scalar_e1e2& x, const scalar& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), x.m_c[1]);
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), x.m_c[1]);
 	}
 	inline bivector gp(const bivector& x, const scalar& y) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
@@ -16177,7 +13911,7 @@
 		return vector(vector_e1_e2_e3, x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline rotor gp(const bivector& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___e2f_1_0 negate(const __e2_ct__& x) {
 		return __syn_smv___e2f_1_0(__syn_smv___e2f_1_0_e2f_1_0);
@@ -16194,7 +13928,7 @@
 		return vector2D(vector2D_e1_e2, y.m_c[0], y.m_c[1]);
 	}
 	inline vector subtract(const __e2_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (1.0f + (-1.0f * y.m_c[1])), (-1.0f * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), ((-1.0f * y.m_c[1]) + 1.0f), (-1.0f * y.m_c[2]));
 	}
 	inline __syn_smv___e1e2 gp(const __syn_smv___e1e2& x, const scalar& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
@@ -16203,7 +13937,7 @@
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, y.m_c[0]);
 	}
 	inline scalar scp(const vector& x, const vector& y) {
-		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline scalar norm_r2(const vector& x) {
 		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
@@ -16212,23 +13946,23 @@
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
 	}
 	inline scalar norm_e2(const __syn_smv___e1e2_e2e3& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline vector negate(const vector& x) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 unit_e(const __syn_smv___e1_e2_e3_e1e2e3& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
 	}
 	inline rotor gp(const vector& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar gradeInvolution(const scalar& x) {
 		return scalar(scalar_scalar, x.m_c[0]);
@@ -16272,16 +14006,16 @@
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	inline scalar norm_e2(const __syn_smv___e1e2_e1e3& x) {
-		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline rotor gp(const bivector& x, const bivector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
 	}
 	inline rotor gp(const rotor& x, const scalar& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e3_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[3]), x.m_c[2], x.m_c[0], x.m_c[1]);
@@ -16290,10 +14024,10 @@
 		return vector2D(vector2D_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___e2e3 gp(const scalar& x, const __syn_smv___e2e3f1_0& y) {
 		return __syn_smv___e2e3(__syn_smv___e2e3_e2e3, x.m_c[0]);
@@ -16303,7 +14037,7 @@
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline vector gp(const trivector& x, const bivector& y) {
@@ -16313,13 +14047,13 @@
 		return __syn_smv___e1e3f_1_0(__syn_smv___e1e3f_1_0_e1e3f_1_0);
 	}
 	inline rotor gp(const __syn_smv___scalar_e1e3_e2e3& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline scalar norm_e2(const bivector& x) {
 		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline rotor gp(const vector& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___scalar_e1e3 add(const scalar& x, const __syn_smv___e1e3& y) {
 		return __syn_smv___scalar_e1e3(__syn_smv___scalar_e1e3_scalar_e1e3, x.m_c[0], y.m_c[0]);
@@ -16341,20 +14075,20 @@
 		return __syn_smv___e1e2_e1e3(__syn_smv___e1e2_e1e3_e1e2_e1e3, (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const vector& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline vector gp(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2f1_0& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, x.m_c[0]);
 	}
 	inline bivector unit_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
@@ -16363,7 +14097,7 @@
 		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, x.m_c[0], x.m_c[1]);
 	}
 	inline scalar lcont(const vector& x, const vector& y) {
-		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
 	}
 	inline __syn_smv___e2_e1f1_0 add(const __e1_ct__& x, const e2_t& y) {
 		return __syn_smv___e2_e1f1_0(__syn_smv___e2_e1f1_0_e2_e1f1_0, y.m_c[0]);
@@ -16383,7 +14117,7 @@
 	}
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2_e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
@@ -16402,7 +14136,7 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])));
 	}
 	inline __syn_smv___e1e2_e2e3 op(const vector& x, const __e2_ct__& y) {
 		return __syn_smv___e1e2_e2e3(__syn_smv___e1e2_e2e3_e1e2_e2e3, x.m_c[0], (-1.0f * x.m_c[2]));
@@ -16420,7 +14154,7 @@
 		return __syn_smv___e1_e3(__syn_smv___e1_e3_e1_e3, (-1.0f * y.m_c[0]), y.m_c[1]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar norm_e2(const scalar& x) {
 		return scalar(scalar_scalar, (x.m_c[0] * x.m_c[0]));
@@ -16435,24 +14169,24 @@
 		return __syn_smv___scalar_e2e3(__syn_smv___scalar_e2e3_scalar_e2e3, x.m_c[0], y.m_c[0]);
 	}
 	inline trivector op(const vector& x, const bivector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return trivector(trivector_e1e2e3, ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline rotor gp(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___scalar_e1e2 gp(const __syn_smv___e1e3_e2e3& x, const __syn_smv___e1e3_e2e3& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 inverse(const __syn_smv___e1_e2_e3_e1e2e3& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline rotor unit_r(const rotor& x) {
 		scalar r2;
-		r2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]));
+		r2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
 		scalar ir;
 		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ir.m_c[0]), (x.m_c[1] * ir.m_c[0]), (x.m_c[2] * ir.m_c[0]), (x.m_c[3] * ir.m_c[0]));
@@ -16464,13 +14198,13 @@
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e2_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline e1_t gp(const e1_t& x, const scalar& y) {
 		return e1_t(e1_t_e1, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector lcont(const vector& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
+		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline vector gradeInvolution(const vector& x) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -16497,7 +14231,7 @@
 		return trivector(trivector_e1e2e3, (y.m_c[0] + x.m_c[0]));
 	}
 	inline vector lcont(const __syn_smv___e1_e3& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), (-1.0f * x.m_c[0] * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), (-1.0f * x.m_c[0] * y.m_c[2]));
 	}
 
 

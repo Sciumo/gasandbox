@@ -46,3 +46,11 @@ What should be improved:
 -shared code (mainly OpenGL / UI stuff)
 -each algebra all function in XXga_util.cpp
 -clean up of left-over commented-out testing code
+
+
+Especially c3ga.h is very large due to all the optimizations
+for all examples (very varied use of GA).
+Optimization are done from profile (.gp2)
+If compile times are too long , copy the unoptimized .h and .cpp files
+(e.g. c3ga.cpp and c3ga.h) from libgasandbox_no_opt to libgasandbox.
+The examples will still work good enough without the optimizations.
