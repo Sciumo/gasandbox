@@ -24,7 +24,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <opencv/cxcore.h>
+// not sure whether this should be <opencv/cxcore.h> or just <cxcore.h>
+#include <cxcore.h>
+//#include <opencv/cxcore.h>
 
 #include <vector>
 

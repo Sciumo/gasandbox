@@ -24,7 +24,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <opencv/cxcore.h>
+// not sure whether this should be <opencv/cxcore.h> or just <cxcore.h>
+#include <cxcore.h>
+//#include <opencv/cxcore.h>
 
 #include <vector>
 
@@ -219,7 +221,7 @@ void display() {
 		{
 			// translate a little bit so intersections are drawn ON TOP of the other primitives
 			// This is used instead of using polygon offset)
-			vector T = _vector(inverse(g_modelRotor) * 0.01 * e3 * g_modelRotor);
+			vector T = _vector(inverse(g_modelRotor) * 0.01f * e3 * g_modelRotor);
 			glTranslatef(T.e1(), T.e2(), T.e3());
 		}
 

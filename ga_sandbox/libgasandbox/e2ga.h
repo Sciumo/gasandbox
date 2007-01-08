@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 13:43:30 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-08 14:15:41 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -2453,12 +2453,14 @@
 	inline rotor gp(const vector& x, const __e2_ct__& y);
 	inline scalar gp(const bivector& x, const bivector& y);
 	inline bivector op(const vector& x, const vector& y);
+	inline vector subtract(const e1_t& x, const e2_t& y);
 	inline vector add(const vector& x, const vector& y);
 	inline vector gradeInvolution(const vector& x);
 	inline scalar norm_e(const vector& x);
 	inline bivector inverse(const bivector& x);
 	inline e2_t gp(const bivector& x, const __e1_ct__& y);
 	inline rotor gp(const vector& x, const vector& y);
+	inline vector gp(const vector& x, const scalar& y);
 	inline bivector reverse(const bivector& x);
 	inline vector reverse(const vector& x);
 	inline e1_t gp(const e2_t& x, const bivector& y);
@@ -2486,7 +2488,7 @@
 	inline scalar operator-=(scalar& arg1, float arg2);
 	inline rotor operator-=(rotor& arg1, const rotor& arg2);
 	inline vector operator-=(vector& arg1, const vector& arg2);
-	inline e1_t operator-=(e1_t& arg1, const mv& arg2);
+	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2);
 	inline e2_t operator-=(e2_t& arg1, const mv& arg2);
 	inline bivector operator-=(bivector& arg1, const mv& arg2);
 	inline __e1_ct__ operator-=(__e1_ct__& arg1, const mv& arg2);
@@ -2499,6 +2501,7 @@
 	inline scalar operator-(const scalar& arg1, float arg2);
 	inline rotor operator-(const rotor& arg1, const rotor& arg2);
 	inline vector operator-(const vector& arg1, const vector& arg2);
+	inline vector operator-(const e1_t& arg1, const e2_t& arg2);
 	inline mv operator-(const mv& arg1);
 	inline mv operator%=(mv& arg1, const mv& arg2);
 	inline bivector operator%=(bivector& arg1, const bivector& arg2);
@@ -2535,6 +2538,8 @@
 	inline bivector operator*=(bivector& arg1, const bivector& arg2);
 	inline bivector operator*=(bivector& arg1, const __e1_ct__& arg2);
 	inline vector operator*=(vector& arg1, const vector& arg2);
+	inline vector operator*=(vector& arg1, const scalar& arg2);
+	inline vector operator*=(vector& arg1, float arg2);
 	inline e2_t operator*=(e2_t& arg1, const bivector& arg2);
 	inline scalar operator*=(scalar& arg1, const vector& arg2);
 	inline e1_t operator*=(e1_t& arg1, const bivector& arg2);
@@ -2553,6 +2558,8 @@
 	inline scalar operator*(const bivector& arg1, const bivector& arg2);
 	inline e2_t operator*(const bivector& arg1, const __e1_ct__& arg2);
 	inline rotor operator*(const vector& arg1, const vector& arg2);
+	inline vector operator*(const vector& arg1, const scalar& arg2);
+	inline vector operator*(const vector& arg1, float arg2);
 	inline e1_t operator*(const e2_t& arg1, const bivector& arg2);
 	inline vector operator*(const scalar& arg1, const vector& arg2);
 	inline vector operator*(float arg1, const vector& arg2);
@@ -3284,7 +3291,7 @@
 		arg1.set(::e2ga::subtract(arg1, arg2));
 		return arg1;
 	}
-	inline e1_t operator-=(e1_t& arg1, const mv& arg2) {
+	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2) {
 		arg1.set(::e2ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -3328,6 +3335,9 @@
 		return ::e2ga::subtract(arg1, arg2);
 	}
 	inline vector operator-(const vector& arg1, const vector& arg2) {
+		return ::e2ga::subtract(arg1, arg2);
+	}
+	inline vector operator-(const e1_t& arg1, const e2_t& arg2) {
 		return ::e2ga::subtract(arg1, arg2);
 	}
 	inline mv operator-(const mv& arg1) {
@@ -3468,6 +3478,14 @@
 		arg1.set(::e2ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline vector operator*=(vector& arg1, const scalar& arg2) {
+		arg1.set(::e2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline vector operator*=(vector& arg1, float arg2) {
+		arg1.set(::e2ga::gp(arg1, ::e2ga::scalar(arg2)));
+		return arg1;
+	}
 	inline e2_t operator*=(e2_t& arg1, const bivector& arg2) {
 		arg1.set(::e2ga::gp(arg1, arg2));
 		return arg1;
@@ -3530,6 +3548,12 @@
 	}
 	inline rotor operator*(const vector& arg1, const vector& arg2) {
 		return ::e2ga::gp(arg1, arg2);
+	}
+	inline vector operator*(const vector& arg1, const scalar& arg2) {
+		return ::e2ga::gp(arg1, arg2);
+	}
+	inline vector operator*(const vector& arg1, float arg2) {
+		return ::e2ga::gp(arg1, ::e2ga::scalar(arg2));
 	}
 	inline e1_t operator*(const e2_t& arg1, const bivector& arg2) {
 		return ::e2ga::gp(arg1, arg2);
@@ -3625,14 +3649,14 @@
 	// G2 functions:
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
 	}
 	inline vector inverse(const vector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return vector(vector_e1_e2, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]));
@@ -3650,10 +3674,10 @@
 		return scalar(scalar_scalar, ((-1.0f * y.m_c[0]) + x.m_c[0]));
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])));
+		return vector(vector_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
@@ -3665,7 +3689,7 @@
 		return e1_t(e1_t_e1, x.m_c[0]);
 	}
 	inline scalar norm_e2(const vector& x) {
-		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline scalar norm_e(const bivector& x) {
 		scalar e2;
@@ -3681,8 +3705,11 @@
 	inline bivector op(const vector& x, const vector& y) {
 		return bivector(bivector_e1e2, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
+	inline vector subtract(const e1_t& x, const e2_t& y) {
+		return vector(vector_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
+	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]));
+		return vector(vector_e1_e2, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]));
 	}
 	inline vector gradeInvolution(const vector& x) {
 		return vector(vector_e1_e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
@@ -3705,6 +3732,9 @@
 	inline rotor gp(const vector& x, const vector& y) {
 		return rotor(rotor_scalar_e1e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
+	inline vector gp(const vector& x, const scalar& y) {
+		return vector(vector_e1_e2, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]));
+	}
 	inline bivector reverse(const bivector& x) {
 		return bivector(bivector_e1e2, (-1.0f * x.m_c[0]));
 	}
@@ -3721,13 +3751,13 @@
 		return e2_t(e2_t_e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector gp(const rotor& x, const vector& y) {
-		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
 		return e2_t(e2_t_e2, x.m_c[0]);
 	}
 	inline scalar scp(const vector& x, const vector& y) {
-		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
 	}
 
 

@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 14:06:33 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
+// Generated on 2007-01-08 14:15:18 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -80,15 +80,17 @@
 			MVT___SYN_SMV___E1F1_0_E2F1_0 = 48,
 			MVT___SYN_SMV___E1F1_0_E2F1_0_E3F1_0 = 49,
 			MVT___SYN_SMV___E2_E1F1_0 = 50,
+			MVT___SYN_SMV___SCALAR_E1_E2_E3_E1E2E3 = 51,
+			MVT___SYN_SMV___E1_E3F1_0 = 52,
 			MVT_MV = 8,
-			MVT_LAST = 51 
+			MVT_LAST = 53 
 	};
 
 	// outermorphism types:
 	enum omType {
 		OMT_NONE = -2,
 			OMT_OM = 9,
-			OMT_LAST = 51 
+			OMT_LAST = 53 
 	};
 
 	// grade definitions that can be joined using the '|' operator:
@@ -173,6 +175,8 @@
 	class __syn_smv___e1f1_0_e2f1_0;
 	class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
 	class __syn_smv___e2_e1f1_0;
+	class __syn_smv___scalar_e1_e2_e3_e1e2e3;
+	class __syn_smv___e1_e3f1_0;
 	class mv;
 	class om;
 
@@ -252,6 +256,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -269,6 +274,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -537,6 +543,14 @@
 		inline mv(const __syn_smv___e2_e1f1_0 &arg1) {
 			set(arg1);
 		}
+		/// init from __syn_smv___scalar_e1_e2_e3_e1e2e3 constructor
+		inline mv(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1_e3f1_0 constructor
+		inline mv(const __syn_smv___e1_e3f1_0 &arg1) {
+			set(arg1);
+		}
 
 
 		/// set to null
@@ -660,6 +674,10 @@
 		void set(const __syn_smv___e1f1_0_e2f1_0_e3f1_0 &arg1);
 		/// set to __syn_smv___e2_e1f1_0 
 		void set(const __syn_smv___e2_e1f1_0 &arg1);
+		/// set to __syn_smv___scalar_e1_e2_e3_e1e2e3 
+		void set(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1);
+		/// set to __syn_smv___e1_e3f1_0 
+		void set(const __syn_smv___e1_e3f1_0 &arg1);
 
 
 		/// assign copy
@@ -750,6 +768,10 @@
 		mv&operator=(const __syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1);
 		/// assign __syn_smv___e2_e1f1_0 
 		mv&operator=(const __syn_smv___e2_e1f1_0& arg1);
+		/// assign __syn_smv___scalar_e1_e2_e3_e1e2e3 
+		mv&operator=(const __syn_smv___scalar_e1_e2_e3_e1e2e3& arg1);
+		/// assign __syn_smv___e1_e3f1_0 
+		mv&operator=(const __syn_smv___e1_e3f1_0& arg1);
 
 
 		void compress(Float epsilon = 0.0);
@@ -845,7 +867,7 @@
 	inline float _float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
@@ -853,7 +875,7 @@
 	inline double _double(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)65), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
@@ -861,7 +883,7 @@
 	inline float _Float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)66), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
@@ -889,6 +911,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -906,6 +929,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -1101,6 +1125,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -1118,6 +1143,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -1312,6 +1338,7 @@
 		friend class __syn_smv___scalar_e1e2_e2e3;
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -1329,6 +1356,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -1525,6 +1553,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -1541,6 +1570,7 @@
 		friend class __syn_smv___e1f1_0_e2f1_0;
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -1735,6 +1765,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class __syn_smv___e2e3f1_0;
@@ -1751,6 +1782,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -1950,6 +1982,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -1966,6 +1999,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -2168,6 +2202,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -2184,6 +2219,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -2385,6 +2421,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -2402,6 +2439,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -2598,6 +2636,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -2615,6 +2654,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -2815,6 +2855,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -2832,6 +2873,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -3026,6 +3068,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -3043,6 +3086,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -3238,6 +3282,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
 		friend class __syn_smv___e2e3f1_0;
@@ -3254,6 +3299,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -3449,6 +3495,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -3466,6 +3513,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -3660,6 +3708,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -3677,6 +3726,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -3871,6 +3921,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -3887,6 +3938,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -4091,6 +4143,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -4108,6 +4161,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -4303,6 +4357,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -4320,6 +4375,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -4515,6 +4571,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -4531,6 +4588,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -4726,6 +4784,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -4743,6 +4802,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -4938,6 +4998,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -4955,6 +5016,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -5153,6 +5215,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -5170,6 +5233,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -5368,6 +5432,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -5384,6 +5449,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -5589,6 +5655,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -5606,6 +5673,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -5799,6 +5867,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -5816,6 +5885,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -6012,6 +6082,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -6028,6 +6099,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -6224,6 +6296,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -6240,6 +6313,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -6435,6 +6509,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -6452,6 +6527,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
 		friend class __syn_smv___e2_e3_e1e2e3;
@@ -6647,6 +6723,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -6663,6 +6740,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -6858,6 +6936,7 @@
 		friend class __syn_smv___scalar_e1e2_e2e3;
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -6875,6 +6954,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -7074,6 +7154,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -7091,6 +7172,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -7289,6 +7371,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -7306,6 +7389,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -7506,6 +7590,7 @@
 		friend class __syn_smv___scalar_e1e2_e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -7523,6 +7608,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -7725,6 +7811,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -7742,6 +7829,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e2_e3_e1e2e3;
@@ -7943,6 +8031,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -7959,6 +8048,7 @@
 		friend class __syn_smv___e1f1_0_e2f1_0;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -8157,6 +8247,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -8174,6 +8265,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -8373,6 +8465,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class vector2D;
 		friend class __syn_smv___e2e3f1_0;
@@ -8389,6 +8482,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -8584,6 +8678,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -8600,6 +8695,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -8799,6 +8895,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -8816,6 +8913,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
 		friend class __syn_smv___e2_e3_e1e2e3;
@@ -9014,6 +9112,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -9030,6 +9129,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -9228,6 +9328,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -9244,6 +9345,7 @@
 		friend class __syn_smv___e1f1_0_e2f1_0;
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -9444,6 +9546,7 @@
 		friend class __syn_smv___e1_e3_e1e2e3;
 		friend class __syn_smv___e2_e3;
 		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
 		friend class __e3_ct__;
 		friend class __syn_smv___e2f_1_0;
 		friend class vector2D;
@@ -9461,6 +9564,7 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -9643,8 +9747,11 @@
 	}
 
 
-	class om {
-		// the friend classes of om 
+	/// enum for the coordinates of __syn_smv___scalar_e1_e2_e3_e1e2e3 
+	enum ____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__ {__syn_smv___scalar_e1_e2_e3_e1e2e3_scalar_e1_e2_e3_e1e2e3};
+
+	class __syn_smv___scalar_e1_e2_e3_e1e2e3 {
+		// the friend classes of __syn_smv___scalar_e1_e2_e3_e1e2e3 
 		friend class mv;
 		friend class __syn_smv___e3f_1_0;
 		friend class trivector;
@@ -9663,6 +9770,7 @@
 		friend class __syn_smv___e2e3f1_0;
 		friend class bivector;
 		friend class vector;
+		friend class om;
 		friend class __syn_smv___scalar_e1e2;
 		friend class __syn_smv___e1e2_e1e3;
 		friend class __syn_smv___scalar_e2e3;
@@ -9673,6 +9781,444 @@
 		friend class __syn_smv___scalar_e1e2_e1e3;
 		friend class scalar;
 		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
+		friend class __syn_smv___e1e2_e2e3;
+		friend class __syn_smv___e2e3;
+		friend class __syn_smv___e1_e2_e1e2e3;
+		friend class __syn_smv___e2_e3_e1e2e3;
+		friend class e1_t;
+		friend class __I3_ct__;
+		friend class __syn_smv___e1e2;
+		friend class __syn_smv___scalar_e1e3_e2e3;
+		friend class __syn_smv___e1e3f_1_0;
+		friend class rotor;
+		friend class __I3i_ct__;
+		friend class __syn_smv___e1e3_e2e3;
+		friend class __syn_smv___e1_e3;
+		friend class e2_t;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_e1_e2_e3_e1e2e3	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_e1_e2_e3_e1e2e3	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_e1_e2_e3_e1e2e3_scalar_e1_e2_e3_e1e2e3, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_e1_e2_e3_e1e2e3(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, Float c_scalar, Float c_e1, Float c_e2, Float c_e3, Float c_e1e2e3) {
+
+			set(__syn_smv___scalar_e1_e2_e3_e1e2e3_scalar_e1_e2_e3_e1e2e3, c_scalar, c_e1, c_e2, c_e3, c_e1e2e3);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, Float c_scalar, Float c_e1, Float c_e2, Float c_e3, Float c_e1e2e3);
+
+		/// assign copy
+		__syn_smv___scalar_e1_e2_e3_e1e2e3 &operator=(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_e1_e2_e3_e1e2e3 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_e1_e2_e3_e1e2e3 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[1];
+		}
+		inline Float e2() const {
+			return m_c[2];
+		}
+		inline Float e3() const {
+			return m_c[3];
+		}
+		inline Float e1e2e3() const {
+			return m_c[4];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[5];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::e3ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::e3ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_e1_e2_e3_e1e2e3 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 ___syn_smv___scalar_e1_e2_e3_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_e1_e2_e3_e1e2e3(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_e1_e2_e3_e1e2e3 &___syn_smv___scalar_e1_e2_e3_e1e2e3(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 &___syn_smv___scalar_e1_e2_e3_e1e2e3(__syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 ___syn_smv___scalar_e1_e2_e3_e1e2e3(__syn_smv___scalar_e1_e2_e3_e1e2e3::Float arg1) {
+		return __syn_smv___scalar_e1_e2_e3_e1e2e3(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 like(const mv &what, const __syn_smv___scalar_e1_e2_e3_e1e2e3 &example) {return ___syn_smv___scalar_e1_e2_e3_e1e2e3(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_e1_e2_e3_e1e2e3 like(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &what, const __syn_smv___scalar_e1_e2_e3_e1e2e3 &example) {return ___syn_smv___scalar_e1_e2_e3_e1e2e3(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 like(__syn_smv___scalar_e1_e2_e3_e1e2e3 &what, const __syn_smv___scalar_e1_e2_e3_e1e2e3 &example) {return ___syn_smv___scalar_e1_e2_e3_e1e2e3(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_e1_e2_e3_e1e2e3 & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_e1_e2_e3_e1e2e3 & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_e1_e2_e3_e1e2e3 & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1_e3f1_0 
+	enum ____syn_smv___e1_e3f1_0_coordinates__ {__syn_smv___e1_e3f1_0_e1_e3f1_0};
+
+	class __syn_smv___e1_e3f1_0 {
+		// the friend classes of __syn_smv___e1_e3f1_0 
+		friend class mv;
+		friend class __syn_smv___e3f_1_0;
+		friend class trivector;
+		friend class __syn_smv___e1e2f1_0;
+		friend class __syn_smv___e2_e1f1_0;
+		friend class __e1_ct__;
+		friend class __syn_smv___e1e3;
+		friend class __e2_ct__;
+		friend class __syn_smv___scalar_e1e2_e2e3;
+		friend class __syn_smv___e1_e3_e1e2e3;
+		friend class __syn_smv___e2_e3;
+		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
+		friend class __e3_ct__;
+		friend class __syn_smv___e2f_1_0;
+		friend class vector2D;
+		friend class __syn_smv___e2e3f1_0;
+		friend class bivector;
+		friend class vector;
+		friend class om;
+		friend class __syn_smv___scalar_e1e2;
+		friend class __syn_smv___e1e2_e1e3;
+		friend class __syn_smv___scalar_e2e3;
+		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
+		friend class __syn_smv___scalar_e1e3;
+		friend class __syn_smv___e1_e2_e3_e1e2e3;
+		friend class __syn_smv___e1f1_0_e2f1_0;
+		friend class __syn_smv___scalar_e1e2_e1e3;
+		friend class scalar;
+		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1e2_e2e3;
+		friend class __syn_smv___e2e3;
+		friend class __syn_smv___e1_e2_e1e2e3;
+		friend class __syn_smv___e2_e3_e1e2e3;
+		friend class e1_t;
+		friend class __I3_ct__;
+		friend class __syn_smv___e1e2;
+		friend class __syn_smv___scalar_e1e3_e2e3;
+		friend class __syn_smv___e1e3f_1_0;
+		friend class rotor;
+		friend class __I3i_ct__;
+		friend class __syn_smv___e1e3_e2e3;
+		friend class __syn_smv___e1_e3;
+		friend class e2_t;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e3f1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e3f1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e3f1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e3f1_0(const __syn_smv___e1_e3f1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e3f1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e3f1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e3f1_0(____syn_smv___e1_e3f1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e3f1_0_e1_e3f1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e3f1_0(____syn_smv___e1_e3f1_0_coordinates__, Float c_e1) {
+
+			set(__syn_smv___e1_e3f1_0_e1_e3f1_0, c_e1);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e3f1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e3f1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e3f1_0_coordinates__, Float c_e1);
+
+		/// assign copy
+		__syn_smv___e1_e3f1_0 &operator=(const __syn_smv___e1_e3f1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e3f1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e3f1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+
+		/// const coordinate extraction by name
+		inline Float e3() const {
+			return 1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e3f1_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[1];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::e3ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::e3ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e3f1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e3f1_0 ___syn_smv___e1_e3f1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e3f1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e3f1_0 &___syn_smv___e1_e3f1_0(const __syn_smv___e1_e3f1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e3f1_0 &___syn_smv___e1_e3f1_0(__syn_smv___e1_e3f1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e3f1_0 ___syn_smv___e1_e3f1_0(__syn_smv___e1_e3f1_0::Float arg1) {
+		return __syn_smv___e1_e3f1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e3f1_0 like(const mv &what, const __syn_smv___e1_e3f1_0 &example) {return ___syn_smv___e1_e3f1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e3f1_0 like(const __syn_smv___e1_e3f1_0 &what, const __syn_smv___e1_e3f1_0 &example) {return ___syn_smv___e1_e3f1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e3f1_0 like(__syn_smv___e1_e3f1_0 &what, const __syn_smv___e1_e3f1_0 &example) {return ___syn_smv___e1_e3f1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e3f1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e3f1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e3f1_0 & v) {
+		return (float)0;
+	}
+
+
+	class om {
+		// the friend classes of om 
+		friend class mv;
+		friend class __syn_smv___e3f_1_0;
+		friend class trivector;
+		friend class __syn_smv___e1e2f1_0;
+		friend class __syn_smv___e2_e1f1_0;
+		friend class __e1_ct__;
+		friend class __syn_smv___e1e3;
+		friend class __e2_ct__;
+		friend class __syn_smv___scalar_e1e2_e2e3;
+		friend class __syn_smv___e1_e3_e1e2e3;
+		friend class __syn_smv___e2_e3;
+		friend class e3_t;
+		friend class __syn_smv___scalar_e1_e2_e3_e1e2e3;
+		friend class __e3_ct__;
+		friend class __syn_smv___e2f_1_0;
+		friend class vector2D;
+		friend class __syn_smv___e2e3f1_0;
+		friend class bivector;
+		friend class vector;
+		friend class __syn_smv___scalar_e1e2;
+		friend class __syn_smv___e1e2_e1e3;
+		friend class __syn_smv___scalar_e2e3;
+		friend class __syn_smv___e1e2_e1e3_e2e3_e1e2e3;
+		friend class __syn_smv___scalar_e1e3;
+		friend class __syn_smv___e1_e2_e3_e1e2e3;
+		friend class __syn_smv___e1f1_0_e2f1_0;
+		friend class __syn_smv___scalar_e1e2_e1e3;
+		friend class scalar;
+		friend class __syn_smv___e1f1_0_e2f1_0_e3f1_0;
+		friend class __syn_smv___e1_e3f1_0;
 		friend class __syn_smv___e1e2_e2e3;
 		friend class __syn_smv___e2e3;
 		friend class __syn_smv___e1_e2_e1e2e3;
@@ -9826,6 +10372,10 @@
 
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1	, (float)0, (float)arg1.m_c[0], (float)arg1.m_c[1], (float)arg1.m_c[2]);
 	}
+	inline bivector _bivector(const rotor &arg1) {
+
+		return bivector(bivector_e1e2_e2e3_e3e1	, (float)arg1.m_c[1], (float)arg1.m_c[2], (float)arg1.m_c[3]);
+	}
 	inline rotor _rotor(const __syn_smv___scalar_e1e3 &arg1) {
 
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1	, (float)arg1.m_c[0], (float)0, (float)0, (float)arg1.m_c[1]* (float)-1.0);
@@ -9858,6 +10408,10 @@
 
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1	, (float)arg1.m_c[0], (float)0, (float)arg1.m_c[1], (float)0);
 	}
+	inline vector _vector(const __syn_smv___e1_e3 &arg1) {
+
+		return vector(vector_e1_e2_e3	, (float)arg1.m_c[0], (float)0, (float)arg1.m_c[1]);
+	}
 
 
 	extern __I3i_ct__ I3i;
@@ -9889,31 +10443,41 @@
 	} /* end of namespace __G2_GENERATED__ */
 	inline e2_t gp(const __e2_ct__& x, const scalar& y);
 	inline __syn_smv___e3f_1_0 negate(const __e3_ct__& x);
+	inline __syn_smv___e1_e3 unit_e(const __syn_smv___e1_e3f1_0& x);
 	inline trivector op(const bivector& x, const vector& y);
 	inline scalar norm_e2(const trivector& x);
 	inline bivector gradeInvolution(const bivector& x);
 	vector apply_om(const om& x, const vector& y);
 	inline rotor subtract(const rotor& x, const rotor& y);
+	inline rotor reverse(const rotor& x);
+	inline rotor gp(const rotor& x, const bivector& y);
 	inline scalar gp(const scalar& x, const scalar& y);
 	inline bivector add(const bivector& x, const bivector& y);
 	inline scalar scp(const bivector& x, const bivector& y);
 	inline scalar inverse(const scalar& x);
+	inline scalar norm_e(const rotor& x);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e1e3& x, const vector& y);
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2& y);
 	inline scalar scp(const vector& x, const __e3_ct__& y);
 	inline scalar norm_e(const bivector& x);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const bivector& y);
 	inline vector unit_e(const __syn_smv___e1f1_0_e2f1_0_e3f1_0& x);
 	inline __syn_smv___scalar_e1e2_e2e3 gp(const vector& x, const __e2_ct__& y);
 	inline bivector op(const vector& x, const vector& y);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gradeInvolution(const __syn_smv___e1_e2_e3_e1e2e3& x);
+	inline scalar norm_r2(const bivector& x);
 	inline scalar scp(const vector& x, const __e2_ct__& y);
+	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const vector& y);
 	inline __syn_smv___e1f1_0_e2f1_0 add(const __e1_ct__& x, const __e2_ct__& y);
 	inline __syn_smv___scalar_e1e3_e2e3 gp(const vector& x, const __e3_ct__& y);
+	inline bivector negate(const bivector& x);
 	inline __syn_smv___e1e3_e2e3 gp(const scalar& x, const __syn_smv___e1e3_e2e3& y);
 	inline vector subtract(const __e1_ct__& x, const vector& y);
 	inline bivector inverse(const bivector& x);
 	inline e3_t gp(const __e3_ct__& x, const scalar& y);
 	inline vector gp(const vector& x, const scalar& y);
 	inline scalar lcont(const bivector& x, const bivector& y);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const vector& x, const rotor& y);
 	inline rotor add(const scalar& x, const bivector& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e3_e1e2e3& x, const bivector& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e1e2e3& x, const bivector& y);
@@ -9934,27 +10498,37 @@
 	inline rotor inverse(const rotor& x);
 	inline scalar norm_e2(const vector& x);
 	inline scalar norm_e(const vector2D& x);
+	inline rotor subtract(const rotor& x, const scalar& y);
 	inline __syn_smv___e1e2f1_0 op(const __e1_ct__& x, const __e2_ct__& y);
+	inline __syn_smv___e1_e3f1_0 add(const __e3_ct__& x, const e1_t& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e3_e2e3& x, const vector& y);
 	inline scalar norm_e2(const rotor& x);
 	inline vector add(const vector& x, const vector& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e2_ct__& y);
 	inline vector lcont(const vector2D& x, const bivector& y);
+	inline scalar norm_e(const __syn_smv___scalar_e1_e2_e3_e1e2e3& x);
 	inline __syn_smv___scalar_e1e2 subtract(const __syn_smv___scalar_e1e2& x, const scalar& y);
 	inline bivector gp(const bivector& x, const scalar& y);
 	inline __syn_smv___e2_e3_e1e2e3 gp(const bivector& x, const __e1_ct__& y);
 	inline rotor gp(const rotor& x, const __syn_smv___e1e2f1_0& y);
 	inline bivector gp(const scalar& x, const bivector& y);
 	inline vector reverse(const vector& x);
+	inline rotor gp(const bivector& x, const rotor& y);
 	inline __syn_smv___e2f_1_0 negate(const __e2_ct__& x);
 	inline scalar norm_e(const trivector& x);
 	inline trivector gp(const trivector& x, const scalar& y);
+	inline vector2D gp(const __e1_ct__& x, const __syn_smv___scalar_e1e2& y);
 	inline vector subtract(const __e2_ct__& x, const vector& y);
 	inline __syn_smv___e1e2 gp(const __syn_smv___e1e2& x, const scalar& y);
+	inline __syn_smv___e1e2 op(const __e1_ct__& x, const e2_t& y);
 	inline scalar scp(const vector& x, const vector& y);
+	inline scalar norm_r2(const vector& x);
 	inline scalar scp(const scalar& x, const scalar& y);
 	inline scalar norm_e2(const __syn_smv___e1e2_e2e3& x);
 	inline vector negate(const vector& x);
+	inline __syn_smv___e1_e2_e3_e1e2e3 unit_e(const __syn_smv___e1_e2_e3_e1e2e3& x);
+	inline rotor gp(const vector& x, const __syn_smv___e1_e2_e3_e1e2e3& y);
+	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const __syn_smv___e1_e2_e3_e1e2e3& y);
 	inline scalar gradeInvolution(const scalar& x);
 	inline scalar gp(const __syn_smv___e1e2& x, const __syn_smv___e1e2& y);
 	inline e2_t gp(const e2_t& x, const scalar& y);
@@ -9967,15 +10541,19 @@
 	inline scalar scp(const trivector& x, const trivector& y);
 	inline __syn_smv___e1_e2_e1e2e3 gp(const bivector& x, const __e3_ct__& y);
 	inline e3_t gp(const e3_t& x, const scalar& y);
+	inline scalar norm_r(const bivector& x);
 	inline scalar norm_e2(const __syn_smv___e1e2_e1e3& x);
 	inline rotor gp(const bivector& x, const bivector& y);
 	inline rotor gp(const rotor& x, const scalar& y);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const vector& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e3_ct__& y);
 	inline vector2D subtract(const e1_t& x, const e2_t& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const __syn_smv___e1_e2_e3_e1e2e3& y);
 	inline __syn_smv___e2e3 gp(const scalar& x, const __syn_smv___e2e3f1_0& y);
 	inline scalar reverse(const scalar& x);
 	inline scalar norm_e(const vector& x);
+	inline vector gp(const trivector& x, const bivector& y);
 	inline __syn_smv___e1e3f_1_0 lcont(const __e2_ct__& x, const __I3_ct__& y);
 	inline rotor gp(const __syn_smv___scalar_e1e3_e2e3& x, const rotor& y);
 	inline scalar norm_e2(const bivector& x);
@@ -9998,7 +10576,9 @@
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e1_ct__& y);
 	inline vector unit_e(const vector& x);
 	inline vector lcont(const __syn_smv___e2_e3& x, const bivector& y);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 subtract(const __syn_smv___e1_e2_e3_e1e2e3& x, const scalar& y);
 	inline vector inverse(const vector& x);
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __syn_smv___e1_e2_e3_e1e2e3& y);
 	inline __syn_smv___e1e2_e2e3 op(const vector& x, const __e2_ct__& y);
 	inline __syn_smv___scalar_e1e3_e2e3 add(const scalar& x, const __syn_smv___e1e3_e2e3& y);
 	inline e1_t gp(const scalar& x, const __e1_ct__& y);
@@ -10013,12 +10593,16 @@
 	inline trivector op(const vector& x, const bivector& y);
 	inline rotor gp(const rotor& x, const rotor& y);
 	inline __syn_smv___scalar_e1e2 gp(const __syn_smv___e1e3_e2e3& x, const __syn_smv___e1e3_e2e3& y);
+	inline __syn_smv___e1_e2_e3_e1e2e3 inverse(const __syn_smv___e1_e2_e3_e1e2e3& x);
+	inline rotor unit_r(const rotor& x);
+	inline scalar scp(const rotor& x, const rotor& y);
 	inline bivector op(const bivector& x, const scalar& y);
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e2_e3_e1e2e3& x, const bivector& y);
 	inline e1_t gp(const e1_t& x, const scalar& y);
 	inline vector lcont(const vector& x, const bivector& y);
 	inline vector gradeInvolution(const vector& x);
 	inline vector lcont(const bivector& x, const trivector& y);
+	inline rotor gradeInvolution(const rotor& x);
 	inline __syn_smv___e1e2_e1e3_e2e3_e1e2e3 add(const trivector& x, const bivector& y);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 add(const __syn_smv___e1f1_0_e2f1_0& x, const __e3_ct__& y);
 	inline e2_t gp(const scalar& x, const __e2_ct__& y);
@@ -10032,6 +10616,7 @@
 	inline scalar operator+=(scalar& arg1, const rotor& arg2);
 	inline e1_t operator+=(e1_t& arg1, const e2_t& arg2);
 	inline scalar operator+=(scalar& arg1, const __syn_smv___e1e2& arg2);
+	inline __e3_ct__ operator+=(__e3_ct__& arg1, const e1_t& arg2);
 	inline vector operator+=(vector& arg1, const vector& arg2);
 	inline scalar operator+=(scalar& arg1, const __syn_smv___e1e3& arg2);
 	inline __e1_ct__ operator+=(__e1_ct__& arg1, const e2_t& arg2);
@@ -10045,7 +10630,6 @@
 	inline vector2D operator+=(vector2D& arg1, const mv& arg2);
 	inline rotor operator+=(rotor& arg1, const mv& arg2);
 	inline __e2_ct__ operator+=(__e2_ct__& arg1, const mv& arg2);
-	inline __e3_ct__ operator+=(__e3_ct__& arg1, const mv& arg2);
 	inline __I3_ct__ operator+=(__I3_ct__& arg1, const mv& arg2);
 	inline __I3i_ct__ operator+=(__I3i_ct__& arg1, const mv& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator+=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const mv& arg2);
@@ -10074,6 +10658,8 @@
 	inline __syn_smv___e1e2_e2e3 operator+=(__syn_smv___e1e2_e2e3& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator+=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator+=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator+=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator+=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline mv operator+(const mv& arg1, const mv& arg2);
 	inline bivector operator+(const bivector& arg1, const bivector& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0 operator+(const __e1_ct__& arg1, const __e2_ct__& arg2);
@@ -10084,6 +10670,7 @@
 	inline vector2D operator+(const e1_t& arg1, const e2_t& arg2);
 	inline __syn_smv___scalar_e1e2 operator+(const scalar& arg1, const __syn_smv___e1e2& arg2);
 	inline __syn_smv___scalar_e1e2 operator+(float arg1, const __syn_smv___e1e2& arg2);
+	inline __syn_smv___e1_e3f1_0 operator+(const __e3_ct__& arg1, const e1_t& arg2);
 	inline vector operator+(const vector& arg1, const vector& arg2);
 	inline __syn_smv___scalar_e1e3 operator+(const scalar& arg1, const __syn_smv___e1e3& arg2);
 	inline __syn_smv___scalar_e1e3 operator+(float arg1, const __syn_smv___e1e3& arg2);
@@ -10100,10 +10687,14 @@
 	inline __e1_ct__ operator-=(__e1_ct__& arg1, const vector& arg2);
 	inline __e3_ct__ operator-=(__e3_ct__& arg1, const vector& arg2);
 	inline vector operator-=(vector& arg1, const vector& arg2);
+	inline rotor operator-=(rotor& arg1, const scalar& arg2);
+	inline rotor operator-=(rotor& arg1, float arg2);
 	inline __syn_smv___scalar_e1e2 operator-=(__syn_smv___scalar_e1e2& arg1, const scalar& arg2);
 	inline __syn_smv___scalar_e1e2 operator-=(__syn_smv___scalar_e1e2& arg1, float arg2);
 	inline __e2_ct__ operator-=(__e2_ct__& arg1, const vector& arg2);
 	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const scalar& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, float arg2);
 	inline scalar operator-=(scalar& arg1, const scalar& arg2);
 	inline scalar operator-=(scalar& arg1, float arg2);
 	inline e2_t operator-=(e2_t& arg1, const mv& arg2);
@@ -10113,7 +10704,6 @@
 	inline trivector operator-=(trivector& arg1, const mv& arg2);
 	inline __I3_ct__ operator-=(__I3_ct__& arg1, const mv& arg2);
 	inline __I3i_ct__ operator-=(__I3i_ct__& arg1, const mv& arg2);
-	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const mv& arg2);
 	inline __syn_smv___e1e2f1_0 operator-=(__syn_smv___e1e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1e2 operator-=(__syn_smv___e1e2& arg1, const mv& arg2);
 	inline __syn_smv___e3f_1_0 operator-=(__syn_smv___e3f_1_0& arg1, const mv& arg2);
@@ -10139,20 +10729,27 @@
 	inline __syn_smv___e1f1_0_e2f1_0 operator-=(__syn_smv___e1f1_0_e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator-=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator-=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator-=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline mv operator-(const mv& arg1, const mv& arg2);
 	inline rotor operator-(const rotor& arg1, const rotor& arg2);
 	inline vector operator-(const __e1_ct__& arg1, const vector& arg2);
 	inline vector operator-(const __e3_ct__& arg1, const vector& arg2);
 	inline vector operator-(const vector& arg1, const vector& arg2);
+	inline rotor operator-(const rotor& arg1, const scalar& arg2);
+	inline rotor operator-(const rotor& arg1, float arg2);
 	inline __syn_smv___scalar_e1e2 operator-(const __syn_smv___scalar_e1e2& arg1, const scalar& arg2);
 	inline __syn_smv___scalar_e1e2 operator-(const __syn_smv___scalar_e1e2& arg1, float arg2);
 	inline vector operator-(const __e2_ct__& arg1, const vector& arg2);
 	inline vector2D operator-(const e1_t& arg1, const e2_t& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const scalar& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-(const __syn_smv___e1_e2_e3_e1e2e3& arg1, float arg2);
 	inline scalar operator-(const scalar& arg1, const scalar& arg2);
 	inline scalar operator-(float arg1, const scalar& arg2);
 	inline scalar operator-(const scalar& arg1, float arg2);
 	inline mv operator-(const mv& arg1);
 	inline __syn_smv___e3f_1_0 operator-(const __e3_ct__& arg1);
+	inline bivector operator-(const bivector& arg1);
 	inline __syn_smv___e2f_1_0 operator-(const __e2_ct__& arg1);
 	inline vector operator-(const vector& arg1);
 	inline mv operator%=(mv& arg1, const mv& arg2);
@@ -10164,11 +10761,11 @@
 	inline scalar operator%=(scalar& arg1, float arg2);
 	inline vector operator%=(vector& arg1, const __e1_ct__& arg2);
 	inline trivector operator%=(trivector& arg1, const trivector& arg2);
+	inline rotor operator%=(rotor& arg1, const rotor& arg2);
 	inline e1_t operator%=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator%=(e2_t& arg1, const mv& arg2);
 	inline e3_t operator%=(e3_t& arg1, const mv& arg2);
 	inline vector2D operator%=(vector2D& arg1, const mv& arg2);
-	inline rotor operator%=(rotor& arg1, const mv& arg2);
 	inline __e1_ct__ operator%=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator%=(__e2_ct__& arg1, const mv& arg2);
 	inline __e3_ct__ operator%=(__e3_ct__& arg1, const mv& arg2);
@@ -10201,6 +10798,8 @@
 	inline __syn_smv___e1f1_0_e2f1_0 operator%=(__syn_smv___e1f1_0_e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator%=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator%=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator%=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator%=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline scalar operator%(const mv& arg1, const mv& arg2);
 	inline scalar operator%(const bivector& arg1, const bivector& arg2);
 	inline scalar operator%(const vector& arg1, const __e3_ct__& arg2);
@@ -10211,11 +10810,13 @@
 	inline scalar operator%(const scalar& arg1, float arg2);
 	inline scalar operator%(const vector& arg1, const __e1_ct__& arg2);
 	inline scalar operator%(const trivector& arg1, const trivector& arg2);
+	inline scalar operator%(const rotor& arg1, const rotor& arg2);
 	inline mv operator^=(mv& arg1, const mv& arg2);
 	inline bivector operator^=(bivector& arg1, const vector& arg2);
 	inline vector operator^=(vector& arg1, const vector& arg2);
 	inline scalar operator^=(scalar& arg1, const vector& arg2);
 	inline __e1_ct__ operator^=(__e1_ct__& arg1, const __e2_ct__& arg2);
+	inline __e1_ct__ operator^=(__e1_ct__& arg1, const e2_t& arg2);
 	inline scalar operator^=(scalar& arg1, const scalar& arg2);
 	inline scalar operator^=(scalar& arg1, float arg2);
 	inline vector operator^=(vector& arg1, const __e1_ct__& arg2);
@@ -10263,12 +10864,15 @@
 	inline __syn_smv___e1f1_0_e2f1_0 operator^=(__syn_smv___e1f1_0_e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator^=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator^=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator^=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator^=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline mv operator^(const mv& arg1, const mv& arg2);
 	inline trivector operator^(const bivector& arg1, const vector& arg2);
 	inline bivector operator^(const vector& arg1, const vector& arg2);
 	inline vector operator^(const scalar& arg1, const vector& arg2);
 	inline vector operator^(float arg1, const vector& arg2);
 	inline __syn_smv___e1e2f1_0 operator^(const __e1_ct__& arg1, const __e2_ct__& arg2);
+	inline __syn_smv___e1e2 operator^(const __e1_ct__& arg1, const e2_t& arg2);
 	inline scalar operator^(const scalar& arg1, const scalar& arg2);
 	inline scalar operator^(float arg1, const scalar& arg2);
 	inline scalar operator^(const scalar& arg1, float arg2);
@@ -10283,17 +10887,21 @@
 	inline mv operator*=(mv& arg1, const mv& arg2);
 	inline __e2_ct__ operator*=(__e2_ct__& arg1, const scalar& arg2);
 	inline __e2_ct__ operator*=(__e2_ct__& arg1, float arg2);
+	inline rotor operator*=(rotor& arg1, const bivector& arg2);
 	inline scalar operator*=(scalar& arg1, const scalar& arg2);
 	inline scalar operator*=(scalar& arg1, float arg2);
 	inline __syn_smv___scalar_e1e2_e1e3 operator*=(__syn_smv___scalar_e1e2_e1e3& arg1, const vector& arg2);
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e2& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const bivector& arg2);
 	inline vector operator*=(vector& arg1, const __e2_ct__& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const vector& arg2);
 	inline vector operator*=(vector& arg1, const __e3_ct__& arg2);
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e3_e2e3& arg2);
 	inline __e3_ct__ operator*=(__e3_ct__& arg1, const scalar& arg2);
 	inline __e3_ct__ operator*=(__e3_ct__& arg1, float arg2);
 	inline vector operator*=(vector& arg1, const scalar& arg2);
 	inline vector operator*=(vector& arg1, float arg2);
+	inline vector operator*=(vector& arg1, const rotor& arg2);
 	inline __syn_smv___e1_e3_e1e2e3 operator*=(__syn_smv___e1_e3_e1e2e3& arg1, const bivector& arg2);
 	inline __syn_smv___e1_e2_e1e2e3 operator*=(__syn_smv___e1_e2_e1e2e3& arg1, const bivector& arg2);
 	inline vector operator*=(vector& arg1, const __e1_ct__& arg2);
@@ -10304,10 +10912,14 @@
 	inline bivector operator*=(bivector& arg1, const __e1_ct__& arg2);
 	inline rotor operator*=(rotor& arg1, const __syn_smv___e1e2f1_0& arg2);
 	inline scalar operator*=(scalar& arg1, const bivector& arg2);
+	inline bivector operator*=(bivector& arg1, const rotor& arg2);
 	inline trivector operator*=(trivector& arg1, const scalar& arg2);
 	inline trivector operator*=(trivector& arg1, float arg2);
+	inline __e1_ct__ operator*=(__e1_ct__& arg1, const __syn_smv___scalar_e1e2& arg2);
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, const scalar& arg2);
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, float arg2);
+	inline vector operator*=(vector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, const __syn_smv___e1e2& arg2);
 	inline e2_t operator*=(e2_t& arg1, const scalar& arg2);
 	inline e2_t operator*=(e2_t& arg1, float arg2);
@@ -10320,9 +10932,12 @@
 	inline bivector operator*=(bivector& arg1, const bivector& arg2);
 	inline rotor operator*=(rotor& arg1, const scalar& arg2);
 	inline rotor operator*=(rotor& arg1, float arg2);
+	inline bivector operator*=(bivector& arg1, const vector& arg2);
 	inline rotor operator*=(rotor& arg1, const __e3_ct__& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const rotor& arg2);
+	inline bivector operator*=(bivector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e2e3f1_0& arg2);
+	inline trivector operator*=(trivector& arg1, const bivector& arg2);
 	inline __syn_smv___scalar_e1e3_e2e3 operator*=(__syn_smv___scalar_e1e3_e2e3& arg1, const rotor& arg2);
 	inline vector operator*=(vector& arg1, const vector& arg2);
 	inline __e1_ct__ operator*=(__e1_ct__& arg1, const scalar& arg2);
@@ -10332,6 +10947,7 @@
 	inline rotor operator*=(rotor& arg1, const vector& arg2);
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e2f1_0& arg2);
 	inline rotor operator*=(rotor& arg1, const __e1_ct__& arg2);
+	inline rotor operator*=(rotor& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline scalar operator*=(scalar& arg1, const __e1_ct__& arg2);
 	inline __syn_smv___scalar_e1e2_e2e3 operator*=(__syn_smv___scalar_e1e2_e2e3& arg1, const vector& arg2);
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e3f_1_0& arg2);
@@ -10363,16 +10979,21 @@
 	inline __syn_smv___e1f1_0_e2f1_0 operator*=(__syn_smv___e1f1_0_e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator*=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator*=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator*=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator*=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline mv operator*(const mv& arg1, const mv& arg2);
 	inline e2_t operator*(const __e2_ct__& arg1, const scalar& arg2);
 	inline e2_t operator*(const __e2_ct__& arg1, float arg2);
+	inline rotor operator*(const rotor& arg1, const bivector& arg2);
 	inline scalar operator*(const scalar& arg1, const scalar& arg2);
 	inline scalar operator*(float arg1, const scalar& arg2);
 	inline scalar operator*(const scalar& arg1, float arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___scalar_e1e2_e1e3& arg1, const vector& arg2);
 	inline __syn_smv___e1e2 operator*(const scalar& arg1, const __syn_smv___e1e2& arg2);
 	inline __syn_smv___e1e2 operator*(float arg1, const __syn_smv___e1e2& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const bivector& arg2);
 	inline __syn_smv___scalar_e1e2_e2e3 operator*(const vector& arg1, const __e2_ct__& arg2);
+	inline rotor operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const vector& arg2);
 	inline __syn_smv___scalar_e1e3_e2e3 operator*(const vector& arg1, const __e3_ct__& arg2);
 	inline __syn_smv___e1e3_e2e3 operator*(const scalar& arg1, const __syn_smv___e1e3_e2e3& arg2);
 	inline __syn_smv___e1e3_e2e3 operator*(float arg1, const __syn_smv___e1e3_e2e3& arg2);
@@ -10380,6 +11001,7 @@
 	inline e3_t operator*(const __e3_ct__& arg1, float arg2);
 	inline vector operator*(const vector& arg1, const scalar& arg2);
 	inline vector operator*(const vector& arg1, float arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const vector& arg1, const rotor& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e3_e1e2e3& arg1, const bivector& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e2_e1e2e3& arg1, const bivector& arg2);
 	inline __syn_smv___scalar_e1e2_e1e3 operator*(const vector& arg1, const __e1_ct__& arg2);
@@ -10391,10 +11013,14 @@
 	inline rotor operator*(const rotor& arg1, const __syn_smv___e1e2f1_0& arg2);
 	inline bivector operator*(const scalar& arg1, const bivector& arg2);
 	inline bivector operator*(float arg1, const bivector& arg2);
+	inline rotor operator*(const bivector& arg1, const rotor& arg2);
 	inline trivector operator*(const trivector& arg1, const scalar& arg2);
 	inline trivector operator*(const trivector& arg1, float arg2);
+	inline vector2D operator*(const __e1_ct__& arg1, const __syn_smv___scalar_e1e2& arg2);
 	inline __syn_smv___e1e2 operator*(const __syn_smv___e1e2& arg1, const scalar& arg2);
 	inline __syn_smv___e1e2 operator*(const __syn_smv___e1e2& arg1, float arg2);
+	inline rotor operator*(const vector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
+	inline rotor operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline scalar operator*(const __syn_smv___e1e2& arg1, const __syn_smv___e1e2& arg2);
 	inline e2_t operator*(const e2_t& arg1, const scalar& arg2);
 	inline e2_t operator*(const e2_t& arg1, float arg2);
@@ -10407,10 +11033,13 @@
 	inline rotor operator*(const bivector& arg1, const bivector& arg2);
 	inline rotor operator*(const rotor& arg1, const scalar& arg2);
 	inline rotor operator*(const rotor& arg1, float arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const bivector& arg1, const vector& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __e3_ct__& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const rotor& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const bivector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline __syn_smv___e2e3 operator*(const scalar& arg1, const __syn_smv___e2e3f1_0& arg2);
 	inline __syn_smv___e2e3 operator*(float arg1, const __syn_smv___e2e3f1_0& arg2);
+	inline vector operator*(const trivector& arg1, const bivector& arg2);
 	inline rotor operator*(const __syn_smv___scalar_e1e3_e2e3& arg1, const rotor& arg2);
 	inline rotor operator*(const vector& arg1, const vector& arg2);
 	inline e1_t operator*(const __e1_ct__& arg1, const scalar& arg2);
@@ -10422,6 +11051,7 @@
 	inline __syn_smv___e1e2 operator*(const scalar& arg1, const __syn_smv___e1e2f1_0& arg2);
 	inline __syn_smv___e1e2 operator*(float arg1, const __syn_smv___e1e2f1_0& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __e1_ct__& arg2);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2);
 	inline e1_t operator*(const scalar& arg1, const __e1_ct__& arg2);
 	inline e1_t operator*(float arg1, const __e1_ct__& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___scalar_e1e2_e2e3& arg1, const vector& arg2);
@@ -10482,6 +11112,8 @@
 	inline __syn_smv___e1f1_0_e2f1_0 operator<<=(__syn_smv___e1f1_0_e2f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e1f1_0_e2f1_0_e3f1_0 operator<<=(__syn_smv___e1f1_0_e2f1_0_e3f1_0& arg1, const mv& arg2);
 	inline __syn_smv___e2_e1f1_0 operator<<=(__syn_smv___e2_e1f1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator<<=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1_e3f1_0 operator<<=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2);
 	inline mv operator<<(const mv& arg1, const mv& arg2);
 	inline scalar operator<<(const bivector& arg1, const bivector& arg2);
 	inline __syn_smv___e2e3f1_0 operator<<(const __e1_ct__& arg1, const __I3_ct__& arg2);
@@ -10504,7 +11136,9 @@
 	inline rotor operator!(const rotor& arg1);
 	inline trivector operator!(const trivector& arg1);
 	inline vector operator!(const vector& arg1);
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator!(const __syn_smv___e1_e2_e3_e1e2e3& arg1);
 	inline mv operator~(const mv& arg1);
+	inline rotor operator~(const rotor& arg1);
 	inline vector operator~(const vector& arg1);
 	inline scalar operator~(const scalar& arg1);
 	inline bivector operator~(const bivector& arg1);
@@ -13191,6 +13825,152 @@
 
 
 
+	// set to zero
+	inline void __syn_smv___scalar_e1_e2_e3_e1e2e3::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 5);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_e1_e2_e3_e1e2e3::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_e1_e2_e3_e1e2e3::set(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 5);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_e1_e2_e3_e1e2e3::set(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 5);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_e1_e2_e3_e1e2e3::set(____syn_smv___scalar_e1_e2_e3_e1e2e3_coordinates__, Float c_scalar, Float c_e1, Float c_e2, Float c_e3, Float c_e1e2e3) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_e1;
+		m_c[2] = c_e2;
+		m_c[3] = c_e3;
+		m_c[4] = c_e1e2e3;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 &__syn_smv___scalar_e1_e2_e3_e1e2e3::operator=(const __syn_smv___scalar_e1_e2_e3_e1e2e3 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 &__syn_smv___scalar_e1_e2_e3_e1e2e3::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 &__syn_smv___scalar_e1_e2_e3_e1e2e3::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1_e3f1_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 1);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e3f1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e3f1_0::set(const __syn_smv___e1_e3f1_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 1);
+		m_c[0] = arg1.m_c[0];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e3f1_0::set(____syn_smv___e1_e3f1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 1);
+		m_c[0] = coordinates[0];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e3f1_0::set(____syn_smv___e1_e3f1_0_coordinates__, Float c_e1) {
+		// set coordinates
+		m_c[0] = c_e1;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e3f1_0 &__syn_smv___e1_e3f1_0::operator=(const __syn_smv___e1_e3f1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e3f1_0 &__syn_smv___e1_e3f1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e3f1_0 &__syn_smv___e1_e3f1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
 
 
 
@@ -13220,6 +14000,10 @@
 		return arg1;
 	}
 	inline scalar operator+=(scalar& arg1, const __syn_smv___e1e2& arg2) {
+		arg1.set(::e3ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __e3_ct__ operator+=(__e3_ct__& arg1, const e1_t& arg2) {
 		arg1.set(::e3ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -13272,10 +14056,6 @@
 		return arg1;
 	}
 	inline __e2_ct__ operator+=(__e2_ct__& arg1, const mv& arg2) {
-		arg1.set(::e3ga::add(arg1, arg2));
-		return arg1;
-	}
-	inline __e3_ct__ operator+=(__e3_ct__& arg1, const mv& arg2) {
 		arg1.set(::e3ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -13391,6 +14171,14 @@
 		arg1.set(::e3ga::add(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator+=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator+=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::add(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator+(const mv& arg1, const mv& arg2) {
 		return ::e3ga::add(arg1, arg2);
 	}
@@ -13420,6 +14208,9 @@
 	}
 	inline __syn_smv___scalar_e1e2 operator+(float arg1, const __syn_smv___e1e2& arg2) {
 		return ::e3ga::add(::e3ga::scalar(arg1), arg2);
+	}
+	inline __syn_smv___e1_e3f1_0 operator+(const __e3_ct__& arg1, const e1_t& arg2) {
+		return ::e3ga::add(arg1, arg2);
 	}
 	inline vector operator+(const vector& arg1, const vector& arg2) {
 		return ::e3ga::add(arg1, arg2);
@@ -13474,6 +14265,14 @@
 		arg1.set(::e3ga::subtract(arg1, arg2));
 		return arg1;
 	}
+	inline rotor operator-=(rotor& arg1, const scalar& arg2) {
+		arg1.set(::e3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline rotor operator-=(rotor& arg1, float arg2) {
+		arg1.set(::e3ga::subtract(arg1, ::e3ga::scalar(arg2)));
+		return arg1;
+	}
 	inline __syn_smv___scalar_e1e2 operator-=(__syn_smv___scalar_e1e2& arg1, const scalar& arg2) {
 		arg1.set(::e3ga::subtract(arg1, arg2));
 		return arg1;
@@ -13488,6 +14287,14 @@
 	}
 	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2) {
 		arg1.set(::e3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const scalar& arg2) {
+		arg1.set(::e3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, float arg2) {
+		arg1.set(::e3ga::subtract(arg1, ::e3ga::scalar(arg2)));
 		return arg1;
 	}
 	inline scalar operator-=(scalar& arg1, const scalar& arg2) {
@@ -13523,10 +14330,6 @@
 		return arg1;
 	}
 	inline __I3i_ct__ operator-=(__I3i_ct__& arg1, const mv& arg2) {
-		arg1.set(::e3ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline __syn_smv___e1_e2_e3_e1e2e3 operator-=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
 		arg1.set(::e3ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -13630,6 +14433,14 @@
 		arg1.set(::e3ga::subtract(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator-=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::subtract(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator-(const mv& arg1, const mv& arg2) {
 		return ::e3ga::subtract(arg1, arg2);
 	}
@@ -13645,6 +14456,12 @@
 	inline vector operator-(const vector& arg1, const vector& arg2) {
 		return ::e3ga::subtract(arg1, arg2);
 	}
+	inline rotor operator-(const rotor& arg1, const scalar& arg2) {
+		return ::e3ga::subtract(arg1, arg2);
+	}
+	inline rotor operator-(const rotor& arg1, float arg2) {
+		return ::e3ga::subtract(arg1, ::e3ga::scalar(arg2));
+	}
 	inline __syn_smv___scalar_e1e2 operator-(const __syn_smv___scalar_e1e2& arg1, const scalar& arg2) {
 		return ::e3ga::subtract(arg1, arg2);
 	}
@@ -13656,6 +14473,12 @@
 	}
 	inline vector2D operator-(const e1_t& arg1, const e2_t& arg2) {
 		return ::e3ga::subtract(arg1, arg2);
+	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const scalar& arg2) {
+		return ::e3ga::subtract(arg1, arg2);
+	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator-(const __syn_smv___e1_e2_e3_e1e2e3& arg1, float arg2) {
+		return ::e3ga::subtract(arg1, ::e3ga::scalar(arg2));
 	}
 	inline scalar operator-(const scalar& arg1, const scalar& arg2) {
 		return ::e3ga::subtract(arg1, arg2);
@@ -13670,6 +14493,9 @@
 		return ::e3ga::negate(arg1);
 	}
 	inline __syn_smv___e3f_1_0 operator-(const __e3_ct__& arg1) {
+		return ::e3ga::negate(arg1);
+	}
+	inline bivector operator-(const bivector& arg1) {
 		return ::e3ga::negate(arg1);
 	}
 	inline __syn_smv___e2f_1_0 operator-(const __e2_ct__& arg1) {
@@ -13714,6 +14540,10 @@
 		arg1.set(::e3ga::scp(arg1, arg2));
 		return arg1;
 	}
+	inline rotor operator%=(rotor& arg1, const rotor& arg2) {
+		arg1.set(::e3ga::scp(arg1, arg2));
+		return arg1;
+	}
 	inline e1_t operator%=(e1_t& arg1, const mv& arg2) {
 		arg1.set(::e3ga::scp(arg1, arg2));
 		return arg1;
@@ -13727,10 +14557,6 @@
 		return arg1;
 	}
 	inline vector2D operator%=(vector2D& arg1, const mv& arg2) {
-		arg1.set(::e3ga::scp(arg1, arg2));
-		return arg1;
-	}
-	inline rotor operator%=(rotor& arg1, const mv& arg2) {
 		arg1.set(::e3ga::scp(arg1, arg2));
 		return arg1;
 	}
@@ -13862,6 +14688,14 @@
 		arg1.set(::e3ga::scp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator%=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator%=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::scp(arg1, arg2));
+		return arg1;
+	}
 	inline scalar operator%(const mv& arg1, const mv& arg2) {
 		return ::e3ga::scp(arg1, arg2);
 	}
@@ -13892,6 +14726,9 @@
 	inline scalar operator%(const trivector& arg1, const trivector& arg2) {
 		return ::e3ga::scp(arg1, arg2);
 	}
+	inline scalar operator%(const rotor& arg1, const rotor& arg2) {
+		return ::e3ga::scp(arg1, arg2);
+	}
 	inline mv operator^=(mv& arg1, const mv& arg2) {
 		arg1.set(::e3ga::op(arg1, arg2));
 		return arg1;
@@ -13909,6 +14746,10 @@
 		return arg1;
 	}
 	inline __e1_ct__ operator^=(__e1_ct__& arg1, const __e2_ct__& arg2) {
+		arg1.set(::e3ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __e1_ct__ operator^=(__e1_ct__& arg1, const e2_t& arg2) {
 		arg1.set(::e3ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -14100,6 +14941,14 @@
 		arg1.set(::e3ga::op(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator^=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator^=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::op(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator^(const mv& arg1, const mv& arg2) {
 		return ::e3ga::op(arg1, arg2);
 	}
@@ -14116,6 +14965,9 @@
 		return ::e3ga::op(::e3ga::scalar(arg1), arg2);
 	}
 	inline __syn_smv___e1e2f1_0 operator^(const __e1_ct__& arg1, const __e2_ct__& arg2) {
+		return ::e3ga::op(arg1, arg2);
+	}
+	inline __syn_smv___e1e2 operator^(const __e1_ct__& arg1, const e2_t& arg2) {
 		return ::e3ga::op(arg1, arg2);
 	}
 	inline scalar operator^(const scalar& arg1, const scalar& arg2) {
@@ -14163,6 +15015,10 @@
 		arg1.set(::e3ga::gp(arg1, ::e3ga::scalar(arg2)));
 		return arg1;
 	}
+	inline rotor operator*=(rotor& arg1, const bivector& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline scalar operator*=(scalar& arg1, const scalar& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
@@ -14179,7 +15035,15 @@
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const bivector& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline vector operator*=(vector& arg1, const __e2_ct__& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const vector& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -14205,6 +15069,10 @@
 	}
 	inline vector operator*=(vector& arg1, float arg2) {
 		arg1.set(::e3ga::gp(arg1, ::e3ga::scalar(arg2)));
+		return arg1;
+	}
+	inline vector operator*=(vector& arg1, const rotor& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
 	inline __syn_smv___e1_e3_e1e2e3 operator*=(__syn_smv___e1_e3_e1e2e3& arg1, const bivector& arg2) {
@@ -14247,6 +15115,10 @@
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline bivector operator*=(bivector& arg1, const rotor& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline trivector operator*=(trivector& arg1, const scalar& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
@@ -14255,12 +15127,24 @@
 		arg1.set(::e3ga::gp(arg1, ::e3ga::scalar(arg2)));
 		return arg1;
 	}
+	inline __e1_ct__ operator*=(__e1_ct__& arg1, const __syn_smv___scalar_e1e2& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, const scalar& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, float arg2) {
 		arg1.set(::e3ga::gp(arg1, ::e3ga::scalar(arg2)));
+		return arg1;
+	}
+	inline vector operator*=(vector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*=(__syn_smv___e1_e2_e3_e1e2e3& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
 	inline __syn_smv___e1e2 operator*=(__syn_smv___e1e2& arg1, const __syn_smv___e1e2& arg2) {
@@ -14311,6 +15195,10 @@
 		arg1.set(::e3ga::gp(arg1, ::e3ga::scalar(arg2)));
 		return arg1;
 	}
+	inline bivector operator*=(bivector& arg1, const vector& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline rotor operator*=(rotor& arg1, const __e3_ct__& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
@@ -14319,7 +15207,15 @@
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline bivector operator*=(bivector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline scalar operator*=(scalar& arg1, const __syn_smv___e2e3f1_0& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline trivector operator*=(trivector& arg1, const bivector& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -14356,6 +15252,10 @@
 		return arg1;
 	}
 	inline rotor operator*=(rotor& arg1, const __e1_ct__& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline rotor operator*=(rotor& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -14483,6 +15383,14 @@
 		arg1.set(::e3ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator*=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator*=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator*(const mv& arg1, const mv& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
@@ -14491,6 +15399,9 @@
 	}
 	inline e2_t operator*(const __e2_ct__& arg1, float arg2) {
 		return ::e3ga::gp(arg1, ::e3ga::scalar(arg2));
+	}
+	inline rotor operator*(const rotor& arg1, const bivector& arg2) {
+		return ::e3ga::gp(arg1, arg2);
 	}
 	inline scalar operator*(const scalar& arg1, const scalar& arg2) {
 		return ::e3ga::gp(arg1, arg2);
@@ -14510,7 +15421,13 @@
 	inline __syn_smv___e1e2 operator*(float arg1, const __syn_smv___e1e2& arg2) {
 		return ::e3ga::gp(::e3ga::scalar(arg1), arg2);
 	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const bivector& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
 	inline __syn_smv___scalar_e1e2_e2e3 operator*(const vector& arg1, const __e2_ct__& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
+	inline rotor operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const vector& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline __syn_smv___scalar_e1e3_e2e3 operator*(const vector& arg1, const __e3_ct__& arg2) {
@@ -14533,6 +15450,9 @@
 	}
 	inline vector operator*(const vector& arg1, float arg2) {
 		return ::e3ga::gp(arg1, ::e3ga::scalar(arg2));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const vector& arg1, const rotor& arg2) {
+		return ::e3ga::gp(arg1, arg2);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e3_e1e2e3& arg1, const bivector& arg2) {
 		return ::e3ga::gp(arg1, arg2);
@@ -14567,17 +15487,29 @@
 	inline bivector operator*(float arg1, const bivector& arg2) {
 		return ::e3ga::gp(::e3ga::scalar(arg1), arg2);
 	}
+	inline rotor operator*(const bivector& arg1, const rotor& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
 	inline trivector operator*(const trivector& arg1, const scalar& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline trivector operator*(const trivector& arg1, float arg2) {
 		return ::e3ga::gp(arg1, ::e3ga::scalar(arg2));
 	}
+	inline vector2D operator*(const __e1_ct__& arg1, const __syn_smv___scalar_e1e2& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
 	inline __syn_smv___e1e2 operator*(const __syn_smv___e1e2& arg1, const scalar& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline __syn_smv___e1e2 operator*(const __syn_smv___e1e2& arg1, float arg2) {
 		return ::e3ga::gp(arg1, ::e3ga::scalar(arg2));
+	}
+	inline rotor operator*(const vector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
+	inline rotor operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
+		return ::e3ga::gp(arg1, arg2);
 	}
 	inline scalar operator*(const __syn_smv___e1e2& arg1, const __syn_smv___e1e2& arg2) {
 		return ::e3ga::gp(arg1, arg2);
@@ -14615,10 +15547,16 @@
 	inline rotor operator*(const rotor& arg1, float arg2) {
 		return ::e3ga::gp(arg1, ::e3ga::scalar(arg2));
 	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const bivector& arg1, const vector& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __e3_ct__& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const __syn_smv___e1_e2_e3_e1e2e3& arg1, const rotor& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const bivector& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline __syn_smv___e2e3 operator*(const scalar& arg1, const __syn_smv___e2e3f1_0& arg2) {
@@ -14626,6 +15564,9 @@
 	}
 	inline __syn_smv___e2e3 operator*(float arg1, const __syn_smv___e2e3f1_0& arg2) {
 		return ::e3ga::gp(::e3ga::scalar(arg1), arg2);
+	}
+	inline vector operator*(const trivector& arg1, const bivector& arg2) {
+		return ::e3ga::gp(arg1, arg2);
 	}
 	inline rotor operator*(const __syn_smv___scalar_e1e3_e2e3& arg1, const rotor& arg2) {
 		return ::e3ga::gp(arg1, arg2);
@@ -14658,6 +15599,9 @@
 		return ::e3ga::gp(::e3ga::scalar(arg1), arg2);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __e1_ct__& arg2) {
+		return ::e3ga::gp(arg1, arg2);
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator*(const rotor& arg1, const __syn_smv___e1_e2_e3_e1e2e3& arg2) {
 		return ::e3ga::gp(arg1, arg2);
 	}
 	inline e1_t operator*(const scalar& arg1, const __e1_ct__& arg2) {
@@ -14886,6 +15830,14 @@
 		arg1.set(::e3ga::lcont(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 operator<<=(__syn_smv___scalar_e1_e2_e3_e1e2e3& arg1, const mv& arg2) {
+		arg1.set(::e3ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e3f1_0 operator<<=(__syn_smv___e1_e3f1_0& arg1, const mv& arg2) {
+		arg1.set(::e3ga::lcont(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator<<(const mv& arg1, const mv& arg2) {
 		return ::e3ga::lcont(arg1, arg2);
 	}
@@ -14952,7 +15904,13 @@
 	inline vector operator!(const vector& arg1) {
 		return ::e3ga::inverse(arg1);
 	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 operator!(const __syn_smv___e1_e2_e3_e1e2e3& arg1) {
+		return ::e3ga::inverse(arg1);
+	}
 	inline mv operator~(const mv& arg1) {
+		return ::e3ga::reverse(arg1);
+	}
+	inline rotor operator~(const rotor& arg1) {
 		return ::e3ga::reverse(arg1);
 	}
 	inline vector operator~(const vector& arg1) {
@@ -14973,8 +15931,15 @@
 	inline __syn_smv___e3f_1_0 negate(const __e3_ct__& x) {
 		return __syn_smv___e3f_1_0(__syn_smv___e3f_1_0_e3f_1_0);
 	}
+	inline __syn_smv___e1_e3 unit_e(const __syn_smv___e1_e3f1_0& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + 1.0f);
+		scalar ie;
+		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
+		return __syn_smv___e1_e3(__syn_smv___e1_e3_e1_e3, (x.m_c[0] * ie.m_c[0]), ie.m_c[0]);
+	}
 	inline trivector op(const bivector& x, const vector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
+		return trivector(trivector_e1e2e3, ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline scalar norm_e2(const trivector& x) {
 		return scalar(scalar_scalar, (x.m_c[0] * x.m_c[0]));
@@ -14983,16 +15948,22 @@
 		return bivector(bivector_e1e2_e2e3_e3e1, x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]));
+	}
+	inline rotor reverse(const rotor& x) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
+	}
+	inline rotor gp(const rotor& x, const bivector& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar gp(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
 	}
 	inline bivector add(const bivector& x, const bivector& y) {
-		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]));
+		return bivector(bivector_e1e2_e2e3_e3e1, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline scalar inverse(const scalar& x) {
 		scalar n;
@@ -15001,8 +15972,13 @@
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return scalar(scalar_scalar, (x.m_c[0] * in.m_c[0]));
 	}
+	inline scalar norm_e(const rotor& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]));
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e1e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
@@ -15012,8 +15988,11 @@
 	}
 	inline scalar norm_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const bivector& y) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline vector unit_e(const __syn_smv___e1f1_0_e2f1_0_e3f1_0& x) {
 		scalar e2;
@@ -15028,8 +16007,17 @@
 	inline bivector op(const vector& x, const vector& y) {
 		return bivector(bivector_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gradeInvolution(const __syn_smv___e1_e2_e3_e1e2e3& x) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
+	}
+	inline scalar norm_r2(const bivector& x) {
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
+	}
 	inline scalar scp(const vector& x, const __e2_ct__& y) {
 		return scalar(scalar_scalar, x.m_c[1]);
+	}
+	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const vector& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___e1f1_0_e2f1_0 add(const __e1_ct__& x, const __e2_ct__& y) {
 		return __syn_smv___e1f1_0_e2f1_0(__syn_smv___e1f1_0_e2f1_0_e1f1_0_e2f1_0);
@@ -15037,15 +16025,18 @@
 	inline __syn_smv___scalar_e1e3_e2e3 gp(const vector& x, const __e3_ct__& y) {
 		return __syn_smv___scalar_e1e3_e2e3(__syn_smv___scalar_e1e3_e2e3_scalar_e1e3_e2e3, x.m_c[2], x.m_c[0], x.m_c[1]);
 	}
+	inline bivector negate(const bivector& x) {
+		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
+	}
 	inline __syn_smv___e1e3_e2e3 gp(const scalar& x, const __syn_smv___e1e3_e2e3& y) {
 		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]));
 	}
 	inline vector subtract(const __e1_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + 1.0f), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (1.0f + (-1.0f * y.m_c[0])), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]));
 	}
 	inline bivector inverse(const bivector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
@@ -15057,16 +16048,19 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline scalar lcont(const bivector& x, const bivector& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const vector& x, const rotor& y) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline rotor add(const scalar& x, const bivector& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], y.m_c[0], y.m_c[1], y.m_c[2]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline bivector dual(const vector& x) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (-1.0f * x.m_c[2]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
@@ -15075,7 +16069,7 @@
 		return __syn_smv___e2e3f1_0(__syn_smv___e2e3f1_0_e2e3f1_0);
 	}
 	inline vector subtract(const __e3_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), ((-1.0f * y.m_c[2]) + 1.0f));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (1.0f + (-1.0f * y.m_c[2])));
 	}
 	inline vector dual(const bivector& x) {
 		return vector(vector_e1_e2_e3, x.m_c[1], x.m_c[2], x.m_c[0]);
@@ -15085,7 +16079,7 @@
 	}
 	inline rotor unit_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
@@ -15106,10 +16100,10 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline scalar norm_e2(const __syn_smv___scalar_e1e2& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])));
 	}
 	inline vector op(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
@@ -15122,36 +16116,47 @@
 	}
 	inline rotor inverse(const rotor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline scalar norm_e2(const vector& x) {
-		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline scalar norm_e(const vector2D& x) {
 		scalar e2;
 		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
+	inline rotor subtract(const rotor& x, const scalar& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + (-1.0f * y.m_c[0])), x.m_c[1], x.m_c[2], x.m_c[3]);
+	}
 	inline __syn_smv___e1e2f1_0 op(const __e1_ct__& x, const __e2_ct__& y) {
 		return __syn_smv___e1e2f1_0(__syn_smv___e1e2f1_0_e1e2f1_0);
 	}
+	inline __syn_smv___e1_e3f1_0 add(const __e3_ct__& x, const e1_t& y) {
+		return __syn_smv___e1_e3f1_0(__syn_smv___e1_e3f1_0_e1_e3f1_0, y.m_c[0]);
+	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e3_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar norm_e2(const rotor& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3])));
 	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e2_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), x.m_c[3]);
 	}
 	inline vector lcont(const vector2D& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[1] * y.m_c[0]), (x.m_c[0] * y.m_c[0]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[1] * y.m_c[0]), (x.m_c[0] * y.m_c[0]), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
+	}
+	inline scalar norm_e(const __syn_smv___scalar_e1_e2_e3_e1e2e3& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2 subtract(const __syn_smv___scalar_e1e2& x, const scalar& y) {
 		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), x.m_c[1]);
@@ -15171,6 +16176,9 @@
 	inline vector reverse(const vector& x) {
 		return vector(vector_e1_e2_e3, x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
+	inline rotor gp(const bivector& x, const rotor& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+	}
 	inline __syn_smv___e2f_1_0 negate(const __e2_ct__& x) {
 		return __syn_smv___e2f_1_0(__syn_smv___e2f_1_0_e2f_1_0);
 	}
@@ -15182,14 +16190,23 @@
 	inline trivector gp(const trivector& x, const scalar& y) {
 		return trivector(trivector_e1e2e3, (x.m_c[0] * y.m_c[0]));
 	}
+	inline vector2D gp(const __e1_ct__& x, const __syn_smv___scalar_e1e2& y) {
+		return vector2D(vector2D_e1_e2, y.m_c[0], y.m_c[1]);
+	}
 	inline vector subtract(const __e2_ct__& x, const vector& y) {
-		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), ((-1.0f * y.m_c[1]) + 1.0f), (-1.0f * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[0]), (1.0f + (-1.0f * y.m_c[1])), (-1.0f * y.m_c[2]));
 	}
 	inline __syn_smv___e1e2 gp(const __syn_smv___e1e2& x, const scalar& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, (x.m_c[0] * y.m_c[0]));
 	}
+	inline __syn_smv___e1e2 op(const __e1_ct__& x, const e2_t& y) {
+		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, y.m_c[0]);
+	}
 	inline scalar scp(const vector& x, const vector& y) {
 		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
+	}
+	inline scalar norm_r2(const vector& x) {
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2])));
 	}
 	inline scalar scp(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
@@ -15199,6 +16216,19 @@
 	}
 	inline vector negate(const vector& x) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 unit_e(const __syn_smv___e1_e2_e3_e1e2e3& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		scalar ie;
+		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
+	}
+	inline rotor gp(const vector& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])));
+	}
+	inline rotor gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])));
 	}
 	inline scalar gradeInvolution(const scalar& x) {
 		return scalar(scalar_scalar, x.m_c[0]);
@@ -15236,14 +16266,22 @@
 	inline e3_t gp(const e3_t& x, const scalar& y) {
 		return e3_t(e3_t_e3, (x.m_c[0] * y.m_c[0]));
 	}
+	inline scalar norm_r(const bivector& x) {
+		scalar r2;
+		r2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
+	}
 	inline scalar norm_e2(const __syn_smv___e1e2_e1e3& x) {
-		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline rotor gp(const bivector& x, const bivector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
 	}
 	inline rotor gp(const rotor& x, const scalar& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const vector& y) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e3_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[3]), x.m_c[2], x.m_c[0], x.m_c[1]);
@@ -15252,7 +16290,10 @@
 		return vector2D(vector2D_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const bivector& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___e2e3 gp(const scalar& x, const __syn_smv___e2e3f1_0& y) {
 		return __syn_smv___e2e3(__syn_smv___e2e3_e2e3, x.m_c[0]);
@@ -15262,20 +16303,23 @@
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
+	inline vector gp(const trivector& x, const bivector& y) {
+		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), (-1.0f * x.m_c[0] * y.m_c[0]));
 	}
 	inline __syn_smv___e1e3f_1_0 lcont(const __e2_ct__& x, const __I3_ct__& y) {
 		return __syn_smv___e1e3f_1_0(__syn_smv___e1e3f_1_0_e1e3f_1_0);
 	}
 	inline rotor gp(const __syn_smv___scalar_e1e3_e2e3& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline scalar norm_e2(const bivector& x) {
 		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline rotor gp(const vector& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_e1e3 add(const scalar& x, const __syn_smv___e1e3& y) {
 		return __syn_smv___scalar_e1e3(__syn_smv___scalar_e1e3_scalar_e1e3, x.m_c[0], y.m_c[0]);
@@ -15297,20 +16341,20 @@
 		return __syn_smv___e1e2_e1e3(__syn_smv___e1e2_e1e3_e1e2_e1e3, (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const vector& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline vector gp(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___e1e2 gp(const scalar& x, const __syn_smv___e1e2f1_0& y) {
 		return __syn_smv___e1e2(__syn_smv___e1e2_e1e2, x.m_c[0]);
 	}
 	inline bivector unit_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
@@ -15339,20 +16383,26 @@
 	}
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2_e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
 	}
 	inline vector lcont(const __syn_smv___e2_e3& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), (-1.0f * x.m_c[1] * y.m_c[1]), (x.m_c[0] * y.m_c[1]));
+		return vector(vector_e1_e2_e3, ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), (-1.0f * x.m_c[1] * y.m_c[1]), (x.m_c[0] * y.m_c[1]));
+	}
+	inline __syn_smv___scalar_e1_e2_e3_e1e2e3 subtract(const __syn_smv___e1_e2_e3_e1e2e3& x, const scalar& y) {
+		return __syn_smv___scalar_e1_e2_e3_e1e2e3(__syn_smv___scalar_e1_e2_e3_e1e2e3_scalar_e1_e2_e3_e1e2e3, (-1.0f * y.m_c[0]), x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
 	}
 	inline vector inverse(const vector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return vector(vector_e1_e2_e3, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___e1e2_e2e3 op(const vector& x, const __e2_ct__& y) {
 		return __syn_smv___e1e2_e2e3(__syn_smv___e1e2_e2e3_e1e2_e2e3, x.m_c[0], (-1.0f * x.m_c[2]));
@@ -15370,7 +16420,7 @@
 		return __syn_smv___e1_e3(__syn_smv___e1_e3_e1_e3, (-1.0f * y.m_c[0]), y.m_c[1]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___scalar_e1e2_e2e3& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline scalar norm_e2(const scalar& x) {
 		return scalar(scalar_scalar, (x.m_c[0] * x.m_c[0]));
@@ -15385,31 +16435,51 @@
 		return __syn_smv___scalar_e2e3(__syn_smv___scalar_e2e3_scalar_e2e3, x.m_c[0], y.m_c[0]);
 	}
 	inline trivector op(const vector& x, const bivector& y) {
-		return trivector(trivector_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return trivector(trivector_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline rotor gp(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___scalar_e1e2 gp(const __syn_smv___e1e3_e2e3& x, const __syn_smv___e1e3_e2e3& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+	}
+	inline __syn_smv___e1_e2_e3_e1e2e3 inverse(const __syn_smv___e1_e2_e3_e1e2e3& x) {
+		scalar n;
+		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
+	}
+	inline rotor unit_r(const rotor& x) {
+		scalar r2;
+		r2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		scalar ir;
+		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ir.m_c[0]), (x.m_c[1] * ir.m_c[0]), (x.m_c[2] * ir.m_c[0]), (x.m_c[3] * ir.m_c[0]));
+	}
+	inline scalar scp(const rotor& x, const rotor& y) {
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])));
 	}
 	inline bivector op(const bivector& x, const scalar& y) {
 		return bivector(bivector_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e2_e3_e1e2e3& x, const bivector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline e1_t gp(const e1_t& x, const scalar& y) {
 		return e1_t(e1_t_e1, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector lcont(const vector& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
 	}
 	inline vector gradeInvolution(const vector& x) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline vector lcont(const bivector& x, const trivector& y) {
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[1] * y.m_c[0]), (-1.0f * x.m_c[2] * y.m_c[0]), (-1.0f * x.m_c[0] * y.m_c[0]));
+	}
+	inline rotor gradeInvolution(const rotor& x) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
 	}
 	inline __syn_smv___e1e2_e1e3_e2e3_e1e2e3 add(const trivector& x, const bivector& y) {
 		return __syn_smv___e1e2_e1e3_e2e3_e1e2e3(__syn_smv___e1e2_e1e3_e2e3_e1e2e3_e1e2_e1e3_e2e3_e1e2e3, y.m_c[0], (-1.0f * y.m_c[2]), y.m_c[1], x.m_c[0]);
@@ -15427,7 +16497,7 @@
 		return trivector(trivector_e1e2e3, (x.m_c[0] + y.m_c[0]));
 	}
 	inline vector lcont(const __syn_smv___e1_e3& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), (-1.0f * x.m_c[0] * y.m_c[2]));
+		return vector(vector_e1_e2_e3, (x.m_c[1] * y.m_c[2]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), (-1.0f * x.m_c[0] * y.m_c[2]));
 	}
 
 
