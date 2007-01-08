@@ -130,7 +130,7 @@ void mvAnalysis::analyzeRound(mv X, int intFlags /* = 0 */, double epsilon /* = 
 
 	// _location is normalized dual sphere
 	mv _location = gp(X, inverse(lcont(ni, X))); 
-	_location = gp(_location, inverse(-_Float(scp(ni, _location))));
+	_location = gp(_location, inverse(-scp(ni, _location)));
 	// location:
 	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
 
@@ -208,7 +208,7 @@ void mvAnalysis::analyzeTangent(const mv &X, int intFlags /* = 0 */, double epsi
 
 	// _location is normalized dual sphere
 	mv _location = gp(X, inverse(lcont(ni, X))); 
-	_location = gp(_location, inverse(-_Float(scp(ni, _location))));
+	_location = gp(_location, inverse(-scp(ni, _location)));
 	// location:
 	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
 
@@ -276,7 +276,7 @@ void mvAnalysis::analyzeFlat(const mv &X, const normalizedPoint &probe, int intF
 
 	// _location is normalized dual sphere
 	mv _location = lcont(lcont(probe, X), inverse(X)); 
-	_location = gp(_location, inverse(-_Float(scp(ni, _location))));
+	_location = gp(_location, inverse(-scp(ni, _location)));
 	// location:
 	normalizedPoint location = c3gaPoint(_vectorE3GA(_location));
 
