@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 15:55:12 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2007-01-08 16:04:18 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -354,10 +354,11 @@
 					"__NON_G2__ ___syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(mv arg1)", // 75 
 					"__NON_G2__ ___syn_smv___e1_e2(mv arg1)", // 76 
 					"__NON_G2__ ___syn_smv___scalarf0_0(mv arg1)", // 77 
+					"__NON_G2__ ___syn_smv___e1_e2_e3_e0f2_0(mv arg1)", // 78 
 					// function names for underscore constructors for floats
-					"__NON_G2__ _float(mv arg1)", // 78 
-					"__NON_G2__ _double(mv arg1)", // 79 
-					"__NON_G2__ _Float(mv arg1)", // 80 
+					"__NON_G2__ _float(mv arg1)", // 79 
+					"__NON_G2__ _double(mv arg1)", // 80 
+					"__NON_G2__ _Float(mv arg1)", // 81 
 					""
 			};
 
@@ -426,7 +427,8 @@
 					"__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0", // 61 
 					"__syn_smv___e1_e2", // 62 
 					"__syn_smv___scalarf0_0", // 63 
-					"omPoint", // 64 
+					"__syn_smv___e1_e2_e3_e0f2_0", // 64 
+					"omPoint", // 65 
 					""
 			};
 
@@ -435,7 +437,7 @@
 			};
 
 			// each entry records the use of a specific G2 type (profile() sets them to true)
-			bool g_usedTypes[] = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+			bool g_usedTypes[] = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
 			// when the profile is saved, we also save all synthetic types that we used
 			// these strings describe what to save:
@@ -504,7 +506,8 @@
 					"float : float;\nspecialization: __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(e0, e1^e2^e0, e1^e3^e0, e2^e3^e0);\n",
 					"float : float;\nspecialization: __syn_smv___e1_e2(e1, e2);\n",
 					"float : float;\nspecialization: __syn_smv___scalarf0_0(1.0 = 0.0);\n",
-					NULL, // 64 
+					"float : float;\nspecialization: __syn_smv___e1_e2_e3_e0f2_0(e1, e2, e3, e0 = 2.0);\n",
+					NULL, // 65 
 					NULL
 			};	
 
@@ -741,7 +744,7 @@
 			bool usedGMV = false;
 			unsigned short usedGMVtype = 0;
 			for (int i = 0; i < nbArg; i++) {
-				if (argType[i] < 65)
+				if (argType[i] < 66)
 					g_usedTypes[argType[i]] = true;
 
 				if (argType[i] == MVT_NONE) usedGMV = true; // is this line required?
@@ -856,7 +859,7 @@
 				// sen number of specialized types:
 				{
 					int bufIdx = 0;
-					unsigned short nbFunctionsIds = 54;
+					unsigned short nbFunctionsIds = 55;
 					bufIdx += g2Net::serialize_ushort(forReal, buf, bufIdx, nbFunctionsIds);
 					n = g2Net::sendN(g_profileNetSocket, buf, bufIdx);
 				}
@@ -866,7 +869,7 @@
 				// message format:
 				// unsigned int ID
 				// char name[], 0
-				int nbTypes = 65;
+				int nbTypes = 66;
 				for (int i = 0; i < nbTypes; i++) {
 					// send id;
 					int bufIdx = 0;
@@ -2369,6 +2372,22 @@
 
 
 	}
+	// set to __syn_smv___e1_e2_e3_e0f2_0 
+	void mv::set(const __syn_smv___e1_e2_e3_e0f2_0 & arg1) {
+
+		// set grade usage 
+		gu(2);
+
+		// set type (used for profiling)
+		type(MVT___SYN_SMV___E1_E2_E3_E0F2_0);
+
+		m_c[0] = arg1.m_c[0] ;
+		m_c[1] = arg1.m_c[1] ;
+		m_c[2] = arg1.m_c[2] ;
+		m_c[3] = (Float)2.0f; 
+
+
+	}
 
 
 
@@ -2655,6 +2674,11 @@
 	}
 	// assign __syn_smv___scalarf0_0 
 	mv& mv::operator=(const __syn_smv___scalarf0_0& arg1) {
+		set(arg1);
+		return *this;
+	}
+	// assign __syn_smv___e1_e2_e3_e0f2_0 
+	mv& mv::operator=(const __syn_smv___e1_e2_e3_e0f2_0& arg1) {
 		set(arg1);
 		return *this;
 	}
@@ -6348,6 +6372,72 @@
 
 
 
+	// set to mv 
+	void __syn_smv___e1_e2_e3_e0f2_0::set(const mv & arg1) {
+
+		int gidx = 0;
+
+		if (arg1.gu() & 1) {
+			gidx += 1;		}
+		else {
+		}
+
+		if (arg1.gu() & 2) {
+			m_c[0] = arg1.m_c[gidx + 0];
+			m_c[1] = arg1.m_c[gidx + 1];
+			m_c[2] = arg1.m_c[gidx + 2];
+		}
+		else {
+			m_c[0] = (Float)0.0;
+			m_c[1] = (Float)0.0;
+			m_c[2] = (Float)0.0;
+		}
+
+
+	}
+
+
+
+
+	float __syn_smv___e1_e2_e3_e0f2_0::largestCoordinate() const {
+
+		Float maxC = (Float)2.0f, C;
+
+		C = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
+		if (C > maxC) maxC = C;
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) maxC = C;
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) maxC = C;
+		return maxC;
+	}
+
+	float __syn_smv___e1_e2_e3_e0f2_0::largestBasisBlade(unsigned int &bm) const {
+
+		Float maxC = (Float)2.0f, C;
+		bm = 8;
+
+		C = (m_c[0] < (Float)0.0) ? -m_c[0] : m_c[0];
+		if (C > maxC) {
+			maxC = C;
+			bm = 1;
+		}
+		C = (m_c[1] < (Float)0.0) ? -m_c[1] : m_c[1];
+		if (C > maxC) {
+			maxC = C;
+			bm = 2;
+		}
+		C = (m_c[2] < (Float)0.0) ? -m_c[2] : m_c[2];
+		if (C > maxC) {
+			maxC = C;
+			bm = 4;
+		}
+		return maxC;
+	}
+
+
+
+
 
 
 	// set to identity 'I'
@@ -6516,10 +6606,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_1__[16] ;
 		mv_zero(__tmp_coord_array_1__, 16);
-		const float* __x_xpd__[5] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
 		if (((y.m_gu & 1) != 0)) {
 			if (((x.m_gu & 1) != 0)) {
 				__tmp_coord_array_1__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
@@ -6536,7 +6626,7 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][0] * __y_xpd__[1][0]));
+				__tmp_coord_array_1__[0] += ((__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
 
 			}
 
@@ -6552,14 +6642,14 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[1] += ((__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]));
-				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]));
+				__tmp_coord_array_1__[1] += ((__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]));
+				__tmp_coord_array_1__[2] += ((__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]));
 				__tmp_coord_array_1__[3] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (__x_xpd__[1][1] * __y_xpd__[2][1]));
-				__tmp_coord_array_1__[4] += ((__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][3]) + (__x_xpd__[1][2] * __y_xpd__[2][5]));
+				__tmp_coord_array_1__[4] += ((__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][0] * __y_xpd__[2][3]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]));
+				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]));
 
 			}
 
@@ -6573,8 +6663,8 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_1__[5] += ((__x_xpd__[1][3] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_1__[6] += ((__x_xpd__[1][0] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][2]));
+				__tmp_coord_array_1__[5] += ((__x_xpd__[1][2] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
 				__tmp_coord_array_1__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
 				__tmp_coord_array_1__[8] += ((__x_xpd__[1][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]));
 				__tmp_coord_array_1__[9] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][1]));
@@ -6582,14 +6672,14 @@
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]));
-				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]) + (__x_xpd__[2][3] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[1] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (__x_xpd__[2][5] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[2] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]) + (__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]));
 				__tmp_coord_array_1__[3] += ((__x_xpd__[2][4] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]));
-				__tmp_coord_array_1__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]));
+				__tmp_coord_array_1__[4] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]));
 
 			}
 			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_1__[0] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]));
 
 			}
 
@@ -6639,40 +6729,40 @@
 		g2Profiling::profile(((unsigned int)2), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
 		/* end of profiling instrumentation code */;
 		scalar __temp_var_1__;
-		const float* __y_xpd__[5] ;
-		y.expand(__y_xpd__, true);
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+		const float* __y_xpd__[5] ;
+		y.expand(__y_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
 				__temp_var_1__.m_c[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
 
 		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 2) != 0)) {
-				__temp_var_1__.m_c[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][2] * __y_xpd__[1][2]));
+		if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
+				__temp_var_1__.m_c[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][3] * __y_xpd__[1][3]));
 
 			}
 
 		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 4) != 0)) {
-				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]));
+		if (((x.m_gu & 4) != 0)) {
+			if (((y.m_gu & 4) != 0)) {
+				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]));
 
 			}
 
 		}
-		if (((y.m_gu & 8) != 0)) {
-			if (((x.m_gu & 8) != 0)) {
-				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
+		if (((x.m_gu & 8) != 0)) {
+			if (((y.m_gu & 8) != 0)) {
+				__temp_var_1__.m_c[0] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]));
 
 			}
 
 		}
-		if (((y.m_gu & 16) != 0)) {
-			if (((x.m_gu & 16) != 0)) {
+		if (((x.m_gu & 16) != 0)) {
+			if (((y.m_gu & 16) != 0)) {
 				__temp_var_1__.m_c[0] += (__x_xpd__[4][0] * __y_xpd__[4][0]);
 
 			}
@@ -6736,34 +6826,34 @@
 
 			}
 			if (((y.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][3] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[5] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[1][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[0] += ((__x_xpd__[1][1] * __y_xpd__[1][1]) + (__x_xpd__[1][3] * __y_xpd__[1][3]) + (__x_xpd__[1][2] * __y_xpd__[1][2]) + (__x_xpd__[1][0] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
 				__tmp_coord_array_2__[7] += ((__x_xpd__[1][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]));
 				__tmp_coord_array_2__[8] += ((__x_xpd__[1][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[9] += ((__x_xpd__[1][1] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[1][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]));
 
 			}
 			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]) + (__x_xpd__[1][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][3]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]) + (__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]));
-				__tmp_coord_array_2__[4] += ((__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][0] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[2] += ((__x_xpd__[1][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][2]) + (__x_xpd__[1][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[4] += ((__x_xpd__[1][1] * __y_xpd__[2][4]) + (__x_xpd__[1][2] * __y_xpd__[2][5]) + (__x_xpd__[1][0] * __y_xpd__[2][3]));
 				__tmp_coord_array_2__[11] += ((__x_xpd__[1][2] * __y_xpd__[2][0]) + (__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][0] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[12] += ((__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[13] += ((__x_xpd__[1][3] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]));
+				__tmp_coord_array_2__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[13] += ((__x_xpd__[1][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][3] * __y_xpd__[2][1]));
 				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][2] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][2]));
 
 			}
 			if (((y.m_gu & 8) != 0)) {
 				__tmp_coord_array_2__[5] += ((__x_xpd__[1][2] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[1][0] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[1][1] * __y_xpd__[3][0]) + (__x_xpd__[1][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[1][3] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[1][3] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][0]));
 				__tmp_coord_array_2__[8] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[3][1]) + (__x_xpd__[1][2] * __y_xpd__[3][3]));
 				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[3][2]) + (__x_xpd__[1][0] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]) + (__x_xpd__[1][1] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[15] += ((__x_xpd__[1][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][1] * __y_xpd__[3][3]) + (__x_xpd__[1][0] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[1][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[1][1] * __y_xpd__[3][3]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (__x_xpd__[1][0] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]));
 
 			}
 			if (((y.m_gu & 16) != 0)) {
@@ -6787,35 +6877,35 @@
 			}
 			if (((y.m_gu & 2) != 0)) {
 				__tmp_coord_array_2__[1] += ((__x_xpd__[2][3] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[1][2]) + (__x_xpd__[2][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[2] += ((__x_xpd__[2][4] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][1] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[2][5] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]) + (__x_xpd__[2][2] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[11] += ((__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][0] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[2] += ((__x_xpd__[2][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]) + (__x_xpd__[2][4] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[2][2] * __y_xpd__[1][0]) + (__x_xpd__[2][5] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][0]));
 				__tmp_coord_array_2__[12] += ((__x_xpd__[2][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][4] * __y_xpd__[1][0]));
 				__tmp_coord_array_2__[13] += ((__x_xpd__[2][5] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]));
-				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[2][2] * __y_xpd__[1][3]) + (__x_xpd__[2][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]));
 
 			}
 			if (((y.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[5] += ((__x_xpd__[2][4] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]) + (__x_xpd__[2][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[6] += ((__x_xpd__[2][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][5]) + (__x_xpd__[2][5] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[7] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]) + (__x_xpd__[2][3] * __y_xpd__[2][5]) + (__x_xpd__[2][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][3]));
-				__tmp_coord_array_2__[8] += ((__x_xpd__[2][5] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][5]) + (__x_xpd__[2][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][3]) + (__x_xpd__[2][1] * __y_xpd__[2][5]) + (__x_xpd__[2][3] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][4]) + (__x_xpd__[2][2] * __y_xpd__[2][3]) + (__x_xpd__[2][4] * __y_xpd__[2][1]));
-				__tmp_coord_array_2__[15] += ((__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][4]));
+				__tmp_coord_array_2__[5] += ((__x_xpd__[2][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[2][4]) + (__x_xpd__[2][4] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[6] += ((__x_xpd__[2][5] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[2][1] * __y_xpd__[2][0]) + (__x_xpd__[2][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[2][5] * __y_xpd__[2][2]) + (__x_xpd__[2][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[2][3]) + (__x_xpd__[2][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[2][1]) + (__x_xpd__[2][3] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[2][3] * __y_xpd__[2][2]) + (__x_xpd__[2][4] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[2][4]) + (__x_xpd__[2][2] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][5]));
 
 			}
 			if (((y.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[1] += ((__x_xpd__[2][5] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (__x_xpd__[2][3] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]) + (__x_xpd__[2][4] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]));
-				__tmp_coord_array_2__[11] += ((__x_xpd__[2][4] * __y_xpd__[3][3]) + (__x_xpd__[2][5] * __y_xpd__[3][1]) + (__x_xpd__[2][3] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][0]) + (__x_xpd__[2][2] * __y_xpd__[3][2]));
-				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][1]) + (__x_xpd__[2][0] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][2]) + (__x_xpd__[2][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][0]) + (__x_xpd__[2][5] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][2] * __y_xpd__[3][0]) + (__x_xpd__[2][3] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[2][0] * __y_xpd__[3][0]) + (__x_xpd__[2][4] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][1] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[11] += ((__x_xpd__[2][5] * __y_xpd__[3][1]) + (__x_xpd__[2][4] * __y_xpd__[3][3]) + (__x_xpd__[2][3] * __y_xpd__[3][2]));
+				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[2][1] * __y_xpd__[3][3]) + (__x_xpd__[2][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[3][0]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[2][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[3][0]) + (__x_xpd__[2][0] * __y_xpd__[3][3]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[2][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[2][0] * __y_xpd__[3][2]));
 
 			}
 			if (((y.m_gu & 16) != 0)) {
@@ -6840,32 +6930,32 @@
 			if (((y.m_gu & 2) != 0)) {
 				__tmp_coord_array_2__[5] += ((__x_xpd__[3][1] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][2]));
 				__tmp_coord_array_2__[6] += ((__x_xpd__[3][0] * __y_xpd__[1][0]) + (__x_xpd__[3][2] * __y_xpd__[1][3]));
-				__tmp_coord_array_2__[7] += ((__x_xpd__[3][3] * __y_xpd__[1][3]) + (__x_xpd__[3][0] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[8] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[1][1]) + (__x_xpd__[3][3] * __y_xpd__[1][2]));
+				__tmp_coord_array_2__[7] += ((__x_xpd__[3][0] * __y_xpd__[1][1]) + (__x_xpd__[3][3] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[8] += ((__x_xpd__[3][3] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][1]));
 				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[1][2]) + (__x_xpd__[3][1] * __y_xpd__[1][0]));
-				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][0]) + (__x_xpd__[3][2] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[15] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (__x_xpd__[3][0] * __y_xpd__[1][3]));
+				__tmp_coord_array_2__[10] += ((__x_xpd__[3][2] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][0]));
+				__tmp_coord_array_2__[15] += ((__x_xpd__[3][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]));
 
 			}
 			if (((y.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]) + (__x_xpd__[3][3] * __y_xpd__[2][5]));
-				__tmp_coord_array_2__[2] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]) + (__x_xpd__[3][1] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][5]));
-				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]) + (__x_xpd__[3][2] * __y_xpd__[2][4]));
-				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][2]));
-				__tmp_coord_array_2__[11] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[1] += ((__x_xpd__[3][3] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][1]));
+				__tmp_coord_array_2__[2] += ((__x_xpd__[3][1] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[2][5]));
+				__tmp_coord_array_2__[3] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][3]) + (__x_xpd__[3][2] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[4] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[11] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][3]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][5]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][4]));
 				__tmp_coord_array_2__[12] += ((-1.0f * __x_xpd__[3][2] * __y_xpd__[2][2]) + (__x_xpd__[3][3] * __y_xpd__[2][1]) + (__x_xpd__[3][0] * __y_xpd__[2][5]));
-				__tmp_coord_array_2__[13] += ((__x_xpd__[3][0] * __y_xpd__[2][3]) + (__x_xpd__[3][1] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[2][0]));
-				__tmp_coord_array_2__[14] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[2][1]) + (__x_xpd__[3][0] * __y_xpd__[2][4]) + (__x_xpd__[3][2] * __y_xpd__[2][0]));
+				__tmp_coord_array_2__[13] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[2][0]) + (__x_xpd__[3][1] * __y_xpd__[2][2]) + (__x_xpd__[3][0] * __y_xpd__[2][3]));
+				__tmp_coord_array_2__[14] += ((__x_xpd__[3][0] * __y_xpd__[2][4]) + (__x_xpd__[3][2] * __y_xpd__[2][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[2][1]));
 
 			}
 			if (((y.m_gu & 8) != 0)) {
-				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[0] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[3][3]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][2]));
 				__tmp_coord_array_2__[5] += ((__x_xpd__[3][3] * __y_xpd__[3][2]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[3][3]));
 				__tmp_coord_array_2__[6] += ((-1.0f * __x_xpd__[3][3] * __y_xpd__[3][1]) + (__x_xpd__[3][1] * __y_xpd__[3][3]));
 				__tmp_coord_array_2__[7] += ((__x_xpd__[3][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[3][2]));
 				__tmp_coord_array_2__[8] += ((__x_xpd__[3][2] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][2]));
 				__tmp_coord_array_2__[9] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[3][3]) + (__x_xpd__[3][3] * __y_xpd__[3][0]));
-				__tmp_coord_array_2__[10] += ((__x_xpd__[3][1] * __y_xpd__[3][0]) + (-1.0f * __x_xpd__[3][0] * __y_xpd__[3][1]));
+				__tmp_coord_array_2__[10] += ((-1.0f * __x_xpd__[3][0] * __y_xpd__[3][1]) + (__x_xpd__[3][1] * __y_xpd__[3][0]));
 
 			}
 			if (((y.m_gu & 16) != 0)) {
@@ -6971,23 +7061,23 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[5] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+				__tmp_coord_array_3__[5] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][1]));
 				__tmp_coord_array_3__[6] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][2]));
-				__tmp_coord_array_3__[7] += ((-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][0]));
+				__tmp_coord_array_3__[7] += ((__x_xpd__[1][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[1][2]));
 				__tmp_coord_array_3__[8] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][0]) + (__x_xpd__[1][0] * __y_xpd__[1][3]));
 				__tmp_coord_array_3__[9] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][1]) + (__x_xpd__[1][1] * __y_xpd__[1][3]));
 				__tmp_coord_array_3__[10] += ((-1.0f * __x_xpd__[1][3] * __y_xpd__[1][2]) + (__x_xpd__[1][2] * __y_xpd__[1][3]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[11] += ((__x_xpd__[2][0] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]));
+				__tmp_coord_array_3__[11] += ((__x_xpd__[2][1] * __y_xpd__[1][0]) + (__x_xpd__[2][2] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][2]));
 				__tmp_coord_array_3__[12] += ((__x_xpd__[2][4] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[2][3] * __y_xpd__[1][1]) + (__x_xpd__[2][0] * __y_xpd__[1][3]));
-				__tmp_coord_array_3__[13] += ((-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]) + (__x_xpd__[2][5] * __y_xpd__[1][1]) + (__x_xpd__[2][1] * __y_xpd__[1][3]));
-				__tmp_coord_array_3__[14] += ((-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][3] * __y_xpd__[1][2]) + (__x_xpd__[2][2] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[13] += ((__x_xpd__[2][5] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[2][4] * __y_xpd__[1][2]) + (__x_xpd__[2][1] * __y_xpd__[1][3]));
+				__tmp_coord_array_3__[14] += ((__x_xpd__[2][2] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[2][5] * __y_xpd__[1][0]) + (__x_xpd__[2][3] * __y_xpd__[1][2]));
 
 			}
 			if (((x.m_gu & 8) != 0)) {
-				__tmp_coord_array_3__[15] += ((__x_xpd__[3][0] * __y_xpd__[1][3]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]));
+				__tmp_coord_array_3__[15] += ((-1.0f * __x_xpd__[3][1] * __y_xpd__[1][2]) + (-1.0f * __x_xpd__[3][3] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[3][2] * __y_xpd__[1][0]) + (__x_xpd__[3][0] * __y_xpd__[1][3]));
 
 			}
 
@@ -7004,13 +7094,13 @@
 			}
 			if (((x.m_gu & 2) != 0)) {
 				__tmp_coord_array_3__[11] += ((__x_xpd__[1][1] * __y_xpd__[2][2]) + (__x_xpd__[1][0] * __y_xpd__[2][1]) + (__x_xpd__[1][2] * __y_xpd__[2][0]));
-				__tmp_coord_array_3__[12] += ((__x_xpd__[1][3] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][4]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]));
-				__tmp_coord_array_3__[13] += ((__x_xpd__[1][3] * __y_xpd__[2][1]) + (-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][1] * __y_xpd__[2][5]));
-				__tmp_coord_array_3__[14] += ((__x_xpd__[1][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]) + (__x_xpd__[1][2] * __y_xpd__[2][3]));
+				__tmp_coord_array_3__[12] += ((-1.0f * __x_xpd__[1][1] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][0]) + (__x_xpd__[1][0] * __y_xpd__[2][4]));
+				__tmp_coord_array_3__[13] += ((-1.0f * __x_xpd__[1][2] * __y_xpd__[2][4]) + (__x_xpd__[1][3] * __y_xpd__[2][1]) + (__x_xpd__[1][1] * __y_xpd__[2][5]));
+				__tmp_coord_array_3__[14] += ((__x_xpd__[1][2] * __y_xpd__[2][3]) + (__x_xpd__[1][3] * __y_xpd__[2][2]) + (-1.0f * __x_xpd__[1][0] * __y_xpd__[2][5]));
 
 			}
 			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_3__[15] += ((__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][3] * __y_xpd__[2][1]) + (__x_xpd__[2][2] * __y_xpd__[2][4]));
+				__tmp_coord_array_3__[15] += ((__x_xpd__[2][1] * __y_xpd__[2][3]) + (__x_xpd__[2][4] * __y_xpd__[2][2]) + (__x_xpd__[2][2] * __y_xpd__[2][4]) + (__x_xpd__[2][0] * __y_xpd__[2][5]) + (__x_xpd__[2][5] * __y_xpd__[2][0]) + (__x_xpd__[2][3] * __y_xpd__[2][1]));
 
 			}
 
@@ -7024,7 +7114,7 @@
 
 			}
 			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_3__[15] += ((__x_xpd__[1][1] * __y_xpd__[3][3]) + (__x_xpd__[1][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][0] * __y_xpd__[3][2]));
+				__tmp_coord_array_3__[15] += ((__x_xpd__[1][2] * __y_xpd__[3][1]) + (-1.0f * __x_xpd__[1][3] * __y_xpd__[3][0]) + (__x_xpd__[1][0] * __y_xpd__[3][2]) + (__x_xpd__[1][1] * __y_xpd__[3][3]));
 
 			}
 
@@ -7128,41 +7218,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_5__[16] ;
 		mv_zero(__tmp_coord_array_5__, 16);
-		const float* __x_xpd__[5] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
-			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
-			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
-			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[1][3]);
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][0]);
-			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][1]);
-			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[2][2]);
-			__tmp_coord_array_5__[8] += (-1.0f * __y_xpd__[2][3]);
-			__tmp_coord_array_5__[9] += (-1.0f * __y_xpd__[2][4]);
-			__tmp_coord_array_5__[10] += (-1.0f * __y_xpd__[2][5]);
-
-		}
-		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_5__[11] += (-1.0f * __y_xpd__[3][0]);
-			__tmp_coord_array_5__[12] += (-1.0f * __y_xpd__[3][1]);
-			__tmp_coord_array_5__[13] += (-1.0f * __y_xpd__[3][2]);
-			__tmp_coord_array_5__[14] += (-1.0f * __y_xpd__[3][3]);
-
-		}
-		if (((y.m_gu & 16) != 0)) {
-			__tmp_coord_array_5__[15] += (-1.0f * __y_xpd__[4][0]);
-
-		}
+		const float* __x_xpd__[5] ;
+		x.expand(__x_xpd__, true);
 		if (((x.m_gu & 1) != 0)) {
 			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
 
@@ -7194,6 +7253,37 @@
 			__tmp_coord_array_5__[15] += __x_xpd__[4][0];
 
 		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += (-1.0f * __y_xpd__[1][0]);
+			__tmp_coord_array_5__[2] += (-1.0f * __y_xpd__[1][1]);
+			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[1][2]);
+			__tmp_coord_array_5__[4] += (-1.0f * __y_xpd__[1][3]);
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[5] += (-1.0f * __y_xpd__[2][0]);
+			__tmp_coord_array_5__[6] += (-1.0f * __y_xpd__[2][1]);
+			__tmp_coord_array_5__[7] += (-1.0f * __y_xpd__[2][2]);
+			__tmp_coord_array_5__[8] += (-1.0f * __y_xpd__[2][3]);
+			__tmp_coord_array_5__[9] += (-1.0f * __y_xpd__[2][4]);
+			__tmp_coord_array_5__[10] += (-1.0f * __y_xpd__[2][5]);
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			__tmp_coord_array_5__[11] += (-1.0f * __y_xpd__[3][0]);
+			__tmp_coord_array_5__[12] += (-1.0f * __y_xpd__[3][1]);
+			__tmp_coord_array_5__[13] += (-1.0f * __y_xpd__[3][2]);
+			__tmp_coord_array_5__[14] += (-1.0f * __y_xpd__[3][3]);
+
+		}
+		if (((y.m_gu & 16) != 0)) {
+			__tmp_coord_array_5__[15] += (-1.0f * __y_xpd__[4][0]);
+
+		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
 		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
@@ -7212,15 +7302,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7243,15 +7333,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
+			e2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
+			e2.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
+			e2.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7274,15 +7364,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
+			e2.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
+			e2.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			e2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+			e2.m_c[0] += ((__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7343,15 +7433,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][4] * __x_xpd__[2][4]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			__temp_var_1__.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+			__temp_var_1__.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7374,15 +7464,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
+			r2.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][1] * __x_xpd__[1][1]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]));
+			r2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
+			r2.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7405,15 +7495,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]) + (__x_xpd__[1][0] * __x_xpd__[1][0]));
+			r2.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][5] * __x_xpd__[2][5]));
+			r2.m_c[0] += ((__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][3] * __x_xpd__[2][3]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][5] * __x_xpd__[2][5]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			r2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][0] * __x_xpd__[3][0]));
+			r2.m_c[0] += ((__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7658,15 +7748,15 @@
 
 		}
 		if (((x.m_gu & 2) != 0)) {
-			n.m_c[0] += ((__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
+			n.m_c[0] += ((__x_xpd__[1][1] * __x_xpd__[1][1]) + (__x_xpd__[1][3] * __x_xpd__[1][3]) + (__x_xpd__[1][0] * __x_xpd__[1][0]) + (__x_xpd__[1][2] * __x_xpd__[1][2]));
 
 		}
 		if (((x.m_gu & 4) != 0)) {
-			n.m_c[0] += ((__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
+			n.m_c[0] += ((__x_xpd__[2][5] * __x_xpd__[2][5]) + (__x_xpd__[2][0] * __x_xpd__[2][0]) + (__x_xpd__[2][2] * __x_xpd__[2][2]) + (__x_xpd__[2][4] * __x_xpd__[2][4]) + (__x_xpd__[2][1] * __x_xpd__[2][1]) + (__x_xpd__[2][3] * __x_xpd__[2][3]));
 
 		}
 		if (((x.m_gu & 8) != 0)) {
-			n.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]) + (__x_xpd__[3][2] * __x_xpd__[3][2]));
+			n.m_c[0] += ((__x_xpd__[3][0] * __x_xpd__[3][0]) + (__x_xpd__[3][2] * __x_xpd__[3][2]) + (__x_xpd__[3][3] * __x_xpd__[3][3]) + (__x_xpd__[3][1] * __x_xpd__[3][1]));
 
 		}
 		if (((x.m_gu & 16) != 0)) {
@@ -7773,26 +7863,26 @@
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
 		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_14__[1] += ((x.m_c[2] * __y_xpd__[1][2]) + (x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[3] * __y_xpd__[1][3]) + (x.m_c[1] * __y_xpd__[1][1]));
-			__tmp_coord_array_14__[2] += ((x.m_c[7] * __y_xpd__[1][3]) + (x.m_c[4] * __y_xpd__[1][0]) + (x.m_c[5] * __y_xpd__[1][1]) + (x.m_c[6] * __y_xpd__[1][2]));
-			__tmp_coord_array_14__[3] += ((x.m_c[9] * __y_xpd__[1][1]) + (x.m_c[11] * __y_xpd__[1][3]) + (x.m_c[8] * __y_xpd__[1][0]) + (x.m_c[10] * __y_xpd__[1][2]));
-			__tmp_coord_array_14__[4] += ((x.m_c[15] * __y_xpd__[1][3]) + (x.m_c[14] * __y_xpd__[1][2]) + (x.m_c[12] * __y_xpd__[1][0]) + (x.m_c[13] * __y_xpd__[1][1]));
+			__tmp_coord_array_14__[1] += ((x.m_c[2] * __y_xpd__[1][2]) + (x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[3] * __y_xpd__[1][3]));
+			__tmp_coord_array_14__[2] += ((x.m_c[6] * __y_xpd__[1][2]) + (x.m_c[4] * __y_xpd__[1][0]) + (x.m_c[5] * __y_xpd__[1][1]) + (x.m_c[7] * __y_xpd__[1][3]));
+			__tmp_coord_array_14__[3] += ((x.m_c[9] * __y_xpd__[1][1]) + (x.m_c[8] * __y_xpd__[1][0]) + (x.m_c[10] * __y_xpd__[1][2]) + (x.m_c[11] * __y_xpd__[1][3]));
+			__tmp_coord_array_14__[4] += ((x.m_c[13] * __y_xpd__[1][1]) + (x.m_c[15] * __y_xpd__[1][3]) + (x.m_c[12] * __y_xpd__[1][0]) + (x.m_c[14] * __y_xpd__[1][2]));
 
 		}
 		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_14__[5] += ((x.m_c[19] * __y_xpd__[2][3]) + (x.m_c[17] * __y_xpd__[2][1]) + (x.m_c[18] * __y_xpd__[2][2]) + (x.m_c[21] * __y_xpd__[2][5]) + (x.m_c[16] * __y_xpd__[2][0]) + (x.m_c[20] * __y_xpd__[2][4]));
-			__tmp_coord_array_14__[6] += ((x.m_c[23] * __y_xpd__[2][1]) + (x.m_c[27] * __y_xpd__[2][5]) + (x.m_c[25] * __y_xpd__[2][3]) + (x.m_c[22] * __y_xpd__[2][0]) + (x.m_c[24] * __y_xpd__[2][2]) + (x.m_c[26] * __y_xpd__[2][4]));
-			__tmp_coord_array_14__[7] += ((x.m_c[31] * __y_xpd__[2][3]) + (x.m_c[32] * __y_xpd__[2][4]) + (x.m_c[28] * __y_xpd__[2][0]) + (x.m_c[33] * __y_xpd__[2][5]) + (x.m_c[29] * __y_xpd__[2][1]) + (x.m_c[30] * __y_xpd__[2][2]));
-			__tmp_coord_array_14__[8] += ((x.m_c[39] * __y_xpd__[2][5]) + (x.m_c[35] * __y_xpd__[2][1]) + (x.m_c[34] * __y_xpd__[2][0]) + (x.m_c[38] * __y_xpd__[2][4]) + (x.m_c[37] * __y_xpd__[2][3]) + (x.m_c[36] * __y_xpd__[2][2]));
-			__tmp_coord_array_14__[9] += ((x.m_c[42] * __y_xpd__[2][2]) + (x.m_c[41] * __y_xpd__[2][1]) + (x.m_c[44] * __y_xpd__[2][4]) + (x.m_c[43] * __y_xpd__[2][3]) + (x.m_c[45] * __y_xpd__[2][5]) + (x.m_c[40] * __y_xpd__[2][0]));
-			__tmp_coord_array_14__[10] += ((x.m_c[48] * __y_xpd__[2][2]) + (x.m_c[47] * __y_xpd__[2][1]) + (x.m_c[46] * __y_xpd__[2][0]) + (x.m_c[51] * __y_xpd__[2][5]) + (x.m_c[50] * __y_xpd__[2][4]) + (x.m_c[49] * __y_xpd__[2][3]));
+			__tmp_coord_array_14__[5] += ((x.m_c[21] * __y_xpd__[2][5]) + (x.m_c[18] * __y_xpd__[2][2]) + (x.m_c[17] * __y_xpd__[2][1]) + (x.m_c[19] * __y_xpd__[2][3]) + (x.m_c[20] * __y_xpd__[2][4]) + (x.m_c[16] * __y_xpd__[2][0]));
+			__tmp_coord_array_14__[6] += ((x.m_c[25] * __y_xpd__[2][3]) + (x.m_c[24] * __y_xpd__[2][2]) + (x.m_c[27] * __y_xpd__[2][5]) + (x.m_c[26] * __y_xpd__[2][4]) + (x.m_c[23] * __y_xpd__[2][1]) + (x.m_c[22] * __y_xpd__[2][0]));
+			__tmp_coord_array_14__[7] += ((x.m_c[33] * __y_xpd__[2][5]) + (x.m_c[28] * __y_xpd__[2][0]) + (x.m_c[32] * __y_xpd__[2][4]) + (x.m_c[29] * __y_xpd__[2][1]) + (x.m_c[31] * __y_xpd__[2][3]) + (x.m_c[30] * __y_xpd__[2][2]));
+			__tmp_coord_array_14__[8] += ((x.m_c[36] * __y_xpd__[2][2]) + (x.m_c[39] * __y_xpd__[2][5]) + (x.m_c[35] * __y_xpd__[2][1]) + (x.m_c[34] * __y_xpd__[2][0]) + (x.m_c[37] * __y_xpd__[2][3]) + (x.m_c[38] * __y_xpd__[2][4]));
+			__tmp_coord_array_14__[9] += ((x.m_c[43] * __y_xpd__[2][3]) + (x.m_c[40] * __y_xpd__[2][0]) + (x.m_c[45] * __y_xpd__[2][5]) + (x.m_c[42] * __y_xpd__[2][2]) + (x.m_c[41] * __y_xpd__[2][1]) + (x.m_c[44] * __y_xpd__[2][4]));
+			__tmp_coord_array_14__[10] += ((x.m_c[50] * __y_xpd__[2][4]) + (x.m_c[48] * __y_xpd__[2][2]) + (x.m_c[47] * __y_xpd__[2][1]) + (x.m_c[46] * __y_xpd__[2][0]) + (x.m_c[51] * __y_xpd__[2][5]) + (x.m_c[49] * __y_xpd__[2][3]));
 
 		}
 		if (((y.m_gu & 8) != 0)) {
-			__tmp_coord_array_14__[11] += ((x.m_c[53] * __y_xpd__[3][1]) + (x.m_c[55] * __y_xpd__[3][3]) + (x.m_c[54] * __y_xpd__[3][2]) + (x.m_c[52] * __y_xpd__[3][0]));
-			__tmp_coord_array_14__[12] += ((x.m_c[57] * __y_xpd__[3][1]) + (x.m_c[56] * __y_xpd__[3][0]) + (x.m_c[58] * __y_xpd__[3][2]) + (x.m_c[59] * __y_xpd__[3][3]));
-			__tmp_coord_array_14__[13] += ((x.m_c[61] * __y_xpd__[3][1]) + (x.m_c[60] * __y_xpd__[3][0]) + (x.m_c[62] * __y_xpd__[3][2]) + (x.m_c[63] * __y_xpd__[3][3]));
-			__tmp_coord_array_14__[14] += ((x.m_c[64] * __y_xpd__[3][0]) + (x.m_c[67] * __y_xpd__[3][3]) + (x.m_c[65] * __y_xpd__[3][1]) + (x.m_c[66] * __y_xpd__[3][2]));
+			__tmp_coord_array_14__[11] += ((x.m_c[52] * __y_xpd__[3][0]) + (x.m_c[54] * __y_xpd__[3][2]) + (x.m_c[53] * __y_xpd__[3][1]) + (x.m_c[55] * __y_xpd__[3][3]));
+			__tmp_coord_array_14__[12] += ((x.m_c[59] * __y_xpd__[3][3]) + (x.m_c[58] * __y_xpd__[3][2]) + (x.m_c[57] * __y_xpd__[3][1]) + (x.m_c[56] * __y_xpd__[3][0]));
+			__tmp_coord_array_14__[13] += ((x.m_c[62] * __y_xpd__[3][2]) + (x.m_c[60] * __y_xpd__[3][0]) + (x.m_c[61] * __y_xpd__[3][1]) + (x.m_c[63] * __y_xpd__[3][3]));
+			__tmp_coord_array_14__[14] += ((x.m_c[66] * __y_xpd__[3][2]) + (x.m_c[65] * __y_xpd__[3][1]) + (x.m_c[67] * __y_xpd__[3][3]) + (x.m_c[64] * __y_xpd__[3][0]));
 
 		}
 		if (((y.m_gu & 16) != 0)) {
@@ -7821,59 +7911,59 @@
 			__x__.m_c[7] = __image_of_e0__.m_c[1];
 			__x__.m_c[11] = __image_of_e0__.m_c[2];
 			__x__.m_c[15] = __image_of_e0__.m_c[3];
-			__x__.m_c[16] = ((-1.0f * __x__.m_c[1] * __x__.m_c[4]) + (__x__.m_c[5] * __x__.m_c[0]));
+			__x__.m_c[16] = ((__x__.m_c[5] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[4]));
 			__x__.m_c[22] = ((-1.0f * __x__.m_c[5] * __x__.m_c[8]) + (__x__.m_c[9] * __x__.m_c[4]));
 			__x__.m_c[28] = ((-1.0f * __x__.m_c[9] * __x__.m_c[0]) + (__x__.m_c[1] * __x__.m_c[8]));
-			__x__.m_c[34] = ((__x__.m_c[13] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[12]));
-			__x__.m_c[40] = ((-1.0f * __x__.m_c[5] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[4]));
+			__x__.m_c[34] = ((-1.0f * __x__.m_c[1] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[0]));
+			__x__.m_c[40] = ((__x__.m_c[13] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[12]));
 			__x__.m_c[46] = ((-1.0f * __x__.m_c[9] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[8]));
-			__x__.m_c[17] = ((-1.0f * __x__.m_c[2] * __x__.m_c[5]) + (__x__.m_c[6] * __x__.m_c[1]));
+			__x__.m_c[17] = ((__x__.m_c[6] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[5]));
 			__x__.m_c[23] = ((__x__.m_c[10] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[9]));
-			__x__.m_c[29] = ((-1.0f * __x__.m_c[10] * __x__.m_c[1]) + (__x__.m_c[2] * __x__.m_c[9]));
-			__x__.m_c[35] = ((__x__.m_c[14] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[13]));
-			__x__.m_c[41] = ((-1.0f * __x__.m_c[6] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[5]));
+			__x__.m_c[29] = ((__x__.m_c[2] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[1]));
+			__x__.m_c[35] = ((-1.0f * __x__.m_c[2] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[1]));
+			__x__.m_c[41] = ((__x__.m_c[14] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[13]));
 			__x__.m_c[47] = ((-1.0f * __x__.m_c[10] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[9]));
-			__x__.m_c[18] = ((-1.0f * __x__.m_c[6] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[4]));
+			__x__.m_c[18] = ((__x__.m_c[2] * __x__.m_c[4]) + (-1.0f * __x__.m_c[6] * __x__.m_c[0]));
 			__x__.m_c[24] = ((__x__.m_c[6] * __x__.m_c[8]) + (-1.0f * __x__.m_c[10] * __x__.m_c[4]));
 			__x__.m_c[30] = ((-1.0f * __x__.m_c[2] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[0]));
 			__x__.m_c[36] = ((__x__.m_c[2] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[0]));
-			__x__.m_c[42] = ((-1.0f * __x__.m_c[14] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[12]));
-			__x__.m_c[48] = ((-1.0f * __x__.m_c[14] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[12]));
-			__x__.m_c[19] = ((-1.0f * __x__.m_c[3] * __x__.m_c[4]) + (__x__.m_c[7] * __x__.m_c[0]));
+			__x__.m_c[42] = ((__x__.m_c[6] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[4]));
+			__x__.m_c[48] = ((__x__.m_c[10] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[8]));
+			__x__.m_c[19] = ((__x__.m_c[7] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[4]));
 			__x__.m_c[25] = ((__x__.m_c[11] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[8]));
-			__x__.m_c[31] = ((__x__.m_c[3] * __x__.m_c[8]) + (-1.0f * __x__.m_c[11] * __x__.m_c[0]));
+			__x__.m_c[31] = ((-1.0f * __x__.m_c[11] * __x__.m_c[0]) + (__x__.m_c[3] * __x__.m_c[8]));
 			__x__.m_c[37] = ((__x__.m_c[15] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[12]));
 			__x__.m_c[43] = ((-1.0f * __x__.m_c[7] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[4]));
 			__x__.m_c[49] = ((__x__.m_c[15] * __x__.m_c[8]) + (-1.0f * __x__.m_c[11] * __x__.m_c[12]));
 			__x__.m_c[20] = ((-1.0f * __x__.m_c[3] * __x__.m_c[5]) + (__x__.m_c[7] * __x__.m_c[1]));
 			__x__.m_c[26] = ((__x__.m_c[11] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[9]));
-			__x__.m_c[32] = ((__x__.m_c[3] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[1]));
-			__x__.m_c[38] = ((-1.0f * __x__.m_c[3] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[1]));
-			__x__.m_c[44] = ((-1.0f * __x__.m_c[7] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[5]));
-			__x__.m_c[50] = ((__x__.m_c[15] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[13]));
+			__x__.m_c[32] = ((-1.0f * __x__.m_c[11] * __x__.m_c[1]) + (__x__.m_c[3] * __x__.m_c[9]));
+			__x__.m_c[38] = ((__x__.m_c[15] * __x__.m_c[1]) + (-1.0f * __x__.m_c[3] * __x__.m_c[13]));
+			__x__.m_c[44] = ((__x__.m_c[15] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[13]));
+			__x__.m_c[50] = ((-1.0f * __x__.m_c[11] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[9]));
 			__x__.m_c[21] = ((__x__.m_c[7] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[6]));
-			__x__.m_c[27] = ((__x__.m_c[11] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[10]));
+			__x__.m_c[27] = ((-1.0f * __x__.m_c[7] * __x__.m_c[10]) + (__x__.m_c[11] * __x__.m_c[6]));
 			__x__.m_c[33] = ((__x__.m_c[3] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[2]));
 			__x__.m_c[39] = ((__x__.m_c[15] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[14]));
 			__x__.m_c[45] = ((__x__.m_c[15] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[14]));
-			__x__.m_c[51] = ((__x__.m_c[15] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[14]));
-			__x__.m_c[52] = ((__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[30] * __x__.m_c[5]));
+			__x__.m_c[51] = ((-1.0f * __x__.m_c[11] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[10]));
+			__x__.m_c[52] = ((__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[30] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[9]));
 			__x__.m_c[56] = ((__x__.m_c[42] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[13]) + (-1.0f * __x__.m_c[36] * __x__.m_c[5]));
-			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[48] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[13]));
-			__x__.m_c[64] = ((-1.0f * __x__.m_c[48] * __x__.m_c[1]) + (__x__.m_c[30] * __x__.m_c[13]) + (__x__.m_c[36] * __x__.m_c[9]));
+			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[13]) + (__x__.m_c[48] * __x__.m_c[5]));
+			__x__.m_c[64] = ((__x__.m_c[36] * __x__.m_c[9]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]) + (__x__.m_c[30] * __x__.m_c[13]));
 			__x__.m_c[53] = ((__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[4]) + (__x__.m_c[20] * __x__.m_c[8]));
-			__x__.m_c[57] = ((__x__.m_c[20] * __x__.m_c[12]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]) + (__x__.m_c[44] * __x__.m_c[0]));
-			__x__.m_c[61] = ((__x__.m_c[50] * __x__.m_c[4]) + (__x__.m_c[26] * __x__.m_c[12]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]));
-			__x__.m_c[65] = ((-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[38] * __x__.m_c[8]) + (__x__.m_c[32] * __x__.m_c[12]));
-			__x__.m_c[54] = ((__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[5]));
-			__x__.m_c[58] = ((__x__.m_c[21] * __x__.m_c[13]) + (__x__.m_c[45] * __x__.m_c[1]) + (-1.0f * __x__.m_c[39] * __x__.m_c[5]));
-			__x__.m_c[62] = ((-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[27] * __x__.m_c[13]) + (__x__.m_c[51] * __x__.m_c[5]));
-			__x__.m_c[66] = ((__x__.m_c[39] * __x__.m_c[9]) + (-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[13]));
-			__x__.m_c[55] = ((-1.0f * __x__.m_c[27] * __x__.m_c[0]) + (-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[8]));
-			__x__.m_c[59] = ((__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]) + (-1.0f * __x__.m_c[45] * __x__.m_c[0]));
-			__x__.m_c[63] = ((-1.0f * __x__.m_c[51] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (__x__.m_c[45] * __x__.m_c[8]));
-			__x__.m_c[67] = ((-1.0f * __x__.m_c[33] * __x__.m_c[12]) + (__x__.m_c[51] * __x__.m_c[0]) + (-1.0f * __x__.m_c[39] * __x__.m_c[8]));
-			__x__.m_c[68] = ((__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[63] * __x__.m_c[1]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]));
+			__x__.m_c[57] = ((__x__.m_c[44] * __x__.m_c[0]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]) + (__x__.m_c[20] * __x__.m_c[12]));
+			__x__.m_c[61] = ((__x__.m_c[50] * __x__.m_c[4]) + (-1.0f * __x__.m_c[44] * __x__.m_c[8]) + (__x__.m_c[26] * __x__.m_c[12]));
+			__x__.m_c[65] = ((__x__.m_c[38] * __x__.m_c[8]) + (__x__.m_c[32] * __x__.m_c[12]) + (-1.0f * __x__.m_c[50] * __x__.m_c[0]));
+			__x__.m_c[54] = ((__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[5]) + (__x__.m_c[27] * __x__.m_c[1]));
+			__x__.m_c[58] = ((-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[45] * __x__.m_c[1]) + (__x__.m_c[21] * __x__.m_c[13]));
+			__x__.m_c[62] = ((__x__.m_c[51] * __x__.m_c[5]) + (__x__.m_c[27] * __x__.m_c[13]) + (-1.0f * __x__.m_c[45] * __x__.m_c[9]));
+			__x__.m_c[66] = ((-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[39] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[13]));
+			__x__.m_c[55] = ((-1.0f * __x__.m_c[21] * __x__.m_c[8]) + (-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[0]));
+			__x__.m_c[59] = ((-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]));
+			__x__.m_c[63] = ((__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[51] * __x__.m_c[4]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]));
+			__x__.m_c[67] = ((-1.0f * __x__.m_c[39] * __x__.m_c[8]) + (__x__.m_c[51] * __x__.m_c[0]) + (-1.0f * __x__.m_c[33] * __x__.m_c[12]));
+			__x__.m_c[68] = ((__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[63] * __x__.m_c[1]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]));
 		}
 		void set(om& __x__, const omPoint& __y__) {
 			__x__.m_c[0] = __y__.m_c[0];
@@ -7892,59 +7982,59 @@
 			__x__.m_c[7] = __y__.m_c[13];
 			__x__.m_c[11] = __y__.m_c[14];
 			__x__.m_c[15] = __y__.m_c[15];
-			__x__.m_c[16] = ((-1.0f * __x__.m_c[1] * __x__.m_c[4]) + (__x__.m_c[5] * __x__.m_c[0]));
+			__x__.m_c[16] = ((__x__.m_c[5] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[4]));
 			__x__.m_c[22] = ((-1.0f * __x__.m_c[5] * __x__.m_c[8]) + (__x__.m_c[9] * __x__.m_c[4]));
 			__x__.m_c[28] = ((__x__.m_c[1] * __x__.m_c[8]) + (-1.0f * __x__.m_c[9] * __x__.m_c[0]));
-			__x__.m_c[34] = ((__x__.m_c[13] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[12]));
+			__x__.m_c[34] = ((-1.0f * __x__.m_c[1] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[0]));
 			__x__.m_c[40] = ((-1.0f * __x__.m_c[5] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[4]));
 			__x__.m_c[46] = ((-1.0f * __x__.m_c[9] * __x__.m_c[12]) + (__x__.m_c[13] * __x__.m_c[8]));
 			__x__.m_c[17] = ((__x__.m_c[6] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[5]));
-			__x__.m_c[23] = ((__x__.m_c[10] * __x__.m_c[5]) + (-1.0f * __x__.m_c[6] * __x__.m_c[9]));
-			__x__.m_c[29] = ((__x__.m_c[2] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[1]));
-			__x__.m_c[35] = ((-1.0f * __x__.m_c[2] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[1]));
+			__x__.m_c[23] = ((-1.0f * __x__.m_c[6] * __x__.m_c[9]) + (__x__.m_c[10] * __x__.m_c[5]));
+			__x__.m_c[29] = ((-1.0f * __x__.m_c[10] * __x__.m_c[1]) + (__x__.m_c[2] * __x__.m_c[9]));
+			__x__.m_c[35] = ((__x__.m_c[14] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[13]));
 			__x__.m_c[41] = ((-1.0f * __x__.m_c[6] * __x__.m_c[13]) + (__x__.m_c[14] * __x__.m_c[5]));
 			__x__.m_c[47] = ((__x__.m_c[14] * __x__.m_c[9]) + (-1.0f * __x__.m_c[10] * __x__.m_c[13]));
-			__x__.m_c[18] = ((-1.0f * __x__.m_c[6] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[4]));
+			__x__.m_c[18] = ((__x__.m_c[2] * __x__.m_c[4]) + (-1.0f * __x__.m_c[6] * __x__.m_c[0]));
 			__x__.m_c[24] = ((-1.0f * __x__.m_c[10] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[8]));
-			__x__.m_c[30] = ((-1.0f * __x__.m_c[2] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[0]));
+			__x__.m_c[30] = ((__x__.m_c[10] * __x__.m_c[0]) + (-1.0f * __x__.m_c[2] * __x__.m_c[8]));
 			__x__.m_c[36] = ((-1.0f * __x__.m_c[14] * __x__.m_c[0]) + (__x__.m_c[2] * __x__.m_c[12]));
-			__x__.m_c[42] = ((-1.0f * __x__.m_c[14] * __x__.m_c[4]) + (__x__.m_c[6] * __x__.m_c[12]));
-			__x__.m_c[48] = ((-1.0f * __x__.m_c[14] * __x__.m_c[8]) + (__x__.m_c[10] * __x__.m_c[12]));
+			__x__.m_c[42] = ((__x__.m_c[6] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[4]));
+			__x__.m_c[48] = ((__x__.m_c[10] * __x__.m_c[12]) + (-1.0f * __x__.m_c[14] * __x__.m_c[8]));
 			__x__.m_c[19] = ((__x__.m_c[7] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[4]));
-			__x__.m_c[25] = ((__x__.m_c[11] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[8]));
-			__x__.m_c[31] = ((-1.0f * __x__.m_c[11] * __x__.m_c[0]) + (__x__.m_c[3] * __x__.m_c[8]));
-			__x__.m_c[37] = ((__x__.m_c[15] * __x__.m_c[0]) + (-1.0f * __x__.m_c[3] * __x__.m_c[12]));
+			__x__.m_c[25] = ((-1.0f * __x__.m_c[7] * __x__.m_c[8]) + (__x__.m_c[11] * __x__.m_c[4]));
+			__x__.m_c[31] = ((__x__.m_c[3] * __x__.m_c[8]) + (-1.0f * __x__.m_c[11] * __x__.m_c[0]));
+			__x__.m_c[37] = ((-1.0f * __x__.m_c[3] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[0]));
 			__x__.m_c[43] = ((__x__.m_c[15] * __x__.m_c[4]) + (-1.0f * __x__.m_c[7] * __x__.m_c[12]));
-			__x__.m_c[49] = ((__x__.m_c[15] * __x__.m_c[8]) + (-1.0f * __x__.m_c[11] * __x__.m_c[12]));
+			__x__.m_c[49] = ((-1.0f * __x__.m_c[11] * __x__.m_c[12]) + (__x__.m_c[15] * __x__.m_c[8]));
 			__x__.m_c[20] = ((__x__.m_c[7] * __x__.m_c[1]) + (-1.0f * __x__.m_c[3] * __x__.m_c[5]));
 			__x__.m_c[26] = ((__x__.m_c[11] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[9]));
-			__x__.m_c[32] = ((__x__.m_c[3] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[1]));
-			__x__.m_c[38] = ((-1.0f * __x__.m_c[3] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[1]));
-			__x__.m_c[44] = ((__x__.m_c[15] * __x__.m_c[5]) + (-1.0f * __x__.m_c[7] * __x__.m_c[13]));
-			__x__.m_c[50] = ((-1.0f * __x__.m_c[11] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[9]));
-			__x__.m_c[21] = ((-1.0f * __x__.m_c[3] * __x__.m_c[6]) + (__x__.m_c[7] * __x__.m_c[2]));
-			__x__.m_c[27] = ((-1.0f * __x__.m_c[7] * __x__.m_c[10]) + (__x__.m_c[11] * __x__.m_c[6]));
-			__x__.m_c[33] = ((__x__.m_c[3] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[2]));
+			__x__.m_c[32] = ((-1.0f * __x__.m_c[11] * __x__.m_c[1]) + (__x__.m_c[3] * __x__.m_c[9]));
+			__x__.m_c[38] = ((__x__.m_c[15] * __x__.m_c[1]) + (-1.0f * __x__.m_c[3] * __x__.m_c[13]));
+			__x__.m_c[44] = ((-1.0f * __x__.m_c[7] * __x__.m_c[13]) + (__x__.m_c[15] * __x__.m_c[5]));
+			__x__.m_c[50] = ((__x__.m_c[15] * __x__.m_c[9]) + (-1.0f * __x__.m_c[11] * __x__.m_c[13]));
+			__x__.m_c[21] = ((__x__.m_c[7] * __x__.m_c[2]) + (-1.0f * __x__.m_c[3] * __x__.m_c[6]));
+			__x__.m_c[27] = ((__x__.m_c[11] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[10]));
+			__x__.m_c[33] = ((-1.0f * __x__.m_c[11] * __x__.m_c[2]) + (__x__.m_c[3] * __x__.m_c[10]));
 			__x__.m_c[39] = ((-1.0f * __x__.m_c[3] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[2]));
 			__x__.m_c[45] = ((-1.0f * __x__.m_c[7] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[6]));
-			__x__.m_c[51] = ((-1.0f * __x__.m_c[11] * __x__.m_c[14]) + (__x__.m_c[15] * __x__.m_c[10]));
-			__x__.m_c[52] = ((__x__.m_c[30] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[1]));
-			__x__.m_c[56] = ((__x__.m_c[42] * __x__.m_c[1]) + (-1.0f * __x__.m_c[36] * __x__.m_c[5]) + (__x__.m_c[18] * __x__.m_c[13]));
-			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[48] * __x__.m_c[5]) + (__x__.m_c[24] * __x__.m_c[13]));
-			__x__.m_c[64] = ((__x__.m_c[30] * __x__.m_c[13]) + (__x__.m_c[36] * __x__.m_c[9]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]));
-			__x__.m_c[53] = ((__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[4]) + (__x__.m_c[20] * __x__.m_c[8]));
-			__x__.m_c[57] = ((__x__.m_c[20] * __x__.m_c[12]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]) + (__x__.m_c[44] * __x__.m_c[0]));
+			__x__.m_c[51] = ((__x__.m_c[15] * __x__.m_c[10]) + (-1.0f * __x__.m_c[11] * __x__.m_c[14]));
+			__x__.m_c[52] = ((__x__.m_c[18] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[1]) + (__x__.m_c[30] * __x__.m_c[5]));
+			__x__.m_c[56] = ((-1.0f * __x__.m_c[36] * __x__.m_c[5]) + (__x__.m_c[42] * __x__.m_c[1]) + (__x__.m_c[18] * __x__.m_c[13]));
+			__x__.m_c[60] = ((-1.0f * __x__.m_c[42] * __x__.m_c[9]) + (__x__.m_c[24] * __x__.m_c[13]) + (__x__.m_c[48] * __x__.m_c[5]));
+			__x__.m_c[64] = ((__x__.m_c[30] * __x__.m_c[13]) + (-1.0f * __x__.m_c[48] * __x__.m_c[1]) + (__x__.m_c[36] * __x__.m_c[9]));
+			__x__.m_c[53] = ((__x__.m_c[20] * __x__.m_c[8]) + (__x__.m_c[26] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[4]));
+			__x__.m_c[57] = ((__x__.m_c[44] * __x__.m_c[0]) + (__x__.m_c[20] * __x__.m_c[12]) + (-1.0f * __x__.m_c[38] * __x__.m_c[4]));
 			__x__.m_c[61] = ((-1.0f * __x__.m_c[44] * __x__.m_c[8]) + (__x__.m_c[50] * __x__.m_c[4]) + (__x__.m_c[26] * __x__.m_c[12]));
-			__x__.m_c[65] = ((__x__.m_c[32] * __x__.m_c[12]) + (-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[38] * __x__.m_c[8]));
-			__x__.m_c[54] = ((__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[5]) + (__x__.m_c[21] * __x__.m_c[9]));
-			__x__.m_c[58] = ((__x__.m_c[21] * __x__.m_c[13]) + (__x__.m_c[45] * __x__.m_c[1]) + (-1.0f * __x__.m_c[39] * __x__.m_c[5]));
-			__x__.m_c[62] = ((__x__.m_c[51] * __x__.m_c[5]) + (__x__.m_c[27] * __x__.m_c[13]) + (-1.0f * __x__.m_c[45] * __x__.m_c[9]));
-			__x__.m_c[66] = ((-1.0f * __x__.m_c[51] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[13]) + (__x__.m_c[39] * __x__.m_c[9]));
+			__x__.m_c[65] = ((__x__.m_c[38] * __x__.m_c[8]) + (-1.0f * __x__.m_c[50] * __x__.m_c[0]) + (__x__.m_c[32] * __x__.m_c[12]));
+			__x__.m_c[54] = ((__x__.m_c[21] * __x__.m_c[9]) + (__x__.m_c[27] * __x__.m_c[1]) + (__x__.m_c[33] * __x__.m_c[5]));
+			__x__.m_c[58] = ((__x__.m_c[21] * __x__.m_c[13]) + (-1.0f * __x__.m_c[39] * __x__.m_c[5]) + (__x__.m_c[45] * __x__.m_c[1]));
+			__x__.m_c[62] = ((__x__.m_c[27] * __x__.m_c[13]) + (-1.0f * __x__.m_c[45] * __x__.m_c[9]) + (__x__.m_c[51] * __x__.m_c[5]));
+			__x__.m_c[66] = ((__x__.m_c[39] * __x__.m_c[9]) + (__x__.m_c[33] * __x__.m_c[13]) + (-1.0f * __x__.m_c[51] * __x__.m_c[1]));
 			__x__.m_c[55] = ((-1.0f * __x__.m_c[27] * __x__.m_c[0]) + (-1.0f * __x__.m_c[33] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[8]));
-			__x__.m_c[59] = ((-1.0f * __x__.m_c[45] * __x__.m_c[0]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]) + (__x__.m_c[39] * __x__.m_c[4]));
-			__x__.m_c[63] = ((-1.0f * __x__.m_c[27] * __x__.m_c[12]) + (__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[51] * __x__.m_c[4]));
+			__x__.m_c[59] = ((__x__.m_c[39] * __x__.m_c[4]) + (-1.0f * __x__.m_c[21] * __x__.m_c[12]) + (-1.0f * __x__.m_c[45] * __x__.m_c[0]));
+			__x__.m_c[63] = ((-1.0f * __x__.m_c[51] * __x__.m_c[4]) + (__x__.m_c[45] * __x__.m_c[8]) + (-1.0f * __x__.m_c[27] * __x__.m_c[12]));
 			__x__.m_c[67] = ((-1.0f * __x__.m_c[39] * __x__.m_c[8]) + (__x__.m_c[51] * __x__.m_c[0]) + (-1.0f * __x__.m_c[33] * __x__.m_c[12]));
-			__x__.m_c[68] = ((__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[59] * __x__.m_c[9]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]) + (__x__.m_c[63] * __x__.m_c[1]));
+			__x__.m_c[68] = ((__x__.m_c[59] * __x__.m_c[9]) + (__x__.m_c[67] * __x__.m_c[5]) + (__x__.m_c[63] * __x__.m_c[1]) + (-1.0f * __x__.m_c[55] * __x__.m_c[13]));
 		}
 		void set(omPoint& __x__, const om& __y__) {
 			__x__.m_c[0] = __y__.m_c[0];
@@ -7969,19 +8059,19 @@
 		return __syn_smv___scalarf0_0(__syn_smv___scalarf0_0_scalarf0_0);
 	}
 	line apply_om(const om& x, const line& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[16] * y.m_c[0]) + (x.m_c[20] * y.m_c[4]) + (x.m_c[21] * y.m_c[5]) + (x.m_c[19] * y.m_c[3]) + (x.m_c[17] * y.m_c[1]) + (x.m_c[18] * y.m_c[2])), ((x.m_c[22] * y.m_c[0]) + (x.m_c[25] * y.m_c[3]) + (x.m_c[26] * y.m_c[4]) + (x.m_c[23] * y.m_c[1]) + (x.m_c[24] * y.m_c[2]) + (x.m_c[27] * y.m_c[5])), ((x.m_c[30] * y.m_c[2]) + (x.m_c[28] * y.m_c[0]) + (x.m_c[31] * y.m_c[3]) + (x.m_c[29] * y.m_c[1]) + (x.m_c[33] * y.m_c[5]) + (x.m_c[32] * y.m_c[4])), ((x.m_c[34] * y.m_c[0]) + (x.m_c[37] * y.m_c[3]) + (x.m_c[35] * y.m_c[1]) + (x.m_c[39] * y.m_c[5]) + (x.m_c[36] * y.m_c[2]) + (x.m_c[38] * y.m_c[4])), ((x.m_c[43] * y.m_c[3]) + (x.m_c[40] * y.m_c[0]) + (x.m_c[42] * y.m_c[2]) + (x.m_c[44] * y.m_c[4]) + (x.m_c[45] * y.m_c[5]) + (x.m_c[41] * y.m_c[1])), ((x.m_c[51] * y.m_c[5]) + (x.m_c[48] * y.m_c[2]) + (x.m_c[47] * y.m_c[1]) + (x.m_c[50] * y.m_c[4]) + (x.m_c[46] * y.m_c[0]) + (x.m_c[49] * y.m_c[3])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[18] * y.m_c[2]) + (x.m_c[21] * y.m_c[5]) + (x.m_c[17] * y.m_c[1]) + (x.m_c[19] * y.m_c[3]) + (x.m_c[16] * y.m_c[0]) + (x.m_c[20] * y.m_c[4])), ((x.m_c[25] * y.m_c[3]) + (x.m_c[22] * y.m_c[0]) + (x.m_c[23] * y.m_c[1]) + (x.m_c[26] * y.m_c[4]) + (x.m_c[27] * y.m_c[5]) + (x.m_c[24] * y.m_c[2])), ((x.m_c[28] * y.m_c[0]) + (x.m_c[29] * y.m_c[1]) + (x.m_c[33] * y.m_c[5]) + (x.m_c[31] * y.m_c[3]) + (x.m_c[32] * y.m_c[4]) + (x.m_c[30] * y.m_c[2])), ((x.m_c[38] * y.m_c[4]) + (x.m_c[39] * y.m_c[5]) + (x.m_c[35] * y.m_c[1]) + (x.m_c[34] * y.m_c[0]) + (x.m_c[37] * y.m_c[3]) + (x.m_c[36] * y.m_c[2])), ((x.m_c[43] * y.m_c[3]) + (x.m_c[45] * y.m_c[5]) + (x.m_c[40] * y.m_c[0]) + (x.m_c[42] * y.m_c[2]) + (x.m_c[41] * y.m_c[1]) + (x.m_c[44] * y.m_c[4])), ((x.m_c[51] * y.m_c[5]) + (x.m_c[47] * y.m_c[1]) + (x.m_c[48] * y.m_c[2]) + (x.m_c[50] * y.m_c[4]) + (x.m_c[46] * y.m_c[0]) + (x.m_c[49] * y.m_c[3])));
 	}
 	point apply_om(const om& x, const point& y) {
-		return point(point_e1_e2_e3_e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[6] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[7] * y.m_c[3]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[8] * y.m_c[0]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[9] * y.m_c[1])), ((x.m_c[13] * y.m_c[1]) + (x.m_c[12] * y.m_c[0]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[15] * y.m_c[3])));
+		return point(point_e1_e2_e3_e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[6] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[7] * y.m_c[3]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[9] * y.m_c[1]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[11] * y.m_c[3])), ((x.m_c[13] * y.m_c[1]) + (x.m_c[12] * y.m_c[0]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[15] * y.m_c[3])));
 	}
 	point apply_om(const om& x, const __e0_ct__& y) {
 		return point(point_e1_e2_e3_e0, x.m_c[3], x.m_c[7], x.m_c[11], x.m_c[15]);
 	}
 	plane apply_om(const om& x, const plane& y) {
-		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[55] * y.m_c[3]) + (x.m_c[52] * y.m_c[0]) + (x.m_c[54] * y.m_c[2]) + (x.m_c[53] * y.m_c[1])), ((x.m_c[56] * y.m_c[0]) + (x.m_c[57] * y.m_c[1]) + (x.m_c[59] * y.m_c[3]) + (x.m_c[58] * y.m_c[2])), ((x.m_c[60] * y.m_c[0]) + (x.m_c[63] * y.m_c[3]) + (x.m_c[61] * y.m_c[1]) + (x.m_c[62] * y.m_c[2])), ((x.m_c[66] * y.m_c[2]) + (x.m_c[65] * y.m_c[1]) + (x.m_c[64] * y.m_c[0]) + (x.m_c[67] * y.m_c[3])));
+		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[55] * y.m_c[3]) + (x.m_c[54] * y.m_c[2]) + (x.m_c[53] * y.m_c[1]) + (x.m_c[52] * y.m_c[0])), ((x.m_c[59] * y.m_c[3]) + (x.m_c[56] * y.m_c[0]) + (x.m_c[57] * y.m_c[1]) + (x.m_c[58] * y.m_c[2])), ((x.m_c[63] * y.m_c[3]) + (x.m_c[60] * y.m_c[0]) + (x.m_c[61] * y.m_c[1]) + (x.m_c[62] * y.m_c[2])), ((x.m_c[64] * y.m_c[0]) + (x.m_c[66] * y.m_c[2]) + (x.m_c[65] * y.m_c[1]) + (x.m_c[67] * y.m_c[3])));
 	}
 	point apply_om(const om& x, const normalizedPoint& y) {
-		return point(point_e1_e2_e3_e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + x.m_c[3] + (x.m_c[2] * y.m_c[2])), (x.m_c[7] + (x.m_c[4] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[6] * y.m_c[2])), ((x.m_c[9] * y.m_c[1]) + (x.m_c[10] * y.m_c[2]) + x.m_c[11] + (x.m_c[8] * y.m_c[0])), ((x.m_c[13] * y.m_c[1]) + x.m_c[15] + (x.m_c[12] * y.m_c[0]) + (x.m_c[14] * y.m_c[2])));
+		return point(point_e1_e2_e3_e0, (x.m_c[3] + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[5] * y.m_c[1]) + (x.m_c[4] * y.m_c[0]) + x.m_c[7] + (x.m_c[6] * y.m_c[2])), ((x.m_c[8] * y.m_c[0]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[9] * y.m_c[1]) + x.m_c[11]), (x.m_c[15] + (x.m_c[12] * y.m_c[0]) + (x.m_c[13] * y.m_c[1]) + (x.m_c[14] * y.m_c[2])));
 	}
 
 
