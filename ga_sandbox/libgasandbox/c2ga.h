@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 16:08:46 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c2ga.gs2'
+// Generated on 2007-01-08 16:14:29 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -76,15 +76,34 @@
 			MVT___NONI_CT__ = 44,
 			MVT___E2NI_CT__ = 45,
 			MVT___E1NI_CT__ = 46,
+			MVT___SYN_SMV___E1_E2_NOF1_0 = 47,
+			MVT___SYN_SMV___E1E2NIF1_0 = 48,
+			MVT___SYN_SMV___E1_E2_NI_NOF_1_0 = 49,
+			MVT___SYN_SMV___SCALAR_NOE1_NOE2_E1E2_NONI_E1NI_E2NI = 50,
+			MVT___SYN_SMV___SCALAR_NOE1_NOE2_NONI = 51,
+			MVT___SYN_SMV___NO_E1_E2_NOE1E2_NI_NOE1NI_NOE2NI = 52,
+			MVT___SYN_SMV___SCALAR_NOE1_E1E2_E1NI = 53,
+			MVT___SYN_SMV___NO_E1_E2_NOE1E2_NI_NOE1NI_E1E2NI = 54,
+			MVT___SYN_SMV___SCALAR_NOE2_E1E2_E2NI = 55,
+			MVT___SYN_SMV___NO_E1_E2_NOE1E2_NI_NOE2NI_E1E2NI = 56,
+			MVT___SYN_SMV___SCALAR_NONI_E1NI_E2NI = 57,
+			MVT___SYN_SMV___NO_E1_E2_NI_NOE1NI_NOE2NI_E1E2NI = 58,
+			MVT___SYN_SMV___E1NI_E2NI_NONIF_1_0 = 59,
+			MVT___SYN_SMV___SCALARF_1_0 = 60,
+			MVT___SYN_SMV___NIF_1_0 = 61,
+			MVT___SYN_SMV___NIF1_0 = 62,
+			MVT___SYN_SMV___E1_E2_NI_NOE1NI_NOE2NI_E1E2NI_NOF1_0 = 63,
+			MVT___SYN_SMV___E1_E2_NI_NOF2_0 = 64,
+			MVT___SYN_SMV___E1_E2_NI = 65,
 			MVT_MV = 8,
-			MVT_LAST = 47 
+			MVT_LAST = 66 
 	};
 
 	// outermorphism types:
 	enum omType {
 		OMT_NONE = -2,
 			OMT_OM = 9,
-			OMT_LAST = 47 
+			OMT_LAST = 66 
 	};
 
 	// grade definitions that can be joined using the '|' operator:
@@ -166,6 +185,25 @@
 	class __noni_ct__;
 	class __e2ni_ct__;
 	class __e1ni_ct__;
+	class __syn_smv___e1_e2_nof1_0;
+	class __syn_smv___e1e2nif1_0;
+	class __syn_smv___e1_e2_ni_nof_1_0;
+	class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+	class __syn_smv___scalar_noe1_noe2_noni;
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+	class __syn_smv___scalar_noe1_e1e2_e1ni;
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+	class __syn_smv___scalar_noe2_e1e2_e2ni;
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+	class __syn_smv___scalar_noni_e1ni_e2ni;
+	class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+	class __syn_smv___e1ni_e2ni_nonif_1_0;
+	class __syn_smv___scalarf_1_0;
+	class __syn_smv___nif_1_0;
+	class __syn_smv___nif1_0;
+	class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+	class __syn_smv___e1_e2_ni_nof2_0;
+	class __syn_smv___e1_e2_ni;
 	class mv;
 	class om;
 
@@ -234,44 +272,63 @@
 
 	class mv {
 		// the friend classes of mv 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		// friend functions of mv 
 		friend char *string(const mv &obj, char *str, int maxLength, const char *fp /*= NULL*/);
@@ -566,6 +623,82 @@
 		inline mv(const __e1ni_ct__ &arg1) {
 			set(arg1);
 		}
+		/// init from __syn_smv___e1_e2_nof1_0 constructor
+		inline mv(const __syn_smv___e1_e2_nof1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1e2nif1_0 constructor
+		inline mv(const __syn_smv___e1e2nif1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1_e2_ni_nof_1_0 constructor
+		inline mv(const __syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni constructor
+		inline mv(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalar_noe1_noe2_noni constructor
+		inline mv(const __syn_smv___scalar_noe1_noe2_noni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni constructor
+		inline mv(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalar_noe1_e1e2_e1ni constructor
+		inline mv(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni constructor
+		inline mv(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalar_noe2_e1e2_e2ni constructor
+		inline mv(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni constructor
+		inline mv(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalar_noni_e1ni_e2ni constructor
+		inline mv(const __syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni constructor
+		inline mv(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1ni_e2ni_nonif_1_0 constructor
+		inline mv(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___scalarf_1_0 constructor
+		inline mv(const __syn_smv___scalarf_1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___nif_1_0 constructor
+		inline mv(const __syn_smv___nif_1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___nif1_0 constructor
+		inline mv(const __syn_smv___nif1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 constructor
+		inline mv(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1_e2_ni_nof2_0 constructor
+		inline mv(const __syn_smv___e1_e2_ni_nof2_0 &arg1) {
+			set(arg1);
+		}
+		/// init from __syn_smv___e1_e2_ni constructor
+		inline mv(const __syn_smv___e1_e2_ni &arg1) {
+			set(arg1);
+		}
 
 
 		/// set to null
@@ -705,6 +838,44 @@
 		void set(const __e2ni_ct__ &arg1);
 		/// set to __e1ni_ct__ 
 		void set(const __e1ni_ct__ &arg1);
+		/// set to __syn_smv___e1_e2_nof1_0 
+		void set(const __syn_smv___e1_e2_nof1_0 &arg1);
+		/// set to __syn_smv___e1e2nif1_0 
+		void set(const __syn_smv___e1e2nif1_0 &arg1);
+		/// set to __syn_smv___e1_e2_ni_nof_1_0 
+		void set(const __syn_smv___e1_e2_ni_nof_1_0 &arg1);
+		/// set to __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni 
+		void set(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1);
+		/// set to __syn_smv___scalar_noe1_noe2_noni 
+		void set(const __syn_smv___scalar_noe1_noe2_noni &arg1);
+		/// set to __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni 
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1);
+		/// set to __syn_smv___scalar_noe1_e1e2_e1ni 
+		void set(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1);
+		/// set to __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni 
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1);
+		/// set to __syn_smv___scalar_noe2_e1e2_e2ni 
+		void set(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1);
+		/// set to __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni 
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1);
+		/// set to __syn_smv___scalar_noni_e1ni_e2ni 
+		void set(const __syn_smv___scalar_noni_e1ni_e2ni &arg1);
+		/// set to __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni 
+		void set(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1);
+		/// set to __syn_smv___e1ni_e2ni_nonif_1_0 
+		void set(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1);
+		/// set to __syn_smv___scalarf_1_0 
+		void set(const __syn_smv___scalarf_1_0 &arg1);
+		/// set to __syn_smv___nif_1_0 
+		void set(const __syn_smv___nif_1_0 &arg1);
+		/// set to __syn_smv___nif1_0 
+		void set(const __syn_smv___nif1_0 &arg1);
+		/// set to __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 
+		void set(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1);
+		/// set to __syn_smv___e1_e2_ni_nof2_0 
+		void set(const __syn_smv___e1_e2_ni_nof2_0 &arg1);
+		/// set to __syn_smv___e1_e2_ni 
+		void set(const __syn_smv___e1_e2_ni &arg1);
 
 
 		/// assign copy
@@ -787,6 +958,44 @@
 		mv&operator=(const __e2ni_ct__& arg1);
 		/// assign __e1ni_ct__ 
 		mv&operator=(const __e1ni_ct__& arg1);
+		/// assign __syn_smv___e1_e2_nof1_0 
+		mv&operator=(const __syn_smv___e1_e2_nof1_0& arg1);
+		/// assign __syn_smv___e1e2nif1_0 
+		mv&operator=(const __syn_smv___e1e2nif1_0& arg1);
+		/// assign __syn_smv___e1_e2_ni_nof_1_0 
+		mv&operator=(const __syn_smv___e1_e2_ni_nof_1_0& arg1);
+		/// assign __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni 
+		mv&operator=(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1);
+		/// assign __syn_smv___scalar_noe1_noe2_noni 
+		mv&operator=(const __syn_smv___scalar_noe1_noe2_noni& arg1);
+		/// assign __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni 
+		mv&operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1);
+		/// assign __syn_smv___scalar_noe1_e1e2_e1ni 
+		mv&operator=(const __syn_smv___scalar_noe1_e1e2_e1ni& arg1);
+		/// assign __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni 
+		mv&operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1);
+		/// assign __syn_smv___scalar_noe2_e1e2_e2ni 
+		mv&operator=(const __syn_smv___scalar_noe2_e1e2_e2ni& arg1);
+		/// assign __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni 
+		mv&operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1);
+		/// assign __syn_smv___scalar_noni_e1ni_e2ni 
+		mv&operator=(const __syn_smv___scalar_noni_e1ni_e2ni& arg1);
+		/// assign __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni 
+		mv&operator=(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1);
+		/// assign __syn_smv___e1ni_e2ni_nonif_1_0 
+		mv&operator=(const __syn_smv___e1ni_e2ni_nonif_1_0& arg1);
+		/// assign __syn_smv___scalarf_1_0 
+		mv&operator=(const __syn_smv___scalarf_1_0& arg1);
+		/// assign __syn_smv___nif_1_0 
+		mv&operator=(const __syn_smv___nif_1_0& arg1);
+		/// assign __syn_smv___nif1_0 
+		mv&operator=(const __syn_smv___nif1_0& arg1);
+		/// assign __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 
+		mv&operator=(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1);
+		/// assign __syn_smv___e1_e2_ni_nof2_0 
+		mv&operator=(const __syn_smv___e1_e2_ni_nof2_0& arg1);
+		/// assign __syn_smv___e1_e2_ni 
+		mv&operator=(const __syn_smv___e1_e2_ni& arg1);
 
 
 		void compress(Float epsilon = 0.0);
@@ -922,7 +1131,7 @@
 	inline float _float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)81), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
@@ -930,7 +1139,7 @@
 	inline double _double(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)82), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
@@ -938,7 +1147,7 @@
 	inline float _Float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)83), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
@@ -954,44 +1163,63 @@
 
 	class no_t {
 		// the friend classes of no_t 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
 		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -1162,44 +1390,63 @@
 
 	class e1_t {
 		// the friend classes of e1_t 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
 		friend class normalizedTranslator;
 		friend class rotor;
-		friend class no_t;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -1370,42 +1617,61 @@
 
 	class e2_t {
 		// the friend classes of e2_t 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
 
@@ -1578,44 +1844,63 @@
 
 	class ni_t {
 		// the friend classes of ni_t 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -1786,44 +2071,63 @@
 
 	class scalar {
 		// the friend classes of scalar 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -1992,44 +2296,63 @@
 
 	class point {
 		// the friend classes of point 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -2209,44 +2532,63 @@
 
 	class normalizedPoint {
 		// the friend classes of normalizedPoint 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -2426,44 +2768,63 @@
 
 	class flatPoint {
 		// the friend classes of flatPoint 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -2640,44 +3001,63 @@
 
 	class normalizedFlatPoint {
 		// the friend classes of normalizedFlatPoint 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
-		friend class TRSversor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -2854,44 +3234,63 @@
 
 	class pointPair {
 		// the friend classes of pointPair 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
 		friend class TRversorLog;
-		friend class translator;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -3077,44 +3476,63 @@
 
 	class TRversorLog {
 		// the friend classes of TRversorLog 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
 		friend class pointPair;
-		friend class translator;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -3291,44 +3709,63 @@
 
 	class line {
 		// the friend classes of line 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class __I4_ct__;
-		friend class evenVersor;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -3505,44 +3942,63 @@
 
 	class dualLine {
 		// the friend classes of dualLine 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
 		friend class __e1_ct__;
 		friend class __e2_ct__;
 		friend class TRversor;
 		friend class om;
-		friend class __I4_ct__;
-		friend class line;
 		friend class evenVersor;
-		friend class normalizedFlatPoint;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
 		friend class TRSversor;
-		friend class bivectorE2GA;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
 		friend class point;
 		friend class __ni_ct__;
-		friend class TRversorLog;
-		friend class pointPair;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
 		friend class translator;
-		friend class freeVector;
 		friend class normalizedPoint;
-		friend class flatPoint;
-		friend class scalor;
 		friend class __e1ni_ct__;
-		friend class scalar;
-		friend class __noni_ct__;
-		friend class __no_ct__;
+		friend class __syn_smv___scalarf_1_0;
 		friend class tangentBivector;
+		friend class __no_ct__;
 		friend class __I4i_ct__;
-		friend class vectorE2GA;
-		friend class ni_t;
 		friend class normalizedTranslator;
-		friend class e1_t;
 		friend class rotor;
-		friend class no_t;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -3719,44 +4175,63 @@
 
 	class circle {
 		// the friend classes of circle 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
-		friend class tangentVector;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
 		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class tangentVector;
 
 		public:
 			typedef float Float;
@@ -3936,44 +4411,63 @@
 
 	class freeVector {
 		// the friend classes of freeVector 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
-		friend class normalizedPoint;
+		friend class TRversorLog;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -4147,44 +4641,63 @@
 
 	class freeBivector {
 		// the friend classes of freeBivector 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
+		friend class __syn_smv___nif_1_0;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -4355,44 +4868,63 @@
 
 	class tangentVector {
 		// the friend classes of tangentVector 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
-		friend class circle;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
 		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
 
 		public:
 			typedef float Float;
@@ -4578,44 +5110,63 @@
 
 	class tangentBivector {
 		// the friend classes of tangentBivector 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -4795,44 +5346,63 @@
 
 	class vectorE2GA {
 		// the friend classes of vectorE2GA 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -5006,44 +5576,63 @@
 
 	class bivectorE2GA {
 		// the friend classes of bivectorE2GA 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -5214,44 +5803,63 @@
 
 	class TRversor {
 		// the friend classes of TRversor 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -5428,44 +6036,63 @@
 
 	class TRSversor {
 		// the friend classes of TRSversor 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -5648,44 +6275,63 @@
 
 	class evenVersor {
 		// the friend classes of evenVersor 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -5874,44 +6520,63 @@
 
 	class translator {
 		// the friend classes of translator 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -6085,44 +6750,63 @@
 
 	class normalizedTranslator {
 		// the friend classes of normalizedTranslator 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -6296,44 +6980,63 @@
 
 	class rotor {
 		// the friend classes of rotor 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -6504,44 +7207,63 @@
 
 	class scalor {
 		// the friend classes of scalor 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -6712,44 +7434,63 @@
 
 	class __no_ct__ {
 		// the friend classes of __no_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -6919,44 +7660,63 @@
 
 	class __e1_ct__ {
 		// the friend classes of __e1_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -7126,44 +7886,63 @@
 
 	class __e2_ct__ {
 		// the friend classes of __e2_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -7333,44 +8112,63 @@
 
 	class __ni_ct__ {
 		// the friend classes of __ni_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -7540,44 +8338,63 @@
 
 	class __I4i_ct__ {
 		// the friend classes of __I4i_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -7747,44 +8564,63 @@
 
 	class __I4_ct__ {
 		// the friend classes of __I4_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -7954,44 +8790,63 @@
 
 	class __I2_ct__ {
 		// the friend classes of __I2_ct__ 
-		friend class __e2ni_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -8161,44 +9016,63 @@
 
 	class __noni_ct__ {
 		// the friend classes of __noni_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -8368,44 +9242,63 @@
 
 	class __e2ni_ct__ {
 		// the friend classes of __e2ni_ct__ 
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -8575,44 +9468,63 @@
 
 	class __e1ni_ct__ {
 		// the friend classes of __e1ni_ct__ 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class om;
-		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
-		friend class e2_t;
 
 		public:
 			typedef float Float;
@@ -8777,46 +9689,4536 @@
 	}
 
 
-	class om {
-		// the friend classes of om 
-		friend class __e2ni_ct__;
-		friend class __I2_ct__;
-		friend class mv;
+	/// enum for the coordinates of __syn_smv___e1_e2_nof1_0 
+	enum ____syn_smv___e1_e2_nof1_0_coordinates__ {__syn_smv___e1_e2_nof1_0_e1_e2_nof1_0};
+
+	class __syn_smv___e1_e2_nof1_0 {
+		// the friend classes of __syn_smv___e1_e2_nof1_0 
+		friend class __syn_smv___nif_1_0;
 		friend class freeBivector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
 		friend class dualLine;
-		friend class TRversor;
-		friend class __I4_ct__;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
 		friend class line;
-		friend class evenVersor;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
 		friend class normalizedFlatPoint;
-		friend class TRSversor;
 		friend class bivectorE2GA;
-		friend class point;
-		friend class __ni_ct__;
-		friend class TRversorLog;
 		friend class pointPair;
-		friend class translator;
+		friend class TRversorLog;
 		friend class freeVector;
-		friend class normalizedPoint;
+		friend class __syn_smv___nif1_0;
 		friend class flatPoint;
 		friend class scalor;
-		friend class __e1ni_ct__;
+		friend class __syn_smv___e1e2nif1_0;
 		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
 		friend class __noni_ct__;
-		friend class __no_ct__;
-		friend class tangentBivector;
-		friend class __I4i_ct__;
 		friend class vectorE2GA;
 		friend class ni_t;
-		friend class normalizedTranslator;
 		friend class e1_t;
-		friend class rotor;
 		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
 		friend class circle;
 		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e2_nof1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e2_nof1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e2_nof1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e2_nof1_0(const __syn_smv___e1_e2_nof1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e2_nof1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e2_nof1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e2_nof1_0(____syn_smv___e1_e2_nof1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e2_nof1_0_e1_e2_nof1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e2_nof1_0(____syn_smv___e1_e2_nof1_0_coordinates__, Float c_e1, Float c_e2) {
+
+			set(__syn_smv___e1_e2_nof1_0_e1_e2_nof1_0, c_e1, c_e2);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e2_nof1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e2_nof1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e2_nof1_0_coordinates__, Float c_e1, Float c_e2);
+
+		/// assign copy
+		__syn_smv___e1_e2_nof1_0 &operator=(const __syn_smv___e1_e2_nof1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e2_nof1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e2_nof1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+		inline Float e2() const {
+			return m_c[1];
+		}
+
+		/// const coordinate extraction by name
+		inline Float no() const {
+			return 1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e2_nof1_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[2];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e2_nof1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_nof1_0 ___syn_smv___e1_e2_nof1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e2_nof1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_nof1_0 &___syn_smv___e1_e2_nof1_0(const __syn_smv___e1_e2_nof1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_nof1_0 &___syn_smv___e1_e2_nof1_0(__syn_smv___e1_e2_nof1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e2_nof1_0 ___syn_smv___e1_e2_nof1_0(__syn_smv___e1_e2_nof1_0::Float arg1) {
+		return __syn_smv___e1_e2_nof1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_nof1_0 like(const mv &what, const __syn_smv___e1_e2_nof1_0 &example) {return ___syn_smv___e1_e2_nof1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_nof1_0 like(const __syn_smv___e1_e2_nof1_0 &what, const __syn_smv___e1_e2_nof1_0 &example) {return ___syn_smv___e1_e2_nof1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_nof1_0 like(__syn_smv___e1_e2_nof1_0 &what, const __syn_smv___e1_e2_nof1_0 &example) {return ___syn_smv___e1_e2_nof1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e2_nof1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e2_nof1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e2_nof1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1e2nif1_0 
+	enum ____syn_smv___e1e2nif1_0_coordinates__ {__syn_smv___e1e2nif1_0_e1e2nif1_0};
+
+	class __syn_smv___e1e2nif1_0 {
+		// the friend classes of __syn_smv___e1e2nif1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
 		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1e2nif1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1e2nif1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1e2nif1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1e2nif1_0(const __syn_smv___e1e2nif1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1e2nif1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1e2nif1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1e2nif1_0(____syn_smv___e1e2nif1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1e2nif1_0_e1e2nif1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1e2nif1_0(____syn_smv___e1e2nif1_0_coordinates__) {
+
+			set(__syn_smv___e1e2nif1_0_e1e2nif1_0);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1e2nif1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1e2nif1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1e2nif1_0_coordinates__);
+
+		/// assign copy
+		__syn_smv___e1e2nif1_0 &operator=(const __syn_smv___e1e2nif1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1e2nif1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1e2nif1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+
+		/// const coordinate extraction by name
+		inline Float e1e2ni() const {
+			return 1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1e2nif1_0_coordinates__ sanityCheckValue) const {
+			return NULL;
+		}
+
+		// constants, so no coordinate storage
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1e2nif1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1e2nif1_0 ___syn_smv___e1e2nif1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1e2nif1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1e2nif1_0 &___syn_smv___e1e2nif1_0(const __syn_smv___e1e2nif1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1e2nif1_0 &___syn_smv___e1e2nif1_0(__syn_smv___e1e2nif1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1e2nif1_0 ___syn_smv___e1e2nif1_0(__syn_smv___e1e2nif1_0::Float arg1) {
+		return __syn_smv___e1e2nif1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1e2nif1_0 like(const mv &what, const __syn_smv___e1e2nif1_0 &example) {return ___syn_smv___e1e2nif1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1e2nif1_0 like(const __syn_smv___e1e2nif1_0 &what, const __syn_smv___e1e2nif1_0 &example) {return ___syn_smv___e1e2nif1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1e2nif1_0 like(__syn_smv___e1e2nif1_0 &what, const __syn_smv___e1e2nif1_0 &example) {return ___syn_smv___e1e2nif1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1e2nif1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1e2nif1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1e2nif1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1_e2_ni_nof_1_0 
+	enum ____syn_smv___e1_e2_ni_nof_1_0_coordinates__ {__syn_smv___e1_e2_ni_nof_1_0_e1_e2_ni_nof_1_0};
+
+	class __syn_smv___e1_e2_ni_nof_1_0 {
+		// the friend classes of __syn_smv___e1_e2_ni_nof_1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e2_ni_nof_1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e2_ni_nof_1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e2_ni_nof_1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e2_ni_nof_1_0(const __syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e2_ni_nof_1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e2_ni_nof_1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e2_ni_nof_1_0(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e2_ni_nof_1_0_e1_e2_ni_nof_1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e2_ni_nof_1_0(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+
+			set(__syn_smv___e1_e2_ni_nof_1_0_e1_e2_ni_nof_1_0, c_e1, c_e2, c_ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e2_ni_nof_1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni);
+
+		/// assign copy
+		__syn_smv___e1_e2_ni_nof_1_0 &operator=(const __syn_smv___e1_e2_ni_nof_1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e2_ni_nof_1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e2_ni_nof_1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+		inline Float e2() const {
+			return m_c[1];
+		}
+		inline Float ni() const {
+			return m_c[2];
+		}
+
+		/// const coordinate extraction by name
+		inline Float no() const {
+			return -1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e2_ni_nof_1_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[3];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e2_ni_nof_1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_nof_1_0 ___syn_smv___e1_e2_ni_nof_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e2_ni_nof_1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_nof_1_0 &___syn_smv___e1_e2_ni_nof_1_0(const __syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_nof_1_0 &___syn_smv___e1_e2_ni_nof_1_0(__syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e2_ni_nof_1_0 ___syn_smv___e1_e2_ni_nof_1_0(__syn_smv___e1_e2_ni_nof_1_0::Float arg1) {
+		return __syn_smv___e1_e2_ni_nof_1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_nof_1_0 like(const mv &what, const __syn_smv___e1_e2_ni_nof_1_0 &example) {return ___syn_smv___e1_e2_ni_nof_1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_nof_1_0 like(const __syn_smv___e1_e2_ni_nof_1_0 &what, const __syn_smv___e1_e2_ni_nof_1_0 &example) {return ___syn_smv___e1_e2_ni_nof_1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_nof_1_0 like(__syn_smv___e1_e2_ni_nof_1_0 &what, const __syn_smv___e1_e2_ni_nof_1_0 &example) {return ___syn_smv___e1_e2_ni_nof_1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e2_ni_nof_1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e2_ni_nof_1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e2_ni_nof_1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni 
+	enum ____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__ {__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni};
+
+	class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni {
+		// the friend classes of __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_e1e2, Float c_noni, Float c_e1ni, Float c_e2ni) {
+
+			set(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, c_scalar, c_noe1, c_noe2, c_e1e2, c_noni, c_e1ni, c_e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_e1e2, Float c_noni, Float c_e1ni, Float c_e2ni);
+
+		/// assign copy
+		__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &operator=(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float noe1() const {
+			return m_c[1];
+		}
+		inline Float noe2() const {
+			return m_c[2];
+		}
+		inline Float e1e2() const {
+			return m_c[3];
+		}
+		inline Float noni() const {
+			return m_c[4];
+		}
+		inline Float e1ni() const {
+			return m_c[5];
+		}
+		inline Float e2ni() const {
+			return m_c[6];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[7];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni ___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)65), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni ___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::Float arg1) {
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni like(const mv &what, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni like(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &what, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni like(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &what, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalar_noe1_noe2_noni 
+	enum ____syn_smv___scalar_noe1_noe2_noni_coordinates__ {__syn_smv___scalar_noe1_noe2_noni_scalar_noe1_noe2_noni};
+
+	class __syn_smv___scalar_noe1_noe2_noni {
+		// the friend classes of __syn_smv___scalar_noe1_noe2_noni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_noe1_noe2_noni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_noe1_noe2_noni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_noe1_noe2_noni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_noe1_noe2_noni(const __syn_smv___scalar_noe1_noe2_noni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_noe1_noe2_noni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_noe1_noe2_noni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_noe1_noe2_noni(____syn_smv___scalar_noe1_noe2_noni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_noe1_noe2_noni_scalar_noe1_noe2_noni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_noe1_noe2_noni(____syn_smv___scalar_noe1_noe2_noni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_noni) {
+
+			set(__syn_smv___scalar_noe1_noe2_noni_scalar_noe1_noe2_noni, c_scalar, c_noe1, c_noe2, c_noni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_noe1_noe2_noni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_noe1_noe2_noni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_noe1_noe2_noni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_noni);
+
+		/// assign copy
+		__syn_smv___scalar_noe1_noe2_noni &operator=(const __syn_smv___scalar_noe1_noe2_noni &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_noe1_noe2_noni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_noe1_noe2_noni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float noe1() const {
+			return m_c[1];
+		}
+		inline Float noe2() const {
+			return m_c[2];
+		}
+		inline Float noni() const {
+			return m_c[3];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_noe1_noe2_noni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[4];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_noe1_noe2_noni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_noe2_noni ___syn_smv___scalar_noe1_noe2_noni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)66), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_noe1_noe2_noni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_noe2_noni &___syn_smv___scalar_noe1_noe2_noni(const __syn_smv___scalar_noe1_noe2_noni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_noe2_noni &___syn_smv___scalar_noe1_noe2_noni(__syn_smv___scalar_noe1_noe2_noni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_noe1_noe2_noni ___syn_smv___scalar_noe1_noe2_noni(__syn_smv___scalar_noe1_noe2_noni::Float arg1) {
+		return __syn_smv___scalar_noe1_noe2_noni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_noe2_noni like(const mv &what, const __syn_smv___scalar_noe1_noe2_noni &example) {return ___syn_smv___scalar_noe1_noe2_noni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_noe2_noni like(const __syn_smv___scalar_noe1_noe2_noni &what, const __syn_smv___scalar_noe1_noe2_noni &example) {return ___syn_smv___scalar_noe1_noe2_noni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_noe2_noni like(__syn_smv___scalar_noe1_noe2_noni &what, const __syn_smv___scalar_noe1_noe2_noni &example) {return ___syn_smv___scalar_noe1_noe2_noni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_noe1_noe2_noni & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_noe1_noe2_noni & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_noe1_noe2_noni & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni 
+	enum ____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__ {__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni};
+
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni {
+		// the friend classes of __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_noe2ni) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, c_no, c_e1, c_e2, c_noe1e2, c_ni, c_noe1ni, c_noe2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_noe2ni);
+
+		/// assign copy
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float no() const {
+			return m_c[0];
+		}
+		inline Float e1() const {
+			return m_c[1];
+		}
+		inline Float e2() const {
+			return m_c[2];
+		}
+		inline Float noe1e2() const {
+			return m_c[3];
+		}
+		inline Float ni() const {
+			return m_c[4];
+		}
+		inline Float noe1ni() const {
+			return m_c[5];
+		}
+		inline Float noe2ni() const {
+			return m_c[6];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[7];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)67), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::Float arg1) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni like(const mv &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni like(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni like(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalar_noe1_e1e2_e1ni 
+	enum ____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__ {__syn_smv___scalar_noe1_e1e2_e1ni_scalar_noe1_e1e2_e1ni};
+
+	class __syn_smv___scalar_noe1_e1e2_e1ni {
+		// the friend classes of __syn_smv___scalar_noe1_e1e2_e1ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_noe1_e1e2_e1ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_noe1_e1e2_e1ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_noe1_e1e2_e1ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_noe1_e1e2_e1ni(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_noe1_e1e2_e1ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_noe1_e1e2_e1ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_noe1_e1e2_e1ni(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_noe1_e1e2_e1ni_scalar_noe1_e1e2_e1ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_noe1_e1e2_e1ni(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, Float c_scalar, Float c_noe1, Float c_e1e2, Float c_e1ni) {
+
+			set(__syn_smv___scalar_noe1_e1e2_e1ni_scalar_noe1_e1e2_e1ni, c_scalar, c_noe1, c_e1e2, c_e1ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, Float c_scalar, Float c_noe1, Float c_e1e2, Float c_e1ni);
+
+		/// assign copy
+		__syn_smv___scalar_noe1_e1e2_e1ni &operator=(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_noe1_e1e2_e1ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_noe1_e1e2_e1ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float noe1() const {
+			return m_c[1];
+		}
+		inline Float e1e2() const {
+			return m_c[2];
+		}
+		inline Float e1ni() const {
+			return m_c[3];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[4];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_noe1_e1e2_e1ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_e1e2_e1ni ___syn_smv___scalar_noe1_e1e2_e1ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)68), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_noe1_e1e2_e1ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_e1e2_e1ni &___syn_smv___scalar_noe1_e1e2_e1ni(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_e1e2_e1ni &___syn_smv___scalar_noe1_e1e2_e1ni(__syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_noe1_e1e2_e1ni ___syn_smv___scalar_noe1_e1e2_e1ni(__syn_smv___scalar_noe1_e1e2_e1ni::Float arg1) {
+		return __syn_smv___scalar_noe1_e1e2_e1ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe1_e1e2_e1ni like(const mv &what, const __syn_smv___scalar_noe1_e1e2_e1ni &example) {return ___syn_smv___scalar_noe1_e1e2_e1ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe1_e1e2_e1ni like(const __syn_smv___scalar_noe1_e1e2_e1ni &what, const __syn_smv___scalar_noe1_e1e2_e1ni &example) {return ___syn_smv___scalar_noe1_e1e2_e1ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe1_e1e2_e1ni like(__syn_smv___scalar_noe1_e1e2_e1ni &what, const __syn_smv___scalar_noe1_e1e2_e1ni &example) {return ___syn_smv___scalar_noe1_e1e2_e1ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_noe1_e1e2_e1ni & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_noe1_e1e2_e1ni & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_noe1_e1e2_e1ni & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni 
+	enum ____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__ {__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni};
+
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni {
+		// the friend classes of __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_e1e2ni) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, c_no, c_e1, c_e2, c_noe1e2, c_ni, c_noe1ni, c_e1e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_e1e2ni);
+
+		/// assign copy
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float no() const {
+			return m_c[0];
+		}
+		inline Float e1() const {
+			return m_c[1];
+		}
+		inline Float e2() const {
+			return m_c[2];
+		}
+		inline Float noe1e2() const {
+			return m_c[3];
+		}
+		inline Float ni() const {
+			return m_c[4];
+		}
+		inline Float noe1ni() const {
+			return m_c[5];
+		}
+		inline Float e1e2ni() const {
+			return m_c[6];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[7];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)69), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::Float arg1) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni like(const mv &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni like(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni like(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalar_noe2_e1e2_e2ni 
+	enum ____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__ {__syn_smv___scalar_noe2_e1e2_e2ni_scalar_noe2_e1e2_e2ni};
+
+	class __syn_smv___scalar_noe2_e1e2_e2ni {
+		// the friend classes of __syn_smv___scalar_noe2_e1e2_e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_noe2_e1e2_e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_noe2_e1e2_e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_noe2_e1e2_e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_noe2_e1e2_e2ni(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_noe2_e1e2_e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_noe2_e1e2_e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_noe2_e1e2_e2ni(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_noe2_e1e2_e2ni_scalar_noe2_e1e2_e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_noe2_e1e2_e2ni(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, Float c_scalar, Float c_noe2, Float c_e1e2, Float c_e2ni) {
+
+			set(__syn_smv___scalar_noe2_e1e2_e2ni_scalar_noe2_e1e2_e2ni, c_scalar, c_noe2, c_e1e2, c_e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, Float c_scalar, Float c_noe2, Float c_e1e2, Float c_e2ni);
+
+		/// assign copy
+		__syn_smv___scalar_noe2_e1e2_e2ni &operator=(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_noe2_e1e2_e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_noe2_e1e2_e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float noe2() const {
+			return m_c[1];
+		}
+		inline Float e1e2() const {
+			return m_c[2];
+		}
+		inline Float e2ni() const {
+			return m_c[3];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[4];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_noe2_e1e2_e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe2_e1e2_e2ni ___syn_smv___scalar_noe2_e1e2_e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)70), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_noe2_e1e2_e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe2_e1e2_e2ni &___syn_smv___scalar_noe2_e1e2_e2ni(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe2_e1e2_e2ni &___syn_smv___scalar_noe2_e1e2_e2ni(__syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_noe2_e1e2_e2ni ___syn_smv___scalar_noe2_e1e2_e2ni(__syn_smv___scalar_noe2_e1e2_e2ni::Float arg1) {
+		return __syn_smv___scalar_noe2_e1e2_e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noe2_e1e2_e2ni like(const mv &what, const __syn_smv___scalar_noe2_e1e2_e2ni &example) {return ___syn_smv___scalar_noe2_e1e2_e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noe2_e1e2_e2ni like(const __syn_smv___scalar_noe2_e1e2_e2ni &what, const __syn_smv___scalar_noe2_e1e2_e2ni &example) {return ___syn_smv___scalar_noe2_e1e2_e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noe2_e1e2_e2ni like(__syn_smv___scalar_noe2_e1e2_e2ni &what, const __syn_smv___scalar_noe2_e1e2_e2ni &example) {return ___syn_smv___scalar_noe2_e1e2_e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_noe2_e1e2_e2ni & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_noe2_e1e2_e2ni & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_noe2_e1e2_e2ni & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni 
+	enum ____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__ {__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni};
+
+	class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni {
+		// the friend classes of __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe2ni, Float c_e1e2ni) {
+
+			set(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, c_no, c_e1, c_e2, c_noe1e2, c_ni, c_noe2ni, c_e1e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe2ni, Float c_e1e2ni);
+
+		/// assign copy
+		__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float no() const {
+			return m_c[0];
+		}
+		inline Float e1() const {
+			return m_c[1];
+		}
+		inline Float e2() const {
+			return m_c[2];
+		}
+		inline Float noe1e2() const {
+			return m_c[3];
+		}
+		inline Float ni() const {
+			return m_c[4];
+		}
+		inline Float noe2ni() const {
+			return m_c[5];
+		}
+		inline Float e1e2ni() const {
+			return m_c[6];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[7];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)71), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni ___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::Float arg1) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni like(const mv &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni like(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni like(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &what, const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalar_noni_e1ni_e2ni 
+	enum ____syn_smv___scalar_noni_e1ni_e2ni_coordinates__ {__syn_smv___scalar_noni_e1ni_e2ni_scalar_noni_e1ni_e2ni};
+
+	class __syn_smv___scalar_noni_e1ni_e2ni {
+		// the friend classes of __syn_smv___scalar_noni_e1ni_e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalar_noni_e1ni_e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalar_noni_e1ni_e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalar_noni_e1ni_e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalar_noni_e1ni_e2ni(const __syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalar_noni_e1ni_e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalar_noni_e1ni_e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalar_noni_e1ni_e2ni(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalar_noni_e1ni_e2ni_scalar_noni_e1ni_e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalar_noni_e1ni_e2ni(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noni, Float c_e1ni, Float c_e2ni) {
+
+			set(__syn_smv___scalar_noni_e1ni_e2ni_scalar_noni_e1ni_e2ni, c_scalar, c_noni, c_e1ni, c_e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalar_noni_e1ni_e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noni, Float c_e1ni, Float c_e2ni);
+
+		/// assign copy
+		__syn_smv___scalar_noni_e1ni_e2ni &operator=(const __syn_smv___scalar_noni_e1ni_e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalar_noni_e1ni_e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalar_noni_e1ni_e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float noni() const {
+			return m_c[1];
+		}
+		inline Float e1ni() const {
+			return m_c[2];
+		}
+		inline Float e2ni() const {
+			return m_c[3];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[4];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalar_noni_e1ni_e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noni_e1ni_e2ni ___syn_smv___scalar_noni_e1ni_e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)72), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalar_noni_e1ni_e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noni_e1ni_e2ni &___syn_smv___scalar_noni_e1ni_e2ni(const __syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noni_e1ni_e2ni &___syn_smv___scalar_noni_e1ni_e2ni(__syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalar_noni_e1ni_e2ni ___syn_smv___scalar_noni_e1ni_e2ni(__syn_smv___scalar_noni_e1ni_e2ni::Float arg1) {
+		return __syn_smv___scalar_noni_e1ni_e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalar_noni_e1ni_e2ni like(const mv &what, const __syn_smv___scalar_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noni_e1ni_e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalar_noni_e1ni_e2ni like(const __syn_smv___scalar_noni_e1ni_e2ni &what, const __syn_smv___scalar_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noni_e1ni_e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalar_noni_e1ni_e2ni like(__syn_smv___scalar_noni_e1ni_e2ni &what, const __syn_smv___scalar_noni_e1ni_e2ni &example) {return ___syn_smv___scalar_noni_e1ni_e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalar_noni_e1ni_e2ni & v) {
+		return (float)v.m_c[0];
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalar_noni_e1ni_e2ni & v) {
+		return (double)v.m_c[0];
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalar_noni_e1ni_e2ni & v) {
+		return v.m_c[0];
+	}
+
+
+	/// enum for the coordinates of __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni 
+	enum ____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__ {__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni};
+
+	class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni {
+		// the friend classes of __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni) {
+
+			set(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, c_no, c_e1, c_e2, c_ni, c_noe1ni, c_noe2ni, c_e1e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni);
+
+		/// assign copy
+		__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &operator=(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float no() const {
+			return m_c[0];
+		}
+		inline Float e1() const {
+			return m_c[1];
+		}
+		inline Float e2() const {
+			return m_c[2];
+		}
+		inline Float ni() const {
+			return m_c[3];
+		}
+		inline Float noe1ni() const {
+			return m_c[4];
+		}
+		inline Float noe2ni() const {
+			return m_c[5];
+		}
+		inline Float e1e2ni() const {
+			return m_c[6];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[7];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni ___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)73), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni ___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::Float arg1) {
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni like(const mv &what, const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni like(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &what, const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni like(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &what, const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &example) {return ___syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1ni_e2ni_nonif_1_0 
+	enum ____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__ {__syn_smv___e1ni_e2ni_nonif_1_0_e1ni_e2ni_nonif_1_0};
+
+	class __syn_smv___e1ni_e2ni_nonif_1_0 {
+		// the friend classes of __syn_smv___e1ni_e2ni_nonif_1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1ni_e2ni_nonif_1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1ni_e2ni_nonif_1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1ni_e2ni_nonif_1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1ni_e2ni_nonif_1_0(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1ni_e2ni_nonif_1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1ni_e2ni_nonif_1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1ni_e2ni_nonif_1_0(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1ni_e2ni_nonif_1_0_e1ni_e2ni_nonif_1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1ni_e2ni_nonif_1_0(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, Float c_e1ni, Float c_e2ni) {
+
+			set(__syn_smv___e1ni_e2ni_nonif_1_0_e1ni_e2ni_nonif_1_0, c_e1ni, c_e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, Float c_e1ni, Float c_e2ni);
+
+		/// assign copy
+		__syn_smv___e1ni_e2ni_nonif_1_0 &operator=(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1ni_e2ni_nonif_1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1ni_e2ni_nonif_1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1ni() const {
+			return m_c[0];
+		}
+		inline Float e2ni() const {
+			return m_c[1];
+		}
+
+		/// const coordinate extraction by name
+		inline Float noni() const {
+			return -1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[2];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1ni_e2ni_nonif_1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 ___syn_smv___e1ni_e2ni_nonif_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)74), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1ni_e2ni_nonif_1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1ni_e2ni_nonif_1_0 &___syn_smv___e1ni_e2ni_nonif_1_0(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 &___syn_smv___e1ni_e2ni_nonif_1_0(__syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 ___syn_smv___e1ni_e2ni_nonif_1_0(__syn_smv___e1ni_e2ni_nonif_1_0::Float arg1) {
+		return __syn_smv___e1ni_e2ni_nonif_1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 like(const mv &what, const __syn_smv___e1ni_e2ni_nonif_1_0 &example) {return ___syn_smv___e1ni_e2ni_nonif_1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1ni_e2ni_nonif_1_0 like(const __syn_smv___e1ni_e2ni_nonif_1_0 &what, const __syn_smv___e1ni_e2ni_nonif_1_0 &example) {return ___syn_smv___e1ni_e2ni_nonif_1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 like(__syn_smv___e1ni_e2ni_nonif_1_0 &what, const __syn_smv___e1ni_e2ni_nonif_1_0 &example) {return ___syn_smv___e1ni_e2ni_nonif_1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1ni_e2ni_nonif_1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1ni_e2ni_nonif_1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1ni_e2ni_nonif_1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___scalarf_1_0 
+	enum ____syn_smv___scalarf_1_0_coordinates__ {__syn_smv___scalarf_1_0_scalarf_1_0};
+
+	class __syn_smv___scalarf_1_0 {
+		// the friend classes of __syn_smv___scalarf_1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___scalarf_1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___scalarf_1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___scalarf_1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___scalarf_1_0(const __syn_smv___scalarf_1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___scalarf_1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___scalarf_1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___scalarf_1_0(____syn_smv___scalarf_1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___scalarf_1_0_scalarf_1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___scalarf_1_0(____syn_smv___scalarf_1_0_coordinates__) {
+
+			set(__syn_smv___scalarf_1_0_scalarf_1_0);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___scalarf_1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___scalarf_1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___scalarf_1_0_coordinates__);
+
+		/// assign copy
+		__syn_smv___scalarf_1_0 &operator=(const __syn_smv___scalarf_1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___scalarf_1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___scalarf_1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___scalarf_1_0_coordinates__ sanityCheckValue) const {
+			return NULL;
+		}
+
+		// constants, so no coordinate storage
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___scalarf_1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalarf_1_0 ___syn_smv___scalarf_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)75), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___scalarf_1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___scalarf_1_0 &___syn_smv___scalarf_1_0(const __syn_smv___scalarf_1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___scalarf_1_0 &___syn_smv___scalarf_1_0(__syn_smv___scalarf_1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___scalarf_1_0 ___syn_smv___scalarf_1_0(__syn_smv___scalarf_1_0::Float arg1) {
+		return __syn_smv___scalarf_1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___scalarf_1_0 like(const mv &what, const __syn_smv___scalarf_1_0 &example) {return ___syn_smv___scalarf_1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___scalarf_1_0 like(const __syn_smv___scalarf_1_0 &what, const __syn_smv___scalarf_1_0 &example) {return ___syn_smv___scalarf_1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___scalarf_1_0 like(__syn_smv___scalarf_1_0 &what, const __syn_smv___scalarf_1_0 &example) {return ___syn_smv___scalarf_1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___scalarf_1_0 & v) {
+		return (float)-1.0f;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___scalarf_1_0 & v) {
+		return (double)-1.0f;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___scalarf_1_0 & v) {
+		return (float)-1.0f;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___nif_1_0 
+	enum ____syn_smv___nif_1_0_coordinates__ {__syn_smv___nif_1_0_nif_1_0};
+
+	class __syn_smv___nif_1_0 {
+		// the friend classes of __syn_smv___nif_1_0 
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___nif_1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___nif_1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___nif_1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___nif_1_0(const __syn_smv___nif_1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___nif_1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___nif_1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___nif_1_0(____syn_smv___nif_1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___nif_1_0_nif_1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___nif_1_0(____syn_smv___nif_1_0_coordinates__) {
+
+			set(__syn_smv___nif_1_0_nif_1_0);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___nif_1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___nif_1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___nif_1_0_coordinates__);
+
+		/// assign copy
+		__syn_smv___nif_1_0 &operator=(const __syn_smv___nif_1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___nif_1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___nif_1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+
+		/// const coordinate extraction by name
+		inline Float ni() const {
+			return -1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___nif_1_0_coordinates__ sanityCheckValue) const {
+			return NULL;
+		}
+
+		// constants, so no coordinate storage
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___nif_1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___nif_1_0 ___syn_smv___nif_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)76), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___nif_1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___nif_1_0 &___syn_smv___nif_1_0(const __syn_smv___nif_1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___nif_1_0 &___syn_smv___nif_1_0(__syn_smv___nif_1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___nif_1_0 ___syn_smv___nif_1_0(__syn_smv___nif_1_0::Float arg1) {
+		return __syn_smv___nif_1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___nif_1_0 like(const mv &what, const __syn_smv___nif_1_0 &example) {return ___syn_smv___nif_1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___nif_1_0 like(const __syn_smv___nif_1_0 &what, const __syn_smv___nif_1_0 &example) {return ___syn_smv___nif_1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___nif_1_0 like(__syn_smv___nif_1_0 &what, const __syn_smv___nif_1_0 &example) {return ___syn_smv___nif_1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___nif_1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___nif_1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___nif_1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___nif1_0 
+	enum ____syn_smv___nif1_0_coordinates__ {__syn_smv___nif1_0_nif1_0};
+
+	class __syn_smv___nif1_0 {
+		// the friend classes of __syn_smv___nif1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___nif1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___nif1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___nif1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___nif1_0(const __syn_smv___nif1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___nif1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___nif1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___nif1_0(____syn_smv___nif1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___nif1_0_nif1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___nif1_0(____syn_smv___nif1_0_coordinates__) {
+
+			set(__syn_smv___nif1_0_nif1_0);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___nif1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___nif1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___nif1_0_coordinates__);
+
+		/// assign copy
+		__syn_smv___nif1_0 &operator=(const __syn_smv___nif1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___nif1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___nif1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+
+		/// const coordinate extraction by name
+		inline Float ni() const {
+			return 1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___nif1_0_coordinates__ sanityCheckValue) const {
+			return NULL;
+		}
+
+		// constants, so no coordinate storage
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___nif1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___nif1_0 ___syn_smv___nif1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)77), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___nif1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___nif1_0 &___syn_smv___nif1_0(const __syn_smv___nif1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___nif1_0 &___syn_smv___nif1_0(__syn_smv___nif1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___nif1_0 ___syn_smv___nif1_0(__syn_smv___nif1_0::Float arg1) {
+		return __syn_smv___nif1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___nif1_0 like(const mv &what, const __syn_smv___nif1_0 &example) {return ___syn_smv___nif1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___nif1_0 like(const __syn_smv___nif1_0 &what, const __syn_smv___nif1_0 &example) {return ___syn_smv___nif1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___nif1_0 like(__syn_smv___nif1_0 &what, const __syn_smv___nif1_0 &example) {return ___syn_smv___nif1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___nif1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___nif1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___nif1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 
+	enum ____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__ {__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0};
+
+	class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 {
+		// the friend classes of __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni) {
+
+			set(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0, c_e1, c_e2, c_ni, c_noe1ni, c_noe2ni, c_e1e2ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni);
+
+		/// assign copy
+		__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &operator=(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+		inline Float e2() const {
+			return m_c[1];
+		}
+		inline Float ni() const {
+			return m_c[2];
+		}
+		inline Float noe1ni() const {
+			return m_c[3];
+		}
+		inline Float noe2ni() const {
+			return m_c[4];
+		}
+		inline Float e1e2ni() const {
+			return m_c[5];
+		}
+
+		/// const coordinate extraction by name
+		inline Float no() const {
+			return 1.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[6];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 ___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)78), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 ___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::Float arg1) {
+		return __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 like(const mv &what, const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &example) {return ___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 like(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &what, const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &example) {return ___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 like(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &what, const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &example) {return ___syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1_e2_ni_nof2_0 
+	enum ____syn_smv___e1_e2_ni_nof2_0_coordinates__ {__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0};
+
+	class __syn_smv___e1_e2_ni_nof2_0 {
+		// the friend classes of __syn_smv___e1_e2_ni_nof2_0 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e2_ni_nof2_0() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e2_ni_nof2_0(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e2_ni_nof2_0	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e2_ni_nof2_0(const __syn_smv___e1_e2_ni_nof2_0 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e2_ni_nof2_0(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e2_ni_nof2_0	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e2_ni_nof2_0(____syn_smv___e1_e2_ni_nof2_0_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e2_ni_nof2_0(____syn_smv___e1_e2_ni_nof2_0_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+
+			set(__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0, c_e1, c_e2, c_ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e2_ni_nof2_0 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e2_ni_nof2_0_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e2_ni_nof2_0_coordinates__, Float c_e1, Float c_e2, Float c_ni);
+
+		/// assign copy
+		__syn_smv___e1_e2_ni_nof2_0 &operator=(const __syn_smv___e1_e2_ni_nof2_0 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e2_ni_nof2_0 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e2_ni_nof2_0 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+		inline Float e2() const {
+			return m_c[1];
+		}
+		inline Float ni() const {
+			return m_c[2];
+		}
+
+		/// const coordinate extraction by name
+		inline Float no() const {
+			return 2.0f;
+		}
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e2_ni_nof2_0_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[3];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e2_ni_nof2_0 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_nof2_0 ___syn_smv___e1_e2_ni_nof2_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)79), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e2_ni_nof2_0(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_nof2_0 &___syn_smv___e1_e2_ni_nof2_0(const __syn_smv___e1_e2_ni_nof2_0 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_nof2_0 &___syn_smv___e1_e2_ni_nof2_0(__syn_smv___e1_e2_ni_nof2_0 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e2_ni_nof2_0 ___syn_smv___e1_e2_ni_nof2_0(__syn_smv___e1_e2_ni_nof2_0::Float arg1) {
+		return __syn_smv___e1_e2_ni_nof2_0(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni_nof2_0 like(const mv &what, const __syn_smv___e1_e2_ni_nof2_0 &example) {return ___syn_smv___e1_e2_ni_nof2_0(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni_nof2_0 like(const __syn_smv___e1_e2_ni_nof2_0 &what, const __syn_smv___e1_e2_ni_nof2_0 &example) {return ___syn_smv___e1_e2_ni_nof2_0(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni_nof2_0 like(__syn_smv___e1_e2_ni_nof2_0 &what, const __syn_smv___e1_e2_ni_nof2_0 &example) {return ___syn_smv___e1_e2_ni_nof2_0(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e2_ni_nof2_0 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e2_ni_nof2_0 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e2_ni_nof2_0 & v) {
+		return (float)0;
+	}
+
+
+	/// enum for the coordinates of __syn_smv___e1_e2_ni 
+	enum ____syn_smv___e1_e2_ni_coordinates__ {__syn_smv___e1_e2_ni_e1_e2_ni};
+
+	class __syn_smv___e1_e2_ni {
+		// the friend classes of __syn_smv___e1_e2_ni 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class om;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1_e2_ni() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1_e2_ni(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1_e2_ni	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1_e2_ni(const __syn_smv___e1_e2_ni &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1_e2_ni(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1_e2_ni	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1_e2_ni(____syn_smv___e1_e2_ni_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1_e2_ni_e1_e2_ni, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1_e2_ni(____syn_smv___e1_e2_ni_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+
+			set(__syn_smv___e1_e2_ni_e1_e2_ni, c_e1, c_e2, c_ni);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1_e2_ni &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1_e2_ni_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1_e2_ni_coordinates__, Float c_e1, Float c_e2, Float c_ni);
+
+		/// assign copy
+		__syn_smv___e1_e2_ni &operator=(const __syn_smv___e1_e2_ni &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1_e2_ni &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1_e2_ni &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1() const {
+			return m_c[0];
+		}
+		inline Float e2() const {
+			return m_c[1];
+		}
+		inline Float ni() const {
+			return m_c[2];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1_e2_ni_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[3];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c2ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c2ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1_e2_ni 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni ___syn_smv___e1_e2_ni(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)80), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1_e2_ni(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni &___syn_smv___e1_e2_ni(const __syn_smv___e1_e2_ni &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni &___syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1_e2_ni ___syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni::Float arg1) {
+		return __syn_smv___e1_e2_ni(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1_e2_ni like(const mv &what, const __syn_smv___e1_e2_ni &example) {return ___syn_smv___e1_e2_ni(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1_e2_ni like(const __syn_smv___e1_e2_ni &what, const __syn_smv___e1_e2_ni &example) {return ___syn_smv___e1_e2_ni(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1_e2_ni like(__syn_smv___e1_e2_ni &what, const __syn_smv___e1_e2_ni &example) {return ___syn_smv___e1_e2_ni(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1_e2_ni & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1_e2_ni & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1_e2_ni & v) {
+		return (float)0;
+	}
+
+
+	class om {
+		// the friend classes of om 
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class dualLine;
+		friend class __syn_smv___e1_e2_nof1_0;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni;
+		friend class __syn_smv___e1_e2_ni_nof2_0;
+		friend class __syn_smv___scalar_noe1_e1e2_e1ni;
+		friend class line;
+		friend class __I4_ct__;
+		friend class __syn_smv___e1_e2_ni;
+		friend class __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni;
+		friend class normalizedFlatPoint;
+		friend class bivectorE2GA;
+		friend class pointPair;
+		friend class TRversorLog;
+		friend class freeVector;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class scalor;
+		friend class __syn_smv___e1e2nif1_0;
+		friend class scalar;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni;
+		friend class __syn_smv___e1_e2_ni_nof_1_0;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class ni_t;
+		friend class e1_t;
+		friend class no_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2ni;
+		friend class e2_t;
+		friend class __I2_ct__;
+		friend class __e2ni_ct__;
+		friend class mv;
+		friend class __syn_smv___scalar_noe1_noe2_noni;
+		friend class __e1_ct__;
+		friend class __e2_ct__;
+		friend class TRversor;
+		friend class evenVersor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni;
+		friend class TRSversor;
+		friend class __syn_smv___e1ni_e2ni_nonif_1_0;
+		friend class point;
+		friend class __ni_ct__;
+		friend class __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni;
+		friend class translator;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalarf_1_0;
+		friend class tangentBivector;
+		friend class __no_ct__;
+		friend class __I4i_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni;
+		friend class circle;
+		friend class tangentVector;
 
 		public:
 			typedef float Float;
@@ -8936,18 +14338,38 @@
 
 
 	// extra underscore constructors from profile:
+	inline vectorE2GA _vectorE2GA(const point &arg1) {
+
+		return vectorE2GA(vectorE2GA_e1_e2	, (float)arg1.m_c[1], (float)arg1.m_c[2]);
+	}
+	inline normalizedPoint _normalizedPoint(const __no_ct__ &arg1) {
+
+		return normalizedPoint(normalizedPoint_e1_e2_ni_nof1_0	, (float)0, (float)0, (float)0);
+	}
+	inline normalizedTranslator _normalizedTranslator(const translator &arg1) {
+
+		return normalizedTranslator(normalizedTranslator_e1ni_e2ni_scalarf1_0	, (float)arg1.m_c[1], (float)arg1.m_c[2]);
+	}
+	inline normalizedPoint _normalizedPoint(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+
+		return normalizedPoint(normalizedPoint_e1_e2_ni_nof1_0	, (float)arg1.m_c[1], (float)arg1.m_c[2], (float)arg1.m_c[3]);
+	}
+	inline vectorE2GA _vectorE2GA(const normalizedPoint &arg1) {
+
+		return vectorE2GA(vectorE2GA_e1_e2	, (float)arg1.m_c[0], (float)arg1.m_c[1]);
+	}
 
 
-	extern __I4i_ct__ I4i;
 	extern __no_ct__ no;
-	extern __ni_ct__ ni;
 	extern __I4_ct__ I4;
-	extern __I2_ct__ I2;
 	extern __e2ni_ct__ e2ni;
+	extern __noni_ct__ noni;
+	extern __I4i_ct__ I4i;
+	extern __ni_ct__ ni;
+	extern __I2_ct__ I2;
 	extern __e1_ct__ e1;
 	extern __e1ni_ct__ e1ni;
 	extern __e2_ct__ e2;
-	extern __noni_ct__ noni;
 	mv lcont(const mv& x, const mv& y);
 	scalar scp(const mv& x, const mv& y);
 	mv gp(const mv& x, const mv& y);
@@ -8974,14 +14396,76 @@
 	namespace __G2_GENERATED__ {
 		void set(om& __x__, const point& __image_of_no__, const point& __image_of_e1__, const point& __image_of_e2__, const point& __image_of_ni__);
 	} /* end of namespace __G2_GENERATED__ */
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const circle& x, const TRversorLog& y);
+	inline TRversorLog inverse(const TRversorLog& x);
+	inline circle negate(const circle& x);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noe2_e1e2_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni subtract(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& x, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& y);
+	inline __syn_smv___e1_e2_ni_nof_1_0 gradeInvolution(const normalizedPoint& x);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noni_e1ni_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y);
+	inline __syn_smv___e1_e2_nof1_0 add(const vectorE2GA& x, const __no_ct__& y);
+	inline point subtract(const point& x, const normalizedPoint& y);
+	inline scalar gp(const scalar& x, const scalar& y);
+	inline __syn_smv___nif1_0 negate(const __syn_smv___nif_1_0& x);
+	inline scalar inverse(const scalar& x);
+	inline scalar scp(const normalizedPoint& x, const normalizedPoint& y);
+	inline scalar norm_e2(const vectorE2GA& x);
+	inline scalar inverse(const __syn_smv___scalarf_1_0& x);
+	inline vectorE2GA subtract(const vectorE2GA& x, const vectorE2GA& y);
+	inline vectorE2GA negate(const vectorE2GA& x);
+	inline freeVector op(const vectorE2GA& x, const __ni_ct__& y);
+	inline scalar scpEM(const normalizedPoint& x, const normalizedPoint& y);
+	inline point gp(const normalizedPoint& x, const scalar& y);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gpEM(const __syn_smv___scalar_noe1_noe2_noni& x, const __syn_smv___e1_e2_ni_nof_1_0& y);
+	inline circle op(const pointPair& x, const normalizedPoint& y);
+	inline vectorE2GA subtract(const e1_t& x, const e2_t& y);
+	inline scalar scp(const __ni_ct__& x, const point& y);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const __syn_smv___e1_e2_ni_nof_1_0& x, const point& y);
+	inline scalar norm_r2(const normalizedPoint& x);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni gpEM(const __syn_smv___scalar_noe1_e1e2_e1ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y);
+	inline scalar norm_e(const __syn_smv___scalarf_1_0& x);
+	inline __syn_smv___nif_1_0 op(const __syn_smv___scalarf_1_0& x, const __ni_ct__& y);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni gpEM(const point& x, const __e1_ct__& y);
+	inline scalar lcont(const __syn_smv___e1_e2_ni& x, const normalizedPoint& y);
+	inline point inverseEM(const normalizedPoint& x);
+	inline scalar lcont(const circle& x, const __syn_smv___e1e2nif1_0& y);
+	inline __syn_smv___e1_e2_ni dual(const line& x);
+	inline vectorE2GA unit_e(const vectorE2GA& x);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& x, const translator& y);
+	inline e1_t gp(const scalar& x, const __e1_ct__& y);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const point& x, const __syn_smv___e1_e2_ni_nof_1_0& y);
+	inline translator inverse(const normalizedTranslator& x);
+	inline vectorE2GA gp(const scalar& x, const vectorE2GA& y);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 op(const __ni_ct__& x, const normalizedPoint& y);
+	inline point gp(const scalar& x, const __syn_smv___e1_e2_ni_nof2_0& y);
+	inline TRversorLog lcont(const __ni_ct__& x, const circle& y);
+	inline __syn_smv___scalar_noni_e1ni_e2ni gpEM(const point& x, const __ni_ct__& y);
+	inline scalar norm_e(const __syn_smv___e1ni_e2ni_nonif_1_0& x);
+	inline point gp(const point& x, const scalar& y);
+	inline line op(const pointPair& x, const __ni_ct__& y);
+	inline __I2_ct__ op(const __e1_ct__& x, const __e2_ct__& y);
+	inline __syn_smv___scalar_noe1_noe2_noni gpEM(const point& x, const __no_ct__& y);
+	inline normalizedPoint add(const __syn_smv___e1_e2_nof1_0& x, const ni_t& y);
+	inline __syn_smv___e1e2nif1_0 op(const __I2_ct__& x, const __ni_ct__& y);
+	inline pointPair op(const normalizedPoint& x, const normalizedPoint& y);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 gp(const normalizedTranslator& x, const normalizedPoint& y);
+	inline translator subtract(const scalar& x, const freeVector& y);
+	inline ni_t gp(const scalar& x, const __ni_ct__& y);
+	inline __syn_smv___e1_e2_ni_nof2_0 add(const normalizedPoint& x, const normalizedPoint& y);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni gpEM(const point& x, const __e2_ct__& y);
+	inline __syn_smv___scalarf_1_0 lcont(const __ni_ct__& x, const normalizedPoint& y);
+	inline e2_t gp(const scalar& x, const __e2_ct__& y);
+	inline normalizedPoint reverse(const normalizedPoint& x);
 	inline mv operator+=(mv& arg1, const mv& arg2);
+	inline vectorE2GA operator+=(vectorE2GA& arg1, const __no_ct__& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator+=(__syn_smv___e1_e2_nof1_0& arg1, const ni_t& arg2);
+	inline normalizedPoint operator+=(normalizedPoint& arg1, const normalizedPoint& arg2);
 	inline no_t operator+=(no_t& arg1, const mv& arg2);
 	inline e1_t operator+=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator+=(e2_t& arg1, const mv& arg2);
 	inline ni_t operator+=(ni_t& arg1, const mv& arg2);
 	inline scalar operator+=(scalar& arg1, const mv& arg2);
 	inline point operator+=(point& arg1, const mv& arg2);
-	inline normalizedPoint operator+=(normalizedPoint& arg1, const mv& arg2);
 	inline flatPoint operator+=(flatPoint& arg1, const mv& arg2);
 	inline normalizedFlatPoint operator+=(normalizedFlatPoint& arg1, const mv& arg2);
 	inline pointPair operator+=(pointPair& arg1, const mv& arg2);
@@ -8993,7 +14477,6 @@
 	inline freeBivector operator+=(freeBivector& arg1, const mv& arg2);
 	inline tangentVector operator+=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator+=(tangentBivector& arg1, const mv& arg2);
-	inline vectorE2GA operator+=(vectorE2GA& arg1, const mv& arg2);
 	inline bivectorE2GA operator+=(bivectorE2GA& arg1, const mv& arg2);
 	inline TRversor operator+=(TRversor& arg1, const mv& arg2);
 	inline TRSversor operator+=(TRSversor& arg1, const mv& arg2);
@@ -9012,14 +14495,37 @@
 	inline __noni_ct__ operator+=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator+=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator+=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator+=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator+=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator+=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator+=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator+=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator+=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator+=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator+=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator+=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalarf_1_0 operator+=(__syn_smv___scalarf_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator+=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator+=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator+=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator+=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator+=(__syn_smv___e1_e2_ni& arg1, const mv& arg2);
 	inline mv operator+(const mv& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator+(const vectorE2GA& arg1, const __no_ct__& arg2);
+	inline normalizedPoint operator+(const __syn_smv___e1_e2_nof1_0& arg1, const ni_t& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator+(const normalizedPoint& arg1, const normalizedPoint& arg2);
 	inline mv operator-=(mv& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator-=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg2);
+	inline point operator-=(point& arg1, const normalizedPoint& arg2);
+	inline vectorE2GA operator-=(vectorE2GA& arg1, const vectorE2GA& arg2);
+	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2);
+	inline scalar operator-=(scalar& arg1, const freeVector& arg2);
 	inline no_t operator-=(no_t& arg1, const mv& arg2);
-	inline e1_t operator-=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator-=(e2_t& arg1, const mv& arg2);
 	inline ni_t operator-=(ni_t& arg1, const mv& arg2);
-	inline scalar operator-=(scalar& arg1, const mv& arg2);
-	inline point operator-=(point& arg1, const mv& arg2);
 	inline normalizedPoint operator-=(normalizedPoint& arg1, const mv& arg2);
 	inline flatPoint operator-=(flatPoint& arg1, const mv& arg2);
 	inline normalizedFlatPoint operator-=(normalizedFlatPoint& arg1, const mv& arg2);
@@ -9032,7 +14538,6 @@
 	inline freeBivector operator-=(freeBivector& arg1, const mv& arg2);
 	inline tangentVector operator-=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator-=(tangentBivector& arg1, const mv& arg2);
-	inline vectorE2GA operator-=(vectorE2GA& arg1, const mv& arg2);
 	inline bivectorE2GA operator-=(bivectorE2GA& arg1, const mv& arg2);
 	inline TRversor operator-=(TRversor& arg1, const mv& arg2);
 	inline TRSversor operator-=(TRSversor& arg1, const mv& arg2);
@@ -9051,16 +14556,44 @@
 	inline __noni_ct__ operator-=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator-=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator-=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator-=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator-=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator-=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator-=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator-=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator-=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator-=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator-=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator-=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalarf_1_0 operator-=(__syn_smv___scalarf_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator-=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator-=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator-=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator-=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator-=(__syn_smv___e1_e2_ni& arg1, const mv& arg2);
 	inline mv operator-(const mv& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator-(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg2);
+	inline point operator-(const point& arg1, const normalizedPoint& arg2);
+	inline vectorE2GA operator-(const vectorE2GA& arg1, const vectorE2GA& arg2);
+	inline vectorE2GA operator-(const e1_t& arg1, const e2_t& arg2);
+	inline translator operator-(const scalar& arg1, const freeVector& arg2);
+	inline translator operator-(float arg1, const freeVector& arg2);
 	inline mv operator-(const mv& arg1);
+	inline circle operator-(const circle& arg1);
+	inline __syn_smv___nif1_0 operator-(const __syn_smv___nif_1_0& arg1);
+	inline vectorE2GA operator-(const vectorE2GA& arg1);
 	inline mv operator%=(mv& arg1, const mv& arg2);
+	inline normalizedPoint operator%=(normalizedPoint& arg1, const normalizedPoint& arg2);
+	inline __ni_ct__ operator%=(__ni_ct__& arg1, const point& arg2);
 	inline no_t operator%=(no_t& arg1, const mv& arg2);
 	inline e1_t operator%=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator%=(e2_t& arg1, const mv& arg2);
 	inline ni_t operator%=(ni_t& arg1, const mv& arg2);
 	inline scalar operator%=(scalar& arg1, const mv& arg2);
 	inline point operator%=(point& arg1, const mv& arg2);
-	inline normalizedPoint operator%=(normalizedPoint& arg1, const mv& arg2);
 	inline flatPoint operator%=(flatPoint& arg1, const mv& arg2);
 	inline normalizedFlatPoint operator%=(normalizedFlatPoint& arg1, const mv& arg2);
 	inline pointPair operator%=(pointPair& arg1, const mv& arg2);
@@ -9084,25 +14617,51 @@
 	inline __no_ct__ operator%=(__no_ct__& arg1, const mv& arg2);
 	inline __e1_ct__ operator%=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator%=(__e2_ct__& arg1, const mv& arg2);
-	inline __ni_ct__ operator%=(__ni_ct__& arg1, const mv& arg2);
 	inline __I4i_ct__ operator%=(__I4i_ct__& arg1, const mv& arg2);
 	inline __I4_ct__ operator%=(__I4_ct__& arg1, const mv& arg2);
 	inline __I2_ct__ operator%=(__I2_ct__& arg1, const mv& arg2);
 	inline __noni_ct__ operator%=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator%=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator%=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator%=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator%=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator%=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator%=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator%=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator%=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator%=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator%=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator%=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator%=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalarf_1_0 operator%=(__syn_smv___scalarf_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator%=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator%=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator%=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator%=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator%=(__syn_smv___e1_e2_ni& arg1, const mv& arg2);
 	inline scalar operator%(const mv& arg1, const mv& arg2);
+	inline scalar operator%(const normalizedPoint& arg1, const normalizedPoint& arg2);
+	inline scalar operator%(const __ni_ct__& arg1, const point& arg2);
 	inline mv operator^=(mv& arg1, const mv& arg2);
+	inline vectorE2GA operator^=(vectorE2GA& arg1, const __ni_ct__& arg2);
+	inline pointPair operator^=(pointPair& arg1, const normalizedPoint& arg2);
+	inline __syn_smv___scalarf_1_0 operator^=(__syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2);
+	inline __ni_ct__ operator^=(__ni_ct__& arg1, const normalizedPoint& arg2);
+	inline pointPair operator^=(pointPair& arg1, const __ni_ct__& arg2);
+	inline __e1_ct__ operator^=(__e1_ct__& arg1, const __e2_ct__& arg2);
+	inline __I2_ct__ operator^=(__I2_ct__& arg1, const __ni_ct__& arg2);
+	inline normalizedPoint operator^=(normalizedPoint& arg1, const normalizedPoint& arg2);
 	inline no_t operator^=(no_t& arg1, const mv& arg2);
 	inline e1_t operator^=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator^=(e2_t& arg1, const mv& arg2);
 	inline ni_t operator^=(ni_t& arg1, const mv& arg2);
 	inline scalar operator^=(scalar& arg1, const mv& arg2);
 	inline point operator^=(point& arg1, const mv& arg2);
-	inline normalizedPoint operator^=(normalizedPoint& arg1, const mv& arg2);
 	inline flatPoint operator^=(flatPoint& arg1, const mv& arg2);
 	inline normalizedFlatPoint operator^=(normalizedFlatPoint& arg1, const mv& arg2);
-	inline pointPair operator^=(pointPair& arg1, const mv& arg2);
 	inline TRversorLog operator^=(TRversorLog& arg1, const mv& arg2);
 	inline line operator^=(line& arg1, const mv& arg2);
 	inline dualLine operator^=(dualLine& arg1, const mv& arg2);
@@ -9111,7 +14670,6 @@
 	inline freeBivector operator^=(freeBivector& arg1, const mv& arg2);
 	inline tangentVector operator^=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator^=(tangentBivector& arg1, const mv& arg2);
-	inline vectorE2GA operator^=(vectorE2GA& arg1, const mv& arg2);
 	inline bivectorE2GA operator^=(bivectorE2GA& arg1, const mv& arg2);
 	inline TRversor operator^=(TRversor& arg1, const mv& arg2);
 	inline TRSversor operator^=(TRSversor& arg1, const mv& arg2);
@@ -9121,31 +14679,64 @@
 	inline rotor operator^=(rotor& arg1, const mv& arg2);
 	inline scalor operator^=(scalor& arg1, const mv& arg2);
 	inline __no_ct__ operator^=(__no_ct__& arg1, const mv& arg2);
-	inline __e1_ct__ operator^=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator^=(__e2_ct__& arg1, const mv& arg2);
-	inline __ni_ct__ operator^=(__ni_ct__& arg1, const mv& arg2);
 	inline __I4i_ct__ operator^=(__I4i_ct__& arg1, const mv& arg2);
 	inline __I4_ct__ operator^=(__I4_ct__& arg1, const mv& arg2);
-	inline __I2_ct__ operator^=(__I2_ct__& arg1, const mv& arg2);
 	inline __noni_ct__ operator^=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator^=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator^=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator^=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator^=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator^=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator^=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator^=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator^=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator^=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator^=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator^=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator^=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator^=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator^=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator^=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator^=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator^=(__syn_smv___e1_e2_ni& arg1, const mv& arg2);
 	inline mv operator^(const mv& arg1, const mv& arg2);
+	inline freeVector operator^(const vectorE2GA& arg1, const __ni_ct__& arg2);
+	inline circle operator^(const pointPair& arg1, const normalizedPoint& arg2);
+	inline __syn_smv___nif_1_0 operator^(const __syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator^(const __ni_ct__& arg1, const normalizedPoint& arg2);
+	inline line operator^(const pointPair& arg1, const __ni_ct__& arg2);
+	inline __I2_ct__ operator^(const __e1_ct__& arg1, const __e2_ct__& arg2);
+	inline __syn_smv___e1e2nif1_0 operator^(const __I2_ct__& arg1, const __ni_ct__& arg2);
+	inline pointPair operator^(const normalizedPoint& arg1, const normalizedPoint& arg2);
 	inline mv operator*=(mv& arg1, const mv& arg2);
+	inline circle operator*=(circle& arg1, const TRversorLog& arg2);
+	inline scalar operator*=(scalar& arg1, const scalar& arg2);
+	inline scalar operator*=(scalar& arg1, float arg2);
+	inline normalizedPoint operator*=(normalizedPoint& arg1, const scalar& arg2);
+	inline normalizedPoint operator*=(normalizedPoint& arg1, float arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator*=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const translator& arg2);
+	inline scalar operator*=(scalar& arg1, const __e1_ct__& arg2);
+	inline scalar operator*=(scalar& arg1, const vectorE2GA& arg2);
+	inline scalar operator*=(scalar& arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2);
+	inline point operator*=(point& arg1, const scalar& arg2);
+	inline point operator*=(point& arg1, float arg2);
+	inline normalizedTranslator operator*=(normalizedTranslator& arg1, const normalizedPoint& arg2);
+	inline scalar operator*=(scalar& arg1, const __ni_ct__& arg2);
+	inline scalar operator*=(scalar& arg1, const __e2_ct__& arg2);
 	inline no_t operator*=(no_t& arg1, const mv& arg2);
 	inline e1_t operator*=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator*=(e2_t& arg1, const mv& arg2);
 	inline ni_t operator*=(ni_t& arg1, const mv& arg2);
-	inline scalar operator*=(scalar& arg1, const mv& arg2);
-	inline point operator*=(point& arg1, const mv& arg2);
-	inline normalizedPoint operator*=(normalizedPoint& arg1, const mv& arg2);
 	inline flatPoint operator*=(flatPoint& arg1, const mv& arg2);
 	inline normalizedFlatPoint operator*=(normalizedFlatPoint& arg1, const mv& arg2);
 	inline pointPair operator*=(pointPair& arg1, const mv& arg2);
 	inline TRversorLog operator*=(TRversorLog& arg1, const mv& arg2);
 	inline line operator*=(line& arg1, const mv& arg2);
 	inline dualLine operator*=(dualLine& arg1, const mv& arg2);
-	inline circle operator*=(circle& arg1, const mv& arg2);
 	inline freeVector operator*=(freeVector& arg1, const mv& arg2);
 	inline freeBivector operator*=(freeBivector& arg1, const mv& arg2);
 	inline tangentVector operator*=(tangentVector& arg1, const mv& arg2);
@@ -9156,7 +14747,6 @@
 	inline TRSversor operator*=(TRSversor& arg1, const mv& arg2);
 	inline evenVersor operator*=(evenVersor& arg1, const mv& arg2);
 	inline translator operator*=(translator& arg1, const mv& arg2);
-	inline normalizedTranslator operator*=(normalizedTranslator& arg1, const mv& arg2);
 	inline rotor operator*=(rotor& arg1, const mv& arg2);
 	inline scalor operator*=(scalor& arg1, const mv& arg2);
 	inline __no_ct__ operator*=(__no_ct__& arg1, const mv& arg2);
@@ -9169,8 +14759,50 @@
 	inline __noni_ct__ operator*=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator*=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator*=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator*=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator*=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator*=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator*=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator*=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator*=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator*=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator*=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator*=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalarf_1_0 operator*=(__syn_smv___scalarf_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator*=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator*=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator*=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator*=(__syn_smv___e1_e2_ni& arg1, const mv& arg2);
 	inline mv operator*(const mv& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*(const circle& arg1, const TRversorLog& arg2);
+	inline scalar operator*(const scalar& arg1, const scalar& arg2);
+	inline scalar operator*(float arg1, const scalar& arg2);
+	inline scalar operator*(const scalar& arg1, float arg2);
+	inline point operator*(const normalizedPoint& arg1, const scalar& arg2);
+	inline point operator*(const normalizedPoint& arg1, float arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const translator& arg2);
+	inline e1_t operator*(const scalar& arg1, const __e1_ct__& arg2);
+	inline e1_t operator*(float arg1, const __e1_ct__& arg2);
+	inline vectorE2GA operator*(const scalar& arg1, const vectorE2GA& arg2);
+	inline vectorE2GA operator*(float arg1, const vectorE2GA& arg2);
+	inline point operator*(const scalar& arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2);
+	inline point operator*(float arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2);
+	inline point operator*(const point& arg1, const scalar& arg2);
+	inline point operator*(const point& arg1, float arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator*(const normalizedTranslator& arg1, const normalizedPoint& arg2);
+	inline ni_t operator*(const scalar& arg1, const __ni_ct__& arg2);
+	inline ni_t operator*(float arg1, const __ni_ct__& arg2);
+	inline e2_t operator*(const scalar& arg1, const __e2_ct__& arg2);
+	inline e2_t operator*(float arg1, const __e2_ct__& arg2);
 	inline mv operator<<=(mv& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni operator<<=(__syn_smv___e1_e2_ni& arg1, const normalizedPoint& arg2);
+	inline circle operator<<=(circle& arg1, const __syn_smv___e1e2nif1_0& arg2);
+	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const circle& arg2);
+	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const normalizedPoint& arg2);
 	inline no_t operator<<=(no_t& arg1, const mv& arg2);
 	inline e1_t operator<<=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator<<=(e2_t& arg1, const mv& arg2);
@@ -9184,7 +14816,6 @@
 	inline TRversorLog operator<<=(TRversorLog& arg1, const mv& arg2);
 	inline line operator<<=(line& arg1, const mv& arg2);
 	inline dualLine operator<<=(dualLine& arg1, const mv& arg2);
-	inline circle operator<<=(circle& arg1, const mv& arg2);
 	inline freeVector operator<<=(freeVector& arg1, const mv& arg2);
 	inline freeBivector operator<<=(freeBivector& arg1, const mv& arg2);
 	inline tangentVector operator<<=(tangentVector& arg1, const mv& arg2);
@@ -9201,17 +14832,44 @@
 	inline __no_ct__ operator<<=(__no_ct__& arg1, const mv& arg2);
 	inline __e1_ct__ operator<<=(__e1_ct__& arg1, const mv& arg2);
 	inline __e2_ct__ operator<<=(__e2_ct__& arg1, const mv& arg2);
-	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const mv& arg2);
 	inline __I4i_ct__ operator<<=(__I4i_ct__& arg1, const mv& arg2);
 	inline __I4_ct__ operator<<=(__I4_ct__& arg1, const mv& arg2);
 	inline __I2_ct__ operator<<=(__I2_ct__& arg1, const mv& arg2);
 	inline __noni_ct__ operator<<=(__noni_ct__& arg1, const mv& arg2);
 	inline __e2ni_ct__ operator<<=(__e2ni_ct__& arg1, const mv& arg2);
 	inline __e1ni_ct__ operator<<=(__e1ni_ct__& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_nof1_0 operator<<=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1e2nif1_0 operator<<=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator<<=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator<<=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_noe2_noni operator<<=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator<<=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator<<=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator<<=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2);
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2);
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator<<=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___scalarf_1_0 operator<<=(__syn_smv___scalarf_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif_1_0 operator<<=(__syn_smv___nif_1_0& arg1, const mv& arg2);
+	inline __syn_smv___nif1_0 operator<<=(__syn_smv___nif1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator<<=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2);
+	inline __syn_smv___e1_e2_ni_nof2_0 operator<<=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2);
 	inline mv operator<<(const mv& arg1, const mv& arg2);
+	inline scalar operator<<(const __syn_smv___e1_e2_ni& arg1, const normalizedPoint& arg2);
+	inline scalar operator<<(const circle& arg1, const __syn_smv___e1e2nif1_0& arg2);
+	inline TRversorLog operator<<(const __ni_ct__& arg1, const circle& arg2);
+	inline __syn_smv___scalarf_1_0 operator<<(const __ni_ct__& arg1, const normalizedPoint& arg2);
 	inline mv operator*(const mv& arg1);
+	inline __syn_smv___e1_e2_ni operator*(const line& arg1);
 	inline mv operator!(const mv& arg1);
+	inline TRversorLog operator!(const TRversorLog& arg1);
+	inline scalar operator!(const scalar& arg1);
+	inline scalar operator!(const __syn_smv___scalarf_1_0& arg1);
+	inline translator operator!(const normalizedTranslator& arg1);
 	inline mv operator~(const mv& arg1);
+	inline normalizedPoint operator~(const normalizedPoint& arg1);
 
 
 
@@ -11729,11 +17387,1434 @@
 
 
 
+	// set to zero
+	inline void __syn_smv___e1_e2_nof1_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 2);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e2_nof1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e2_nof1_0::set(const __syn_smv___e1_e2_nof1_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 2);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e2_nof1_0::set(____syn_smv___e1_e2_nof1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 2);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e2_nof1_0::set(____syn_smv___e1_e2_nof1_0_coordinates__, Float c_e1, Float c_e2) {
+		// set coordinates
+		m_c[0] = c_e1;
+		m_c[1] = c_e2;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e2_nof1_0 &__syn_smv___e1_e2_nof1_0::operator=(const __syn_smv___e1_e2_nof1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e2_nof1_0 &__syn_smv___e1_e2_nof1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e2_nof1_0 &__syn_smv___e1_e2_nof1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1e2nif1_0::set() {
+		// set coordinates to 0
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1e2nif1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1e2nif1_0::set(const __syn_smv___e1e2nif1_0 &arg1) {
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1e2nif1_0::set(____syn_smv___e1e2nif1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1e2nif1_0::set(____syn_smv___e1e2nif1_0_coordinates__) {
+		// set coordinates
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1e2nif1_0 &__syn_smv___e1e2nif1_0::operator=(const __syn_smv___e1e2nif1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1e2nif1_0 &__syn_smv___e1e2nif1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1e2nif1_0 &__syn_smv___e1e2nif1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1_e2_ni_nof_1_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 3);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e2_ni_nof_1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e2_ni_nof_1_0::set(const __syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 3);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e2_ni_nof_1_0::set(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 3);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e2_ni_nof_1_0::set(____syn_smv___e1_e2_ni_nof_1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+		// set coordinates
+		m_c[0] = c_e1;
+		m_c[1] = c_e2;
+		m_c[2] = c_ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e2_ni_nof_1_0 &__syn_smv___e1_e2_ni_nof_1_0::operator=(const __syn_smv___e1_e2_ni_nof_1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e2_ni_nof_1_0 &__syn_smv___e1_e2_ni_nof_1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e2_ni_nof_1_0 &__syn_smv___e1_e2_ni_nof_1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 7);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+		m_c[6] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::set(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 7);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+		m_c[6] = arg1.m_c[6];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::set(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 7);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+		m_c[6] = coordinates[6];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::set(____syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_e1e2, Float c_noni, Float c_e1ni, Float c_e2ni) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_noe1;
+		m_c[2] = c_noe2;
+		m_c[3] = c_e1e2;
+		m_c[4] = c_noni;
+		m_c[5] = c_e1ni;
+		m_c[6] = c_e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::operator=(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni &__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalar_noe1_noe2_noni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 4);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_noe1_noe2_noni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_noe1_noe2_noni::set(const __syn_smv___scalar_noe1_noe2_noni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 4);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_noe1_noe2_noni::set(____syn_smv___scalar_noe1_noe2_noni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 4);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_noe1_noe2_noni::set(____syn_smv___scalar_noe1_noe2_noni_coordinates__, Float c_scalar, Float c_noe1, Float c_noe2, Float c_noni) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_noe1;
+		m_c[2] = c_noe2;
+		m_c[3] = c_noni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_noe1_noe2_noni &__syn_smv___scalar_noe1_noe2_noni::operator=(const __syn_smv___scalar_noe1_noe2_noni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_noe1_noe2_noni &__syn_smv___scalar_noe1_noe2_noni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_noe1_noe2_noni &__syn_smv___scalar_noe1_noe2_noni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 7);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+		m_c[6] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 7);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+		m_c[6] = arg1.m_c[6];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 7);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+		m_c[6] = coordinates[6];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_noe2ni) {
+		// set coordinates
+		m_c[0] = c_no;
+		m_c[1] = c_e1;
+		m_c[2] = c_e2;
+		m_c[3] = c_noe1e2;
+		m_c[4] = c_ni;
+		m_c[5] = c_noe1ni;
+		m_c[6] = c_noe2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalar_noe1_e1e2_e1ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 4);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_noe1_e1e2_e1ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_noe1_e1e2_e1ni::set(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 4);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_noe1_e1e2_e1ni::set(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 4);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_noe1_e1e2_e1ni::set(____syn_smv___scalar_noe1_e1e2_e1ni_coordinates__, Float c_scalar, Float c_noe1, Float c_e1e2, Float c_e1ni) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_noe1;
+		m_c[2] = c_e1e2;
+		m_c[3] = c_e1ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_noe1_e1e2_e1ni &__syn_smv___scalar_noe1_e1e2_e1ni::operator=(const __syn_smv___scalar_noe1_e1e2_e1ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_noe1_e1e2_e1ni &__syn_smv___scalar_noe1_e1e2_e1ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_noe1_e1e2_e1ni &__syn_smv___scalar_noe1_e1e2_e1ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 7);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+		m_c[6] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::set(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 7);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+		m_c[6] = arg1.m_c[6];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 7);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+		m_c[6] = coordinates[6];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe1ni, Float c_e1e2ni) {
+		// set coordinates
+		m_c[0] = c_no;
+		m_c[1] = c_e1;
+		m_c[2] = c_e2;
+		m_c[3] = c_noe1e2;
+		m_c[4] = c_ni;
+		m_c[5] = c_noe1ni;
+		m_c[6] = c_e1e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalar_noe2_e1e2_e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 4);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_noe2_e1e2_e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_noe2_e1e2_e2ni::set(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 4);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_noe2_e1e2_e2ni::set(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 4);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_noe2_e1e2_e2ni::set(____syn_smv___scalar_noe2_e1e2_e2ni_coordinates__, Float c_scalar, Float c_noe2, Float c_e1e2, Float c_e2ni) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_noe2;
+		m_c[2] = c_e1e2;
+		m_c[3] = c_e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_noe2_e1e2_e2ni &__syn_smv___scalar_noe2_e1e2_e2ni::operator=(const __syn_smv___scalar_noe2_e1e2_e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_noe2_e1e2_e2ni &__syn_smv___scalar_noe2_e1e2_e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_noe2_e1e2_e2ni &__syn_smv___scalar_noe2_e1e2_e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 7);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+		m_c[6] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::set(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 7);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+		m_c[6] = arg1.m_c[6];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 7);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+		m_c[6] = coordinates[6];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::set(____syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_noe1e2, Float c_ni, Float c_noe2ni, Float c_e1e2ni) {
+		// set coordinates
+		m_c[0] = c_no;
+		m_c[1] = c_e1;
+		m_c[2] = c_e2;
+		m_c[3] = c_noe1e2;
+		m_c[4] = c_ni;
+		m_c[5] = c_noe2ni;
+		m_c[6] = c_e1e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::operator=(const __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalar_noni_e1ni_e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 4);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalar_noni_e1ni_e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = s ;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalar_noni_e1ni_e2ni::set(const __syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 4);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalar_noni_e1ni_e2ni::set(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 4);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalar_noni_e1ni_e2ni::set(____syn_smv___scalar_noni_e1ni_e2ni_coordinates__, Float c_scalar, Float c_noni, Float c_e1ni, Float c_e2ni) {
+		// set coordinates
+		m_c[0] = c_scalar;
+		m_c[1] = c_noni;
+		m_c[2] = c_e1ni;
+		m_c[3] = c_e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalar_noni_e1ni_e2ni &__syn_smv___scalar_noni_e1ni_e2ni::operator=(const __syn_smv___scalar_noni_e1ni_e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalar_noni_e1ni_e2ni &__syn_smv___scalar_noni_e1ni_e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalar_noni_e1ni_e2ni &__syn_smv___scalar_noni_e1ni_e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 7);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+		m_c[6] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::set(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 7);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+		m_c[6] = arg1.m_c[6];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::set(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 7);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+		m_c[6] = coordinates[6];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::set(____syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_coordinates__, Float c_no, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni) {
+		// set coordinates
+		m_c[0] = c_no;
+		m_c[1] = c_e1;
+		m_c[2] = c_e2;
+		m_c[3] = c_ni;
+		m_c[4] = c_noe1ni;
+		m_c[5] = c_noe2ni;
+		m_c[6] = c_e1e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::operator=(const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni &__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1ni_e2ni_nonif_1_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 2);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1ni_e2ni_nonif_1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1ni_e2ni_nonif_1_0::set(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 2);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1ni_e2ni_nonif_1_0::set(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 2);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1ni_e2ni_nonif_1_0::set(____syn_smv___e1ni_e2ni_nonif_1_0_coordinates__, Float c_e1ni, Float c_e2ni) {
+		// set coordinates
+		m_c[0] = c_e1ni;
+		m_c[1] = c_e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 &__syn_smv___e1ni_e2ni_nonif_1_0::operator=(const __syn_smv___e1ni_e2ni_nonif_1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 &__syn_smv___e1ni_e2ni_nonif_1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 &__syn_smv___e1ni_e2ni_nonif_1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___scalarf_1_0::set() {
+		// set coordinates to 0
+	}
+
+	// set to scalar 
+	inline void __syn_smv___scalarf_1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___scalarf_1_0::set(const __syn_smv___scalarf_1_0 &arg1) {
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___scalarf_1_0::set(____syn_smv___scalarf_1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___scalarf_1_0::set(____syn_smv___scalarf_1_0_coordinates__) {
+		// set coordinates
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___scalarf_1_0 &__syn_smv___scalarf_1_0::operator=(const __syn_smv___scalarf_1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___scalarf_1_0 &__syn_smv___scalarf_1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___scalarf_1_0 &__syn_smv___scalarf_1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___nif_1_0::set() {
+		// set coordinates to 0
+	}
+
+	// set to scalar 
+	inline void __syn_smv___nif_1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___nif_1_0::set(const __syn_smv___nif_1_0 &arg1) {
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___nif_1_0::set(____syn_smv___nif_1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___nif_1_0::set(____syn_smv___nif_1_0_coordinates__) {
+		// set coordinates
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___nif_1_0 &__syn_smv___nif_1_0::operator=(const __syn_smv___nif_1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___nif_1_0 &__syn_smv___nif_1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___nif_1_0 &__syn_smv___nif_1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___nif1_0::set() {
+		// set coordinates to 0
+	}
+
+	// set to scalar 
+	inline void __syn_smv___nif1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___nif1_0::set(const __syn_smv___nif1_0 &arg1) {
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___nif1_0::set(____syn_smv___nif1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___nif1_0::set(____syn_smv___nif1_0_coordinates__) {
+		// set coordinates
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___nif1_0 &__syn_smv___nif1_0::operator=(const __syn_smv___nif1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___nif1_0 &__syn_smv___nif1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___nif1_0 &__syn_smv___nif1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 6);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+		m_c[3] = (Float)0.0;
+		m_c[4] = (Float)0.0;
+		m_c[5] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::set(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 6);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+		m_c[3] = arg1.m_c[3];
+		m_c[4] = arg1.m_c[4];
+		m_c[5] = arg1.m_c[5];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::set(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 6);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+		m_c[3] = coordinates[3];
+		m_c[4] = coordinates[4];
+		m_c[5] = coordinates[5];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::set(____syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_coordinates__, Float c_e1, Float c_e2, Float c_ni, Float c_noe1ni, Float c_noe2ni, Float c_e1e2ni) {
+		// set coordinates
+		m_c[0] = c_e1;
+		m_c[1] = c_e2;
+		m_c[2] = c_ni;
+		m_c[3] = c_noe1ni;
+		m_c[4] = c_noe2ni;
+		m_c[5] = c_e1e2ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::operator=(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 &__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1_e2_ni_nof2_0::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 3);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e2_ni_nof2_0::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e2_ni_nof2_0::set(const __syn_smv___e1_e2_ni_nof2_0 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 3);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e2_ni_nof2_0::set(____syn_smv___e1_e2_ni_nof2_0_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 3);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e2_ni_nof2_0::set(____syn_smv___e1_e2_ni_nof2_0_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+		// set coordinates
+		m_c[0] = c_e1;
+		m_c[1] = c_e2;
+		m_c[2] = c_ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e2_ni_nof2_0 &__syn_smv___e1_e2_ni_nof2_0::operator=(const __syn_smv___e1_e2_ni_nof2_0 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e2_ni_nof2_0 &__syn_smv___e1_e2_ni_nof2_0::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e2_ni_nof2_0 &__syn_smv___e1_e2_ni_nof2_0::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
+	// set to zero
+	inline void __syn_smv___e1_e2_ni::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 3);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1_e2_ni::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+		m_c[2] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1_e2_ni::set(const __syn_smv___e1_e2_ni &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 3);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+		m_c[2] = arg1.m_c[2];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1_e2_ni::set(____syn_smv___e1_e2_ni_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 3);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+		m_c[2] = coordinates[2];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1_e2_ni::set(____syn_smv___e1_e2_ni_coordinates__, Float c_e1, Float c_e2, Float c_ni) {
+		// set coordinates
+		m_c[0] = c_e1;
+		m_c[1] = c_e2;
+		m_c[2] = c_ni;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1_e2_ni &__syn_smv___e1_e2_ni::operator=(const __syn_smv___e1_e2_ni &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1_e2_ni &__syn_smv___e1_e2_ni::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1_e2_ni &__syn_smv___e1_e2_ni::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
 
 
 
 
 	inline mv operator+=(mv& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline vectorE2GA operator+=(vectorE2GA& arg1, const __no_ct__& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_nof1_0 operator+=(__syn_smv___e1_e2_nof1_0& arg1, const ni_t& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline normalizedPoint operator+=(normalizedPoint& arg1, const normalizedPoint& arg2) {
 		arg1.set(::c2ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -11758,10 +18839,6 @@
 		return arg1;
 	}
 	inline point operator+=(point& arg1, const mv& arg2) {
-		arg1.set(::c2ga::add(arg1, arg2));
-		return arg1;
-	}
-	inline normalizedPoint operator+=(normalizedPoint& arg1, const mv& arg2) {
 		arg1.set(::c2ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -11806,10 +18883,6 @@
 		return arg1;
 	}
 	inline tangentBivector operator+=(tangentBivector& arg1, const mv& arg2) {
-		arg1.set(::c2ga::add(arg1, arg2));
-		return arg1;
-	}
-	inline vectorE2GA operator+=(vectorE2GA& arg1, const mv& arg2) {
 		arg1.set(::c2ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -11885,18 +18958,115 @@
 		arg1.set(::c2ga::add(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e2nif1_0 operator+=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator+=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator+=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator+=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator+=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator+=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator+=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator+=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator+=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator+=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator+=(__syn_smv___scalarf_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator+=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator+=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator+=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator+=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator+=(__syn_smv___e1_e2_ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::add(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator+(const mv& arg1, const mv& arg2) {
+		return ::c2ga::add(arg1, arg2);
+	}
+	inline __syn_smv___e1_e2_nof1_0 operator+(const vectorE2GA& arg1, const __no_ct__& arg2) {
+		return ::c2ga::add(arg1, arg2);
+	}
+	inline normalizedPoint operator+(const __syn_smv___e1_e2_nof1_0& arg1, const ni_t& arg2) {
+		return ::c2ga::add(arg1, arg2);
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator+(const normalizedPoint& arg1, const normalizedPoint& arg2) {
 		return ::c2ga::add(arg1, arg2);
 	}
 	inline mv operator-=(mv& arg1, const mv& arg2) {
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
-	inline no_t operator-=(no_t& arg1, const mv& arg2) {
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator-=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg2) {
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
-	inline e1_t operator-=(e1_t& arg1, const mv& arg2) {
+	inline point operator-=(point& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline vectorE2GA operator-=(vectorE2GA& arg1, const vectorE2GA& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline e1_t operator-=(e1_t& arg1, const e2_t& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator-=(scalar& arg1, const freeVector& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline no_t operator-=(no_t& arg1, const mv& arg2) {
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -11905,14 +19075,6 @@
 		return arg1;
 	}
 	inline ni_t operator-=(ni_t& arg1, const mv& arg2) {
-		arg1.set(::c2ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline scalar operator-=(scalar& arg1, const mv& arg2) {
-		arg1.set(::c2ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline point operator-=(point& arg1, const mv& arg2) {
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -11961,10 +19123,6 @@
 		return arg1;
 	}
 	inline tangentBivector operator-=(tangentBivector& arg1, const mv& arg2) {
-		arg1.set(::c2ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline vectorE2GA operator-=(vectorE2GA& arg1, const mv& arg2) {
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -12040,13 +19198,120 @@
 		arg1.set(::c2ga::subtract(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_nof1_0 operator-=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1e2nif1_0 operator-=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator-=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator-=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator-=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator-=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator-=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator-=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator-=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator-=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator-=(__syn_smv___scalarf_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator-=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator-=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator-=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator-=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator-=(__syn_smv___e1_e2_ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::subtract(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator-(const mv& arg1, const mv& arg2) {
 		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator-(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg2) {
+		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline point operator-(const point& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline vectorE2GA operator-(const vectorE2GA& arg1, const vectorE2GA& arg2) {
+		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline vectorE2GA operator-(const e1_t& arg1, const e2_t& arg2) {
+		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline translator operator-(const scalar& arg1, const freeVector& arg2) {
+		return ::c2ga::subtract(arg1, arg2);
+	}
+	inline translator operator-(float arg1, const freeVector& arg2) {
+		return ::c2ga::subtract(::c2ga::scalar(arg1), arg2);
 	}
 	inline mv operator-(const mv& arg1) {
 		return ::c2ga::negate(arg1);
 	}
+	inline circle operator-(const circle& arg1) {
+		return ::c2ga::negate(arg1);
+	}
+	inline __syn_smv___nif1_0 operator-(const __syn_smv___nif_1_0& arg1) {
+		return ::c2ga::negate(arg1);
+	}
+	inline vectorE2GA operator-(const vectorE2GA& arg1) {
+		return ::c2ga::negate(arg1);
+	}
 	inline mv operator%=(mv& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline normalizedPoint operator%=(normalizedPoint& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __ni_ct__ operator%=(__ni_ct__& arg1, const point& arg2) {
 		arg1.set(::c2ga::scp(arg1, arg2));
 		return arg1;
 	}
@@ -12071,10 +19336,6 @@
 		return arg1;
 	}
 	inline point operator%=(point& arg1, const mv& arg2) {
-		arg1.set(::c2ga::scp(arg1, arg2));
-		return arg1;
-	}
-	inline normalizedPoint operator%=(normalizedPoint& arg1, const mv& arg2) {
 		arg1.set(::c2ga::scp(arg1, arg2));
 		return arg1;
 	}
@@ -12170,10 +19431,6 @@
 		arg1.set(::c2ga::scp(arg1, arg2));
 		return arg1;
 	}
-	inline __ni_ct__ operator%=(__ni_ct__& arg1, const mv& arg2) {
-		arg1.set(::c2ga::scp(arg1, arg2));
-		return arg1;
-	}
 	inline __I4i_ct__ operator%=(__I4i_ct__& arg1, const mv& arg2) {
 		arg1.set(::c2ga::scp(arg1, arg2));
 		return arg1;
@@ -12198,10 +19455,124 @@
 		arg1.set(::c2ga::scp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_nof1_0 operator%=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1e2nif1_0 operator%=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator%=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator%=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator%=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator%=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator%=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator%=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator%=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator%=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator%=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator%=(__syn_smv___scalarf_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator%=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator%=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator%=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator%=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator%=(__syn_smv___e1_e2_ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::scp(arg1, arg2));
+		return arg1;
+	}
 	inline scalar operator%(const mv& arg1, const mv& arg2) {
 		return ::c2ga::scp(arg1, arg2);
 	}
+	inline scalar operator%(const normalizedPoint& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::scp(arg1, arg2);
+	}
+	inline scalar operator%(const __ni_ct__& arg1, const point& arg2) {
+		return ::c2ga::scp(arg1, arg2);
+	}
 	inline mv operator^=(mv& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline vectorE2GA operator^=(vectorE2GA& arg1, const __ni_ct__& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline pointPair operator^=(pointPair& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator^=(__syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __ni_ct__ operator^=(__ni_ct__& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline pointPair operator^=(pointPair& arg1, const __ni_ct__& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __e1_ct__ operator^=(__e1_ct__& arg1, const __e2_ct__& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __I2_ct__ operator^=(__I2_ct__& arg1, const __ni_ct__& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline normalizedPoint operator^=(normalizedPoint& arg1, const normalizedPoint& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -12229,19 +19600,11 @@
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
-	inline normalizedPoint operator^=(normalizedPoint& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
 	inline flatPoint operator^=(flatPoint& arg1, const mv& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
 	inline normalizedFlatPoint operator^=(normalizedFlatPoint& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
-	inline pointPair operator^=(pointPair& arg1, const mv& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -12274,10 +19637,6 @@
 		return arg1;
 	}
 	inline tangentBivector operator^=(tangentBivector& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
-	inline vectorE2GA operator^=(vectorE2GA& arg1, const mv& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -12317,15 +19676,7 @@
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
-	inline __e1_ct__ operator^=(__e1_ct__& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
 	inline __e2_ct__ operator^=(__e2_ct__& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
-	inline __ni_ct__ operator^=(__ni_ct__& arg1, const mv& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -12334,10 +19685,6 @@
 		return arg1;
 	}
 	inline __I4_ct__ operator^=(__I4_ct__& arg1, const mv& arg2) {
-		arg1.set(::c2ga::op(arg1, arg2));
-		return arg1;
-	}
-	inline __I2_ct__ operator^=(__I2_ct__& arg1, const mv& arg2) {
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -12353,10 +19700,162 @@
 		arg1.set(::c2ga::op(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_nof1_0 operator^=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1e2nif1_0 operator^=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator^=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator^=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator^=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator^=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator^=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator^=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator^=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator^=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator^=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator^=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator^=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator^=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator^=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator^=(__syn_smv___e1_e2_ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::op(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator^(const mv& arg1, const mv& arg2) {
 		return ::c2ga::op(arg1, arg2);
 	}
+	inline freeVector operator^(const vectorE2GA& arg1, const __ni_ct__& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline circle operator^(const pointPair& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline __syn_smv___nif_1_0 operator^(const __syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator^(const __ni_ct__& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline line operator^(const pointPair& arg1, const __ni_ct__& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline __I2_ct__ operator^(const __e1_ct__& arg1, const __e2_ct__& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline __syn_smv___e1e2nif1_0 operator^(const __I2_ct__& arg1, const __ni_ct__& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
+	inline pointPair operator^(const normalizedPoint& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::op(arg1, arg2);
+	}
 	inline mv operator*=(mv& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline circle operator*=(circle& arg1, const TRversorLog& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const scalar& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, float arg2) {
+		arg1.set(::c2ga::gp(arg1, ::c2ga::scalar(arg2)));
+		return arg1;
+	}
+	inline normalizedPoint operator*=(normalizedPoint& arg1, const scalar& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline normalizedPoint operator*=(normalizedPoint& arg1, float arg2) {
+		arg1.set(::c2ga::gp(arg1, ::c2ga::scalar(arg2)));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator*=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const translator& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const __e1_ct__& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const vectorE2GA& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline point operator*=(point& arg1, const scalar& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline point operator*=(point& arg1, float arg2) {
+		arg1.set(::c2ga::gp(arg1, ::c2ga::scalar(arg2)));
+		return arg1;
+	}
+	inline normalizedTranslator operator*=(normalizedTranslator& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const __ni_ct__& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const __e2_ct__& arg2) {
 		arg1.set(::c2ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -12373,18 +19872,6 @@
 		return arg1;
 	}
 	inline ni_t operator*=(ni_t& arg1, const mv& arg2) {
-		arg1.set(::c2ga::gp(arg1, arg2));
-		return arg1;
-	}
-	inline scalar operator*=(scalar& arg1, const mv& arg2) {
-		arg1.set(::c2ga::gp(arg1, arg2));
-		return arg1;
-	}
-	inline point operator*=(point& arg1, const mv& arg2) {
-		arg1.set(::c2ga::gp(arg1, arg2));
-		return arg1;
-	}
-	inline normalizedPoint operator*=(normalizedPoint& arg1, const mv& arg2) {
 		arg1.set(::c2ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -12409,10 +19896,6 @@
 		return arg1;
 	}
 	inline dualLine operator*=(dualLine& arg1, const mv& arg2) {
-		arg1.set(::c2ga::gp(arg1, arg2));
-		return arg1;
-	}
-	inline circle operator*=(circle& arg1, const mv& arg2) {
 		arg1.set(::c2ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -12453,10 +19936,6 @@
 		return arg1;
 	}
 	inline translator operator*=(translator& arg1, const mv& arg2) {
-		arg1.set(::c2ga::gp(arg1, arg2));
-		return arg1;
-	}
-	inline normalizedTranslator operator*=(normalizedTranslator& arg1, const mv& arg2) {
 		arg1.set(::c2ga::gp(arg1, arg2));
 		return arg1;
 	}
@@ -12508,10 +19987,158 @@
 		arg1.set(::c2ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_nof1_0 operator*=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1e2nif1_0 operator*=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator*=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator*=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator*=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator*=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator*=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator*=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator*=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator*=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator*=(__syn_smv___scalarf_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator*=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator*=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator*=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator*=(__syn_smv___e1_e2_ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator*(const mv& arg1, const mv& arg2) {
 		return ::c2ga::gp(arg1, arg2);
 	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*(const circle& arg1, const TRversorLog& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline scalar operator*(const scalar& arg1, const scalar& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline scalar operator*(float arg1, const scalar& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
+	inline scalar operator*(const scalar& arg1, float arg2) {
+		return ::c2ga::gp(arg1, ::c2ga::scalar(arg2));
+	}
+	inline point operator*(const normalizedPoint& arg1, const scalar& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline point operator*(const normalizedPoint& arg1, float arg2) {
+		return ::c2ga::gp(arg1, ::c2ga::scalar(arg2));
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator*(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const translator& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline e1_t operator*(const scalar& arg1, const __e1_ct__& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline e1_t operator*(float arg1, const __e1_ct__& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
+	inline vectorE2GA operator*(const scalar& arg1, const vectorE2GA& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline vectorE2GA operator*(float arg1, const vectorE2GA& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
+	inline point operator*(const scalar& arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline point operator*(float arg1, const __syn_smv___e1_e2_ni_nof2_0& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
+	inline point operator*(const point& arg1, const scalar& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline point operator*(const point& arg1, float arg2) {
+		return ::c2ga::gp(arg1, ::c2ga::scalar(arg2));
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator*(const normalizedTranslator& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline ni_t operator*(const scalar& arg1, const __ni_ct__& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline ni_t operator*(float arg1, const __ni_ct__& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
+	inline e2_t operator*(const scalar& arg1, const __e2_ct__& arg2) {
+		return ::c2ga::gp(arg1, arg2);
+	}
+	inline e2_t operator*(float arg1, const __e2_ct__& arg2) {
+		return ::c2ga::gp(::c2ga::scalar(arg1), arg2);
+	}
 	inline mv operator<<=(mv& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni operator<<=(__syn_smv___e1_e2_ni& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline circle operator<<=(circle& arg1, const __syn_smv___e1e2nif1_0& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const circle& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const normalizedPoint& arg2) {
 		arg1.set(::c2ga::lcont(arg1, arg2));
 		return arg1;
 	}
@@ -12564,10 +20191,6 @@
 		return arg1;
 	}
 	inline dualLine operator<<=(dualLine& arg1, const mv& arg2) {
-		arg1.set(::c2ga::lcont(arg1, arg2));
-		return arg1;
-	}
-	inline circle operator<<=(circle& arg1, const mv& arg2) {
 		arg1.set(::c2ga::lcont(arg1, arg2));
 		return arg1;
 	}
@@ -12635,10 +20258,6 @@
 		arg1.set(::c2ga::lcont(arg1, arg2));
 		return arg1;
 	}
-	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const mv& arg2) {
-		arg1.set(::c2ga::lcont(arg1, arg2));
-		return arg1;
-	}
 	inline __I4i_ct__ operator<<=(__I4i_ct__& arg1, const mv& arg2) {
 		arg1.set(::c2ga::lcont(arg1, arg2));
 		return arg1;
@@ -12663,21 +20282,331 @@
 		arg1.set(::c2ga::lcont(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1_e2_nof1_0 operator<<=(__syn_smv___e1_e2_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1e2nif1_0 operator<<=(__syn_smv___e1e2nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 operator<<=(__syn_smv___e1_e2_ni_nof_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni operator<<=(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni operator<<=(__syn_smv___scalar_noe1_noe2_noni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni operator<<=(__syn_smv___scalar_noe1_e1e2_e1ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni operator<<=(__syn_smv___scalar_noe2_e1e2_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni operator<<=(__syn_smv___scalar_noni_e1ni_e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni operator<<=(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 operator<<=(__syn_smv___e1ni_e2ni_nonif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___scalarf_1_0 operator<<=(__syn_smv___scalarf_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif_1_0 operator<<=(__syn_smv___nif_1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___nif1_0 operator<<=(__syn_smv___nif1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 operator<<=(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 operator<<=(__syn_smv___e1_e2_ni_nof2_0& arg1, const mv& arg2) {
+		arg1.set(::c2ga::lcont(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator<<(const mv& arg1, const mv& arg2) {
+		return ::c2ga::lcont(arg1, arg2);
+	}
+	inline scalar operator<<(const __syn_smv___e1_e2_ni& arg1, const normalizedPoint& arg2) {
+		return ::c2ga::lcont(arg1, arg2);
+	}
+	inline scalar operator<<(const circle& arg1, const __syn_smv___e1e2nif1_0& arg2) {
+		return ::c2ga::lcont(arg1, arg2);
+	}
+	inline TRversorLog operator<<(const __ni_ct__& arg1, const circle& arg2) {
+		return ::c2ga::lcont(arg1, arg2);
+	}
+	inline __syn_smv___scalarf_1_0 operator<<(const __ni_ct__& arg1, const normalizedPoint& arg2) {
 		return ::c2ga::lcont(arg1, arg2);
 	}
 	inline mv operator*(const mv& arg1) {
 		return ::c2ga::dual(arg1);
 	}
+	inline __syn_smv___e1_e2_ni operator*(const line& arg1) {
+		return ::c2ga::dual(arg1);
+	}
 	inline mv operator!(const mv& arg1) {
+		return ::c2ga::inverse(arg1);
+	}
+	inline TRversorLog operator!(const TRversorLog& arg1) {
+		return ::c2ga::inverse(arg1);
+	}
+	inline scalar operator!(const scalar& arg1) {
+		return ::c2ga::inverse(arg1);
+	}
+	inline scalar operator!(const __syn_smv___scalarf_1_0& arg1) {
+		return ::c2ga::inverse(arg1);
+	}
+	inline translator operator!(const normalizedTranslator& arg1) {
 		return ::c2ga::inverse(arg1);
 	}
 	inline mv operator~(const mv& arg1) {
 		return ::c2ga::reverse(arg1);
 	}
+	inline normalizedPoint operator~(const normalizedPoint& arg1) {
+		return ::c2ga::reverse(arg1);
+	}
 
 
 	// G2 functions:
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const circle& x, const TRversorLog& y) {
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, (-1.0f * x.m_c[3] * y.m_c[0]), (x.m_c[3] * y.m_c[2]), (-1.0f * x.m_c[3] * y.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
+	}
+	inline TRversorLog inverse(const TRversorLog& x) {
+		scalar n;
+		n.m_c[0] = (x.m_c[0] * x.m_c[0]);
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return TRversorLog(TRversorLog_e1e2_e1ni_e2ni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
+	}
+	inline circle negate(const circle& x) {
+		return circle(circle_e1e2ni_noe1ni_noe2ni_noe1e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noe2_e1e2_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + x.m_c[1] + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni subtract(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& x, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& y) {
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), ((-1.0f * y.m_c[4]) + x.m_c[4]), (x.m_c[5] + (-1.0f * y.m_c[5])), (x.m_c[6] + (-1.0f * y.m_c[6])));
+	}
+	inline __syn_smv___e1_e2_ni_nof_1_0 gradeInvolution(const normalizedPoint& x) {
+		return __syn_smv___e1_e2_ni_nof_1_0(__syn_smv___e1_e2_ni_nof_1_0_e1_e2_ni_nof_1_0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noni_e1ni_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + x.m_c[1] + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+	}
+	inline __syn_smv___e1_e2_nof1_0 add(const vectorE2GA& x, const __no_ct__& y) {
+		return __syn_smv___e1_e2_nof1_0(__syn_smv___e1_e2_nof1_0_e1_e2_nof1_0, x.m_c[0], x.m_c[1]);
+	}
+	inline point subtract(const point& x, const normalizedPoint& y) {
+		return point(point_no_e1_e2_ni, (-1.0f + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[0])), (x.m_c[2] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[3]));
+	}
+	inline scalar gp(const scalar& x, const scalar& y) {
+		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
+	}
+	inline __syn_smv___nif1_0 negate(const __syn_smv___nif_1_0& x) {
+		return __syn_smv___nif1_0(__syn_smv___nif1_0_nif1_0);
+	}
+	inline scalar inverse(const scalar& x) {
+		scalar n;
+		n.m_c[0] = (x.m_c[0] * x.m_c[0]);
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return scalar(scalar_scalar, (x.m_c[0] * in.m_c[0]));
+	}
+	inline scalar scp(const normalizedPoint& x, const normalizedPoint& y) {
+		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2]) + (-1.0f * y.m_c[2])));
+	}
+	inline scalar norm_e2(const vectorE2GA& x) {
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+	}
+	inline scalar inverse(const __syn_smv___scalarf_1_0& x) {
+		scalar n;
+		n.m_c[0] = 1.0f;
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return scalar(scalar_scalar, (-1.0f * in.m_c[0]));
+	}
+	inline vectorE2GA subtract(const vectorE2GA& x, const vectorE2GA& y) {
+		return vectorE2GA(vectorE2GA_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+	}
+	inline vectorE2GA negate(const vectorE2GA& x) {
+		return vectorE2GA(vectorE2GA_e1_e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
+	}
+	inline freeVector op(const vectorE2GA& x, const __ni_ct__& y) {
+		return freeVector(freeVector_e1ni_e2ni, x.m_c[0], x.m_c[1]);
+	}
+	inline scalar scpEM(const normalizedPoint& x, const normalizedPoint& y) {
+		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + 1.0f));
+	}
+	inline point gp(const normalizedPoint& x, const scalar& y) {
+		return point(point_no_e1_e2_ni, y.m_c[0], (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gpEM(const __syn_smv___scalar_noe1_noe2_noni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), (x.m_c[3] + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+	}
+	inline circle op(const pointPair& x, const normalizedPoint& y) {
+		return circle(circle_e1e2ni_noe1ni_noe2ni_noe1e2, ((x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[0]) + x.m_c[3] + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[5] * y.m_c[1]) + x.m_c[4] + (x.m_c[1] * y.m_c[2])), (x.m_c[2] + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+	}
+	inline vectorE2GA subtract(const e1_t& x, const e2_t& y) {
+		return vectorE2GA(vectorE2GA_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
+	}
+	inline scalar scp(const __ni_ct__& x, const point& y) {
+		return scalar(scalar_scalar, (-1.0f * y.m_c[0]));
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const __syn_smv___e1_e2_ni_nof_1_0& x, const point& y) {
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])));
+	}
+	inline scalar norm_r2(const normalizedPoint& x) {
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
+	}
+	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni gpEM(const __syn_smv___scalar_noe1_e1e2_e1ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + x.m_c[1]), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+	}
+	inline scalar norm_e(const __syn_smv___scalarf_1_0& x) {
+		scalar e2;
+		e2.m_c[0] = 1.0f;
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
+	inline __syn_smv___nif_1_0 op(const __syn_smv___scalarf_1_0& x, const __ni_ct__& y) {
+		return __syn_smv___nif_1_0(__syn_smv___nif_1_0_nif_1_0);
+	}
+	inline __syn_smv___scalar_noe1_e1e2_e1ni gpEM(const point& x, const __e1_ct__& y) {
+		return __syn_smv___scalar_noe1_e1e2_e1ni(__syn_smv___scalar_noe1_e1e2_e1ni_scalar_noe1_e1e2_e1ni, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
+	}
+	inline scalar lcont(const __syn_smv___e1_e2_ni& x, const normalizedPoint& y) {
+		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2]) + (x.m_c[0] * y.m_c[0])));
+	}
+	inline point inverseEM(const normalizedPoint& x) {
+		scalar n;
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + 1.0f + (x.m_c[1] * x.m_c[1]));
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return point(point_no_e1_e2_ni, in.m_c[0], (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
+	}
+	inline scalar lcont(const circle& x, const __syn_smv___e1e2nif1_0& y) {
+		return scalar(scalar_scalar, x.m_c[3]);
+	}
+	inline __syn_smv___e1_e2_ni dual(const line& x) {
+		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, x.m_c[2], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[0]));
+	}
+	inline vectorE2GA unit_e(const vectorE2GA& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		scalar ie;
+		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
+		return vectorE2GA(vectorE2GA_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
+	}
+	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& x, const translator& y) {
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, y.m_c[0], (y.m_c[1] + (x.m_c[0] * y.m_c[0])), (y.m_c[2] + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + y.m_c[1]), (y.m_c[2] + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])));
+	}
+	inline e1_t gp(const scalar& x, const __e1_ct__& y) {
+		return e1_t(e1_t_e1, x.m_c[0]);
+	}
+	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const point& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), (x.m_c[1] + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+	}
+	inline translator inverse(const normalizedTranslator& x) {
+		scalar n;
+		n.m_c[0] = 1.0f;
+		scalar in;
+		in.m_c[0] = ((char)1 / n.m_c[0]);
+		return translator(translator_scalar_e1ni_e2ni, in.m_c[0], (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]));
+	}
+	inline vectorE2GA gp(const scalar& x, const vectorE2GA& y) {
+		return vectorE2GA(vectorE2GA_e1_e2, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]));
+	}
+	inline __syn_smv___e1ni_e2ni_nonif_1_0 op(const __ni_ct__& x, const normalizedPoint& y) {
+		return __syn_smv___e1ni_e2ni_nonif_1_0(__syn_smv___e1ni_e2ni_nonif_1_0_e1ni_e2ni_nonif_1_0, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]));
+	}
+	inline point gp(const scalar& x, const __syn_smv___e1_e2_ni_nof2_0& y) {
+		return point(point_no_e1_e2_ni, (2.0f * x.m_c[0]), (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
+	}
+	inline TRversorLog lcont(const __ni_ct__& x, const circle& y) {
+		return TRversorLog(TRversorLog_e1e2_e1ni_e2ni, (-1.0f * y.m_c[3]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]));
+	}
+	inline __syn_smv___scalar_noni_e1ni_e2ni gpEM(const point& x, const __ni_ct__& y) {
+		return __syn_smv___scalar_noni_e1ni_e2ni(__syn_smv___scalar_noni_e1ni_e2ni_scalar_noni_e1ni_e2ni, x.m_c[3], x.m_c[0], x.m_c[1], x.m_c[2]);
+	}
+	inline scalar norm_e(const __syn_smv___e1ni_e2ni_nonif_1_0& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + 1.0f + (x.m_c[1] * x.m_c[1]));
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
+	}
+	inline point gp(const point& x, const scalar& y) {
+		return point(point_no_e1_e2_ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
+	}
+	inline line op(const pointPair& x, const __ni_ct__& y) {
+		return line(line_e1e2ni_e1noni_e2noni, x.m_c[2], (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
+	}
+	inline __I2_ct__ op(const __e1_ct__& x, const __e2_ct__& y) {
+		return __I2_ct__(__I2_ct___e1e2f1_0);
+	}
+	inline __syn_smv___scalar_noe1_noe2_noni gpEM(const point& x, const __no_ct__& y) {
+		return __syn_smv___scalar_noe1_noe2_noni(__syn_smv___scalar_noe1_noe2_noni_scalar_noe1_noe2_noni, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
+	}
+	inline normalizedPoint add(const __syn_smv___e1_e2_nof1_0& x, const ni_t& y) {
+		return normalizedPoint(normalizedPoint_e1_e2_ni_nof1_0, x.m_c[0], x.m_c[1], y.m_c[0]);
+	}
+	inline __syn_smv___e1e2nif1_0 op(const __I2_ct__& x, const __ni_ct__& y) {
+		return __syn_smv___e1e2nif1_0(__syn_smv___e1e2nif1_0_e1e2nif1_0);
+	}
+	inline pointPair op(const normalizedPoint& x, const normalizedPoint& y) {
+		return pointPair(pointPair_noe1_noe2_e1e2_e1ni_e2ni_noni, (y.m_c[0] + (-1.0f * x.m_c[0])), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2]) + y.m_c[2]));
+	}
+	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 gp(const normalizedTranslator& x, const normalizedPoint& y) {
+		return __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0, ((-1.0f * x.m_c[0]) + y.m_c[0]), (y.m_c[1] + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + y.m_c[2]), x.m_c[0], x.m_c[1], ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+	}
+	inline translator subtract(const scalar& x, const freeVector& y) {
+		return translator(translator_scalar_e1ni_e2ni, x.m_c[0], (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]));
+	}
+	inline ni_t gp(const scalar& x, const __ni_ct__& y) {
+		return ni_t(ni_t_ni, x.m_c[0]);
+	}
+	inline __syn_smv___e1_e2_ni_nof2_0 add(const normalizedPoint& x, const normalizedPoint& y) {
+		return __syn_smv___e1_e2_ni_nof2_0(__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
+	}
+	inline __syn_smv___scalar_noe2_e1e2_e2ni gpEM(const point& x, const __e2_ct__& y) {
+		return __syn_smv___scalar_noe2_e1e2_e2ni(__syn_smv___scalar_noe2_e1e2_e2ni_scalar_noe2_e1e2_e2ni, x.m_c[2], x.m_c[0], x.m_c[1], (-1.0f * x.m_c[3]));
+	}
+	inline __syn_smv___scalarf_1_0 lcont(const __ni_ct__& x, const normalizedPoint& y) {
+		return __syn_smv___scalarf_1_0(__syn_smv___scalarf_1_0_scalarf_1_0);
+	}
+	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
+		return e2_t(e2_t_e2, x.m_c[0]);
+	}
+	inline normalizedPoint reverse(const normalizedPoint& x) {
+		return normalizedPoint(normalizedPoint_e1_e2_ni_nof1_0, x.m_c[0], x.m_c[1], x.m_c[2]);
+	}
 
 
 
