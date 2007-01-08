@@ -108,6 +108,7 @@ usage : mv gp(mv x, mv y) : __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_
 usage : mv gp(mv x, mv y) : bivectorE3GA , scalar : 1;
 usage : mv gp(mv x, mv y) : __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni , __ni_ct__ : 1;
 usage : mv gp(mv x, mv y) : __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni , sphere : 1;
+usage : mv negate(mv x) : scalar : 1;
 usage : mv dual(mv x) : sphere : 1;
 usage : mv gp(mv x, mv y) : freeVector , line : 1;
 usage : scalar norm_e(mv x) : __syn_smv___scalarf_1_0 : 1;
