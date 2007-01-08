@@ -109,13 +109,13 @@ void recomputeOps() {
 	double tStart = u_timeGet();
 	const double NB_VEC_LIMIT = 200; // limit on number of ops (48 is the actual limit, but we use 200 to visualize bad configurations)
 	while (V.size() < NB_VEC_LIMIT) {
-		unsigned int nbVec = V.size();
+		unsigned int nbVec = (unsigned int)V.size();
 		for (unsigned int i = 0; i < nbVec; i++) {
 			for (unsigned int j = 0; j < nbVec; j++) {
 				mv v = V[j] * V[i];
 				bool newVersor = true;
 				for (unsigned int k = 0; k < V.size(); k++) {
-					const float CLOSE = 0.001;
+					const float CLOSE = 0.001f;
 					mv dif = v * inverse(V[k]);
 					if (_Float(norm_e(dif - _Float(dif))) < CLOSE) {
 						newVersor = false;
@@ -174,7 +174,7 @@ void display() {
 	// draw the reflected points
 	if (!GLpick::g_pickActive) {
 		glColor3f(0.0f, 0.0f, 1.0f);
-		for (int i = 0; i < m_ops.size(); i++) {
+		for (int i = 0; i < (int)m_ops.size(); i++) {
 			glBegin(GL_POINTS);
 			glVertex3fv(_vector(gradeInvolution(m_ops[i]) * g_point * inverse(m_ops[i])).getC(vector_e1_e2_e3));
 			glEnd();
@@ -305,14 +305,14 @@ void menuCallback(int value) {
 	case HEXAGONAL:
 		{
 			g_inputVectors[0] = _vector(e1);
-			g_inputVectors[1] = _vector(e1 * exp(e1 ^ e2 * (M_PI / 6.0f)));
+			g_inputVectors[1] = _vector(e1 * exp(e1 ^ e2 * ((float)M_PI / 6.0f)));
 			g_inputVectors[2] = _vector(e3);
 		}
 		break;
 	case TETRAGONAL:
 		{
 			g_inputVectors[0] = _vector(e1);
-			g_inputVectors[1] = _vector(e1 * exp(e1 ^ e2 * (M_PI / 4.0f)));
+			g_inputVectors[1] = _vector(e1 * exp(e1 ^ e2 * ((float)M_PI / 4.0f)));
 			g_inputVectors[2] = _vector(e3);
 		}
 		break;

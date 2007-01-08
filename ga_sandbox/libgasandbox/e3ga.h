@@ -1,5 +1,5 @@
 
-// Generated on 2006-12-14 13:53:03 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
+// Generated on 2007-01-08 10:28:37 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -293,66 +293,66 @@
 		}
 
 		/// pointer to coordinates constructor
-		inline mv(unsigned int gradeUsage, const Float *coordinates) {
+		inline mv(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV) {
 
-			set(gradeUsage, coordinates);
+			set(gradeUsage, coordinates, type);
 		}
 
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0) {
+		, Float c0, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0);
+				, c0, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1) {
+		, Float c0, Float c1, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1);
+				, c0, c1, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2) {
+		, Float c0, Float c1, Float c2, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2);
+				, c0, c1, c2, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3) {
+		, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3);
+				, c0, c1, c2, c3, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4);
+				, c0, c1, c2, c3, c4, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5);
+				, c0, c1, c2, c3, c4, c5, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6);
+				, c0, c1, c2, c3, c4, c5, c6, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7);
+				, c0, c1, c2, c3, c4, c5, c6, c7, type);
 		}
 
 		/// init from e1_t constructor
@@ -507,33 +507,33 @@
 		void set(Float scalar);
 
 		/// pointer to coordinates constructor
-		void set(unsigned int gradeUsage, const Float *coordinates);
+		void set(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV);
 
 
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0);
+			, Float c0, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1);
+			, Float c0, Float c1, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2);
+			, Float c0, Float c1, Float c2, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3);
+			, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV);
 
 
 		/// set to e1_t 
@@ -741,6 +741,9 @@
 		unsigned int m_gu; ///< grade usage
 		inline unsigned int gu() const {return m_gu;}
 		inline void gu(unsigned int g) {m_gu = g;}
+		g2Type m_type; ///< type (used for profiling)
+		inline g2Type type() const {return m_type;}
+		inline void type(g2Type t) {m_type = t;}
 
 
 
@@ -774,14 +777,26 @@
 
 	/// returns scalar part of arg1 as float
 	inline float _float(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)56), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
 	/// returns scalar part of arg1 as double
 	inline double _double(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)57), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
 	/// returns scalar part of arg1 as Float
 	inline float _Float(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)58), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
 
@@ -949,6 +964,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e1_t _e1_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)21), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e1_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1151,6 +1170,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e2_t _e2_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)22), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e2_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1353,6 +1376,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e3_t _e3_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)23), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e3_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1553,6 +1580,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline scalar _scalar(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)24), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return scalar(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1758,6 +1789,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vector2D _vector2D(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)25), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return vector2D(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1966,6 +2001,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vector _vector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)26), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return vector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2174,6 +2213,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline bivector _bivector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)27), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return bivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2376,6 +2419,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline trivector _trivector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)28), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return trivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2584,6 +2631,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline rotor _rotor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)29), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return rotor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2785,6 +2836,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e1_ct__ ___e1_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)30), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e1_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2986,6 +3041,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e2_ct__ ___e2_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)31), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e2_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3187,6 +3246,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e3_ct__ ___e3_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)32), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3388,6 +3451,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I3_ct__ ___I3_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)33), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __I3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3589,6 +3656,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I3i_ct__ ___I3i_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)34), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __I3i_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3800,6 +3871,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e2_e3_e1e2e3 ___syn_smv___e1_e2_e3_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)35), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e2_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4001,6 +4076,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2f1_0 ___syn_smv___e1e2f1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)36), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4203,6 +4282,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2 ___syn_smv___e1e2(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)37), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4405,6 +4488,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2 ___syn_smv___scalar_e1e2(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)38), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4606,6 +4693,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e3f_1_0 ___syn_smv___e3f_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)39), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e3f_1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4811,6 +4902,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3_e2e3 ___syn_smv___e1e3_e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)40), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5016,6 +5111,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e3_e2e3 ___syn_smv___scalar_e1e3_e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)41), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e3_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5227,6 +5326,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e2_e1e3_e2e3_e1e2e3 ___syn_smv___e1e2_e1e3_e2e3_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)42), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e2_e1e3_e2e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5428,6 +5531,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3f_1_0 ___syn_smv___e1e3f_1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)43), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3f_1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5630,6 +5737,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1e3 ___syn_smv___e1e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)44), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5832,6 +5943,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e3 ___syn_smv___scalar_e1e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)45), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6033,6 +6148,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2e3f1_0 ___syn_smv___e2e3f1_0(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)46), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e2e3f1_0(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6235,6 +6354,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2e3 ___syn_smv___e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)47), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6437,6 +6560,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e2e3 ___syn_smv___scalar_e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)48), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6642,6 +6769,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2_e3 ___syn_smv___e2_e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)49), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e2_e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6847,6 +6978,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e3 ___syn_smv___e1_e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)50), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7055,6 +7190,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e2_e3_e1e2e3 ___syn_smv___e2_e3_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)51), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e2_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7263,6 +7402,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e3_e1e2e3 ___syn_smv___e1_e3_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)52), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e3_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7471,6 +7614,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___e1_e2_e1e2e3 ___syn_smv___e1_e2_e1e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)53), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___e1_e2_e1e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7676,6 +7823,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2_e1e3 ___syn_smv___scalar_e1e2_e1e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)54), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2_e1e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7881,6 +8032,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __syn_smv___scalar_e1e2_e2e3 ___syn_smv___scalar_e1e2_e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)55), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __syn_smv___scalar_e1e2_e2e3(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8038,6 +8193,10 @@
 		Float m_c[19]; ///< coordinate storage
 
 
+
+		omType m_type; /// type (for profiling)
+		inline omType type() const {return m_type;}
+		inline void type(omType t) {m_type = t;}
 
 
 	}; // end of class om

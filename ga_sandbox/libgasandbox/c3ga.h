@@ -1,5 +1,5 @@
 
-// Generated on 2006-12-14 13:52:09 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2007-01-08 10:29:34 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -343,234 +343,234 @@
 		}
 
 		/// pointer to coordinates constructor
-		inline mv(unsigned int gradeUsage, const Float *coordinates) {
+		inline mv(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV) {
 
-			set(gradeUsage, coordinates);
+			set(gradeUsage, coordinates, type);
 		}
 
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0) {
+		, Float c0, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0);
+				, c0, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1) {
+		, Float c0, Float c1, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1);
+				, c0, c1, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2) {
+		, Float c0, Float c1, Float c2, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2);
+				, c0, c1, c2, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3) {
+		, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3);
+				, c0, c1, c2, c3, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4);
+				, c0, c1, c2, c3, c4, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5);
+				, c0, c1, c2, c3, c4, c5, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6);
+				, c0, c1, c2, c3, c4, c5, c6, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7);
+				, c0, c1, c2, c3, c4, c5, c6, c7, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, type);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, Float c31) {
+		, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, Float c31, g2Type type = MVT_MV) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31);
+				, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, type);
 		}
 
 		/// init from no_t constructor
@@ -785,105 +785,105 @@
 		void set(Float scalar);
 
 		/// pointer to coordinates constructor
-		void set(unsigned int gradeUsage, const Float *coordinates);
+		void set(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV);
 
 
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0);
+			, Float c0, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1);
+			, Float c0, Float c1, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2);
+			, Float c0, Float c1, Float c2, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3);
+			, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, g2Type type = MVT_MV);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, Float c31);
+			, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15, Float c16, Float c17, Float c18, Float c19, Float c20, Float c21, Float c22, Float c23, Float c24, Float c25, Float c26, Float c27, Float c28, Float c29, Float c30, Float c31, g2Type type = MVT_MV);
 
 
 		/// set to no_t 
@@ -1271,6 +1271,9 @@
 		unsigned int m_gu; ///< grade usage
 		inline unsigned int gu() const {return m_gu;}
 		inline void gu(unsigned int g) {m_gu = g;}
+		g2Type m_type; ///< type (used for profiling)
+		inline g2Type type() const {return m_type;}
+		inline void type(g2Type t) {m_type = t;}
 
 
 
@@ -1304,14 +1307,26 @@
 
 	/// returns scalar part of arg1 as float
 	inline float _float(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)79), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
 	/// returns scalar part of arg1 as double
 	inline double _double(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)80), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
 	/// returns scalar part of arg1 as Float
 	inline float _Float(const mv & arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)81), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
 
@@ -1495,6 +1510,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline no_t _no_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)29), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return no_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1713,6 +1732,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e1_t _e1_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)30), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e1_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1931,6 +1954,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e2_t _e2_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)31), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e2_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2149,6 +2176,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e3_t _e3_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)32), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return e3_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2367,6 +2398,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline ni_t _ni_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)33), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return ni_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2583,6 +2618,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline scalar _scalar(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)34), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return scalar(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2801,6 +2840,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline noni_t _noni_t(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)35), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return noni_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3031,6 +3074,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline point _point(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)36), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return point(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3261,6 +3308,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline normalizedPoint _normalizedPoint(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)37), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return normalizedPoint(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3488,6 +3539,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline flatPoint _flatPoint(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)38), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return flatPoint(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3715,6 +3770,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline normalizedFlatPoint _normalizedFlatPoint(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)39), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return normalizedFlatPoint(arg1, 0);
 	}
 	/// from const specialization class:
@@ -3960,6 +4019,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline pointPair _pointPair(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)40), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return pointPair(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4193,6 +4256,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline line _line(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)41), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return line(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4426,6 +4493,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline dualLine _dualLine(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)42), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return dualLine(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4653,6 +4724,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline plane _plane(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)43), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return plane(arg1, 0);
 	}
 	/// from const specialization class:
@@ -4880,6 +4955,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline dualPlane _dualPlane(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)44), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return dualPlane(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5125,6 +5204,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline circle _circle(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)45), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return circle(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5355,6 +5438,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline sphere _sphere(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)46), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return sphere(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5585,6 +5672,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline dualSphere _dualSphere(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)47), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return dualSphere(arg1, 0);
 	}
 	/// from const specialization class:
@@ -5815,6 +5906,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline normalizedSphere _normalizedSphere(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)48), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return normalizedSphere(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6045,6 +6140,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline normalizedDualSphere _normalizedDualSphere(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)49), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return normalizedDualSphere(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6269,6 +6368,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline freeVector _freeVector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)50), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return freeVector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6493,6 +6596,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline freeBivector _freeBivector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)51), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return freeBivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6711,6 +6818,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline freeTrivector _freeTrivector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)52), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return freeTrivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -6956,6 +7067,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline tangentVector _tangentVector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)53), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return tangentVector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7201,6 +7316,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline tangentBivector _tangentBivector(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)54), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return tangentBivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7422,6 +7541,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vectorE2GA _vectorE2GA(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)55), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return vectorE2GA(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7646,6 +7769,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vectorE3GA _vectorE3GA(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)56), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return vectorE3GA(arg1, 0);
 	}
 	/// from const specialization class:
@@ -7870,6 +7997,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline bivectorE3GA _bivectorE3GA(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)57), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return bivectorE3GA(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8103,6 +8234,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline TRversorLog _TRversorLog(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)58), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return TRversorLog(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8339,6 +8474,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline TRSversorLog _TRSversorLog(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)59), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return TRSversorLog(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8575,6 +8714,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline TRversor _TRversor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)60), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return TRversor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -8823,6 +8966,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline TRSversor _TRSversor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)61), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return TRSversor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9083,6 +9230,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline evenVersor _evenVersor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)62), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return evenVersor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9307,6 +9458,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline translator _translator(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)63), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return translator(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9531,6 +9686,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline normalizedTranslator _normalizedTranslator(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)64), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return normalizedTranslator(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9755,6 +9914,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline rotor _rotor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)65), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return rotor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -9973,6 +10136,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline scalor _scalor(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)66), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return scalor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -10190,6 +10357,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __no_ct__ ___no_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)67), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __no_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -10407,6 +10578,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e1_ct__ ___e1_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)68), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e1_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -10624,6 +10799,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e2_ct__ ___e2_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)69), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e2_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -10841,6 +11020,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e3_ct__ ___e3_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)70), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -11058,6 +11241,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __ni_ct__ ___ni_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)71), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __ni_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -11275,6 +11462,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __noni_ct__ ___noni_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)72), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __noni_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -11492,6 +11683,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e3ni_ct__ ___e3ni_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)73), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e3ni_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -11709,6 +11904,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e2ni_ct__ ___e2ni_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)74), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e2ni_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -11926,6 +12125,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I3_ct__ ___I3_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)75), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __I3_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -12143,6 +12346,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e1ni_ct__ ___e1ni_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)76), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __e1ni_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -12360,6 +12567,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I5_ct__ ___I5_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)77), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __I5_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -12577,6 +12788,10 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I5i_ct__ ___I5i_ct__(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)78), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
 		return __I5i_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -12757,6 +12972,10 @@
 		Float m_c[251]; ///< coordinate storage
 
 
+
+		omType m_type; /// type (for profiling)
+		inline omType type() const {return m_type;}
+		inline void type(omType t) {m_type = t;}
 
 
 	}; // end of class om
@@ -18403,20 +18622,20 @@
 	namespace __G2_GENERATED__ {
 		inline void set(omFlatPoint& __x__, const point& __image_of_e1__, const point& __image_of_ni__, const point& __image_of_e2__, const point& __image_of_e3__, const point& __image_of_no__) {
 			__x__.m_c[0] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[1]) + (-1.0f * __image_of_ni__.m_c[1] * __image_of_e1__.m_c[4]));
-			__x__.m_c[1] = ((-1.0f * __image_of_ni__.m_c[2] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[2]));
-			__x__.m_c[2] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]) + (-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]));
-			__x__.m_c[3] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[0]) + (-1.0f * __image_of_ni__.m_c[0] * __image_of_e1__.m_c[4]));
-			__x__.m_c[4] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]));
+			__x__.m_c[1] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[2]) + (-1.0f * __image_of_ni__.m_c[2] * __image_of_e1__.m_c[4]));
+			__x__.m_c[2] = ((-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]));
+			__x__.m_c[3] = ((-1.0f * __image_of_ni__.m_c[0] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[0]));
+			__x__.m_c[4] = ((__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]));
 			__x__.m_c[5] = ((__image_of_e2__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[2]));
-			__x__.m_c[6] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_e2__.m_c[3] * __image_of_ni__.m_c[4]));
+			__x__.m_c[6] = ((__image_of_e2__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[3]));
 			__x__.m_c[7] = ((__image_of_e2__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[0]));
 			__x__.m_c[8] = ((__image_of_e3__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[1]));
 			__x__.m_c[9] = ((__image_of_e3__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[2]));
-			__x__.m_c[10] = ((__image_of_e3__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[3]));
+			__x__.m_c[10] = ((-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_e3__.m_c[3] * __image_of_ni__.m_c[4]));
 			__x__.m_c[11] = ((__image_of_e3__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[0]));
 			__x__.m_c[12] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_no__.m_c[1] * __image_of_ni__.m_c[4]));
-			__x__.m_c[13] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]) + (__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]));
-			__x__.m_c[14] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_no__.m_c[3] * __image_of_ni__.m_c[4]));
+			__x__.m_c[13] = ((__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]));
+			__x__.m_c[14] = ((__image_of_no__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[3]));
 			__x__.m_c[15] = ((__image_of_no__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[0]));
 		}
 		inline void set(omFlatPoint& __x__, const flatPoint& image_ofe1ni, const flatPoint& image_ofe2ni, const flatPoint& image_ofe3ni, const flatPoint& image_ofnoni) {

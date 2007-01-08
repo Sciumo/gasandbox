@@ -1,5 +1,5 @@
 
-// Generated on 2006-12-14 13:53:20 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2007-01-08 10:28:55 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,11 +16,28 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
+#include <stdio.h> /* required to save profile */
+#include <stdlib.h> /* required to save profile */
+	#include <time.h> /* required to save profile */
+
+	#ifdef WIN32
+	#include <winsock2.h>
+	#else /* UNIX */
+	#include <errno.h>
+	#include <sys/types.h>
+	#include <sys/socket.h>
+	#include <unistd.h>
+	#include <netdb.h>
+	#include <sys/time.h>
+	#include <arpa/inet.h>
+	#include <netinet/in.h>
+	#include <netinet/tcp.h>
+	#include <fcntl.h>
+	#endif // WIN32 / UNIX?
 
 
-
-#include <string.h>
-#include "h3ga.h"
+	#include <string.h>
+	#include "h3ga.h"
 
 	// pre_cpp_include
 
@@ -124,21 +141,774 @@
 	}
 
 
+	namespace g2Net {
+		void closeSocket(int *sock) {
+			if (*sock == -1) return;
+			#ifdef WIN32
+				closesocket(*sock);
+			#else
+				close(*sock);
+			#endif
+				*sock = -1;
+		}
+
+		void  setSocketNonBlocking(int sock) {
+			#ifdef WIN32
+				u_long arg = 1;
+			ioctlsocket(sock, FIONBIO, &arg);
+			#else
+				int currentValue;
+			currentValue = fcntl(sock, F_GETFL, 0);
+			fcntl(sock, F_SETFL, currentValue | O_NONBLOCK);
+			#endif
+		}
+
+		bool wouldBlock() {
+			#ifdef WIN32
+				return ((WSAGetLastError() == WSAEWOULDBLOCK) ? true : false);
+			#else
+				return ((errno == EWOULDBLOCK) ? true : false);
+			#endif
+		}
+
+		// this function disables the Nagle algorithm for the given port
+		void disableNagle(int sock) {
+			int nodelay = 1;
+			setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (char*)&nodelay, sizeof(int));
+		}
+
+		// this function sets the TCP send/receive buffer to some size
+		void setRecvBuffer(int sock, int size) {
+			setsockopt(sock, SOL_SOCKET, SO_RCVBUF, (char*)&size, sizeof(int));
+		}
+		// this function sets the TCP send/receive buffer to some size
+		void setSendBuffer(int sock, int size) {
+			setsockopt(sock, SOL_SOCKET, SO_SNDBUF, (char*)&size, sizeof(int));
+		}
+
+		int recvN(int sock, const unsigned char *buf, int n) {
+			int idx = 0;
+			while (idx < n) {
+				int nbRecv = (int)recv(sock, (char*)buf + idx, n-idx, 0);
+				if (nbRecv < 0) return nbRecv;
+				else idx += nbRecv;
+			}
+			return n;
+		}
+
+		int sendN(int sock, const unsigned char *buf, int n) {
+			int idx = 0;
+			while (idx < n) {
+				int nbSent = (int)send(sock, (char*)buf + idx, n-idx, 0);
+				if (nbSent < 0) return nbSent;
+				else idx += nbSent;
+			}
+			return n;
+		}
+
+		int serialize_uint(int forReal, unsigned char *dest, unsigned int idx, unsigned int value) {
+			int i;
+			if (forReal) {
+				int wordSize = sizeof(unsigned int);
+				for (i = 0; i < wordSize; i++)
+				dest[idx + i] = (value >> ((wordSize - i - 1) << 3)) & 0xff;
+			}
+			return sizeof(unsigned int);
+		}
+
+		int serialize_ushort(int forReal, unsigned char *dest, unsigned int idx, unsigned short value) {
+			int i;
+			if (forReal) {
+				int wordSize = sizeof(unsigned short);
+				for (i = 0; i < wordSize; i++)
+				dest[idx + i] = (value >> ((wordSize - i - 1) << 3)) & 0xff;
+			}
+			return sizeof(unsigned short);
+		}
+
+		int deserialize_uint(const unsigned char *source, unsigned int idx, unsigned int *value) {
+			int i;
+			int wordSize = sizeof(unsigned int);
+			*value = 0;
+			for (i = 0; i < wordSize; i++)
+			*value |= (source[idx + i] << ((wordSize - i - 1) << 3));
+			return sizeof(unsigned int);
+		}
+
+		int deserialize_ushort(const unsigned char *source, unsigned int idx, unsigned short *value) {
+			int i;
+			int wordSize = sizeof(unsigned short);
+			*value = 0;
+			for (i = 0; i < wordSize; i++)
+			*value |= (unsigned short)(source[idx + i] << ((wordSize - i - 1) << 3));
+			return sizeof(unsigned short);
+		}
+
+
+		void init() {
+			#ifdef WIN32
+				WORD wVersionRequested;
+			WSADATA wsaData;
+			int WSAerr; 
+
+			static bool initDone = false;
+			if (initDone) return;
+			initDone = true;
+			#endif /* WIN32 */
+
+				#ifdef WIN32
+				wVersionRequested = MAKEWORD( 2, 0 ); 
+			WSAerr = WSAStartup( wVersionRequested, &wsaData );
+			if ( WSAerr != 0 )
+				throw std::string("init(): an error occured during WSAStartup() (%d)", WSAerr);
+			#endif /* WIN32 */
+		}
+
+	} // end of namespace g2Net
+
 
 	namespace g2Profiling {
-		// Just a bunch of dummy functions:
-		// Profiling is disabled, but having these functions around
-		// simplifies a lot.
-		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, unsigned short argType[]) {
+		namespace { // anonymous namespace for profiling code:
+
+			// todo: multithreading (mutex, etc)
+
+
+			const char *g_functionNames[] = {
+				// function names of G2 functions:
+				"", // 0 
+					"mv lcont(mv x, mv y)", // 1 
+					"mv scp(mv x, mv y)", // 2 
+					"mv gp(mv x, mv y)", // 3 
+					"mv op(mv x, mv y)", // 4 
+					"mv add(mv x, mv y)", // 5 
+					"mv subtract(mv x, mv y)", // 6 
+					"scalar norm_e2(mv x)", // 7 
+					"scalar norm_e(mv x)", // 8 
+					"mv unit_e(mv x)", // 9 
+					"scalar norm_r2(mv x)", // 10 
+					"scalar norm_r(mv x)", // 11 
+					"mv unit_r(mv x)", // 12 
+					"mv reverse(mv x)", // 13 
+					"mv negate(mv x)", // 14 
+					"mv dual(mv x)", // 15 
+					"mv undual(mv x)", // 16 
+					"mv inverse(mv x)", // 17 
+					"mv apply_om(om x, mv y)", // 18 
+					"mv gradeInvolution(mv x)", // 19 
+					"void set(om __x__, point __image_of_e1__, point __image_of_e2__, point __image_of_e3__, point __image_of_e0__)", // 20 
+					"void set(om __x__, omPoint __y__)", // 21 
+					"void set(omPoint __x__, point __image_of_e1__, point __image_of_e2__, point __image_of_e3__, point __image_of_e0__)", // 22 
+					"void set(omPoint __x__, om __y__)", // 23 
+					// function names for underscore constructors for specialized types
+					"__NON_G2__ _e1_t(mv arg1)", // 24 
+					"__NON_G2__ _e2_t(mv arg1)", // 25 
+					"__NON_G2__ _e3_t(mv arg1)", // 26 
+					"__NON_G2__ _e0_t(mv arg1)", // 27 
+					"__NON_G2__ _scalar(mv arg1)", // 28 
+					"__NON_G2__ _vector(mv arg1)", // 29 
+					"__NON_G2__ _point(mv arg1)", // 30 
+					"__NON_G2__ _normalizedPoint(mv arg1)", // 31 
+					"__NON_G2__ _line(mv arg1)", // 32 
+					"__NON_G2__ _lineAtInfinity(mv arg1)", // 33 
+					"__NON_G2__ _bivector(mv arg1)", // 34 
+					"__NON_G2__ _plane(mv arg1)", // 35 
+					"__NON_G2__ _planeAtInfinity(mv arg1)", // 36 
+					"__NON_G2__ _rotor(mv arg1)", // 37 
+					"__NON_G2__ ___e1_ct__(mv arg1)", // 38 
+					"__NON_G2__ ___e2_ct__(mv arg1)", // 39 
+					"__NON_G2__ ___e3_ct__(mv arg1)", // 40 
+					"__NON_G2__ ___e0_ct__(mv arg1)", // 41 
+					"__NON_G2__ ___e0i_ct__(mv arg1)", // 42 
+					"__NON_G2__ ___I4i_ct__(mv arg1)", // 43 
+					// function names for underscore constructors for floats
+					"__NON_G2__ _float(mv arg1)", // 44 
+					"__NON_G2__ _double(mv arg1)", // 45 
+					"__NON_G2__ _Float(mv arg1)", // 46 
+					""
+			};
+
+			const char *g_typeNames[] = {
+				"", // 0 
+					"void", // 1 
+					"bool", // 2 
+					"char", // 3 
+					"short", // 4 
+					"int", // 5 
+					"float", // 6 
+					"double", // 7 
+					"mv", // 8 
+					"om", // 9 
+					"e1_t", // 10 
+					"e2_t", // 11 
+					"e3_t", // 12 
+					"e0_t", // 13 
+					"scalar", // 14 
+					"vector", // 15 
+					"point", // 16 
+					"normalizedPoint", // 17 
+					"line", // 18 
+					"lineAtInfinity", // 19 
+					"bivector", // 20 
+					"plane", // 21 
+					"planeAtInfinity", // 22 
+					"rotor", // 23 
+					"__e1_ct__", // 24 
+					"__e2_ct__", // 25 
+					"__e3_ct__", // 26 
+					"__e0_ct__", // 27 
+					"__e0i_ct__", // 28 
+					"__I4i_ct__", // 29 
+					"omPoint", // 30 
+					""
+			};
+
+			const char *g_storageTypeNames[] = {
+				"float"
+			};
+
+			// each entry records the use of a specific G2 type (profile() sets them to true)
+			bool g_usedTypes[] = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+
+			// when the profile is saved, we also save all synthetic types that we used
+			// these strings describe what to save:
+			const char *g_synMVTypeGS2Strings[] = {
+				NULL, // 0 
+					NULL, // 1 
+					NULL, // 2 
+					NULL, // 3 
+					NULL, // 4 
+					NULL, // 5 
+					NULL, // 6 
+					NULL, // 7 
+					NULL, // 8 
+					NULL, // 9 
+					NULL, // 10 
+					NULL, // 11 
+					NULL, // 12 
+					NULL, // 13 
+					NULL, // 14 
+					NULL, // 15 
+					NULL, // 16 
+					NULL, // 17 
+					NULL, // 18 
+					NULL, // 19 
+					NULL, // 20 
+					NULL, // 21 
+					NULL, // 22 
+					NULL, // 23 
+					NULL, // 24 
+					NULL, // 25 
+					NULL, // 26 
+					NULL, // 27 
+					NULL, // 28 
+					NULL, // 29 
+					NULL, // 30 
+					NULL
+			};	
+
+
+			class entry {
+				friend bool operator==(const entry &E1, const entry &E2);
+				public:
+					inline entry(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, unsigned short argType[]) : // custom init constructor
+					m_count(1), m_funcIdx(funcIdx), m_storageTypeIdx(storageTypeIdx), m_nbArg(nbArg), m_argType(argType), m_deleteArgType(false),
+					m_returnType(NULL), m_nbReturnTypes(0) {
+				}
+				inline entry(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, unsigned short argType[], 
+				unsigned short nbReturnType, unsigned short returnType[]) : // custom init constructor
+					m_count(1), m_funcIdx(funcIdx), m_storageTypeIdx(storageTypeIdx), m_nbArg(nbArg), m_argType(argType), m_deleteArgType(false),
+					m_returnType(NULL), m_nbReturnTypes(nbReturnType) {
+					if (nbReturnType != NULL) {
+						m_returnType = new unsigned short[m_nbReturnTypes];
+						memcpy(m_returnType, returnType, m_nbReturnTypes * sizeof(unsigned short));			
+					}
+				}
+
+				inline entry(const entry &E) : // copy constructor
+				m_count(E.m_count), m_funcIdx(E.m_funcIdx), m_storageTypeIdx(E.m_storageTypeIdx), m_nbArg(E.m_nbArg), m_deleteArgType(true), m_nbReturnTypes(E.m_nbReturnTypes) {
+					m_argType = new unsigned short[m_nbArg];
+					memcpy(m_argType, E.m_argType, m_nbArg * sizeof(unsigned short));
+
+					if (m_nbReturnTypes) {
+						m_returnType = new unsigned short[m_nbReturnTypes];
+						memcpy(m_returnType, E.m_returnType, m_nbReturnTypes * sizeof(unsigned short));
+					}
+					else m_returnType = NULL;
+				}
+
+				inline ~entry() {
+					if (m_argType && m_deleteArgType) delete[] m_argType;
+					if (m_returnType) delete[] m_returnType;
+				}
+
+				inline unsigned int hashIndex() const {
+					// m_returnType does not contribute to hashIndex!
+					unsigned int idx = m_funcIdx ^ ((unsigned int)m_storageTypeIdx << 12) ^ ((unsigned int)m_nbArg << 14);
+					for (unsigned int i = 0; i < m_nbArg; i++)
+					idx ^= m_argType[i] << (((i+2) & 3) * 8);
+					return idx;
+				}
+
+				inline unsigned int count() const {
+					return m_count;
+				}
+
+				inline void addCount(unsigned int count) {
+					if ((m_count + count) < count) return; // prevent overflow
+					m_count += count;
+				}
+
+
+				inline unsigned int funcIdx() const {return m_funcIdx;}
+				inline unsigned short storageTypeIdx() const {return m_storageTypeIdx;}
+				inline unsigned short nbArg() const {return m_nbArg;}
+				inline unsigned short argType(unsigned int idx) const {
+					if (idx >= nbArg()) {
+						mv_throw_exception("g2Profiling::entry::argType(): Index out of range", MV_EXCEPTION_ERROR);
+						return 0;
+					}
+					else return m_argType[idx];
+				}
+
+				inline void deleteArgType(bool d) {
+					m_deleteArgType = d;
+				}
+
+				inline unsigned short *returnType() {
+					return m_returnType;
+				}
+				inline unsigned short returnType(int idx) {
+					return m_returnType[idx];
+				}
+				inline unsigned short nbReturnTypes() const {return m_nbReturnTypes;}
+
+				private:
+					unsigned int m_funcIdx;
+				unsigned short m_storageTypeIdx;
+				unsigned short m_nbArg;
+				bool m_deleteArgType; // the copy constructor allocates mem for m_argType, the 'custom init' constructor doesn't
+				unsigned short *m_argType; // memory allocated with new[], or from stack/caller (in that case, m_deleteArgType is false!) (todo: allocator)
+				unsigned int m_count;
+
+				unsigned short m_nbReturnTypes;
+				unsigned short *m_returnType; // memory allocated with new[] (or NULL)
+			};
+
+			inline bool operator==(const entry &E1, const entry &E2) {
+				if (E1.m_nbArg != E2.m_nbArg) return false;
+				for (unsigned int i = 0; i < E1.m_nbArg; i++)
+				if (E1.m_argType[i] != E2.m_argType[i])
+					return false;
+
+				return ((E1.m_funcIdx == E2.m_funcIdx) &&
+					(E1.m_storageTypeIdx == E2.m_storageTypeIdx));
+			}
+
+			unsigned int g_hashCount = 0; // number of entries in hash table (hash table size is ~doubled when hash table is 'half full')
+
+			class hashBucket {
+				public:
+					hashBucket() : m_nbEntries(0), m_maxEntries(4) {
+					m_entry = new entry*[m_maxEntries];
+				}
+
+				~hashBucket() {
+					for (unsigned int i = 0; i < m_nbEntries; i++)
+					if (m_entry[i]) delete m_entry[i];
+					delete[] m_entry;
+				}
+
+				entry *findEntry(const entry &E) {
+					for (unsigned int i = 0; i < m_nbEntries; i++) {
+						if (*(m_entry[i]) == E) {
+							return m_entry[i];
+						}
+					}
+					return NULL;
+				}
+
+
+				entry *addEntry(const entry &E) {
+					// check if already present:
+					{
+						entry *X = findEntry(E);
+						if (X != NULL) {
+							X->addCount(E.count());
+							return X;
+						}
+					}
+
+					// not found: add a new entry:
+					{
+						// if bucket if full: resize
+						if (m_maxEntries == m_nbEntries) {
+							m_maxEntries = (m_maxEntries) ? m_maxEntries * 2 : 4;
+							entry **oldEntry = m_entry;
+							m_entry = new entry*[m_maxEntries];
+							memcpy(m_entry, oldEntry, m_nbEntries * sizeof(entry*));
+							if (m_entry) {
+								delete[] m_entry;
+							}
+						}
+
+						// add entry to bucket, increment hash count
+						entry *X = m_entry[m_nbEntries] = new entry(E);
+						m_nbEntries++;
+						g_hashCount++;
+						return X;
+					}
+				}
+
+				unsigned int nbEntries() const {return m_nbEntries;}
+				inline const entry&operator[](unsigned int idx) {
+					if (idx >= m_nbEntries) {
+						mv_throw_exception("g2Profiling::hashBucket::operator[](): Index out of range", MV_EXCEPTION_ERROR);
+						static entry tmp(0, 0, 0, NULL);
+						return tmp;
+					}
+					else return *(m_entry[idx]);
+				}
+
+				private:
+				unsigned int m_maxEntries;
+				unsigned int m_nbEntries;
+				entry **m_entry; // the entries that life in this bucket
+			};
+
+			// table of primes, ~*2 each entry ('0' marks the start of the table, '1' marks the end of the table)
+			unsigned int g_primes[] = {0, 101, 211, 401, 809, 1601, 3203, 6421, 12809, 25601, 51203, 102407, 204803,  409609,  819229,  1638431,  3276803,  6553621, 1};
+			unsigned int g_hashTableSize = 0; // number of buckets in hash table
+			hashBucket *g_hashTable = NULL; // memory allocated with new[] (todo: allocator)
+
+			void increaseHashTableSize();
+			void reinsertHashTableEntries(unsigned int hashTableSize, hashBucket *hashTable);
+
+			entry *addEntry(const entry &E) {
+
+				if ((g_hashCount+1) * 2 > g_hashTableSize) {
+					increaseHashTableSize();
+				}
+
+				unsigned int idx = E.hashIndex() % g_hashTableSize;	
+				return g_hashTable[idx].addEntry(E);
+			}
+
+			entry *findEntry(const entry &E) {
+				if (g_hashTableSize == 0) return NULL;
+				unsigned int idx = E.hashIndex() % g_hashTableSize;	
+				return g_hashTable[idx].findEntry(E);
+			}
+
+			void increaseHashTableSize() {
+				// find the current idx in the table:
+				unsigned int i = 0;
+				while ((g_primes[i] != g_hashTableSize) && (g_primes[i] != 1)) i++;
+
+				// get new size (or double capacity when out of primes (unlikely to happen)
+				unsigned int newSize = (g_primes[i] == 1) ? g_hashTableSize * 2 : g_primes[i+1];
+
+				// remember old hash talbe:
+				unsigned int hashTableSize = g_hashTableSize;
+				hashBucket *hashTable = g_hashTable;
+
+				// resize:
+				g_hashTableSize = newSize;
+				g_hashTable = new hashBucket[g_hashTableSize];
+
+				// reinsert:
+				g_hashCount = 0;
+				reinsertHashTableEntries(hashTableSize, hashTable); 
+
+				// delete old
+				if (hashTable) delete[] hashTable;
+			}
+
+			void reinsertHashTableEntries(unsigned int hashTableSize,  hashBucket *hashTable) {
+				for (unsigned int i = 0; i < hashTableSize; i++)
+				for (unsigned int j = 0; j < hashTable[i].nbEntries(); j++)
+				addEntry(hashTable[i][j]);
+			}
+
+		} // end of anonymous namespace for profiling code
+
+		int getReturnTypesFromServer(const entry &E, unsigned short returnType[4]);
+		// external entry point:
+		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
+			unsigned short argType[], int nbReturnType, unsigned short returnType[]) {
+			// todo: multithreading (lock mutex, etc)
+			// mark types as used:
+			bool usedGMV = false;
+			unsigned short usedGMVtype = 0;
+			for (int i = 0; i < nbArg; i++) {
+				if (argType[i] < 31)
+					g_usedTypes[argType[i]] = true;
+
+				if (argType[i] == MVT_NONE) usedGMV = true; // is this line required?
+				if (argType[i] == MVT_MV) {
+					usedGMV = true;
+					usedGMVtype = argType[i];
+				}
+			}
+			if (usedGMV) { //  a DSL function that is invoked with GMV argument can never be specialized / optimized
+				for (int i = 0; i < nbReturnType; i++) {
+					returnType[i] = usedGMVtype;
+				}
+				return;
+			}
+
+			entry *E; // E gets set either by findEntry() or by addEntry()
+			entry tempEntry(funcIdx, storageTypeIdx, nbArg, argType);
+			if ( (E = findEntry(tempEntry)) == NULL) {
+				unsigned short nbReturnTypeServer = 0;
+				unsigned short returnTypeServer[4] = {(unsigned short)MVT_NONE, (unsigned short)MVT_NONE, (unsigned short)MVT_NONE, (unsigned short)MVT_NONE};
+				nbReturnTypeServer = getReturnTypesFromServer(tempEntry, returnTypeServer);
+
+
+				// ask server for return types
+				// add entry
+				E = addEntry(entry(funcIdx, storageTypeIdx, nbArg, argType, nbReturnTypeServer, returnTypeServer));
+			}
+
+			if (returnType == NULL) return;
+			else {
+				int maxNbR = (E == NULL) ? 0 : E->nbReturnTypes();
+				for (int i = 0; i < nbReturnType; i++) {
+					if (i < maxNbR)
+						returnType[i] = E->returnType(i);
+					else returnType[i] = (unsigned short)MVT_NONE;
+				}
+			}
+			// todo: multithreading (release mutex, etc)
 		}
+
+		// external entry point:
 		void reset() {
+			// todo: multithreading (lock mutex, etc)	
+			g_hashCount = 0;
+			g_hashTableSize = 0;
+			if (g_hashTable) {
+				delete[] g_hashTable;
+				g_hashTable = NULL;
+			}
+			// todo: multithreading (release mutex, etc)
 		}
+
+		int g_profileNetSocket = -1;
+		/** must be called in order for network profiling to work */
+		void init(const char *gp2Filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/,
+			const char *hostName /* = "localhost" */, int port /* = 7693 */) {
+			// todo: multithreading (lock mutex, etc)
+			// also todo: IPv6
+
+			if (g_profileNetSocket >= 0) return; // already initialized
+			g2Net::init();	
+
+			{ // initialize socket	
+				struct hostent *HostEnt;
+				struct sockaddr_in ServerAddress;
+				struct in_addr InAddr;
+				struct in_addr **List;
+
+				if ( (InAddr.s_addr = inet_addr(hostName)) == INADDR_NONE) {
+					/* getting address with 'inet_addr()' failed; try a normal 'gethostbyname()' */
+					if ( (HostEnt = gethostbyname(hostName)) == NULL)
+						throw std::string("Could not gethostbyname() ") + hostName;
+					List = (struct in_addr **)HostEnt->h_addr_list;
+					InAddr.s_addr = List[0]->s_addr;
+				}
+
+				g_profileNetSocket = (int)socket(AF_INET, SOCK_STREAM, 0);
+				if (g_profileNetSocket == -1)
+					throw std::string("Could not create socket");
+
+				/* setup server address struct; connect to server */
+				memset((void*)&ServerAddress, 0, sizeof(ServerAddress));
+				ServerAddress.sin_family = AF_INET;
+				ServerAddress.sin_addr.s_addr = InAddr.s_addr;
+				ServerAddress.sin_port = htons((short)port);
+				if (connect(g_profileNetSocket, (struct sockaddr *)&ServerAddress, sizeof(ServerAddress)) == -1) {
+					g2Net::closeSocket(&g_profileNetSocket);
+					throw std::string("could not connect to server ") + hostName;
+				}
+
+				/* disable nagle algorithm */
+				g2Net::disableNagle(g_profileNetSocket);
+			}
+
+			{ // send opening message:
+				const char *gs2Filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gs2";
+				int n = g2Net::sendN(g_profileNetSocket, (const unsigned char*)gs2Filename, (int)strlen(gs2Filename) + 1);
+				n = g2Net::sendN(g_profileNetSocket, (const unsigned char*)gp2Filename, (int)strlen(gp2Filename) + 1);
+
+				unsigned char buf[256];
+				bool forReal = true;
+
+				// send number of profile function ids:
+				{
+					int bufIdx = 0;
+					unsigned short nbFunctionsIds = 24;
+					bufIdx += g2Net::serialize_ushort(forReal, buf, bufIdx, nbFunctionsIds);
+					n = g2Net::sendN(g_profileNetSocket, buf, bufIdx);
+				}
+
+
+				// sen number of specialized types:
+				{
+					int bufIdx = 0;
+					unsigned short nbFunctionsIds = 20;
+					bufIdx += g2Net::serialize_ushort(forReal, buf, bufIdx, nbFunctionsIds);
+					n = g2Net::sendN(g_profileNetSocket, buf, bufIdx);
+				}
+
+
+				// send know types / ids
+				// message format:
+				// unsigned int ID
+				// char name[], 0
+				int nbTypes = 31;
+				for (int i = 0; i < nbTypes; i++) {
+					// send id;
+					int bufIdx = 0;
+					bufIdx += g2Net::serialize_uint(forReal, buf, bufIdx, (unsigned int)i);
+					n = g2Net::sendN(g_profileNetSocket, buf, bufIdx);
+
+					// send type:
+					if (g_typeNames[i]) {
+						n = g2Net::sendN(g_profileNetSocket, (const unsigned char*)g_typeNames[i], (int)strlen(g_typeNames[i]) + 1);
+					}
+					else {
+						unsigned char tmp[1] = {0};
+						n = g2Net::sendN(g_profileNetSocket, tmp, 1);
+					}
+				}
+
+				// send 'end of ids' (0xFFFFFFFF)
+				{
+					int bufIdx = 0;
+					bufIdx += g2Net::serialize_uint(forReal, buf, bufIdx, (unsigned int)0xFFFFFFFF);
+					n = (int)g2Net::sendN(g_profileNetSocket, buf, bufIdx);
+				}
+
+				// wait for one byte ('specification & profile loaded')
+				{
+					n = g2Net::recvN(g_profileNetSocket, buf, 1);
+					if (n < 0) {
+						g_profileNetSocket = -1;
+						return;
+					}
+				}
+			}
+			printf("Connected to profiling server %s:%d\n", hostName, port);
+			// todo: multithreading (release mutex, etc)	
+		}
+
+		/** gets return type(s) from server, returns nb args */
+		int getReturnTypesFromServer(const entry &E, unsigned short returnType[4]) {
+			if (g_profileNetSocket < 0) return 0;
+
+			unsigned short nbReturnTypes = 0; // set at the end of the function (read from recv-ed message)
+
+			unsigned char messageBuf[1024];
+			unsigned short messageLength = 0;
+
+			// compose message
+			{
+				// message format:
+				// unsigned short messageID = 1
+				// unsigned short messageLength
+				// unsigned int m_funcIdx
+				// unsigned short storageTypeIdx
+				// unsigned short nbArg
+				// unsigned short argTypes[nbArg]
+				int idx = 0;
+
+				{
+					bool forReal = true;
+
+					// 'header':
+					unsigned short messageID = 1;
+					messageLength = 0; // set again later on, when message length is known
+					idx += g2Net::serialize_ushort(forReal, messageBuf, idx, messageID);
+					int mlIdx = idx; // remember index used for message length so we can overwrite it later on:
+					idx += g2Net::serialize_ushort(forReal, messageBuf, idx, messageLength);
+
+					// content:
+					idx += g2Net::serialize_uint(forReal, messageBuf, idx, E.funcIdx());
+					idx += g2Net::serialize_ushort(forReal, messageBuf, idx, E.storageTypeIdx());
+					idx += g2Net::serialize_ushort(forReal, messageBuf, idx, E.nbArg());
+					for (unsigned short i = 0; i < E.nbArg(); i++)
+					idx += g2Net::serialize_ushort(forReal, messageBuf, idx, E.argType(i));
+
+					// overwrite message length
+					messageLength = (unsigned short)idx;
+					g2Net::serialize_ushort(forReal, messageBuf, mlIdx, messageLength);
+
+					messageLength = idx;
+				}
+
+				// send message	
+				{
+					int n = g2Net::sendN(g_profileNetSocket, messageBuf, messageLength);
+					if (n < 0) throw std::string("getReturnTypesFromServer(): could not send data to net profiling server");
+					//			printf("Sent %d\n", n);
+				}
+
+				// recv answer:
+				{	
+					// message format:
+					// unsigned short messageID = 2
+					// unsigned short messageLength
+					// unsigned short nbReturnTypes
+					// unsigned short returnType[nbReturnTypes]
+
+					int idx = 0;
+
+					// first 'header' (get ID + length)
+					int n = g2Net::recvN(g_profileNetSocket, messageBuf, 4);
+					if (n < 0) throw std::string("getReturnTypesFromServer(): could not recv data from profiling server");
+
+					// parse 'header':
+					unsigned short messageID, messageLength;
+					idx += g2Net::deserialize_ushort(messageBuf, idx, &messageID);
+					idx += g2Net::deserialize_ushort(messageBuf, idx, &messageLength);
+
+					if (messageLength < (4 + 2)) throw std::string("getReturnTypesFromServer(): bad message profiling server");
+
+					// get nb return types
+					n = g2Net::recvN(g_profileNetSocket, messageBuf + idx, 2);
+					if (n < 0) throw std::string("getReturnTypesFromServer(): could not recv data from profiling server");
+					idx += g2Net::deserialize_ushort(messageBuf, idx, &nbReturnTypes);
+
+					if (messageLength != (4 + 2 + nbReturnTypes * 2)) 
+						throw std::string("getReturnTypesFromServer(): bad message profiling server");
+					if (nbReturnTypes > 4)
+						throw std::string("getReturnTypesFromServer(): bad message profiling server");
+
+					// get return types
+					n = g2Net::recvN(g_profileNetSocket, messageBuf + idx, nbReturnTypes * 2);
+					if (n < 0) throw std::string("getReturnTypesFromServer(): could not recv data from profiling server");
+
+					for (int i = 0; i < nbReturnTypes; i++) {
+						idx += g2Net::deserialize_ushort(messageBuf, idx, returnType + i);
+					}
+				}
+			}
+
+
+
+			return nbReturnTypes;
+		}
+
 		void save(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/, bool append /*= false*/) {
+			// when 'net profiling' is enabled, no need to save profile
+			return;
 		}
-		void init(const char *filename /*= "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2"*/,
-		const char *hostName /*= "localhost"*/, int port /*= 7693*/) {
-		}
+
+
+
+
 	} // end of namespace g2Profiling
+
 
 
 
@@ -156,6 +926,8 @@
 	void mv::set() {
 		// set grade usage
 		gu(0);
+		// set type (used for profiling)
+		type(MVT_MV);
 
 	}
 
@@ -163,6 +935,8 @@
 	void mv::set(const mv &arg1) {
 		// copy grade usage
 		gu(arg1.gu());
+		// copy type (used for profiling)
+		type(arg1.type());
 		// copy coordinates
 		mv_memcpy(m_c, arg1.m_c, mv_size[gu()]);
 
@@ -173,6 +947,8 @@
 		// set grade usage
 		gu(1);
 		// set type (if profile)
+		// set type (used for profiling)
+		type(MVT_SCALAR);
 		// set coordinate
 		m_c[0] = scalarVal;
 
@@ -180,9 +956,11 @@
 
 
 	// set to coordinates 
-	void mv::set(unsigned int gradeUsage, const Float *coordinates) {
+	void mv::set(unsigned int gradeUsage, const Float *coordinates, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// set coordinates
 		mv_memcpy(m_c, coordinates, mv_size[gu()]);
 
@@ -190,9 +968,11 @@
 
 
 	// set to 1 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0	) {
+	void mv::set(unsigned int gradeUsage, Float c0	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 1)
 			throw (-1); // todo: more sensible exception
@@ -202,9 +982,11 @@
 	}
 
 	// set to 2 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 2)
 			throw (-1); // todo: more sensible exception
@@ -215,9 +997,11 @@
 	}
 
 	// set to 3 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 3)
 			throw (-1); // todo: more sensible exception
@@ -229,9 +1013,11 @@
 	}
 
 	// set to 4 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 4)
 			throw (-1); // todo: more sensible exception
@@ -244,9 +1030,11 @@
 	}
 
 	// set to 5 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 5)
 			throw (-1); // todo: more sensible exception
@@ -260,9 +1048,11 @@
 	}
 
 	// set to 6 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 6)
 			throw (-1); // todo: more sensible exception
@@ -277,9 +1067,11 @@
 	}
 
 	// set to 7 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 7)
 			throw (-1); // todo: more sensible exception
@@ -295,9 +1087,11 @@
 	}
 
 	// set to 8 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 8)
 			throw (-1); // todo: more sensible exception
@@ -314,9 +1108,11 @@
 	}
 
 	// set to 9 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 9)
 			throw (-1); // todo: more sensible exception
@@ -334,9 +1130,11 @@
 	}
 
 	// set to 10 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 10)
 			throw (-1); // todo: more sensible exception
@@ -355,9 +1153,11 @@
 	}
 
 	// set to 11 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 11)
 			throw (-1); // todo: more sensible exception
@@ -377,9 +1177,11 @@
 	}
 
 	// set to 12 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 12)
 			throw (-1); // todo: more sensible exception
@@ -400,9 +1202,11 @@
 	}
 
 	// set to 13 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 13)
 			throw (-1); // todo: more sensible exception
@@ -424,9 +1228,11 @@
 	}
 
 	// set to 14 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 14)
 			throw (-1); // todo: more sensible exception
@@ -449,9 +1255,11 @@
 	}
 
 	// set to 15 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 15)
 			throw (-1); // todo: more sensible exception
@@ -475,9 +1283,11 @@
 	}
 
 	// set to 16 coordinates 
-	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15	) {
+	void mv::set(unsigned int gradeUsage, Float c0, Float c1, Float c2, Float c3, Float c4, Float c5, Float c6, Float c7, Float c8, Float c9, Float c10, Float c11, Float c12, Float c13, Float c14, Float c15	, g2Type t /*= MVT_MV*/) {
 		// set grade usage
 		gu(gradeUsage);
+		// set type (used for profiling)
+		type(t);
 		// check the number of coordinates
 		if (mv_size[gu()] != 16)
 			throw (-1); // todo: more sensible exception
@@ -509,6 +1319,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_E1_T);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = (Float)0;
@@ -523,6 +1335,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_E2_T);
 
 		m_c[0] = (Float)0;
 		m_c[1] = arg1.m_c[0] ;
@@ -537,6 +1351,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_E3_T);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)0;
@@ -551,6 +1367,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_E0_T);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)0;
@@ -565,6 +1383,8 @@
 		// set grade usage 
 		gu(1);
 
+		// set type (used for profiling)
+		type(MVT_SCALAR);
 
 		m_c[0] = arg1.m_c[0] ;
 
@@ -576,6 +1396,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_VECTOR);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -590,6 +1412,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_POINT);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -604,6 +1428,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT_NORMALIZEDPOINT);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -618,6 +1444,8 @@
 		// set grade usage 
 		gu(4);
 
+		// set type (used for profiling)
+		type(MVT_LINE);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -634,6 +1462,8 @@
 		// set grade usage 
 		gu(4);
 
+		// set type (used for profiling)
+		type(MVT_LINEATINFINITY);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -650,6 +1480,8 @@
 		// set grade usage 
 		gu(4);
 
+		// set type (used for profiling)
+		type(MVT_BIVECTOR);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -666,6 +1498,8 @@
 		// set grade usage 
 		gu(8);
 
+		// set type (used for profiling)
+		type(MVT_PLANE);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -680,6 +1514,8 @@
 		// set grade usage 
 		gu(8);
 
+		// set type (used for profiling)
+		type(MVT_PLANEATINFINITY);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = (Float)0;
@@ -694,6 +1530,8 @@
 		// set grade usage 
 		gu(5);
 
+		// set type (used for profiling)
+		type(MVT_ROTOR);
 
 		m_c[0] = arg1.m_c[0] ;
 		m_c[1] = arg1.m_c[1] ;
@@ -711,6 +1549,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT___E1_CT__);
 
 		m_c[0] = (Float)1.0f; 
 		m_c[1] = (Float)0;
@@ -725,6 +1565,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT___E2_CT__);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)1.0f; 
@@ -739,6 +1581,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT___E3_CT__);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)0;
@@ -753,6 +1597,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT___E0_CT__);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)0;
@@ -767,6 +1613,8 @@
 		// set grade usage 
 		gu(2);
 
+		// set type (used for profiling)
+		type(MVT___E0I_CT__);
 
 		m_c[0] = (Float)0;
 		m_c[1] = (Float)0;
@@ -781,6 +1629,8 @@
 		// set grade usage 
 		gu(16);
 
+		// set type (used for profiling)
+		type(MVT___I4I_CT__);
 
 		m_c[0] = (Float)1.0f; 
 
@@ -1947,32 +2797,44 @@
 	// set to copy
 	void om::set(const om &arg1) {
 		mv_memcpy(m_c, arg1.m_c, 69);
+		// set type (used for profiling)
+		type(OMT_OM);
 	}
 
 	// set to scalar
 	void om::set(Float scalarVal) {
 		h3ga::__G2_GENERATED__::set(*this, point(point_e1_e2_e3_e0, scalarVal, (Float)0, (Float)0, (Float)0), point(point_e1_e2_e3_e0, (Float)0, scalarVal, (Float)0, (Float)0), point(point_e1_e2_e3_e0, (Float)0, (Float)0, scalarVal, (Float)0), point(point_e1_e2_e3_e0, (Float)0, (Float)0, (Float)0, scalarVal));
+		// set type (used for profiling)
+		type(OMT_OM);
 	}
 
 	// set to coordinates 
 	void om::set(const Float *coordinates) {
 		mv_memcpy(m_c, coordinates, 69);
+		// set type (used for profiling)
+		type(OMT_OM);
 	}
 
 	// set from basis vectors array
 	void om::set(const point *vectors) {
 		h3ga::__G2_GENERATED__::set(*this, vectors[0], vectors[1], vectors[2], vectors[3]);
+		// set type (used for profiling)
+		type(OMT_OM);
 	}
 
 
 	// set from basis vectors 
 	void om::set(const point & image_of_e1, const point & image_of_e2, const point & image_of_e3, const point & image_of_e0) {
 		h3ga::__G2_GENERATED__::set(*this, image_of_e1, image_of_e2, image_of_e3, image_of_e0);
+		// set type (used for profiling)
+		type(OMT_OM);
 	}
 
 	// set to specialization
 	void om::set(const omPoint &arg1) {
 		h3ga::__G2_GENERATED__::set(*this, arg1);
+		// set type (used for profiling)
+		type(OMT_OMPOINT);
 	}
 
 	// set by coordinates, transpose
@@ -2047,6 +2909,8 @@
 			m_c[63] = coordinates[66];
 			m_c[67] = coordinates[67];
 			m_c[68] = coordinates[68];
+			// set type (used for profiling)
+			type(OMT_OM);
 		}
 		else set(coordinates);
 	}
@@ -2082,6 +2946,11 @@
 
 	// G2 functions:
 	mv lcont(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)1), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_1__[16] ;
 		mv_zero(__tmp_coord_array_1__, 16);
@@ -2198,9 +3067,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_1__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	scalar scp(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)2), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar __temp_var_1__;
 		const float* __y_xpd__[5] ;
 		y.expand(__y_xpd__, true);
@@ -2244,6 +3119,11 @@
 		return __temp_var_1__;
 	}
 	mv gp(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)3), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_2__[16] ;
 		mv_zero(__tmp_coord_array_2__, 16);
@@ -2470,9 +3350,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_2__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv op(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)4), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_3__[16] ;
 		mv_zero(__tmp_coord_array_3__, 16);
@@ -2589,9 +3475,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_3__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv add(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)5), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_4__[16] ;
 		mv_zero(__tmp_coord_array_4__, 16);
@@ -2662,9 +3554,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_4__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv subtract(const mv& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)6), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_5__[16] ;
 		mv_zero(__tmp_coord_array_5__, 16);
@@ -2735,9 +3633,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	scalar norm_e2(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)7), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar __temp_var_1__;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2764,6 +3668,11 @@
 		return __temp_var_1__;
 	}
 	scalar norm_e(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)8), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar e2;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2790,6 +3699,11 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	mv unit_e(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)9), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar e2;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2850,9 +3764,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_6__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	scalar norm_r2(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)10), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar __temp_var_1__;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2879,6 +3799,11 @@
 		return __temp_var_1__;
 	}
 	scalar norm_r(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)11), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar r2;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2905,6 +3830,11 @@
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	mv unit_r(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)12), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar r2;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -2965,9 +3895,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_7__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv reverse(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)13), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_8__[16] ;
 		mv_zero(__tmp_coord_array_8__, 16);
@@ -3005,9 +3941,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_8__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv negate(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)14), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_9__[16] ;
 		mv_zero(__tmp_coord_array_9__, 16);
@@ -3045,9 +3987,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_9__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv dual(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)15), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_10__[16] ;
 		mv_zero(__tmp_coord_array_10__, 16);
@@ -3085,9 +4033,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_10__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv undual(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)16), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_11__[16] ;
 		mv_zero(__tmp_coord_array_11__, 16);
@@ -3125,9 +4079,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_11__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv inverse(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)17), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		scalar n;
 		const float* __x_xpd__[5] ;
 		x.expand(__x_xpd__, true);
@@ -3188,9 +4148,15 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_12__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 	mv gradeInvolution(const mv& x) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)19), ((unsigned short)-1), ((unsigned short)1), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
 		mv __temp_var_1__;
 		float __tmp_coord_array_13__[16] ;
 		mv_zero(__tmp_coord_array_13__, 16);
@@ -3228,6 +4194,7 @@
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_13__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
 		return __temp_var_1__;
 	}
 

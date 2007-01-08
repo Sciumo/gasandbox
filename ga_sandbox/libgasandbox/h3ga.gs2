@@ -9,8 +9,8 @@ ga {
 	exception: throw ; // how to handle exceptions: [callback | ignore | throw] 
 	
 	debug_coordinate_string: disable; //enable or disable
-	profile: ; // profiling = disable
-//	profile: enable net; 
+//	profile: ; // profiling = disable
+	profile: enable net; 
 	
 	cpp_operator_default_bindings; // this sets the cpp default operator bindings
 	

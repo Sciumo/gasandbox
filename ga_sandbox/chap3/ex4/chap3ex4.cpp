@@ -54,9 +54,9 @@ int g_GLUTmenu;
 
 // the color 'frame'
 e3ga::vector g_IFcolors[3] = {
-	_vector(0.82*e1 + 0.08*e2 + 0.08*e3), // 'red'
-	_vector(0.01*e1 + 0.54*e2 + 0.35*e3), // 'green'
-	_vector(0.18*e2 + 0.37*e3) // 'blue'
+	_vector(0.82f*e1 + 0.08f*e2 + 0.08f*e3), // 'red'
+	_vector(0.01f*e1 + 0.54f*e2 + 0.35f*e3), // 'green'
+	_vector(0.18f*e2 + 0.37f*e3) // 'blue'
 };
 
 // the reciprocal color 'frame'

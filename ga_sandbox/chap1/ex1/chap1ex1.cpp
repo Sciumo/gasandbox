@@ -57,12 +57,12 @@ rotor g_modelRotor(_rotor(1.0f));
 // the points:
 const int NB_POINTS = 6;
 normalizedPoint g_points[NB_POINTS] = {
-	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.356756*e1 - 0.881980*e2))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.725786*e1 + 0.934177*e2 - 0.366154*e3))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(2.612482*e1 + 1.495455*e2 - 2.704073*e3))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(2.218644*e1 + 0.425753*e2 - 1.780935*e3))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(0.865897*e1 + 0.629159*e2 - 1.438985*e3))),
-	_normalizedPoint(c3gaPoint(_vectorE3GA(2.846445*e1 - 1.112365*e2 - 0.366769*e3)))
+	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.356756f*e1 - 0.881980f*e2))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(- 0.725786f*e1 + 0.934177f*e2 - 0.366154f*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.612482f*e1 + 1.495455f*e2 - 2.704073f*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.218644f*e1 + 0.425753f*e2 - 1.780935f*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(0.865897f*e1 + 0.629159f*e2 - 1.438985f*e3))),
+	_normalizedPoint(c3gaPoint(_vectorE3GA(2.846445f*e1 - 1.112365f*e2 - 0.366769f*e3)))
 };
 
 

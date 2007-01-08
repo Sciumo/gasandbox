@@ -330,7 +330,7 @@ void MouseMotion(int x, int y) {
 int LoadData() {
 	try {
 		g_extCalibState = readCalibrationData("calibration_data.txt");
-	} catch (const std::string &str) {
+	} catch (const std::string &) {
 		try {
 			// try alternative path, when called from inside visual studio:
 			g_extCalibState = readCalibrationData("../chap10/ex3/calibration_data.txt");
