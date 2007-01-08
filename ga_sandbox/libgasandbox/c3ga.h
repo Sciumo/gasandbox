@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 11:27:08 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2007-01-08 13:38:28 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -136,16 +136,17 @@
 			MVT___SYN_SMV___NOE1E2E3NI = 104,
 			MVT___SYN_SMV___E1E2E3_E1E2NI_E1E3NI_E2E3NI = 105,
 			MVT___SYN_SMV___E1E2E3 = 106,
+			MVT___SYN_SMV___E1E3_E2E3 = 107,
 			MVT_MV = 8,
-			MVT_LAST = 108 
+			MVT_LAST = 109 
 	};
 
 	// outermorphism types:
 	enum omType {
 		OMT_NONE = -2,
-			OMT_OMFLATPOINT = 107,
+			OMT_OMFLATPOINT = 108,
 			OMT_OM = 9,
-			OMT_LAST = 108 
+			OMT_LAST = 109 
 	};
 
 	// grade definitions that can be joined using the '|' operator:
@@ -288,6 +289,7 @@
 	class __syn_smv___noe1e2e3ni;
 	class __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni;
 	class __syn_smv___e1e2e3;
+	class __syn_smv___e1e3_e2e3;
 	class mv;
 	class omFlatPoint;
 	class om;
@@ -396,6 +398,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -1102,6 +1105,10 @@
 		inline mv(const __syn_smv___e1e2e3 &arg1) {
 			set(arg1);
 		}
+		/// init from __syn_smv___e1e3_e2e3 constructor
+		inline mv(const __syn_smv___e1e3_e2e3 &arg1) {
+			set(arg1);
+		}
 
 
 		/// set to null
@@ -1409,6 +1416,8 @@
 		void set(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni &arg1);
 		/// set to __syn_smv___e1e2e3 
 		void set(const __syn_smv___e1e2e3 &arg1);
+		/// set to __syn_smv___e1e3_e2e3 
+		void set(const __syn_smv___e1e3_e2e3 &arg1);
 
 
 		/// assign copy
@@ -1611,6 +1620,8 @@
 		mv&operator=(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1);
 		/// assign __syn_smv___e1e2e3 
 		mv&operator=(const __syn_smv___e1e2e3& arg1);
+		/// assign __syn_smv___e1e3_e2e3 
+		mv&operator=(const __syn_smv___e1e3_e2e3& arg1);
 
 
 		void compress(Float epsilon = 0.0);
@@ -1826,7 +1837,7 @@
 	inline float _float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)126), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)127), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
@@ -1834,7 +1845,7 @@
 	inline double _double(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)127), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)128), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
@@ -1842,7 +1853,7 @@
 	inline float _Float(const mv & arg1) {
 		/* start of profiling instrumentation code */;
 		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)128), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		g2Profiling::profile(((unsigned int)129), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
 		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
@@ -1897,6 +1908,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -2165,6 +2177,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -2435,6 +2448,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -2704,6 +2718,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -2972,6 +2987,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -3241,6 +3257,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -3509,6 +3526,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -3777,6 +3795,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -4058,6 +4077,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -4340,6 +4360,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -4618,6 +4639,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -4896,6 +4918,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -5191,6 +5214,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -5475,6 +5499,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -5760,6 +5785,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -6038,6 +6064,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -6316,6 +6343,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -6611,6 +6639,7 @@
 		friend class __no_ct__;
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -6893,6 +6922,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -7174,6 +7204,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -7454,6 +7485,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -7736,6 +7768,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -8011,6 +8044,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -8285,6 +8319,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -8555,6 +8590,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
 		friend class __syn_smv___nif_1_0;
@@ -8850,6 +8886,7 @@
 		friend class __no_ct__;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -9146,6 +9183,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -9419,6 +9457,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -9693,6 +9732,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -9969,6 +10009,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -10253,6 +10294,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -10539,6 +10581,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -10827,6 +10870,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -11125,6 +11169,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -11437,6 +11482,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -11712,6 +11758,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -11987,6 +12034,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -12262,6 +12310,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -12530,6 +12579,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -12799,6 +12849,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -13066,6 +13117,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -13335,6 +13387,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -13602,6 +13655,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -13870,6 +13924,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -14139,6 +14194,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -14406,6 +14462,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -14675,6 +14732,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -14942,6 +15000,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -15211,6 +15270,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -15478,6 +15538,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -15747,6 +15808,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -16028,6 +16090,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -16323,6 +16386,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -16602,6 +16666,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -16900,6 +16965,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -17179,6 +17245,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -17477,6 +17544,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -17756,6 +17824,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -18054,6 +18123,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -18332,6 +18402,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -18631,6 +18702,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -18910,6 +18982,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -19208,6 +19281,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -19487,6 +19561,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -19752,6 +19827,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -20020,6 +20096,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -20288,6 +20365,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -20569,6 +20647,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -20862,6 +20941,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___nif_1_0;
@@ -21176,6 +21256,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -21459,6 +21540,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -21750,6 +21832,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -22033,6 +22116,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -22318,6 +22402,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -22596,6 +22681,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -22861,6 +22947,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -23156,6 +23243,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -23452,6 +23540,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -23749,6 +23838,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -24045,6 +24135,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -24340,6 +24431,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -24648,6 +24740,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -24948,6 +25041,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
 		friend class __syn_smv___nif_1_0;
@@ -25238,6 +25332,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -25549,6 +25644,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -25833,6 +25929,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -26101,6 +26198,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -26378,6 +26476,7 @@
 		friend class __no_ct__;
 		friend class tangentBivector;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -26657,6 +26756,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -26944,6 +27044,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -27225,6 +27326,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -27506,6 +27608,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -27787,6 +27890,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -28067,6 +28171,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -28348,6 +28453,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -28618,6 +28724,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -28896,6 +29003,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -29121,6 +29229,279 @@
 	}
 
 
+	/// enum for the coordinates of __syn_smv___e1e3_e2e3 
+	enum ____syn_smv___e1e3_e2e3_coordinates__ {__syn_smv___e1e3_e2e3_e1e3_e2e3};
+
+	class __syn_smv___e1e3_e2e3 {
+		// the friend classes of __syn_smv___e1e3_e2e3 
+		friend class __syn_smv___scalar_noe3_e1e3_e2e3_e3ni;
+		friend class dualLine;
+		friend class __syn_smv___scalar_noni_e1ni_e2ni_e3ni;
+		friend class __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class __syn_smv___noe2_noe3_e2e3_noe1e2e3_noni_e2ni_noe1e2ni_e3ni_noe1e3ni_e1e2e3ni;
+		friend class __syn_smv___scalar_noe1_e1e2_e1e3_e1ni;
+		friend class line;
+		friend class __syn_smv___e1ni_e2ni_e3ni_nonif_1_0;
+		friend class scalar;
+		friend class __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni;
+		friend class __syn_smv___noe1e2e3ni;
+		friend class __noni_ct__;
+		friend class vectorE2GA;
+		friend class __syn_smv___noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni;
+		friend class ni_t;
+		friend class e1_t;
+		friend class __syn_smv___scalar_noe2_e1e2_e2e3_e2ni;
+		friend class __e2ni_ct__;
+		friend class __e2_ct__;
+		friend class __I5i_ct__;
+		friend class __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni;
+		friend class __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni;
+		friend class TRversor;
+		friend class __syn_smv___noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class om;
+		friend class evenVersor;
+		friend class freeTrivector;
+		friend class point;
+		friend class __ni_ct__;
+		friend class normalizedDualSphere;
+		friend class bivectorE3GA;
+		friend class normalizedPoint;
+		friend class __e1ni_ct__;
+		friend class __syn_smv___scalar_noe1_noe2_noe3_noni;
+		friend class __no_ct__;
+		friend class tangentBivector;
+		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
+		friend class sphere;
+		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class tangentVector;
+		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
+		friend class __syn_smv___nif_1_0;
+		friend class freeBivector;
+		friend class __syn_smv___e1e2e3;
+		friend class __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni;
+		friend class vectorE3GA;
+		friend class __syn_smv___scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni;
+		friend class normalizedFlatPoint;
+		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni;
+		friend class TRSversorLog;
+		friend class __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni;
+		friend class TRversorLog;
+		friend class pointPair;
+		friend class __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni;
+		friend class freeVector;
+		friend class __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni;
+		friend class __syn_smv___nif1_0;
+		friend class flatPoint;
+		friend class __syn_smv___scalarf0_0;
+		friend class scalor;
+		friend class omFlatPoint;
+		friend class __I5_ct__;
+		friend class __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni;
+		friend class no_t;
+		friend class __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class __syn_smv___noe2e3_noe2ni_noe3ni_e2e3ni_noe1e2e3ni;
+		friend class e2_t;
+		friend class mv;
+		friend class __syn_smv___e1_e2_e3_ni_nof_1_0;
+		friend class __e1_ct__;
+		friend class __syn_smv___noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni;
+		friend class __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni;
+		friend class __syn_smv___noe1e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1e2e3f1_0;
+		friend class e3_t;
+		friend class __e3_ct__;
+		friend class __syn_smv___noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class TRSversor;
+		friend class __syn_smv___noni_e2ni_noe1e2ni_e3ni_noe1e3ni_e1e2e3ni;
+		friend class plane;
+		friend class translator;
+		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni;
+		friend class __e3ni_ct__;
+		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni;
+		friend class __syn_smv___e1_e2_e3_e1e2e3;
+		friend class dualPlane;
+		friend class __syn_smv___noe1e2_noe1e3_noe2e3_e1e2e3_noe1e2e3ni;
+		friend class __syn_smv___noe1e2_noe1ni_noe2ni_e1e2ni_noe1e2e3ni;
+		friend class __syn_smv___scalarf_1_0;
+		friend class dualSphere;
+		friend class normalizedSphere;
+		friend class __I3_ct__;
+		friend class normalizedTranslator;
+		friend class rotor;
+		friend class circle;
+		friend class __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
+		friend class noni_t;
+		friend class __syn_smv___noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni;
+		friend class __syn_smv___nof_1_0;
+		friend class __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni;
+
+		public:
+			typedef float Float;
+
+		/// zero constructor
+		inline __syn_smv___e1e3_e2e3() {
+
+			set();
+		}
+
+		/// scalar constructor 
+		inline __syn_smv___e1e3_e2e3(Float s, int filler) { // filler can have any value, it simply prevents implicit conversion from Float -> __syn_smv___e1e3_e2e3	 
+			set(s);
+		}
+
+
+
+
+		/// copy constructor (MUST PASS BY REFERENCE)
+		inline __syn_smv___e1e3_e2e3(const __syn_smv___e1e3_e2e3 &arg1) {
+
+			set(arg1);
+		}
+
+		/// general multivector constructor (that can not be selected for implicit conversion by C++)
+		inline __syn_smv___e1e3_e2e3(const mv &arg1, int filler) { // filler can have any value, it simply prevents implicit conversion from mv -> __syn_smv___e1e3_e2e3	 
+			set(arg1);
+		}
+
+		/// pointer to coordinates constructor
+		inline __syn_smv___e1e3_e2e3(____syn_smv___e1e3_e2e3_coordinates__, const Float *coordinates) {
+
+			set(__syn_smv___e1e3_e2e3_e1e3_e2e3, coordinates);
+		}
+
+		/// coordinates constructor
+		inline __syn_smv___e1e3_e2e3(____syn_smv___e1e3_e2e3_coordinates__, Float c_e1e3, Float c_e2e3) {
+
+			set(__syn_smv___e1e3_e2e3_e1e3_e2e3, c_e1e3, c_e2e3);
+		}
+
+		/// set to null
+		void set();
+
+		/// set to scalar
+		void set(Float s);
+
+		/// set to copy
+		void set(const __syn_smv___e1e3_e2e3 &arg1);
+
+		/// set to copy of general multivector
+		void set(const mv &arg1);
+
+		/// pointer to coordinates constructor
+		void set(____syn_smv___e1e3_e2e3_coordinates__, const Float *coordinates);
+
+		/// set to coordinates
+		void set(____syn_smv___e1e3_e2e3_coordinates__, Float c_e1e3, Float c_e2e3);
+
+		/// assign copy
+		__syn_smv___e1e3_e2e3 &operator=(const __syn_smv___e1e3_e2e3 &arg1);
+
+		/// assign general multivector
+		__syn_smv___e1e3_e2e3 &operator=(const mv &arg1);
+
+		/// assign scalar
+		__syn_smv___e1e3_e2e3 &operator=(Float scalarVal);
+
+		/// returns absolute largest coordinate
+		Float largestCoordinate() const;
+		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
+		Float largestBasisBlade(unsigned int &bm) const;
+
+		/// coordinate extraction by name
+		inline Float e1e3() const {
+			return m_c[0];
+		}
+		inline Float e2e3() const {
+			return m_c[1];
+		}
+
+		/// const coordinate extraction by name
+
+		/// get all coordinates (returns NULL for fully constant specialization
+		const Float *getC(____syn_smv___e1e3_e2e3_coordinates__ sanityCheckValue) const {
+			return m_c;
+		}
+
+		/// coordinate storage
+		Float m_c[2];
+
+
+
+		inline const char * c_str(const char *fp = NULL) const {
+			return ::c3ga::c_str(*this, fp);
+		}
+
+		inline const char * c_str_f() const {return c_str("%f");}
+		inline const char * c_str_e() const {return c_str("%e");}
+		inline const char * c_str_e20() const {return c_str("%2.20e");}
+
+		inline std::string toString(const char *fp = NULL) const {
+			return ::c3ga::toString(*this, fp);
+		}
+
+		inline std::string toString_f() const {return toString("%f");}
+		inline std::string toString_e() const {return toString("%e");}
+		inline std::string toString_e20() const {return toString("%2.20e");}
+
+
+
+
+
+
+
+	}; // end of class __syn_smv___e1e3_e2e3 
+
+	/* 'underscore constructors' */
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1e3_e2e3 ___syn_smv___e1e3_e2e3(const mv &arg1) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgs__[]  = {arg1.type()};
+		g2Profiling::profile(((unsigned int)126), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
+		/* end of profiling instrumentation code */;
+		return __syn_smv___e1e3_e2e3(arg1, 0);
+	}
+	/// from const specialization class:
+	inline const __syn_smv___e1e3_e2e3 &___syn_smv___e1e3_e2e3(const __syn_smv___e1e3_e2e3 &arg1) {
+		return arg1;
+	}
+	/// from non-const specialization class:
+	inline __syn_smv___e1e3_e2e3 &___syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3 &arg1) {
+		return arg1;
+	}
+	/// from Float:
+	inline __syn_smv___e1e3_e2e3 ___syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3::Float arg1) {
+		return __syn_smv___e1e3_e2e3(arg1, 0); // 0 = filler; can have any value, it simply prevents implicit conversion from mv -> vector	 
+	}
+
+
+
+	// like example constructors, for use with templates
+	/// underscore constructor from general multivector:
+	inline __syn_smv___e1e3_e2e3 like(const mv &what, const __syn_smv___e1e3_e2e3 &example) {return ___syn_smv___e1e3_e2e3(what);}
+	/// from const specialization class:
+	inline const __syn_smv___e1e3_e2e3 like(const __syn_smv___e1e3_e2e3 &what, const __syn_smv___e1e3_e2e3 &example) {return ___syn_smv___e1e3_e2e3(what);}
+	/// from non-const specialization class:
+	inline __syn_smv___e1e3_e2e3 like(__syn_smv___e1e3_e2e3 &what, const __syn_smv___e1e3_e2e3 &example) {return ___syn_smv___e1e3_e2e3(what);}
+
+
+
+
+	// underscore 'constructors' for float types:
+
+	/// returns scalar part of v as float
+	inline float _float(const __syn_smv___e1e3_e2e3 & v) {
+		return (float)0;
+	}
+	/// returns scalar part of v as double
+	inline double _double(const __syn_smv___e1e3_e2e3 & v) {
+		return (double)0;
+	}
+	/// returns scalar part of v as Float
+	inline float _Float(const __syn_smv___e1e3_e2e3 & v) {
+		return (float)0;
+	}
+
+
 	class om {
 		// the friend classes of om 
 		friend class __syn_smv___scalar_noe3_e1e3_e2e3_e3ni;
@@ -29161,6 +29542,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -29355,6 +29737,7 @@
 		friend class tangentBivector;
 		friend class __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni;
 		friend class sphere;
+		friend class __syn_smv___e1e3_e2e3;
 		friend class __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni;
 		friend class tangentVector;
 		friend class __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni;
@@ -29600,6 +29983,10 @@
 
 		return bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1	, (float)arg1.m_c[1], (float)arg1.m_c[2], (float)arg1.m_c[3]);
 	}
+	inline bivectorE3GA _bivectorE3GA(const __syn_smv___e1e3_e2e3 &arg1) {
+
+		return bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1	, (float)0, (float)arg1.m_c[1], (float)arg1.m_c[0]* (float)-1.0);
+	}
 	inline vectorE3GA _vectorE3GA(const point &arg1) {
 
 		return vectorE3GA(vectorE3GA_e1_e2_e3	, (float)arg1.m_c[1], (float)arg1.m_c[2], (float)arg1.m_c[3]);
@@ -29655,6 +30042,7 @@
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const point& x, const circle& y);
 	inline TRversor gp(const line& x, const line& y);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni& x, const circle& y);
+	inline scalar norm_e(const vectorE2GA& x);
 	inline __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni gpEM(const __syn_smv___scalar_noe3_e1e3_e2e3_e3ni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y);
 	inline circle inverse(const circle& x);
 	inline __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni subtract(const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& x, const bivectorE3GA& y);
@@ -29662,8 +30050,10 @@
 	inline point negate(const point& x);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const TRversor& y);
 	inline bivectorE3GA gp(const bivectorE3GA& x, const scalar& y);
+	inline __syn_smv___e1e3_e2e3 gp(const scalar& x, const __syn_smv___e1e3_e2e3& y);
 	inline TRSversor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __ni_ct__& y);
 	inline __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni gp(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const sphere& y);
+	inline scalar negate(const scalar& x);
 	inline point dual(const sphere& x);
 	inline __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni gp(const freeVector& x, const line& y);
 	inline scalar norm_e(const __syn_smv___scalarf_1_0& x);
@@ -29707,6 +30097,7 @@
 	inline rotor lcont(const __syn_smv___nof_1_0& x, const __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni& y);
 	inline scalar norm_e(const __syn_smv___noe1e2e3ni& x);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni& x, const line& y);
+	inline vectorE2GA subtract(const vectorE2GA& x, const vectorE2GA& y);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni inverse(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& x);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni& x, const circle& y);
 	inline circle op(const pointPair& x, const normalizedPoint& y);
@@ -29727,6 +30118,7 @@
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni add(const scalar& x, const dualLine& y);
 	inline evenVersor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __e2_ct__& y);
 	inline freeBivector reverse(const freeBivector& x);
+	inline __syn_smv___e1e3_e2e3 op(const vectorE2GA& x, const __e3_ct__& y);
 	inline scalar norm_r2(const circle& x);
 	inline __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const circle& x, const __ni_ct__& y);
 	inline __syn_smv___e1ni_e2ni_e3ni_nonif_1_0 op(const __ni_ct__& x, const normalizedPoint& y);
@@ -29826,6 +30218,7 @@
 	inline scalar scp(const dualLine& x, const dualLine& y);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const evenVersor& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y);
 	inline __syn_smv___noe1e2e3ni op(const __ni_ct__& x, const sphere& y);
+	inline scalar lcont(const bivectorE3GA& x, const bivectorE3GA& y);
 	inline scalar subtract(const scalar& x, const scalar& y);
 	inline bivectorE3GA reverse(const bivectorE3GA& x);
 	inline scalar scp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y);
@@ -29846,10 +30239,12 @@
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni gp(const line& x, const __no_ct__& y);
 	inline bivectorE3GA lcont(const __no_ct__& x, const freeBivector& y);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni gpEM(const __syn_smv___scalar_noe1_noe2_noe3_noni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y);
+	inline rotor add(const scalar& x, const bivectorE3GA& y);
 	inline __syn_smv___scalarf0_0 op(const __ni_ct__& x, const line& y);
 	inline mv operator+=(mv& arg1, const mv& arg2);
 	inline scalar operator+=(scalar& arg1, const dualLine& arg2);
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni operator+=(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg2);
+	inline scalar operator+=(scalar& arg1, const bivectorE3GA& arg2);
 	inline no_t operator+=(no_t& arg1, const mv& arg2);
 	inline e1_t operator+=(e1_t& arg1, const mv& arg2);
 	inline e2_t operator+=(e2_t& arg1, const mv& arg2);
@@ -29945,13 +30340,17 @@
 	inline __syn_smv___noe1e2e3ni operator+=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator+=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator+=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator+=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline mv operator+(const mv& arg1, const mv& arg2);
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni operator+(const scalar& arg1, const dualLine& arg2);
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni operator+(float arg1, const dualLine& arg2);
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni operator+(const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg2);
+	inline rotor operator+(const scalar& arg1, const bivectorE3GA& arg2);
+	inline rotor operator+(float arg1, const bivectorE3GA& arg2);
 	inline mv operator-=(mv& arg1, const mv& arg2);
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni operator-=(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const bivectorE3GA& arg2);
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni operator-=(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg2);
+	inline vectorE2GA operator-=(vectorE2GA& arg1, const vectorE2GA& arg2);
 	inline TRversor operator-=(TRversor& arg1, const TRversor& arg2);
 	inline normalizedPoint operator-=(normalizedPoint& arg1, const ni_t& arg2);
 	inline scalar operator-=(scalar& arg1, const rotor& arg2);
@@ -29982,7 +30381,6 @@
 	inline freeTrivector operator-=(freeTrivector& arg1, const mv& arg2);
 	inline tangentVector operator-=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator-=(tangentBivector& arg1, const mv& arg2);
-	inline vectorE2GA operator-=(vectorE2GA& arg1, const mv& arg2);
 	inline vectorE3GA operator-=(vectorE3GA& arg1, const mv& arg2);
 	inline bivectorE3GA operator-=(bivectorE3GA& arg1, const mv& arg2);
 	inline TRversorLog operator-=(TRversorLog& arg1, const mv& arg2);
@@ -30049,9 +30447,11 @@
 	inline __syn_smv___noe1e2e3ni operator-=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator-=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator-=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator-=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline mv operator-(const mv& arg1, const mv& arg2);
 	inline __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni operator-(const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const bivectorE3GA& arg2);
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni operator-(const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg2);
+	inline vectorE2GA operator-(const vectorE2GA& arg1, const vectorE2GA& arg2);
 	inline TRversor operator-(const TRversor& arg1, const TRversor& arg2);
 	inline normalizedPoint operator-(const normalizedPoint& arg1, const ni_t& arg2);
 	inline rotor operator-(const scalar& arg1, const rotor& arg2);
@@ -30062,6 +30462,7 @@
 	inline evenVersor operator-(const evenVersor& arg1, const evenVersor& arg2);
 	inline mv operator-(const mv& arg1);
 	inline point operator-(const point& arg1);
+	inline scalar operator-(const scalar& arg1);
 	inline freeTrivector operator-(const freeTrivector& arg1);
 	inline freeVector operator-(const freeVector& arg1);
 	inline __syn_smv___nif1_0 operator-(const __syn_smv___nif_1_0& arg1);
@@ -30169,6 +30570,7 @@
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni operator%=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___noe1e2e3ni operator%=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator%=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator%=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline scalar operator%(const mv& arg1, const mv& arg2);
 	inline scalar operator%(const __ni_ct__& arg1, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg2);
 	inline scalar operator%(const __ni_ct__& arg1, const __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni& arg2);
@@ -30186,6 +30588,7 @@
 	inline __syn_smv___scalarf_1_0 operator^=(__syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2);
 	inline __ni_ct__ operator^=(__ni_ct__& arg1, const circle& arg2);
 	inline pointPair operator^=(pointPair& arg1, const normalizedPoint& arg2);
+	inline vectorE2GA operator^=(vectorE2GA& arg1, const __e3_ct__& arg2);
 	inline __ni_ct__ operator^=(__ni_ct__& arg1, const normalizedPoint& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator^=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const __ni_ct__& arg2);
 	inline normalizedPoint operator^=(normalizedPoint& arg1, const normalizedPoint& arg2);
@@ -30218,7 +30621,6 @@
 	inline freeTrivector operator^=(freeTrivector& arg1, const mv& arg2);
 	inline tangentVector operator^=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator^=(tangentBivector& arg1, const mv& arg2);
-	inline vectorE2GA operator^=(vectorE2GA& arg1, const mv& arg2);
 	inline bivectorE3GA operator^=(bivectorE3GA& arg1, const mv& arg2);
 	inline TRversorLog operator^=(TRversorLog& arg1, const mv& arg2);
 	inline TRSversorLog operator^=(TRSversorLog& arg1, const mv& arg2);
@@ -30284,11 +30686,13 @@
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni operator^=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___noe1e2e3ni operator^=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator^=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator^=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline mv operator^(const mv& arg1, const mv& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator^(const vectorE3GA& arg1, const rotor& arg2);
 	inline __syn_smv___nif_1_0 operator^(const __syn_smv___scalarf_1_0& arg1, const __ni_ct__& arg2);
 	inline plane operator^(const __ni_ct__& arg1, const circle& arg2);
 	inline circle operator^(const pointPair& arg1, const normalizedPoint& arg2);
+	inline __syn_smv___e1e3_e2e3 operator^(const vectorE2GA& arg1, const __e3_ct__& arg2);
 	inline __syn_smv___e1ni_e2ni_e3ni_nonif_1_0 operator^(const __ni_ct__& arg1, const normalizedPoint& arg2);
 	inline freeTrivector operator^(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const __ni_ct__& arg2);
 	inline pointPair operator^(const normalizedPoint& arg1, const normalizedPoint& arg2);
@@ -30308,6 +30712,7 @@
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni operator*=(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const TRversor& arg2);
 	inline bivectorE3GA operator*=(bivectorE3GA& arg1, const scalar& arg2);
 	inline bivectorE3GA operator*=(bivectorE3GA& arg1, float arg2);
+	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e3_e2e3& arg2);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni operator*=(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const __ni_ct__& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni operator*=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const sphere& arg2);
 	inline freeVector operator*=(freeVector& arg1, const line& arg2);
@@ -30443,6 +30848,7 @@
 	inline __syn_smv___noe1e2e3ni operator*=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator*=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator*=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator*=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline mv operator*(const mv& arg1, const mv& arg2);
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni operator*(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni& arg1, const point& arg2);
 	inline TRversor operator*(const dualLine& arg1, const dualLine& arg2);
@@ -30453,6 +30859,8 @@
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni operator*(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const TRversor& arg2);
 	inline bivectorE3GA operator*(const bivectorE3GA& arg1, const scalar& arg2);
 	inline bivectorE3GA operator*(const bivectorE3GA& arg1, float arg2);
+	inline __syn_smv___e1e3_e2e3 operator*(const scalar& arg1, const __syn_smv___e1e3_e2e3& arg2);
+	inline __syn_smv___e1e3_e2e3 operator*(float arg1, const __syn_smv___e1e3_e2e3& arg2);
 	inline TRSversor operator*(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const __ni_ct__& arg2);
 	inline __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni operator*(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const sphere& arg2);
 	inline __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni operator*(const freeVector& arg1, const line& arg2);
@@ -30542,6 +30950,7 @@
 	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const sphere& arg2);
 	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const normalizedPoint& arg2);
 	inline __no_ct__ operator<<=(__no_ct__& arg1, const TRversor& arg2);
+	inline bivectorE3GA operator<<=(bivectorE3GA& arg1, const bivectorE3GA& arg2);
 	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const circle& arg2);
 	inline normalizedPoint operator<<=(normalizedPoint& arg1, const line& arg2);
 	inline __no_ct__ operator<<=(__no_ct__& arg1, const freeBivector& arg2);
@@ -30570,7 +30979,6 @@
 	inline tangentVector operator<<=(tangentVector& arg1, const mv& arg2);
 	inline tangentBivector operator<<=(tangentBivector& arg1, const mv& arg2);
 	inline vectorE2GA operator<<=(vectorE2GA& arg1, const mv& arg2);
-	inline bivectorE3GA operator<<=(bivectorE3GA& arg1, const mv& arg2);
 	inline TRversorLog operator<<=(TRversorLog& arg1, const mv& arg2);
 	inline TRSversorLog operator<<=(TRSversorLog& arg1, const mv& arg2);
 	inline TRversor operator<<=(TRversor& arg1, const mv& arg2);
@@ -30636,6 +31044,7 @@
 	inline __syn_smv___noe1e2e3ni operator<<=(__syn_smv___noe1e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator<<=(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& arg1, const mv& arg2);
 	inline __syn_smv___e1e2e3 operator<<=(__syn_smv___e1e2e3& arg1, const mv& arg2);
+	inline __syn_smv___e1e3_e2e3 operator<<=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2);
 	inline mv operator<<(const mv& arg1, const mv& arg2);
 	inline freeVector operator<<(const __ni_ct__& arg1, const line& arg2);
 	inline rotor operator<<(const __no_ct__& arg1, const __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni& arg2);
@@ -30648,6 +31057,7 @@
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni operator<<(const __ni_ct__& arg1, const sphere& arg2);
 	inline __syn_smv___scalarf_1_0 operator<<(const __ni_ct__& arg1, const normalizedPoint& arg2);
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator<<(const __no_ct__& arg1, const TRversor& arg2);
+	inline scalar operator<<(const bivectorE3GA& arg1, const bivectorE3GA& arg2);
 	inline dualLine operator<<(const __ni_ct__& arg1, const circle& arg2);
 	inline pointPair operator<<(const normalizedPoint& arg1, const line& arg2);
 	inline bivectorE3GA operator<<(const __no_ct__& arg1, const freeBivector& arg2);
@@ -38437,6 +38847,75 @@
 
 
 
+	// set to zero
+	inline void __syn_smv___e1e3_e2e3::set() {
+		// set coordinates to 0
+		mv_zero(m_c, 2);
+
+	}
+
+	// set to scalar 
+	inline void __syn_smv___e1e3_e2e3::set(Float s) {
+		// set coordinates 0, except for scalar (if any)
+		m_c[0] = (Float)0.0;
+		m_c[1] = (Float)0.0;
+
+	}
+
+
+	// set to copy
+	inline void __syn_smv___e1e3_e2e3::set(const __syn_smv___e1e3_e2e3 &arg1) {
+		// copy coordinates
+		//mv_memcpy(m_c, arg1.m_c, 2);
+		m_c[0] = arg1.m_c[0];
+		m_c[1] = arg1.m_c[1];
+
+	}
+
+	// set to pointer to coordinates
+	inline void __syn_smv___e1e3_e2e3::set(____syn_smv___e1e3_e2e3_coordinates__, const Float *coordinates) {
+		// copy coordinates
+		//mv_memcpy(m_c, coordinates, 2);
+		m_c[0] = coordinates[0];
+		m_c[1] = coordinates[1];
+
+	}
+
+	// set to 'coordinates specified' 
+	inline void __syn_smv___e1e3_e2e3::set(____syn_smv___e1e3_e2e3_coordinates__, Float c_e1e3, Float c_e2e3) {
+		// set coordinates
+		m_c[0] = c_e1e3;
+		m_c[1] = c_e2e3;
+
+	}
+
+
+
+
+
+	// assign copy
+	inline __syn_smv___e1e3_e2e3 &__syn_smv___e1e3_e2e3::operator=(const __syn_smv___e1e3_e2e3 &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign general multivector
+	inline __syn_smv___e1e3_e2e3 &__syn_smv___e1e3_e2e3::operator=(const mv &arg1) {
+		set(arg1);
+		return *this;
+	}
+
+	// assign scalar
+	inline __syn_smv___e1e3_e2e3 &__syn_smv___e1e3_e2e3::operator=(Float scalarVal) {
+		set(scalarVal);
+		return *this;
+	}
+
+
+
+
+
+
 
 
 
@@ -38583,6 +39062,10 @@
 		return arg1;
 	}
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni operator+=(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg2) {
+		arg1.set(::c3ga::add(arg1, arg2));
+		return arg1;
+	}
+	inline scalar operator+=(scalar& arg1, const bivectorE3GA& arg2) {
 		arg1.set(::c3ga::add(arg1, arg2));
 		return arg1;
 	}
@@ -38966,6 +39449,10 @@
 		arg1.set(::c3ga::add(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator+=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::add(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator+(const mv& arg1, const mv& arg2) {
 		return ::c3ga::add(arg1, arg2);
 	}
@@ -38978,6 +39465,12 @@
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni operator+(const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg1, const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& arg2) {
 		return ::c3ga::add(arg1, arg2);
 	}
+	inline rotor operator+(const scalar& arg1, const bivectorE3GA& arg2) {
+		return ::c3ga::add(arg1, arg2);
+	}
+	inline rotor operator+(float arg1, const bivectorE3GA& arg2) {
+		return ::c3ga::add(::c3ga::scalar(arg1), arg2);
+	}
 	inline mv operator-=(mv& arg1, const mv& arg2) {
 		arg1.set(::c3ga::subtract(arg1, arg2));
 		return arg1;
@@ -38987,6 +39480,10 @@
 		return arg1;
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni operator-=(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg2) {
+		arg1.set(::c3ga::subtract(arg1, arg2));
+		return arg1;
+	}
+	inline vectorE2GA operator-=(vectorE2GA& arg1, const vectorE2GA& arg2) {
 		arg1.set(::c3ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -39107,10 +39604,6 @@
 		return arg1;
 	}
 	inline tangentBivector operator-=(tangentBivector& arg1, const mv& arg2) {
-		arg1.set(::c3ga::subtract(arg1, arg2));
-		return arg1;
-	}
-	inline vectorE2GA operator-=(vectorE2GA& arg1, const mv& arg2) {
 		arg1.set(::c3ga::subtract(arg1, arg2));
 		return arg1;
 	}
@@ -39378,6 +39871,10 @@
 		arg1.set(::c3ga::subtract(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator-=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::subtract(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator-(const mv& arg1, const mv& arg2) {
 		return ::c3ga::subtract(arg1, arg2);
 	}
@@ -39385,6 +39882,9 @@
 		return ::c3ga::subtract(arg1, arg2);
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni operator-(const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg1, const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& arg2) {
+		return ::c3ga::subtract(arg1, arg2);
+	}
+	inline vectorE2GA operator-(const vectorE2GA& arg1, const vectorE2GA& arg2) {
 		return ::c3ga::subtract(arg1, arg2);
 	}
 	inline TRversor operator-(const TRversor& arg1, const TRversor& arg2) {
@@ -39415,6 +39915,9 @@
 		return ::c3ga::negate(arg1);
 	}
 	inline point operator-(const point& arg1) {
+		return ::c3ga::negate(arg1);
+	}
+	inline scalar operator-(const scalar& arg1) {
 		return ::c3ga::negate(arg1);
 	}
 	inline freeTrivector operator-(const freeTrivector& arg1) {
@@ -39838,6 +40341,10 @@
 		arg1.set(::c3ga::scp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator%=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::scp(arg1, arg2));
+		return arg1;
+	}
 	inline scalar operator%(const mv& arg1, const mv& arg2) {
 		return ::c3ga::scp(arg1, arg2);
 	}
@@ -39891,6 +40398,10 @@
 		return arg1;
 	}
 	inline pointPair operator^=(pointPair& arg1, const normalizedPoint& arg2) {
+		arg1.set(::c3ga::op(arg1, arg2));
+		return arg1;
+	}
+	inline vectorE2GA operator^=(vectorE2GA& arg1, const __e3_ct__& arg2) {
 		arg1.set(::c3ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -40019,10 +40530,6 @@
 		return arg1;
 	}
 	inline tangentBivector operator^=(tangentBivector& arg1, const mv& arg2) {
-		arg1.set(::c3ga::op(arg1, arg2));
-		return arg1;
-	}
-	inline vectorE2GA operator^=(vectorE2GA& arg1, const mv& arg2) {
 		arg1.set(::c3ga::op(arg1, arg2));
 		return arg1;
 	}
@@ -40286,6 +40793,10 @@
 		arg1.set(::c3ga::op(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator^=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::op(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator^(const mv& arg1, const mv& arg2) {
 		return ::c3ga::op(arg1, arg2);
 	}
@@ -40299,6 +40810,9 @@
 		return ::c3ga::op(arg1, arg2);
 	}
 	inline circle operator^(const pointPair& arg1, const normalizedPoint& arg2) {
+		return ::c3ga::op(arg1, arg2);
+	}
+	inline __syn_smv___e1e3_e2e3 operator^(const vectorE2GA& arg1, const __e3_ct__& arg2) {
 		return ::c3ga::op(arg1, arg2);
 	}
 	inline __syn_smv___e1ni_e2ni_e3ni_nonif_1_0 operator^(const __ni_ct__& arg1, const normalizedPoint& arg2) {
@@ -40366,6 +40880,10 @@
 	}
 	inline bivectorE3GA operator*=(bivectorE3GA& arg1, float arg2) {
 		arg1.set(::c3ga::gp(arg1, ::c3ga::scalar(arg2)));
+		return arg1;
+	}
+	inline scalar operator*=(scalar& arg1, const __syn_smv___e1e3_e2e3& arg2) {
+		arg1.set(::c3ga::gp(arg1, arg2));
 		return arg1;
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni operator*=(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const __ni_ct__& arg2) {
@@ -40908,6 +41426,10 @@
 		arg1.set(::c3ga::gp(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator*=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::gp(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator*(const mv& arg1, const mv& arg2) {
 		return ::c3ga::gp(arg1, arg2);
 	}
@@ -40937,6 +41459,12 @@
 	}
 	inline bivectorE3GA operator*(const bivectorE3GA& arg1, float arg2) {
 		return ::c3ga::gp(arg1, ::c3ga::scalar(arg2));
+	}
+	inline __syn_smv___e1e3_e2e3 operator*(const scalar& arg1, const __syn_smv___e1e3_e2e3& arg2) {
+		return ::c3ga::gp(arg1, arg2);
+	}
+	inline __syn_smv___e1e3_e2e3 operator*(float arg1, const __syn_smv___e1e3_e2e3& arg2) {
+		return ::c3ga::gp(::c3ga::scalar(arg1), arg2);
 	}
 	inline TRSversor operator*(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& arg1, const __ni_ct__& arg2) {
 		return ::c3ga::gp(arg1, arg2);
@@ -41217,6 +41745,10 @@
 		arg1.set(::c3ga::lcont(arg1, arg2));
 		return arg1;
 	}
+	inline bivectorE3GA operator<<=(bivectorE3GA& arg1, const bivectorE3GA& arg2) {
+		arg1.set(::c3ga::lcont(arg1, arg2));
+		return arg1;
+	}
 	inline __ni_ct__ operator<<=(__ni_ct__& arg1, const circle& arg2) {
 		arg1.set(::c3ga::lcont(arg1, arg2));
 		return arg1;
@@ -41326,10 +41858,6 @@
 		return arg1;
 	}
 	inline vectorE2GA operator<<=(vectorE2GA& arg1, const mv& arg2) {
-		arg1.set(::c3ga::lcont(arg1, arg2));
-		return arg1;
-	}
-	inline bivectorE3GA operator<<=(bivectorE3GA& arg1, const mv& arg2) {
 		arg1.set(::c3ga::lcont(arg1, arg2));
 		return arg1;
 	}
@@ -41593,6 +42121,10 @@
 		arg1.set(::c3ga::lcont(arg1, arg2));
 		return arg1;
 	}
+	inline __syn_smv___e1e3_e2e3 operator<<=(__syn_smv___e1e3_e2e3& arg1, const mv& arg2) {
+		arg1.set(::c3ga::lcont(arg1, arg2));
+		return arg1;
+	}
 	inline mv operator<<(const mv& arg1, const mv& arg2) {
 		return ::c3ga::lcont(arg1, arg2);
 	}
@@ -41627,6 +42159,9 @@
 		return ::c3ga::lcont(arg1, arg2);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 operator<<(const __no_ct__& arg1, const TRversor& arg2) {
+		return ::c3ga::lcont(arg1, arg2);
+	}
+	inline scalar operator<<(const bivectorE3GA& arg1, const bivectorE3GA& arg2) {
 		return ::c3ga::lcont(arg1, arg2);
 	}
 	inline dualLine operator<<(const __ni_ct__& arg1, const circle& arg2) {
@@ -41723,18 +42258,18 @@
 		inline void set(omFlatPoint& __x__, const point& __image_of_e1__, const point& __image_of_ni__, const point& __image_of_e2__, const point& __image_of_e3__, const point& __image_of_no__) {
 			__x__.m_c[0] = ((-1.0f * __image_of_ni__.m_c[1] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[1]));
 			__x__.m_c[1] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[2]) + (-1.0f * __image_of_ni__.m_c[2] * __image_of_e1__.m_c[4]));
-			__x__.m_c[2] = ((-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]));
+			__x__.m_c[2] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]) + (-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]));
 			__x__.m_c[3] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[0]) + (-1.0f * __image_of_ni__.m_c[0] * __image_of_e1__.m_c[4]));
-			__x__.m_c[4] = ((__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]));
+			__x__.m_c[4] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]));
 			__x__.m_c[5] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[2]) + (__image_of_e2__.m_c[2] * __image_of_ni__.m_c[4]));
 			__x__.m_c[6] = ((__image_of_e2__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[3]));
-			__x__.m_c[7] = ((__image_of_e2__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[0]));
+			__x__.m_c[7] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[0]) + (__image_of_e2__.m_c[0] * __image_of_ni__.m_c[4]));
 			__x__.m_c[8] = ((-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_e3__.m_c[1] * __image_of_ni__.m_c[4]));
 			__x__.m_c[9] = ((-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[2]) + (__image_of_e3__.m_c[2] * __image_of_ni__.m_c[4]));
 			__x__.m_c[10] = ((__image_of_e3__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[3]));
-			__x__.m_c[11] = ((__image_of_e3__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[0]));
-			__x__.m_c[12] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_no__.m_c[1] * __image_of_ni__.m_c[4]));
-			__x__.m_c[13] = ((__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]));
+			__x__.m_c[11] = ((-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[0]) + (__image_of_e3__.m_c[0] * __image_of_ni__.m_c[4]));
+			__x__.m_c[12] = ((__image_of_no__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[1]));
+			__x__.m_c[13] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]) + (__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]));
 			__x__.m_c[14] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_no__.m_c[3] * __image_of_ni__.m_c[4]));
 			__x__.m_c[15] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[0]) + (__image_of_no__.m_c[0] * __image_of_ni__.m_c[4]));
 		}
@@ -41761,31 +42296,36 @@
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[10] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[12] * y.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[2])), ((-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[3])), ((x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[3]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[2])), ((x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[3])), ((x.m_c[10] * y.m_c[0]) + (x.m_c[11] * y.m_c[1]) + (x.m_c[12] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[10] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[11] * y.m_c[4])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[1]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[12] * y.m_c[4])), ((x.m_c[11] * y.m_c[2]) + (x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[0])), ((-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[12] * y.m_c[0]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[5] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[6] * y.m_c[4])), ((-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[0] * y.m_c[4])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[12] * y.m_c[3])), ((-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[8] * y.m_c[1])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[11] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[12] * y.m_c[2]) + (x.m_c[10] * y.m_c[0])), ((x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[13] * y.m_c[2]) + (x.m_c[11] * y.m_c[4])), ((x.m_c[5] * y.m_c[4]) + (x.m_c[12] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[1]) + (x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3])), ((-1.0f * x.m_c[12] * y.m_c[1]) + (x.m_c[13] * y.m_c[0]) + (x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[3])));
 	}
 	inline TRversor gp(const dualLine& x, const dualLine& y) {
-		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[5])));
+		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[5] * y.m_c[0])));
 	}
 	inline scalar norm_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const point& x, const circle& y) {
-		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, ((x.m_c[3] * y.m_c[7]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[4])), ((x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[5])), ((-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[7])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[9])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[9])), ((-1.0f * x.m_c[1] * y.m_c[6]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[8]) + (x.m_c[2] * y.m_c[7])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[5])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5])), ((-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[7])), ((-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[3] * y.m_c[2])));
+		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, ((-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[3] * y.m_c[7])), ((-1.0f * x.m_c[0] * y.m_c[5]) + (x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[8])), ((-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[9])), ((-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[6])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[9])), ((-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[9])), ((-1.0f * x.m_c[1] * y.m_c[6]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[8])), ((-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[2] * y.m_c[4])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline TRversor gp(const line& x, const line& y) {
-		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
+		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3])), ((x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4])), ((x.m_c[0] * y.m_c[4]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[2] * y.m_c[5])), ((x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[6] * y.m_c[8])), ((-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[9] * y.m_c[6])), ((-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[8])), ((-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[7])), ((x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[2] * y.m_c[8])), ((-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[2])), ((-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[8] * y.m_c[9]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[9] * y.m_c[7]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[5] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[9] * y.m_c[5])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (x.m_c[7] * y.m_c[5])), ((-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[5] * y.m_c[6]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[9])), ((-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[8] * y.m_c[5]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[8] * y.m_c[8]) + (x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[6] * y.m_c[7]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[5])), ((-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[4] * y.m_c[2])), ((x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[7] * y.m_c[4])), ((-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[7] * y.m_c[5]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (x.m_c[6] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[0] * y.m_c[0])));
+	}
+	inline scalar norm_e(const vectorE2GA& x) {
+		scalar e2;
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni gpEM(const __syn_smv___scalar_noe3_e1e3_e2e3_e3ni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + x.m_c[1] + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2])), ((-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + x.m_c[1] + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[4]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[3])));
 	}
 	inline circle inverse(const circle& x) {
 		scalar n;
-		n.m_c[0] = ((-1.0f * x.m_c[5] * x.m_c[5]) + (x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[0] * x.m_c[6]) + (x.m_c[1] * x.m_c[7]) + (-1.0f * x.m_c[2] * x.m_c[8]) + (x.m_c[7] * x.m_c[1]) + (-1.0f * x.m_c[6] * x.m_c[0]) + (-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[8] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[7]) + (-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[2] * x.m_c[8]) + (-1.0f * x.m_c[8] * x.m_c[2]) + (-1.0f * x.m_c[5] * x.m_c[5]) + (-1.0f * x.m_c[0] * x.m_c[6]) + (x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[6] * x.m_c[0]) + (x.m_c[7] * x.m_c[1]) + (-1.0f * x.m_c[4] * x.m_c[4]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return circle(circle_e2e3ni_e3e1ni_e1e2ni_noe3ni_noe1ni_noe2ni_noe2e3_noe1e3_noe1e2_e1e2e3, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (-1.0f * x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]), (-1.0f * x.m_c[6] * in.m_c[0]), (-1.0f * x.m_c[7] * in.m_c[0]), (-1.0f * x.m_c[8] * in.m_c[0]), (-1.0f * x.m_c[9] * in.m_c[0]));
@@ -41794,28 +42334,34 @@
 		return __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni(__syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, (-1.0f * y.m_c[0]), y.m_c[2], (-1.0f * y.m_c[1]), x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
 	}
 	inline evenVersor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const circle& y) {
-		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((x.m_c[13] * y.m_c[7]) + (x.m_c[9] * y.m_c[4]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[11] * y.m_c[8]) + (x.m_c[10] * y.m_c[5]) + (x.m_c[12] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[10] * y.m_c[8]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[12] * y.m_c[7]) + (x.m_c[15] * y.m_c[6]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[9])), ((x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[12] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[15] * y.m_c[7]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[15] * y.m_c[8]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[10] * y.m_c[6])), ((-1.0f * x.m_c[14] * y.m_c[7]) + (x.m_c[4] * y.m_c[9]) + (x.m_c[15] * y.m_c[3]) + (x.m_c[13] * y.m_c[6]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[9] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[15] * y.m_c[4]) + (x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[13] * y.m_c[8]) + (x.m_c[10] * y.m_c[3]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[12] * y.m_c[5])), ((-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[15] * y.m_c[5]) + (x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[8]) + (x.m_c[12] * y.m_c[4])), ((-1.0f * x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[15] * y.m_c[0]) + (x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[14] * y.m_c[9]) + (-1.0f * x.m_c[12] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[13] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (x.m_c[11] * y.m_c[4])), ((x.m_c[13] * y.m_c[4]) + (x.m_c[11] * y.m_c[9]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[14] * y.m_c[5]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[15] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[13] * y.m_c[7]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[11] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[15] * y.m_c[9])), ((-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[14] * y.m_c[4]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[13] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[2]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[9]) + (-1.0f * x.m_c[14] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[13] * y.m_c[6]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[7]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[14] * y.m_c[8]) + (x.m_c[10] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[2])), ((x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[8]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[9]) + (x.m_c[5] * y.m_c[2])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[12] * y.m_c[8]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[7])));
+		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((x.m_c[13] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[10] * y.m_c[5]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[9] * y.m_c[4]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[11] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[12] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[12] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (x.m_c[10] * y.m_c[8]) + (x.m_c[4] * y.m_c[7]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[15] * y.m_c[6])), ((x.m_c[12] * y.m_c[6]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[4] * y.m_c[6])), ((-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (x.m_c[15] * y.m_c[8]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[4] * y.m_c[9]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[15] * y.m_c[3]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[14] * y.m_c[7]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[15] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[9]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[13] * y.m_c[8])), ((x.m_c[8] * y.m_c[7]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[14] * y.m_c[8]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[15] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[12] * y.m_c[4])), ((-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[15] * y.m_c[0]) + (x.m_c[14] * y.m_c[9]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[11] * y.m_c[4]) + (x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[15] * y.m_c[2]) + (x.m_c[13] * y.m_c[4]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[14] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[11] * y.m_c[9])), ((x.m_c[13] * y.m_c[7]) + (x.m_c[15] * y.m_c[9]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[11] * y.m_c[8]) + (x.m_c[5] * y.m_c[1])), ((-1.0f * x.m_c[14] * y.m_c[4]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[13] * y.m_c[5]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[12] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[9]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[14] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[8])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[14] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (x.m_c[10] * y.m_c[9]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[2])), ((-1.0f * x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[13] * y.m_c[8]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[4])), ((-1.0f * x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[7]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[12] * y.m_c[8]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[7])));
 	}
 	inline point negate(const point& x) {
 		return point(point_no_e1_e2_e3_ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const TRversor& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3])), ((-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[5]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[7] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[6] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[3])), ((x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[6] * y.m_c[0])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[3] * y.m_c[6])), ((-1.0f * x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[6]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[5])), ((-1.0f * x.m_c[15] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[2])), ((x.m_c[0] * y.m_c[5]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[15] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[3]) + (x.m_c[10] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[15] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[7]) + (x.m_c[14] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[8] * y.m_c[1]) + (x.m_c[10] * y.m_c[4]) + (x.m_c[11] * y.m_c[0])), ((x.m_c[0] * y.m_c[6]) + (x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[1])), ((x.m_c[10] * y.m_c[7]) + (x.m_c[15] * y.m_c[5]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[12] * y.m_c[4]) + (x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[13] * y.m_c[0])), ((x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[12] * y.m_c[5]) + (x.m_c[1] * y.m_c[7]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[14] * y.m_c[0])), ((x.m_c[9] * y.m_c[3]) + (x.m_c[15] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[3] * y.m_c[6])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[3])), ((-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[3])), ((x.m_c[7] * y.m_c[2]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[6] * y.m_c[6])), ((-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[6] * y.m_c[2])), ((x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[6] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[7]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[6]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[13] * y.m_c[2]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[7])), ((-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[15] * y.m_c[3]) + (x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[2])), ((x.m_c[10] * y.m_c[0]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[12] * y.m_c[3]) + (x.m_c[15] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[6] * y.m_c[6])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[15] * y.m_c[6]) + (x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[7]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[4] * y.m_c[7]) + (x.m_c[11] * y.m_c[0]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[13] * y.m_c[3])), ((x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[10] * y.m_c[3]) + (x.m_c[9] * y.m_c[2]) + (x.m_c[12] * y.m_c[0])), ((x.m_c[11] * y.m_c[3]) + (x.m_c[15] * y.m_c[5]) + (x.m_c[12] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[14] * y.m_c[1])), ((x.m_c[7] * y.m_c[4]) + (x.m_c[8] * y.m_c[3]) + (x.m_c[1] * y.m_c[7]) + (x.m_c[12] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[14] * y.m_c[0])), ((x.m_c[0] * y.m_c[7]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[15] * y.m_c[0]) + (x.m_c[9] * y.m_c[3]) + (x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (x.m_c[12] * y.m_c[1])));
 	}
 	inline bivectorE3GA gp(const bivectorE3GA& x, const scalar& y) {
 		return bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
+	inline __syn_smv___e1e3_e2e3 gp(const scalar& x, const __syn_smv___e1e3_e2e3& y) {
+		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]));
+	}
 	inline TRSversor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __ni_ct__& y) {
-		return TRSversor(TRSversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_noni_e1e2noni_e1e3noni_e2e3noni_e1e2e3ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[6]), (x.m_c[1] + (-1.0f * x.m_c[9])), (x.m_c[2] + (-1.0f * x.m_c[10])), ((-1.0f * x.m_c[12]) + x.m_c[4]), x.m_c[0], x.m_c[3], x.m_c[5], x.m_c[6], ((-1.0f * x.m_c[15]) + x.m_c[7]));
+		return TRSversor(TRSversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_noni_e1e2noni_e1e3noni_e2e3noni_e1e2e3ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[6]), ((-1.0f * x.m_c[9]) + x.m_c[1]), ((-1.0f * x.m_c[10]) + x.m_c[2]), ((-1.0f * x.m_c[12]) + x.m_c[4]), x.m_c[0], x.m_c[3], x.m_c[5], x.m_c[6], ((-1.0f * x.m_c[15]) + x.m_c[7]));
 	}
 	inline __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni gp(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const sphere& y) {
-		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+	}
+	inline scalar negate(const scalar& x) {
+		return scalar(scalar_scalar, (-1.0f * x.m_c[0]));
 	}
 	inline point dual(const sphere& x) {
 		return point(point_no_e1_e2_e3_ni, x.m_c[4], (-1.0f * x.m_c[3]), x.m_c[2], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[0]));
 	}
 	inline __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni gp(const freeVector& x, const line& y) {
-		return __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___ni_e1e2ni_e1e3ni_e2e3ni_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[4])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[5])));
+		return __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___ni_e1e2ni_e1e3ni_e2e3ni_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[2] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[5])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[5])));
 	}
 	inline scalar norm_e(const __syn_smv___scalarf_1_0& x) {
 		scalar e2;
@@ -41826,23 +42372,23 @@
 		return __syn_smv___nif_1_0(__syn_smv___nif_1_0_nif_1_0);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const evenVersor& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[15] * y.m_c[3]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[13] * y.m_c[0]) + (x.m_c[15] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (x.m_c[5] * y.m_c[0])), ((x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[1])), ((-1.0f * x.m_c[12] * y.m_c[2]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[13] * y.m_c[3])), ((x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (x.m_c[12] * y.m_c[1])), ((x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (x.m_c[12] * y.m_c[4]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[9] * y.m_c[0]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[11] * y.m_c[2]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[4])), ((x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[14] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[1])), ((x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[12] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[1] * y.m_c[4])), ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[15] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[15] * y.m_c[2])), ((x.m_c[5] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[0])), ((-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[2])), ((x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[12] * y.m_c[1]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[2])), ((x.m_c[12] * y.m_c[4]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[13] * y.m_c[1]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[11] * y.m_c[2])), ((x.m_c[14] * y.m_c[4]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[11] * y.m_c[1])), ((-1.0f * x.m_c[12] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[11] * y.m_c[0])));
 	}
 	inline freeVector lcont(const __ni_ct__& x, const line& y) {
 		return freeVector(freeVector_e1ni_e2ni_e3ni, y.m_c[3], y.m_c[4], y.m_c[5]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni gp(const __syn_smv___noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4])), ((x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[5] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[0] * y.m_c[4]) + (x.m_c[4] * y.m_c[5])), ((-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[2] * y.m_c[5])));
 	}
 	inline rotor lcont(const __no_ct__& x, const __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[3]), y.m_c[2]);
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni gpEM(const point& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[0])), (x.m_c[1] + (x.m_c[0] * y.m_c[0])), (x.m_c[2] + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), (x.m_c[3] + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + x.m_c[4]), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), (x.m_c[2] + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), (x.m_c[3] + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + x.m_c[4]), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])));
 	}
 	inline rotor unit_e(const rotor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]), (x.m_c[3] * ie.m_c[0]));
@@ -41854,10 +42400,10 @@
 		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]), (x.m_c[5] * y.m_c[0]), (x.m_c[6] * y.m_c[0]), (x.m_c[7] * y.m_c[0]), (x.m_c[8] * y.m_c[0]), (x.m_c[9] * y.m_c[0]), (x.m_c[10] * y.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const TRversor& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[8])), ((x.m_c[5] * y.m_c[8]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[6] * y.m_c[7])), ((-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[2] * y.m_c[9])), ((x.m_c[0] * y.m_c[8]) + (x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[6])), ((-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[7] * y.m_c[8])), ((x.m_c[1] * y.m_c[6]) + (x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[8])), ((x.m_c[0] * y.m_c[6]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[7])), ((-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[6])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[6])), ((-1.0f * x.m_c[6] * y.m_c[6]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[7] * y.m_c[7])), ((-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[5] * y.m_c[6]) + (x.m_c[4] * y.m_c[7])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[7] * y.m_c[5])), ((-1.0f * x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[6] * y.m_c[5])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[6] * y.m_c[8])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[7])), ((x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[5] * y.m_c[8])), ((-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[8])), ((-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[3] * y.m_c[7]) + (x.m_c[0] * y.m_c[8])), ((-1.0f * x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7])), ((-1.0f * x.m_c[3] * y.m_c[8]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[0] * y.m_c[7])), ((x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[0] * y.m_c[6])), ((x.m_c[5] * y.m_c[7]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[6])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[7] * y.m_c[9]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (x.m_c[1] * y.m_c[5])), ((x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (x.m_c[4] * y.m_c[8])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[4] * y.m_c[7]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((x.m_c[5] * y.m_c[9]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[6] * y.m_c[8]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[5])));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni subtract(const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& x, const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), (x.m_c[4] + (-1.0f * y.m_c[4])), (x.m_c[5] + (-1.0f * y.m_c[5])), ((-1.0f * y.m_c[6]) + x.m_c[6]), ((-1.0f * y.m_c[7]) + x.m_c[7]), ((-1.0f * y.m_c[8]) + x.m_c[8]), (x.m_c[9] + (-1.0f * y.m_c[9])), (x.m_c[10] + (-1.0f * y.m_c[10])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), (x.m_c[3] + (-1.0f * y.m_c[3])), (x.m_c[4] + (-1.0f * y.m_c[4])), ((-1.0f * y.m_c[5]) + x.m_c[5]), (x.m_c[6] + (-1.0f * y.m_c[6])), (x.m_c[7] + (-1.0f * y.m_c[7])), (x.m_c[8] + (-1.0f * y.m_c[8])), (x.m_c[9] + (-1.0f * y.m_c[9])), ((-1.0f * y.m_c[10]) + x.m_c[10]));
 	}
 	inline sphere reverse(const sphere& x) {
 		return sphere(sphere_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3], x.m_c[4]);
@@ -41866,36 +42412,36 @@
 		return __syn_smv___noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni, x.m_c[5], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), x.m_c[3], x.m_c[4], (-1.0f * x.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni gp(const sphere& x, const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& y) {
-		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, (x.m_c[4] * y.m_c[0]), (x.m_c[4] * y.m_c[3]), (-1.0f * x.m_c[4] * y.m_c[2]), (x.m_c[4] * y.m_c[1]), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, (x.m_c[4] * y.m_c[0]), (x.m_c[4] * y.m_c[3]), (-1.0f * x.m_c[4] * y.m_c[2]), (x.m_c[4] * y.m_c[1]), ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline rotor inverse(const rotor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline scalar norm_e(const freeVector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline dualLine inverse(const dualLine& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return dualLine(dualLine_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (-1.0f * x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni gp(const __syn_smv___noni_e2ni_noe1e2ni_e3ni_noe1e3ni_e1e2e3ni& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[5])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[0] * y.m_c[5])), ((x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[3] * y.m_c[5])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[5] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[0] * y.m_c[5])), ((x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[5])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[5]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_noe1_noe2_noe3_noni gpEM(const point& x, const __no_ct__& y) {
 		return __syn_smv___scalar_noe1_noe2_noe3_noni(__syn_smv___scalar_noe1_noe2_noe3_noni_scalar_noe1_noe2_noe3_noni, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]));
 	}
 	inline line unit_r(const line& x) {
 		scalar r2;
-		r2.m_c[0] = ((-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[5] * x.m_c[5]));
+		r2.m_c[0] = ((-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[5] * x.m_c[5]) + (-1.0f * x.m_c[4] * x.m_c[4]));
 		scalar ir;
 		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
 		return line(line_e1e2ni_e1e3ni_e2e3ni_e1noni_e2noni_e3noni, (x.m_c[0] * ir.m_c[0]), (x.m_c[1] * ir.m_c[0]), (x.m_c[2] * ir.m_c[0]), (x.m_c[3] * ir.m_c[0]), (x.m_c[4] * ir.m_c[0]), (x.m_c[5] * ir.m_c[0]));
@@ -41923,11 +42469,11 @@
 	}
 	inline scalar norm_r(const bivectorE3GA& x) {
 		scalar r2;
-		r2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		r2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	inline vectorE3GA lcontEM(const dualSphere& x, const bivectorE3GA& y) {
-		return vectorE3GA(vectorE3GA_e1_e2_e3, ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return vectorE3GA(vectorE3GA_e1_e2_e3, ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline TRversor lcont(const __ni_ct__& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
 		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[3]), (-1.0f * y.m_c[5]), (-1.0f * y.m_c[6]), (-1.0f * y.m_c[9]), (-1.0f * y.m_c[10]), (-1.0f * y.m_c[12]), (-1.0f * y.m_c[15]));
@@ -41948,10 +42494,10 @@
 		return __syn_smv___nif1_0(__syn_smv___nif1_0_nif1_0);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const TRSversor& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[3] * y.m_c[6]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[8] * y.m_c[3])), ((x.m_c[11] * y.m_c[6]) + (x.m_c[10] * y.m_c[15]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[7] * y.m_c[10]) + (x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[15]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[11] * y.m_c[3]) + (x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[8] * y.m_c[15]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[9] * y.m_c[9])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[8] * y.m_c[12]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[9] * y.m_c[10]) + (x.m_c[0] * y.m_c[7])), ((-1.0f * x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[10] * y.m_c[14]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (-1.0f * x.m_c[6] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[11]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[11] * y.m_c[15]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[13])), ((-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[12]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[15]) + (x.m_c[1] * y.m_c[10])), ((x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[3] * y.m_c[12]) + (x.m_c[2] * y.m_c[15]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[0] * y.m_c[10]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((-1.0f * x.m_c[6] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[10]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[7] * y.m_c[11]) + (-1.0f * x.m_c[2] * y.m_c[14]) + (x.m_c[8] * y.m_c[8]) + (x.m_c[0] * y.m_c[11]) + (x.m_c[3] * y.m_c[13]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[10] * y.m_c[13]) + (-1.0f * x.m_c[9] * y.m_c[14]) + (x.m_c[1] * y.m_c[8]) + (x.m_c[5] * y.m_c[9])), ((-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[8] * y.m_c[7]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[3] * y.m_c[10])), ((x.m_c[11] * y.m_c[2]) + (x.m_c[8] * y.m_c[14]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[0] * y.m_c[13]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[9] * y.m_c[8]) + (x.m_c[7] * y.m_c[13]) + (x.m_c[5] * y.m_c[15]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[10] * y.m_c[11]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[12])), ((x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[13]) + (x.m_c[9] * y.m_c[11]) + (-1.0f * x.m_c[1] * y.m_c[13]) + (x.m_c[6] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (x.m_c[0] * y.m_c[14]) + (x.m_c[3] * y.m_c[8]) + (x.m_c[10] * y.m_c[8]) + (x.m_c[7] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[11] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[7])), ((x.m_c[3] * y.m_c[9]) + (x.m_c[1] * y.m_c[12]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[10] * y.m_c[6]) + (x.m_c[9] * y.m_c[5])), ((-1.0f * x.m_c[9] * y.m_c[12]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[10] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[5] * y.m_c[3])), ((x.m_c[8] * y.m_c[9]) + (x.m_c[2] * y.m_c[7]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[10]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[9] * y.m_c[15]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[8] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((x.m_c[1] * y.m_c[6]) + (x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[5])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[6])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[9] * y.m_c[10]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[9])), ((-1.0f * x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[11]) + (x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[14]) + (-1.0f * x.m_c[9] * y.m_c[13]) + (x.m_c[11] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[11] * y.m_c[7]) + (x.m_c[7] * y.m_c[8])), ((-1.0f * x.m_c[3] * y.m_c[15]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[2] * y.m_c[12]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[10])), ((x.m_c[0] * y.m_c[10]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[8] * y.m_c[1]) + (x.m_c[2] * y.m_c[15]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[3] * y.m_c[12]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[11] * y.m_c[5])), ((x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[14]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[10]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[7] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[15]) + (-1.0f * x.m_c[2] * y.m_c[14]) + (x.m_c[0] * y.m_c[11]) + (x.m_c[10] * y.m_c[13]) + (x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[11] * y.m_c[4])), ((x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[8] * y.m_c[7]) + (x.m_c[5] * y.m_c[6]) + (x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[10]) + (x.m_c[9] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[7] * y.m_c[13]) + (x.m_c[0] * y.m_c[13]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (x.m_c[8] * y.m_c[14]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[11]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[5] * y.m_c[15]) + (x.m_c[9] * y.m_c[8]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[4] * y.m_c[12])), ((x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[13]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[10] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (x.m_c[6] * y.m_c[2]) + (x.m_c[7] * y.m_c[14]) + (x.m_c[6] * y.m_c[10]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[13]) + (x.m_c[9] * y.m_c[11]) + (-1.0f * x.m_c[5] * y.m_c[12]) + (x.m_c[0] * y.m_c[14])), ((-1.0f * x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[1] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[11] * y.m_c[0]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[10])));
 	}
 	inline point lcont(const pointPair& x, const line& y) {
-		return point(point_no_e1_e2_e3_ni, ((x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[5])), ((x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[4]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[9] * y.m_c[5]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[7] * y.m_c[4]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])));
+		return point(point_no_e1_e2_e3_ni, ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[5])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[9] * y.m_c[3])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[4])), ((x.m_c[9] * y.m_c[5]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])));
 	}
 	inline rotor lcont(const __syn_smv___nof_1_0& x, const __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni& y) {
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, y.m_c[0], y.m_c[1], y.m_c[3], (-1.0f * y.m_c[2]));
@@ -41962,7 +42508,10 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni& x, const line& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[3])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[5])), ((x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[8] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[4])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[8] * y.m_c[1])), ((x.m_c[5] * y.m_c[4]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[4])), ((x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[1] * y.m_c[5])), ((x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[8] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[5] * y.m_c[1]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[5] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[6] * y.m_c[2]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])));
+	}
+	inline vectorE2GA subtract(const vectorE2GA& x, const vectorE2GA& y) {
+		return vectorE2GA(vectorE2GA_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])));
 	}
 	inline __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni inverse(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& x) {
 		scalar n;
@@ -41972,25 +42521,25 @@
 		return __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_e1e2e3_e1e2ni_e1e3ni_e2e3ni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[9] * y.m_c[6])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3])), ((-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[8] * y.m_c[6]) + (x.m_c[3] * y.m_c[9])), ((x.m_c[8] * y.m_c[4]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[9])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[9] * y.m_c[8])), ((x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[8] * y.m_c[5]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[7] * y.m_c[0])), ((x.m_c[7] * y.m_c[1]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[8] * y.m_c[7]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[5] * y.m_c[7]) + (x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (x.m_c[8] * y.m_c[6])), ((-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[9] * y.m_c[5]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[6] * y.m_c[5])), ((x.m_c[0] * y.m_c[9]) + (x.m_c[7] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[2])), ((x.m_c[4] * y.m_c[2]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[5] * y.m_c[4]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline circle op(const pointPair& x, const normalizedPoint& y) {
-		return circle(circle_e2e3ni_e3e1ni_e1e2ni_noe3ni_noe1ni_noe2ni_noe2e3_noe1e3_noe1e2_e1e2e3, ((-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[8] * y.m_c[1]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[5] * y.m_c[3])), ((x.m_c[7] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + x.m_c[8] + (-1.0f * x.m_c[9] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[0]) + x.m_c[6]), (x.m_c[7] + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + x.m_c[4] + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + x.m_c[3]), ((x.m_c[4] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])));
+		return circle(circle_e2e3ni_e3e1ni_e1e2ni_noe3ni_noe1ni_noe2ni_noe2e3_noe1e3_noe1e2_e1e2e3, ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[8] * y.m_c[1])), ((x.m_c[6] * y.m_c[2]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((x.m_c[7] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[1])), ((-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + x.m_c[8]), ((x.m_c[0] * y.m_c[3]) + x.m_c[6] + (-1.0f * x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[9] * y.m_c[1]) + x.m_c[7] + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + x.m_c[4] + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + x.m_c[3]), ((x.m_c[4] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[5] * y.m_c[1])));
 	}
 	inline scalar norm_e(const __syn_smv___e1ni_e2ni_e3ni_nonif_1_0& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + 1.0f);
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + 1.0f + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni gp(const sphere& x, const __e2_ct__& y) {
 		return __syn_smv___noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni(__syn_smv___noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni_noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni, x.m_c[4], (-1.0f * x.m_c[1]), x.m_c[3], x.m_c[0], x.m_c[2]);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni gp(const __syn_smv___noe2e3_noe2ni_noe3ni_e2e3ni_noe1e2e3ni& x, const sphere& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni_no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[4])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni_no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[4])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline scalar norm_e(const dualLine& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___noe1e2_noe1e3_noe2e3_e1e2e3_noe1e2e3ni gp(const sphere& x, const __no_ct__& y) {
@@ -42000,7 +42549,7 @@
 		return __syn_smv___noe1e2_noe1ni_noe2ni_e1e2ni_noe1e2e3ni(__syn_smv___noe1e2_noe1ni_noe2ni_e1e2ni_noe1e2e3ni_noe1e2_noe1ni_noe2ni_e1e2ni_noe1e2e3ni, (-1.0f * x.m_c[4]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni gpEM(const __syn_smv___scalar_noe1_e1e2_e1e3_e1ni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni_no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + x.m_c[1]), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[4]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni_no_e1_e2_noe1e2_e3_noe1e3_e1e2e3_ni_noe1ni_e1e2ni_e1e3ni, ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + x.m_c[1] + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])));
 	}
 	inline __syn_smv___nof_1_0 negate(const __no_ct__& x) {
 		return __syn_smv___nof_1_0(__syn_smv___nof_1_0_nof_1_0);
@@ -42015,7 +42564,7 @@
 		return __syn_smv___noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni_noe1_noe3_e1e3_noe1e2e3_noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni, x.m_c[8], (-1.0f * x.m_c[6]), (-1.0f * x.m_c[9]), (-1.0f * x.m_c[7]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[4]), x.m_c[0], x.m_c[3], (-1.0f * x.m_c[1]));
 	}
 	inline TRversor subtract(const TRversor& x, const TRversor& y) {
-		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])), ((-1.0f * y.m_c[4]) + x.m_c[4]), ((-1.0f * y.m_c[5]) + x.m_c[5]), ((-1.0f * y.m_c[6]) + x.m_c[6]), ((-1.0f * y.m_c[7]) + x.m_c[7]));
+		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])), (x.m_c[4] + (-1.0f * y.m_c[4])), ((-1.0f * y.m_c[5]) + x.m_c[5]), ((-1.0f * y.m_c[6]) + x.m_c[6]), ((-1.0f * y.m_c[7]) + x.m_c[7]));
 	}
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni gp(const circle& x, const __no_ct__& y) {
 		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noe1e2ni_noe1e3ni_noe2e3ni, (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), x.m_c[1], (-1.0f * x.m_c[0]), (-1.0f * x.m_c[9]), (-1.0f * x.m_c[2]), x.m_c[1], (-1.0f * x.m_c[0]));
@@ -42032,8 +42581,11 @@
 	inline freeBivector reverse(const freeBivector& x) {
 		return freeBivector(freeBivector_e1e2ni_e2e3ni_e3e1ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
+	inline __syn_smv___e1e3_e2e3 op(const vectorE2GA& x, const __e3_ct__& y) {
+		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, x.m_c[0], x.m_c[1]);
+	}
 	inline scalar norm_r2(const circle& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[7]) + (-1.0f * x.m_c[2] * x.m_c[8]) + (x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[0] * x.m_c[6]) + (-1.0f * x.m_c[5] * x.m_c[5]) + (x.m_c[7] * x.m_c[1]) + (-1.0f * x.m_c[6] * x.m_c[0]) + (-1.0f * x.m_c[8] * x.m_c[2]) + (-1.0f * x.m_c[3] * x.m_c[3])));
+		return scalar(scalar_scalar, ((x.m_c[7] * x.m_c[1]) + (-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[0] * x.m_c[6]) + (-1.0f * x.m_c[6] * x.m_c[0]) + (-1.0f * x.m_c[8] * x.m_c[2]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[2] * x.m_c[8]) + (x.m_c[1] * x.m_c[7]) + (-1.0f * x.m_c[5] * x.m_c[5])));
 	}
 	inline __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const circle& x, const __ni_ct__& y) {
 		return __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, (-1.0f * x.m_c[8]), (-1.0f * x.m_c[7]), (-1.0f * x.m_c[6]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]), x.m_c[8], (-1.0f * x.m_c[3]), x.m_c[7], x.m_c[6], x.m_c[9]);
@@ -42042,44 +42594,44 @@
 		return __syn_smv___e1ni_e2ni_e3ni_nonif_1_0(__syn_smv___e1ni_e2ni_e3ni_nonif_1_0_e1ni_e2ni_e3ni_nonif_1_0, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]));
 	}
 	inline normalizedPoint subtract(const normalizedPoint& x, const ni_t& y) {
-		return normalizedPoint(normalizedPoint_e1_e2_e3_ni_nof1_0, x.m_c[0], x.m_c[1], x.m_c[2], (x.m_c[3] + (-1.0f * y.m_c[0])));
+		return normalizedPoint(normalizedPoint_e1_e2_e3_ni_nof1_0, x.m_c[0], x.m_c[1], x.m_c[2], ((-1.0f * y.m_c[0]) + x.m_c[3]));
 	}
 	inline rotor subtract(const scalar& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + (-1.0f * y.m_c[0])), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]), (-1.0f * y.m_c[3]));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]), (-1.0f * y.m_c[3]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const scalar& y) {
 		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]), (x.m_c[5] * y.m_c[0]), (x.m_c[6] * y.m_c[0]), (x.m_c[7] * y.m_c[0]), (x.m_c[8] * y.m_c[0]), (x.m_c[9] * y.m_c[0]), (x.m_c[10] * y.m_c[0]), (x.m_c[11] * y.m_c[0]), (x.m_c[12] * y.m_c[0]), (x.m_c[13] * y.m_c[0]), (x.m_c[14] * y.m_c[0]), (x.m_c[15] * y.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni gp(const __syn_smv___noe1e2_noe1ni_noe2ni_e1e2ni_noe1e2e3ni& x, const sphere& y) {
-		return __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline rotor gp(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2])));
 	}
 	inline freeTrivector op(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& x, const __ni_ct__& y) {
 		return freeTrivector(freeTrivector_e1e2e3ni, x.m_c[0]);
 	}
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const point& x, const line& y) {
-		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, (x.m_c[0] * y.m_c[3]), (x.m_c[0] * y.m_c[4]), (-1.0f * x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[5]), (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), ((x.m_c[3] * y.m_c[5]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[5]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, (x.m_c[0] * y.m_c[3]), (x.m_c[0] * y.m_c[4]), (-1.0f * x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[5]), (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), ((x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[5])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[4] * y.m_c[4])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[5]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___e1e2e3 lcont(const __no_ct__& x, const freeTrivector& y) {
 		return __syn_smv___e1e2e3(__syn_smv___e1e2e3_e1e2e3, y.m_c[0]);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni inverse(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[7] * x.m_c[7]) + (-1.0f * x.m_c[3] * x.m_c[11]) + (-1.0f * x.m_c[5] * x.m_c[13]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[15] * x.m_c[15]) + (x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[14] * x.m_c[6]) + (x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[13] * x.m_c[5]) + (-1.0f * x.m_c[0] * x.m_c[8]) + (-1.0f * x.m_c[6] * x.m_c[14]) + (-1.0f * x.m_c[8] * x.m_c[0]) + (-1.0f * x.m_c[10] * x.m_c[10]) + (-1.0f * x.m_c[12] * x.m_c[12]) + (-1.0f * x.m_c[11] * x.m_c[3]));
+		n.m_c[0] = ((-1.0f * x.m_c[11] * x.m_c[3]) + (-1.0f * x.m_c[0] * x.m_c[8]) + (x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[5] * x.m_c[13]) + (-1.0f * x.m_c[3] * x.m_c[11]) + (-1.0f * x.m_c[8] * x.m_c[0]) + (x.m_c[7] * x.m_c[7]) + (-1.0f * x.m_c[15] * x.m_c[15]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[12] * x.m_c[12]) + (x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[10] * x.m_c[10]) + (-1.0f * x.m_c[6] * x.m_c[14]) + (-1.0f * x.m_c[13] * x.m_c[5]) + (-1.0f * x.m_c[14] * x.m_c[6]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]), (-1.0f * x.m_c[6] * in.m_c[0]), (-1.0f * x.m_c[7] * in.m_c[0]), (x.m_c[8] * in.m_c[0]), (-1.0f * x.m_c[9] * in.m_c[0]), (-1.0f * x.m_c[10] * in.m_c[0]), (-1.0f * x.m_c[11] * in.m_c[0]), (-1.0f * x.m_c[12] * in.m_c[0]), (-1.0f * x.m_c[13] * in.m_c[0]), (-1.0f * x.m_c[14] * in.m_c[0]), (x.m_c[15] * in.m_c[0]));
 	}
 	inline scalar scp(const sphere& x, const sphere& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const circle& x, const dualLine& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[1])), ((-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[8] * y.m_c[4]) + (x.m_c[7] * y.m_c[5])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[9] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[6] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[8] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (x.m_c[7] * y.m_c[0])), ((x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[6] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[7] * y.m_c[5])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[6] * y.m_c[5])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[7] * y.m_c[5])), ((x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[6] * y.m_c[5])), ((x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[8] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (x.m_c[7] * y.m_c[0])), ((-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[8] * y.m_c[5])), ((-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[7] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[9] * y.m_c[5]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[9] * y.m_c[3]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[4] * y.m_c[2])));
 	}
 	inline pointPair op(const normalizedPoint& x, const normalizedPoint& y) {
-		return pointPair(pointPair_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni, (y.m_c[0] + (-1.0f * x.m_c[0])), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((-1.0f * x.m_c[2]) + y.m_c[2]), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), (y.m_c[3] + (-1.0f * x.m_c[3])));
+		return pointPair(pointPair_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni, ((-1.0f * x.m_c[0]) + y.m_c[0]), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((-1.0f * x.m_c[2]) + y.m_c[2]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[3]) + y.m_c[3]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 negate(const __syn_smv___e1_e2_e3_e1e2e3& x) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
@@ -42089,7 +42641,7 @@
 	}
 	inline scalar norm_e(const plane& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline scalar norm_e(const __syn_smv___scalarf0_0& x) {
@@ -42108,10 +42660,10 @@
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline evenVersor gp(const evenVersor& x, const TRversor& y) {
-		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[15] * y.m_c[7]) + (x.m_c[6] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[15] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[15] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[15] * y.m_c[6]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[5] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[7])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[15] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[15] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[6] * y.m_c[0])), ((x.m_c[13] * y.m_c[6]) + (x.m_c[10] * y.m_c[4]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[12] * y.m_c[5])), ((-1.0f * x.m_c[12] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[11] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[13] * y.m_c[7]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[10] * y.m_c[5])), ((x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[9] * y.m_c[0]) + (x.m_c[8] * y.m_c[3]) + (x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[7]) + (-1.0f * x.m_c[14] * y.m_c[5])), ((-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[1]) + (x.m_c[10] * y.m_c[0]) + (x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[13] * y.m_c[2]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[1] * y.m_c[4])), ((x.m_c[12] * y.m_c[6]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[7] * y.m_c[3]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[14] * y.m_c[4]) + (x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[5]) + (x.m_c[10] * y.m_c[7])), ((x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[12] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[15] * y.m_c[6]) + (x.m_c[10] * y.m_c[1]) + (x.m_c[14] * y.m_c[2])), ((x.m_c[10] * y.m_c[2]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[12] * y.m_c[3]) + (x.m_c[15] * y.m_c[5]) + (x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[1] * y.m_c[7]) + (x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[2]) + (x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[14] * y.m_c[0]) + (x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[5])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[15] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[15] * y.m_c[7]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((x.m_c[15] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[15] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[15] * y.m_c[1])), ((x.m_c[6] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[15] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[15] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[15] * y.m_c[5]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[10] * y.m_c[4]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[12] * y.m_c[5]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[14] * y.m_c[7])), ((x.m_c[7] * y.m_c[1]) + (x.m_c[11] * y.m_c[2]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[13] * y.m_c[7]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[4]) + (x.m_c[10] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[7])), ((-1.0f * x.m_c[12] * y.m_c[7]) + (x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[4]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[8] * y.m_c[3])), ((x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[12] * y.m_c[1]) + (x.m_c[10] * y.m_c[0]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[3])), ((-1.0f * x.m_c[13] * y.m_c[5]) + (x.m_c[10] * y.m_c[7]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[11] * y.m_c[0]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[14] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[12] * y.m_c[6]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[7] * y.m_c[3])), ((x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[15] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[12] * y.m_c[0]) + (x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[14] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[15] * y.m_c[5]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[12] * y.m_c[3]) + (x.m_c[13] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[13] * y.m_c[1]) + (x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[12] * y.m_c[2]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[10] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[15] * y.m_c[0])));
 	}
 	inline scalar scp(const TRversor& x, const TRversor& y) {
-		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline scalar inverse(const scalar& x) {
 		scalar n;
@@ -42122,21 +42674,21 @@
 	}
 	inline point inverse(const point& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[0] * x.m_c[4]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[4] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[4] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[0] * x.m_c[4]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_no_e1_e2_e3_ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]), (x.m_c[4] * in.m_c[0]));
 	}
 	inline scalar scp(const normalizedPoint& x, const normalizedPoint& y) {
-		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * y.m_c[3])));
 	}
 	inline scalar norm_e(const __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[7] * x.m_c[7]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[5] * x.m_c[5]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[7] * x.m_c[7]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni gp(const __syn_smv___noe1e2_noe1e3_noe2e3_e1e2e3_noe1e2e3ni& x, const sphere& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline __syn_smv___noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni gp(const circle& x, const __e3_ct__& y) {
 		return __syn_smv___noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni, x.m_c[7], x.m_c[6], x.m_c[9], x.m_c[8], (-1.0f * x.m_c[3]), x.m_c[1], (-1.0f * x.m_c[0]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[2]));
@@ -42145,13 +42697,13 @@
 		return vectorE3GA(vectorE3GA_e1_e2_e3, y.m_c[0], y.m_c[1], y.m_c[2]);
 	}
 	inline scalar norm_r2(const line& x) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[5] * x.m_c[5]) + (-1.0f * x.m_c[3] * x.m_c[3])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[5] * x.m_c[5]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[3] * x.m_c[3])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni gp(const __syn_smv___noe1e3_noe1ni_noe3ni_e1e3ni_noe1e2e3ni& x, const sphere& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni_no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni_no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni, ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline scalar scp(const line& x, const line& y) {
-		return scalar(scalar_scalar, ((x.m_c[4] * y.m_c[4]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[5] * y.m_c[5])));
+		return scalar(scalar_scalar, ((x.m_c[5] * y.m_c[5]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[4])));
 	}
 	inline line gradeInvolution(const line& x) {
 		return line(line_e1e2ni_e1e3ni_e2e3ni_e1noni_e2noni_e3noni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]));
@@ -42163,14 +42715,14 @@
 		return __syn_smv___noe2e3_noe2ni_noe3ni_e2e3ni_noe1e2e3ni(__syn_smv___noe2e3_noe2ni_noe3ni_e2e3ni_noe1e2e3ni_noe2e3_noe2ni_noe3ni_e2e3ni_noe1e2e3ni, (-1.0f * x.m_c[4]), x.m_c[1], x.m_c[2], (-1.0f * x.m_c[0]), (-1.0f * x.m_c[3]));
 	}
 	inline scalar norm_r2(const normalizedPoint& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline scalar norm_r2(const sphere& x) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[4] * x.m_c[0]) + (-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[0] * x.m_c[4]) + (-1.0f * x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[0] * x.m_c[4]) + (-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[4] * x.m_c[0]) + (-1.0f * x.m_c[3] * x.m_c[3])));
 	}
 	inline line inverse(const line& x) {
 		scalar n;
-		n.m_c[0] = ((-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[5] * x.m_c[5]));
+		n.m_c[0] = ((-1.0f * x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[5] * x.m_c[5]) + (-1.0f * x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return line(line_e1e2ni_e1e3ni_e2e3ni_e1noni_e2noni_e3noni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (-1.0f * x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]));
@@ -42185,11 +42737,11 @@
 		return __syn_smv___scalar_noe1_e1e2_e1e3_e1ni(__syn_smv___scalar_noe1_e1e2_e1e3_e1ni_scalar_noe1_e1e2_e1e3_e1ni, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __no_ct__& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni, (-1.0f * x.m_c[8]), ((-1.0f * x.m_c[9]) + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[10])), (-1.0f * x.m_c[11]), ((-1.0f * x.m_c[12]) + (-1.0f * x.m_c[4])), (-1.0f * x.m_c[13]), (-1.0f * x.m_c[14]), ((-1.0f * x.m_c[15]) + (-1.0f * x.m_c[7])), (-1.0f * x.m_c[8]), (-1.0f * x.m_c[11]), (-1.0f * x.m_c[13]), (-1.0f * x.m_c[14]));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni, (-1.0f * x.m_c[8]), ((-1.0f * x.m_c[1]) + (-1.0f * x.m_c[9])), ((-1.0f * x.m_c[10]) + (-1.0f * x.m_c[2])), (-1.0f * x.m_c[11]), ((-1.0f * x.m_c[4]) + (-1.0f * x.m_c[12])), (-1.0f * x.m_c[13]), (-1.0f * x.m_c[14]), ((-1.0f * x.m_c[7]) + (-1.0f * x.m_c[15])), (-1.0f * x.m_c[8]), (-1.0f * x.m_c[11]), (-1.0f * x.m_c[13]), (-1.0f * x.m_c[14]));
 	}
 	inline point inverseEM(const normalizedPoint& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + 1.0f);
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + 1.0f + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_no_e1_e2_e3_ni, in.m_c[0], (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]));
@@ -42201,11 +42753,11 @@
 		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, x.m_c[0], x.m_c[1], x.m_c[2], (-1.0f * x.m_c[3]), x.m_c[4], (-1.0f * x.m_c[5]), (-1.0f * x.m_c[6]), (-1.0f * x.m_c[7]), x.m_c[8], (-1.0f * x.m_c[9]), (-1.0f * x.m_c[10]), (-1.0f * x.m_c[11]), (-1.0f * x.m_c[12]), (-1.0f * x.m_c[13]), (-1.0f * x.m_c[14]), x.m_c[15]);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni gpEM(const __syn_smv___scalar_noe2_e1e2_e2e3_e2ni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni_no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + x.m_c[1] + (x.m_c[0] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni_no_e1_e2_noe1e2_e3_noe2e3_e1e2e3_ni_noe2ni_e1e2ni_e2e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[3] * y.m_c[2]) + x.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])));
 	}
 	inline scalar norm_e(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline evenVersor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __e1_ct__& y) {
@@ -42218,7 +42770,7 @@
 		return __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni_e1ni_e2ni_e3ni_e1e2e3ni, x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni gp(const sphere& x, const sphere& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline point gp(const point& x, const scalar& y) {
 		return point(point_no_e1_e2_e3_ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]));
@@ -42227,16 +42779,16 @@
 		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]), (x.m_c[5] * y.m_c[0]), (x.m_c[6] * y.m_c[0]), (x.m_c[7] * y.m_c[0]), (x.m_c[8] * y.m_c[0]), (x.m_c[9] * y.m_c[0]), (x.m_c[10] * y.m_c[0]), (x.m_c[11] * y.m_c[0]), (x.m_c[12] * y.m_c[0]), (x.m_c[13] * y.m_c[0]), (x.m_c[14] * y.m_c[0]), (x.m_c[15] * y.m_c[0]));
 	}
 	inline scalar norm_r2(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[14] * x.m_c[6]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[7] * x.m_c[7]) + (-1.0f * x.m_c[11] * x.m_c[3]) + (-1.0f * x.m_c[5] * x.m_c[13]) + (x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[3] * x.m_c[11]) + (-1.0f * x.m_c[0] * x.m_c[8]) + (-1.0f * x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[15] * x.m_c[15]) + (-1.0f * x.m_c[6] * x.m_c[14]) + (-1.0f * x.m_c[8] * x.m_c[0]) + (-1.0f * x.m_c[13] * x.m_c[5]) + (-1.0f * x.m_c[12] * x.m_c[12]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[10] * x.m_c[10])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[12] * x.m_c[12]) + (-1.0f * x.m_c[8] * x.m_c[0]) + (x.m_c[4] * x.m_c[4]) + (-1.0f * x.m_c[15] * x.m_c[15]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[9] * x.m_c[9]) + (-1.0f * x.m_c[10] * x.m_c[10]) + (-1.0f * x.m_c[3] * x.m_c[11]) + (x.m_c[7] * x.m_c[7]) + (-1.0f * x.m_c[6] * x.m_c[14]) + (-1.0f * x.m_c[11] * x.m_c[3]) + (-1.0f * x.m_c[5] * x.m_c[13]) + (-1.0f * x.m_c[14] * x.m_c[6]) + (-1.0f * x.m_c[0] * x.m_c[8]) + (-1.0f * x.m_c[13] * x.m_c[5]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline freeBivector op(const dualLine& x, const __ni_ct__& y) {
 		return freeBivector(freeBivector_e1e2ni_e2e3ni_e3e1ni, x.m_c[0], x.m_c[2], (-1.0f * x.m_c[1]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const point& x, const TRversor& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, (x.m_c[0] * y.m_c[0]), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[1] * y.m_c[1])), (x.m_c[0] * y.m_c[1]), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[6])), (x.m_c[0] * y.m_c[2]), (x.m_c[0] * y.m_c[3]), ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[2] * y.m_c[5])), (x.m_c[0] * y.m_c[4]), (x.m_c[0] * y.m_c[5]), ((-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[7])), (x.m_c[0] * y.m_c[6]), ((x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[7])), ((x.m_c[2] * y.m_c[6]) + (x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[4] * y.m_c[3])), (x.m_c[0] * y.m_c[7]));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, (x.m_c[0] * y.m_c[0]), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), (x.m_c[0] * y.m_c[1]), ((x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[6])), (x.m_c[0] * y.m_c[2]), (x.m_c[0] * y.m_c[3]), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[7])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[6])), (x.m_c[0] * y.m_c[4]), (x.m_c[0] * y.m_c[5]), ((x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[1])), (x.m_c[0] * y.m_c[6]), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[7])), ((x.m_c[2] * y.m_c[6]) + (x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[4] * y.m_c[3])), (x.m_c[0] * y.m_c[7]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_noe1e2ni_noe1e3ni_noe2e3ni& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[9] * y.m_c[3]) + (x.m_c[10] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[12]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (-1.0f * x.m_c[7] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (x.m_c[11] * y.m_c[15]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[14]) + (-1.0f * x.m_c[6] * y.m_c[7])), ((-1.0f * x.m_c[11] * y.m_c[12]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[11]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (x.m_c[7] * y.m_c[13])), ((-1.0f * x.m_c[4] * y.m_c[15]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[10] * y.m_c[6]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[4] * y.m_c[7])), ((-1.0f * x.m_c[7] * y.m_c[11]) + (x.m_c[10] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[2] * y.m_c[14]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[9] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[1])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[2] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[7] * y.m_c[10]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[12])), ((-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (x.m_c[4] * y.m_c[10]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[7] * y.m_c[1])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[4] * y.m_c[11]) + (x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (-1.0f * x.m_c[11] * y.m_c[9]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[15])), ((-1.0f * x.m_c[9] * y.m_c[11]) + (x.m_c[0] * y.m_c[8]) + (x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[13]) + (-1.0f * x.m_c[5] * y.m_c[13]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[14])), ((-1.0f * x.m_c[6] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[3] * y.m_c[10]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[1] * y.m_c[8]) + (x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[14]) + (x.m_c[11] * y.m_c[7])), ((x.m_c[9] * y.m_c[1]) + (x.m_c[0] * y.m_c[10]) + (x.m_c[6] * y.m_c[12]) + (x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[5] * y.m_c[15]) + (-1.0f * x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (x.m_c[7] * y.m_c[13])), ((-1.0f * x.m_c[10] * y.m_c[14]) + (x.m_c[0] * y.m_c[11]) + (x.m_c[11] * y.m_c[13]) + (x.m_c[6] * y.m_c[13]) + (x.m_c[8] * y.m_c[11]) + (x.m_c[9] * y.m_c[8]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[14])), ((-1.0f * x.m_c[6] * y.m_c[10]) + (-1.0f * x.m_c[7] * y.m_c[11]) + (x.m_c[0] * y.m_c[12]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[2] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[10] * y.m_c[1]) + (x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[15]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[11] * y.m_c[2])), ((x.m_c[9] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[11]) + (x.m_c[10] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[3] * y.m_c[14]) + (x.m_c[8] * y.m_c[13]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[0] * y.m_c[13])), ((x.m_c[11] * y.m_c[8]) + (x.m_c[0] * y.m_c[14]) + (x.m_c[8] * y.m_c[14]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (x.m_c[10] * y.m_c[11]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[13]) + (x.m_c[5] * y.m_c[11])), ((x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (x.m_c[4] * y.m_c[11]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[3] * y.m_c[12]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[10] * y.m_c[5]) + (x.m_c[9] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[12]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[6])), ((x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[11] * y.m_c[15]) + (x.m_c[1] * y.m_c[8]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[9] * y.m_c[10]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[14])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[7] * y.m_c[13]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[1] * y.m_c[11]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (-1.0f * x.m_c[10] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[10])), ((x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[6] * y.m_c[5]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[1] * y.m_c[10]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[12]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[11]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[9] * y.m_c[15]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[10] * y.m_c[9]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[2] * y.m_c[14])), ((x.m_c[7] * y.m_c[10]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[12]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (x.m_c[2] * y.m_c[15]) + (x.m_c[5] * y.m_c[0])), ((x.m_c[9] * y.m_c[5]) + (x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[4] * y.m_c[10]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[6] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[4] * y.m_c[11]) + (-1.0f * x.m_c[8] * y.m_c[15]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[11] * y.m_c[9])), ((-1.0f * x.m_c[9] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[14]) + (-1.0f * x.m_c[5] * y.m_c[13]) + (-1.0f * x.m_c[11] * y.m_c[14]) + (-1.0f * x.m_c[10] * y.m_c[13]) + (x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (x.m_c[0] * y.m_c[8])), ((x.m_c[3] * y.m_c[10]) + (x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[14])), ((-1.0f * x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[5] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[0] * y.m_c[10]) + (x.m_c[7] * y.m_c[13]) + (x.m_c[1] * y.m_c[11]) + (x.m_c[6] * y.m_c[12]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[4])), ((x.m_c[6] * y.m_c[13]) + (-1.0f * x.m_c[10] * y.m_c[14]) + (x.m_c[9] * y.m_c[8]) + (x.m_c[0] * y.m_c[11]) + (x.m_c[11] * y.m_c[13]) + (x.m_c[8] * y.m_c[11]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[14])), ((x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[7] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[15]) + (x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[10]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[9] * y.m_c[7]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[2] * y.m_c[14]) + (x.m_c[10] * y.m_c[1])), ((x.m_c[9] * y.m_c[14]) + (x.m_c[10] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[8] * y.m_c[13]) + (x.m_c[3] * y.m_c[14]) + (x.m_c[0] * y.m_c[13])), ((x.m_c[5] * y.m_c[11]) + (x.m_c[8] * y.m_c[14]) + (x.m_c[6] * y.m_c[8]) + (x.m_c[10] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (x.m_c[0] * y.m_c[14]) + (x.m_c[11] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[13])), ((-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[4] * y.m_c[11]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[1] * y.m_c[14]) + (x.m_c[3] * y.m_c[12]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[0] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[4])));
 	}
 	inline scalar norm_r(const line& x) {
 		scalar r2;
@@ -42244,24 +42796,24 @@
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	inline scalar scp(const circle& x, const circle& y) {
-		return scalar(scalar_scalar, ((x.m_c[4] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[6]) + (x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[9])));
+		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[9]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[7])));
 	}
 	inline circle gradeInvolution(const circle& x) {
 		return circle(circle_e2e3ni_e3e1ni_e1e2ni_noe3ni_noe1ni_noe2ni_noe2e3_noe1e3_noe1e2_e1e2e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[6]), (-1.0f * x.m_c[7]), (-1.0f * x.m_c[8]), (-1.0f * x.m_c[9]));
 	}
 	inline evenVersor gp(const circle& x, const circle& y) {
-		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((x.m_c[8] * y.m_c[2]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[9]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (x.m_c[3] * y.m_c[7]) + (x.m_c[9] * y.m_c[6])), ((x.m_c[8] * y.m_c[4]) + (x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[9] * y.m_c[8])), ((x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[6])), ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (x.m_c[2] * y.m_c[7])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[8] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[5] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[1])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((x.m_c[7] * y.m_c[1]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[5])), ((-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[3])), ((-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[0] * y.m_c[8]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (x.m_c[8] * y.m_c[0])), ((x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[1] * y.m_c[8]) + (x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[2] * y.m_c[7])), ((x.m_c[4] * y.m_c[6]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (x.m_c[8] * y.m_c[3])));
+		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((x.m_c[5] * y.m_c[5]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[0] * y.m_c[6]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[2] * y.m_c[8])), ((x.m_c[3] * y.m_c[7]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[5])), ((x.m_c[3] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[8] * y.m_c[4]) + (x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[3])), ((x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[7] * y.m_c[4])), ((x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[6]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (x.m_c[6] * y.m_c[1])), ((x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (x.m_c[1] * y.m_c[8])), ((x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[1]) + (x.m_c[1] * y.m_c[9]) + (x.m_c[2] * y.m_c[4])), ((x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[7] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[7])), ((x.m_c[9] * y.m_c[5]) + (x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[0] * y.m_c[8]) + (x.m_c[5] * y.m_c[9])), ((x.m_c[2] * y.m_c[7]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[1] * y.m_c[8])), ((x.m_c[8] * y.m_c[3]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[4])));
 	}
 	inline sphere inverse(const sphere& x) {
 		scalar n;
-		n.m_c[0] = ((-1.0f * x.m_c[4] * x.m_c[0]) + (-1.0f * x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[0] * x.m_c[4]) + (-1.0f * x.m_c[3] * x.m_c[3]));
+		n.m_c[0] = ((-1.0f * x.m_c[3] * x.m_c[3]) + (-1.0f * x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[0] * x.m_c[4]) + (-1.0f * x.m_c[4] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return sphere(sphere_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]), (x.m_c[4] * in.m_c[0]));
 	}
 	inline scalar norm_r(const rotor& x) {
 		scalar r2;
-		r2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]));
+		r2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]));
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	inline evenVersor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __e3_ct__& y) {
@@ -42292,27 +42844,27 @@
 		return normalizedPoint(normalizedPoint_e1_e2_e3_ni_nof1_0, x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe2_noe3_e2e3_noe1e2e3_noni_e2ni_noe1e2ni_e3ni_noe1e3ni_e1e2e3ni& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[8] * y.m_c[7]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[9])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[6] * y.m_c[4]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[7]) + (x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[8] * y.m_c[6]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[8] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[8])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[8]) + (x.m_c[6] * y.m_c[7])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[8] * y.m_c[5])), ((-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[8] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[5] * y.m_c[6])), ((x.m_c[7] * y.m_c[4]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[6] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[7] * y.m_c[5]) + (x.m_c[6] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[7] * y.m_c[8])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[7] * y.m_c[7]) + (x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[8] * y.m_c[6]) + (x.m_c[1] * y.m_c[9])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[3])), ((x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[8])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[8])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5])), ((-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[6])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[9] * y.m_c[7]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[9])), ((-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[4] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[5] * y.m_c[9])), ((x.m_c[7] * y.m_c[5]) + (x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[8] * y.m_c[2]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[7] * y.m_c[8]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline scalar norm_e2(const bivectorE3GA& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline scalar norm_e(const TRversor& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[7] * x.m_c[7]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[5] * x.m_c[5]));
+		e2.m_c[0] = ((x.m_c[7] * x.m_c[7]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[5] * x.m_c[5]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni gpEM(const __syn_smv___scalar_noni_e1ni_e2ni_e3ni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + x.m_c[1] + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni(__syn_smv___no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_no_e1_e2_e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + x.m_c[1]), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const vectorE3GA& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2e3_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[11] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[5] * y.m_c[0]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[6] * y.m_c[4])), ((-1.0f * x.m_c[11] * y.m_c[3]) + (x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[1])), ((-1.0f * x.m_c[12] * y.m_c[3]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[1])), ((-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[10] * y.m_c[1]) + (x.m_c[9] * y.m_c[0])), ((x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[2])), ((x.m_c[11] * y.m_c[0]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[13] * y.m_c[2])), ((x.m_c[12] * y.m_c[4]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[11] * y.m_c[1]) + (x.m_c[14] * y.m_c[2])), ((x.m_c[13] * y.m_c[4]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[11] * y.m_c[2])), ((x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[12] * y.m_c[2]) + (x.m_c[6] * y.m_c[4])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[6] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[6] * y.m_c[1])), ((x.m_c[5] * y.m_c[1]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[14] * y.m_c[0])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[2])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (x.m_c[8] * y.m_c[0])), ((x.m_c[9] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[13] * y.m_c[3])), ((-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[10] * y.m_c[4])), ((-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[12] * y.m_c[1]) + (x.m_c[11] * y.m_c[0]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[13] * y.m_c[2])), ((x.m_c[4] * y.m_c[4]) + (x.m_c[14] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[12] * y.m_c[4]) + (x.m_c[11] * y.m_c[1])), ((-1.0f * x.m_c[14] * y.m_c[1]) + (x.m_c[11] * y.m_c[2]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3])), ((-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[1]) + (x.m_c[14] * y.m_c[0]) + (x.m_c[12] * y.m_c[2])));
 	}
 	inline vectorE3GA lcontEM(const dualSphere& x, const rotor& y) {
-		return vectorE3GA(vectorE3GA_e1_e2_e3, ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])));
+		return vectorE3GA(vectorE3GA_e1_e2_e3, ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const scalar& x, const __syn_smv___e1_e2_e3_e1e2e3& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]), (x.m_c[0] * y.m_c[3]));
@@ -42321,7 +42873,7 @@
 		return circle(circle_e2e3ni_e3e1ni_e1e2ni_noe3ni_noe1ni_noe2ni_noe2e3_noe1e3_noe1e2_e1e2e3, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]), (-1.0f * x.m_c[6]), (-1.0f * x.m_c[7]), (-1.0f * x.m_c[8]), (-1.0f * x.m_c[9]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni gp(const __syn_smv___noni_e1ni_noe1e2ni_e3ni_noe2e3ni_e1e2e3ni& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[4]) + (x.m_c[0] * y.m_c[5])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[5])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[5] * y.m_c[5]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni_e1_e2_e3_e1e2e3_ni_e1e2ni_e1e3ni_e2e3ni, ((x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((x.m_c[4] * y.m_c[3]) + (x.m_c[2] * y.m_c[5])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[5] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4])));
 	}
 	inline __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni op(const __ni_ct__& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
 		return __syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni(__syn_smv___noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni_noni_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]), (-1.0f * y.m_c[3]), (-1.0f * y.m_c[4]), (-1.0f * y.m_c[5]), (-1.0f * y.m_c[6]), (-1.0f * y.m_c[7]));
@@ -42334,7 +42886,7 @@
 		return scalar(scalar_scalar, (-1.0f * in.m_c[0]));
 	}
 	inline scalar scpEM(const normalizedPoint& x, const normalizedPoint& y) {
-		return scalar(scalar_scalar, ((x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + 1.0f));
+		return scalar(scalar_scalar, (1.0f + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
 	}
 	inline point gp(const normalizedPoint& x, const scalar& y) {
 		return point(point_no_e1_e2_e3_ni, y.m_c[0], (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
@@ -42343,7 +42895,7 @@
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, y.m_c[4], y.m_c[5], y.m_c[6], y.m_c[7]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___noe1e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1e2e3f1_0 dual(const normalizedPoint& x) {
 		return __syn_smv___noe1e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1e2e3f1_0(__syn_smv___noe1e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1e2e3f1_0_noe1e2ni_noe1e3ni_noe2e3ni_e1e2e3ni_noe1e2e3f1_0, x.m_c[2], (-1.0f * x.m_c[1]), x.m_c[0], x.m_c[3]);
@@ -42356,7 +42908,7 @@
 	}
 	inline scalar norm_e(const bivectorE3GA& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline freeVector gp(const line& x, const __ni_ct__& y) {
@@ -42367,25 +42919,28 @@
 	}
 	inline TRversor inverse(const TRversor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return TRversor(TRversor_scalar_e1e2_e1e3_e2e3_e1ni_e2ni_e3ni_e1e2e3ni, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (-1.0f * x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]), (-1.0f * x.m_c[6] * in.m_c[0]), (x.m_c[7] * in.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___noe1_noe2_e1e2_noe1e2e3_noni_e1ni_e2ni_noe1e3ni_noe2e3ni_e1e2e3ni& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[4]) + (x.m_c[8] * y.m_c[6])), ((x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (x.m_c[7] * y.m_c[6])), ((x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[7])), ((x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[3] * y.m_c[5]) + (x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[8])), ((-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[6] * y.m_c[7]) + (x.m_c[7] * y.m_c[5])), ((x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[9] * y.m_c[8])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[2])), ((-1.0f * x.m_c[5] * y.m_c[9]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[5] * y.m_c[6]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[7] * y.m_c[7]) + (x.m_c[8] * y.m_c[6])), ((-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[6] * y.m_c[8]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[7] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[2] * y.m_c[6]) + (x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[3] * y.m_c[5])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[3] * y.m_c[4])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[6] * y.m_c[7])), ((-1.0f * x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[4]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[8] * y.m_c[9]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[9] * y.m_c[7])), ((x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[7] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[5] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[9] * y.m_c[5])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[4])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[5] * y.m_c[6]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline __syn_smv___scalar_noe3_e1e3_e2e3_e3ni gpEM(const point& x, const __e3_ct__& y) {
 		return __syn_smv___scalar_noe3_e1e3_e2e3_e3ni(__syn_smv___scalar_noe3_e1e3_e2e3_e3ni_scalar_noe3_e1e3_e2e3_e3ni, x.m_c[3], x.m_c[0], x.m_c[1], x.m_c[2], (-1.0f * x.m_c[4]));
 	}
 	inline scalar scp(const dualLine& x, const dualLine& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const evenVersor& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[15] * y.m_c[7]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[13] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[12]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[12] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6])), ((-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[15] * y.m_c[14]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (x.m_c[8] * y.m_c[3]) + (x.m_c[14] * y.m_c[15]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[10]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[9]) + (-1.0f * x.m_c[13] * y.m_c[12]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[7])), ((-1.0f * x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[12] * y.m_c[9]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (x.m_c[1] * y.m_c[11]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[14] * y.m_c[12]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[13] * y.m_c[15]) + (x.m_c[2] * y.m_c[8]) + (x.m_c[5] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[10]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[15] * y.m_c[12]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[13] * y.m_c[6]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[15]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[5] * y.m_c[5])), ((x.m_c[15] * y.m_c[11]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[3] * y.m_c[8]) + (x.m_c[12] * y.m_c[15]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[13] * y.m_c[9]) + (x.m_c[14] * y.m_c[10]) + (x.m_c[2] * y.m_c[14])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[14] * y.m_c[3]) + (x.m_c[2] * y.m_c[15]) + (-1.0f * x.m_c[12] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[15] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[12]) + (x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[15] * y.m_c[10]) + (x.m_c[4] * y.m_c[6])), ((x.m_c[1] * y.m_c[7]) + (x.m_c[3] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[12] * y.m_c[5]) + (x.m_c[15] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (x.m_c[0] * y.m_c[6]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[1])), ((-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[10] * y.m_c[15]) + (x.m_c[6] * y.m_c[2]) + (x.m_c[3] * y.m_c[11]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[1] * y.m_c[14]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (-1.0f * x.m_c[15] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[13] * y.m_c[10]) + (-1.0f * x.m_c[14] * y.m_c[9]) + (-1.0f * x.m_c[12] * y.m_c[12]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[11] * y.m_c[15]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (-1.0f * x.m_c[13] * y.m_c[13]) + (x.m_c[10] * y.m_c[8]) + (-1.0f * x.m_c[12] * y.m_c[11]) + (x.m_c[6] * y.m_c[13]) + (-1.0f * x.m_c[14] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[11])), ((-1.0f * x.m_c[13] * y.m_c[4]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[15] * y.m_c[14]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[12]) + (x.m_c[14] * y.m_c[7]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[15]) + (x.m_c[4] * y.m_c[10]) + (x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[12] * y.m_c[2])), ((x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (x.m_c[1] * y.m_c[11]) + (x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (-1.0f * x.m_c[6] * y.m_c[15]) + (x.m_c[0] * y.m_c[10]) + (x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[14] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[13] * y.m_c[7])), ((x.m_c[5] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[10] * y.m_c[11]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (x.m_c[0] * y.m_c[11]) + (x.m_c[6] * y.m_c[14]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[8] * y.m_c[9]) + (x.m_c[12] * y.m_c[8]) + (x.m_c[14] * y.m_c[13]) + (-1.0f * x.m_c[9] * y.m_c[15]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[10])), ((x.m_c[7] * y.m_c[5]) + (x.m_c[15] * y.m_c[11]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (x.m_c[13] * y.m_c[1]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[3] * y.m_c[8]) + (x.m_c[12] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[8] * y.m_c[6]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (x.m_c[2] * y.m_c[14]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[9] * y.m_c[0])), ((x.m_c[9] * y.m_c[1]) + (x.m_c[8] * y.m_c[15]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[14] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[4] * y.m_c[14]) + (x.m_c[0] * y.m_c[13]) + (-1.0f * x.m_c[5] * y.m_c[11]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[13] * y.m_c[8]) + (x.m_c[10] * y.m_c[13]) + (x.m_c[12] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[8] * y.m_c[7]) + (x.m_c[11] * y.m_c[2])), ((x.m_c[10] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (x.m_c[0] * y.m_c[14]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[9] * y.m_c[10]) + (-1.0f * x.m_c[12] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[14] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[13] * y.m_c[11]) + (-1.0f * x.m_c[11] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (x.m_c[9] * y.m_c[2])), ((x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[12] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[7]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[1] * y.m_c[14]) + (x.m_c[13] * y.m_c[2]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[6] * y.m_c[10]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (-1.0f * x.m_c[15] * y.m_c[8]) + (x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (x.m_c[9] * y.m_c[3]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[4] * y.m_c[12])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[14] * y.m_c[6]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[13] * y.m_c[5]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[12]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[15] * y.m_c[7]) + (x.m_c[12] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[15] * y.m_c[14]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[10]) + (x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[13] * y.m_c[12]) + (-1.0f * x.m_c[5] * y.m_c[7]) + (x.m_c[14] * y.m_c[15])), ((x.m_c[12] * y.m_c[9]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[10] * y.m_c[10]) + (-1.0f * x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[14] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[3])), ((x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[3]) + (x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[15]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[15] * y.m_c[12]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[10]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (x.m_c[2] * y.m_c[9]) + (x.m_c[5] * y.m_c[5]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[13] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (x.m_c[3] * y.m_c[8]) + (x.m_c[15] * y.m_c[11]) + (x.m_c[1] * y.m_c[13]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[6] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[2] * y.m_c[14]) + (x.m_c[12] * y.m_c[15]) + (x.m_c[14] * y.m_c[10])), ((x.m_c[2] * y.m_c[15]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[12]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[0]) + (x.m_c[15] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[10]) + (x.m_c[4] * y.m_c[6]) + (x.m_c[14] * y.m_c[3]) + (x.m_c[3] * y.m_c[9])), ((x.m_c[12] * y.m_c[5]) + (x.m_c[15] * y.m_c[9]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (x.m_c[0] * y.m_c[6]) + (x.m_c[1] * y.m_c[7]) + (x.m_c[3] * y.m_c[10]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[13] * y.m_c[3])), ((-1.0f * x.m_c[10] * y.m_c[15]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (-1.0f * x.m_c[12] * y.m_c[12]) + (-1.0f * x.m_c[14] * y.m_c[9]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[6] * y.m_c[2]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[13] * y.m_c[10]) + (-1.0f * x.m_c[15] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[0] * y.m_c[7]) + (x.m_c[1] * y.m_c[14])), ((-1.0f * x.m_c[14] * y.m_c[14]) + (x.m_c[11] * y.m_c[7]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[13]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (-1.0f * x.m_c[12] * y.m_c[11]) + (x.m_c[10] * y.m_c[8]) + (x.m_c[11] * y.m_c[15]) + (-1.0f * x.m_c[5] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[6] * y.m_c[13]) + (-1.0f * x.m_c[4] * y.m_c[11]) + (x.m_c[0] * y.m_c[8])), ((-1.0f * x.m_c[12] * y.m_c[2]) + (x.m_c[4] * y.m_c[10]) + (-1.0f * x.m_c[10] * y.m_c[1]) + (x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (-1.0f * x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[15] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (x.m_c[0] * y.m_c[9]) + (x.m_c[14] * y.m_c[7])), ((-1.0f * x.m_c[13] * y.m_c[7]) + (-1.0f * x.m_c[14] * y.m_c[4]) + (x.m_c[7] * y.m_c[3]) + (x.m_c[8] * y.m_c[0]) + (x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[12] * y.m_c[1]) + (x.m_c[11] * y.m_c[5]) + (x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[14]) + (x.m_c[0] * y.m_c[10])), ((x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[10]) + (x.m_c[10] * y.m_c[11]) + (x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (x.m_c[6] * y.m_c[14]) + (x.m_c[12] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[15]) + (x.m_c[14] * y.m_c[13]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[5] * y.m_c[13]) + (-1.0f * x.m_c[13] * y.m_c[14]) + (x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[2]) + (x.m_c[0] * y.m_c[11])), ((x.m_c[13] * y.m_c[1]) + (x.m_c[9] * y.m_c[0]) + (x.m_c[14] * y.m_c[2]) + (x.m_c[0] * y.m_c[12]) + (x.m_c[3] * y.m_c[8]) + (x.m_c[15] * y.m_c[11]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[12] * y.m_c[7]) + (x.m_c[6] * y.m_c[9]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (x.m_c[2] * y.m_c[14]) + (x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[4] * y.m_c[15])), ((x.m_c[12] * y.m_c[14]) + (x.m_c[8] * y.m_c[15]) + (x.m_c[4] * y.m_c[14]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[4]) + (x.m_c[9] * y.m_c[1]) + (x.m_c[0] * y.m_c[13]) + (x.m_c[11] * y.m_c[10]) + (x.m_c[11] * y.m_c[2]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (x.m_c[13] * y.m_c[8]) + (x.m_c[10] * y.m_c[13]) + (-1.0f * x.m_c[14] * y.m_c[11]) + (-1.0f * x.m_c[5] * y.m_c[11]) + (-1.0f * x.m_c[6] * y.m_c[8])), ((x.m_c[10] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[0] * y.m_c[14]) + (x.m_c[14] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[15]) + (x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[9] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[12] * y.m_c[13]) + (-1.0f * x.m_c[11] * y.m_c[1]) + (x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (x.m_c[13] * y.m_c[11])), ((-1.0f * x.m_c[14] * y.m_c[1]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[12] * y.m_c[4]) + (x.m_c[4] * y.m_c[12]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[6] * y.m_c[10]) + (x.m_c[13] * y.m_c[2]) + (-1.0f * x.m_c[10] * y.m_c[7]) + (-1.0f * x.m_c[15] * y.m_c[8]) + (x.m_c[1] * y.m_c[14]) + (x.m_c[9] * y.m_c[3])));
 	}
 	inline __syn_smv___noe1e2e3ni op(const __ni_ct__& x, const sphere& y) {
 		return __syn_smv___noe1e2e3ni(__syn_smv___noe1e2e3ni_noe1e2e3ni, (-1.0f * y.m_c[4]));
+	}
+	inline scalar lcont(const bivectorE3GA& x, const bivectorE3GA& y) {
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
 	}
 	inline scalar subtract(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] + (-1.0f * y.m_c[0])));
@@ -42394,7 +42949,7 @@
 		return bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline scalar scp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
-		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[10] * y.m_c[10]) + (x.m_c[13] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[12] * y.m_c[12]) + (x.m_c[6] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[5] * y.m_c[13]) + (x.m_c[4] * y.m_c[4])));
+		return scalar(scalar_scalar, ((x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[6] * y.m_c[14]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[10] * y.m_c[10]) + (x.m_c[13] * y.m_c[5]) + (x.m_c[5] * y.m_c[13]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[12] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[0])));
 	}
 	inline scalar scp(const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& x, const __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni& y) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
@@ -42409,34 +42964,34 @@
 		return __syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni_e1e2e3_e1e2ni_e1e3ni_e2e3ni_noe1e2e3ni, (-1.0f * x.m_c[4]), x.m_c[1], x.m_c[2], x.m_c[3], (-1.0f * x.m_c[4]));
 	}
 	inline __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni add(const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& x, const __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni& y) {
-		return __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni_e1ni_e2ni_e3ni_e1e2e3ni, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]), (y.m_c[3] + x.m_c[3]));
+		return __syn_smv___e1ni_e2ni_e3ni_e1e2e3ni(__syn_smv___e1ni_e2ni_e3ni_e1e2e3ni_e1ni_e2ni_e3ni_e1e2e3ni, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]), (y.m_c[3] + x.m_c[3]));
 	}
 	inline __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni reverse(const __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni& x) {
 		return __syn_smv___ni_e1e2ni_e1e3ni_e2e3ni(__syn_smv___ni_e1e2ni_e1e3ni_e2e3ni_ni_e1e2ni_e1e3ni_e2e3ni, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni gpEM(const __syn_smv___e1_e2_e3_ni_nof_1_0& x, const point& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((-1.0f * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * y.m_c[4])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[4])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni(__syn_smv___scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni_scalar_noe1_noe2_e1e2_noe3_e1e3_e2e3_noni_e1ni_e2ni_e3ni, ((x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * y.m_c[3])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[4])));
 	}
 	inline line op(const pointPair& x, const __ni_ct__& y) {
 		return line(line_e1e2ni_e1e3ni_e2e3ni_e1noni_e2noni_e3noni, x.m_c[3], (-1.0f * x.m_c[5]), x.m_c[4], (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni gp(const __syn_smv___e1e2_e1e3_e2e3_e1ni_e2ni_noe1e2ni_e3ni_noe1e3ni_noe2e3ni_e1e2e3ni& x, const circle& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[5] * y.m_c[8]) + (x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[6])), ((-1.0f * x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[6] * y.m_c[7]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[4] * y.m_c[8])), ((-1.0f * x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[1] * y.m_c[9]) + (x.m_c[6] * y.m_c[6]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (x.m_c[2] * y.m_c[7])), ((x.m_c[9] * y.m_c[8]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (x.m_c[7] * y.m_c[4])), ((x.m_c[8] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[6]) + (x.m_c[0] * y.m_c[6])), ((x.m_c[1] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[8])), ((x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[6])), ((x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[7])), ((-1.0f * x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[9] * y.m_c[7])), ((-1.0f * x.m_c[7] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[9]) + (x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[9] * y.m_c[8]) + (x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[4] * y.m_c[6])), ((-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[5]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[5] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[6] * y.m_c[5])), ((x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[0] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni, ((x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[7]) + (x.m_c[8] * y.m_c[6]) + (x.m_c[7] * y.m_c[7])), ((x.m_c[6] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[4] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[3])), ((x.m_c[6] * y.m_c[6]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[1] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[8])), ((x.m_c[2] * y.m_c[7]) + (x.m_c[7] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[7])), ((x.m_c[7] * y.m_c[4]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[9])), ((-1.0f * x.m_c[2] * y.m_c[8]) + (x.m_c[8] * y.m_c[8]) + (x.m_c[0] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[6])), ((x.m_c[1] * y.m_c[8]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[7] * y.m_c[8])), ((-1.0f * x.m_c[8] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[6]) + (x.m_c[4] * y.m_c[7]) + (x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[5] * y.m_c[3])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[7] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[3]) + (x.m_c[9] * y.m_c[9]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[8]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[6]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[8] * y.m_c[9])), ((x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[6] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[9] * y.m_c[7]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[4])), ((-1.0f * x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[7] * y.m_c[0]) + (x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[5])), ((x.m_c[3] * y.m_c[7]) + (x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[8])), ((x.m_c[4] * y.m_c[9]) + (x.m_c[9] * y.m_c[5]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[9]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[6] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[7] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[4])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[6]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[7]) + (x.m_c[2] * y.m_c[4])));
 	}
 	inline line reverse(const line& x) {
 		return line(line_e1e2ni_e1e3ni_e2e3ni_e1noni_e2noni_e3noni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]), (-1.0f * x.m_c[5]));
 	}
 	inline pointPair lcont(const normalizedPoint& x, const line& y) {
-		return pointPair(pointPair_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni, y.m_c[3], y.m_c[4], y.m_c[5], (-1.0f * y.m_c[0]), (-1.0f * y.m_c[2]), y.m_c[1], ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[4])), ((x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (x.m_c[0] * y.m_c[3])));
+		return pointPair(pointPair_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni, y.m_c[3], y.m_c[4], y.m_c[5], (-1.0f * y.m_c[0]), (-1.0f * y.m_c[2]), y.m_c[1], ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[5])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[1] * y.m_c[4])));
 	}
 	inline scalar norm_e2(const TRversor& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[7] * x.m_c[7]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[4] * x.m_c[4])));
+		return scalar(scalar_scalar, ((x.m_c[3] * x.m_c[3]) + (x.m_c[7] * x.m_c[7]) + (x.m_c[6] * x.m_c[6]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[4] * x.m_c[4])));
 	}
 	inline evenVersor gp(const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& x, const __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_e1e2e3_ni_noe1ni_noe2ni_e1e2ni_noe3ni_e1e3ni_e2e3ni_noe1e2e3ni& y) {
-		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((x.m_c[12] * y.m_c[12]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[3] * y.m_c[11]) + (x.m_c[13] * y.m_c[5]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (x.m_c[5] * y.m_c[13]) + (x.m_c[10] * y.m_c[10]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[6] * y.m_c[14]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[0])), ((x.m_c[10] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[15] * y.m_c[6]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[10]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[12]) + (x.m_c[6] * y.m_c[15]) + (x.m_c[12] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[0])), ((-1.0f * x.m_c[15] * y.m_c[5]) + (x.m_c[4] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[6] * y.m_c[4]) + (x.m_c[3] * y.m_c[9]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[15]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[10]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[12] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (x.m_c[5] * y.m_c[7]) + (-1.0f * x.m_c[6] * y.m_c[12])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (x.m_c[5] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[3] * y.m_c[15]) + (-1.0f * x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[6] * y.m_c[10]) + (x.m_c[15] * y.m_c[3]) + (x.m_c[7] * y.m_c[3])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[13]) + (x.m_c[12] * y.m_c[15]) + (x.m_c[5] * y.m_c[14]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[9] * y.m_c[10]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[9]) + (x.m_c[15] * y.m_c[12]) + (-1.0f * x.m_c[0] * y.m_c[11]) + (-1.0f * x.m_c[3] * y.m_c[8]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[14]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (x.m_c[15] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (x.m_c[1] * y.m_c[7]) + (x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[11]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[10]) + (x.m_c[10] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[9] * y.m_c[15])), ((x.m_c[5] * y.m_c[8]) + (x.m_c[12] * y.m_c[9]) + (x.m_c[8] * y.m_c[5]) + (x.m_c[10] * y.m_c[15]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[15] * y.m_c[10]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[0] * y.m_c[13]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[13] * y.m_c[0]) + (x.m_c[3] * y.m_c[14]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[7])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (x.m_c[12] * y.m_c[13]) + (-1.0f * x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (-1.0f * x.m_c[11] * y.m_c[2]) + (x.m_c[14] * y.m_c[15]) + (x.m_c[15] * y.m_c[14]) + (x.m_c[14] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[10]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (-1.0f * x.m_c[13] * y.m_c[12]) + (x.m_c[10] * y.m_c[11]) + (x.m_c[1] * y.m_c[8])), ((-1.0f * x.m_c[14] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[14] * y.m_c[12]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (x.m_c[11] * y.m_c[1]) + (x.m_c[7] * y.m_c[13]) + (x.m_c[11] * y.m_c[9]) + (x.m_c[12] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (-1.0f * x.m_c[13] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[11]) + (-1.0f * x.m_c[10] * y.m_c[8])), ((x.m_c[15] * y.m_c[11]) + (-1.0f * x.m_c[12] * y.m_c[8]) + (x.m_c[2] * y.m_c[14]) + (-1.0f * x.m_c[10] * y.m_c[14]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[14] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (-1.0f * x.m_c[9] * y.m_c[13]) + (x.m_c[11] * y.m_c[7]) + (x.m_c[13] * y.m_c[9]) + (x.m_c[11] * y.m_c[15]) + (-1.0f * x.m_c[7] * y.m_c[11]) + (x.m_c[14] * y.m_c[10]) + (x.m_c[1] * y.m_c[13])), ((-1.0f * x.m_c[5] * y.m_c[13]) + (-1.0f * x.m_c[9] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[12]) + (x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[6] * y.m_c[14]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[13] * y.m_c[5]) + (x.m_c[15] * y.m_c[7]) + (x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[12] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[14] * y.m_c[6]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[2])), ((-1.0f * x.m_c[11] * y.m_c[12]) + (x.m_c[13] * y.m_c[10]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (-1.0f * x.m_c[12] * y.m_c[11]) + (-1.0f * x.m_c[8] * y.m_c[15]) + (x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (x.m_c[13] * y.m_c[2]) + (x.m_c[10] * y.m_c[13]) + (x.m_c[4] * y.m_c[11]) + (-1.0f * x.m_c[9] * y.m_c[14]) + (-1.0f * x.m_c[14] * y.m_c[9]) + (-1.0f * x.m_c[15] * y.m_c[8])), ((-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (x.m_c[10] * y.m_c[1]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[15] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[10]) + (-1.0f * x.m_c[5] * y.m_c[14]) + (-1.0f * x.m_c[12] * y.m_c[7]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[6] * y.m_c[13]) + (x.m_c[0] * y.m_c[11])), ((x.m_c[5] * y.m_c[8]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[12]) + (x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (x.m_c[14] * y.m_c[3]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[2] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[4]) + (x.m_c[0] * y.m_c[13]) + (x.m_c[7] * y.m_c[10]) + (x.m_c[10] * y.m_c[7]) + (x.m_c[15] * y.m_c[2]) + (x.m_c[3] * y.m_c[14])), ((-1.0f * x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[1]) + (x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (x.m_c[4] * y.m_c[10]) + (x.m_c[12] * y.m_c[2]) + (x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[0] * y.m_c[14]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (x.m_c[5] * y.m_c[11])), ((-1.0f * x.m_c[10] * y.m_c[5]) + (x.m_c[5] * y.m_c[2]) + (x.m_c[0] * y.m_c[15]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[3] * y.m_c[12]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[12] * y.m_c[3]) + (x.m_c[1] * y.m_c[6]) + (x.m_c[15] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (-1.0f * x.m_c[5] * y.m_c[10])));
+		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[3] * y.m_c[11]) + (-1.0f * x.m_c[7] * y.m_c[7]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[15] * y.m_c[15]) + (-1.0f * x.m_c[0] * y.m_c[8]) + (x.m_c[6] * y.m_c[14]) + (x.m_c[5] * y.m_c[13]) + (x.m_c[10] * y.m_c[10]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[9] * y.m_c[9]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[11] * y.m_c[3]) + (x.m_c[13] * y.m_c[5]) + (x.m_c[12] * y.m_c[12])), ((-1.0f * x.m_c[6] * y.m_c[7]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[12]) + (-1.0f * x.m_c[9] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[10]) + (-1.0f * x.m_c[0] * y.m_c[9]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[7] * y.m_c[6]) + (x.m_c[6] * y.m_c[15]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[10] * y.m_c[3]) + (x.m_c[15] * y.m_c[6]) + (x.m_c[4] * y.m_c[5]) + (x.m_c[12] * y.m_c[5])), ((-1.0f * x.m_c[5] * y.m_c[15]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[9] * y.m_c[3]) + (-1.0f * x.m_c[10] * y.m_c[0]) + (-1.0f * x.m_c[7] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[6] * y.m_c[4]) + (-1.0f * x.m_c[15] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[10]) + (-1.0f * x.m_c[6] * y.m_c[12]) + (x.m_c[3] * y.m_c[9]) + (x.m_c[12] * y.m_c[6]) + (x.m_c[5] * y.m_c[7]) + (x.m_c[4] * y.m_c[6])), ((-1.0f * x.m_c[2] * y.m_c[6]) + (-1.0f * x.m_c[1] * y.m_c[5]) + (x.m_c[15] * y.m_c[3]) + (x.m_c[6] * y.m_c[10]) + (-1.0f * x.m_c[12] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[7]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[12]) + (-1.0f * x.m_c[10] * y.m_c[6]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[5]) + (x.m_c[7] * y.m_c[3]) + (-1.0f * x.m_c[6] * y.m_c[2]) + (x.m_c[5] * y.m_c[9]) + (x.m_c[3] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[8]) + (x.m_c[4] * y.m_c[7]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (x.m_c[15] * y.m_c[12]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (x.m_c[13] * y.m_c[6]) + (-1.0f * x.m_c[10] * y.m_c[9]) + (x.m_c[7] * y.m_c[4]) + (x.m_c[9] * y.m_c[10]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[5] * y.m_c[14]) + (x.m_c[12] * y.m_c[15]) + (-1.0f * x.m_c[0] * y.m_c[11]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (-1.0f * x.m_c[6] * y.m_c[13])), ((-1.0f * x.m_c[0] * y.m_c[14]) + (x.m_c[11] * y.m_c[5]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[10] * y.m_c[12]) + (x.m_c[3] * y.m_c[13]) + (-1.0f * x.m_c[5] * y.m_c[11]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (-1.0f * x.m_c[12] * y.m_c[10]) + (x.m_c[1] * y.m_c[7]) + (x.m_c[15] * y.m_c[9]) + (-1.0f * x.m_c[6] * y.m_c[8]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[9] * y.m_c[15])), ((x.m_c[2] * y.m_c[7]) + (-1.0f * x.m_c[14] * y.m_c[3]) + (x.m_c[15] * y.m_c[10]) + (x.m_c[12] * y.m_c[9]) + (x.m_c[5] * y.m_c[8]) + (x.m_c[11] * y.m_c[6]) + (x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[3] * y.m_c[14]) + (x.m_c[0] * y.m_c[13]) + (x.m_c[13] * y.m_c[0]) + (x.m_c[10] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[12]) + (x.m_c[7] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])), ((-1.0f * x.m_c[8] * y.m_c[1]) + (-1.0f * x.m_c[9] * y.m_c[8]) + (x.m_c[12] * y.m_c[13]) + (-1.0f * x.m_c[2] * y.m_c[11]) + (x.m_c[14] * y.m_c[7]) + (-1.0f * x.m_c[11] * y.m_c[2]) + (x.m_c[14] * y.m_c[15]) + (x.m_c[15] * y.m_c[14]) + (-1.0f * x.m_c[13] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[13]) + (-1.0f * x.m_c[13] * y.m_c[12]) + (-1.0f * x.m_c[11] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[9]) + (x.m_c[10] * y.m_c[11]) + (-1.0f * x.m_c[7] * y.m_c[14]) + (x.m_c[1] * y.m_c[8])), ((-1.0f * x.m_c[13] * y.m_c[15]) + (-1.0f * x.m_c[4] * y.m_c[14]) + (-1.0f * x.m_c[9] * y.m_c[11]) + (x.m_c[7] * y.m_c[13]) + (-1.0f * x.m_c[10] * y.m_c[8]) + (-1.0f * x.m_c[15] * y.m_c[13]) + (x.m_c[12] * y.m_c[14]) + (x.m_c[2] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[2]) + (-1.0f * x.m_c[13] * y.m_c[7]) + (x.m_c[1] * y.m_c[11]) + (-1.0f * x.m_c[14] * y.m_c[4]) + (-1.0f * x.m_c[8] * y.m_c[10]) + (x.m_c[11] * y.m_c[1]) + (-1.0f * x.m_c[14] * y.m_c[12]) + (x.m_c[11] * y.m_c[9])), ((-1.0f * x.m_c[12] * y.m_c[8]) + (x.m_c[14] * y.m_c[10]) + (-1.0f * x.m_c[7] * y.m_c[11]) + (x.m_c[14] * y.m_c[2]) + (-1.0f * x.m_c[8] * y.m_c[4]) + (x.m_c[2] * y.m_c[14]) + (x.m_c[11] * y.m_c[15]) + (-1.0f * x.m_c[8] * y.m_c[12]) + (x.m_c[15] * y.m_c[11]) + (x.m_c[11] * y.m_c[7]) + (x.m_c[1] * y.m_c[13]) + (x.m_c[4] * y.m_c[8]) + (x.m_c[13] * y.m_c[9]) + (-1.0f * x.m_c[9] * y.m_c[13]) + (x.m_c[13] * y.m_c[1]) + (-1.0f * x.m_c[10] * y.m_c[14])), ((x.m_c[0] * y.m_c[8]) + (-1.0f * x.m_c[2] * y.m_c[10]) + (-1.0f * x.m_c[8] * y.m_c[0]) + (x.m_c[14] * y.m_c[6]) + (x.m_c[7] * y.m_c[15]) + (-1.0f * x.m_c[3] * y.m_c[11]) + (-1.0f * x.m_c[9] * y.m_c[1]) + (x.m_c[15] * y.m_c[7]) + (-1.0f * x.m_c[4] * y.m_c[12]) + (-1.0f * x.m_c[6] * y.m_c[14]) + (-1.0f * x.m_c[10] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[9]) + (x.m_c[11] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[13]) + (x.m_c[13] * y.m_c[5]) + (-1.0f * x.m_c[12] * y.m_c[4])), ((x.m_c[1] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[12]) + (-1.0f * x.m_c[9] * y.m_c[14]) + (-1.0f * x.m_c[11] * y.m_c[4]) + (-1.0f * x.m_c[14] * y.m_c[1]) + (x.m_c[10] * y.m_c[13]) + (-1.0f * x.m_c[8] * y.m_c[7]) + (x.m_c[4] * y.m_c[11]) + (-1.0f * x.m_c[2] * y.m_c[13]) + (-1.0f * x.m_c[14] * y.m_c[9]) + (-1.0f * x.m_c[12] * y.m_c[11]) + (-1.0f * x.m_c[15] * y.m_c[8]) + (x.m_c[7] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[15]) + (x.m_c[13] * y.m_c[10]) + (x.m_c[13] * y.m_c[2])), ((-1.0f * x.m_c[15] * y.m_c[4]) + (x.m_c[2] * y.m_c[9]) + (-1.0f * x.m_c[5] * y.m_c[14]) + (-1.0f * x.m_c[7] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[3]) + (-1.0f * x.m_c[14] * y.m_c[5]) + (x.m_c[13] * y.m_c[6]) + (x.m_c[6] * y.m_c[13]) + (x.m_c[10] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[15]) + (-1.0f * x.m_c[9] * y.m_c[2]) + (-1.0f * x.m_c[12] * y.m_c[7]) + (x.m_c[0] * y.m_c[11]) + (-1.0f * x.m_c[11] * y.m_c[0]) + (x.m_c[3] * y.m_c[8]) + (-1.0f * x.m_c[1] * y.m_c[10])), ((-1.0f * x.m_c[9] * y.m_c[4]) + (-1.0f * x.m_c[13] * y.m_c[0]) + (x.m_c[2] * y.m_c[15]) + (x.m_c[5] * y.m_c[8]) + (-1.0f * x.m_c[8] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[12]) + (x.m_c[12] * y.m_c[1]) + (-1.0f * x.m_c[6] * y.m_c[11]) + (x.m_c[4] * y.m_c[9]) + (-1.0f * x.m_c[11] * y.m_c[6]) + (x.m_c[3] * y.m_c[14]) + (x.m_c[7] * y.m_c[10]) + (x.m_c[15] * y.m_c[2]) + (x.m_c[0] * y.m_c[13]) + (x.m_c[14] * y.m_c[3]) + (x.m_c[10] * y.m_c[7])), ((x.m_c[11] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[15]) + (x.m_c[6] * y.m_c[8]) + (x.m_c[4] * y.m_c[10]) + (-1.0f * x.m_c[9] * y.m_c[7]) + (x.m_c[12] * y.m_c[2]) + (x.m_c[0] * y.m_c[14]) + (-1.0f * x.m_c[2] * y.m_c[12]) + (-1.0f * x.m_c[8] * y.m_c[6]) + (-1.0f * x.m_c[13] * y.m_c[3]) + (-1.0f * x.m_c[15] * y.m_c[1]) + (-1.0f * x.m_c[7] * y.m_c[9]) + (x.m_c[5] * y.m_c[11]) + (-1.0f * x.m_c[14] * y.m_c[0]) + (-1.0f * x.m_c[10] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[13])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[10]) + (-1.0f * x.m_c[6] * y.m_c[1]) + (x.m_c[15] * y.m_c[0]) + (x.m_c[12] * y.m_c[3]) + (x.m_c[5] * y.m_c[2]) + (x.m_c[9] * y.m_c[6]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[6] * y.m_c[9]) + (-1.0f * x.m_c[2] * y.m_c[5]) + (x.m_c[7] * y.m_c[0]) + (x.m_c[1] * y.m_c[6]) + (-1.0f * x.m_c[0] * y.m_c[7]) + (x.m_c[0] * y.m_c[15]) + (-1.0f * x.m_c[10] * y.m_c[5]) + (x.m_c[3] * y.m_c[12])));
 	}
 	inline evenVersor subtract(const evenVersor& x, const evenVersor& y) {
-		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])), ((-1.0f * y.m_c[4]) + x.m_c[4]), (x.m_c[5] + (-1.0f * y.m_c[5])), ((-1.0f * y.m_c[6]) + x.m_c[6]), ((-1.0f * y.m_c[7]) + x.m_c[7]), ((-1.0f * y.m_c[8]) + x.m_c[8]), (x.m_c[9] + (-1.0f * y.m_c[9])), ((-1.0f * y.m_c[10]) + x.m_c[10]), (x.m_c[11] + (-1.0f * y.m_c[11])), (x.m_c[12] + (-1.0f * y.m_c[12])), (x.m_c[13] + (-1.0f * y.m_c[13])), ((-1.0f * y.m_c[14]) + x.m_c[14]), ((-1.0f * y.m_c[15]) + x.m_c[15]));
+		return evenVersor(evenVersor_scalar_noe1_noe2_noe3_e1e2_e2e3_e3e1_e1ni_e2ni_e3ni_noni_e1e2e3ni_e1e2noni_e1e3noni_e2e3noni_e1e2e3no, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), (x.m_c[4] + (-1.0f * y.m_c[4])), (x.m_c[5] + (-1.0f * y.m_c[5])), (x.m_c[6] + (-1.0f * y.m_c[6])), ((-1.0f * y.m_c[7]) + x.m_c[7]), ((-1.0f * y.m_c[8]) + x.m_c[8]), ((-1.0f * y.m_c[9]) + x.m_c[9]), (x.m_c[10] + (-1.0f * y.m_c[10])), (x.m_c[11] + (-1.0f * y.m_c[11])), ((-1.0f * y.m_c[12]) + x.m_c[12]), ((-1.0f * y.m_c[13]) + x.m_c[13]), (x.m_c[14] + (-1.0f * y.m_c[14])), (x.m_c[15] + (-1.0f * y.m_c[15])));
 	}
 	inline __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni gp(const line& x, const __no_ct__& y) {
 		return __syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni(__syn_smv___noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni_noe1_noe2_e1e2_noe3_e1e3_e2e3_noe1e2ni_noe1e3ni_noe2e3ni, x.m_c[3], x.m_c[4], (-1.0f * x.m_c[0]), x.m_c[5], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -42445,7 +43000,10 @@
 		return bivectorE3GA(bivectorE3GA_e1e2_e2e3_e3e1, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni gpEM(const __syn_smv___scalar_noe1_noe2_noe3_noni& x, const __syn_smv___e1_e2_e3_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni, ((x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[0]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), (x.m_c[4] + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni(__syn_smv___no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni_no_e1_e2_noe1e2_e3_noe1e3_noe2e3_ni_noe1ni_noe2ni_noe3ni, ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), (x.m_c[2] + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), (x.m_c[4] + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[2])));
+	}
+	inline rotor add(const scalar& x, const bivectorE3GA& y) {
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], y.m_c[0], y.m_c[1], y.m_c[2]);
 	}
 	inline __syn_smv___scalarf0_0 op(const __ni_ct__& x, const line& y) {
 		return __syn_smv___scalarf0_0(__syn_smv___scalarf0_0_scalarf0_0);
