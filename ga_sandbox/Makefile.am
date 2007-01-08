@@ -4,4 +4,4 @@ SUBDIRS = qhull-2003.1 libgasandbox \
 	solutions vs.net attic screenshots
 
 
-EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX
+EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX user_manual.txt

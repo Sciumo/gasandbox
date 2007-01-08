@@ -1,0 +1,48 @@
+
+What should be in here?
+
+Intro
+
+CAN LEARN A LOT FROM THE BOOK OR STUDYING THE EXAMPLES
+
+What algebras?
+
+Requirements
+	See the REQUIRED_LIBRARIES
+
+Building:
+	Visual Studio:
+
+	Autotools:
+
+
+Linking
+	regular
+	parse
+
+Including:
+	// to do X:
+	#include <libgasandbox/e3ga.h>
+	// to do Y:
+	#include <libgasandbox/e3ga_util.h>
+	// to do Z:
+	#include <libgasandbox/e3ga_parse.h>
+	// to draw:
+	#include <libgasandbox/e3ga_draw.h>
+	// to analyze:
+	#include <libgasandbox/mv_analyze.h>
+
+Types
+
+Opererators
+
+Functions
+
+
+	
+	
+	
+What should be improved:
+-shared code (mainly OpenGL / UI stuff)
+-each algebra all function in XXga_util.cpp
+-clean up of left-over commented-out testing code
