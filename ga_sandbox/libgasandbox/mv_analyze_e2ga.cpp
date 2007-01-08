@@ -60,7 +60,7 @@ void mvAnalysis::analyze(e2ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 		// m_sc[1] = angle
 		// m_vc[0], m_vc[1] is basis for rotation plane
 		m_vc[0] = e3ga::_vector(e3ga::e1);
-		m_vc[1] = (_bivector(X).e1e2() < 0.0) ? -e3ga::e2 : e3ga::e2;
+		m_vc[1] = (_bivector(X).e1e2() < 0.0) ? _vector(-e3ga::e2) : _vector(e3ga::e2);
 
 		m_sc[0] = e2ga::_Float(norm_e(X));
 		m_sc[1] = 2.0f * (e3ga::mv::Float)atan2(e2ga::_Float(e2ga::norm_e(e2ga::_bivector(X))), e2ga::_Float(X));
@@ -87,7 +87,7 @@ void mvAnalysis::analyze(e2ga::mv X, int intFlags/* = 0 */,  double epsilon/* = 
 		}
 		else if (m_type[3] == BIVECTOR) {
 			m_vc[0] = e3ga::e1;
-			m_vc[1] = (_bivector(X).e1e2() < 0.0) ? -e3ga::e2 : e3ga::e2;
+			m_vc[1] = (_bivector(X).e1e2() < 0.0) ? _vector(-e3ga::e2) : _vector(e3ga::e2);
 		}
 		return;
 	}
