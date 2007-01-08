@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 10:29:34 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2007-01-08 11:07:19 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -18622,20 +18622,20 @@
 	namespace __G2_GENERATED__ {
 		inline void set(omFlatPoint& __x__, const point& __image_of_e1__, const point& __image_of_ni__, const point& __image_of_e2__, const point& __image_of_e3__, const point& __image_of_no__) {
 			__x__.m_c[0] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[1]) + (-1.0f * __image_of_ni__.m_c[1] * __image_of_e1__.m_c[4]));
-			__x__.m_c[1] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[2]) + (-1.0f * __image_of_ni__.m_c[2] * __image_of_e1__.m_c[4]));
-			__x__.m_c[2] = ((-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]));
-			__x__.m_c[3] = ((-1.0f * __image_of_ni__.m_c[0] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[0]));
-			__x__.m_c[4] = ((__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]));
+			__x__.m_c[1] = ((-1.0f * __image_of_ni__.m_c[2] * __image_of_e1__.m_c[4]) + (__image_of_ni__.m_c[4] * __image_of_e1__.m_c[2]));
+			__x__.m_c[2] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[3]) + (-1.0f * __image_of_ni__.m_c[3] * __image_of_e1__.m_c[4]));
+			__x__.m_c[3] = ((__image_of_ni__.m_c[4] * __image_of_e1__.m_c[0]) + (-1.0f * __image_of_ni__.m_c[0] * __image_of_e1__.m_c[4]));
+			__x__.m_c[4] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_e2__.m_c[1] * __image_of_ni__.m_c[4]));
 			__x__.m_c[5] = ((__image_of_e2__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[2]));
-			__x__.m_c[6] = ((__image_of_e2__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[3]));
+			__x__.m_c[6] = ((-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_e2__.m_c[3] * __image_of_ni__.m_c[4]));
 			__x__.m_c[7] = ((__image_of_e2__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e2__.m_c[4] * __image_of_ni__.m_c[0]));
 			__x__.m_c[8] = ((__image_of_e3__.m_c[1] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[1]));
 			__x__.m_c[9] = ((__image_of_e3__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[2]));
-			__x__.m_c[10] = ((-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_e3__.m_c[3] * __image_of_ni__.m_c[4]));
+			__x__.m_c[10] = ((__image_of_e3__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[3]));
 			__x__.m_c[11] = ((__image_of_e3__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_e3__.m_c[4] * __image_of_ni__.m_c[0]));
 			__x__.m_c[12] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[1]) + (__image_of_no__.m_c[1] * __image_of_ni__.m_c[4]));
-			__x__.m_c[13] = ((__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]));
-			__x__.m_c[14] = ((__image_of_no__.m_c[3] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[3]));
+			__x__.m_c[13] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[2]) + (__image_of_no__.m_c[2] * __image_of_ni__.m_c[4]));
+			__x__.m_c[14] = ((-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[3]) + (__image_of_no__.m_c[3] * __image_of_ni__.m_c[4]));
 			__x__.m_c[15] = ((__image_of_no__.m_c[0] * __image_of_ni__.m_c[4]) + (-1.0f * __image_of_no__.m_c[4] * __image_of_ni__.m_c[0]));
 		}
 		inline void set(omFlatPoint& __x__, const flatPoint& image_ofe1ni, const flatPoint& image_ofe2ni, const flatPoint& image_ofe3ni, const flatPoint& image_ofnoni) {

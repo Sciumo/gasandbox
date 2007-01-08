@@ -60,8 +60,8 @@ const int g_nbVectors = 3;
 
 // the three vectors:
 e3ga::vector g_vectors[g_nbVectors] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
+	_vector(e1 - e2 - 0.3f * e3),
+	_vector(e1 + 0.3f * e2 - 0.1f * e3),
 	_vector(e1 + e3)
 };
 

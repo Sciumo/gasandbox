@@ -327,7 +327,7 @@ void menuCallback(int value) {
 		{
 			g_ac = true;
 			g_inputVectors[0] = _vector(e1);
-			g_inputVectors[1] = _vector(g_inputVectors[0] * exp((e1^e2) * (M_PI / 6.0f)));
+			g_inputVectors[1] = _vector(g_inputVectors[0] * exp((e1^e2) * ((float)M_PI / 6.0f)));
 			g_inputVectors[2] = _vector(unit_e(e1 + e3));
 		}
 		break;

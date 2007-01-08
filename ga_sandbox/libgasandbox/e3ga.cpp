@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 10:28:37 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
+// Generated on 2007-01-08 11:06:00 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -4611,6 +4611,37 @@
 	}
 
 	// G2 functions:
+	mv apply_om(const om& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)18), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
+		mv __temp_var_1__;
+		float __tmp_coord_array_14__[8] ;
+		mv_zero(__tmp_coord_array_14__, 8);
+		const float* __y_xpd__[4] ;
+		y.expand(__y_xpd__, true);
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_14__[1] += ((x.m_c[2] * __y_xpd__[1][2]) + (x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[0] * __y_xpd__[1][0]));
+			__tmp_coord_array_14__[2] += ((x.m_c[4] * __y_xpd__[1][1]) + (x.m_c[3] * __y_xpd__[1][0]) + (x.m_c[5] * __y_xpd__[1][2]));
+			__tmp_coord_array_14__[3] += ((x.m_c[8] * __y_xpd__[1][2]) + (x.m_c[6] * __y_xpd__[1][0]) + (x.m_c[7] * __y_xpd__[1][1]));
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_14__[4] += ((x.m_c[11] * __y_xpd__[2][2]) + (x.m_c[9] * __y_xpd__[2][0]) + (x.m_c[10] * __y_xpd__[2][1]));
+			__tmp_coord_array_14__[5] += ((x.m_c[12] * __y_xpd__[2][0]) + (x.m_c[14] * __y_xpd__[2][2]) + (x.m_c[13] * __y_xpd__[2][1]));
+			__tmp_coord_array_14__[6] += ((x.m_c[15] * __y_xpd__[2][0]) + (x.m_c[17] * __y_xpd__[2][2]) + (x.m_c[16] * __y_xpd__[2][1]));
+
+		}
+		if (((y.m_gu & 8) != 0)) {
+			__tmp_coord_array_14__[7] += (x.m_c[18] * __y_xpd__[3][0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_14__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
+		return __temp_var_1__;
+	}
 	namespace __G2_GENERATED__ {
 		void set(om& __x__, const vector& __image_of_e1__, const vector& __image_of_e2__, const vector& __image_of_e3__) {
 			__x__.m_c[0] = __image_of_e1__.m_c[0];
@@ -4624,18 +4655,18 @@
 			__x__.m_c[8] = __image_of_e3__.m_c[2];
 			__x__.m_c[9] = ((__x__.m_c[4] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[3]));
 			__x__.m_c[12] = ((-1.0f * __x__.m_c[4] * __x__.m_c[6]) + (__x__.m_c[7] * __x__.m_c[3]));
-			__x__.m_c[15] = ((__x__.m_c[1] * __x__.m_c[6]) + (-1.0f * __x__.m_c[7] * __x__.m_c[0]));
-			__x__.m_c[10] = ((__x__.m_c[5] * __x__.m_c[1]) + (-1.0f * __x__.m_c[2] * __x__.m_c[4]));
+			__x__.m_c[15] = ((-1.0f * __x__.m_c[7] * __x__.m_c[0]) + (__x__.m_c[1] * __x__.m_c[6]));
+			__x__.m_c[10] = ((-1.0f * __x__.m_c[2] * __x__.m_c[4]) + (__x__.m_c[5] * __x__.m_c[1]));
 			__x__.m_c[13] = ((__x__.m_c[8] * __x__.m_c[4]) + (-1.0f * __x__.m_c[5] * __x__.m_c[7]));
 			__x__.m_c[16] = ((__x__.m_c[2] * __x__.m_c[7]) + (-1.0f * __x__.m_c[8] * __x__.m_c[1]));
 			__x__.m_c[11] = ((__x__.m_c[2] * __x__.m_c[3]) + (-1.0f * __x__.m_c[5] * __x__.m_c[0]));
-			__x__.m_c[14] = ((-1.0f * __x__.m_c[8] * __x__.m_c[3]) + (__x__.m_c[5] * __x__.m_c[6]));
-			__x__.m_c[17] = ((-1.0f * __x__.m_c[2] * __x__.m_c[6]) + (__x__.m_c[8] * __x__.m_c[0]));
-			__x__.m_c[18] = ((__x__.m_c[14] * __x__.m_c[1]) + (__x__.m_c[17] * __x__.m_c[4]) + (__x__.m_c[11] * __x__.m_c[7]));
+			__x__.m_c[14] = ((__x__.m_c[5] * __x__.m_c[6]) + (-1.0f * __x__.m_c[8] * __x__.m_c[3]));
+			__x__.m_c[17] = ((__x__.m_c[8] * __x__.m_c[0]) + (-1.0f * __x__.m_c[2] * __x__.m_c[6]));
+			__x__.m_c[18] = ((__x__.m_c[11] * __x__.m_c[7]) + (__x__.m_c[14] * __x__.m_c[1]) + (__x__.m_c[17] * __x__.m_c[4]));
 		}
 	} /* end of namespace __G2_GENERATED__ */
 	vector apply_om(const om& x, const vector& y) {
-		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[4] * y.m_c[1]) + (x.m_c[5] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[8] * y.m_c[2]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[7] * y.m_c[1])));
+		return vector(vector_e1_e2_e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[5] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[7] * y.m_c[1]) + (x.m_c[6] * y.m_c[0]) + (x.m_c[8] * y.m_c[2])));
 	}
 
 

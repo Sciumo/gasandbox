@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 10:28:21 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-08 11:06:16 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -2355,13 +2355,37 @@
 	}
 
 	// G2 functions:
+	mv apply_om(const om& x, const mv& y) {
+		/* start of profiling instrumentation code */;
+		unsigned short __profileArgTypes__[]  = {x.type(), y.type()};
+		unsigned short __returnTypes__[1] ;
+		g2Profiling::profile(((unsigned int)18), ((unsigned short)-1), ((unsigned short)2), __profileArgTypes__, ((unsigned short)1), __returnTypes__);
+		/* end of profiling instrumentation code */;
+		mv __temp_var_1__;
+		float __tmp_coord_array_14__[4] ;
+		mv_zero(__tmp_coord_array_14__, 4);
+		const float* __y_xpd__[3] ;
+		y.expand(__y_xpd__, true);
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_14__[1] += ((x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[0] * __y_xpd__[1][0]));
+			__tmp_coord_array_14__[2] += ((x.m_c[2] * __y_xpd__[1][0]) + (x.m_c[3] * __y_xpd__[1][1]));
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_14__[3] += (x.m_c[4] * __y_xpd__[2][0]);
+
+		}
+		__temp_var_1__ = mv_compress(__tmp_coord_array_14__);
+		__temp_var_1__.type(((g2Type)((short)__returnTypes__[0])));
+		return __temp_var_1__;
+	}
 	namespace __G2_GENERATED__ {
 		void set(om& __x__, const vector& __image_of_e1__, const vector& __image_of_e2__) {
 			__x__.m_c[0] = __image_of_e1__.m_c[0];
 			__x__.m_c[2] = __image_of_e1__.m_c[1];
 			__x__.m_c[1] = __image_of_e2__.m_c[0];
 			__x__.m_c[3] = __image_of_e2__.m_c[1];
-			__x__.m_c[4] = ((__x__.m_c[3] * __x__.m_c[0]) + (-1.0f * __x__.m_c[1] * __x__.m_c[2]));
+			__x__.m_c[4] = ((-1.0f * __x__.m_c[1] * __x__.m_c[2]) + (__x__.m_c[3] * __x__.m_c[0]));
 		}
 	} /* end of namespace __G2_GENERATED__ */
 

@@ -57,8 +57,8 @@ int g_dragObject = -1;
 
 // the three vectors:
 e3ga::vector g_vectors[3] = {
-	_vector(e1 - e2 - 0.3 * e3),
-	_vector(e1 + 0.3 * e2 - 0.1 * e3),
+	_vector(e1 - e2 - 0.3f * e3),
+	_vector(e1 + 0.3f * e2 - 0.1f * e3),
 	e3ga::vector()
 };
 

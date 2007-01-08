@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 10:28:21 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-08 11:06:16 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
