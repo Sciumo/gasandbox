@@ -71,6 +71,7 @@ usage : mv op(mv x, mv y) : line , normalizedPoint : 1;
 usage : mv gp(mv x, mv y) : __syn_smv___scalar_e1e3_e2e3_e3e0 , point : 1;
 usage : mv gp(mv x, mv y) : __syn_smv___e1_e2_e3_e0f_1_0 , point : 1;
 usage : mv lcont(mv x, mv y) : __e0_ct__ , __e0_ct__ : 1;
+usage : mv apply_om(om x, mv y) : om , scalar : 1;
 usage : mv lcont(mv x, mv y) : line , __syn_smv___e1e2e3e0 : 1;
 usage : mv subtract(mv x, mv y) : rotor , rotor : 1;
 usage : mv gp(mv x, mv y) : scalar , scalar : 1;

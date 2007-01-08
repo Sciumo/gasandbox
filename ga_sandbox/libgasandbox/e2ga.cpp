@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 14:15:41 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-08 15:54:35 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -498,10 +498,9 @@
 							m_maxEntries = (m_maxEntries) ? m_maxEntries * 2 : 4;
 							entry **oldEntry = m_entry;
 							m_entry = new entry*[m_maxEntries];
-							memcpy(m_entry, oldEntry, m_nbEntries * sizeof(entry*));
-							if (m_entry) {
-								delete[] m_entry;
-							}
+							if (m_nbEntries > 0) 
+								memcpy(m_entry, oldEntry, m_nbEntries * sizeof(entry*));
+							if (oldEntry) delete[] oldEntry;
 						}
 
 						// add entry to bucket, increment hash count
@@ -1796,55 +1795,55 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_2__[4] ;
 		mv_zero(__tmp_coord_array_2__, 4);
-		const float* __y_xpd__[3] ;
-		y.expand(__y_xpd__, true);
 		const float* __x_xpd__[3] ;
 		x.expand(__x_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+		const float* __y_xpd__[3] ;
+		y.expand(__y_xpd__, true);
+		if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
 				__tmp_coord_array_2__[0] += (__x_xpd__[0][0] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
-				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
-
-			}
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
 				__tmp_coord_array_2__[1] += (__x_xpd__[0][0] * __y_xpd__[1][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[0][0] * __y_xpd__[1][1]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
-				__tmp_coord_array_2__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
-				__tmp_coord_array_2__[3] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
-
-			}
-			if (((x.m_gu & 4) != 0)) {
-				__tmp_coord_array_2__[1] += (__x_xpd__[2][0] * __y_xpd__[1][1]);
-				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]);
+			if (((y.m_gu & 4) != 0)) {
+				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
 
 			}
 
 		}
-		if (((y.m_gu & 4) != 0)) {
-			if (((x.m_gu & 1) != 0)) {
-				__tmp_coord_array_2__[3] += (__x_xpd__[0][0] * __y_xpd__[2][0]);
+		if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[1][0] * __y_xpd__[0][0]);
+				__tmp_coord_array_2__[2] += (__x_xpd__[1][1] * __y_xpd__[0][0]);
 
 			}
-			if (((x.m_gu & 2) != 0)) {
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[0] += ((__x_xpd__[1][0] * __y_xpd__[1][0]) + (__x_xpd__[1][1] * __y_xpd__[1][1]));
+				__tmp_coord_array_2__[3] += ((__x_xpd__[1][0] * __y_xpd__[1][1]) + (-1.0f * __x_xpd__[1][1] * __y_xpd__[1][0]));
+
+			}
+			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[1] += (-1.0f * __x_xpd__[1][1] * __y_xpd__[2][0]);
 				__tmp_coord_array_2__[2] += (__x_xpd__[1][0] * __y_xpd__[2][0]);
 
 			}
-			if (((x.m_gu & 4) != 0)) {
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			if (((y.m_gu & 1) != 0)) {
+				__tmp_coord_array_2__[3] += (__x_xpd__[2][0] * __y_xpd__[0][0]);
+
+			}
+			if (((y.m_gu & 2) != 0)) {
+				__tmp_coord_array_2__[1] += (__x_xpd__[2][0] * __y_xpd__[1][1]);
+				__tmp_coord_array_2__[2] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[1][0]);
+
+			}
+			if (((y.m_gu & 4) != 0)) {
 				__tmp_coord_array_2__[0] += (-1.0f * __x_xpd__[2][0] * __y_xpd__[2][0]);
 
 			}
@@ -1915,23 +1914,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_4__[4] ;
 		mv_zero(__tmp_coord_array_4__, 4);
-		const float* __x_xpd__[3] ;
-		x.expand(__x_xpd__, true);
 		const float* __y_xpd__[3] ;
 		y.expand(__y_xpd__, true);
-		if (((y.m_gu & 1) != 0)) {
-			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
-
-		}
-		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
-			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
-
-		}
-		if (((y.m_gu & 4) != 0)) {
-			__tmp_coord_array_4__[3] += __y_xpd__[2][0];
-
-		}
+		const float* __x_xpd__[3] ;
+		x.expand(__x_xpd__, true);
 		if (((x.m_gu & 1) != 0)) {
 			__tmp_coord_array_4__[0] += __x_xpd__[0][0];
 
@@ -1943,6 +1929,19 @@
 		}
 		if (((x.m_gu & 4) != 0)) {
 			__tmp_coord_array_4__[3] += __x_xpd__[2][0];
+
+		}
+		if (((y.m_gu & 1) != 0)) {
+			__tmp_coord_array_4__[0] += __y_xpd__[0][0];
+
+		}
+		if (((y.m_gu & 2) != 0)) {
+			__tmp_coord_array_4__[1] += __y_xpd__[1][0];
+			__tmp_coord_array_4__[2] += __y_xpd__[1][1];
+
+		}
+		if (((y.m_gu & 4) != 0)) {
+			__tmp_coord_array_4__[3] += __y_xpd__[2][0];
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_4__);
@@ -1958,23 +1957,10 @@
 		mv __temp_var_1__;
 		float __tmp_coord_array_5__[4] ;
 		mv_zero(__tmp_coord_array_5__, 4);
-		const float* __y_xpd__[3] ;
-		y.expand(__y_xpd__, true);
 		const float* __x_xpd__[3] ;
 		x.expand(__x_xpd__, true);
-		if (((x.m_gu & 1) != 0)) {
-			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
-
-		}
-		if (((x.m_gu & 2) != 0)) {
-			__tmp_coord_array_5__[1] += __x_xpd__[1][0];
-			__tmp_coord_array_5__[2] += __x_xpd__[1][1];
-
-		}
-		if (((x.m_gu & 4) != 0)) {
-			__tmp_coord_array_5__[3] += __x_xpd__[2][0];
-
-		}
+		const float* __y_xpd__[3] ;
+		y.expand(__y_xpd__, true);
 		if (((y.m_gu & 1) != 0)) {
 			__tmp_coord_array_5__[0] += (-1.0f * __y_xpd__[0][0]);
 
@@ -1986,6 +1972,19 @@
 		}
 		if (((y.m_gu & 4) != 0)) {
 			__tmp_coord_array_5__[3] += (-1.0f * __y_xpd__[2][0]);
+
+		}
+		if (((x.m_gu & 1) != 0)) {
+			__tmp_coord_array_5__[0] += __x_xpd__[0][0];
+
+		}
+		if (((x.m_gu & 2) != 0)) {
+			__tmp_coord_array_5__[1] += __x_xpd__[1][0];
+			__tmp_coord_array_5__[2] += __x_xpd__[1][1];
+
+		}
+		if (((x.m_gu & 4) != 0)) {
+			__tmp_coord_array_5__[3] += __x_xpd__[2][0];
 
 		}
 		__temp_var_1__ = mv_compress(__tmp_coord_array_5__);
@@ -2367,7 +2366,7 @@
 		const float* __y_xpd__[3] ;
 		y.expand(__y_xpd__, true);
 		if (((y.m_gu & 2) != 0)) {
-			__tmp_coord_array_14__[1] += ((x.m_c[1] * __y_xpd__[1][1]) + (x.m_c[0] * __y_xpd__[1][0]));
+			__tmp_coord_array_14__[1] += ((x.m_c[0] * __y_xpd__[1][0]) + (x.m_c[1] * __y_xpd__[1][1]));
 			__tmp_coord_array_14__[2] += ((x.m_c[2] * __y_xpd__[1][0]) + (x.m_c[3] * __y_xpd__[1][1]));
 
 		}
