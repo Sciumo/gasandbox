@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-08 15:54:35 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-09 19:46:34 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -177,24 +177,6 @@
 
 
 	class mv {
-		// the friend classes of mv 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
-		// friend functions of mv 
-		friend char *string(const mv &obj, char *str, int maxLength, const char *fp /*= NULL*/);
-		friend void compress(const float *c, float *cc, int &cgu, float epsilon = 0.0, int gu = 7);
-		friend mv compress(const mv & arg, float epsilon);
-
 		public:
 			typedef float Float;
 
@@ -217,38 +199,38 @@
 		}
 
 		/// pointer to coordinates constructor
-		inline mv(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV) {
+		inline mv(unsigned int gradeUsage, const Float *coordinates) {
 
-			set(gradeUsage, coordinates, type);
+			set(gradeUsage, coordinates);
 		}
 
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, g2Type type = MVT_MV) {
+		, Float c0) {
 
 			set(gradeUsage
-				, c0, type);
+				, c0);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, g2Type type = MVT_MV) {
+		, Float c0, Float c1) {
 
 			set(gradeUsage
-				, c0, c1, type);
+				, c0, c1);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2) {
 
 			set(gradeUsage
-				, c0, c1, c2, type);
+				, c0, c1, c2);
 		}
 		/// all 'coordinates specified' constructors
 		inline mv(unsigned int gradeUsage
-		, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV) {
+		, Float c0, Float c1, Float c2, Float c3) {
 
 			set(gradeUsage
-				, c0, c1, c2, c3, type);
+				, c0, c1, c2, c3);
 		}
 
 		/// init from e1_t constructor
@@ -303,21 +285,21 @@
 		void set(Float scalar);
 
 		/// pointer to coordinates constructor
-		void set(unsigned int gradeUsage, const Float *coordinates, g2Type type = MVT_MV);
+		void set(unsigned int gradeUsage, const Float *coordinates);
 
 
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, g2Type type = MVT_MV);
+			, Float c0);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, g2Type type = MVT_MV);
+			, Float c0, Float c1);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2);
 		/// set to 'coordinates specified' 
 		void set (unsigned int gradeUsage
-			, Float c0, Float c1, Float c2, Float c3, g2Type type = MVT_MV);
+			, Float c0, Float c1, Float c2, Float c3);
 
 
 		/// set to e1_t 
@@ -405,9 +387,6 @@
 		unsigned int m_gu; ///< grade usage
 		inline unsigned int gu() const {return m_gu;}
 		inline void gu(unsigned int g) {m_gu = g;}
-		g2Type m_type; ///< type (used for profiling)
-		inline g2Type type() const {return m_type;}
-		inline void type(g2Type t) {m_type = t;}
 
 
 
@@ -441,26 +420,14 @@
 
 	/// returns scalar part of arg1 as float
 	inline float _float(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)31), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (float)arg1.m_c[0] : 0.0f;
 	}
 	/// returns scalar part of arg1 as double
 	inline double _double(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)32), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? (double)arg1.m_c[0] : 0.0;
 	}
 	/// returns scalar part of arg1 as Float
 	inline float _Float(const mv & arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)33), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return (arg1.m_gu & 1) ? arg1.m_c[0] : (float)0.0;
 	}
 
@@ -474,19 +441,6 @@
 	enum __e1_t_coordinates__ {e1_t_e1};
 
 	class e1_t {
-		// the friend classes of e1_t 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -603,10 +557,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e1_t _e1_t(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)21), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return e1_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -655,19 +605,6 @@
 	enum __e2_t_coordinates__ {e2_t_e2};
 
 	class e2_t {
-		// the friend classes of e2_t 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -784,10 +721,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline e2_t _e2_t(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)22), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return e2_t(arg1, 0);
 	}
 	/// from const specialization class:
@@ -836,19 +769,6 @@
 	enum __scalar_coordinates__ {scalar_scalar};
 
 	class scalar {
-		// the friend classes of scalar 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-
 		public:
 			typedef float Float;
 
@@ -963,10 +883,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline scalar _scalar(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)23), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return scalar(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1015,19 +931,6 @@
 	enum __vector_coordinates__ {vector_e1_e2};
 
 	class vector {
-		// the friend classes of vector 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -1147,10 +1050,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline vector _vector(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)24), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return vector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1199,19 +1098,6 @@
 	enum __bivector_coordinates__ {bivector_e1e2};
 
 	class bivector {
-		// the friend classes of bivector 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -1328,10 +1214,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline bivector _bivector(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)25), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return bivector(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1380,19 +1262,6 @@
 	enum __rotor_coordinates__ {rotor_scalar_e1e2};
 
 	class rotor {
-		// the friend classes of rotor 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -1509,10 +1378,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline rotor _rotor(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)26), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return rotor(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1561,19 +1426,6 @@
 	enum ____e1_ct___coordinates__ {__e1_ct___e1f1_0};
 
 	class __e1_ct__ {
-		// the friend classes of __e1_ct__ 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -1689,10 +1541,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e1_ct__ ___e1_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)27), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __e1_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1741,19 +1589,6 @@
 	enum ____e2_ct___coordinates__ {__e2_ct___e2f1_0};
 
 	class __e2_ct__ {
-		// the friend classes of __e2_ct__ 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -1869,10 +1704,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __e2_ct__ ___e2_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)28), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __e2_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -1921,19 +1752,6 @@
 	enum ____I2_ct___coordinates__ {__I2_ct___e1e2f1_0};
 
 	class __I2_ct__ {
-		// the friend classes of __I2_ct__ 
-		friend class __I2i_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -2049,10 +1867,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I2_ct__ ___I2_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)29), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __I2_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2101,19 +1915,6 @@
 	enum ____I2i_ct___coordinates__ {__I2i_ct___e1e2f_1_0};
 
 	class __I2i_ct__ {
-		// the friend classes of __I2i_ct__ 
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class om;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -2229,10 +2030,6 @@
 	/* 'underscore constructors' */
 	/// underscore constructor from general multivector:
 	inline __I2i_ct__ ___I2i_ct__(const mv &arg1) {
-		/* start of profiling instrumentation code */;
-		unsigned short __profileArgs__[]  = {arg1.type()};
-		g2Profiling::profile(((unsigned int)30), ((unsigned short)-1), ((unsigned short)1), __profileArgs__, (unsigned short)0, NULL);
-		/* end of profiling instrumentation code */;
 		return __I2i_ct__(arg1, 0);
 	}
 	/// from const specialization class:
@@ -2278,19 +2075,6 @@
 
 
 	class om {
-		// the friend classes of om 
-		friend class __I2i_ct__;
-		friend class __I2_ct__;
-		friend class bivector;
-		friend class mv;
-		friend class vector;
-		friend class __e1_ct__;
-		friend class __e2_ct__;
-		friend class e1_t;
-		friend class rotor;
-		friend class e2_t;
-		friend class scalar;
-
 		public:
 			typedef float Float;
 
@@ -2365,10 +2149,6 @@
 		Float m_c[5]; ///< coordinate storage
 
 
-
-		omType m_type; /// type (for profiling)
-		inline omType type() const {return m_type;}
-		inline void type(omType t) {m_type = t;}
 
 
 	}; // end of class om
@@ -3649,7 +3429,7 @@
 	// G2 functions:
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
@@ -3671,13 +3451,13 @@
 		return e1_t(e1_t_e1, x.m_c[0]);
 	}
 	inline scalar subtract(const scalar& x, const scalar& y) {
-		return scalar(scalar_scalar, ((-1.0f * y.m_c[0]) + x.m_c[0]));
+		return scalar(scalar_scalar, (x.m_c[0] + (-1.0f * y.m_c[0])));
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+		return vector(vector_e1_e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
@@ -3709,7 +3489,7 @@
 		return vector(vector_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline vector add(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]));
+		return vector(vector_e1_e2, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]));
 	}
 	inline vector gradeInvolution(const vector& x) {
 		return vector(vector_e1_e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
@@ -3730,7 +3510,7 @@
 		return e2_t(e2_t_e2, (-1.0f * x.m_c[0]));
 	}
 	inline rotor gp(const vector& x, const vector& y) {
-		return rotor(rotor_scalar_e1e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return rotor(rotor_scalar_e1e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline vector gp(const vector& x, const scalar& y) {
 		return vector(vector_e1_e2, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]));
@@ -3751,7 +3531,7 @@
 		return e2_t(e2_t_e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector gp(const rotor& x, const vector& y) {
-		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return vector(vector_e1_e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
 		return e2_t(e2_t_e2, x.m_c[0]);

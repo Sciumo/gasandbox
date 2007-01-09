@@ -21,8 +21,8 @@
 
 #ifdef USE_OPENCV
 // not sure whether this should be <opencv/cxcore.h> or just <cxcore.h>
-#include <cxcore.h>
-//#include <opencv/cxcore.h>
+//#include <cxcore.h>
+#include <opencv/cxcore.h>
 #else
 #include <mkl_lapack.h>
 #include <mkl_blas.h>
