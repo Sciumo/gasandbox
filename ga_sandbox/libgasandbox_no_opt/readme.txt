@@ -25,10 +25,10 @@ and they will compile a lot faster.
 In an actual application the number of optimizations is lower because the use
 of geometric algebra is less diverse. For example, the conformal algebra 
 implementation I use for my motion capture system currently has the following 
-sizes:
+file sizes:
 c3ga.cpp: 470KB
 c3ga.h  : 1.01MB
 So this is still rather large but not as extreme as the GA Sandbox version.
 
 
---Daniel Fontijne
+D.F.
