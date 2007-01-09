@@ -358,11 +358,9 @@ namespace c3ga:
 	
 
 
+Underscore constractors:
 
-
-			
-			
-To do: explain underscore constructors
+To do
 
 Functions:
 
@@ -396,15 +394,30 @@ mv scpEM(mv x, mv y);          // scalar product (Euclidean Metric)
 mv lcontEM(mv x, mv y);        // left contraction (Euclidean Metric)
 mv inverseEM(mv x);            // inversion (Euclidean Metric)
 
+Utility Functions
+
+To do.
+
+
 Operators:
 
 The '=' operator is bound to this->set(arg)
+The other operators are:
+
+OP            Bound to:
 
 x+y           add(x, y)
 x-y           substract(x, y)
 -x            negate(x)
 x%y           scp(x, y)
 x^y           op(x, y)
+x*y           gp(x, y)
+x<<y          lcont(x, y)
+~x            reverse(x)
+!x            inverse(x)
+
+The binary operators may also be used in the X= form.
+For example x += y is the same as x.set(add(x, y)).
 
 	
 **************************   TO BE IMPROVED    **************************
