@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT()
-AM_INIT_AUTOMAKE(ga_sandbox, 1.0)
+AM_INIT_AUTOMAKE(ga_sandbox, 1.0.1)
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
