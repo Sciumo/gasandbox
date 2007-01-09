@@ -18,6 +18,8 @@ AC_OUTPUT(
 	\
 	libgasandbox/Makefile \
 	\
+	libgasandbox_no_opt/Makefile \
+	\
 	chap1/Makefile \
 	chap1/ex1/Makefile\
 	\
