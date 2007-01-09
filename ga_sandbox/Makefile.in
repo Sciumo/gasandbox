@@ -158,9 +158,9 @@ target_alias = @target_alias@
 SUBDIRS = qhull-2003.1 libgasandbox \
 	chap1 chap2 chap3 chap4 chap5 chap6 chap7 chap8 \
 	chap10 chap11 chap12 chap13 chap14 chap15 chap16 \
-	solutions vs.net attic screenshots
+	solutions vs.net attic screenshots libgasandbox_no_opt
 
-EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX
+EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX user_manual.txt
 all: all-recursive
 
 .SUFFIXES:

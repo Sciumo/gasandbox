@@ -67,17 +67,17 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /home/fontijne/ga_sandbox/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run tar
-AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
-AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -O2 -march=athlon-xp
-AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
-AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11 -lsupc++
-AUTOCONF = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run automake-1.9
+AMTAR = ${SHELL} /home/fontijne/ga_sandbox/missing --run tar
+AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -march=pentium4m -O2 -pipe
+AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -march=pentium4m -O2 -pipe
+AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11
+AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11
+AUTOCONF = ${SHELL} /home/fontijne/ga_sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/fontijne/ga_sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/fontijne/ga_sandbox/missing --run automake-1.9
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -104,7 +104,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /root/ga/gasandbox/ga_sandbox/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/fontijne/ga_sandbox/missing --run makeinfo
 OBJEXT = o
 PACKAGE = ga_sandbox
 PACKAGE_BUGREPORT = 
@@ -142,7 +142,7 @@ exec_prefix = ${prefix}
 host_alias = 
 includedir = ${prefix}/include
 infodir = ${prefix}/info
-install_sh = /root/ga/gasandbox/ga_sandbox/install-sh
+install_sh = /home/fontijne/ga_sandbox/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localstatedir = ${prefix}/var
@@ -158,9 +158,9 @@ target_alias =
 SUBDIRS = qhull-2003.1 libgasandbox \
 	chap1 chap2 chap3 chap4 chap5 chap6 chap7 chap8 \
 	chap10 chap11 chap12 chap13 chap14 chap15 chap16 \
-	solutions vs.net attic screenshots
+	solutions vs.net attic screenshots libgasandbox_no_opt
 
-EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX
+EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX user_manual.txt
 all: all-recursive
 
 .SUFFIXES:
