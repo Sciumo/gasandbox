@@ -128,22 +128,10 @@
 				RelativePath="..\libgasandbox\e2ga_draw.cpp">
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_mv_lexer.cpp">
-			</File>
-			<File
-				RelativePath="..\libgasandbox\e2ga_mv_parser.cpp">
-			</File>
-			<File
 				RelativePath="..\libgasandbox\e3ga.cpp">
 			</File>
 			<File
 				RelativePath="..\libgasandbox\e3ga_draw.cpp">
-			</File>
-			<File
-				RelativePath="..\libgasandbox\e3ga_mv_lexer.cpp">
-			</File>
-			<File
-				RelativePath="..\libgasandbox\e3ga_mv_parser.cpp">
 			</File>
 			<File
 				RelativePath="..\libgasandbox\e3ga_util.cpp">

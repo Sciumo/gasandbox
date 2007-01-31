@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-09 19:46:34 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-01-31 14:20:15 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -85,7 +85,12 @@
 	extern const int mv_basisElements[4][3];
 
 	// This array of integers contains the 'sign' (even/odd permutation of canonical order) of basis elements in the general multivector
-	extern const double mv_basisElementSign[4];
+	// Use it to answer 'what is the permutation of the coordinate at index [x]'?
+	extern const double mv_basisElementSignByIndex[4];
+
+	// This array of integers contains the 'sign' (even/odd permutation of canonical order) of basis elements in the general multivector
+	// Use it to answer 'what is the permutation of the coordinate of bitmap [x]'?
+	extern const double mv_basisElementSignByBitmap[4];
 
 	// This array of integers contains the order of basis elements in the general multivector
 	// Use it to answer: 'at what index do I find basis element [x] (x = basis vector bitmap)?'
@@ -94,6 +99,11 @@
 	// This array of integers contains the indices of basis elements in the general multivector
 	// Use it to answer: 'what basis element do I find at index [x]'?
 	extern const int mv_basisElementBitmapByIndex[4];
+
+	// This array of grade of each basis elements in the general multivector
+	// Use it to answer: 'what is the grade of basis element bitmap [x]'?
+	extern const int mv_basisElementGradeByBitmap[4];
+
 
 
 
@@ -364,6 +374,8 @@
 		/// returns the absolute largest coordinate, and the corresponding basis blade bitmap 
 		Float largestBasisBlade(unsigned int &bm) const;
 
+		/// converts this multvector to an array of basis blade bitmaps and coordinates (returns number of blades)
+		int toBasisBladeBitmapArray(unsigned int *bitmaps, Float *coords);
 
 		/// coordinate extraction by name
 		inline Float e1() const {
@@ -414,6 +426,7 @@
 
 
 	mv mv_compress(const float *coordinates, float epsilon = (float)0.0, int gu = 4 * 2 -1);
+	mv mv_compress(int nbBlades, const unsigned int *bitmaps, const mv::Float *coords);
 
 
 	// underscore 'constructors' for float types:
@@ -435,6 +448,32 @@
 	/// underscore constructor from general multivector:
 	inline const mv like(const mv &what, const mv &example) {return what;}
 	inline mv like(mv &what, const mv &example) {return what;}
+
+
+	/// converts this multvector to an array of basis blade bitmaps and coordinates  (returns number of blades)
+	inline int mv::toBasisBladeBitmapArray(unsigned int *bitmaps, mv::Float *coords) {	
+		int idxB = 0;
+		int idxC = 0;
+		if (m_gu & 1) {
+			if (m_c[idxC] != (Float)0.0) {
+				bitmaps[idxB] = 0; coords[idxB] = m_c[idxC]; idxB++;}
+			idxC++;
+		}
+		if (m_gu & 2) {
+			if (m_c[idxC] != (Float)0.0) {
+				bitmaps[idxB] = 1; coords[idxB] = m_c[idxC]; idxB++;}
+			idxC++;
+			if (m_c[idxC] != (Float)0.0) {
+				bitmaps[idxB] = 2; coords[idxB] = m_c[idxC]; idxB++;}
+			idxC++;
+		}
+		if (m_gu & 4) {
+			if (m_c[idxC] != (Float)0.0) {
+				bitmaps[idxB] = 3; coords[idxB] = m_c[idxC]; idxB++;}
+			idxC++;
+		}
+		return idxB;
+	}
 
 
 	/// enum for the coordinates of e1_t 
@@ -3457,7 +3496,7 @@
 		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+		return vector(vector_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
@@ -3496,7 +3535,7 @@
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline bivector inverse(const bivector& x) {
@@ -3531,7 +3570,7 @@
 		return e2_t(e2_t_e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector gp(const rotor& x, const vector& y) {
-		return vector(vector_e1_e2, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
 		return e2_t(e2_t_e2, x.m_c[0]);

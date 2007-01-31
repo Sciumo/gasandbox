@@ -21,7 +21,7 @@ ANTLR_BEGIN_NAMESPACE(e2ga)
 		}
 
 		int idx = mv_basisElementIndexByBitmap[bitmap];
-		coordinates[idx] = c / (float)mv_basisElementSign[idx];
+		coordinates[idx] = c / (float)mv_basisElementSignByIndex[idx];
 
 		//	printf("BE %f, %d\n", scale, bitmap);
 

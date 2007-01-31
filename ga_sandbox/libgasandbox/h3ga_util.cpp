@@ -322,7 +322,7 @@ mv randomBlade(int grade/* = -1*/, float size /*= 1.0f*/) {
 }
 
 mv randomMultivector(int gradeParts /* = GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 | GRADE_4 */, float size /*= 1.0f*/) {
-	mv::Float C[8];
+	mv::Float C[16];
 	gradeParts &= GRADE_0 | GRADE_1 | GRADE_2 | GRADE_3 | GRADE_4; // to prevent weird input
 	int s = mv_size[gradeParts];
 	for (int i = 0; i < s; i++) {
