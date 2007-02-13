@@ -135,9 +135,9 @@ void display() {
 		// l1, l2, c1, c2, c3, p1 are points
 		line L = _line(unit_r(l1 ^ l2 ^ ni));
 		circle C = _circle(c1 ^ c2 ^ c3);
-//		plane P = _plane(p1 ^ dual(-e2^ni));
-		// size of sphere not OK?
-		sphere P = _sphere(dual(p1 - 5.0f * ni));
+		plane P = _plane(p1 ^ dual(-e2^ni));
+
+//		sphere P = _sphere(dual(p1 - 5.0f * ni));
 
 		// draw line (red)
 		glColor3fm(1.0f, 0.0f, 0.0f);
