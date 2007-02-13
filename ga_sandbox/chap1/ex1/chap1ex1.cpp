@@ -135,9 +135,8 @@ void display() {
 		// l1, l2, c1, c2, c3, p1 are points
 		line L = _line(unit_r(l1 ^ l2 ^ ni));
 		circle C = _circle(c1 ^ c2 ^ c3);
-		plane P = _plane(p1 ^ dual(-e2^ni));
-
-//		sphere P = _sphere(dual(p1 - 5.0f * ni));
+		dualPlane p = _dualPlane(p1 << (e2^ni));
+//		sphere p = _sphere(p1 - 5.0f * ni);
 
 		// draw line (red)
 		glColor3fm(1.0f, 0.0f, 0.0f);
@@ -148,11 +147,11 @@ void display() {
 
 		// draw reflected line (magenta)
 		glColor3fm(1.0f, 0.0f, 1.0f);
-		draw(-dual(P) * L * inverse(dual(P)));
+		draw(-p * L * inverse(p));
 
 		// draw reflected circle (blue)
 		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(-dual(P) * C * inverse(dual(P)));
+		draw(-p * C * inverse(p));
 
 		// compute rotation versor:
 		const float phi = (float)(M_PI / 2.0);
@@ -164,7 +163,7 @@ void display() {
 
 		// draw reflected, rotated circle (blue)
 		glColor3fm(0.0f, 0.0f, 1.0f);
-		draw(-dual(P) * R * C * inverse(R) * inverse(dual(P)));
+		draw(-p * R * C * inverse(R) * inverse(p));
 
 		// draw interpolated circles
 		dualLine LR = log(R); // get log of R
@@ -179,15 +178,13 @@ void display() {
 
 			// draw reflected, rotated circle (light blue)
 			glColor3fm(0.5f, 0.5f, 1.0f);
-			draw(-dual(P) * iR * C * inverse(iR) * inverse(dual(P)));
+			draw(-p * iR * C * inverse(iR) * inverse(p));
 		}
 
 		// draw plane (yellow)
 		glColor4fm(1.0f, 1.0f, 0.0f, 0.5f);
-		draw(P);
+		draw(p);
 	}
-
-
 
 	g_drawState.popDrawMode();
 
