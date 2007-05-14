@@ -77,7 +77,7 @@ class Palet {
 public:
 	Palet();
 
-	void Palet::copyColors(const Palet *o);
+	void copyColors(const Palet *o);
 
 	// set the color
 	void setFgColor(const float c[4]);
