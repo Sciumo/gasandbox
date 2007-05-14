@@ -68,17 +68,17 @@ HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/fontijne/ga_sandbox/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /root/gasandbox/ga_sandbox/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /home/fontijne/ga_sandbox/missing --run tar
-AQSIS_FLTK_CFLAGS = -I/usr/include/fltk-1.1 -march=pentium4m -O2 -pipe
-AQSIS_FLTK_GL_CFLAGS = -I/usr/include/fltk-1.1 -march=pentium4m -O2 -pipe
-AQSIS_FLTK_GL_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11
-AQSIS_FLTK_LIBS = -L/usr/lib/fltk-1.1 -Wl,-rpath,/usr/lib/fltk-1.1 -lfltk -lXft -lpthread -lm -lXext -lX11
-AUTOCONF = ${SHELL} /home/fontijne/ga_sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/fontijne/ga_sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/fontijne/ga_sandbox/missing --run automake-1.9
+AMTAR = ${SHELL} /root/gasandbox/ga_sandbox/missing --run tar
+AQSIS_FLTK_CFLAGS = -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables
+AQSIS_FLTK_GL_CFLAGS = -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables
+AQSIS_FLTK_GL_LIBS = -lXft -lXrender -lfontconfig -lfreetype -lX11 -lfltk_gl -lGLU -lGL -lfltk -lXft -lpthread -lm -lXext -lX11
+AQSIS_FLTK_LIBS = -lXft -lXrender -lfontconfig -lfreetype -lX11 -lfltk -lXft -lpthread -lm -lXext -lX11
+AUTOCONF = ${SHELL} /root/gasandbox/ga_sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /root/gasandbox/ga_sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /root/gasandbox/ga_sandbox/missing --run automake-1.9
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -105,7 +105,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/fontijne/ga_sandbox/missing --run makeinfo
+MAKEINFO = ${SHELL} /root/gasandbox/ga_sandbox/missing --run makeinfo
 OBJEXT = o
 PACKAGE = ga_sandbox
 PACKAGE_BUGREPORT = 
@@ -143,7 +143,7 @@ exec_prefix = ${prefix}
 host_alias = 
 includedir = ${prefix}/include
 infodir = ${prefix}/info
-install_sh = /home/fontijne/ga_sandbox/install-sh
+install_sh = /root/gasandbox/ga_sandbox/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localstatedir = ${prefix}/var

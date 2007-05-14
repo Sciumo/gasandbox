@@ -40,8 +40,8 @@ public:
 	float distance,dx,dy;
 	rotor rot;
 };
-static GLfloat clearColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-static GLfloat lineColor[] = {0.0f, 0.0f, 0.0f, 1.0f};
+extern GLfloat clearColor[];
+extern GLfloat lineColor[];
 
 
 #endif /* _GLWINDOW_H_ */

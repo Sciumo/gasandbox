@@ -84,7 +84,7 @@ vector &line3(const vector &p, vector &v) {
 }
 
 vector &testFunc3(const vector &p, vector &v) {
-	float c[3] = {p.e1() + 0.05f, p.e2() + 0.05f, p.e3() + 0.05f};
+//	float c[3] = {p.e1() + 0.05f, p.e2() + 0.05f, p.e3() + 0.05f};
 	v.set(vector_e1_e2_e3, 
 		0,
 		0, 

@@ -10,7 +10,9 @@ Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef WIN32
 #pragma warning(disable : 4312 4311 4244)
+#endif
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
@@ -532,7 +534,8 @@ int main(int argc, char *argv[]) {
 
 
 	y += 50;
-	Fl_Box* b3 = new Fl_Box(512, y, 512, 20, "Octree Center");
+	Fl_Box* b3;
+	b3 = new Fl_Box(512, y, 512, 20, "Octree Center");
   
 	y += 20;
 	x = 513+100;

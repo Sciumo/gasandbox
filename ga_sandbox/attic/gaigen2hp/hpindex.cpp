@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-#pragma warning(disable : 4312 4311 4244)
 
 #ifdef WIN32
+#pragma warning(disable : 4312 4311 4244)
 #include <windows.h>
 #endif
 #include "glwindow.h"
@@ -458,7 +458,6 @@ int sumCube(const vector &p, const vector dir[3],
 		 vector & (*evalFunc)(const vector &p, vector &v), int depth, int maxDepth) {
 
 	trivector sum3d;
-	int lsTmp = 0, sfTmp = 0;
 
 	bivector sum2d;
 	trivector tmpsum3d;
@@ -589,7 +588,7 @@ int	findSingularities(const vector &p, const vector dir[3],
 		GLfloat cRed[4] = {1.0f, 0.0f, 0.0f, 1.0f};
 		GLfloat cGreen[4] = {0.0f, 1.0f, 0.0f, 1.0f};
 		GLfloat cBlue[4] = {0.0f, 0.0f, 1.0f, 1.0f};
-		GLfloat cWhite[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+//		GLfloat cWhite[4] = {1.0f, 1.0f, 1.0f, 1.0f};
 		GLfloat cBlack[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 		GLfloat *color;
 		if (pointSing) color = cRed;

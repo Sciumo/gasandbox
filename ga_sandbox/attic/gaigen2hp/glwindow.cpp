@@ -1,6 +1,6 @@
-#pragma warning(disable : 4312 4311 4244)
 
 #ifdef WIN32
+#pragma warning(disable : 4312 4311 4244)
 #include <windows.h>
 #endif
 
@@ -23,6 +23,8 @@
 
 extern void timerCallback(void*);
 
+GLfloat clearColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+GLfloat lineColor[] = {0.0f, 0.0f, 0.0f, 1.0f};
 
 glwindow::glwindow(int X, int Y, int W, int H, const char *L) : Fl_Gl_Window (X, Y, W, H, L) {
 	wX = X; wY = Y; wW = W; wH = H;
