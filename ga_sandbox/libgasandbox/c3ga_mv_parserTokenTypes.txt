@@ -1,4 +1,4 @@
-// $ANTLR 2.7.6 (2005-12-22): c3ga_parser.g -> c3ga_mv_parserTokenTypes.txt$
+// $ANTLR 2.7.7 (2006-11-01): c3ga_parser.g -> c3ga_mv_parserTokenTypes.txt$
 c3ga_mv_parser    // output token vocab name
 WS_=4
 MINUS=5

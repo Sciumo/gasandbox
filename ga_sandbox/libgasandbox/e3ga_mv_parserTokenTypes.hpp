@@ -2,7 +2,7 @@
 #define INC_e3ga_mv_parserTokenTypes_hpp_
 
 ANTLR_BEGIN_NAMESPACE(e3ga)
-/* $ANTLR 2.7.6 (2005-12-22): "e3ga_parser.g" -> "e3ga_mv_parserTokenTypes.hpp"$ */
+/* $ANTLR 2.7.7 (2006-11-01): "e3ga_parser.g" -> "e3ga_mv_parserTokenTypes.hpp"$ */
 
 #ifndef CUSTOM_API
 # define CUSTOM_API

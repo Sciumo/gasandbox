@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-31 14:19:31 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\h3ga.gs2'
+// Generated on 2007-07-03 14:07:14 by G2 0.1 from 'E:\gasandbox\ga_sandbox\libgasandbox\h3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -243,8 +243,8 @@
 		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
 			unsigned short argType[], int nbReturnType, unsigned short returnType[]);
 		void reset();
-		void save(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2", bool append = true);
-		void init(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2",
+		void save(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2", bool append = true);
+		void init(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\h3ga.gp2",
 			const char *hostName = "localhost", int port = 7693);
 	} // end of namespace g2Profiling
 
@@ -10749,6 +10749,9 @@
 
 
 
+	mv::Float factorizeBlade(const mv &X, point factor[], int gradeOfX = -1);
+	void joinBlades(const mv &A, const mv &B, mv &J, mv *M = NULL);
+
 
 
 	// extra underscore constructors from profile:
@@ -18243,16 +18246,16 @@
 		}
 	} /* end of namespace __G2_GENERATED__ */
 	inline __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1e2_e1e3_e2e3_e1e2e3e0& x, const plane& y) {
-		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])));
 	}
 	inline plane op(const line& x, const normalizedPoint& y) {
-		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), (x.m_c[0] + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), (x.m_c[1] + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[1])), (x.m_c[2] + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0])));
+		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), (x.m_c[0] + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[1]) + x.m_c[1]), ((x.m_c[3] * y.m_c[2]) + x.m_c[2] + (-1.0f * x.m_c[5] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0 gp(const __syn_smv___scalar_e1e3_e2e3_e3e0& x, const point& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0 gp(const __syn_smv___e1_e2_e3_e0f_1_0& x, const point& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), (y.m_c[0] + (x.m_c[0] * y.m_c[3])), (y.m_c[1] + (x.m_c[1] * y.m_c[3])), (y.m_c[2] + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((-1.0f * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), (y.m_c[0] + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + y.m_c[1]), ((x.m_c[2] * y.m_c[3]) + y.m_c[2]));
 	}
 	inline __syn_smv___scalarf1_0 lcont(const __e0_ct__& x, const __e0_ct__& y) {
 		return __syn_smv___scalarf1_0(__syn_smv___scalarf1_0_scalarf1_0);
@@ -18261,7 +18264,7 @@
 		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (-1.0f * x.m_c[5] * y.m_c[0]), (-1.0f * x.m_c[3] * y.m_c[0]), (-1.0f * x.m_c[4] * y.m_c[0]), (-1.0f * x.m_c[1] * y.m_c[0]), (-1.0f * x.m_c[2] * y.m_c[0]), (-1.0f * x.m_c[0] * y.m_c[0]));
 	}
 	inline rotor subtract(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]));
 	}
 	inline scalar gp(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
@@ -18270,39 +18273,39 @@
 		return vector(vector_e1_e2_e3, (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), (-1.0f * x.m_c[0] * y.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0 gp(const line& x, const line& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[3])), ((-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[5])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[5] * y.m_c[0])));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[5] * y.m_c[4]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[5])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[5])));
 	}
 	inline scalar norm_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e1e2e3& x, const lineAtInfinity& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline rotor gp(const lineAtInfinity& x, const lineAtInfinity& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0 gp(const __syn_smv___e2e3_e2e0_e3e0_e1e2e3e0& x, const plane& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline plane subtract(const plane& x, const plane& y) {
-		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])));
+		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]));
 	}
 	inline lineAtInfinity op(const vector& x, const vector& y) {
-		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline scalar scp(const plane& x, const plane& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
 	}
 	inline __syn_smv___e1e3_e2e3 gp(const scalar& x, const __syn_smv___e1e3_e2e3& y) {
 		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]));
 	}
 	inline vector lcont(const vector& x, const lineAtInfinity& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
+		return vector(vector_e1_e2_e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1_e2_e3_e1e2e0_e1e3e0_e2e3e0& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[4]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[1] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((x.m_c[0] * y.m_c[5]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[4])));
 	}
 	inline e3_t gp(const __e3_ct__& x, const scalar& y) {
 		return e3_t(e3_t_e3, y.m_c[0]);
@@ -18311,7 +18314,7 @@
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0 gp(const point& x, const point& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline point gp(const scalar& x, const normalizedPoint& y) {
 		return point(point_e1_e2_e3_e0, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]), x.m_c[0]);
@@ -18320,7 +18323,7 @@
 		return __syn_smv___e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, (-1.0f * x.m_c[0]), x.m_c[2], x.m_c[1], (-1.0f * x.m_c[3]), x.m_c[4], x.m_c[5]);
 	}
 	inline line add(const line& x, const line& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]), (x.m_c[3] + y.m_c[3]), (x.m_c[4] + y.m_c[4]), (x.m_c[5] + y.m_c[5]));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]), (y.m_c[3] + x.m_c[3]), (x.m_c[4] + y.m_c[4]), (x.m_c[5] + y.m_c[5]));
 	}
 	inline scalar norm_e(const scalar& x) {
 		scalar e2;
@@ -18328,10 +18331,10 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline scalar norm_e2(const __syn_smv___scalar_e1e2& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e2_e3_e1e2e3_e0_e1e2e0_e1e3e0& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[1] * y.m_c[5]) + (x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[5] * y.m_c[2])), ((x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[3] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[5] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[4] * y.m_c[5]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[1] * y.m_c[5])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[1])), ((x.m_c[4] * y.m_c[2]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[5] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e1e2e3_e0_e1e3e0_e2e3e0 gp(const line& x, const __e3_ct__& y) {
 		return __syn_smv___e1_e2_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e1e2e3_e0_e1e3e0_e2e3e0, (-1.0f * x.m_c[2]), x.m_c[1], x.m_c[0], (-1.0f * x.m_c[5]), (-1.0f * x.m_c[3]), (-1.0f * x.m_c[4]));
@@ -18340,23 +18343,23 @@
 		return point(point_e1_e2_e3_e0, (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (-1.0f * x.m_c[0] * y.m_c[0]));
 	}
 	inline scalar scp(const point& x, const point& y) {
-		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])));
+		return scalar(scalar_scalar, ((x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline point add(const point& x, const point& y) {
-		return point(point_e1_e2_e3_e0, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]), (y.m_c[3] + x.m_c[3]));
+		return point(point_e1_e2_e3_e0, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]), (y.m_c[3] + x.m_c[3]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e2_e3_e1e2e3& x, const lineAtInfinity& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline rotor inverse(const rotor& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
 	}
 	inline scalar norm_e2(const vector& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline planeAtInfinity lcont(const __e0i_ct__& x, const __syn_smv___e1e2e3e0& y) {
 		return planeAtInfinity(planeAtInfinity_e1e2e3, (-1.0f * y.m_c[0]));
@@ -18365,20 +18368,20 @@
 		return __syn_smv___scalar_e1e2_e2e3_e2e0(__syn_smv___scalar_e1e2_e2e3_e2e0_scalar_e1e2_e2e3_e2e0, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const plane& x, const lineAtInfinity& y) {
-		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), (-1.0f * x.m_c[0] * y.m_c[0]), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, (-1.0f * x.m_c[0] * y.m_c[1]), (-1.0f * x.m_c[0] * y.m_c[2]), (-1.0f * x.m_c[0] * y.m_c[0]), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e0_e1e3e0_e2e3e0 gp(const line& x, const __e0_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e0_e1e3e0_e2e3e0, x.m_c[3], x.m_c[4], x.m_c[5], x.m_c[0], (-1.0f * x.m_c[2]), x.m_c[1]);
 	}
 	inline scalar norm_e2(const rotor& x) {
-		return scalar(scalar_scalar, ((x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0])));
 	}
 	inline point lcont(const line& x, const plane& y) {
-		return point(point_e1_e2_e3_e0, ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2])));
+		return point(point_e1_e2_e3_e0, ((-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[1])));
 	}
 	inline line unit_r(const line& x) {
 		scalar r2;
-		r2.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		r2.m_c[0] = ((x.m_c[5] * x.m_c[5]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		scalar ir;
 		ir.m_c[0] = ((char)1 / sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0]))));
 		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (x.m_c[0] * ir.m_c[0]), (x.m_c[1] * ir.m_c[0]), (x.m_c[2] * ir.m_c[0]), (x.m_c[3] * ir.m_c[0]), (x.m_c[4] * ir.m_c[0]), (x.m_c[5] * ir.m_c[0]));
@@ -18388,14 +18391,14 @@
 	}
 	inline scalar norm_e(const line& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const lineAtInfinity& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline point subtract(const point& x, const point& y) {
-		return point(point_e1_e2_e3_e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]));
+		return point(point_e1_e2_e3_e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]));
 	}
 	inline vector lcont(const __e0_ct__& x, const line& y) {
 		return vector(vector_e1_e2_e3, (-1.0f * y.m_c[3]), (-1.0f * y.m_c[4]), (-1.0f * y.m_c[5]));
@@ -18404,7 +18407,7 @@
 		return __syn_smv___e1_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e3_e1e2e3_e0_e1e2e0_e2e3e0, x.m_c[0], (-1.0f * x.m_c[1]), x.m_c[2], (-1.0f * x.m_c[4]), (-1.0f * x.m_c[3]), x.m_c[5]);
 	}
 	inline __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1e2e0_e1e3e0_e2e3e0& x, const lineAtInfinity& y) {
-		return __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline lineAtInfinity gp(const lineAtInfinity& x, const scalar& y) {
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
@@ -18413,37 +18416,37 @@
 		return scalar(scalar_scalar, x.m_c[0]);
 	}
 	inline planeAtInfinity op(const vector& x, const lineAtInfinity& y) {
-		return planeAtInfinity(planeAtInfinity_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return planeAtInfinity(planeAtInfinity_e1e2e3, ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e0f_1_0 gradeInvolution(const normalizedPoint& x) {
 		return __syn_smv___e1_e2_e3_e0f_1_0(__syn_smv___e1_e2_e3_e0f_1_0_e1_e2_e3_e0f_1_0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0 gp(const plane& x, const plane& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline point apply_om(const omPoint& x, const normalizedPoint& y) {
-		return point(point_e1_e2_e3_e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[8] * y.m_c[2]) + x.m_c[12]), ((x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[1]) + (x.m_c[9] * y.m_c[2]) + x.m_c[13]), ((x.m_c[2] * y.m_c[0]) + (x.m_c[10] * y.m_c[2]) + (x.m_c[6] * y.m_c[1]) + x.m_c[14]), ((x.m_c[3] * y.m_c[0]) + x.m_c[15] + (x.m_c[11] * y.m_c[2]) + (x.m_c[7] * y.m_c[1])));
+		return point(point_e1_e2_e3_e0, (x.m_c[12] + (x.m_c[8] * y.m_c[2]) + (x.m_c[4] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[9] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + x.m_c[13] + (x.m_c[5] * y.m_c[1])), ((x.m_c[6] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[10] * y.m_c[2]) + x.m_c[14]), ((x.m_c[11] * y.m_c[2]) + (x.m_c[7] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + x.m_c[15]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0 gp(const __syn_smv___scalar_e1e2_e1e3_e1e0& x, const __syn_smv___e1_e2_e3_e0f_1_0& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar norm_e(const normalizedPoint& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + 1.0f);
+		e2.m_c[0] = (1.0f + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e3_e1e2e3& x, const lineAtInfinity& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1_e3_e1e2e3_e0_e1e2e0_e2e3e0& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[4])), ((-1.0f * x.m_c[5] * y.m_c[5]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3])), ((x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5])), ((-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[4] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[0] * y.m_c[4])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[3])), ((x.m_c[1] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[4]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[4])), ((x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[4])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const line& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[5] * y.m_c[0])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2])));
 	}
 	inline scalar norm_e(const __syn_smv___e1_e2& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1e2e3e0 unit_e(const __I4i_ct__& x) {
@@ -18463,16 +18466,16 @@
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const line& x, const plane& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[1])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0])), ((x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[5] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[4] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[5] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const __e3_ct__& y) {
 		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, (-1.0f * x.m_c[3]), x.m_c[2], x.m_c[0], x.m_c[1]);
 	}
 	inline line lcont(const point& x, const plane& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0 gp(const __syn_smv___scalar_e1e2_e1e3_e1e0& x, const point& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((x.m_c[1] * y.m_c[1]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline __syn_smv___e1e3_e1e0_e3e0_e1e2e3e0 gp(const plane& x, const __e2_ct__& y) {
 		return __syn_smv___e1e3_e1e0_e3e0_e1e2e3e0(__syn_smv___e1e3_e1e0_e3e0_e1e2e3e0_e1e3_e1e0_e3e0_e1e2e3e0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), x.m_c[2], (-1.0f * x.m_c[3]));
@@ -18481,14 +18484,14 @@
 		return scalar(scalar_scalar, x.m_c[0]);
 	}
 	inline plane op(const line& x, const point& y) {
-		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])));
+		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, ((x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[4] * y.m_c[0])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[2])));
 	}
 	inline vector gp(const scalar& x, const vector& y) {
 		return vector(vector_e1_e2_e3, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
 	}
 	inline lineAtInfinity unit_e(const bivector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
@@ -18504,17 +18507,17 @@
 	}
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2_e3, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]), (x.m_c[2] * ie.m_c[0]));
 	}
 	inline __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0& x, const rotor& y) {
-		return __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])));
+		return __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])));
 	}
 	inline vector inverse(const vector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return vector(vector_e1_e2_e3, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
@@ -18539,7 +18542,7 @@
 	}
 	inline point inverse(const normalizedPoint& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + 1.0f + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = (1.0f + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_e1_e2_e3_e0, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), in.m_c[0]);
@@ -18554,13 +18557,13 @@
 		return rotor(rotor_scalar_e1e2_e2e3_e3e1, x.m_c[0], y.m_c[0], y.m_c[1], y.m_c[2]);
 	}
 	inline rotor gp(const rotor& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1e2_e1e0_e2e0_e1e2e3e0 gp(const plane& x, const __e3_ct__& y) {
 		return __syn_smv___e1e2_e1e0_e2e0_e1e2e3e0(__syn_smv___e1e2_e1e0_e2e0_e1e2e3e0_e1e2_e1e0_e2e0_e1e2e3e0, x.m_c[0], x.m_c[3], (-1.0f * x.m_c[2]), (-1.0f * x.m_c[1]));
 	}
 	inline line op(const normalizedPoint& x, const normalizedPoint& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])));
 	}
 	inline e1_t gp(const e1_t& x, const scalar& y) {
 		return e1_t(e1_t_e1, (x.m_c[0] * y.m_c[0]));
@@ -18569,7 +18572,7 @@
 		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e0f2_0 add(const normalizedPoint& x, const normalizedPoint& y) {
-		return __syn_smv___e1_e2_e3_e0f2_0(__syn_smv___e1_e2_e3_e0f2_0_e1_e2_e3_e0f2_0, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]));
+		return __syn_smv___e1_e2_e3_e0f2_0(__syn_smv___e1_e2_e3_e0f2_0_e1_e2_e3_e0f2_0, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
 	}
 	inline __syn_smv___e1e2e0_e1e3e0_e2e3e0 op(const __e0_ct__& x, const line& y) {
 		return __syn_smv___e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1e2e0_e1e3e0_e2e3e0_e1e2e0_e1e3e0_e2e3e0, y.m_c[0], (-1.0f * y.m_c[2]), y.m_c[1]);
@@ -18578,7 +18581,7 @@
 		return __syn_smv___e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1e2e0_e1e3e0_e2e3e0_e1e2e0_e1e3e0_e2e3e0, x.m_c[0], (-1.0f * x.m_c[2]), x.m_c[1]);
 	}
 	inline normalizedPoint add(const normalizedPoint& x, const vector& y) {
-		return normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]));
+		return normalizedPoint(normalizedPoint_e1_e2_e3_e0f1_0, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]));
 	}
 	inline scalar inverse(const __syn_smv___scalarf1_0& x) {
 		scalar n;
@@ -18589,26 +18592,26 @@
 	}
 	inline scalar norm_e(const plane& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e1e2e3 gp(const lineAtInfinity& x, const __e3_ct__& y) {
 		return __syn_smv___e1_e2_e1e2e3(__syn_smv___e1_e2_e1e2e3_e1_e2_e1e2e3, (-1.0f * x.m_c[2]), x.m_c[1], x.m_c[0]);
 	}
 	inline line subtract(const line& x, const line& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), ((-1.0f * y.m_c[4]) + x.m_c[4]), (x.m_c[5] + (-1.0f * y.m_c[5])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), (x.m_c[3] + (-1.0f * y.m_c[3])), ((-1.0f * y.m_c[4]) + x.m_c[4]), (x.m_c[5] + (-1.0f * y.m_c[5])));
 	}
 	inline __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___scalar_e1e0_e2e0_e3e0& x, const __syn_smv___e1_e2_e3_e0f_1_0& y) {
-		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline lineAtInfinity gradeInvolution(const bivector& x) {
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline vector subtract(const normalizedPoint& x, const normalizedPoint& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])));
+		return vector(vector_e1_e2_e3, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0 gp(const __syn_smv___scalar_e1e3_e2e3_e3e0& x, const __syn_smv___e1_e2_e3_e0f_1_0& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (x.m_c[3] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0])), ((-1.0f * x.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline vector op(const vector& x, const __syn_smv___scalarf1_0& y) {
 		return vector(vector_e1_e2_e3, x.m_c[0], x.m_c[1], x.m_c[2]);
@@ -18622,35 +18625,35 @@
 	}
 	inline point inverse(const point& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_e1_e2_e3_e0, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]));
 	}
 	inline scalar scp(const normalizedPoint& x, const normalizedPoint& y) {
-		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + 1.0f));
+		return scalar(scalar_scalar, (1.0f + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0 gp(const __syn_smv___e1e3_e1e0_e3e0_e1e2e3e0& x, const plane& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline lineAtInfinity inverse(const lineAtInfinity& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___scalar_e1e0_e2e0_e3e0& x, const point& y) {
-		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e0_e1e2e0_e1e3e0_e2e3e0, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline scalar lcont(const line& x, const line& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0 gp(const __syn_smv___scalar_e1e2_e2e3_e2e0& x, const point& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar scp(const line& x, const line& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[4] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[3])));
 	}
 	inline __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0 gp(const rotor& x, const __e0_ct__& y) {
 		return __syn_smv___e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e0_e1e2e0_e1e3e0_e2e3e0_e0_e1e2e0_e1e3e0_e2e3e0, x.m_c[0], x.m_c[1], (-1.0f * x.m_c[3]), x.m_c[2]);
@@ -18666,7 +18669,7 @@
 	}
 	inline lineAtInfinity inverse(const bivector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
@@ -18676,12 +18679,12 @@
 	}
 	inline scalar norm_e(const lineAtInfinity& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline line inverse(const line& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[4] * x.m_c[4]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[4] * x.m_c[4]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[5] * x.m_c[5]) + (x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]), (-1.0f * x.m_c[4] * in.m_c[0]), (-1.0f * x.m_c[5] * in.m_c[0]));
@@ -18693,7 +18696,7 @@
 		return e0_t(e0_t_e0, x.m_c[0]);
 	}
 	inline vector subtract(const vector& x, const e3_t& y) {
-		return vector(vector_e1_e2_e3, x.m_c[0], x.m_c[1], (x.m_c[2] + (-1.0f * y.m_c[0])));
+		return vector(vector_e1_e2_e3, x.m_c[0], x.m_c[1], ((-1.0f * y.m_c[0]) + x.m_c[2]));
 	}
 	inline __syn_smv___e1e2e3e0 op(const __e0_ct__& x, const plane& y) {
 		return __syn_smv___e1e2e3e0(__syn_smv___e1e2e3e0_e1e2e3e0, (-1.0f * y.m_c[0]));
@@ -18708,16 +18711,16 @@
 		return scalar(scalar_scalar, y.m_c[3]);
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0 gp(const point& x, const __syn_smv___e1_e2_e3_e0f_1_0& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2])));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2])));
 	}
 	inline plane lcont(const scalar& x, const plane& y) {
 		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (y.m_c[0] * x.m_c[0]), (y.m_c[1] * x.m_c[0]), (y.m_c[2] * x.m_c[0]), (y.m_c[3] * x.m_c[0]));
 	}
 	inline __syn_smv___e1e2e3e0 op(const line& x, const line& y) {
-		return __syn_smv___e1e2e3e0(__syn_smv___e1e2e3e0_e1e2e3e0, ((x.m_c[2] * y.m_c[4]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[5]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])));
+		return __syn_smv___e1e2e3e0(__syn_smv___e1e2e3e0_e1e2e3e0, ((x.m_c[0] * y.m_c[5]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[5] * y.m_c[0])));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2_e3, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])));
+		return vector(vector_e1_e2_e3, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]));
 	}
 	inline __syn_smv___e1e2e3e0 inverse(const __syn_smv___e1e2e3e0& x) {
 		scalar n;
@@ -18733,13 +18736,13 @@
 		return __syn_smv___e1_e3_e1e2e3(__syn_smv___e1_e3_e1e2e3_e1_e3_e1e2e3, x.m_c[0], (-1.0f * x.m_c[1]), x.m_c[2]);
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0 subtract(const __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0& x, const __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), (x.m_c[4] + (-1.0f * y.m_c[4])), ((-1.0f * y.m_c[5]) + x.m_c[5]), ((-1.0f * y.m_c[6]) + x.m_c[6]), ((-1.0f * y.m_c[7]) + x.m_c[7]));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_e1e2e3e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), (x.m_c[4] + (-1.0f * y.m_c[4])), (x.m_c[5] + (-1.0f * y.m_c[5])), (x.m_c[6] + (-1.0f * y.m_c[6])), (x.m_c[7] + (-1.0f * y.m_c[7])));
 	}
 	inline point gp(const point& x, const scalar& y) {
 		return point(point_e1_e2_e3_e0, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1e2_e1e0_e2e0_e1e2e3e0& x, const plane& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])));
 	}
 	inline point reverse(const point& x) {
 		return point(point_e1_e2_e3_e0, x.m_c[0], x.m_c[1], x.m_c[2], x.m_c[3]);
@@ -18753,13 +18756,13 @@
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline line op(const point& x, const point& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline scalar lcont(const plane& x, const plane& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[0] * y.m_c[0])));
 	}
 	inline line lcont(const normalizedPoint& x, const plane& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[2] * y.m_c[0]) + y.m_c[1]), ((x.m_c[0] * y.m_c[0]) + y.m_c[2]), ((x.m_c[1] * y.m_c[0]) + y.m_c[3]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])));
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((x.m_c[2] * y.m_c[0]) + y.m_c[1]), (y.m_c[2] + (x.m_c[0] * y.m_c[0])), (y.m_c[3] + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline plane reverse(const plane& x) {
 		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
@@ -18774,7 +18777,7 @@
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, y.m_c[1], y.m_c[2], y.m_c[3]);
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0 gp(const __syn_smv___scalar_e1e2_e2e3_e2e0& x, const __syn_smv___e1_e2_e3_e0f_1_0& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e2e3e0, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline __syn_smv___e2_e3_e1e2e3 gp(const lineAtInfinity& x, const __e1_ct__& y) {
 		return __syn_smv___e2_e3_e1e2e3(__syn_smv___e2_e3_e1e2e3_e2_e3_e1e2e3, (-1.0f * x.m_c[0]), x.m_c[2], x.m_c[1]);
@@ -18793,7 +18796,7 @@
 		return e2_t(e2_t_e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline scalar scp(const bivector& x, const lineAtInfinity& y) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[0])));
 	}
 	inline __syn_smv___e1e3_e2e3 gp(const __syn_smv___e1e3_e2e3& x, const scalar& y) {
 		return __syn_smv___e1e3_e2e3(__syn_smv___e1e3_e2e3_e1e3_e2e3, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]));
@@ -18807,7 +18810,7 @@
 	}
 	inline plane inverse(const plane& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]), (-1.0f * x.m_c[3] * in.m_c[0]));
@@ -18822,7 +18825,7 @@
 		return __syn_smv___e1_e2(__syn_smv___e1_e2_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const __syn_smv___e1_e2_e3_e1e2e3& x, const rotor& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])));
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
@@ -18833,13 +18836,13 @@
 		return __syn_smv___scalar_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e0_e2e0_e3e0_scalar_e1e0_e2e0_e3e0, x.m_c[3], x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline rotor gp(const __syn_smv___scalar_e1e3_e2e3& x, const rotor& y) {
-		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])));
+		return rotor(rotor_scalar_e1e2_e2e3_e3e1, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])));
 	}
 	inline scalar norm_e2(const bivector& x) {
-		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline point subtract(const point& x, const vector& y) {
-		return point(point_e1_e2_e3_e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), x.m_c[3]);
+		return point(point_e1_e2_e3_e0, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), x.m_c[3]);
 	}
 	inline lineAtInfinity reverse(const bivector& x) {
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -18851,13 +18854,13 @@
 		return e0_t(e0_t_e0, (x.m_c[0] * y.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0 gp(const __syn_smv___e1_e2_e1e2e3_e0_e1e3e0_e2e3e0& x, const line& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[4]) + (-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[5] * y.m_c[5])), ((x.m_c[5] * y.m_c[4]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[4] * y.m_c[3]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[4])), ((x.m_c[1] * y.m_c[4]) + (x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[0] * y.m_c[4]) + (-1.0f * x.m_c[4] * y.m_c[1]) + (x.m_c[2] * y.m_c[5]) + (x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[5] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (x.m_c[0] * y.m_c[5])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[4] * y.m_c[0]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[3] * y.m_c[1])));
+		return __syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0(__syn_smv___e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0_e1_e2_e3_e1e2e3_e0_e1e2e0_e1e3e0_e2e3e0, ((-1.0f * x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[4] * y.m_c[5]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[5]) + (-1.0f * x.m_c[3] * y.m_c[4]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (x.m_c[4] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[5]) + (-1.0f * x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[5] * y.m_c[4])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[5] * y.m_c[3]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[4] * y.m_c[4])), ((x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[1] * y.m_c[4])), ((-1.0f * x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[2] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[2]) + (x.m_c[0] * y.m_c[4]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[5]) + (-1.0f * x.m_c[5] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[4]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[4] * y.m_c[0]) + (x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[5]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline __syn_smv___e1_e2_e3_e1e2e3 gp(const rotor& x, const vector& y) {
-		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_e3_e1e2e3(__syn_smv___e1_e2_e3_e1e2e3_e1_e2_e3_e1e2e3, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline line subtract(const line& x, const lineAtInfinity& y) {
-		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), x.m_c[3], x.m_c[4], x.m_c[5]);
+		return line(line_e1e2_e2e3_e3e1_e1e0_e2e0_e3e0, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), x.m_c[3], x.m_c[4], x.m_c[5]);
 	}
 	inline scalar lcont(const vector& x, const vector& y) {
 		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
@@ -18881,10 +18884,10 @@
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, y.m_c[0], y.m_c[2], (-1.0f * y.m_c[1]));
 	}
 	inline __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0 subtract(const __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0& x, const __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0& y) {
-		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), (x.m_c[4] + (-1.0f * y.m_c[4])), ((-1.0f * y.m_c[5]) + x.m_c[5]), ((-1.0f * y.m_c[6]) + x.m_c[6]));
+		return __syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0(__syn_smv___scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0_scalar_e1e2_e1e3_e2e3_e1e0_e2e0_e3e0, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), ((-1.0f * y.m_c[3]) + x.m_c[3]), ((-1.0f * y.m_c[4]) + x.m_c[4]), ((-1.0f * y.m_c[5]) + x.m_c[5]), ((-1.0f * y.m_c[6]) + x.m_c[6]));
 	}
 	inline scalar subtract(const scalar& x, const scalar& y) {
-		return scalar(scalar_scalar, ((-1.0f * y.m_c[0]) + x.m_c[0]));
+		return scalar(scalar_scalar, (x.m_c[0] + (-1.0f * y.m_c[0])));
 	}
 	inline __syn_smv___scalarf0_0 lcont(const __e0_ct__& x, const __e3_ct__& y) {
 		return __syn_smv___scalarf0_0(__syn_smv___scalarf0_0_scalarf0_0);
@@ -18896,7 +18899,7 @@
 		return plane(plane_e1e2e3_e1e2e0_e2e3e0_e3e1e0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline __syn_smv___scalar_e1e2 gp(const __syn_smv___e1e3_e2e3& x, const __syn_smv___e1e3_e2e3& y) {
-		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___scalar_e1e2(__syn_smv___scalar_e1e2_scalar_e1e2, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline lineAtInfinity gp(const scalar& x, const lineAtInfinity& y) {
 		return lineAtInfinity(lineAtInfinity_e1e2_e2e3_e3e1, (x.m_c[0] * y.m_c[0]), (x.m_c[0] * y.m_c[1]), (x.m_c[0] * y.m_c[2]));
@@ -18905,11 +18908,11 @@
 		return scalar(scalar_scalar, y.m_c[3]);
 	}
 	inline vector lcont(const vector& x, const bivector& y) {
-		return vector(vector_e1_e2_e3, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[2])));
+		return vector(vector_e1_e2_e3, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])));
 	}
 	inline scalar norm_e(const point& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[3] * x.m_c[3]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___e1e2_e1e3_e2e3_e1e2e3e0 gp(const plane& x, const __e0_ct__& y) {

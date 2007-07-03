@@ -1,4 +1,4 @@
-/* $ANTLR 2.7.6 (2005-12-22): "c2ga_lexer.g" -> "c2ga_mv_lexer.cpp"$ */
+/* $ANTLR 2.7.7 (2006-11-01): "c2ga_lexer.g" -> "c2ga_mv_lexer.cpp"$ */
 
 	#include <iostream>
 		#include <antlr/SemanticException.hpp>

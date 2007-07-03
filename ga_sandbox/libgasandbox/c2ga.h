@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-31 14:19:11 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\c2ga.gs2'
+// Generated on 2007-07-03 14:07:32 by G2 0.1 from 'E:\gasandbox\ga_sandbox\libgasandbox\c2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -257,8 +257,8 @@
 		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
 			unsigned short argType[], int nbReturnType, unsigned short returnType[]);
 		void reset();
-		void save(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\c2ga.gp2", bool append = true);
-		void init(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\c2ga.gp2",
+		void save(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\c2ga.gp2", bool append = true);
+		void init(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\c2ga.gp2",
 			const char *hostName = "localhost", int port = 7693);
 	} // end of namespace g2Profiling
 
@@ -11991,6 +11991,9 @@
 
 
 
+	mv::Float factorizeBlade(const mv &X, point factor[], int gradeOfX = -1);
+	void joinBlades(const mv &A, const mv &B, mv &J, mv *M = NULL);
+
 
 
 	// extra underscore constructors from profile:
@@ -19171,7 +19174,7 @@
 
 	// G2 functions:
 	inline __syn_smv___ni_e1e2ni gp(const freeVector& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___ni_e1e2ni(__syn_smv___ni_e1e2ni_ni_e1e2ni, ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
+		return __syn_smv___ni_e1e2ni(__syn_smv___ni_e1e2ni_ni_e1e2ni, ((-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[1])));
 	}
 	inline scalar norm_e(const __syn_smv___scalarf0_0& x) {
 		scalar e2;
@@ -19191,16 +19194,16 @@
 		return TRversorLog(TRversorLog_e1e2_e1ni_e2ni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const circle& x, const TRversorLog& y) {
-		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, (-1.0f * x.m_c[3] * y.m_c[0]), (x.m_c[3] * y.m_c[2]), (-1.0f * x.m_c[3] * y.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, (-1.0f * x.m_c[3] * y.m_c[0]), (x.m_c[3] * y.m_c[2]), (-1.0f * x.m_c[3] * y.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[2])), ((x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni subtract(const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& x, const __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]), ((-1.0f * y.m_c[4]) + x.m_c[4]), ((-1.0f * y.m_c[5]) + x.m_c[5]), (x.m_c[6] + (-1.0f * y.m_c[6])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])), ((-1.0f * y.m_c[4]) + x.m_c[4]), (x.m_c[5] + (-1.0f * y.m_c[5])), (x.m_c[6] + (-1.0f * y.m_c[6])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noe2_e1e2_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), (x.m_c[1] + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + x.m_c[1] + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_ni subtract(const normalizedPoint& x, const normalizedPoint& y) {
-		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]), ((-1.0f * y.m_c[2]) + x.m_c[2]));
+		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])));
 	}
 	inline scalar gp(const scalar& x, const scalar& y) {
 		return scalar(scalar_scalar, (x.m_c[0] * y.m_c[0]));
@@ -19214,7 +19217,7 @@
 	}
 	inline point inverse(const point& x) {
 		scalar n;
-		n.m_c[0] = ((-1.0f * x.m_c[3] * x.m_c[0]) + (-1.0f * x.m_c[0] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[3] * x.m_c[0]) + (-1.0f * x.m_c[0] * x.m_c[3]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_no_e1_e2_ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]));
@@ -19223,7 +19226,7 @@
 		return ni_t(ni_t_ni, x.m_c[0]);
 	}
 	inline scalar scp(const normalizedPoint& x, const normalizedPoint& y) {
-		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (-1.0f * y.m_c[2]) + (-1.0f * x.m_c[2]) + (x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[2]) + (-1.0f * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_ni gradeInvolution(const __syn_smv___e1_e2_ni& x) {
 		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -19235,7 +19238,7 @@
 		return vectorE2GA(vectorE2GA_e1_e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noe2_e1e2_e2ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline ni_t negate(const ni_t& x) {
 		return ni_t(ni_t_ni, (-1.0f * x.m_c[0]));
@@ -19244,7 +19247,7 @@
 		return flatPoint(flatPoint_e1ni_e2ni_noni, (-1.0f * y.m_c[1]), (-1.0f * y.m_c[2]), (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gp(const __syn_smv___scalar_noe1_noe2_noni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar scp(const __ni_ct__& x, const point& y) {
 		return scalar(scalar_scalar, (-1.0f * y.m_c[0]));
@@ -19256,31 +19259,31 @@
 		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]), (x.m_c[5] * y.m_c[0]), (x.m_c[6] * y.m_c[0]));
 	}
 	inline scalar norm_r2(const normalizedPoint& x) {
-		return scalar(scalar_scalar, ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0])));
+		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const __syn_smv___e1_e2_ni_nof_1_0& x, const point& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), ((-1.0f * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[2])));
 	}
 	inline line inverse(const line& x) {
 		scalar n;
-		n.m_c[0] = ((-1.0f * x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return line(line_e1e2ni_e1noni_e2noni, (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]), (-1.0f * x.m_c[2] * in.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_ni_e1e2ni gp(const __syn_smv___scalar_e1e2_e1ni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline scalar negate(const scalar& x) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0]));
 	}
 	inline scalar norm_e(const flatPoint& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline scalar scpEM(const __syn_smv___e1_e2_ni& x, const __syn_smv___e1_e2_ni& y) {
-		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline scalar norm_e(const __syn_smv___scalarf_1_0& x) {
 		scalar e2;
@@ -19294,7 +19297,7 @@
 		return __syn_smv___scalar_noe1_e1e2_e1ni(__syn_smv___scalar_noe1_e1e2_e1ni_scalar_noe1_e1e2_e1ni, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni gp(const __syn_smv___scalar_noe1_e1e2_e1ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
 	}
 	inline scalar lcont(const __syn_smv___e1_e2_ni& x, const normalizedPoint& y) {
 		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2]) + (x.m_c[0] * y.m_c[0])));
@@ -19303,14 +19306,14 @@
 		return freeVector(freeVector_e1ni_e2ni, y.m_c[1], y.m_c[2]);
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gp(const point& x, const point& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar lcont(const circle& x, const __syn_smv___e1e2nif1_0& y) {
 		return scalar(scalar_scalar, x.m_c[3]);
 	}
 	inline point inverseEM(const normalizedPoint& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + 1.0f + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = (1.0f + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_no_e1_e2_ni, in.m_c[0], (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
@@ -19322,7 +19325,7 @@
 		return __syn_smv___scalar_e1e2_e2ni(__syn_smv___scalar_e1e2_e2ni_scalar_e1e2_e2ni, x.m_c[1], x.m_c[0], (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0& x, const translator& y) {
-		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, y.m_c[0], ((x.m_c[0] * y.m_c[0]) + y.m_c[1]), (y.m_c[2] + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + y.m_c[1]), ((x.m_c[4] * y.m_c[0]) + y.m_c[2]), ((x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, y.m_c[0], ((x.m_c[0] * y.m_c[0]) + y.m_c[1]), (y.m_c[2] + (x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[4] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + y.m_c[1]), (y.m_c[2] + (x.m_c[4] * y.m_c[0])), ((x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (x.m_c[4] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[1])));
 	}
 	inline scalar norm_e(const scalar& x) {
 		scalar e2;
@@ -19336,23 +19339,23 @@
 		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline __syn_smv___no_noe1e2_noe1ni_noe2ni gpEM(const __syn_smv___noe1_noe2_noni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___no_noe1e2_noe1ni_noe2ni(__syn_smv___no_noe1e2_noe1ni_noe2ni_no_noe1e2_noe1ni_noe2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___no_noe1e2_noe1ni_noe2ni(__syn_smv___no_noe1e2_noe1ni_noe2ni_no_noe1e2_noe1ni_noe2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline scalar scp(const point& x, const point& y) {
-		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[3]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline point add(const point& x, const point& y) {
-		return point(point_no_e1_e2_ni, (y.m_c[0] + x.m_c[0]), (x.m_c[1] + y.m_c[1]), (x.m_c[2] + y.m_c[2]), (y.m_c[3] + x.m_c[3]));
+		return point(point_no_e1_e2_ni, (y.m_c[0] + x.m_c[0]), (y.m_c[1] + x.m_c[1]), (y.m_c[2] + x.m_c[2]), (y.m_c[3] + x.m_c[3]));
 	}
 	inline scalar scp(const __ni_ct__& x, const __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni& y) {
 		return scalar(scalar_scalar, (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gpEM(const __syn_smv___scalar_noe1_noe2_noni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar norm_e(const __syn_smv___e1ni_e2ni_nonif_1_0& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + 1.0f + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = (1.0f + (x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline __syn_smv___scalar_e1e2_e2ni gpEM(const __syn_smv___e1_e2_ni& x, const __e2_ct__& y) {
@@ -19383,7 +19386,7 @@
 	}
 	inline __syn_smv___e1_e2_ni inverseEM(const __syn_smv___e1_e2_ni& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[2] * x.m_c[2]));
+		n.m_c[0] = ((x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
@@ -19392,11 +19395,11 @@
 		return line(line_e1e2ni_e1noni_e2noni, x.m_c[2], x.m_c[1], (-1.0f * x.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0 gp(const normalizedTranslator& x, const normalizedPoint& y) {
-		return __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0, ((-1.0f * x.m_c[0]) + y.m_c[0]), (y.m_c[1] + (-1.0f * x.m_c[1])), (y.m_c[2] + (-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[0] * y.m_c[0])), x.m_c[0], x.m_c[1], ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
+		return __syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0(__syn_smv___e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0_e1_e2_ni_noe1ni_noe2ni_e1e2ni_nof1_0, ((-1.0f * x.m_c[0]) + y.m_c[0]), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((-1.0f * x.m_c[0] * y.m_c[0]) + y.m_c[2] + (-1.0f * x.m_c[1] * y.m_c[1])), x.m_c[0], x.m_c[1], ((-1.0f * x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])));
 	}
 	inline scalar norm_r(const line& x) {
 		scalar r2;
-		r2.m_c[0] = ((-1.0f * x.m_c[1] * x.m_c[1]) + (-1.0f * x.m_c[2] * x.m_c[2]));
+		r2.m_c[0] = ((-1.0f * x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, ((((r2.m_c[0] < (char)0)) ? (char)-1 : ((((r2.m_c[0] > (char)0)) ? (char)1 : (char)0))) * sqrt((((r2.m_c[0] < (char)0)) ? ((-r2.m_c[0])) : (r2.m_c[0])))));
 	}
 	inline __syn_smv___scalar_noe1_noe2_noni gp(const point& x, const __no_ct__& y) {
@@ -19409,7 +19412,7 @@
 		return __syn_smv___noe1_noe2_noni(__syn_smv___noe1_noe2_noni_noe1_noe2_noni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gp(const circle& x, const circle& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((-1.0f * x.m_c[0] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((x.m_c[0] * y.m_c[3]) + (x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])), ((-1.0f * x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline ni_t gp(const scalar& x, const __ni_ct__& y) {
 		return ni_t(ni_t_ni, x.m_c[0]);
@@ -19427,7 +19430,7 @@
 		return freeVector(freeVector_e1ni_e2ni, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]));
 	}
 	inline scalar scp(const __syn_smv___e1_e2_ni& x, const __syn_smv___e1_e2_ni& y) {
-		return scalar(scalar_scalar, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])));
 	}
 	inline freeBivector op(const TRversorLog& x, const __ni_ct__& y) {
 		return freeBivector(freeBivector_e1e2ni, x.m_c[0]);
@@ -19436,29 +19439,29 @@
 		return scalar(scalar_scalar, (-1.0f * y.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni gp(const __syn_smv___scalar_noe2_e1e2_e2ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe2ni_e1e2ni_no_e1_e2_noe1e2_ni_noe2ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline circle negate(const circle& x) {
 		return circle(circle_e1e2ni_noe1ni_noe2ni_noe1e2, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]), (-1.0f * x.m_c[3]));
 	}
 	inline scalar scpEM(const point& x, const point& y) {
-		return scalar(scalar_scalar, ((x.m_c[3] * y.m_c[3]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])));
+		return scalar(scalar_scalar, ((x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[3] * y.m_c[3])));
 	}
 	inline __syn_smv___e1_e2_ni_e1e2ni gpEM(const __syn_smv___scalar_e1e2_e2ni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___e1_e2_ni_nof_1_0 gradeInvolution(const normalizedPoint& x) {
 		return __syn_smv___e1_e2_ni_nof_1_0(__syn_smv___e1_e2_ni_nof_1_0_e1_e2_ni_nof_1_0, (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline point inverseEM(const point& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[3] * x.m_c[3]) + (x.m_c[2] * x.m_c[2]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return point(point_no_e1_e2_ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]), (x.m_c[3] * in.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noni_e1ni_e2ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2]) + x.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[0])));
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[0]) + x.m_c[1] + (-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_nof1_0 add(const vectorE2GA& x, const __no_ct__& y) {
 		return __syn_smv___e1_e2_nof1_0(__syn_smv___e1_e2_nof1_0_e1_e2_nof1_0, x.m_c[0], x.m_c[1]);
@@ -19470,17 +19473,17 @@
 		return __syn_smv___nif1_0(__syn_smv___nif1_0_nif1_0);
 	}
 	inline point lcont(const pointPair& x, const line& y) {
-		return point(point_no_e1_e2_ni, ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[5] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[5] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[4] * y.m_c[2])));
+		return point(point_no_e1_e2_ni, ((x.m_c[0] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[5] * y.m_c[1])), ((x.m_c[5] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[4] * y.m_c[2]) + (x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni gpEM(const __syn_smv___scalar_noe1_e1e2_e1ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[3])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[1] * y.m_c[3]) + (x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline scalar norm_e2(const vectorE2GA& x) {
 		return scalar(scalar_scalar, ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_ni inverse(const __syn_smv___e1_e2_ni& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]), (x.m_c[2] * in.m_c[0]));
@@ -19499,52 +19502,52 @@
 		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]), (x.m_c[3] * y.m_c[0]), (x.m_c[4] * y.m_c[0]), (x.m_c[5] * y.m_c[0]), (x.m_c[6] * y.m_c[0]));
 	}
 	inline vectorE2GA subtract(const vectorE2GA& x, const vectorE2GA& y) {
-		return vectorE2GA(vectorE2GA_e1_e2, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])));
+		return vectorE2GA(vectorE2GA_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline freeVector op(const vectorE2GA& x, const __ni_ct__& y) {
 		return freeVector(freeVector_e1ni_e2ni, x.m_c[0], x.m_c[1]);
 	}
 	inline scalar scpEM(const normalizedPoint& x, const normalizedPoint& y) {
-		return scalar(scalar_scalar, ((x.m_c[1] * y.m_c[1]) + 1.0f + (x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])));
+		return scalar(scalar_scalar, (1.0f + (x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline point gp(const normalizedPoint& x, const scalar& y) {
 		return point(point_no_e1_e2_ni, y.m_c[0], (x.m_c[0] * y.m_c[0]), (x.m_c[1] * y.m_c[0]), (x.m_c[2] * y.m_c[0]));
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const point& x, const point& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[3])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[3]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((x.m_c[2] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gpEM(const __syn_smv___scalar_noe1_noe2_noni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[2] * y.m_c[1]) + (x.m_c[3] * y.m_c[2]) + (-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + x.m_c[1]), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), (x.m_c[3] + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline vectorE2GA subtract(const e1_t& x, const e2_t& y) {
 		return vectorE2GA(vectorE2GA_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
 	}
 	inline circle op(const pointPair& x, const normalizedPoint& y) {
-		return circle(circle_e1e2ni_noe1ni_noe2ni_noe1e2, ((x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[5] * y.m_c[1]) + x.m_c[4]), (x.m_c[2] + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return circle(circle_e1e2ni_noe1ni_noe2ni_noe1e2, ((x.m_c[2] * y.m_c[2]) + (x.m_c[4] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[1])), ((-1.0f * x.m_c[5] * y.m_c[0]) + (x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((-1.0f * x.m_c[5] * y.m_c[1]) + (x.m_c[1] * y.m_c[2]) + x.m_c[4]), (x.m_c[2] + (x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline __syn_smv___scalar_noni_e1ni_e2ni gp(const point& x, const __ni_ct__& y) {
 		return __syn_smv___scalar_noni_e1ni_e2ni(__syn_smv___scalar_noni_e1ni_e2ni_scalar_noni_e1ni_e2ni, (-1.0f * x.m_c[0]), x.m_c[0], x.m_c[1], x.m_c[2]);
 	}
 	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gp(const __syn_smv___scalar_noni_e1ni_e2ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[3])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[3]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline TRversor gp(const __syn_smv___e1_e2_ni& x, const __syn_smv___e1_e2_ni& y) {
-		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
+		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni gpEM(const __syn_smv___scalar_noe1_e1e2_e1ni& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[0])), (x.m_c[1] + (x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_e1e2ni_no_e1_e2_noe1e2_ni_noe1ni_e1e2ni, ((-1.0f * x.m_c[0]) + (x.m_c[1] * y.m_c[0])), (x.m_c[1] + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3])), ((-1.0f * x.m_c[3] * y.m_c[1]) + (x.m_c[2] * y.m_c[2])));
 	}
 	inline TRversor gpEM(const __syn_smv___e1_e2_ni& x, const __syn_smv___e1_e2_ni& y) {
-		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline freeBivector negate(const freeBivector& x) {
 		return freeBivector(freeBivector_e1e2ni, (-1.0f * x.m_c[0]));
 	}
 	inline __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni gpEM(const __syn_smv___scalar_noni_e1ni_e2ni& x, const point& y) {
-		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (x.m_c[2] * y.m_c[3])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((x.m_c[3] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[2])));
+		return __syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni(__syn_smv___no_e1_e2_ni_noe1ni_noe2ni_e1e2ni_no_e1_e2_ni_noe1ni_noe2ni_e1e2ni, ((x.m_c[1] * y.m_c[3]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[2] * y.m_c[3]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[3] * y.m_c[3]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[3]) + (-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[3] * y.m_c[2])), ((-1.0f * x.m_c[1] * y.m_c[1]) + (x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[2]) + (x.m_c[3] * y.m_c[1])));
 	}
 	inline TRversor subtract(const TRversor& x, const TRversor& y) {
-		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), ((-1.0f * y.m_c[2]) + x.m_c[2]), ((-1.0f * y.m_c[3]) + x.m_c[3]));
+		return TRversor(TRversor_scalar_e1e2_e1ni_e2ni, ((-1.0f * y.m_c[0]) + x.m_c[0]), (x.m_c[1] + (-1.0f * y.m_c[1])), (x.m_c[2] + (-1.0f * y.m_c[2])), (x.m_c[3] + (-1.0f * y.m_c[3])));
 	}
 	inline __syn_smv___scalar_noe1_noe2_noni gp(const __syn_smv___e1_e2_ni& x, const __no_ct__& y) {
 		return __syn_smv___scalar_noe1_noe2_noni(__syn_smv___scalar_noe1_noe2_noni_scalar_noe1_noe2_noni, (-1.0f * x.m_c[2]), (-1.0f * x.m_c[0]), (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
@@ -19554,7 +19557,7 @@
 	}
 	inline vectorE2GA unit_e(const vectorE2GA& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vectorE2GA(vectorE2GA_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
@@ -19569,7 +19572,7 @@
 		return e1_t(e1_t_e1, x.m_c[0]);
 	}
 	inline __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni gpEM(const point& x, const __syn_smv___e1_e2_ni_nof_1_0& y) {
-		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * x.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), (x.m_c[1] + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return __syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni(__syn_smv___scalar_noe1_noe2_e1e2_noni_e1ni_e2ni_scalar_noe1_noe2_e1e2_noni_e1ni_e2ni, ((-1.0f * x.m_c[0]) + (x.m_c[3] * y.m_c[2]) + (x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), (x.m_c[1] + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + x.m_c[2]), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + x.m_c[3]), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
 	}
 	inline translator inverse(const normalizedTranslator& x) {
 		scalar n;
@@ -19579,7 +19582,7 @@
 		return translator(translator_scalar_e1ni_e2ni, in.m_c[0], (-1.0f * x.m_c[0] * in.m_c[0]), (-1.0f * x.m_c[1] * in.m_c[0]));
 	}
 	inline __syn_smv___e1_e2_ni_e1e2ni gpEM(const __syn_smv___scalar_e1e2_e1ni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])));
+		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0]) + (x.m_c[2] * y.m_c[2])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1])));
 	}
 	inline __syn_smv___e1ni_e2ni_nonif_1_0 op(const __ni_ct__& x, const normalizedPoint& y) {
 		return __syn_smv___e1ni_e2ni_nonif_1_0(__syn_smv___e1ni_e2ni_nonif_1_0_e1ni_e2ni_nonif_1_0, (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]));
@@ -19606,7 +19609,7 @@
 		return __syn_smv___scalarf0_0(__syn_smv___scalarf0_0_scalarf0_0);
 	}
 	inline pointPair lcont(const normalizedPoint& x, const line& y) {
-		return pointPair(pointPair_noe1_noe2_e1e2_e1ni_e2ni_noni, y.m_c[1], y.m_c[2], (-1.0f * y.m_c[0]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[2] * y.m_c[1])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
+		return pointPair(pointPair_noe1_noe2_e1e2_e1ni_e2ni_noni, y.m_c[1], y.m_c[2], (-1.0f * y.m_c[0]), ((x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline __syn_smv___e1_e2_ni reverse(const __syn_smv___e1_e2_ni& x) {
 		return __syn_smv___e1_e2_ni(__syn_smv___e1_e2_ni_e1_e2_ni, x.m_c[0], x.m_c[1], x.m_c[2]);
@@ -19615,34 +19618,34 @@
 		return normalizedPoint(normalizedPoint_e1_e2_ni_nof1_0, x.m_c[0], x.m_c[1], y.m_c[0]);
 	}
 	inline pointPair op(const normalizedPoint& x, const normalizedPoint& y) {
-		return pointPair(pointPair_noe1_noe2_e1e2_e1ni_e2ni_noni, ((-1.0f * x.m_c[0]) + y.m_c[0]), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[0]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), ((-1.0f * x.m_c[2]) + y.m_c[2]));
+		return pointPair(pointPair_noe1_noe2_e1e2_e1ni_e2ni_noni, (y.m_c[0] + (-1.0f * x.m_c[0])), ((-1.0f * x.m_c[1]) + y.m_c[1]), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[2])), (y.m_c[2] + (-1.0f * x.m_c[2])));
 	}
 	inline __syn_smv___e1_e2_ni_e1e2ni gpEM(const translator& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[0] * y.m_c[2]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])));
+		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (-1.0f * x.m_c[1] * y.m_c[1])));
 	}
 	inline bivectorE2GA lcont(const __no_ct__& x, const freeBivector& y) {
 		return bivectorE2GA(bivectorE2GA_e1e2, (-1.0f * y.m_c[0]));
 	}
 	inline scalar norm_r2(const point& x) {
-		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * x.m_c[3]) + (-1.0f * x.m_c[3] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2])));
+		return scalar(scalar_scalar, ((-1.0f * x.m_c[0] * x.m_c[3]) + (x.m_c[1] * x.m_c[1]) + (x.m_c[2] * x.m_c[2]) + (-1.0f * x.m_c[3] * x.m_c[0])));
 	}
 	inline translator subtract(const scalar& x, const freeVector& y) {
 		return translator(translator_scalar_e1ni_e2ni, x.m_c[0], (-1.0f * y.m_c[0]), (-1.0f * y.m_c[1]));
 	}
 	inline __syn_smv___e1_e2_ni_e1e2ni gp(const __syn_smv___scalar_e1e2_e2ni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (x.m_c[2] * y.m_c[0])));
+		return __syn_smv___e1_e2_ni_e1e2ni(__syn_smv___e1_e2_ni_e1e2ni_e1_e2_ni_e1e2ni, ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[1])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])), ((-1.0f * x.m_c[2] * y.m_c[1]) + (x.m_c[0] * y.m_c[2])), ((x.m_c[2] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])));
 	}
 	inline __syn_smv___scalar_e1e2_e1ni gpEM(const __syn_smv___e1_e2_ni& x, const __e1_ct__& y) {
 		return __syn_smv___scalar_e1e2_e1ni(__syn_smv___scalar_e1e2_e1ni_scalar_e1e2_e1ni, x.m_c[0], (-1.0f * x.m_c[1]), (-1.0f * x.m_c[2]));
 	}
 	inline __syn_smv___e1_e2_ni_nof2_0 add(const normalizedPoint& x, const normalizedPoint& y) {
-		return __syn_smv___e1_e2_ni_nof2_0(__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0, (x.m_c[0] + y.m_c[0]), (y.m_c[1] + x.m_c[1]), (x.m_c[2] + y.m_c[2]));
+		return __syn_smv___e1_e2_ni_nof2_0(__syn_smv___e1_e2_ni_nof2_0_e1_e2_ni_nof2_0, (x.m_c[0] + y.m_c[0]), (x.m_c[1] + y.m_c[1]), (y.m_c[2] + x.m_c[2]));
 	}
 	inline freeVector gp(const __syn_smv___e1_e2_ni& x, const __ni_ct__& y) {
 		return freeVector(freeVector_e1ni_e2ni, x.m_c[0], x.m_c[1]);
 	}
 	inline __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni gp(const __syn_smv___scalar_noe1_noe2_noni& x, const __syn_smv___e1_e2_ni& y) {
-		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[0] * y.m_c[2]) + (x.m_c[3] * y.m_c[2])), ((x.m_c[1] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[0])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
+		return __syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni(__syn_smv___no_e1_e2_noe1e2_ni_noe1ni_noe2ni_no_e1_e2_noe1e2_ni_noe1ni_noe2ni, ((x.m_c[2] * y.m_c[1]) + (x.m_c[1] * y.m_c[0])), ((x.m_c[0] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (x.m_c[0] * y.m_c[1])), ((x.m_c[1] * y.m_c[1]) + (-1.0f * x.m_c[2] * y.m_c[0])), ((x.m_c[3] * y.m_c[2]) + (x.m_c[0] * y.m_c[2])), ((-1.0f * x.m_c[3] * y.m_c[0]) + (x.m_c[1] * y.m_c[2])), ((x.m_c[2] * y.m_c[2]) + (-1.0f * x.m_c[3] * y.m_c[1])));
 	}
 	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
 		return e2_t(e2_t_e2, x.m_c[0]);

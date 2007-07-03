@@ -2,7 +2,7 @@
 #define INC_c3ga_mv_lexer_hpp_
 
 #include <antlr/config.hpp>
-/* $ANTLR 2.7.6 (2005-12-22): "c3ga_lexer.g" -> "c3ga_mv_lexer.hpp"$ */
+/* $ANTLR 2.7.7 (2006-11-01): "c3ga_lexer.g" -> "c3ga_mv_lexer.hpp"$ */
 #include <antlr/CommonToken.hpp>
 #include <antlr/InputBuffer.hpp>
 #include <antlr/BitSet.hpp>

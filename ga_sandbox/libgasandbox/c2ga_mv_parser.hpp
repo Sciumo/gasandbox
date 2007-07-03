@@ -2,7 +2,7 @@
 #define INC_c2ga_mv_parser_hpp_
 
 #include <antlr/config.hpp>
-/* $ANTLR 2.7.6 (2005-12-22): "c2ga_parser.g" -> "c2ga_mv_parser.hpp"$ */
+/* $ANTLR 2.7.7 (2006-11-01): "c2ga_parser.g" -> "c2ga_mv_parser.hpp"$ */
 #include <antlr/TokenStream.hpp>
 #include <antlr/TokenBuffer.hpp>
 #include "c2ga_mv_parserTokenTypes.hpp"
