@@ -1,5 +1,5 @@
 
-// Generated on 2007-01-31 14:20:15 by G2 0.1 from 'E:\ga\ga_sandbox\ga_sandbox\libgasandbox\e2ga.gs2'
+// Generated on 2007-08-07 15:52:50 by G2 0.1 from 'E:\gasandbox\ga_sandbox\libgasandbox\e2ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -149,8 +149,8 @@
 		void profile(unsigned int funcIdx, unsigned short storageTypeIdx, unsigned short nbArg, 
 			unsigned short argType[], int nbReturnType, unsigned short returnType[]);
 		void reset();
-		void save(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\e2ga.gp2", bool append = true);
-		void init(const char *filename = "E:\\ga\\ga_sandbox\\ga_sandbox\\libgasandbox\\e2ga.gp2",
+		void save(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\e2ga.gp2", bool append = true);
+		void init(const char *filename = "E:\\gasandbox\\ga_sandbox\\libgasandbox\\e2ga.gp2",
 			const char *hostName = "localhost", int port = 7693);
 	} // end of namespace g2Profiling
 
@@ -2225,6 +2225,9 @@
 
 
 
+	mv::Float fastFactorBlade(const mv &X, vector factor[], int gradeOfX = -1);
+	void fastJoinBlades(const mv &A, const mv &B, mv &J, mv *M = NULL);
+
 
 
 	// extra underscore constructors from profile:
@@ -3468,14 +3471,14 @@
 	// G2 functions:
 	inline vector unit_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
+		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
 		scalar ie;
 		ie.m_c[0] = ((char)1 / sqrt(e2.m_c[0]));
 		return vector(vector_e1_e2, (x.m_c[0] * ie.m_c[0]), (x.m_c[1] * ie.m_c[0]));
 	}
 	inline vector inverse(const vector& x) {
 		scalar n;
-		n.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		n.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		scalar in;
 		in.m_c[0] = ((char)1 / n.m_c[0]);
 		return vector(vector_e1_e2, (x.m_c[0] * in.m_c[0]), (x.m_c[1] * in.m_c[0]));
@@ -3496,7 +3499,7 @@
 		return rotor(rotor_scalar_e1e2, (x.m_c[0] + (-1.0f * y.m_c[0])), ((-1.0f * y.m_c[1]) + x.m_c[1]));
 	}
 	inline vector subtract(const vector& x, const vector& y) {
-		return vector(vector_e1_e2, ((-1.0f * y.m_c[0]) + x.m_c[0]), ((-1.0f * y.m_c[1]) + x.m_c[1]));
+		return vector(vector_e1_e2, (x.m_c[0] + (-1.0f * y.m_c[0])), (x.m_c[1] + (-1.0f * y.m_c[1])));
 	}
 	inline scalar scp(const bivector& x, const bivector& y) {
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
@@ -3522,7 +3525,7 @@
 		return scalar(scalar_scalar, (-1.0f * x.m_c[0] * y.m_c[0]));
 	}
 	inline bivector op(const vector& x, const vector& y) {
-		return bivector(bivector_e1e2, ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
+		return bivector(bivector_e1e2, ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
 	}
 	inline vector subtract(const e1_t& x, const e2_t& y) {
 		return vector(vector_e1_e2, x.m_c[0], (-1.0f * y.m_c[0]));
@@ -3535,7 +3538,7 @@
 	}
 	inline scalar norm_e(const vector& x) {
 		scalar e2;
-		e2.m_c[0] = ((x.m_c[1] * x.m_c[1]) + (x.m_c[0] * x.m_c[0]));
+		e2.m_c[0] = ((x.m_c[0] * x.m_c[0]) + (x.m_c[1] * x.m_c[1]));
 		return scalar(scalar_scalar, sqrt(e2.m_c[0]));
 	}
 	inline bivector inverse(const bivector& x) {
@@ -3570,7 +3573,7 @@
 		return e2_t(e2_t_e2, (x.m_c[0] * y.m_c[0]));
 	}
 	inline vector gp(const rotor& x, const vector& y) {
-		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((x.m_c[0] * y.m_c[1]) + (-1.0f * x.m_c[1] * y.m_c[0])));
+		return vector(vector_e1_e2, ((x.m_c[1] * y.m_c[1]) + (x.m_c[0] * y.m_c[0])), ((-1.0f * x.m_c[1] * y.m_c[0]) + (x.m_c[0] * y.m_c[1])));
 	}
 	inline e2_t gp(const scalar& x, const __e2_ct__& y) {
 		return e2_t(e2_t_e2, x.m_c[0]);
