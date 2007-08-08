@@ -1,5 +1,5 @@
 
-// Generated on 2007-07-03 14:07:47 by G2 0.1 from 'E:\gasandbox\ga_sandbox\libgasandbox\c3ga.gs2'
+// Generated on 2007-08-08 10:16:05 by G2 0.1 from 'E:\gasandbox\ga_sandbox\libgasandbox\c3ga.gs2'
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -419,7 +419,7 @@ namespace c3ga {
 		return k;
 	}
 
-	mv::Float factorizeBlade(const mv &X, point factor[5], int gradeOfX /* = -1 */) {
+	mv::Float fastFactorBlade(const mv &X, point factor[5], int gradeOfX /* = -1 */) {
 		int k = gradeOfX;
 		if (k < 0) {
 			// only for single grade usage: find first non-zero grade part:
@@ -1513,7 +1513,7 @@ namespace c3ga {
 
 
 
-	void joinBlades(const mv &A, const mv &B, mv &J, mv *M /* = NULL */) {
+	void fastJoinBlades(const mv &A, const mv &B, mv &J, mv *M /* = NULL */) {
 
 		// collect arguments to fastJoin()
 		int gradeA = lowestOneBit(A.m_gu);

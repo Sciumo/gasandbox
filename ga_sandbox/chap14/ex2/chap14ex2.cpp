@@ -29,6 +29,8 @@
 #include <set>
 #include <string>
 #include <utility>
+#include <utility>
+#include <iostream>
 
 #include <libgasandbox/common.h>
 #include <libgasandbox/c3ga.h>
@@ -91,7 +93,7 @@ void display() {
 			const char *str = LABEL_TYPE_NAMES[i];
 			int w = (int)getBitmapStringWidth(font, str);
 			int x = labelWidth + i * boxWidth + (boxWidth - w) /2;
-			renderBitmapString(x, g_viewportHeight - 20, font, str);
+			renderBitmapString((float)x, (float)(g_viewportHeight - 20), font, str);
 		}
 
 		for (int i = 0; i < NB_VER; i++) {
@@ -99,7 +101,7 @@ void display() {
 			int w = (int)getBitmapStringWidth(font, str);
 			int x = 0 + labelWidth - w - 10;
 			int y = g_viewportHeight - (labelHeight + boxHeight * i + (boxHeight) / 2);
-			renderBitmapString(x, y, font, str);
+			renderBitmapString((float)x, (float)y, font, str);
 		}
 	}
 
@@ -233,12 +235,12 @@ void display() {
 			void *font = GLUT_BITMAP_HELVETICA_12;
 	
 			int w = (int)getBitmapStringWidth(font, name);
-			renderBitmapString((boxWidth - w)/2, boxHeight - 20, font, name);
+			renderBitmapString((float)((boxWidth - w)/2), (float)(boxHeight - 20), font, name);
 
 			font = GLUT_BITMAP_HELVETICA_10;
 			std::string coordStr = X.toString();
 			w = (int)getBitmapStringWidth(font, coordStr.c_str());
-			renderBitmapString((boxWidth - w)/2, boxHeight - 40, font, coordStr.c_str());
+			renderBitmapString((float)((boxWidth - w)/2), (float)(boxHeight - 40), font, coordStr.c_str());
 
 
 		}
