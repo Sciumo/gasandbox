@@ -23,12 +23,6 @@ Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 
 */
 
-/*
-This sample code is a port of a port of a port of a port of a quick hack, so 
-it's not functional or elegant.
-What do Code Monkey think?
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -166,6 +160,27 @@ void display() {
 
 	glPopMatrix();
 
+	{
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		glOrtho(0, g_viewportWidth, 0, g_viewportHeight, -100.0, 100.0);
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+
+		glColor3f(1.0, 0.0, 0.0);
+		void *font = GLUT_BITMAP_HELVETICA_12;
+		renderBitmapString(20, 80, font, "Left mouse button: rotate");
+		renderBitmapString(20, 60, font, "Middle mouse button: select vector field");
+		renderBitmapString(20, 40, font, "Right mouse button: translate");
+		renderBitmapString(20, 20, font, "Detected singulaties are drawn in RED (points), GREEN (lines), BLUE (surfaces)");
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	}
+
 	glutSwapBuffers();	
 }
 
@@ -291,9 +306,7 @@ int main(int argc, char*argv[]) {
 	for (; g_fieldFunctions[i].fieldName; i++)
 		glutAddMenuEntry(g_fieldFunctions[i].fieldName, i);
 	glutAddMenuEntry("show/hide vector field", i);
-//	glutAttachMenu(GLUT_LEFT_BUTTON);
 	glutAttachMenu(GLUT_MIDDLE_BUTTON);
-//	glutAttachMenu(GLUT_RIGHT_BUTTON);
 	
 
 	glutMainLoop();

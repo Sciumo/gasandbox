@@ -1,2 +1,3 @@
-20070601 Added Visual Studio 2005 project
+20071008 Added singularity description (point, line, plane) to chap2ex3. Also added UI description
 20071008 Fixed divide-by-zero bug in closed-form exp() in c3ga_util.h and e3ga_util.cpp
+20070601 Added Visual Studio 2005 project files

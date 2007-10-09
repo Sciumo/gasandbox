@@ -594,7 +594,7 @@ int	findSingularities(const vector &p, const vector dir[3],
 	sumCube(p, dir, gsi, pointSing, lineSing, surfSing, evalFunc, depth, maxDepth);
 	sing = pointSing | lineSing | surfSing;
 	if ( sing && 0) {
-	printf("sing %d (%d/%d) %d|%d|%d\n",ncube,
+		printf("sing %d (%d/%d) %d|%d|%d\n",ncube,
 	       depth,maxDepth, pointSing,lineSing,surfSing);
 	}
 
@@ -606,9 +606,9 @@ int	findSingularities(const vector &p, const vector dir[3],
 		GLfloat cWhite[4] = {1.0f, 1.0f, 1.0f, 1.0f};
 		GLfloat cBlack[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 		GLfloat *color;
-		if (pointSing) color = cRed;
-		else if (lineSing) color = cGreen;
-		else if (surfSing) color = cBlue;
+		if (pointSing) color = cRed; // point singularity = red
+		else if (lineSing) color = cGreen; // line singularity = green
+		else if (surfSing) color = cBlue; // surface singularity = blue
 		else color = cBlack;
 		glColor3fv(color);
 		glMaterialfv(GL_FRONT, GL_AMBIENT, color);

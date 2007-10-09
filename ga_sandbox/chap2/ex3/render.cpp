@@ -53,11 +53,6 @@ void drawCube(const vector &p, float size) {
 
 void drawCube(const vector &p, const vector dir[3]) {
 	vector null;
-	// todo: replace with display list & scale & stuff...
-//	glMatrixMode(GL_MODELVIEW);
-//	glPushMatrix();
-//	glTranslatef(p[GRADE1][0], p[GRADE1][1], p[GRADE1][2]);
-//	printf("Draw cube...\n");
 	glBegin(GL_QUADS);
 
 	glNormal3fv(_vector(-dir[2]).getC(vector_e1_e2_e3));
@@ -97,7 +92,6 @@ void drawCube(const vector &p, const vector dir[3]) {
 	glVertex3fv(_vector(dir[0] + dir[1]).getC(vector_e1_e2_e3));
 
 	glEnd();
-//	glPopMatrix();
 }
 
 // simple test function which draws the direction of the vector field
