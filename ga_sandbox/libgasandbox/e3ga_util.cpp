@@ -206,6 +206,8 @@ rotor exp(const bivector &x) {
 	// compute half angle:
 	mv::Float ha = sqrt(-x2);
 
+	if (ha == (mv::Float)0.0) return _rotor((mv::Float)1.0);
+
 	// return rotor:
 	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
 }

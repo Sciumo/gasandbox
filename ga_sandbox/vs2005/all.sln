@@ -244,6 +244,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap12ex3", "chap12ex3.vcpr
 		{FA5DC3A9-AA89-4F04-9F78-38727225F84D} = {FA5DC3A9-AA89-4F04-9F78-38727225F84D}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCC31507-1E11-4D29-AFE0-B627E023521C}"
+	ProjectSection(SolutionItems) = preProject
+		..\ChangeLog = ..\ChangeLog
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32

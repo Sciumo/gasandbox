@@ -45,6 +45,7 @@ inline rotor exp(const bivectorE3GA &x) {
 	// Since (x*x <= 0) for 3D bivector in Euclidean metric, we can optimize:
 	mv::Float x2 = _Float(x << x);
 	mv::Float ha = sqrt(-x2);
+	if (ha == (mv::Float)0.0) return _rotor((mv::Float)1.0);
 	return _rotor((mv::Float)cos(ha) + ((mv::Float)sin(ha) / ha) * x);
 }
 
