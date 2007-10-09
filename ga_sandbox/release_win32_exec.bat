@@ -1,5 +1,5 @@
 mkdir ..\ga_sandbox_win32_binary
-copy .\vs.net\release\*.exe ..\ga_sandbox_win32_binary
+copy .\vs2005\release\*.exe ..\ga_sandbox_win32_binary
 copy .\chap3\ex4\image2.raw ..\ga_sandbox_win32_binary
 copy .\chap3\ex4\image3.raw ..\ga_sandbox_win32_binary
 copy .\chap10\ex3\calibration_data.txt ..\ga_sandbox_win32_binary

@@ -9,6 +9,7 @@ AQSIS_CHECK_FLTK
 AC_OUTPUT(
 	Makefile \
 	vs.net/Makefile \
+	vs2005/Makefile \
 	\
 	qhull-2003.1/Makefile \
 	qhull-2003.1/src/Makefile \
