@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT()
-AM_INIT_AUTOMAKE(ga_sandbox, 1.0.1)
+AM_INIT_AUTOMAKE(ga_sandbox, 1.0.2)
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
@@ -122,6 +122,7 @@ AC_OUTPUT(
 	solutions/chap14/ex2/Makefile \
 	\
 	solutions/vs.net/Makefile \
+	solutions/vs2005/Makefile \
 	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile \

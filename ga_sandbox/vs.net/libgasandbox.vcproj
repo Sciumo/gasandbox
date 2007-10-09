@@ -1,93 +1,143 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8.00"
 	Name="libgasandbox"
 	ProjectGUID="{FA5DC3A9-AA89-4F04-9F78-38727225F84C}"
-	Keyword="Win32Proj">
+	Keyword="Win32Proj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="Debug"
 			IntermediateDirectory="libgasandbox_Debug"
 			ConfigurationType="4"
-			CharacterSet="2">
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
-				MinimalRebuild="TRUE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="5"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="4"/>
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="4"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/libgasandbox.lib"/>
+				OutputFile="$(OutDir)/libgasandbox.lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCXDCMakeTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCBscMakeTool"
+			/>
 			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCFxCopTool"
+			/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
 			IntermediateDirectory="libgasandbox_Release"
 			ConfigurationType="4"
-			CharacterSet="2">
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="4"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/libgasandbox.lib"/>
+				OutputFile="$(OutDir)/libgasandbox.lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCXDCMakeTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCBscMakeTool"
+			/>
 			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCFxCopTool"
+			/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -96,197 +146,260 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
 			<File
-				RelativePath="..\libgasandbox\c2ga.cpp">
+				RelativePath="..\libgasandbox\c2ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_draw.cpp">
+				RelativePath="..\libgasandbox\c2ga_draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_util.cpp">
+				RelativePath="..\libgasandbox\c2ga_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2gatoc3ga.cpp">
+				RelativePath="..\libgasandbox\c2gatoc3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga.cpp">
+				RelativePath="..\libgasandbox\c3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_draw.cpp">
+				RelativePath="..\libgasandbox\c3ga_draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_util.cpp">
+				RelativePath="..\libgasandbox\c3ga_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\draw.cpp">
+				RelativePath="..\libgasandbox\draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga.cpp">
+				RelativePath="..\libgasandbox\e2ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_draw.cpp">
+				RelativePath="..\libgasandbox\e2ga_draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga.cpp">
+				RelativePath="..\libgasandbox\e3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_draw.cpp">
+				RelativePath="..\libgasandbox\e3ga_draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_util.cpp">
+				RelativePath="..\libgasandbox\e3ga_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\geosphere.cpp">
+				RelativePath="..\libgasandbox\geosphere.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gl_util.cpp">
+				RelativePath="..\libgasandbox\gl_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\glut_util.cpp">
+				RelativePath="..\libgasandbox\glut_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga.cpp">
+				RelativePath="..\libgasandbox\h3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_draw.cpp">
+				RelativePath="..\libgasandbox\h3ga_draw.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_util.cpp">
+				RelativePath="..\libgasandbox\h3ga_util.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze.cpp">
+				RelativePath="..\libgasandbox\mv_analyze.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze_c2ga.cpp">
+				RelativePath="..\libgasandbox\mv_analyze_c2ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze_c3ga.cpp">
+				RelativePath="..\libgasandbox\mv_analyze_c3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze_e2ga.cpp">
+				RelativePath="..\libgasandbox\mv_analyze_e2ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze_e3ga.cpp">
+				RelativePath="..\libgasandbox\mv_analyze_e3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze_h3ga.cpp">
+				RelativePath="..\libgasandbox\mv_analyze_h3ga.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\timing.cpp">
+				RelativePath="..\libgasandbox\timing.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
 			<File
-				RelativePath="..\libgasandbox\c2ga.h">
+				RelativePath="..\libgasandbox\c2ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_draw.h">
+				RelativePath="..\libgasandbox\c2ga_draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_util.h">
+				RelativePath="..\libgasandbox\c2ga_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2gatoc3ga.h">
+				RelativePath="..\libgasandbox\c2gatoc3ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga.h">
+				RelativePath="..\libgasandbox\c3ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_draw.h">
+				RelativePath="..\libgasandbox\c3ga_draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_util.h">
+				RelativePath="..\libgasandbox\c3ga_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\common.h">
+				RelativePath="..\libgasandbox\common.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\draw.h">
+				RelativePath="..\libgasandbox\draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga.h">
+				RelativePath="..\libgasandbox\e2ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_draw.h">
+				RelativePath="..\libgasandbox\e2ga_draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_mv_lexer.hpp">
+				RelativePath="..\libgasandbox\e2ga_mv_lexer.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_mv_lexerTokenTypes.hpp">
+				RelativePath="..\libgasandbox\e2ga_mv_lexerTokenTypes.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_mv_parser.hpp">
+				RelativePath="..\libgasandbox\e2ga_mv_parser.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_mv_parserTokenTypes.hpp">
+				RelativePath="..\libgasandbox\e2ga_mv_parserTokenTypes.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_util.h">
+				RelativePath="..\libgasandbox\e2ga_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga.h">
+				RelativePath="..\libgasandbox\e3ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_draw.h">
+				RelativePath="..\libgasandbox\e3ga_draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_mv_lexer.hpp">
+				RelativePath="..\libgasandbox\e3ga_mv_lexer.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_mv_lexerTokenTypes.hpp">
+				RelativePath="..\libgasandbox\e3ga_mv_lexerTokenTypes.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_mv_parser.hpp">
+				RelativePath="..\libgasandbox\e3ga_mv_parser.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_mv_parserTokenTypes.hpp">
+				RelativePath="..\libgasandbox\e3ga_mv_parserTokenTypes.hpp"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_util.h">
+				RelativePath="..\libgasandbox\e3ga_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gabits.h">
+				RelativePath="..\libgasandbox\gabits.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\geosphere.h">
+				RelativePath="..\libgasandbox\geosphere.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gl_util.h">
+				RelativePath="..\libgasandbox\gl_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\glut_util.h">
+				RelativePath="..\libgasandbox\glut_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga.h">
+				RelativePath="..\libgasandbox\h3ga.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_draw.h">
+				RelativePath="..\libgasandbox\h3ga_draw.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_util.h">
+				RelativePath="..\libgasandbox\h3ga_util.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze.h">
+				RelativePath="..\libgasandbox\mv_analyze.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mvtypebase.h">
+				RelativePath="..\libgasandbox\mvtypebase.h"
+				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\timing.h">
+				RelativePath="..\libgasandbox\timing.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			>
 		</Filter>
 		<File
-			RelativePath=".\ReadMe.txt">
+			RelativePath=".\ReadMe.txt"
+			>
 		</File>
 	</Files>
 	<Globals>
