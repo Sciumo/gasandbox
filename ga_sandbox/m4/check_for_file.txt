@@ -1,0 +1,4 @@
+Todo: check if this works:
+AC_CHECK_FILE(/usr/local/lib/libantlr.a, ANTLR_LIBS="/usr/local/lib/libantlr.a", )
+AC_CHECK_FILE(/usr/lib/libantlr.a, ANTLR_LIBS="/usr/lib/libantlr.a", )
+AC_SUBST(ANTLR_LIBS)
