@@ -1,6 +1,6 @@
 lib_LIBRARIES = libgasandbox.a libgasandboxparse.a
 
-libgasandbox_a_CPPFLAGS = $(GL_CFLAGS) 
+libgasandbox_a_CPPFLAGS = $(OPENGL_CFLAGS) 
 
 
 #-I/opt/local/include

@@ -2,9 +2,9 @@ sandbindir = $(bindir)/ga_sandbox
 
 sandbin_PROGRAMS = chap12ex3
 
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
+AM_CPPFLAGS = -I../.. $(OPENGL_CFLAGS)
 
-chap12ex3_LDADD = $(GL_LIBS) \
+chap12ex3_LDADD = $(OPENGL_LIBS) $(GLUT_LIBS) \
 	../../libgasandbox/libgasandbox.a \
 	../../libgasandbox/libgasandboxparse.a  \
 	/usr/local/lib/libantlr.a
