@@ -1,5 +1,4 @@
 Profile all examples
-vs2005 projects?
 
 Write documentation
 	Installing
