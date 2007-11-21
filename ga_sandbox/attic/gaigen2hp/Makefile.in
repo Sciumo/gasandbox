@@ -52,7 +52,7 @@ am_gaigen2hp_OBJECTS = hpindex.$(OBJEXT) fields.$(OBJEXT) \
 	glwindow.$(OBJEXT) main.$(OBJEXT)
 gaigen2hp_OBJECTS = $(am_gaigen2hp_OBJECTS)
 am__DEPENDENCIES_1 =
-gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -72,6 +72,7 @@ ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
+ANTLR_LIBS = @ANTLR_LIBS@
 AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
 AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
 AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
@@ -162,7 +163,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
-gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) ../../libgasandbox/libgasandbox.a
+gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) $(OPENGL_LIBS) ../../libgasandbox/libgasandbox.a
 gaigen2hp_SOURCES = hpindex.cpp fields.cpp  glwindow.cpp  main.cpp
 noinst_HEADERS = fields.h  glwindow.h  hpindex.h  main.h
 all: all-am

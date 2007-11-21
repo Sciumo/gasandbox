@@ -7,7 +7,7 @@ AM_CPPFLAGS = -I../.. $(OPENGL_CFLAGS)
 chap12ex3_LDADD = $(OPENGL_LIBS) $(GLUT_LIBS) \
 	../../libgasandbox/libgasandbox.a \
 	../../libgasandbox/libgasandboxparse.a  \
-	/usr/local/lib/libantlr.a
+	 $(ANTLR_LIBS)
 
 chap12ex3_SOURCES = chap12ex3.cpp readopticaldata.cpp reconstruct.cpp
 

@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT()
-AM_INIT_AUTOMAKE(ga_sandbox, 1.0.2)
+AM_INIT_AUTOMAKE(ga_sandbox, 1.0.3)
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
@@ -10,6 +10,9 @@ GNASH_PATH_OPENGL
 GLUT_LIBS="-lglut"
 AC_SUBST(GLUT_LIBS)
 AQSIS_CHECK_FLTK
+AC_CHECK_FILE(/usr/local/lib/libantlr.a, ANTLR_LIBS="/usr/local/lib/libantlr.a", AC_CHECK_FILE(/usr/lib/libantlr.a, ANTLR_LIBS="/usr/lib/libantlr.a", -lantlr))
+AC_SUBST(ANTLR_LIBS)
+
 AC_OUTPUT(
 	Makefile \
 	vs.net/Makefile \

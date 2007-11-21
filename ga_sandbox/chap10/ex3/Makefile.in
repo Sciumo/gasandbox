@@ -52,8 +52,10 @@ PROGRAMS = $(sandbin_PROGRAMS)
 am_chap10ex3_OBJECTS = chap10ex3.$(OBJEXT) extcalibrefine.$(OBJEXT) \
 	readcalibrationdata.$(OBJEXT)
 chap10ex3_OBJECTS = $(am_chap10ex3_OBJECTS)
-chap10ex3_DEPENDENCIES = ../../libgasandbox/libgasandboxparse.a \
-	../../libgasandbox/libgasandbox.a /usr/local/lib/libantlr.a
+am__DEPENDENCIES_1 =
+chap10ex3_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	../../libgasandbox/libgasandboxparse.a \
+	../../libgasandbox/libgasandbox.a $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -80,6 +82,7 @@ ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
+ANTLR_LIBS = @ANTLR_LIBS@
 AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
 AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
 AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
@@ -169,11 +172,10 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap10ex3_LDADD = $(GL_LIBS) \
+AM_CPPFLAGS = -I../.. $(OPENGL_CFLAGS)
+chap10ex3_LDADD = $(OPENGL_LIBS) $(GLUT_LIBS) \
 	../../libgasandbox/libgasandboxparse.a ../../libgasandbox/libgasandbox.a \
-	-lcxcore \
-	/usr/local/lib/libantlr.a
+	-lcxcore  $(ANTLR_LIBS)
 
 chap10ex3_SOURCES = chap10ex3.cpp extcalibrefine.cpp readcalibrationdata.cpp
 noinst_HEADERS = extcalibrefine.h readcalibrationdata.h

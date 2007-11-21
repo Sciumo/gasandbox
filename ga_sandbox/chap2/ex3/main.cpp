@@ -110,7 +110,7 @@ e3ga::vector & (*g_evalFunc)(const e3ga::vector &p, e3ga::vector &v) = (e3ga::ve
 
 // the fields (names + evaluation functions)
 // The dull ones are commented out
-struct {
+struct fieldFunctionStruct {
 		const char *fieldName;
 		e3ga::vector & (*func)(const e3ga::vector &p, e3ga::vector &v);
 } g_fieldFunctions[] = {

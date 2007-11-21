@@ -52,9 +52,10 @@ PROGRAMS = $(sandbin_PROGRAMS)
 am_chap12ex3_OBJECTS = chap12ex3.$(OBJEXT) readopticaldata.$(OBJEXT) \
 	reconstruct.$(OBJEXT)
 chap12ex3_OBJECTS = $(am_chap12ex3_OBJECTS)
-chap12ex3_DEPENDENCIES = ../../libgasandbox/libgasandbox.a \
-	../../libgasandbox/libgasandboxparse.a \
-	/usr/local/lib/libantlr.a
+am__DEPENDENCIES_1 =
+chap12ex3_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	../../libgasandbox/libgasandbox.a \
+	../../libgasandbox/libgasandboxparse.a $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -81,6 +82,7 @@ ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
+ANTLR_LIBS = @ANTLR_LIBS@
 AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
 AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
 AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
@@ -170,11 +172,11 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 sandbindir = $(bindir)/ga_sandbox
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap12ex3_LDADD = $(GL_LIBS) \
+AM_CPPFLAGS = -I../.. $(OPENGL_CFLAGS)
+chap12ex3_LDADD = $(OPENGL_LIBS) $(GLUT_LIBS) \
 	../../libgasandbox/libgasandbox.a \
 	../../libgasandbox/libgasandboxparse.a  \
-	/usr/local/lib/libantlr.a
+	 $(ANTLR_LIBS)
 
 chap12ex3_SOURCES = chap12ex3.cpp readopticaldata.cpp reconstruct.cpp
 noinst_HEADERS = opticaldata.h readopticaldata.h

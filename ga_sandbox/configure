@@ -703,6 +703,7 @@ AQSIS_FLTK_CFLAGS
 AQSIS_FLTK_LIBS
 AQSIS_FLTK_GL_CFLAGS
 AQSIS_FLTK_GL_LIBS
+ANTLR_LIBS
 LIBOBJS
 LTLIBOBJS'
 ac_subst_files=''
@@ -2051,7 +2052,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=ga_sandbox
- VERSION=1.0.2
+ VERSION=1.0.3
 
 
 cat >>confdefs.h <<_ACEOF
@@ -4867,6 +4868,53 @@ echo "$as_me: error: couldn't find fltk library" >&2;}
    { (exit 1); exit 1; }; }
 fi
 
+{ echo "$as_me:$LINENO: checking for /usr/local/lib/libantlr.a" >&5
+echo $ECHO_N "checking for /usr/local/lib/libantlr.a... $ECHO_C" >&6; }
+if test "${ac_cv_file__usr_local_lib_libantlr_a+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  test "$cross_compiling" = yes &&
+  { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
+echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
+   { (exit 1); exit 1; }; }
+if test -r "/usr/local/lib/libantlr.a"; then
+  ac_cv_file__usr_local_lib_libantlr_a=yes
+else
+  ac_cv_file__usr_local_lib_libantlr_a=no
+fi
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_file__usr_local_lib_libantlr_a" >&5
+echo "${ECHO_T}$ac_cv_file__usr_local_lib_libantlr_a" >&6; }
+if test $ac_cv_file__usr_local_lib_libantlr_a = yes; then
+  ANTLR_LIBS="/usr/local/lib/libantlr.a"
+else
+  { echo "$as_me:$LINENO: checking for /usr/lib/libantlr.a" >&5
+echo $ECHO_N "checking for /usr/lib/libantlr.a... $ECHO_C" >&6; }
+if test "${ac_cv_file__usr_lib_libantlr_a+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  test "$cross_compiling" = yes &&
+  { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
+echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
+   { (exit 1); exit 1; }; }
+if test -r "/usr/lib/libantlr.a"; then
+  ac_cv_file__usr_lib_libantlr_a=yes
+else
+  ac_cv_file__usr_lib_libantlr_a=no
+fi
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_file__usr_lib_libantlr_a" >&5
+echo "${ECHO_T}$ac_cv_file__usr_lib_libantlr_a" >&6; }
+if test $ac_cv_file__usr_lib_libantlr_a = yes; then
+  ANTLR_LIBS="/usr/lib/libantlr.a"
+else
+  -lantlr
+fi
+
+fi
+
+
+
 ac_config_files="$ac_config_files Makefile vs.net/Makefile vs2005/Makefile qhull-2003.1/Makefile qhull-2003.1/src/Makefile qhull-2003.1/html/Makefile qhull-2003.1/eg/Makefile qhull-2003.1/vs.net/Makefile libgasandbox/Makefile libgasandbox_no_opt/Makefile chap1/Makefile chap1/ex1/Makefile chap2/Makefile chap2/ex1/Makefile chap2/ex2/Makefile chap2/ex3/Makefile chap3/Makefile chap3/ex1/Makefile chap3/ex2/Makefile chap3/ex3/Makefile chap3/ex4/Makefile chap4/Makefile chap4/ex1/Makefile chap4/ex2/Makefile chap4/ex3/Makefile chap5/Makefile chap5/ex1/Makefile chap5/ex2/Makefile chap5/ex3/Makefile chap6/Makefile chap6/ex1/Makefile chap6/ex2/Makefile chap7/Makefile chap7/ex1/Makefile chap7/ex2/Makefile chap7/ex3/Makefile chap7/ex4/Makefile chap7/ex5/Makefile chap8/Makefile chap10/Makefile chap10/ex1/Makefile chap10/ex2/Makefile chap10/ex3/Makefile chap11/Makefile chap11/ex1/Makefile chap11/ex2/Makefile chap11/ex3/Makefile chap11/ex4/Makefile chap12/Makefile chap12/ex1/Makefile chap12/ex2/Makefile chap12/ex3/Makefile chap13/Makefile chap13/ex1/Makefile chap13/ex2/Makefile chap13/ex3/Makefile chap13/ex4/Makefile chap14/Makefile chap14/ex1/Makefile chap14/ex2/Makefile chap14/ex3/Makefile chap14/ex4/Makefile chap15/Makefile chap15/ex1/Makefile chap15/ex2/Makefile chap15/ex3/Makefile chap16/Makefile chap16/ex1/Makefile chap16/ex2/Makefile chap16/ex3/Makefile chap16/ex4/Makefile solutions/Makefile solutions/chap2/Makefile solutions/chap2/ex2/Makefile solutions/chap3/Makefile solutions/chap3/ex2/Makefile solutions/chap6/Makefile solutions/chap6/ex1/Makefile solutions/chap7/Makefile solutions/chap7/ex4/Makefile solutions/chap7/ex5/Makefile solutions/chap11/Makefile solutions/chap11/ex4/Makefile solutions/chap13/Makefile solutions/chap13/ex2/Makefile solutions/chap14/Makefile solutions/chap14/ex2/Makefile solutions/vs.net/Makefile solutions/vs2005/Makefile attic/Makefile attic/gaigen2hp/Makefile screenshots/Makefile"
 
 cat >confcache <<\_ACEOF
@@ -5712,11 +5760,12 @@ AQSIS_FLTK_CFLAGS!$AQSIS_FLTK_CFLAGS$ac_delim
 AQSIS_FLTK_LIBS!$AQSIS_FLTK_LIBS$ac_delim
 AQSIS_FLTK_GL_CFLAGS!$AQSIS_FLTK_GL_CFLAGS$ac_delim
 AQSIS_FLTK_GL_LIBS!$AQSIS_FLTK_GL_LIBS$ac_delim
+ANTLR_LIBS!$ANTLR_LIBS$ac_delim
 LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 93; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 94; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

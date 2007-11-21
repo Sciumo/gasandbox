@@ -52,7 +52,7 @@ am_gaigen2hp_OBJECTS = hpindex.$(OBJEXT) fields.$(OBJEXT) \
 	glwindow.$(OBJEXT) main.$(OBJEXT)
 gaigen2hp_OBJECTS = $(am_gaigen2hp_OBJECTS)
 am__DEPENDENCIES_1 =
-gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -72,6 +72,7 @@ ACLOCAL = ${SHELL} /home/fontijne/gasandbox/ga_sandbox/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
 AMTAR = ${SHELL} /home/fontijne/gasandbox/ga_sandbox/missing --run tar
+ANTLR_LIBS = /usr/lib/libantlr.a
 AQSIS_FLTK_CFLAGS = 
 AQSIS_FLTK_GL_CFLAGS = 
 AQSIS_FLTK_GL_LIBS = -lfltk_gl -lfltk
@@ -89,7 +90,7 @@ CXX = g++
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.2\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_GL_GL_H=1
+DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.3\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_GL_GL_H=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -121,7 +122,7 @@ RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.0.2
+VERSION = 1.0.3
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__fastdepCC_FALSE = #
@@ -162,7 +163,7 @@ sysconfdir = ${prefix}/etc
 target_alias = 
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
-gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) ../../libgasandbox/libgasandbox.a
+gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) $(OPENGL_LIBS) ../../libgasandbox/libgasandbox.a
 gaigen2hp_SOURCES = hpindex.cpp fields.cpp  glwindow.cpp  main.cpp
 noinst_HEADERS = fields.h  glwindow.h  hpindex.h  main.h
 all: all-am

@@ -50,7 +50,9 @@ sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
 am_chap4ex2_OBJECTS = chap4ex2.$(OBJEXT)
 chap4ex2_OBJECTS = $(am_chap4ex2_OBJECTS)
-chap4ex2_DEPENDENCIES = ../../libgasandbox/libgasandbox.a
+am__DEPENDENCIES_1 =
+chap4ex2_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -69,6 +71,7 @@ ACLOCAL = ${SHELL} /home/fontijne/gasandbox/ga_sandbox/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
 AMTAR = ${SHELL} /home/fontijne/gasandbox/ga_sandbox/missing --run tar
+ANTLR_LIBS = /usr/lib/libantlr.a
 AQSIS_FLTK_CFLAGS = 
 AQSIS_FLTK_GL_CFLAGS = 
 AQSIS_FLTK_GL_LIBS = -lfltk_gl -lfltk
@@ -86,7 +89,7 @@ CXX = g++
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.2\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_GL_GL_H=1
+DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.3\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_GL_GL_H=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -118,7 +121,7 @@ RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.0.2
+VERSION = 1.0.3
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__fastdepCC_FALSE = #
@@ -158,8 +161,8 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 sandbindir = $(bindir)/ga_sandbox
-AM_CPPFLAGS = -I../.. $(GL_CFLAGS)
-chap4ex2_LDADD = $(GL_LIBS) ../../libgasandbox/libgasandbox.a
+AM_CPPFLAGS = -I../.. $(OPENGL_CFLAGS)
+chap4ex2_LDADD = $(OPENGL_LIBS) $(GLUT_LIBS) ../../libgasandbox/libgasandbox.a
 chap4ex2_SOURCES = chap4ex2.cpp
 noinst_HEADERS = 
 all: all-am
