@@ -1,6 +1,10 @@
 Several libraries are required to build all examples. 
 Most examples require only GLUT.
-Below we list the libraries 
+Under Linux, if you install libraries using a package manager,
+be sure to also install the development (dev) packages.
+E.g., antlr-dev, opencv-dev.
+
+The libraries are:
 (with the version we used for testing in parentheses):
 
 
