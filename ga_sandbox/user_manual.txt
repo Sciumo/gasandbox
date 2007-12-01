@@ -424,7 +424,7 @@ For example x += y is the same as x.set(add(x, y)).
 
 Some parts of the GA Sandbox could be improved:
 
--the is a lot of replicated source code in the examples. Most of it is 
+-there is a lot of replicated source code in the examples. Most of it is 
 user  interface stuff that I copied from example as I will writing them. 
 It would be nice to isolate this code and put it in a shared library.
 
