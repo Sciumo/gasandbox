@@ -9,6 +9,10 @@
    copyright (c) 1993-2003 The Geometry Center        
 */
 
+#ifdef WIN32
+#pragma warning( disable : 4244)
+#endif
+
 #include <stdio.h>
 #include <string.h>
 /*** uncomment here and qhull_a.h 

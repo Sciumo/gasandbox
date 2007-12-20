@@ -1,3 +1,5 @@
+20071220 Added the option to download precompiled binary libraries for VS2005
+         Added some #pragmas to silence some Visual Studio warnings. (4996, 4244, 4267, 4311)
 20071121 Fixed compilation problems with Ubuntu (finding OpenGL, GLUT and ANTLR libraries) Released version 1.0.3
 20071008 Added singularity description (point, line, plane) to chap2ex3. Also added UI description
 20071008 Fixed divide-by-zero bug in closed-form exp() in c3ga_util.h and e3ga_util.cpp

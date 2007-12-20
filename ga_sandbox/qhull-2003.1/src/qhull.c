@@ -13,6 +13,10 @@
    copyright (c) 1993-2003 The Geometry Center        
 */
 
+#ifdef WIN32
+#pragma warning( disable : 4267)
+#endif
+
 #include "qhull_a.h" 
 
 /*============= functions in alphabetic order after qhull() =======*/

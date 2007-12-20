@@ -13,6 +13,11 @@
    copyright (c) 1993-2003, The Geometry Center
  */
 
+#ifdef WIN32
+#pragma warning( disable : 4267)
+#endif
+
+
 #include "qhull_a.h"
 
 /*========= qh definition (see qhull.h) =======================*/
