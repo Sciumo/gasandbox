@@ -1,12 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT()
-AM_INIT_AUTOMAKE(ga_sandbox, 1.0.3)
+AM_INIT_AUTOMAKE(ga_sandbox, 1.0.4)
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
 #MDL_HAVE_OPENGL
 #AX_CHECK_GLUT
-GNASH_PATH_OPENGL
+#GNASH_PATH_OPENGL
 GLUT_LIBS="-lglut"
 AC_SUBST(GLUT_LIBS)
 AQSIS_CHECK_FLTK
