@@ -15,5 +15,5 @@ gzip -9 ga_sandbox_win32_binary_executables.tar
 cd ga_sandbox_win32_binary_executables
 del /Q *.*
 cd ..
-del /Q ga_sandbox_win32_binary_executables
+rmdir /S /Q ga_sandbox_win32_binary_executables
 cd ga_sandbox
