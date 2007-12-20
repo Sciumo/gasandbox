@@ -16,6 +16,8 @@ copy c:\lib32\fltkdmt.lib ..\tmp\ga_sandbox\lib_win32\fltkd.lib
 copy c:\lib32\fltkglmt.lib ..\tmp\ga_sandbox\lib_win32\fltkgl.lib
 copy c:\lib32\fltkgldmt.lib ..\tmp\ga_sandbox\lib_win32\fltkgld.lib
 
+call release_win32_includes.bat
+
 cd ..\tmp
 del ga_sandbox_win32_binary_libraries.tar
 del ga_sandbox_win32_binary_libraries.tar.gz
