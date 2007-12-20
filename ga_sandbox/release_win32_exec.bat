@@ -1,4 +1,5 @@
 mkdir ..\ga_sandbox_win32_binary_executables
+copy c:\windows\glut32.dll ..\ga_sandbox_win32_binary_executables
 copy .\vs2005\release\*.exe ..\ga_sandbox_win32_binary_executables
 copy .\chap3\ex4\image2.raw ..\ga_sandbox_win32_binary_executables
 copy .\chap3\ex4\image3.raw ..\ga_sandbox_win32_binary_executables
