@@ -134,5 +134,8 @@ AC_OUTPUT(
 	attic/Makefile\
 	attic/gaigen2hp/Makefile \
 	\
-	screenshots/Makefile
+	screenshots/Makefile \
+	\
+	ext_include/Makefile \
+	lib_win32/Makefile
 	)
