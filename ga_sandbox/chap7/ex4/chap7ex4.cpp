@@ -159,7 +159,7 @@ int main(int argc, char*argv[]) {
 		}
 	}
 
-	printf("Error: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
+	printf("Timing: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
 
 
 
