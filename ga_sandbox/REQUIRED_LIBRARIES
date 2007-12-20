@@ -4,7 +4,15 @@ Under Linux, if you install libraries using a package manager,
 be sure to also install the development (dev) packages.
 E.g., antlr-dev, opencv-dev.
 
-The libraries are:
+For Windows/Visual Studio 2005 / 2008 only:
+Since version 1.0.4 there is the option to download compiled versions
+of the libraries for 32 bit and 64 bit windows. You may get the 
+appropriate package from Sourceforge:
+http://sourceforge.net/project/showfiles.php?group_id=170519
+and extract them to the same location as the source code
+
+
+The required libraries are:
 (with the version we used for testing in parentheses):
 
 
