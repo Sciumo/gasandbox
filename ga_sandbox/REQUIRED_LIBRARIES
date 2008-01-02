@@ -16,7 +16,7 @@ The required libraries are:
 (with the version we used for testing in parentheses):
 
 
-GLUT (3.8) / freeglut (2.4): required by nearly all examples
+GLUT (3.7) / freeglut (2.4): required by nearly all examples
 http://freeglut.sourceforge.net/
 
 	The original GLUT (OpenGL Utility Toolkit) is not maintained anymore. 
