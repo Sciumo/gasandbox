@@ -44,48 +44,40 @@ void rotorToMatrixClassic(const rotor &R, float M[9]) {
 
 
 rotor matrixToRotorClassic(const float M[9]) {
-	float trace = M[0 * 3 + 0] + M[1 * 3 + 1] + M[2 * 3 + 2] + 1.0f;
-	float qw; // scalar coordinate
-	float qx; // coordinate for -e2^e3
-	float qy; // coordinate for -e3^e1
-	float qz; // coordinate for -e1^e2
-	if (trace > 0.00001f) {
-	    float s = 0.5f / (float)sqrt(trace);
-	    qw = 0.25f / s;
-	    qw = sqrt(trace) * (0.5f);
-	    qx = (M[2 * 3 + 1] - M[1 * 3 + 2]) * s;
-	    qy = (M[0 * 3 + 2] - M[2 * 3 + 0]) * s;
-	    qz = (M[1 * 3 + 0] - M[0 * 3 + 1]) * s;
+	float w,x,y,z,ss; 
+	w=M[0]+M[4]+M[8];
+	if(w>0.0){
+		w=sqrtf((w+1.0f)*0.25f);//sq(1-(x*x+y*y+z*z))
+		ss=0.25f/w;
+		x=(M[5]-M[7])*ss;
+		y=(M[6]-M[2])*ss;
+		z=(M[1]-M[3])*ss;
+	}
+	else if((M[0]>=M[4])&&(M[0]>=M[8])){//1-2y^2-2z^2==2w^2+2x^2-1 is greater than analogeous
+		x=sqrtf((M[0]-M[4]-M[8]+1.0f)*0.25f);//x>=0.5
+		ss=0.25f/x;
+		w=(M[5]-M[7])*ss;
+		y=(M[1]+M[3])*ss;
+		z=(M[6]+M[2])*ss;
+	}
+	else if(M[4]>=M[8]){
+		y=sqrtf((M[4]-M[0]-M[8]+1.0f)*0.25f);//y>=0.5
+		ss=0.25f/y;
+		w=(M[6]-M[2])*ss;
+		x=(M[1]+M[3])*ss;
+		z=(M[5]+M[7])*ss;
 	}
 	else {
-	    if (M[0 * 3 + 0] > M[1 * 3 + 1] && M[0 * 3 + 0] > M[2 * 3 + 2]) {
-			float s = 2.0f * (float)sqrt( 1.0f + M[0 * 3 + 0] - M[1 * 3 + 1] - M[2 * 3 + 2]);
-			qx = 0.25f * s;
-			qy = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qz = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qw = (M[1 * 3 + 2] - M[2 * 3 + 1]) / s;
-	    }
-	    else if (M[1 * 3 + 1] > M[2 * 3 + 2]) {
-			float s = 2.0f * (float)sqrt( 1.0f + M[1 * 3 + 1] - M[0 * 3 + 0] - M[2 * 3 + 2]);
-			qx = (M[0 * 3 + 1] + M[1 * 3 + 0]) / s;
-			qy = 0.25f * s;
-			qz = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qw = (M[0 * 3 + 2] - M[2 * 3 + 0]) / s;
-	    }
-	    else {
-			float s = 2.0f * (float)sqrt( 1.0f + M[2 * 3 + 2] - M[0 * 3 + 0] - M[1 * 3 + 1] );
-			qx = (M[0 * 3 + 2] + M[2 * 3 + 0]) / s;
-			qy = (M[1 * 3 + 2] + M[2 * 3 + 1]) / s;
-			qz = 0.25f * s;
-			qw = (M[0 * 3 + 1] - M[1 * 3 + 0]) / s;
-	    }
+		z=sqrtf((M[8]-M[0]-M[4]+1.0f)*0.25f);//z>=0.5
+		ss=0.25f/z;
+		w=(M[1]-M[3])*ss;
+		x=(M[6]+M[2])*ss;
+		y=(M[5]+M[7])*ss;
 	}
-
-	float s = sqrt(qw *qw + qx * qx + qy * qy + qz * qz);
-
-
-	return rotor(rotor_scalar_e1e2_e2e3_e3e1, qw / s, -qz / s, -qx / s, -qy / s);
+	e3ga::rotor R(rotor_scalar_e1e2_e2e3_e3e1,w,z,x,y);
+	return R;
 }
+
 
 
 void rotorToMatrixGeo(const rotor &R, float M[9]) {
@@ -131,8 +123,8 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-
 	const int NB = 1000000;
+	printf("Sample of size %d \n", NB);
 
 	// create rotors, convert them to matrices
 	std::vector<rotor> R(NB);
@@ -155,7 +147,7 @@ int main(int argc, char*argv[]) {
 	std::vector<float> Mg(NB*9);
 	double geometricRMT = u_timeGet();
 	for (int i = 0; i < NB; i++) {
-		rotorToMatrixClassic(R[i], &(Mg[i * 9]));
+		rotorToMatrixGeo(R[i], &(Mg[i * 9]));
 	}
 	geometricRMT = u_timeGet() - geometricRMT;
 
@@ -179,45 +171,48 @@ int main(int argc, char*argv[]) {
 	printf("Matrix -> Rotor time:\nClassic  : %f secs\nGeometric: %f secs\n", classicMRT, geometricMRT);
 
 
-	// check results (classic):
+    // check results (classic):
 	double classicError = 0.0;
+	double classicMaxError = 0;
 	for (int i = 0; i < NB; i++) {
 		rotor R2 = classicR[i];
-		float check1 = _Float(norm_e(R[i] * inverse(R2)));
-		float check2 = fabs(_Float(R[i] * inverse(R2)));
-		classicError += fabs(check1 - 1.0f) + fabs(check2 - 1.0f);
 
-		if ((fabs(check1 - 1.0f) > 1e-5) || (fabs(check2 - 1.0f) > 1e-5)) {
-			printf("Error in conversion (%e %e)!\n", check1 - 1.0f, check2 - 1.0f);
+		mv dR = R[i] * inverse(R2);
+		float check1 = _Float(norm_e(dR-1));
+		float check2 = _Float(norm_e(dR+1));
+		bool unitR=(check1<check2);
+		if(!unitR)check1=check2;
+ 		if(classicMaxError<check1)classicMaxError=check1;
+		classicError += check1;
+		if (check1 > 1e-5) {
+			printf("Error matrix->rotor (classic) in conversion (%e)!\n", check1);
 			printf("R  = %s\n", R[i].c_str_e());
-			if (_Float(R[i]) / _Float(R2) < 0.0)
-				R2 = -R2;
-			printf("R2 = %s\n", R2.c_str_e());
+			printf("R2 = %s\n", (unitR?R2:-R2).c_str_e());
 		}
-	}
+    }
 
-	// check results (geometric):
+    // check results (geometric):
 	double geometricError = 0.0;
+	double geometricMaxError = 0;
 	for (int i = 0; i < NB; i++) {
 		rotor R2 = geometricR[i];
 
-		float check1 = _Float(norm_e(R[i] * inverse(R2)));
-		float check2 = fabs(_Float(R[i] * inverse(R2)));
-		geometricError += fabs(check1 - 1.0f) + fabs(check2 - 1.0f);
-
-		if ((fabs(check1 - 1.0f) > 1e-5) || (fabs(check2 - 1.0f) > 1e-5)) {
-			printf("Error in conversion (%e %e)!\n", check1 - 1.0f, check2 - 1.0f);
+		mv dR = R[i] * inverse(R2);
+		float check1 = _Float(norm_e(dR-1));
+		float check2 = _Float(norm_e(dR+1));
+		bool unitR=(check1<check2);
+		if(!unitR)check1=check2;
+		if(geometricMaxError<check1)geometricMaxError=check1;
+		geometricError += check1;
+		if (check1 > 1e-5) {
+			printf("Error matrix->rotor (geometric) in conversion (%e)!\n", check1);
 			printf("R  = %s\n", R[i].c_str_e());
-			if (_Float(R[i]) / _Float(R2) < 0.0)
-				R2 = -R2;
-			printf("R2 = %s\n", R2.c_str_e());
+			printf("R2 = %s\n", (unitR?R2:-R2).c_str_e());
 		}
-	}
 
-	printf("Timing: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
+    }
 
-
-
+	printf("Mean relative error matrix->rotor: Classic: %.2e , Geometric: %.3e \n", classicError/NB, geometricError/NB);
+	printf("Max relative error matrix->rotor: Classic: %.2g , Geometric: %.3g \n", classicMaxError, geometricMaxError);
 	return 0;
 }
-

@@ -76,8 +76,8 @@ int main(int argc, char*argv[]) {
 	// profiling for Gaigen 2:
 	e3ga::g2Profiling::init();
 
-
 	const int NB = 1000000;
+	printf("Sample of size  %d \n", NB);
 
 	// create rotors, convert them to matrices
 	std::vector<rotor> R(NB);
@@ -124,45 +124,49 @@ int main(int argc, char*argv[]) {
 	printf("Matrix -> Rotor time:\nClassic  : %f secs\nGeometric: %f secs\n", classicMRT, geometricMRT);
 
 
-	// check results (classic):
+    // check results (classic):
 	double classicError = 0.0;
+	double classicMaxError = 0;
 	for (int i = 0; i < NB; i++) {
 		rotor R2 = classicR[i];
-		float check1 = _Float(norm_e(R[i] * inverse(R2)));
-		float check2 = fabs(_Float(R[i] * inverse(R2)));
-		classicError += fabs(check1 - 1.0f) + fabs(check2 - 1.0f);
 
-		if ((fabs(check1 - 1.0f) > 1e-5) || (fabs(check2 - 1.0f) > 1e-5)) {
-			printf("Error in conversion (%e %e)!\n", check1 - 1.0f, check2 - 1.0f);
+		mv dR = R[i] * inverse(R2);
+		float check1 = _Float(norm_e(dR-1));
+		float check2 = _Float(norm_e(dR+1));
+		bool unitR=(check1<check2);
+		if(!unitR)check1=check2;
+ 		if(classicMaxError<check1)classicMaxError=check1;
+		classicError += check1;
+		if (check1 > 1e-5) {
+			printf("Error matrix->rotor (classic) in conversion (%e)!\n", check1);
 			printf("R  = %s\n", R[i].c_str_e());
-			if (_Float(R[i]) / _Float(R2) < 0.0)
-				R2 = -R2;
-			printf("R2 = %s\n", R2.c_str_e());
+			printf("R2 = %s\n", (unitR?R2:-R2).c_str_e());
 		}
-	}
+    }
 
-	// check results (geometric):
+    // check results (geometric):
 	double geometricError = 0.0;
+	double geometricMaxError = 0;
 	for (int i = 0; i < NB; i++) {
 		rotor R2 = geometricR[i];
 
-		float check1 = _Float(norm_e(R[i] * inverse(R2)));
-		float check2 = fabs(_Float(R[i] * inverse(R2)));
-		geometricError += fabs(check1 - 1.0f) + fabs(check2 - 1.0f);
-
-		if ((fabs(check1 - 1.0f) > 1e-5) || (fabs(check2 - 1.0f) > 1e-5)) {
-			printf("Error in conversion (%e %e)!\n", check1 - 1.0f, check2 - 1.0f);
+		mv dR = R[i] * inverse(R2);
+		float check1 = _Float(norm_e(dR-1));
+		float check2 = _Float(norm_e(dR+1));
+		bool unitR=(check1<check2);
+		if(!unitR)check1=check2;
+		if(geometricMaxError<check1)geometricMaxError=check1;
+		geometricError += check1;
+		if (check1 > 1e-5) {
+			printf("Error matrix->rotor (classic) in conversion (%e)!\n", check1);
 			printf("R  = %s\n", R[i].c_str_e());
-			if (_Float(R[i]) / _Float(R2) < 0.0)
-				R2 = -R2;
-			printf("R2 = %s\n", R2.c_str_e());
+			printf("R2 = %s\n", (unitR?R2:-R2).c_str_e());
 		}
-	}
 
-	printf("Timing: Classic: %f secs, Geometric: %f secs\n", classicError, geometricError);
+    }
 
-
-
+	printf("Mean relative error matrix->rotor: Classic: %.2e , Geometric: %.3e \n", classicError/NB, geometricError/NB);
+	printf("Max relative error matrix->rotor: Classic: %.2g , Geometric: %.3g \n", classicMaxError, geometricMaxError);
 	return 0;
 }
 

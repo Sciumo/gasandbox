@@ -80,7 +80,8 @@ int main(int argc, char*argv[]) {
 	printf("Going to perform %d iterations . . .\n", NB);
 
 	int nbErrors = 0;
-	float MAX_AC = 0.0;
+	float check0 = 0;
+	
 	for (int i = 0; i < NB; i++) {
 		if (i && ((i % (NB/10)) == 0))
 			printf("Performed %d iterations . . .\n", i);
@@ -95,27 +96,24 @@ int main(int argc, char*argv[]) {
 		rotorToMatrixGeo(R, M);
 		rotor R2 = matrixToRotorGeo(M);
 
-		float ACcheck1 = fabs(_Float(norm_e(R * inverse(R2) + 1)));
-		float ACcheck2 = fabs(_Float(norm_e(R * inverse(R2) - 1)));
-		float AC = (ACcheck1 < ACcheck2) ? ACcheck1 : ACcheck2;
-		printf("%d: %e\n", i,  AC);
-		if (AC > MAX_AC) MAX_AC = AC;
+		// check results: (error check improved by Allan Cortzen)
+		mv dR = R * inverse(R2);
+		float check1 = _Float(norm_e(dR-1));
+		float check2 = _Float(norm_e(dR+1));
+		if(check1 > check2) check1 = check2;
+ 		if(check0 < check1) check0 = check1;
 
-		
-
-		// check results:
-		float check1 = _Float(norm_e(R * inverse(R2)));
-		float check2 = fabs(_Float(R * inverse(R2)));
-		if ((fabs(check1 - 1.0f) > 1e-5) || (fabs(check2 - 1.0f) > 1e-5)) {
+		if (check1 > 1e-5) {
 			nbErrors++;
-			printf("Error in conversion (%e %e)!\n", check1 - 1.0f, check2 - 1.0f);
+			printf("Iteration %d: error in conversion (%e)!\n", i, check1);
 			printf("R = %s\n", R.c_str_e());
 			printf("R2 = %s\n", R2.c_str_e());
 		}
+
 	}
+	printf("Sample of size  %d  has max relative error  %e !\n", NB, check0);
 
 	printf("Performed %d iterations, %d errors\n", NB, nbErrors);
-	printf("MAX_AC: %e\n", MAX_AC);
 
 
 	return 0;

@@ -1,5 +1,9 @@
 20080324 Added missing chap7ex5.vcproj to both vs.net and vs2005 directories
 20080324 Added printf() statements and comments to chap7ex3.cpp
+20080324 Improved rotorFromVectorToVector() (e3ga_util.cpp) as suggested by Allan Cortzen
+20080324 Improved solution to chap7ex4 as suggested by Allan Cortzen
+20080324 Improved main.cpp of chap7ex4 as suggested by Allan Cortzen
+
 
 20071220 Added the option to download precompiled binary libraries for VS2005
          Added some #pragmas to silence some Visual Studio warnings. (4996, 4244, 4267, 4311)

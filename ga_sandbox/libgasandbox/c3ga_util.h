@@ -36,8 +36,6 @@ inline e3ga::vector vectorToE3GA(const c3ga::vectorE3GA &v) {
 	return e3ga::vector(e3ga::vector_e1_e2_e3, v.getC(c3ga::vectorE3GA_e1_e2_e3));
 }
 
-//rotor rotorFromVectorToVector(const vector &v1, const vector &v2);
-//rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &altPlane);
 mv exp(const mv &x, int order = 9);
 
 /** special exp() for Euclidean bivectors (rotation) */

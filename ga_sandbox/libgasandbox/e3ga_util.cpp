@@ -23,6 +23,41 @@
 
 namespace e3ga {
 
+// improved rotorFromVectorToVector due to Allen Cortzen
+rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
+	if (_Float(scp(v1, v2)) < -0.9f) {
+		// "near" 180 degree rotation: 
+		//v1 factor in returning blade regardless of any loss of precision
+		vector w0 = _vector( v1 << (v1^v2) );
+		double n2 = _Float(norm_e2(w0));
+		if (n2 == 0.0f){
+	    	vector w1 = _vector( v1 << (v1^e1));
+		    vector w2 = _vector( v1 << (v1^e2));
+			if(_Float(norm_e2(w1)) > _Float(norm_e2(w2))) return _rotor(v1^unit_e(w1));
+		    else return _rotor(v1^unit_e(w2));
+		}
+		//v1 replaced with -v1 and additional 180 degree rotation: 
+		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f - _Float(v2 << v1)));		
+		return _rotor((1.0 - v2 * v1) * (1.0f / s)*(v1^unit_e(w0)));
+	}
+	mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
+	return _rotor((1.0 + v2 * v1) * (1.0f / s));
+}
+
+// improved rotorFromVectorToVector due to Allen Cortzen
+rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &rotPlane) {
+	if (_Float(scp(v1, v2)) < -0.9f) {
+		//v1 replaced with -v1 and additional 180 degree rotation: 
+		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f - _Float(v2 << v1)));
+		return _rotor((1.0 - v2 * v1) * (1.0f / s)*unit_e(rotPlane));
+	}
+	else {
+		mv::Float s = (mv::Float)sqrt(2.0 * (1.0f + _Float(v2 << v1)));
+		return _rotor((1.0 + v2 * v1) * (1.0f / s));
+	}
+}
+/*
+// old rotorFromVectorToVector()
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
 	if (_Float(scp(v1, v2)) < -0.99999f) {
 		// (near) 180 degree rotation:
@@ -39,6 +74,7 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2) {
 	}
 }
 
+// old rotorFromVectorToVector()
 rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector &rotPlane) {
 	if (_Float(scp(v1, v2)) < -0.99999f) {
 		return _rotor(unit_e(rotPlane));
@@ -48,7 +84,7 @@ rotor rotorFromVectorToVector(const vector &v1, const vector &v2, const bivector
 		return _rotor((1.0 + v2 * v1) * (1.0f / s));
 	}
 }
-
+*/
 void rotorToMatrix(const rotor &R, mv::Float M[9]) {
 	mv::Float qw = _Float(R);
 	mv::Float qx = -R.e2e3();
