@@ -1,3 +1,5 @@
+20080324 Added warning for Intel graphics chipsets to all examples
+
 20080324 `Fixed' precision problem in chap15/ex1/chap15ex1.cpp
 		The line: draw(g_primitives[i], (i > 0) ? 1e-5 : 1e-3);
 

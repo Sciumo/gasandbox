@@ -84,6 +84,8 @@ void computeFractal(const e2ga::vector &translation, const e2ga::vector &c, mv::
 }
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// setup projection & transform 
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);

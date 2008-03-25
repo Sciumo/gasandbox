@@ -81,6 +81,8 @@ void getGLUTmodel2D(const std::string &modelName);
 // *!*HTML_TAG*!* display
 // SPOILER WARNING: below is the solution to Chapter 2, exercise 2.
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

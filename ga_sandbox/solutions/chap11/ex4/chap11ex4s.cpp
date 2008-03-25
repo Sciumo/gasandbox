@@ -101,6 +101,8 @@ const int IMAGE_PLANE_PT_IDX = 1;
 void getGLUTmodel3D(const std::string &modelName);
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// get model, if required:
 	if (g_initModelRequired) {
 		g_initModelRequired = false;
