@@ -10,7 +10,7 @@ AC_PROG_RANLIB
 GLUT_LIBS="-lglut"
 AC_SUBST(GLUT_LIBS)
 AQSIS_CHECK_FLTK
-AC_CHECK_FILE(/usr/local/lib/libantlr.a, ANTLR_LIBS="/usr/local/lib/libantlr.a", AC_CHECK_FILE(/usr/lib/libantlr.a, ANTLR_LIBS="/usr/lib/libantlr.a", -lantlr))
+AC_CHECK_FILE(/usr/local/lib/libantlr.a, ANTLR_LIBS="/usr/local/lib/libantlr.a", AC_CHECK_FILE(/usr/lib/libantlr.a, ANTLR_LIBS="/usr/lib/libantlr.a", AC_CHECK_FILE(/opt/local/lib/libantlr.a, ANTLR_LIBS="/opt/local/lib/libantlr.a", -lantlr)))
 AC_SUBST(ANTLR_LIBS)
 
 AC_OUTPUT(
