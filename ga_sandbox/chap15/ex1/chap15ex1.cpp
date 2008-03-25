@@ -128,7 +128,7 @@ void display() {
 			glColor4fm(1.0f, 0.0f, 0.0f, 0.5f);
 		}
 
-		draw(g_primitives[i], 1e-5);
+		draw(g_primitives[i], (i > 0) ? 1e-5 : 1e-3);
 	}
 	glDisable(GL_BLEND); // blending off
 	glDepthMask(GL_TRUE); // enable depth buffer writes

@@ -1,3 +1,18 @@
+20080324 `Fixed' precision problem in chap15/ex1/chap15ex1.cpp
+		The line: draw(g_primitives[i], (i > 0) ? 1e-5 : 1e-3);
+
+20080324 Fixed chap14/ex4/chap14ex4.cpp
+		void menuCallback(int value) { 
+			if (value >= 0) // Fixed this line
+			// . . . 
+		}
+20080324 Added a comment to chap12/ex3/reconstruct.cpp
+		h3ga::vector rD2 = _vector(D1 << Ii); // actually computes minus reciprocal of D2
+20080324 Fixed code in chap12ex1.cpp point, in the for lines following the comment
+			// compute images of basis vectors:
+		The 'bug' in the old code had no effect though as the (T ^ (e0 << (R * X * Ri))) part is always 0
+		for e1, e2 ,e3 and for e0, the rotor R does not affect it.
+20080324 Fixed code comment in interpolateX() in chap10ex1.cpp, chap13ex4.cpp and chap16ex3.cpp
 20080324 Added missing chap7ex5.vcproj to both vs.net and vs2005 directories
 20080324 Added printf() statements and comments to chap7ex3.cpp
 20080324 Improved rotorFromVectorToVector() (e3ga_util.cpp) as suggested by Allan Cortzen

@@ -272,7 +272,7 @@ void display() {
 		glDisable(GL_LIGHTING);
 		glColor3f(0.0f, 0.0f, 0.0f);
 		void *font = GLUT_BITMAP_HELVETICA_12;
-		renderBitmapString(20, 60, font, "The four red points represent the camera and span the imaging plane.");
+		renderBitmapString(20, 60, font, "Three red points span the imaging plane and the fourth represents the camera.");
 		renderBitmapString(20, 40, font, "Use the left mouse button to drag the red points, and to orbit the scene.");
 		renderBitmapString(20, 20, font, "Use the other mouse buttons access the popup menu (to select a different model, and to toggle rays on/off).");
 	}

@@ -125,10 +125,10 @@ void display() {
 		rotor Ri = _rotor(inverse(R));
 
 		// compute images of basis vectors:
-		point imageOfE1 = _point(R * e1 * Ri + (T ^ (e0 << e1)));
-		point imageOfE2 = _point(R * e2 * Ri + (T ^ (e0 << e2)));
-		point imageOfE3 = _point(R * e3 * Ri + (T ^ (e0 << e3)));
-		point imageOfE0 = _point(R * e0 * Ri + (T ^ (e0 << e0)));
+		point imageOfE1 = _point(R * e1 * Ri + (T ^ (e0 << (R * e1 * Ri))));
+		point imageOfE2 = _point(R * e2 * Ri + (T ^ (e0 << (R * e2 * Ri))));
+		point imageOfE3 = _point(R * e3 * Ri + (T ^ (e0 << (R * e3 * Ri))));
+		point imageOfE0 = _point(R * e0 * Ri + (T ^ (e0 << (R * e0 * Ri))));
 
 		// create matrix representation:
 		omPoint M(imageOfE1, imageOfE2, imageOfE3, imageOfE0);

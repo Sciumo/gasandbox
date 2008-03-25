@@ -42,7 +42,7 @@ bool closestPointsOnCrossingLines(
 
 	// compute reciprocals:
 	h3ga::vector rD1 = _vector(D2 << Ii);
-	h3ga::vector rD2 = _vector(D1 << Ii);
+	h3ga::vector rD2 = _vector(D1 << Ii); // actually computes minus reciprocal of D2
 
 	// solution:
 	d1 = _Float(rD1 << dif);

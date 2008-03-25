@@ -73,7 +73,7 @@ int g_mouseMode = MODE_DRAG;
 
 // what point to drag (or -1 for none)
 int g_dragPoint = -1;
-float g_dragDistance = 12.0f;
+float g_dragDistance = 4.0f;
 
 // rotation of the model
 rotor g_modelRotor(_rotor(1.0f));
@@ -283,7 +283,9 @@ void MouseButton(int button, int state, int x, int y) {
 		TRversor V = _TRversor(matrix4x4ToVersorPS(modelviewMatrix, transpose));
 
 		// create a new point at g_dragDistance from camera
-		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(g_dragDistance, g_prevMousePos) - e3 * g_dragDistance)));
+		float dis = g_dragDistance;
+		if (dis > 20.0) dis = 20.0;
+		point pt = _point(c3gaPoint(_vectorE3GA(vectorAtDepth(dis, g_prevMousePos) - e3 * dis)));
 
 		// use OpenGL transform to create a point at the right location (`under' the mouse)
 		pt = inverse(V) * pt * V;
@@ -339,8 +341,9 @@ void PassiveMouseMotion(int x, int y) {
 }
 
 void menuCallback(int value) {
-	if (value > 0)
+	if (value >= 0) {
 		g_mouseMode = value;
+	}
 	else if (value == FLATTEN) {
 		// project all onto e3:
 		for (unsigned int i = 0; i < g_points.size(); i++) {
