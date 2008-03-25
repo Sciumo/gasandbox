@@ -93,6 +93,8 @@ TRSversor interpolateTRSversor(const TRSversor &src, const TRSversor &dst, mv::F
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	double currentTime = u_timeGet();
 
 	// check if we should get new random dest

@@ -140,6 +140,8 @@ void recomputeOps() {
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 
 
 	// setup projection & transform for the vectors:

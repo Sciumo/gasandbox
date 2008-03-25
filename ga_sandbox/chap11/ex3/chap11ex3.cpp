@@ -70,6 +70,8 @@ normalizedPoint g_points[NB_POINTS] = {
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// copy points to local array:
 	normalizedPoint pt[NB_POINTS];
 	for (int i = 0; i < NB_POINTS; i++) {

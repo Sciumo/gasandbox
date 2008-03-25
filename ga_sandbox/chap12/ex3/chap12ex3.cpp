@@ -91,6 +91,8 @@ void drawCamera();
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	int frameIdx = (int)g_currentFrameIdx;
 	if (frameIdx >= (int)g_opticalCaptureData.m_cameraData[0].m_2Dmarkers.size())
 		frameIdx = 0;

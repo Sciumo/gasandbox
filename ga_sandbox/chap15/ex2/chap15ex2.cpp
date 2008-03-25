@@ -58,6 +58,8 @@ normalizedPoint g_points[NB_POINTS] = {
 };
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

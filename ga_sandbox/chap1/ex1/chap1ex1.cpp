@@ -77,6 +77,8 @@ float g_dragDistance = -1.0f;
 
 // *!*HTML_TAG*!* display
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);

@@ -27,6 +27,9 @@
 #include "h3ga.h"
 #include "c3ga.h"
 
+
+void doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 /**
 Todo: use GLUproject() instead!
 (didn't know it existed...)

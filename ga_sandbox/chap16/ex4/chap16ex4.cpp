@@ -62,6 +62,8 @@ const int CIRCLE_NAME = 1;
 const int SPHERE_NAME = 2;
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	double currentTime = u_timeGet();
 
 	// setup projection & transform for the vectors:

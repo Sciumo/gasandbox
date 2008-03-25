@@ -70,6 +70,8 @@ e3ga::vector g_recipVectors[g_nbVectors];
 
 // *!*HTML_TAG*!* display
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// Update the reciprocal vectors
 	// The reciprocalFrame() function is in libgasandbox/e3ga_util.cpp
 	reciprocalFrame(g_vectors, g_recipVectors, g_nbVectors);

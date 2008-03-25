@@ -75,6 +75,8 @@ e3ga::vector reflectVector(const e3ga::vector &a, const e3ga::vector &x) {
 }
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 
 
 // *!*HTML_TAG*!* rotate

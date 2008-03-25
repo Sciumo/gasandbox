@@ -18,6 +18,21 @@
 #include "gl_util.h"
 #include <GL/glut.h>
 
+void doIntelWarning() {
+	static bool warned = false;
+	if (!warned) {
+		warned = true;
+		const GLubyte *vendor = glGetString(GL_VENDOR);
+		const GLubyte *renderer = glGetString(GL_RENDERER);
+		if (std::string((const char*)vendor).find("ntel") != std::string.npos) {
+			printf("General warning: OpenGL picking seems to be broken on integrated Intel graphics chipset.\n");
+			printf("At least on the 945 chipset which I tested (on Windows XP).\n");
+			printf("This computer seems to have %s:%s\n", vendor, renderer);
+			printf("This may affect dragging, creation and orbitting operations.\n");
+		}
+	}
+}
+
 
 void viewportCoordinates(const GLdouble ptWorld[3], GLdouble ptViewport[2], 
 	const GLdouble *pjMatrix /* = NULL */, const GLdouble *mvMatrix/* = NULL */,

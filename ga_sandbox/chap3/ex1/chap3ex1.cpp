@@ -83,6 +83,8 @@ void computeOrthoVectors(const e3ga::vector nonOrtho[3], e3ga::vector ortho[3]) 
 
 // *!*HTML_TAG*!* display
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// update the orthonormal vectors
 	computeOrthoVectors(g_vectors, g_orthoVectors);
 

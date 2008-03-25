@@ -286,6 +286,8 @@ DelaunayTriangulation computeDelaunayTriangulation(const std::vector<normalizedP
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// compute the triangulation:
 	DelaunayTriangulation DT = computeDelaunayTriangulation(g_points);
 

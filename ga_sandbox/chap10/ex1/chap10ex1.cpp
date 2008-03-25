@@ -98,6 +98,8 @@ rotor interpolateRotor(const rotor &src, const rotor &dst, mv::Float alpha) {
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	double currentTime = u_timeGet();
 
 	// check if we should get new random dest

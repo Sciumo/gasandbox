@@ -102,6 +102,8 @@ bool isSelected(int ptIdx) {
 vectorE3GA vectorAtDepth(double depth, const vectorE2GA &v2d);
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// setup projection & transform for the vectors:
 	glViewport(0, 0, g_viewportWidth, g_viewportHeight);
 	glMatrixMode(GL_MODELVIEW);

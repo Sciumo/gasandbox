@@ -70,6 +70,8 @@ e3ga::vector crossProduct(const e3ga::vector &a, const e3ga::vector &b) {
 }
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// compute the 3rd vector as g_vectors[0] X g_vectors[1]
 	g_vectors[2] = crossProduct(g_vectors[0], g_vectors[1]);
 

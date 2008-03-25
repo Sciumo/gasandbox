@@ -90,6 +90,8 @@ void GramSchmidtGA(const e3ga::vector vIn[], e3ga::vector vOut[], int nbVectors)
 }
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// update the orthogonal vectors
 	try {
 		GramSchmidtGA(g_vectors, g_orthoVectors, 3);

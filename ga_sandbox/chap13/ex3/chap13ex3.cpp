@@ -87,6 +87,8 @@ void getGLUTmodel3D(const std::string &modelName);
 
 // todo: add normals & lighting?
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	// get model, if required:
 	if (g_initModelRequired) {
 		g_initModelRequired = false;

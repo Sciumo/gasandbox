@@ -140,6 +140,8 @@ dualSphere fitSphere(const std::vector<point> &points) {
 
 
 void display() {
+	doIntelWarning(); // warn for possible problems with pciking on Intel graphics chipsets
+
 	 dualSphere DS = fitSphere(g_points);
 
 	// setup projection & transform for the vectors:
