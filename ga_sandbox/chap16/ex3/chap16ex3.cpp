@@ -86,7 +86,7 @@ void initRandomDest() {
 
 // *!*HTML_TAG*!* interpolate
 TRSversor interpolateTRSversor(const TRSversor &src, const TRSversor &dst, mv::Float alpha) {
-	// return src * exp(alpha * log(dst * inverse(src)));
+	// return src * exp(alpha * log(inverse(src) * dst));
 	return _TRSversor(src * exp(_TRSversor(alpha * log(_TRSversor(inverse(src) * dst)))));
 }
 

@@ -84,7 +84,7 @@ void initRandomDest() {
 
 // interpolate between 'src' and 'dst', as determined by 'alpha'
 TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
-	// return src * exp(alpha * log(dst * inverse(src)));
+	// return src * exp(alpha * log(inverse(src) * dst));
 	return _TRversor(src * exp(_dualLine(alpha * log(_TRversor(inverse(src) * dst)))));
 }
 
