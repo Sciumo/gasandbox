@@ -26,6 +26,7 @@
 #include <vector>
 
 #include <libgasandbox/e2ga.h>
+#include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
 
 using namespace e2ga;
