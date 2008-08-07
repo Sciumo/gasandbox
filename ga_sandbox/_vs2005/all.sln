@@ -22,11 +22,36 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex2", "chap2ex2.vcproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap12ex3", "chap12ex3.vcproj", "{B155A28C-2BDA-461E-932B-69E60B0B28ED}"
 	ProjectSection(ProjectDependencies) = postProject
-		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
 		{DCD06239-C781-456B-B78B-92CC6F497175} = {DCD06239-C781-456B-B78B-92CC6F497175}
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandboxparse", "libgasandboxparse.vcproj", "{DCD06239-C781-456B-B78B-92CC6F497175}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex3", "chap2ex3.vcproj", "{3FAE1084-BB20-439F-B88B-23168746C924}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex1", "chap3ex1.vcproj", "{BE639B02-7AD5-4288-808F-20E77CDDBC23}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex2", "chap3ex2.vcproj", "{E00BD261-C43D-4FBF-A5F9-D9079CDF8134}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex3", "chap3ex3.vcproj", "{6C81B72B-4D03-4C87-A8F7-39B740F5E090}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap3ex4", "chap3ex4.vcproj", "{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +87,26 @@ Global
 		{DCD06239-C781-456B-B78B-92CC6F497175}.Debug|Win32.Build.0 = Debug|Win32
 		{DCD06239-C781-456B-B78B-92CC6F497175}.Release|Win32.ActiveCfg = Release|Win32
 		{DCD06239-C781-456B-B78B-92CC6F497175}.Release|Win32.Build.0 = Release|Win32
+		{3FAE1084-BB20-439F-B88B-23168746C924}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3FAE1084-BB20-439F-B88B-23168746C924}.Debug|Win32.Build.0 = Debug|Win32
+		{3FAE1084-BB20-439F-B88B-23168746C924}.Release|Win32.ActiveCfg = Release|Win32
+		{3FAE1084-BB20-439F-B88B-23168746C924}.Release|Win32.Build.0 = Release|Win32
+		{BE639B02-7AD5-4288-808F-20E77CDDBC23}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE639B02-7AD5-4288-808F-20E77CDDBC23}.Debug|Win32.Build.0 = Debug|Win32
+		{BE639B02-7AD5-4288-808F-20E77CDDBC23}.Release|Win32.ActiveCfg = Release|Win32
+		{BE639B02-7AD5-4288-808F-20E77CDDBC23}.Release|Win32.Build.0 = Release|Win32
+		{E00BD261-C43D-4FBF-A5F9-D9079CDF8134}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E00BD261-C43D-4FBF-A5F9-D9079CDF8134}.Debug|Win32.Build.0 = Debug|Win32
+		{E00BD261-C43D-4FBF-A5F9-D9079CDF8134}.Release|Win32.ActiveCfg = Release|Win32
+		{E00BD261-C43D-4FBF-A5F9-D9079CDF8134}.Release|Win32.Build.0 = Release|Win32
+		{6C81B72B-4D03-4C87-A8F7-39B740F5E090}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6C81B72B-4D03-4C87-A8F7-39B740F5E090}.Debug|Win32.Build.0 = Debug|Win32
+		{6C81B72B-4D03-4C87-A8F7-39B740F5E090}.Release|Win32.ActiveCfg = Release|Win32
+		{6C81B72B-4D03-4C87-A8F7-39B740F5E090}.Release|Win32.Build.0 = Release|Win32
+		{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}.Debug|Win32.Build.0 = Debug|Win32
+		{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}.Release|Win32.ActiveCfg = Release|Win32
+		{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
