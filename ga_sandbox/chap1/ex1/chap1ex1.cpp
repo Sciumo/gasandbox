@@ -138,7 +138,7 @@ void display() {
 		line L = _line(unit_r(l1 ^ l2 ^ ni));
 		circle C = _circle(c1 ^ c2 ^ c3);
 		dualPlane p = _dualPlane(p1 << (e2^ni));
-//		sphere p = _sphere(p1 - 5.0f * ni); // use this one to use a sphere instead of a plane
+//		sphere p = _sphere(p1 - 5.0f * ni); // use this line to create a sphere instead of a plane
 
 		// draw line (red)
 		glColor3fm(1.0f, 0.0f, 0.0f);

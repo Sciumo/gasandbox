@@ -127,7 +127,7 @@ void display() {
 
 	if (false) {
 		// use this type of perspective projection to set OpenGL projection:
-		// allow toggle for this one?
+		// implement a UI menu toggle for this one?
 		h3ga::point camPt = h3ga::_point(h3ga::e0);
 		h3ga::point screenPt = h3ga::_point(h3ga::e3 + h3ga::e0);
 		h3ga::plane screenPlane = h3ga::_plane(screenPt ^ h3ga::e1 ^ h3ga::e2);
