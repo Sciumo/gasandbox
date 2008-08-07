@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="chap2ex2"
-	ProjectGUID="{C56A18D9-1CEA-406E-BC78-EB00F3919393}"
-	RootNamespace="chap2ex2"
+	Name="chap12ex3"
+	ProjectGUID="{B155A28C-2BDA-461E-932B-69E60B0B28ED}"
+	RootNamespace="chap12ex3"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -177,7 +177,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\chap2\ex2\chap2ex2.cpp"
+				RelativePath="..\chap12\ex3\chap12ex3.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\chap12\ex3\readopticaldata.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\chap12\ex3\reconstruct.cpp"
 				>
 			</File>
 		</Filter>
@@ -186,6 +194,14 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath="..\chap12\ex3\opticaldata.h"
+				>
+			</File>
+			<File
+				RelativePath="..\chap12\ex3\readopticaldata.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
