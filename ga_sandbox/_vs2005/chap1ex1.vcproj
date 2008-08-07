@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_debug_link.vsprops"
+			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_debug_link.vsprops;.\sandbox_default_debug.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -44,7 +44,6 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -96,7 +95,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops"
+			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_release.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>

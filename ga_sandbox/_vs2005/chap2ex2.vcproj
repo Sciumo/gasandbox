@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops"
+			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_debug.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -96,7 +96,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops"
+			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_release.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
