@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="libgasandbox"
-	ProjectGUID="{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}"
-	RootNamespace="libgasandbox"
+	Name="libgasandboxparse"
+	ProjectGUID="{DCD06239-C781-456B-B78B-92CC6F497175}"
+	RootNamespace="libgasandboxparse"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -149,111 +149,63 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\libgasandbox\c2ga.cpp"
+				RelativePath="..\libgasandbox\c2ga_mv_lexer.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_draw.cpp"
+				RelativePath="..\libgasandbox\c2ga_mv_parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_util.cpp"
+				RelativePath="..\libgasandbox\c2ga_parse.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2gatoc3ga.cpp"
+				RelativePath="..\libgasandbox\c3ga_mv_lexer.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga.cpp"
+				RelativePath="..\libgasandbox\c3ga_mv_parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_draw.cpp"
+				RelativePath="..\libgasandbox\c3ga_parse.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_util.cpp"
+				RelativePath="..\libgasandbox\e2ga_mv_lexer.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\draw.cpp"
+				RelativePath="..\libgasandbox\e2ga_mv_parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga.cpp"
+				RelativePath="..\libgasandbox\e2ga_parse.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_draw.cpp"
+				RelativePath="..\libgasandbox\e3ga_mv_lexer.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga.cpp"
+				RelativePath="..\libgasandbox\e3ga_mv_parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_draw.cpp"
+				RelativePath="..\libgasandbox\e3ga_parse.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_util.cpp"
+				RelativePath="..\libgasandbox\h3ga_mv_lexer.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\geosphere.cpp"
+				RelativePath="..\libgasandbox\h3ga_mv_parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gl_util.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\glut_util.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\h3ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\h3ga_draw.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\h3ga_fast_factor_meet_join.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\h3ga_util.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze_c2ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze_c3ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze_e2ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze_e3ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\mv_analyze_h3ga.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\libgasandbox\timing.cpp"
+				RelativePath="..\libgasandbox\h3ga_parse.cpp"
 				>
 			</File>
 		</Filter>
@@ -263,103 +215,103 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\libgasandbox\c2ga.h"
+				RelativePath="..\libgasandbox\c2ga_mv_lexer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_draw.h"
+				RelativePath="..\libgasandbox\c2ga_mv_lexerTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2ga_util.h"
+				RelativePath="..\libgasandbox\c2ga_mv_parser.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c2gatoc3ga.h"
+				RelativePath="..\libgasandbox\c2ga_mv_parserTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga.h"
+				RelativePath="..\libgasandbox\c2ga_parse.h"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_draw.h"
+				RelativePath="..\libgasandbox\c3ga_mv_lexer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\c3ga_util.h"
+				RelativePath="..\libgasandbox\c3ga_mv_lexerTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\common.h"
+				RelativePath="..\libgasandbox\c3ga_mv_parser.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\draw.h"
+				RelativePath="..\libgasandbox\c3ga_mv_parserTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga.h"
+				RelativePath="..\libgasandbox\c3ga_parse.h"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_draw.h"
+				RelativePath="..\libgasandbox\e2ga_mv_lexer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e2ga_util.h"
+				RelativePath="..\libgasandbox\e2ga_mv_lexerTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga.h"
+				RelativePath="..\libgasandbox\e2ga_mv_parser.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_draw.h"
+				RelativePath="..\libgasandbox\e2ga_mv_parserTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\e3ga_util.h"
+				RelativePath="..\libgasandbox\e2ga_parse.h"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gabits.h"
+				RelativePath="..\libgasandbox\e3ga_mv_lexer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\geosphere.h"
+				RelativePath="..\libgasandbox\e3ga_mv_lexerTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\gl_util.h"
+				RelativePath="..\libgasandbox\e3ga_mv_parser.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\glut_util.h"
+				RelativePath="..\libgasandbox\e3ga_mv_parserTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga.h"
+				RelativePath="..\libgasandbox\e3ga_parse.h"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_draw.h"
+				RelativePath="..\libgasandbox\h3ga_mv_lexer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_util.h"
+				RelativePath="..\libgasandbox\h3ga_mv_lexerTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mv_analyze.h"
+				RelativePath="..\libgasandbox\h3ga_mv_parser.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\mvtypebase.h"
+				RelativePath="..\libgasandbox\h3ga_mv_parserTokenTypes.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\timing.h"
+				RelativePath="..\libgasandbox\h3ga_parse.h"
 				>
 			</File>
 		</Filter>
@@ -369,6 +321,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\ReadMe.txt"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
