@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="chap3ex4"
-	ProjectGUID="{C7B3140C-8D62-4DCE-9AD4-EF11E0C79952}"
-	RootNamespace="chap3ex4"
+	Name="chap4ex1"
+	ProjectGUID="{F8005B84-FA6F-4F29-8A47-6C5C0B1B7F37}"
+	RootNamespace="chap4ex1"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_debug.vsprops"
+			InheritedPropertySheets=".\sandbox_default_debug.vsprops;.\sandbox_defaults.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -44,6 +44,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -95,7 +96,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_release.vsprops"
+			InheritedPropertySheets=".\sandbox_default_release.vsprops;.\sandbox_defaults.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="0"
 			>
@@ -175,7 +176,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\chap3\ex4\chap3ex4.cpp"
+				RelativePath="..\chap4\ex1\chap4ex1.cpp"
 				>
 			</File>
 		</Filter>
