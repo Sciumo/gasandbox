@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <libgasandbox/draw.h>
 #include <libgasandbox/e3ga.h>
 #include <libgasandbox/e3ga_draw.h>
 #include <libgasandbox/e3ga_util.h>
@@ -31,7 +32,7 @@
 #include <libgasandbox/timing.h>
 
 using namespace e3ga;
-using namespace mv_draw;
+//using namespace mv_draw;
 
 const char *WINDOW_TITLE = "Geometric Algebra, Chapter 4, Example 1: Projection";
 
@@ -115,29 +116,29 @@ void display() {
 	// draw vector 1 ^ vector 2
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 	glColor3fm(0.7f, 0.7f, 0.7f);
-	g_drawState.pushDrawModeOff(OD_ORIENTATION);
-	draw(B);
-	g_drawState.popDrawMode();
+	mv_draw::g_drawState.pushDrawModeOff(OD_ORIENTATION);
+	mv_draw::draw(B);
+	mv_draw::g_drawState.popDrawMode();
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);
 	glColor3fm(1.0f, 0.0f, 0.0f);
-	draw(g_vectors[0]);
+	mv_draw::draw(g_vectors[0]);
 
 	// draw vector 2
 	if (GLpick::g_pickActive) glLoadName(2);
 	glColor3fm(0.0f, 1.0f, 0.0f);
-	draw(g_vectors[1]);
+	mv_draw::draw(g_vectors[1]);
 
 	// draw vector 3
 	if (GLpick::g_pickActive) glLoadName(3);
 	glColor3fm(0.0f, 0.0f, 1.0f);
-	draw(g_vectors[2]);
+	mv_draw::draw(g_vectors[2]);
 
 	// draw projection of vector 3 onto v
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 	glColor3fm(0.5f, 0.5f, 0.5f);
-	draw(P);
+	mv_draw::draw(P);
 
 	glDisable(GL_LIGHTING);
 	glEnable(GL_LINE_STIPPLE);

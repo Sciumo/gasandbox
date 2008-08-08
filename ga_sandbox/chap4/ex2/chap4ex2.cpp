@@ -127,9 +127,9 @@ void display() {
 	// draw vector 1 ^ vector 2
 	if (GLpick::g_pickActive) glLoadName((GLuint)-1);
 	glColor3fm(0.5f, 0.5f, 0.5f);
-	g_drawState.pushDrawModeOff(OD_ORIENTATION);
+	mv_draw::g_drawState.pushDrawModeOff(OD_ORIENTATION);
 	draw(B);
-	g_drawState.popDrawMode();
+	mv_draw::g_drawState.popDrawMode();
 
 	// draw vector 1
 	if (GLpick::g_pickActive) glLoadName(1);

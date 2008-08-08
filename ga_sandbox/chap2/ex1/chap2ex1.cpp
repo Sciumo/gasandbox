@@ -31,6 +31,7 @@
 #include <libgasandbox/e2ga_draw.h>
 #include <libgasandbox/gl_util.h>
 #include <libgasandbox/glut_util.h>
+#include <libgasandbox/draw.h>
 
 using namespace e2ga;
 using namespace mv_draw;
@@ -69,6 +70,7 @@ void display() {
 	std::vector<std::string> labelString;
 	std::vector<e2ga::vector> labelPos;
 
+	mv_draw::g_drawState.m_pointSize = 0.005f;
 
 	// how many bivectors? what spacing between them?:
 	const float entryWidth = 2.75f;
