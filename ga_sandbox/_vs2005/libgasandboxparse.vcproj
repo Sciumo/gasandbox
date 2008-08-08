@@ -60,7 +60,6 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)d.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -85,7 +84,7 @@
 			ConfigurationType="4"
 			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\sandbox_default_release.vsprops"
 			CharacterSet="1"
-			WholeProgramOptimization="0"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
