@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\..\vs2005\sandbox_defaults.vsprops;..\..\vs2005\sandbox_default_debug.vsprops"
+			InheritedPropertySheets="..\..\vs2005\sandbox_defaults.vsprops;..\..\vs2005\sandbox_default_debug.vsprops;.\solutions_defaults.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -95,7 +95,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			InheritedPropertySheets="..\..\vs2005\sandbox_defaults.vsprops;..\..\vs2005\sandbox_default_release.vsprops"
+			InheritedPropertySheets="..\..\vs2005\sandbox_defaults.vsprops;..\..\vs2005\sandbox_default_release.vsprops;.\solutions_defaults.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="0"
 			>

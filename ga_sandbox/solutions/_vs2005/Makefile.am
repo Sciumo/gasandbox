@@ -7,6 +7,7 @@ EXTRA_DIST = \
 	chap7ex5s.vcproj \
 	chap11ex4s.vcproj \
 	chap13ex2s.vcproj \
-	chap14ex2s.vcproj
+	chap14ex2s.vcproj \
+	solutions_defaults.vsprops
 
 

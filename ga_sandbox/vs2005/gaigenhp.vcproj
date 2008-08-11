@@ -116,6 +116,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				WholeProgramOptimization="false"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -176,19 +177,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\attic\gaigen2hp\fields.cpp"
+				RelativePath="..\attic\gaigen2hp\gaigenhp_fields.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\attic\gaigen2hp\glwindow.cpp"
+				RelativePath="..\attic\gaigen2hp\gaigenhp_glwindow.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\attic\gaigen2hp\hpindex.cpp"
+				RelativePath="..\attic\gaigen2hp\gaigenhp_hpindex.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\attic\gaigen2hp\main.cpp"
+				RelativePath="..\attic\gaigen2hp\gaigenhp_main.cpp"
 				>
 			</File>
 		</Filter>
