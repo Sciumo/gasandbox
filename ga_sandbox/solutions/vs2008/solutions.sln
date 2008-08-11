@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap2ex2s", "chap2ex2s.vcproj", "{1C2D5468-524B-4C86-BD22-3D8B575D134C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
@@ -41,7 +41,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chap14ex2s", "chap14ex2s.vc
 		{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D} = {7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandbox", "..\..\vs2005\libgasandbox.vcproj", "{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgasandbox", "..\..\vs2008\libgasandbox.vcproj", "{7FF252E8-8CB4-43E7-AE1A-AD98D4E5E49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
