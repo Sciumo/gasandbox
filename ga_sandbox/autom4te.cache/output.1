@@ -659,10 +659,6 @@ am__fastdepCXX_TRUE
 am__fastdepCXX_FALSE
 RANLIB
 GLUT_LIBS
-AQSIS_FLTK_CFLAGS
-AQSIS_FLTK_LIBS
-AQSIS_FLTK_GL_CFLAGS
-AQSIS_FLTK_GL_LIBS
 ANTLR_LIBS
 LIB@&t@OBJS
 LTLIBOBJS'
@@ -2024,7 +2020,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=ga_sandbox
- VERSION=1.0.4
+ VERSION=1.0.6
 
 
 cat >>confdefs.h <<_ACEOF
@@ -3832,27 +3828,7 @@ fi
 #GNASH_PATH_OPENGL
 GLUT_LIBS="-lglut"
 
-
-
-
-
-
-{ echo "$as_me:$LINENO: checking for the fltk UI library" >&5
-echo $ECHO_N "checking for the fltk UI library... $ECHO_C" >&6; }
-if fltk-config --version >/dev/null 2>/dev/null; then
-	AQSIS_FLTK_VERSION=`fltk-config --version`
-	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
-	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
-	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
-	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
-	{ echo "$as_me:$LINENO: result: found version $AQSIS_FLTK_VERSION" >&5
-echo "${ECHO_T}found version $AQSIS_FLTK_VERSION" >&6; }
-else
-	{ { echo "$as_me:$LINENO: error: couldn't find fltk library" >&5
-echo "$as_me: error: couldn't find fltk library" >&2;}
-   { (exit 1); exit 1; }; }
-fi
-
+AQSIS_CHECK_FLTK
 { echo "$as_me:$LINENO: checking for /usr/local/lib/libantlr.a" >&5
 echo $ECHO_N "checking for /usr/local/lib/libantlr.a... $ECHO_C" >&6; }
 if test "${ac_cv_file__usr_local_lib_libantlr_a+set}" = set; then
@@ -4762,16 +4738,12 @@ am__fastdepCXX_TRUE!$am__fastdepCXX_TRUE$ac_delim
 am__fastdepCXX_FALSE!$am__fastdepCXX_FALSE$ac_delim
 RANLIB!$RANLIB$ac_delim
 GLUT_LIBS!$GLUT_LIBS$ac_delim
-AQSIS_FLTK_CFLAGS!$AQSIS_FLTK_CFLAGS$ac_delim
-AQSIS_FLTK_LIBS!$AQSIS_FLTK_LIBS$ac_delim
-AQSIS_FLTK_GL_CFLAGS!$AQSIS_FLTK_GL_CFLAGS$ac_delim
-AQSIS_FLTK_GL_LIBS!$AQSIS_FLTK_GL_LIBS$ac_delim
 ANTLR_LIBS!$ANTLR_LIBS$ac_delim
 LIB@&t@OBJS!$LIB@&t@OBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 90; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 86; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

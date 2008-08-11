@@ -50,26 +50,6 @@ AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION],
 [AM_AUTOMAKE_VERSION([1.10])dnl
 _AM_AUTOCONF_VERSION(m4_PACKAGE_VERSION)])
 
-# AQSIS_CHECK_FLTK
-
-AC_DEFUN([AQSIS_CHECK_FLTK], [
-AC_SUBST(AQSIS_FLTK_CFLAGS)
-AC_SUBST(AQSIS_FLTK_LIBS)
-AC_SUBST(AQSIS_FLTK_GL_CFLAGS)
-AC_SUBST(AQSIS_FLTK_GL_LIBS)
-AC_MSG_CHECKING([for the fltk UI library])
-if fltk-config --version >/dev/null 2>/dev/null; then
-	AQSIS_FLTK_VERSION=`fltk-config --version`
-	AQSIS_FLTK_CFLAGS=`fltk-config --cflags`
-	AQSIS_FLTK_GL_CFLAGS=`fltk-config --cflags --use-gl`
-	AQSIS_FLTK_LIBS=`fltk-config --ldflags`
-	AQSIS_FLTK_GL_LIBS=`fltk-config --ldflags --use-gl`
-	AC_MSG_RESULT([found version $AQSIS_FLTK_VERSION])
-else
-	AC_MSG_ERROR([couldn't find fltk library])
-fi
-])
-
 # AM_AUX_DIR_EXPAND                                         -*- Autoconf -*-
 
 # Copyright (C) 2001, 2003, 2005  Free Software Foundation, Inc.

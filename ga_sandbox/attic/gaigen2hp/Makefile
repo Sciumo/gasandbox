@@ -44,12 +44,11 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(sandbindir)"
 sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
-am_gaigen2hp_OBJECTS = hpindex.$(OBJEXT) fields.$(OBJEXT) \
-	glwindow.$(OBJEXT) main.$(OBJEXT)
+am_gaigen2hp_OBJECTS = gaigenhp_hpindex.$(OBJEXT) \
+	gaigenhp_fields.$(OBJEXT) gaigenhp_glwindow.$(OBJEXT) \
+	gaigenhp_main.$(OBJEXT)
 gaigen2hp_OBJECTS = $(am_gaigen2hp_OBJECTS)
-am__DEPENDENCIES_1 =
-gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../libgasandbox/libgasandbox.a
+gaigen2hp_DEPENDENCIES = ../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -64,16 +63,12 @@ HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /root/gasandbox/ga_sandbox/missing --run aclocal-1.10
-AMTAR = ${SHELL} /root/gasandbox/ga_sandbox/missing --run tar
-ANTLR_LIBS = /usr/local/lib/libantlr.a
-AQSIS_FLTK_CFLAGS = -I/usr/local/include
-AQSIS_FLTK_GL_CFLAGS = -I/usr/local/include
-AQSIS_FLTK_GL_LIBS = -L/usr/local/lib -lfltk_gl -lGLU -lGL -lfltk -lm -lXext -lX11
-AQSIS_FLTK_LIBS = -L/usr/local/lib -lfltk -lm -lXext -lX11
-AUTOCONF = ${SHELL} /root/gasandbox/ga_sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /root/gasandbox/ga_sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /root/gasandbox/ga_sandbox/missing --run automake-1.10
+ACLOCAL = ${SHELL} /tmp/f/ga_sandbox/missing --run aclocal-1.10
+AMTAR = ${SHELL} /tmp/f/ga_sandbox/missing --run tar
+ANTLR_LIBS = 
+AUTOCONF = ${SHELL} /tmp/f/ga_sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /tmp/f/ga_sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /tmp/f/ga_sandbox/missing --run automake-1.10
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -83,7 +78,7 @@ CXX = g++
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.4\"
+DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.6\"
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -99,7 +94,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /root/gasandbox/ga_sandbox/missing --run makeinfo
+MAKEINFO = ${SHELL} /tmp/f/ga_sandbox/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = ga_sandbox
@@ -113,11 +108,11 @@ RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = 
-VERSION = 1.0.4
-abs_builddir = /root/gasandbox/ga_sandbox/attic/gaigen2hp
-abs_srcdir = /root/gasandbox/ga_sandbox/attic/gaigen2hp
-abs_top_builddir = /root/gasandbox/ga_sandbox
-abs_top_srcdir = /root/gasandbox/ga_sandbox
+VERSION = 1.0.6
+abs_builddir = /tmp/f/ga_sandbox/attic/gaigen2hp
+abs_srcdir = /tmp/f/ga_sandbox/attic/gaigen2hp
+abs_top_builddir = /tmp/f/ga_sandbox
+abs_top_srcdir = /tmp/f/ga_sandbox
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -137,7 +132,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /root/gasandbox/ga_sandbox/install-sh
+install_sh = $(SHELL) /tmp/f/ga_sandbox/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -159,7 +154,7 @@ top_srcdir = ../..
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
 gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) $(OPENGL_LIBS) ../../libgasandbox/libgasandbox.a
-gaigen2hp_SOURCES = hpindex.cpp fields.cpp  glwindow.cpp  main.cpp
+gaigen2hp_SOURCES = gaigenhp_hpindex.cpp gaigenhp_fields.cpp  gaigenhp_glwindow.cpp  gaigenhp_main.cpp
 noinst_HEADERS = fields.h  glwindow.h  hpindex.h  main.h
 all: all-am
 
@@ -227,10 +222,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/fields.Po
-include ./$(DEPDIR)/glwindow.Po
-include ./$(DEPDIR)/hpindex.Po
-include ./$(DEPDIR)/main.Po
+include ./$(DEPDIR)/gaigenhp_fields.Po
+include ./$(DEPDIR)/gaigenhp_glwindow.Po
+include ./$(DEPDIR)/gaigenhp_hpindex.Po
+include ./$(DEPDIR)/gaigenhp_main.Po
 
 .cpp.o:
 	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

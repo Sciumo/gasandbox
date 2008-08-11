@@ -44,12 +44,11 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(sandbindir)"
 sandbinPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(sandbin_PROGRAMS)
-am_gaigen2hp_OBJECTS = hpindex.$(OBJEXT) fields.$(OBJEXT) \
-	glwindow.$(OBJEXT) main.$(OBJEXT)
+am_gaigen2hp_OBJECTS = gaigenhp_hpindex.$(OBJEXT) \
+	gaigenhp_fields.$(OBJEXT) gaigenhp_glwindow.$(OBJEXT) \
+	gaigenhp_main.$(OBJEXT)
 gaigen2hp_OBJECTS = $(am_gaigen2hp_OBJECTS)
-am__DEPENDENCIES_1 =
-gaigen2hp_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../libgasandbox/libgasandbox.a
+gaigen2hp_DEPENDENCIES = ../../libgasandbox/libgasandbox.a
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -67,10 +66,6 @@ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 ANTLR_LIBS = @ANTLR_LIBS@
-AQSIS_FLTK_CFLAGS = @AQSIS_FLTK_CFLAGS@
-AQSIS_FLTK_GL_CFLAGS = @AQSIS_FLTK_GL_CFLAGS@
-AQSIS_FLTK_GL_LIBS = @AQSIS_FLTK_GL_LIBS@
-AQSIS_FLTK_LIBS = @AQSIS_FLTK_LIBS@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -159,7 +154,7 @@ top_srcdir = @top_srcdir@
 sandbindir = $(bindir)/ga_sandbox
 AM_CPPFLAGS = -I../.. $(AQSIS_FLTK_GL_CFLAGS)
 gaigen2hp_LDADD = $(AQSIS_FLTK_GL_LIBS) $(OPENGL_LIBS) ../../libgasandbox/libgasandbox.a
-gaigen2hp_SOURCES = hpindex.cpp fields.cpp  glwindow.cpp  main.cpp
+gaigen2hp_SOURCES = gaigenhp_hpindex.cpp gaigenhp_fields.cpp  gaigenhp_glwindow.cpp  gaigenhp_main.cpp
 noinst_HEADERS = fields.h  glwindow.h  hpindex.h  main.h
 all: all-am
 
@@ -227,10 +222,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fields.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glwindow.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hpindex.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gaigenhp_fields.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gaigenhp_glwindow.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gaigenhp_hpindex.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gaigenhp_main.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
