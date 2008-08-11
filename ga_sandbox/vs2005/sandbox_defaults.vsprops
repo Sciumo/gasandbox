@@ -10,4 +10,8 @@
 		PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS"
 		RuntimeLibrary="0"
 	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalLibraryDirectories="..\lib_win32"
+	/>
 </VisualStudioPropertySheet>

@@ -220,10 +220,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\libgasandbox\h3ga_fast_factor_meet_join.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\libgasandbox\h3ga_util.cpp"
 				>
 			</File>

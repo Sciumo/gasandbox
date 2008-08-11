@@ -8,4 +8,8 @@
 		Name="VCCLCompilerTool"
 		AdditionalIncludeDirectories="..\..\;..\..\ext_include"
 	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalLibraryDirectories="..\..\lib_win32"
+	/>
 </VisualStudioPropertySheet>
