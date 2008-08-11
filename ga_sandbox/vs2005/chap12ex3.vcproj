@@ -97,7 +97,7 @@
 			ConfigurationType="1"
 			InheritedPropertySheets=".\sandbox_defaults.vsprops;.\parse_release.vsprops;.\sandbox_default_release.vsprops"
 			CharacterSet="1"
-			WholeProgramOptimization="1"
+			WholeProgramOptimization="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
