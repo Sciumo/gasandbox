@@ -29,7 +29,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-subdir = vs2005
+subdir = vs2008
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -162,9 +162,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  vs2005/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  vs2008/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  vs2005/Makefile
+	  $(AUTOMAKE) --gnu  vs2008/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
