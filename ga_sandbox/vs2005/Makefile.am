@@ -15,7 +15,7 @@ EXTRA_DIST = \
 	chap14ex1.vcproj chap14ex2.vcproj chap14ex3.vcproj chap14ex4.vcproj \
 	chap15ex1.vcproj chap15ex2.vcproj chap15ex3.vcproj \
 	chap16ex1.vcproj chap16ex2.vcproj chap16ex3.vcproj chap16ex4.vcproj \
-	gaigen2hp.vcproj \
+	gaigenhp.vcproj \
 	parse_debug.vsprops parse_release.vsprops \
 	sandbox_debug_link.vsprops sandbox_defaults.vsprops \
 	sandbox_default_debug.vsprops sandbox_default_release.vsprops
