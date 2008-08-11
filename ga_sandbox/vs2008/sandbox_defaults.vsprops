@@ -6,6 +6,7 @@
 	>
 	<Tool
 		Name="VCCLCompilerTool"
+		AdditionalOptions="/MP4"
 		AdditionalIncludeDirectories="..\;..\ext_include"
 		PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS"
 		RuntimeLibrary="0"
