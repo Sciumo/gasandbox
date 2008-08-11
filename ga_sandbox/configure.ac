@@ -17,6 +17,7 @@ AC_OUTPUT(
 	Makefile \
 	vs.net/Makefile \
 	vs2005/Makefile \
+	vs2008/Makefile \
 	\
 	qhull-2003.1/Makefile \
 	qhull-2003.1/src/Makefile \
@@ -130,6 +131,7 @@ AC_OUTPUT(
 	\
 	solutions/vs.net/Makefile \
 	solutions/vs2005/Makefile \
+	solutions/vs2008/Makefile \
 	\
 	attic/Makefile\
 	attic/gaigen2hp/Makefile \
