@@ -135,7 +135,7 @@ void display() {
 		const normalizedPoint &p1 = g_points[PLANE_POINT_IDX + 0];
 
 		// l1, l2, c1, c2, c3, p1 are points
-		line L = _line(unit_r(l1 ^ l2 ^ ni));
+		line L = _line(unit_r(l1 ^ l2 ^ ni)); // ni = einf
 		circle C = _circle(c1 ^ c2 ^ c3);
 		dualPlane p = _dualPlane(p1 << (e2^ni));
 //		sphere p = _sphere(p1 - 5.0f * ni); // use this line to create a sphere instead of a plane

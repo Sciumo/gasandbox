@@ -82,7 +82,7 @@ void initRandomDest() {
 
 // *!*HTML_TAG*!* interpolate
 
-// interpolate between 'src' and 'dst', as determined by 'alpha'
+// interpolate between 'src' and 'dst', as determined by 'alpha' (alpha is in range [0 1])
 TRversor interpolateTRversor(const TRversor &src, const TRversor &dst, mv::Float alpha) {
 	// return src * exp(alpha * log(inverse(src) * dst));
 	return _TRversor(src * exp(_dualLine(alpha * log(_TRversor(inverse(src) * dst)))));

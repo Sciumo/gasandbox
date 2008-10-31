@@ -24,7 +24,7 @@
 
 namespace c3ga {
 
-inline normalizedPoint c3gaPoint(vectorE3GA l) {
+inline normalizedPoint c3gaPoint(const vectorE3GA &l) {
 	return _normalizedPoint(l + no + 0.5f * norm_e2(l) * ni);
 }
 
