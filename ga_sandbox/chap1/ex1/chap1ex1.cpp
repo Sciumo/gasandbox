@@ -133,11 +133,12 @@ void display() {
 		const normalizedPoint &c2 = g_points[CIRCLE_POINT_IDX + 1];
 		const normalizedPoint &c3 = g_points[CIRCLE_POINT_IDX + 2];
 		const normalizedPoint &p1 = g_points[PLANE_POINT_IDX + 0];
+		const vectorE3GA n = _vectorE3GA(e2);
 
-		// l1, l2, c1, c2, c3, p1 are points
-		line L = _line(unit_r(l1 ^ l2 ^ ni)); // ni = einf
+		// l1, l2, c1, c2, c3, p1 are points, n is a direction vector
+		line L = _line(unit_r(l1 ^ l2 ^ ni)); // ni = einf = point at infinity
 		circle C = _circle(c1 ^ c2 ^ c3);
-		dualPlane p = _dualPlane(p1 << (e2^ni));
+		dualPlane p = _dualPlane(p1 << (n^ni));
 //		sphere p = _sphere(p1 - 5.0f * ni); // use this line to create a sphere instead of a plane
 
 		// draw line (red)
