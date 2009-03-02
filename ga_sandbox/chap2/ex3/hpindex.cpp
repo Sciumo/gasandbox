@@ -23,7 +23,16 @@
 #ifdef WIN32
 #include <windows.h>
 #endif
-#include <GL/gl.h>
+
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glext.h>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
 
 #include "fields.h"
 #include "main.h"

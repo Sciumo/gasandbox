@@ -18,8 +18,17 @@
 #include <windows.h>
 #endif
 
-#include <GL/gl.h>
-#include <GL/glut.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glext.h>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+	#include <CoreServices/CoreServices.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -332,9 +341,24 @@ void Idle() {
 	}
 }
 
+void getfilename(const char *name, char *filename, int n) {
+	filename[0] = '\0';
+	#if defined (__APPLE__) || defined (OSX)
+		FSRef fileref;
+		Boolean isDir;
+		FSPathMakeRef((const UInt8 *)name, &fileref, &isDir);
+		
+		FSRefMakePath(&fileref, (UInt8 *)filename, n);
+	#else
+		strcpy(filename, name);
+	#endif
+}
+
 int LoadData() {
 	try {
-		g_opticalCaptureData = readOpticalData("silly_moves.txt");
+		char filename[512];
+		getfilename("silly_moves.txt", filename, 512);
+		g_opticalCaptureData = readOpticalData(filename);
 	} catch (const std::string &) {
 		try {
 			g_opticalCaptureData = readOpticalData("../chap12/ex3/silly_moves.txt");

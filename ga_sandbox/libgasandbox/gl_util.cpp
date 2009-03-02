@@ -15,8 +15,14 @@
 // Copyright 2007, Daniel Fontijne, University of Amsterdam -- fontijne@science.uva.nl
 
 
+#include <string>
+
 #include "gl_util.h"
-#include <GL/glut.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <GLUT/glut.h>
+#else
+	#include <GL/glut.h>
+#endif
 
 void doIntelWarning() {
 	static bool warned = false;
@@ -24,6 +30,7 @@ void doIntelWarning() {
 		warned = true;
 		const GLubyte *vendor = glGetString(GL_VENDOR);
 		const GLubyte *renderer = glGetString(GL_RENDERER);
+		std::string ren((const char*)renderer);
 		if (std::string((const char*)vendor).find("ntel") != std::string::npos) {
 			printf("General warning: OpenGL picking seems to be broken on integrated Intel graphics chipset.\n");
 			printf("At least on the 945 chipset which I tested (on Windows XP).\n");

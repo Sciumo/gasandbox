@@ -21,7 +21,11 @@
 #include <windows.h>
 #endif 
 
-#include <GL/gl.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+#else
+	#include <GL/gl.h>
+#endif
 
 #include "e3ga.h"
 #include "h3ga.h"

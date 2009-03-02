@@ -31,8 +31,16 @@ Algorithm and original matlab code by Stephen Mann & Alyn Rockwood
 #include <windows.h>
 #endif
 
-#include <GL/gl.h>
-#include <GL/glut.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glext.h>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 

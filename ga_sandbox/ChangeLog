@@ -1,3 +1,6 @@
+20090302 Added Xcode project file. Made changes which should make compilation on MacOSX easier.
+	 (project and changes thanks to Wesley Smith).
+
 20081210 Added chapter folders to VS2005 solution
 20081210 Changed 'e2' to 'n' in chap1ex1 to match changes in second printing
 

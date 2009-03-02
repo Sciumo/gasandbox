@@ -18,8 +18,17 @@
 #include <windows.h>
 #endif
 
-#include <GL/gl.h>
-#include <GL/glut.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glext.h>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+	#include <CoreServices/CoreServices.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -331,14 +340,32 @@ void loadRawImage(const char *filename) {
 }
 
 
+void getfilename(const char *name, char *filename, int n) {
+	filename[0] = '\0';
+	#if defined (__APPLE__) || defined (OSX)
+		FSRef fileref;
+		Boolean isDir;
+		FSPathMakeRef((const UInt8 *)name, &fileref, &isDir);
+		
+		FSRefMakePath(&fileref, (UInt8 *)filename, n);
+	#else
+		strcpy(filename, name);
+	#endif
+}
+
+
 void menuCallback(int value) {
 	if ((value >= 0) && (value < 3))
 		g_sampleColorIdx = value;
 	else if (value == -1) {
-		loadRawImage(IMAGE_NAME_1);
+		char filename[512];
+		getfilename(IMAGE_NAME_1, filename, 512);
+		loadRawImage(filename);
 	}
 	else if (value == -2) {
-		loadRawImage(IMAGE_NAME_2);
+		char filename[512];
+		getfilename(IMAGE_NAME_2, filename, 512);
+		loadRawImage(filename);
 	}
 
 	glutPostRedisplay();
@@ -348,7 +375,9 @@ int main(int argc, char*argv[]) {
 	e3ga::g2Profiling::init();
 
 	// load the raw image:
-	loadRawImage(IMAGE_NAME_1);
+	char filename[512];
+	getfilename(IMAGE_NAME_1, filename, 512);
+	loadRawImage(filename);
 
 	// GLUT Window Initialization:
 	glutInit (&argc, argv);

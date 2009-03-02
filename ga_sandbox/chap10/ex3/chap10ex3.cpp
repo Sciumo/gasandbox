@@ -18,8 +18,17 @@
 #include <windows.h>
 #endif
 
-#include <GL/gl.h>
-#include <GL/glut.h>
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glext.h>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+	#include <CoreServices/CoreServices.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -329,9 +338,25 @@ void MouseMotion(int x, int y) {
 	glutPostRedisplay();
 }
 
+void getfilename(const char *name, char *filename, int n) {
+	filename[0] = '\0';
+	#if defined (__APPLE__) || defined (OSX)
+		FSRef fileref;
+		Boolean isDir;
+		FSPathMakeRef((const UInt8 *)name, &fileref, &isDir);
+		
+		FSRefMakePath(&fileref, (UInt8 *)filename, n);
+	#else
+		strcpy(filename, name);
+	#endif
+}
+
+
 int LoadData() {
 	try {
-		g_extCalibState = readCalibrationData("calibration_data.txt");
+		char filename[512];
+		getfilename("calibration_data.txt", filename, 512);
+		g_extCalibState = readCalibrationData(filename);
 	} catch (const std::string &) {
 		try {
 			// try alternative path, when called from inside visual studio:

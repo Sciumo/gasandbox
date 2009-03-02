@@ -18,15 +18,13 @@
 #include <windows.h>
 #endif 
 
-#include <GL/gl.h>
-#include <GL/glut.h>
-
-// todo: check out coin3d for the m4 functions SIM_AC_CHECK_OPENGL and such
-//#include <OpenGL/gl.h>
-//#include <OpenGL/glu.h>
-//#include <GLUT/glut.h>
-
-
+#if defined (__APPLE__) || defined (OSX)
+	#include <OpenGL/gl.h>
+	#include <GLUT/glut.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glut.h>
+#endif
 
 #include "glut_util.h"
 
