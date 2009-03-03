@@ -139,5 +139,8 @@ AC_OUTPUT(
 	screenshots/Makefile \
 	\
 	ext_include/Makefile \
-	lib_win32/Makefile
+	lib_win32/Makefile \
+	\
+	xcode/Makefile \
+	xcode/GA_Sandbox.xcodeproj/Makefile \
 	)
