@@ -66,12 +66,12 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /tmp/f/ga_sandbox/missing --run aclocal-1.10
-AMTAR = ${SHELL} /tmp/f/ga_sandbox/missing --run tar
+ACLOCAL = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run aclocal-1.10
+AMTAR = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run tar
 ANTLR_LIBS = 
-AUTOCONF = ${SHELL} /tmp/f/ga_sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /tmp/f/ga_sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /tmp/f/ga_sandbox/missing --run automake-1.10
+AUTOCONF = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run automake-1.10
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -81,7 +81,7 @@ CXX = g++
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.6\"
+DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE=\"ga_sandbox\" -DVERSION=\"1.0.7\"
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -97,7 +97,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /tmp/f/ga_sandbox/missing --run makeinfo
+MAKEINFO = ${SHELL} /tmp/f/gasandbox/ga_sandbox/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = ga_sandbox
@@ -111,11 +111,11 @@ RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = 
-VERSION = 1.0.6
-abs_builddir = /tmp/f/ga_sandbox
-abs_srcdir = /tmp/f/ga_sandbox
-abs_top_builddir = /tmp/f/ga_sandbox
-abs_top_srcdir = /tmp/f/ga_sandbox
+VERSION = 1.0.7
+abs_builddir = /tmp/f/gasandbox/ga_sandbox
+abs_srcdir = /tmp/f/gasandbox/ga_sandbox
+abs_top_builddir = /tmp/f/gasandbox/ga_sandbox
+abs_top_srcdir = /tmp/f/gasandbox/ga_sandbox
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -135,7 +135,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /tmp/f/ga_sandbox/install-sh
+install_sh = $(SHELL) /tmp/f/gasandbox/ga_sandbox/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -158,7 +158,7 @@ SUBDIRS = qhull-2003.1 libgasandbox \
 	chap1 chap2 chap3 chap4 chap5 chap6 chap7 chap8 \
 	chap10 chap11 chap12 chap13 chap14 chap15 chap16 \
 	solutions vs.net vs2005 vs2008 attic screenshots \
-	libgasandbox_no_opt ext_include lib_win32
+	libgasandbox_no_opt ext_include lib_win32 xcode
 
 EXTRA_DIST = REQUIRED_LIBRARIES SOLARIS MACOSX user_manual.txt
 all: all-recursive

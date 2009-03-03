@@ -139,7 +139,7 @@ m4trace:configure.ac:2: -1- m4_pattern_allow([^host_alias$])
 m4trace:configure.ac:2: -1- AC_SUBST([target_alias])
 m4trace:configure.ac:2: -1- AC_SUBST_TRACE([target_alias])
 m4trace:configure.ac:2: -1- m4_pattern_allow([^target_alias$])
-m4trace:configure.ac:3: -1- AM_INIT_AUTOMAKE([ga_sandbox], [1.0.6])
+m4trace:configure.ac:3: -1- AM_INIT_AUTOMAKE([ga_sandbox], [1.0.7])
 m4trace:configure.ac:3: -1- m4_pattern_allow([^AM_[A-Z]+FLAGS$])
 m4trace:configure.ac:3: -1- AM_AUTOMAKE_VERSION([1.10])
 m4trace:configure.ac:3: -1- AC_PROG_INSTALL
@@ -163,7 +163,7 @@ m4trace:configure.ac:3: -1- m4_pattern_allow([^CYGPATH_W$])
 m4trace:configure.ac:3: -1- AC_SUBST([PACKAGE], [ga_sandbox])
 m4trace:configure.ac:3: -1- AC_SUBST_TRACE([PACKAGE])
 m4trace:configure.ac:3: -1- m4_pattern_allow([^PACKAGE$])
-m4trace:configure.ac:3: -1- AC_SUBST([VERSION], [1.0.6])
+m4trace:configure.ac:3: -1- AC_SUBST([VERSION], [1.0.7])
 m4trace:configure.ac:3: -1- AC_SUBST_TRACE([VERSION])
 m4trace:configure.ac:3: -1- m4_pattern_allow([^VERSION$])
 m4trace:configure.ac:3: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE])
@@ -473,7 +473,10 @@ m4trace:configure.ac:16: -1- AC_CONFIG_FILES([Makefile \
 	screenshots/Makefile \
 	\
 	ext_include/Makefile \
-	lib_win32/Makefile
+	lib_win32/Makefile \
+	\
+	xcode/Makefile \
+	xcode/GA_Sandbox.xcodeproj/Makefile \
 	])
 m4trace:configure.ac:16: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
