@@ -323,6 +323,331 @@
 		B9AABE150F5BA9980003966C /* libcxcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9AABC120F5BA1C20003966C /* libcxcore.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B9AABEBF0F5D768E0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEC20F5D76A20003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEC40F5D76A80003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEC60F5D76AE0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABECE0F5D76B90003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABED00F5D76BC0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABED20F5D76C20003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABED40F5D76CD0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABED60F5D76D30003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABED80F5D76D70003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEDA0F5D76DB0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEDC0F5D76E00003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEDE0F5D76E50003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEE00F5D76F30003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEE20F5D76F60003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEE40F5D76F90003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEE60F5D76FC0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEE80F5D77000003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEEA0F5D77080003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEEC0F5D770B0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEEE0F5D770E0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEF00F5D77100003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEF20F5D771F0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEF40F5D77250003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEF60F5D77270003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEF80F5D772A0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEFA0F5D772C0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEFC0F5D77360003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABEFE0F5D77390003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF000F5D773B0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF020F5D77400003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF040F5D77520003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF060F5D77550003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF080F5D77570003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF0C0F5D77620003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF0E0F5D776A0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF100F5D77820003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF220F5D77870003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF240F5D778D0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF260F5D77950003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF280F5D779B0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF2A0F5D77AC0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF2C0F5D77B50003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF2E0F5D77BD0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF300F5D77C30003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+		B9AABF320F5D77CA0003966C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9AAB2930F5B6FF20003966C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			remoteInfo = libgasandbox;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		B9AABB5D0F5B99A50003966C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -1916,6 +2241,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABED30F5D76C20003966C /* PBXTargetDependency */,
 			);
 			name = ch1ex1;
 			productName = ch1;
@@ -1949,6 +2275,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABED10F5D76BC0003966C /* PBXTargetDependency */,
 			);
 			name = ch2ex1;
 			productName = ch1;
@@ -1965,6 +2292,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEC50F5D76A80003966C /* PBXTargetDependency */,
 			);
 			name = ch3ex1;
 			productName = ch1;
@@ -1981,6 +2309,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABED70F5D76D30003966C /* PBXTargetDependency */,
 			);
 			name = ch4ex1;
 			productName = ch1;
@@ -1997,6 +2326,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEDD0F5D76E00003966C /* PBXTargetDependency */,
 			);
 			name = ch5ex1;
 			productName = ch1;
@@ -2013,6 +2343,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEE30F5D76F60003966C /* PBXTargetDependency */,
 			);
 			name = ch6ex1;
 			productName = ch1;
@@ -2029,6 +2360,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEE70F5D76FC0003966C /* PBXTargetDependency */,
 			);
 			name = ch7ex1;
 			productName = ch1;
@@ -2045,6 +2377,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEF10F5D77100003966C /* PBXTargetDependency */,
 			);
 			name = ch10ex1;
 			productName = ch1;
@@ -2061,6 +2394,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEF70F5D77270003966C /* PBXTargetDependency */,
 			);
 			name = ch11ex1;
 			productName = ch1;
@@ -2077,6 +2411,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEFF0F5D77390003966C /* PBXTargetDependency */,
 			);
 			name = ch12ex1;
 			productName = ch1;
@@ -2093,6 +2428,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF050F5D77520003966C /* PBXTargetDependency */,
 			);
 			name = ch13ex1;
 			productName = ch1;
@@ -2109,6 +2445,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF0F0F5D776A0003966C /* PBXTargetDependency */,
 			);
 			name = ch14ex1;
 			productName = ch1;
@@ -2125,6 +2462,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF270F5D77950003966C /* PBXTargetDependency */,
 			);
 			name = ch15ex1;
 			productName = ch1;
@@ -2141,6 +2479,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF330F5D77CA0003966C /* PBXTargetDependency */,
 			);
 			name = ch16ex1;
 			productName = ch1;
@@ -2157,6 +2496,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEC70F5D76AE0003966C /* PBXTargetDependency */,
 			);
 			name = ch2ex3;
 			productName = ch1;
@@ -2173,6 +2513,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABECF0F5D76B90003966C /* PBXTargetDependency */,
 			);
 			name = ch2ex2;
 			productName = ch1;
@@ -2189,6 +2530,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEC30F5D76A20003966C /* PBXTargetDependency */,
 			);
 			name = ch3ex2;
 			productName = ch1;
@@ -2205,6 +2547,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEC00F5D768E0003966C /* PBXTargetDependency */,
 			);
 			name = ch3ex3;
 			productName = ch1;
@@ -2222,6 +2565,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABED50F5D76CD0003966C /* PBXTargetDependency */,
 			);
 			name = ch3ex4;
 			productName = ch1;
@@ -2238,6 +2582,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABED90F5D76D70003966C /* PBXTargetDependency */,
 			);
 			name = ch4ex2;
 			productName = ch1;
@@ -2254,6 +2599,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEDB0F5D76DB0003966C /* PBXTargetDependency */,
 			);
 			name = ch4ex3;
 			productName = ch1;
@@ -2270,6 +2616,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEDF0F5D76E50003966C /* PBXTargetDependency */,
 			);
 			name = ch5ex2;
 			productName = ch1;
@@ -2286,6 +2633,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEE10F5D76F30003966C /* PBXTargetDependency */,
 			);
 			name = ch5ex3;
 			productName = ch1;
@@ -2302,6 +2650,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEE50F5D76F90003966C /* PBXTargetDependency */,
 			);
 			name = ch6ex2;
 			productName = ch1;
@@ -2318,6 +2667,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEE90F5D77000003966C /* PBXTargetDependency */,
 			);
 			name = ch7ex2;
 			productName = ch1;
@@ -2334,6 +2684,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEEB0F5D77080003966C /* PBXTargetDependency */,
 			);
 			name = ch7ex3;
 			productName = ch1;
@@ -2350,6 +2701,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEED0F5D770B0003966C /* PBXTargetDependency */,
 			);
 			name = ch7ex4;
 			productName = ch1;
@@ -2366,6 +2718,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEEF0F5D770E0003966C /* PBXTargetDependency */,
 			);
 			name = ch7ex5;
 			productName = ch1;
@@ -2382,6 +2735,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEF30F5D771F0003966C /* PBXTargetDependency */,
 			);
 			name = ch10ex2;
 			productName = ch1;
@@ -2399,6 +2753,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEF50F5D77250003966C /* PBXTargetDependency */,
 			);
 			name = ch10ex3;
 			productName = ch1;
@@ -2415,6 +2770,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEF90F5D772A0003966C /* PBXTargetDependency */,
 			);
 			name = ch11ex2;
 			productName = ch1;
@@ -2431,6 +2787,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEFB0F5D772C0003966C /* PBXTargetDependency */,
 			);
 			name = ch11ex3;
 			productName = ch1;
@@ -2447,6 +2804,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABEFD0F5D77360003966C /* PBXTargetDependency */,
 			);
 			name = ch11ex4;
 			productName = ch1;
@@ -2463,6 +2821,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF010F5D773B0003966C /* PBXTargetDependency */,
 			);
 			name = ch12ex2;
 			productName = ch1;
@@ -2480,6 +2839,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF030F5D77400003966C /* PBXTargetDependency */,
 			);
 			name = ch12ex3;
 			productName = ch1;
@@ -2496,6 +2856,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF070F5D77550003966C /* PBXTargetDependency */,
 			);
 			name = ch13ex2;
 			productName = ch1;
@@ -2512,6 +2873,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF090F5D77570003966C /* PBXTargetDependency */,
 			);
 			name = ch13ex3;
 			productName = ch1;
@@ -2528,6 +2890,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF0D0F5D77620003966C /* PBXTargetDependency */,
 			);
 			name = ch13ex4;
 			productName = ch1;
@@ -2544,6 +2907,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF110F5D77820003966C /* PBXTargetDependency */,
 			);
 			name = ch14ex2;
 			productName = ch1;
@@ -2560,6 +2924,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF230F5D77870003966C /* PBXTargetDependency */,
 			);
 			name = ch14ex3;
 			productName = ch1;
@@ -2576,6 +2941,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF250F5D778D0003966C /* PBXTargetDependency */,
 			);
 			name = ch14ex4;
 			productName = ch1;
@@ -2592,6 +2958,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF290F5D779B0003966C /* PBXTargetDependency */,
 			);
 			name = ch15ex2;
 			productName = ch1;
@@ -2608,6 +2975,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF2B0F5D77AC0003966C /* PBXTargetDependency */,
 			);
 			name = ch15ex3;
 			productName = ch1;
@@ -2624,6 +2992,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF310F5D77C30003966C /* PBXTargetDependency */,
 			);
 			name = ch16ex2;
 			productName = ch1;
@@ -2640,6 +3009,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF2F0F5D77BD0003966C /* PBXTargetDependency */,
 			);
 			name = ch16ex3;
 			productName = ch1;
@@ -2656,6 +3026,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9AABF2D0F5D77B50003966C /* PBXTargetDependency */,
 			);
 			name = ch16ex4;
 			productName = ch1;
@@ -3163,6 +3534,239 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9AABEC00F5D768E0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEBF0F5D768E0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEC30F5D76A20003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEC20F5D76A20003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEC50F5D76A80003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEC40F5D76A80003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEC70F5D76AE0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEC60F5D76AE0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABECF0F5D76B90003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABECE0F5D76B90003966C /* PBXContainerItemProxy */;
+		};
+		B9AABED10F5D76BC0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABED00F5D76BC0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABED30F5D76C20003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABED20F5D76C20003966C /* PBXContainerItemProxy */;
+		};
+		B9AABED50F5D76CD0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABED40F5D76CD0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABED70F5D76D30003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABED60F5D76D30003966C /* PBXContainerItemProxy */;
+		};
+		B9AABED90F5D76D70003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABED80F5D76D70003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEDB0F5D76DB0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEDA0F5D76DB0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEDD0F5D76E00003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEDC0F5D76E00003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEDF0F5D76E50003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEDE0F5D76E50003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEE10F5D76F30003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEE00F5D76F30003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEE30F5D76F60003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEE20F5D76F60003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEE50F5D76F90003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEE40F5D76F90003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEE70F5D76FC0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEE60F5D76FC0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEE90F5D77000003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEE80F5D77000003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEEB0F5D77080003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEEA0F5D77080003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEED0F5D770B0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEEC0F5D770B0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEEF0F5D770E0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEEE0F5D770E0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEF10F5D77100003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEF00F5D77100003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEF30F5D771F0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEF20F5D771F0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEF50F5D77250003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEF40F5D77250003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEF70F5D77270003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEF60F5D77270003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEF90F5D772A0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEF80F5D772A0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEFB0F5D772C0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEFA0F5D772C0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEFD0F5D77360003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEFC0F5D77360003966C /* PBXContainerItemProxy */;
+		};
+		B9AABEFF0F5D77390003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABEFE0F5D77390003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF010F5D773B0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF000F5D773B0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF030F5D77400003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF020F5D77400003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF050F5D77520003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF040F5D77520003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF070F5D77550003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF060F5D77550003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF090F5D77570003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF080F5D77570003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF0D0F5D77620003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF0C0F5D77620003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF0F0F5D776A0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF0E0F5D776A0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF110F5D77820003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF100F5D77820003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF230F5D77870003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF220F5D77870003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF250F5D778D0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF240F5D778D0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF270F5D77950003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF260F5D77950003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF290F5D779B0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF280F5D779B0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF2B0F5D77AC0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF2A0F5D77AC0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF2D0F5D77B50003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF2C0F5D77B50003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF2F0F5D77BD0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF2E0F5D77BD0003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF310F5D77C30003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF300F5D77C30003966C /* PBXContainerItemProxy */;
+		};
+		B9AABF330F5D77CA0003966C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AAB2D10F5B713E0003966C /* libgasandbox */;
+			targetProxy = B9AABF320F5D77CA0003966C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B9AAB2940F5B6FF20003966C /* Debug */ = {

@@ -1,3 +1,12 @@
+If using Native OSX windowing:
+------------------------------------
+Install xcode
+Install dependencies (OpenCV)
+Open xcode project and select target (example) to run.  All example targets will automatically build the libgasandbox.a dependency, so it can either be built explicitly by choosing its target else it will be built implicitly the first time any of the examples are built.
+
+
+If using X11:
+------------------------------------
 Install xcode (for the GCC compiler)
 Install X11
 Install darwin ports
