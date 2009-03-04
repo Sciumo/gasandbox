@@ -24,16 +24,16 @@ call release_win32_includes.bat
 cd ..\tmp
 
 rem CHANGE VERSION HERE!
-mv ga_sandbox ga_sandbox-1.0.6
+mv ga_sandbox ga_sandbox-1.0.7
 
 del ga_sandbox_win32_binary_libraries.tar
 del ga_sandbox_win32_binary_libraries.tar.gz
 
 rem CHANGE VERSION HERE!
-tar cf ga_sandbox-1.0.6_win32_binary_libraries.tar ga_sandbox-1.0.6 lib_win32_readme.txt
+tar cf ga_sandbox-1.0.7_win32_binary_libraries.tar ga_sandbox-1.0.7 lib_win32_readme.txt
 
-gzip -9 ga_sandbox-1.0.6_win32_binary_libraries.tar
-move ga_sandbox-1.0.6_win32_binary_libraries.tar.gz ..
+gzip -9 ga_sandbox-1.0.7_win32_binary_libraries.tar
+move ga_sandbox-1.0.7_win32_binary_libraries.tar.gz ..
 cd ..
 rmdir /Q /S tmp
 cd ga_sandbox
