@@ -33,11 +33,11 @@ mv exp(const mv &x, int order /*= 9*/) {
 		// OK (x * x == scalar), so use special cases:
 		if (s_x2 < 0.0) {
 			mv::Float a = sqrt(-s_x2);
-			return (mv::Float)cos(a) + (mv::Float)sin(a) * x * (1.0f / a);
+			return (mv::Float)cos(a) + x * ((mv::Float)sin(a) / a);
 		}
 		else if (s_x2 > 0.0) {
 			mv::Float a = sqrt(s_x2);
-			return (mv::Float)cosh(a) + (mv::Float)sinh(a) * x * (1.0f / a);
+			return (mv::Float)cosh(a) + x * ((mv::Float)sinh(a) / a);
 		}
 		else {
 			return 1 + x;
@@ -46,8 +46,6 @@ mv exp(const mv &x, int order /*= 9*/) {
 
 
 	// now do general series eval:
-
-
     int i;
     mv result;
 
