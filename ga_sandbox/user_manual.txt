@@ -47,7 +47,7 @@ On Linux and MacOSX we compiled using GNU Autotools and GCC.
 Libraries:
 
 Most examples have a simple GLUT GUI, so you'll need OpenGL and GLUT 
-(of freeglut).
+(or freeglut).
 For some specific examples, you'll need 
 -FLTK (gaigenhp example), 
 -ANTLR (chap10ex3, chap12ex3) and 
